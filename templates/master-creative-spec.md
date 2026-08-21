@@ -57,6 +57,15 @@ P0 / P1 / P2
 - body anchor:
 - wardrobe anchor:
 
+### Emotional continuity
+
+For action-heavy scenes, record the emotional state that must survive choreography.
+
+- entry emotion:
+- emotional transition:
+- exit emotion:
+- emotional behavior to avoid:
+
 ---
 
 ## 3. Reference State & Evidence
@@ -179,20 +188,46 @@ notices object → reaches → picks it up → hesitates → looks toward camera
 - pose details that are actually story-critical:
 - details intentionally left open:
 
+### Dense-action grammar
+
+For combat, chase, sports, dance confrontation, panic, or other fast scenes:
+
+```text
+evade → parry → redirect → counter → sweep → recover
+```
+
+- connected verb chain:
+- reset poses allowed? yes / no
+- simultaneous actions allowed / required:
+- momentum / redirection logic:
+- required physical travel through space:
+
+### Multi-agent interaction logic
+
+- actor roles:
+- who can act simultaneously:
+- spatial blocking constraints:
+- contact consequences:
+- positions that must persist into the next beat:
+
 ---
 
 ## 7. Shot Graph
 
-Represent the clip as entry states, events, and exit states.
+Represent the clip as entry states, events, consequences, and exit states.
 
 ```text
 S0 [entry state / time]
 
 E1 [event / time range]
 
+C1 [physical / environmental consequence]
+
 S1 [exit state / next entry state]
 
 E2 [event / time range]
+
+C2 [consequence]
 
 S2 [exit state]
 ```
@@ -207,10 +242,12 @@ Examples:
 observe → notice → suspend → connect → release
 ```
 
-or
-
 ```text
 impact → transition → reward
+```
+
+```text
+fear → involuntary competence → shock → renewed pressure → uncertain resolve
 ```
 
 ---
@@ -230,6 +267,13 @@ impact → transition → reward
 - foreground occlusion:
 - settling behavior:
 - permitted imperfection / lag / overshoot:
+- reacquisition behavior after fast action:
+- focus recovery behavior:
+- impact shake cause:
+
+### Camera rule for action
+
+State why the camera moves. Action readability should outrank camera spectacle.
 
 ---
 
@@ -253,6 +297,15 @@ eyes shift → head follows slightly → motion settles
 ### Settling rule
 
 Every movement should specify whether and how it settles.
+
+### Micro-slow-motion emphasis
+
+If used:
+
+- trigger event:
+- approximate duration:
+- return-to-real-time behavior:
+- reason this moment deserves emphasis:
 
 ---
 
@@ -311,9 +364,60 @@ stillness → subtle motion → stillness
 
 State the physical cause of each environmental motion.
 
+### Reaction Evidence
+
+For impacts, acceleration, or stylized force, describe world consequences that prove the event happened.
+
+- dust / debris:
+- paper / loose objects:
+- clothing / fabric:
+- hair:
+- nearby props:
+- floor / structural response:
+- lighting / electrical response:
+- lens / camera response:
+- settling behavior:
+
+Preferred causal sequence:
+
+```text
+physical event → local effect → secondary reaction → settling
+```
+
 ---
 
-## 13. Audio DNA
+## 13. Physics Lock
+
+Use when the scene contains extraordinary speed, stylized energy, unusual impact effects, or any spectacle that could become arbitrary or magical.
+
+### Source / cause
+
+What physically creates the effect?
+
+### Allowed manifestation
+
+How may the effect appear?
+
+### Forbidden manifestation
+
+What visually similar but incorrect behavior must not occur?
+
+### World reaction
+
+How do nearby materials, objects, light, dust, hair, fabric, or camera react?
+
+Example:
+
+```text
+Source: friction / physical contact
+Allowed: brief branching static at contact points
+Forbidden: beams, aura, projectiles, teleportation
+World reaction: dust, loose paper, hair, and clothing respond to force and velocity
+```
+
+---
+
+## 14. Audio DNA
 
 ### Ambience
 
@@ -339,7 +443,7 @@ State the physical cause of each environmental motion.
 
 ---
 
-## 14. Constraints
+## 15. Constraints
 
 ### Hard identity constraints
 
@@ -360,6 +464,9 @@ State the physical cause of each environmental motion.
 - no background morphing:
 - stable lighting logic:
 - stable object permanence:
+- no teleport-like displacement when physical travel is required:
+- no artificial turn-taking when simultaneous pressure is intended:
+- no repeated reset poses when continuous chaining is intended:
 
 ### Aesthetic constraints
 
@@ -370,7 +477,7 @@ State the physical cause of each environmental motion.
 
 ---
 
-## 15. Known Failure Modes
+## 16. Known Failure Modes
 
 Record failures observed in previous generations.
 
@@ -382,7 +489,7 @@ Record failures observed in previous generations.
 
 ---
 
-## 16. Model Adapter Notes
+## 17. Model Adapter Notes
 
 ### Target model
 
@@ -398,13 +505,21 @@ Record failures observed in previous generations.
 
 ### Audio support
 
+### Action / multi-agent behavior
+
+- does the model follow timestamp blocks well?
+- does it handle simultaneous actors reliably?
+- does it benefit from compressed Action Grammar?
+- how much camera complexity is safe?
+- how does it interpret stylized physical effects?
+
 ### Adapter maturity
 
 L0 / L1 / L2 / L3 / L4
 
 ---
 
-## 17. Runtime Prompt
+## 18. Runtime Prompt
 
 Compiled output for this specific model goes here.
 
@@ -412,7 +527,7 @@ Do not treat this section as the source of truth; revise the Master Spec first w
 
 ---
 
-## 18. Series Master / Variant Plan
+## 19. Series Master / Variant Plan
 
 If this result is unusually strong, decide whether it should become a Series Master.
 
@@ -440,7 +555,7 @@ Prefer one or a few intentional variation axes rather than uncontrolled full-sce
 
 ---
 
-## 19. Result Log
+## 20. Result Log
 
 - model/version:
 - settings:
@@ -449,6 +564,10 @@ Prefer one or a few intentional variation axes rather than uncontrolled full-sce
 - identity rating:
 - motion realism rating:
 - temporal stability rating:
+- action readability rating:
+- multi-agent coherence rating:
+- physics-lock adherence rating:
+- reaction-evidence rating:
 - approved clip grade: A / B / C / F
 - successful primitive(s):
 - accepted layers:
