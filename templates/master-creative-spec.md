@@ -59,7 +59,43 @@ P0 / P1 / P2
 
 ---
 
-## 3. Visual DNA
+## 3. Reference State & Evidence
+
+Describe only what is visibly supported by the reference. Separate observation from inference.
+
+### Reference roles
+
+- identity reference:
+- wardrobe reference:
+- prop reference:
+- location reference:
+- composition reference:
+- spatial blocking reference:
+- motion reference:
+- audio / voice reference:
+
+### Observable state
+
+- subject pose:
+- gaze:
+- face orientation:
+- body orientation:
+- framing / crop:
+- camera height / perspective character:
+- foreground relationships:
+- background relationships:
+- visible props:
+- movable environmental elements:
+- light direction / hardness:
+- visible material / texture cues:
+
+### Unsupported inference to avoid
+
+List assumptions that should not be promoted into the prompt unless independently verified.
+
+---
+
+## 4. Visual DNA
 
 ### Scene
 
@@ -94,21 +130,74 @@ P0 / P1 / P2
 
 ---
 
-## 4. Shot Graph
+## 5. Control Levels
 
-Represent the clip as states (S) and events (E).
+### Hard Locks
+
+Requirements that must remain stable for the result to be usable.
+
+- identity:
+- wardrobe / prop state:
+- spatial relationship:
+- story-critical continuity:
+- required entry / exit state:
+
+### Soft Guidance
+
+Preferred direction or range.
+
+- camera:
+- expression intensity:
+- motion amplitude:
+- lighting character:
+- pacing:
+
+### Creative Freedom
+
+Low-risk details the model may decide within bounds.
+
+- micro gesture:
+- blink timing:
+- minor hair / fabric motion:
+- incidental background motion:
+- micro-expression timing:
+
+---
+
+## 6. Action Skeleton
+
+Write the essential causal sequence before exact pose choreography.
+
+Example:
 
 ```text
-S0 [time]
-
-E1 [time range]
-
-S1 [time]
-
-E2 [time range]
-
-S2 [time]
+notices object → reaches → picks it up → hesitates → looks toward camera → settles
 ```
+
+- required action chain:
+- contact geometry that must be explicit:
+- pose details that are actually story-critical:
+- details intentionally left open:
+
+---
+
+## 7. Shot Graph
+
+Represent the clip as entry states, events, and exit states.
+
+```text
+S0 [entry state / time]
+
+E1 [event / time range]
+
+S1 [exit state / next entry state]
+
+E2 [event / time range]
+
+S2 [exit state]
+```
+
+For every important state, record the story-critical invariants that must survive into the next beat.
 
 ### Emotional structure
 
@@ -126,7 +215,7 @@ impact → transition → reward
 
 ---
 
-## 5. Camera DNA
+## 8. Camera DNA
 
 - framing:
 - focal character:
@@ -140,10 +229,11 @@ impact → transition → reward
 - orbit:
 - foreground occlusion:
 - settling behavior:
+- permitted imperfection / lag / overshoot:
 
 ---
 
-## 6. Motion DNA
+## 9. Motion DNA
 
 ### Macro subject motion
 
@@ -166,7 +256,7 @@ Every movement should specify whether and how it settles.
 
 ---
 
-## 7. Motion Budget
+## 10. Motion Budget
 
 **Overall:** LOW / MEDIUM / HIGH
 
@@ -188,7 +278,7 @@ List motions the agent should not invent.
 
 ---
 
-## 8. Micro Motion
+## 11. Micro Motion
 
 - breathing:
 - blink count / cadence:
@@ -206,7 +296,7 @@ stillness → subtle motion → stillness
 
 ---
 
-## 9. Ambient Motion Field
+## 12. Ambient Motion Field
 
 - wind:
 - plants:
@@ -223,7 +313,7 @@ State the physical cause of each environmental motion.
 
 ---
 
-## 10. Audio DNA
+## 13. Audio DNA
 
 ### Ambience
 
@@ -249,7 +339,7 @@ State the physical cause of each environmental motion.
 
 ---
 
-## 11. Constraints
+## 14. Constraints
 
 ### Hard identity constraints
 
@@ -280,17 +370,19 @@ State the physical cause of each environmental motion.
 
 ---
 
-## 12. Known Failure Modes
+## 15. Known Failure Modes
 
 Record failures observed in previous generations.
 
 - failure:
+- likely responsibility layer:
 - likely cause:
-- correction:
+- accepted work to preserve:
+- single-variable correction:
 
 ---
 
-## 13. Model Adapter Notes
+## 16. Model Adapter Notes
 
 ### Target model
 
@@ -306,9 +398,13 @@ Record failures observed in previous generations.
 
 ### Audio support
 
+### Adapter maturity
+
+L0 / L1 / L2 / L3 / L4
+
 ---
 
-## 14. Runtime Prompt
+## 17. Runtime Prompt
 
 Compiled output for this specific model goes here.
 
@@ -316,7 +412,35 @@ Do not treat this section as the source of truth; revise the Master Spec first w
 
 ---
 
-## 15. Result Log
+## 18. Series Master / Variant Plan
+
+If this result is unusually strong, decide whether it should become a Series Master.
+
+### Anchors to preserve
+
+- identity:
+- world / location:
+- visual tone:
+- framing pattern:
+- motion behavior:
+- interaction pattern:
+
+### Candidate variant axes
+
+- scene:
+- action:
+- framing:
+- wardrobe:
+- mood:
+- time / weather:
+
+### Maximum simultaneous changes
+
+Prefer one or a few intentional variation axes rather than uncontrolled full-scene mutation.
+
+---
+
+## 19. Result Log
 
 - model/version:
 - settings:
@@ -325,6 +449,10 @@ Do not treat this section as the source of truth; revise the Master Spec first w
 - identity rating:
 - motion realism rating:
 - temporal stability rating:
+- approved clip grade: A / B / C / F
 - successful primitive(s):
+- accepted layers:
+- failed layer(s):
 - failures:
-- next change:
+- next single-variable change:
+- Series Master candidate: yes / no
