@@ -2,14 +2,15 @@
 
 ## Purpose
 
-A storyboard in XAI-Studio-Video is not merely a panel sequence showing what happens. It is a **directing document** that must preserve shot order, duration, emotional weight, camera behavior, and pacing.
+A storyboard in XAI-Studio is not merely a panel sequence showing what happens. It is a **medium-neutral directing document** that preserves story intent, shot/panel order, emotional weight, spatial relationships, continuity, and narrative tempo before expensive rendering.
 
-The storyboard should answer two different questions:
+The storyboard should answer three questions:
 
-1. **What happens?** — beat, action, spatial state, continuity.
-2. **How long and how intensely does the viewer experience it?** — tempo, hold length, shot scale, camera energy, emotional emphasis.
+1. **What happens?** — beat, action, information, spatial state, continuity.
+2. **How does the audience experience it?** — attention, emphasis, emotional linger, reveal, rhythm.
+3. **How should that intent later be expressed in a target medium?** — video timing and motion, graphic-novel panel weight, or illustration sequencing.
 
-A good storyboard is therefore closer to a film director's continuity board than to a comic strip.
+The rough storyboard image is disposable. The canonical asset is the **Storyboard Spec**: Beat Sheet + Tempo Map + Panel/Shot Specs + continuity state + approved creative decisions.
 
 ---
 
@@ -19,14 +20,16 @@ A good storyboard is therefore closer to a film director's continuity board than
 User idea
 → interpret dramatic intent
 → draft Beat Sheet
-→ assign Tempo Map
-→ create Director's Annotated Storyboard draft
+→ assign Narrative Tempo Map
+→ create Storyboard Spec Draft 0
+→ optionally render a low-cost rough storyboard
 → review with the user
-→ revise timing / shot emphasis / emotion
-→ only then compile references and runtime video prompt
+→ revise beats / tempo / emotion / framing
+→ Approved Storyboard Spec
+→ branch to target-medium adapter
 ```
 
-Do **not** jump directly from a loose idea to a final storyboard or video prompt when timing and emotional emphasis are important.
+Do **not** jump directly from a loose idea to a final image or video prompt when story, tempo, or emotional emphasis matters.
 
 The first storyboard is explicitly a **draft for collaborative revision**.
 
@@ -34,19 +37,19 @@ The first storyboard is explicitly a **draft for collaborative revision**.
 
 ## 1. Interpret the idea before drawing panels
 
-Translate the user's idea into a small set of dramatic beats.
+Translate the user's idea into dramatic and visual beats rather than literal task steps.
 
 Example idea:
 
 > She makes coffee, but we stay on her face longer. She is trying not to cry. She forces a smile while drawing the latte art.
 
-The storyboard should not reduce this to:
+Do not reduce this to:
 
 ```text
 make espresso → steam milk → pour milk → finish latte art
 ```
 
-It should preserve the emotional structure:
+Preserve the emotional structure:
 
 ```text
 routine
@@ -56,13 +59,13 @@ routine
 → forced smile / quiet payoff
 ```
 
-When procedural action and emotional action conflict, the storyboard must allocate enough time to the emotional beat.
+When procedural action and emotional action compete for space, allocate attention to the emotional beat that carries the scene's meaning.
 
 ---
 
 ## 2. Build a Beat Sheet
 
-A beat is a meaningful change in action, information, emotion, or viewer attention.
+A beat is a meaningful change in action, information, emotion, relationship, or viewer attention.
 
 Each beat should specify:
 
@@ -74,6 +77,7 @@ Each beat should specify:
 - emotional state
 - key visual evidence
 - continuity carried forward
+- importance / survival priority
 
 Example:
 
@@ -86,30 +90,32 @@ Exit: she regains enough control to continue
 Emotion: restrained sadness, not open crying
 Visual evidence: wet eyes, slight jaw tension, tiny inhale
 Continuity: hands remain in work position; no melodramatic collapse
+Importance: HIGH
 ```
+
+Use the minimum number of beats required for the story to read clearly.
 
 ---
 
-## 3. Add a Tempo Map
+## 3. Narrative Tempo Map
 
-Panels are not assumed to have equal duration or equal importance.
+Tempo is a story property before it becomes a video-duration property.
 
 For each beat define:
 
-- `duration_sec`
 - `tempo_role`
-- `shot_weight`
+- `relative_weight`
+- `attention_hold`
 - `motion_density`
-- `camera_energy`
+- `camera_or_view_energy`
 - `emotional_weight`
 - `transition_pressure`
+- optional `video_duration_hint`
 
-Suggested values:
+Suggested `tempo_role` values:
 
-### tempo_role
-
-- observe
 - establish
+- observe
 - linger
 - accelerate
 - transition
@@ -117,30 +123,23 @@ Suggested values:
 - reveal
 - payoff
 - release
+- cliffhanger
 
-### shot_weight
+Suggested `attention_hold` values:
 
-- LOW
-- MEDIUM
-- HIGH
+- brief
+- normal
+- extended
+- dominant
 
-### motion_density
+Suggested `motion_density` values:
 
 - still
 - subtle
 - moderate
 - active
 
-### camera_energy
-
-- locked
-- static observational
-- slow drift
-- slow push-in
-- active tracking
-- reactive
-
-### transition_pressure
+Suggested `transition_pressure` values:
 
 - soft
 - neutral
@@ -149,70 +148,126 @@ Suggested values:
 Example:
 
 ```text
-B1  1.2s  observe  MEDIUM  subtle  static observational  MEDIUM  soft
-B2  2.4s  linger   HIGH    still   slow push-in          HIGH    soft
-B3  1.3s  transition MEDIUM subtle locked                MEDIUM  neutral
-B4  1.8s  recover  MEDIUM  subtle  slight drift          MEDIUM  neutral
-B5  1.5s  reveal   MEDIUM  subtle  locked close-up       MEDIUM  soft
-B6  2.0s  payoff   HIGH    still   hold                   HIGH    soft
+B1 observe     MEDIUM  normal   subtle  MEDIUM  soft
+B2 linger      HIGH    extended still   HIGH    soft
+B3 transition  LOW     brief    subtle  MEDIUM  neutral
+B4 recover     MEDIUM  normal   subtle  MEDIUM  neutral
+B5 reveal      MEDIUM  normal   subtle  MEDIUM  soft
+B6 payoff      HIGH    extended still   HIGH    soft
 ```
 
-The exact numbers are planning estimates, not frame-accurate guarantees.
+If the target is video, duration hints may be added. They are planning estimates, not frame-accurate guarantees.
 
 ---
 
-## 4. Use shot duration as meaning
+## 4. Tempo adapts differently by medium
 
-A shot's duration changes its narrative function.
+The same narrative tempo should survive even when the output medium changes.
 
-The same close-up can mean different things:
+### Video
+
+Tempo may become:
+
+- shot duration
+- cut rhythm
+- camera speed
+- slow motion
+- hold length
+- silence / audio density
+
+### Graphic novel / comic
+
+Tempo may become:
+
+- panel size
+- panel density
+- silent panel
+- page-turn reveal
+- close-up emphasis
+- amount of dialogue
+- gutter rhythm
+
+### Illustration sequence
+
+Tempo may become:
+
+- image ordering
+- focal hierarchy
+- repeated motif
+- hero-frame selection
+- visual pause between high-information images
+
+A long emotional video close-up may become one large silent comic panel. A quick insert may become a small narrow panel. Preserve the **narrative function**, not the literal video timing.
+
+---
+
+## 5. Storyboard Spec is the source of truth
+
+Do not treat the rendered storyboard sheet as canonical.
+
+The source of truth should be structured text or data that records:
 
 ```text
-0.7s close-up  → reaction insert
-2.5s close-up  → emotional linger
-4.0s close-up  → confrontation / discomfort / intimacy
+story intent
+beat order
+narrative tempo
+shot/panel purpose
+composition
+character state
+prop/location continuity
+emotion
+reference roles
+accepted/rejected decisions
 ```
 
-Therefore the storyboard should visibly distinguish:
+A rough storyboard image exists to help humans and multimodal models understand the spec visually. It may be low-quality and inexpensive.
 
-- quick inserts
-- normal coverage
-- emotional holds
-- slow-motion emphasis
-- long observational shots
+This allows the same approved storyboard to feed:
 
-Do not let equal-sized panels imply equal time when the intended rhythm is unequal.
+```text
+Video Adapter
+Graphic-Novel Adapter
+Illustration-Sequence Adapter
+Storyboard Renderer
+```
+
+without rebuilding the story from scratch.
 
 ---
 
-## 5. Director's Annotated Storyboard
+## 6. Director's Annotated Storyboard
 
 Each panel should include or be accompanied by:
 
-- shot number
-- approximate duration
-- shot size: WS / MS / MCU / CU / ECU / Insert / Top / OTS / other
-- camera behavior
+- panel / shot number
+- beat ID
+- narrative purpose
+- relative weight
+- optional duration hint
+- shot / panel scale
+- framing and composition
+- camera/view behavior
 - subject action
 - emotional note
-- shot purpose
 - transition note
-- important continuity state
+- continuity state
+- annotation marks
 
 Useful annotations:
 
 ```text
-2.4s
-CU
-HOLD
+EMOTIONAL HOLD
+CU / ECU
 slow push-in
+silent beat
+page-turn reveal
 holding back tears
-pause before cut
+pause before transition
 ```
 
-A storyboard image may use larger panels for longer or emotionally heavier beats and smaller panels for fast inserts.
+A storyboard renderer may use larger panels for emotionally heavier or longer beats and smaller panels for fast inserts.
 
-Arrows and simple director marks may show:
+Arrows and director marks may show:
 
 - camera push / pull
 - pan / tilt
@@ -222,47 +277,43 @@ Arrows and simple director marks may show:
 - hold
 - slow motion
 - whip transition
+- reading direction
 
 ---
 
-## 6. Long shots and slow motion
+## 7. Long holds, slow motion, and visual pauses
 
-### Long / lingering shot
+### Emotional / observational hold
 
-Use when the viewer must remain with an emotion, uncertainty, intimacy, or observational detail.
+Use when the audience must remain with an emotion, uncertainty, intimacy, or detail.
 
 Specify:
 
-- why the shot holds
-- what subtle motion is permitted during the hold
+- why the beat holds
+- what subtle change is allowed
 - what would break the mood
-- how the shot exits
+- how the beat exits
 
 ### Slow motion
 
-Slow motion is an emphasis tool, not decoration.
+Slow motion is a target-video emphasis tool, not generic decoration.
 
 Specify:
 
 - trigger event
-- approximate real-time / slow-motion relationship if important
-- what detail the viewer should read during the slowdown
-- exact return-to-normal beat
+- what must become readable
+- approximate slowdown if useful
+- return-to-real-time cue
 
-Example:
+### Non-video equivalent
 
-```text
-real-time pour
-→ milk pattern begins to resolve
-→ brief 0.5s perceptual slow-down emphasizing trembling hand and eye reflection
-→ return to real time before the forced smile
-```
+When adapting to a static narrative medium, translate the same intention into panel scale, silence, repetition, negative space, page structure, or another appropriate device.
 
 ---
 
-## 7. Emotional Tempo
+## 8. Emotional Tempo is separate from physical action
 
-Track emotional timing separately from physical action.
+Track emotional timing alongside physical action.
 
 Example:
 
@@ -276,78 +327,111 @@ routine calm
 → unresolved release
 ```
 
-A character may continue moving while the emotional tempo slows.
-
-Example:
+A character may continue moving while emotional tempo slows:
 
 ```text
 hands continue steaming milk
 while
-face / breath enter a lingering emotional beat
+face / breath enter an emotional linger
 ```
 
-This separation is essential for quiet drama, slice-of-life, romance, grief, suspense, and character vlogs.
+This separation is essential for quiet drama, slice-of-life, romance, grief, suspense, action-with-character, and character vlogs.
 
 ---
 
-## 8. Storyboard reference roles for video models
+## 9. Reference roles
 
-When the target model accepts reference images, declare the storyboard's job explicitly.
+Do not ask one reference image to control everything.
 
-Example:
+Typical roles:
 
 ```text
-Character Reference:
-controls identity, face, hair, body, wardrobe.
+Character Reference
+→ identity, face, hair, body, wardrobe
 
-Storyboard Reference:
-controls sequential shot order, approximate framing, subject placement, camera viewpoint, emotional emphasis, and relative shot duration.
+Storyboard Reference
+→ beat order, framing, blocking, viewpoint, relative emphasis
+
+Location / Prop Reference
+→ reusable world and object anchors
+
+Text Storyboard Spec
+→ tempo, emotion, timing, dialogue, continuity, role definitions
 ```
 
-Do not assume the model will infer reference roles automatically.
-
-For MiniMax H3 Ref2VA, treat the storyboard as one multimodal reference among others and state what it controls. H3's multimodal context system is designed to interpret relationships among text, images, video, and audio, but the studio should still make those relationships explicit.
+For MiniMax H3 Ref2VA, the storyboard can be one multimodal reference among others. H3 is explicitly designed to interpret relationships among text, images, video, and audio, but reference roles should still be stated in the text prompt. MiniMax's official H3 documentation describes H3-Context-IR as performing instruction parsing, cross-modal association, temporal understanding, and complex logical reasoning before generation.
 
 ---
 
-## 9. Draft-first collaboration rule
+## 10. Renderer independence
 
-The first storyboard is not final.
+Storyboard generation and final rendering are separate responsibilities.
+
+```text
+Approved Storyboard Spec
+        ↓
+Storyboard Renderer Adapter
+        ├─ cloud image model
+        ├─ local image model
+        ├─ 5090-pod image model
+        └─ future model
+```
+
+The studio must not depend on one image provider's policy, aesthetics, availability, or model behavior.
+
+The first rough board should optimize for:
+
+1. character recognizability enough for planning
+2. composition
+3. blocking
+4. expression readability
+5. continuity
+6. speed / cost
+
+It does **not** need final-image skin, texture, lighting, or anatomy quality.
+
+High-quality images are generated later, panel by panel, using whichever image model best fits the project.
+
+See `docs/storyboard-rendering.md`.
+
+---
+
+## 11. Draft-first collaboration rule
 
 Default workflow:
 
 ```text
 Draft 0
-→ user reviews beat order, duration, shot emphasis, and emotional truth
-→ revise
+→ user reviews story truth, beat order, tempo, emphasis
+→ revise only affected beats
 → Draft 1
-→ user reviews framing and continuity
-→ revise
-→ Approved Storyboard
+→ user reviews framing, continuity, and medium assumptions
+→ Approved Storyboard Spec
 ```
 
-When the user changes one beat, preserve accepted beats unless the change creates a real continuity dependency.
+When one beat changes, preserve accepted beats unless continuity genuinely requires propagation.
 
-Do not regenerate the whole storyboard merely because one emotional or temporal decision changes.
+The AI proposes a directorial interpretation; the user remains the final director.
 
 ---
 
-## 10. Storyboard quality checks
+## 12. Storyboard quality checks
 
-Before generating storyboard images, verify:
+Before rendering a storyboard, verify:
 
-- Is the emotional peak visible in the beat structure?
-- Are long and short shots intentionally different?
-- Does the Tempo Map explain why the scene feels fast, slow, tense, calm, or intimate?
+- Does the story have a visible emotional or informational change?
+- Is the emotional peak or reveal given enough relative weight?
+- Are quick and lingering beats intentionally different?
+- Does the Tempo Map explain why the sequence should feel fast, slow, tense, calm, awkward, intimate, or explosive?
 - Are procedural actions subordinate to story purpose rather than mechanically exhaustive?
-- Does each panel have a shot purpose?
-- Are identity and continuity anchors carried between panels?
-- Is slow motion used only where it improves readability or emotion?
-- Is the final beat a meaningful payoff, release, or unresolved question?
-- Can the storyboard be revised one beat at a time?
+- Does each panel have a narrative purpose?
+- Are character, wardrobe, prop, and location states carried between panels?
+- Could the same Storyboard Spec be adapted to video or static sequential art without losing the story?
+- Can one beat be revised without rebuilding the rest?
+- Are final renderer/model choices still replaceable?
 
 ---
 
 ## Guiding principle
 
-**A storyboard is not a list of pictures. It is a visible model of time, attention, and emotion.**
+**A storyboard is not a list of pictures. It is a reusable model of story, time, attention, space, and emotion.**
