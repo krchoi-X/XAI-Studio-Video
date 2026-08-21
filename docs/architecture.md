@@ -4,6 +4,8 @@ XAI-Studio-Video is organized around one core distinction:
 
 - **DNA layers define invariants and reusable aesthetic/identity rules.**
 - **Graph and motion layers define transformations through time.**
+- **Control levels define how strongly each requirement should constrain generation.**
+- **Reference extraction must be evidence-first.**
 
 ## Layer model
 
@@ -27,8 +29,9 @@ VIDEO PROJECT
 │    └ composition
 │
 ├─ 4. SHOT GRAPH
-│    ├ states
+│    ├ entry states
 │    ├ events
+│    ├ exit states
 │    ├ transitions
 │    └ key emotional beats
 │
@@ -39,6 +42,7 @@ VIDEO PROJECT
 │    └ handheld amplitude
 │
 ├─ 6. MOTION DNA
+│    ├ action skeleton
 │    ├ macro subject motion
 │    ├ motion grammar
 │    └ settling behavior
@@ -67,11 +71,10 @@ VIDEO PROJECT
 │    ├ timing
 │    └ emotional mix
 │
-├─ 11. CONSTRAINTS
-│    ├ identity
-│    ├ anatomy
-│    ├ temporal
-│    └ aesthetic
+├─ 11. CONSTRAINTS & CONTROL LEVELS
+│    ├ Hard Lock
+│    ├ Soft Guidance
+│    └ Creative Freedom
 │
 └─ 12. MODEL ADAPTER
      └ Master Spec → Runtime Prompt
@@ -81,7 +84,7 @@ VIDEO PROJECT
 
 A long prose prompt often mixes fixed character attributes, changing motion, camera behavior, mood, audio, and negative constraints in one undifferentiated block. That makes revision difficult and obscures which requirement caused a failure.
 
-With XAI-Studio-Video, each class of information has a home.
+With XAI-Studio-Video, each class of information has a home and a visual responsibility.
 
 Example:
 
@@ -90,6 +93,8 @@ Example:
 - 'Camera rolls 90 degrees behind full occlusion' belongs in Shot Graph + Camera DNA.
 - 'Soft cyan shadows and lifted blacks' belongs in Visual DNA.
 - 'BGM ducks during eye contact' belongs in Audio DNA.
+
+When a result fails, first identify which responsibility layer failed. Do not rewrite unrelated layers that are already working.
 
 ## Master Creative Spec
 
@@ -108,6 +113,146 @@ It should be recompiled whenever:
 - keyframe support changes
 - audio support changes
 - negative prompt behavior changes
+
+## Visual responsibility model
+
+Each prompt component should have a primary responsibility.
+
+```text
+Character DNA       identity
+Director Intent     emotional goal
+Visual DNA          visual appearance
+Shot Graph          state transition through time
+Camera DNA          viewpoint and camera behavior
+Motion DNA          subject action grammar
+Motion Budget       total motion allocation
+Micro Motion        subtle realism
+Ambient Motion      causal environmental life
+Audio DNA           temporal sound direction
+Constraints         protection and bounds
+Model Adapter       engine-specific compilation
+```
+
+Redundancy is allowed only when it intentionally reinforces a high-risk invariant.
+
+## Action Skeleton
+
+Before writing precise pose choreography, define the minimum causal action sequence needed for the scene.
+
+Example:
+
+```text
+notices cup → reaches → lifts → drinks → notices camera → settles
+```
+
+The Action Skeleton answers **what changes and in what causal order** without forcing every joint and frame.
+
+Exact pose detail should be added only when:
+- anatomy is story-critical
+- contact geometry matters
+- a specific silhouette is essential
+- model failure repeatedly shows that a looser description is insufficient
+
+This keeps prompts readable and preserves natural variation.
+
+## Control levels
+
+Not every requirement deserves equal rigidity.
+
+### Hard Lock
+
+Must remain stable. Breaking it makes the result unusable.
+
+Examples:
+- face identity
+- story-critical prop ownership/state
+- required spatial relationship
+- wardrobe continuity when continuity matters
+- entry/exit state required for the next shot
+
+### Soft Guidance
+
+Defines preferred direction while allowing small interpretation.
+
+Examples:
+- restrained handheld camera
+- slight head correction
+- warm late-afternoon light
+- modest reaction intensity
+
+### Creative Freedom
+
+Deliberately left to the model within safe bounds.
+
+Examples:
+- exact blink timing
+- tiny hand adjustments
+- minor hair movement
+- incidental background motion
+- micro-expression timing
+
+The objective is **bounded generative freedom**, not maximum constraint density.
+
+## Controlled randomness
+
+Randomness is useful when it creates natural variation without damaging the scene's anchors.
+
+The studio should explicitly decide:
+- what must be repeated
+- what may vary
+- what variation would make the result more interesting
+
+A good production system does not try to freeze every visible detail. It locks the creative direction and identity while leaving low-risk degrees of freedom open.
+
+## Evidence-first reference extraction
+
+Reference analysis must separate observation from inference.
+
+Extract only what the source visibly supports:
+- subject pose and orientation
+- gaze
+- framing and crop
+- foreground/background relationships
+- light direction and character
+- visible materials and texture
+- spatial blocking
+- movable environmental elements
+- obvious camera perspective characteristics
+
+Do not invent:
+- exact camera or lens model
+- hidden lighting equipment
+- brand names not visibly supported
+- identity or biography
+- context outside the frame
+
+The output should be a reusable **Reference State**, not speculative metadata.
+
+See `docs/reference-extraction.md`.
+
+## Series Master → Variant
+
+An unusually successful image or clip should be treated as a possible **Series Master**.
+
+A Series Master contains anchors worth preserving across future variants:
+- character identity
+- world/scene identity
+- visual tone
+- reliable framing pattern
+- successful motion behavior
+- reusable interaction pattern
+
+Variants should deliberately change only selected axes:
+
+```text
+Series Master
+→ keep anchors
+→ change one or a few axes
+→ evaluate stability and novelty
+→ promote robust properties into DNA / primitives
+```
+
+This supports character vlogs, recurring short-form series, and systematic anchor expansion.
 
 ## Primitive library
 
@@ -185,6 +330,25 @@ When generation fails, simplify in this order:
 
 Do not solve identity drift by adding more aesthetic description.
 
+## Preserve accepted work
+
+When a generation is partially successful, keep the accepted layers stable.
+
+Example:
+
+```text
+identity accepted
+composition accepted
+camera accepted
+motion failed
+```
+
+The next attempt should change motion-related instructions first, not regenerate the entire creative specification.
+
+This applies the same principle as single-variable debugging: change the smallest plausible cause before disturbing working layers.
+
 ## Evolution strategy
 
 This architecture is intentionally provisional. New concepts should be promoted into the schema only when they recur across multiple successful experiments or explain repeated failure modes better than the existing layers.
+
+External prompting methodologies may inspire candidate concepts, but XAI-Studio-Video should absorb only principles that survive practical generation tests.
