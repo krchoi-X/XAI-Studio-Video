@@ -1,19 +1,23 @@
 # XAI-Studio-Video
 
-Version: **0.2.0-draft**
+Version: **0.3.0-draft**
 
-A reusable skillset and production-design framework for AI video generation.
+A reusable skillset and production-design framework for AI visual storytelling, with video as the first production target.
 
-XAI-Studio-Video treats a video prompt not as a long block of prose, but as a structured production specification that can be compiled into model-specific runtime prompts.
+XAI-Studio-Video treats generation prompts as compiled outputs of a structured creative system rather than as the source of truth.
 
 ## Core principle
 
-**Preserve invariants, describe transformations, control motion, and leave freedom where variation helps.**
+**Preserve invariants, describe transformations, direct attention, control motion, and leave freedom where variation helps.**
 
-The framework separates what must remain stable from what is allowed to change over time, and also separates hard constraints from useful generative freedom.
+The framework separates story/directing decisions from renderer-specific execution.
 
+Key components:
+
+- **Director Intent** — what the audience should experience
+- **Storyboard Spec** — medium-neutral story, beat, tempo, composition, emotion, and continuity plan
+- **Narrative Tempo Map** — relative attention and pacing before medium-specific timing/layout
 - **Character DNA** — identity invariants
-- **Director Intent** — what the final video should feel like
 - **Reference State** — evidence-first extraction from source images/video
 - **Visual DNA** — light, color, texture, optics, composition
 - **Control Levels** — Hard Lock / Soft Guidance / Creative Freedom
@@ -29,18 +33,78 @@ The framework separates what must remain stable from what is allowed to change o
 - **Ambient Motion Field** — wind, plants, fabric, hair, light, atmosphere
 - **Audio DNA** — ambience, music, timing, emotional mix
 - **Constraints** — identity, anatomy, temporal and aesthetic protections
-- **Model Adapters** — conversion from master specification to runtime prompt
+- **Model / Renderer Adapters** — conversion from canonical specs to disposable runtime instructions
 - **Series Master → Variant** — controlled expansion from unusually successful outputs
 
 ## Priority order
 
-1. Character identity preservation
-2. Temporal consistency
-3. Natural physical motion
-4. Shot intent and emotional beat
-5. Aesthetic enhancement
+1. Story / character intent
+2. Character identity preservation
+3. Temporal / spatial consistency
+4. Natural physical motion or readable static sequencing
+5. Emotional beat and attention control
+6. Aesthetic enhancement
 
 When these conflict, higher priorities win.
+
+## Storyboard-first workflow
+
+The studio now treats storyboarding as a reusable intermediate representation rather than a video-only preproduction artifact.
+
+```text
+Idea
+↓
+Director Interpretation
+↓
+Beat Sheet
+↓
+Narrative Tempo Map
+↓
+Storyboard Spec Draft 0
+↓
+User Review / Revision
+↓
+Approved Storyboard Spec
+      │
+      ├─ Video
+      │   └─ H3 / Seedance / Kling / Veo / ...
+      │
+      ├─ Graphic Novel / Comic
+      │   └─ page/panel adaptation → high-quality image rendering
+      │
+      └─ Illustration Sequence
+          └─ selected hero frames → high-quality image rendering
+```
+
+The **Storyboard Spec is canonical**. A rough storyboard image is a disposable, low-cost visualization used to inspect composition, blocking, expression, continuity, and tempo.
+
+This lets the studio use cheap storyboards to decide which expensive images or videos are worth rendering.
+
+See:
+
+- `skills/storyboard-director/SKILL.md`
+- `docs/storyboard-directing.md`
+- `docs/storyboard-rendering.md`
+- `templates/storyboard-draft.md`
+
+## Renderer independence
+
+The studio does not require one image or video provider.
+
+```text
+Approved Storyboard Spec
+        ↓
+Renderer / Model Adapter
+        ├─ cloud image model
+        ├─ local open-weight image model
+        ├─ ephemeral 5090-pod model
+        ├─ video model
+        └─ future renderer
+```
+
+Provider-specific syntax, safety behavior, prompt conventions, and aesthetics belong in adapters rather than in the canonical creative spec.
+
+For graphic novels or illustration sequences, final images can be generated **one panel at a time** from the approved panel spec plus character/location/prop references. The rough board does not need final-quality faces, skin, lighting, or anatomy.
 
 ## Repository layout
 
@@ -52,9 +116,16 @@ XAI-Studio-Video/
 ├── docs/
 │   ├── architecture.md
 │   ├── reference-extraction.md
-│   └── action-design.md
+│   ├── action-design.md
+│   ├── storyboard-directing.md
+│   └── storyboard-rendering.md
+├── skills/
+│   ├── README.md
+│   └── storyboard-director/
+│       └── SKILL.md
 ├── templates/
-│   └── master-creative-spec.md
+│   ├── master-creative-spec.md
+│   └── storyboard-draft.md
 ├── primitives/
 │   ├── stillness/
 │   │   └── quiet-eye-contact-hold.md
@@ -68,25 +139,23 @@ XAI-Studio-Video/
 
 ## Master Spec vs Runtime Prompt
 
-The **Master Creative Spec** is the source of truth. It may be long, descriptive and model-agnostic.
+The **Master Creative Spec** and **Storyboard Spec** are reusable sources of truth.
 
-The **Runtime Prompt** is compiled from the Master Spec for a specific engine. It should contain only the information that particular model needs.
+The **Runtime Prompt** is disposable and model-specific.
 
 ```text
-Master Creative Spec
-        ↓
-   Model Adapter
-        ↓
- Runtime Prompt
+Storyboard Spec / Master Creative Spec
+              ↓
+         Model Adapter
+              ↓
+        Runtime Prompt
 ```
 
-Do not assume one universal prompt format is optimal for MiniMax, Kling, Veo, Runway, Seedance, or future models.
+Do not assume one universal prompt format is optimal for MiniMax, Kling, Veo, Runway, Seedance, image models, or future engines.
 
 ## Controlled creativity
 
 The studio does not try to eliminate randomness.
-
-Instead it divides requirements into:
 
 ```text
 Hard Lock
@@ -99,49 +168,24 @@ Creative Freedom
 → low-risk details the model may decide
 ```
 
-The objective is bounded generative freedom around a stable identity, story state, and creative direction.
+The objective is bounded generative freedom around stable story, identity, continuity, and creative direction.
 
-## Action Skeleton before pose micromanagement
+## Action and physical realism
 
-When exact joint placement is not story-critical, describe the causal action sequence first.
-
-Example:
-
-```text
-notices object → reaches → picks it up → hesitates → looks toward camera → settles
-```
-
-Only add exact pose geometry when contact, silhouette, anatomy, or repeated model failure requires it.
-
-## Dense action: grammar, physics, reaction, camera
-
-For combat, chase, sports, panic, dance confrontation, or other fast scenes, use four additional controls when needed:
+For fast or multi-agent scenes, use:
 
 ```text
 Action Grammar
-→ how movements and actors causally connect
+→ connected actor/motion logic
 
 Physics Lock
 → what creates stylized effects and what is forbidden
 
 Reaction Evidence
-→ how dust, fabric, props, light, and the environment prove force
+→ how the world proves force
 
 Camera Imperfection
 → motivated lag, overshoot, reacquisition, or impact response
-```
-
-A good action prompt should make force readable through causes and consequences rather than rely on adjectives or arbitrary spectacle.
-
-Example pattern:
-
-```text
-physical movement
-→ contact / redirection
-→ local effect
-→ environmental reaction
-→ camera reaction if motivated
-→ settling / next state
 ```
 
 See `docs/action-design.md`.
@@ -150,57 +194,17 @@ See `docs/action-design.md`.
 
 Reference reverse-engineering should reconstruct visible effects, not speculate about hidden production details.
 
-Extract:
-- pose and gaze
-- framing and perspective character
-- spatial blocking
-- lighting behavior
-- material/texture cues
-- foreground/background relationships
-- movable environmental elements
-
-Avoid unsupported claims about exact lenses, camera bodies, hidden lighting equipment, identity, or context outside the frame.
-
 See `docs/reference-extraction.md`.
 
 ## Motion philosophy
 
-AI video often fails because it adds motion simply because the output is a video. XAI-Studio-Video uses a stricter rule:
-
-> A subject does not need to keep moving.
-
 A natural rhythm is often:
 
 ```text
-stillness → small event → stillness
+stillness → meaningful event → stillness
 ```
 
 Motion should have a reason, amplitude, duration, and settling behavior.
-
-## Motion primitive families
-
-### Dynamic primitives
-
-For impact, transition, reveal and camera transformation.
-
-Examples:
-- lens occlusion transition
-- leg/cloth/hair sweep reveal
-- camera-roll reveal
-- whip transition
-- splash-cover transition
-- reactive pursuit with camera lag/reacquisition
-
-### Stillness primitives
-
-For realism, intimacy and emotional retention.
-
-Examples:
-- quiet eye-contact hold
-- observational portrait hold
-- subtle breath portrait
-- micro-smile settle
-- found-moment hold
 
 ## Series Master → Variant
 
@@ -209,15 +213,13 @@ A generation that captures a strong character, visual identity, or interaction p
 ```text
 strong result
 → preserve robust anchors
-→ vary only selected axes
+→ vary selected axes
 → test stability and novelty
 → promote repeated successes into DNA / primitives
 ```
 
-This supports recurring characters, vlogs, shorts, and systematic asset expansion without freezing every incidental detail.
-
 ## Status
 
-This is an evolving draft. The goal is to accumulate tested prompting patterns, model-specific adapters, failure cases, reusable temporal primitives, and production knowledge rather than freeze a single 'perfect prompt'.
+This is an evolving draft. The current goal is not to build a giant fixed schema, but to accumulate tested storyboarding, prompting, rendering, model-adapter, recovery, and evaluation patterns that remain useful as models change.
 
-External methodologies may inspire candidate rules, but rules are promoted only when they survive practical generation tests.
+External methodologies may inspire candidate rules, but rules are promoted only when they survive practical production tests.
