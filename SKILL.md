@@ -322,6 +322,100 @@ Series Master
 
 Variants should change a small number of intentional axes while preserving the anchors that made the master successful.
 
+### 20. Use Action Grammar for fast or multi-agent motion
+
+For combat, chase, sports, panic, dance confrontation, or other dense action, do not rely on adjectives such as "fast" or "intense" alone.
+
+Define a connected verb chain:
+
+```text
+evade → parry → redirect → counter → sweep → recover
+```
+
+For multi-agent scenes, state the interaction logic explicitly when it matters:
+- actors may attack or move simultaneously rather than taking turns
+- physical contact changes later positions and momentum
+- the main subject must physically travel through space rather than teleport
+- background actors remain spatially accountable
+- avoid repeated reset poses between actions
+
+See `docs/action-design.md`.
+
+### 21. Add a Physics Lock when spectacle could become arbitrary magic
+
+When a scene contains extraordinary acceleration, stylized discharge, large impacts, unusual particles, or other effects that could become visually ungrounded, define:
+
+```text
+Source
+Allowed manifestation
+Forbidden manifestation
+World reaction
+```
+
+Effects must emerge from readable causes whenever realism is desired.
+
+Example:
+
+```text
+friction/contact
+→ brief local static discharge
+→ no beams / aura / teleportation
+→ dust, hair, fabric, and loose objects react to force
+```
+
+### 22. Prove force through environmental Reaction Evidence
+
+Do not communicate action intensity only through the actor or VFX.
+
+Use physically motivated consequences in the world:
+- dust wakes
+- loose paper/debris displacement
+- fabric compression or flutter
+- hair response
+- nearby object motion
+- motivated light/electrical response
+- lens shake, contamination, or flare only when the event reaches the camera
+
+Use the causal sequence:
+
+```text
+physical event → local effect → secondary reaction → settling
+```
+
+### 23. Allow motivated Camera Imperfection
+
+A reactive camera does not need to anticipate every movement perfectly.
+
+Controlled realism may include:
+- slight tracking lag
+- brief overshoot
+- delayed whip-pan reacquisition
+- short focus recovery
+- impact shake tied to a physical event
+
+Do not confuse this with random handheld chaos. Action readability remains the priority.
+
+Useful pattern:
+
+```text
+subject accelerates
+→ camera briefly loses ideal framing
+→ camera reacts / reacquires
+→ framing settles
+```
+
+### 24. Preserve emotional continuity through action
+
+Fast motion must not erase the character's emotional state.
+
+Track an emotional chain alongside the action chain, for example:
+
+```text
+fear → involuntary competence → shock → renewed pressure → uncertain resolve
+```
+
+Avoid automatic triumphant hero posing unless that is the intended character beat.
+
 ## Output workflow
 
 When creating a new video prompt:
@@ -332,18 +426,19 @@ When creating a new video prompt:
 4. Separate Hard Locks, Soft Guidance, and Creative Freedom.
 5. Assign Motion Budget.
 6. Build the Action Skeleton.
-7. Build the Shot Graph from entry states, events, and exit states.
-8. Define camera behavior.
-9. Define subject macro motion.
-10. Define Micro Motion.
-11. Define Ambient Motion Field.
-12. Define visual/light/color behavior.
-13. Define Audio DNA if applicable.
-14. Add hard constraints and known failures.
-15. Compile to the target model through an adapter.
-16. Keep the Master Creative Spec separately from the Runtime Prompt.
-17. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
-18. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
+7. For dense action, add Action Grammar, multi-agent interaction rules, and Physics Lock where needed.
+8. Build the Shot Graph from entry states, events, consequences, and exit states.
+9. Define camera behavior, including any deliberately motivated lag/overshoot.
+10. Define subject macro motion.
+11. Define Micro Motion.
+12. Define Ambient Motion Field and Reaction Evidence.
+13. Define visual/light/color behavior.
+14. Define Audio DNA if applicable.
+15. Add hard constraints and known failures.
+16. Compile to the target model through an adapter.
+17. Keep the Master Creative Spec separately from the Runtime Prompt.
+18. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
+19. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
 
 ## Evaluation checklist
 
@@ -359,6 +454,11 @@ A result is successful when:
 - aesthetic effects do not overpower identity or motion realism
 - action remains readable without unnecessary pose micromanagement
 - model creativity appears inside permitted bounds rather than breaking invariants
+- multi-agent action avoids artificial turn-taking when simultaneous pressure is intended
+- stylized effects obey their Physics Lock
+- environmental reactions provide believable evidence of force
+- camera imperfection feels motivated rather than random
+- character emotion remains continuous through spectacle
 
 ## Guiding maxim
 
