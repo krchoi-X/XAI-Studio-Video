@@ -31,6 +31,7 @@ VIDEO PROJECT
 ├─ 4. SHOT GRAPH
 │    ├ entry states
 │    ├ events
+│    ├ consequences
 │    ├ exit states
 │    ├ transitions
 │    └ key emotional beats
@@ -39,11 +40,14 @@ VIDEO PROJECT
 │    ├ framing
 │    ├ focal behavior
 │    ├ movement
-│    └ handheld amplitude
+│    ├ handheld amplitude
+│    └ motivated imperfection
 │
 ├─ 6. MOTION DNA
 │    ├ action skeleton
+│    ├ action grammar
 │    ├ macro subject motion
+│    ├ multi-agent interaction logic
 │    ├ motion grammar
 │    └ settling behavior
 │
@@ -63,20 +67,27 @@ VIDEO PROJECT
 │    ├ hair
 │    ├ fabric
 │    ├ shadows / light
-│    └ atmosphere
+│    ├ atmosphere
+│    └ reaction evidence
 │
-├─ 10. AUDIO DNA
+├─ 10. PHYSICS LOCK
+│    ├ source / cause
+│    ├ allowed manifestation
+│    ├ forbidden manifestation
+│    └ world reaction
+│
+├─ 11. AUDIO DNA
 │    ├ ambience
 │    ├ BGM
 │    ├ timing
 │    └ emotional mix
 │
-├─ 11. CONSTRAINTS & CONTROL LEVELS
+├─ 12. CONSTRAINTS & CONTROL LEVELS
 │    ├ Hard Lock
 │    ├ Soft Guidance
 │    └ Creative Freedom
 │
-└─ 12. MODEL ADAPTER
+└─ 13. MODEL ADAPTER
      └ Master Spec → Runtime Prompt
 ```
 
@@ -93,6 +104,7 @@ Example:
 - 'Camera rolls 90 degrees behind full occlusion' belongs in Shot Graph + Camera DNA.
 - 'Soft cyan shadows and lifted blacks' belongs in Visual DNA.
 - 'BGM ducks during eye contact' belongs in Audio DNA.
+- 'Static discharge only emerges from friction/contact' belongs in Physics Lock.
 
 When a result fails, first identify which responsibility layer failed. Do not rewrite unrelated layers that are already working.
 
@@ -128,6 +140,7 @@ Motion DNA          subject action grammar
 Motion Budget       total motion allocation
 Micro Motion        subtle realism
 Ambient Motion      causal environmental life
+Physics Lock        physical rules for stylized/high-risk effects
 Audio DNA           temporal sound direction
 Constraints         protection and bounds
 Model Adapter       engine-specific compilation
@@ -154,6 +167,101 @@ Exact pose detail should be added only when:
 - model failure repeatedly shows that a looser description is insufficient
 
 This keeps prompts readable and preserves natural variation.
+
+## Action Grammar
+
+Dense action needs more than a list of verbs. It needs connected interaction logic.
+
+Example:
+
+```text
+evade → parry → redirect → counter → sweep → recover
+```
+
+For multi-agent scenes, explicitly state when:
+- actions overlap instead of occurring one at a time
+- contact changes later blocking or momentum
+- the subject must physically travel through space
+- actors must remain spatially accountable
+- reset poses should be avoided
+
+The Action Grammar is especially useful for combat, chase, sports, panic, dance confrontation, and other fast multi-body scenes.
+
+See `docs/action-design.md`.
+
+## Physics Lock
+
+Stylized effects become believable when they obey a simple visible rule set.
+
+A Physics Lock defines:
+
+```text
+Source
+Allowed manifestation
+Forbidden manifestation
+World reaction
+```
+
+Example:
+
+```text
+friction / contact
+→ local static discharge
+→ no projectile / aura / teleportation
+→ dust, hair, fabric, and loose objects respond to velocity and impact
+```
+
+The objective is not scientific simulation. The objective is causal readability.
+
+Use Physics Lock when spectacle could otherwise drift into arbitrary magic, detached VFX, or physically impossible displacement.
+
+## Reaction Evidence
+
+Action intensity should be visible in consequences, not just in the actor or effect layer.
+
+Useful Reaction Evidence:
+- dust wakes
+- loose paper/debris displacement
+- fabric compression/flutter
+- hair response
+- nearby objects rolling or shifting
+- motivated electrical/light response
+- camera shake or lens contamination only when the event physically reaches the camera system
+
+Preferred causal sequence:
+
+```text
+physical event → local effect → secondary reaction → settling
+```
+
+Reaction Evidence extends the Ambient Motion Field from passive environmental life to event-driven physical response.
+
+## Camera Imperfection
+
+A camera can feel more live-action when it reacts rather than predicts perfectly.
+
+Motivated imperfections may include:
+- slight tracking lag
+- brief overshoot
+- delayed whip-pan reacquisition
+- short focus recovery
+- impact shake tied to a real physical event
+
+This must remain controlled. Random shake or continuous focus hunting is not realism.
+
+Action readability outranks camera spectacle.
+
+## Emotional continuity through spectacle
+
+A fast scene still has a character state.
+
+Track an emotional chain alongside the action chain:
+
+```text
+fear → involuntary competence → shock → renewed pressure → uncertain resolve
+```
+
+This prevents action from automatically turning the subject into a generic triumphant hero.
 
 ## Control levels
 
@@ -274,6 +382,7 @@ A primitive should specify:
 foot-cover → full occlusion → camera roll → face reveal
 hair sweep → hidden cut → new composition
 water splash → lens cover → scene reveal
+reactive pursuit → tracking lag → whip-pan reacquire → settle
 ```
 
 ### Stillness primitive examples
