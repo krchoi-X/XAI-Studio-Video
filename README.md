@@ -1,21 +1,24 @@
 # XAI-Studio-Video
 
-Version: **0.1.0-draft**
+Version: **0.2.0-draft**
 
-A reusable skillset and prompt-design framework for AI video generation.
+A reusable skillset and production-design framework for AI video generation.
 
 XAI-Studio-Video treats a video prompt not as a long block of prose, but as a structured production specification that can be compiled into model-specific runtime prompts.
 
 ## Core principle
 
-**Preserve invariants, describe transformations, control motion.**
+**Preserve invariants, describe transformations, control motion, and leave freedom where variation helps.**
 
-The framework separates what must remain stable from what is allowed to change over time.
+The framework separates what must remain stable from what is allowed to change over time, and also separates hard constraints from useful generative freedom.
 
 - **Character DNA** — identity invariants
 - **Director Intent** — what the final video should feel like
+- **Reference State** — evidence-first extraction from source images/video
 - **Visual DNA** — light, color, texture, optics, composition
-- **Shot Graph** — temporal states and transitions
+- **Control Levels** — Hard Lock / Soft Guidance / Creative Freedom
+- **Action Skeleton** — causal action sequence before exact pose choreography
+- **Shot Graph** — entry states, events, exit states, and transitions
 - **Camera DNA** — framing and camera behavior
 - **Motion DNA** — macro movement and movement grammar
 - **Motion Budget** — total allowed motion and where it is allocated
@@ -24,6 +27,7 @@ The framework separates what must remain stable from what is allowed to change o
 - **Audio DNA** — ambience, music, timing, emotional mix
 - **Constraints** — identity, anatomy, temporal and aesthetic protections
 - **Model Adapters** — conversion from master specification to runtime prompt
+- **Series Master → Variant** — controlled expansion from unusually successful outputs
 
 ## Priority order
 
@@ -43,7 +47,8 @@ XAI-Studio-Video/
 ├── SKILL.md
 ├── CHANGELOG.md
 ├── docs/
-│   └── architecture.md
+│   ├── architecture.md
+│   └── reference-extraction.md
 ├── templates/
 │   └── master-creative-spec.md
 ├── primitives/
@@ -71,7 +76,55 @@ Master Creative Spec
  Runtime Prompt
 ```
 
-Do not assume one universal prompt format is optimal for MiniMax, Kling, Veo, Runway, or future models.
+Do not assume one universal prompt format is optimal for MiniMax, Kling, Veo, Runway, Seedance, or future models.
+
+## Controlled creativity
+
+The studio does not try to eliminate randomness.
+
+Instead it divides requirements into:
+
+```text
+Hard Lock
+→ must remain stable
+
+Soft Guidance
+→ preferred direction or range
+
+Creative Freedom
+→ low-risk details the model may decide
+```
+
+The objective is bounded generative freedom around a stable identity, story state, and creative direction.
+
+## Action Skeleton before pose micromanagement
+
+When exact joint placement is not story-critical, describe the causal action sequence first.
+
+Example:
+
+```text
+notices object → reaches → picks it up → hesitates → looks toward camera → settles
+```
+
+Only add exact pose geometry when contact, silhouette, anatomy, or repeated model failure requires it.
+
+## Evidence-first reference analysis
+
+Reference reverse-engineering should reconstruct visible effects, not speculate about hidden production details.
+
+Extract:
+- pose and gaze
+- framing and perspective character
+- spatial blocking
+- lighting behavior
+- material/texture cues
+- foreground/background relationships
+- movable environmental elements
+
+Avoid unsupported claims about exact lenses, camera bodies, hidden lighting equipment, identity, or context outside the frame.
+
+See `docs/reference-extraction.md`.
 
 ## Motion philosophy
 
@@ -111,6 +164,22 @@ Examples:
 - micro-smile settle
 - found-moment hold
 
+## Series Master → Variant
+
+A generation that captures a strong character, visual identity, or interaction pattern should be evaluated as a reusable Series Master.
+
+```text
+strong result
+→ preserve robust anchors
+→ vary only selected axes
+→ test stability and novelty
+→ promote repeated successes into DNA / primitives
+```
+
+This supports recurring characters, vlogs, shorts, and systematic asset expansion without freezing every incidental detail.
+
 ## Status
 
-This is an evolving draft. The goal is to accumulate tested prompting patterns, model-specific adapters, failure cases, and reusable temporal primitives rather than freeze a single 'perfect prompt'.
+This is an evolving draft. The goal is to accumulate tested prompting patterns, model-specific adapters, failure cases, reusable temporal primitives, and production knowledge rather than freeze a single 'perfect prompt'.
+
+External methodologies may inspire candidate rules, but rules are promoted only when they survive practical generation tests.
