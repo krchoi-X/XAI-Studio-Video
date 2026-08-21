@@ -18,8 +18,11 @@ The framework separates what must remain stable from what is allowed to change o
 - **Visual DNA** — light, color, texture, optics, composition
 - **Control Levels** — Hard Lock / Soft Guidance / Creative Freedom
 - **Action Skeleton** — causal action sequence before exact pose choreography
-- **Shot Graph** — entry states, events, exit states, and transitions
-- **Camera DNA** — framing and camera behavior
+- **Action Grammar** — connected movement and multi-agent interaction logic for dense action
+- **Physics Lock** — causal rules for extraordinary speed, force, or stylized effects
+- **Reaction Evidence** — environmental consequences that make force readable
+- **Shot Graph** — entry states, events, consequences, exit states, and transitions
+- **Camera DNA** — framing, movement, and motivated imperfection
 - **Motion DNA** — macro movement and movement grammar
 - **Motion Budget** — total allowed motion and where it is allocated
 - **Micro Motion** — breathing, blink, gaze, subtle head/expression motion
@@ -48,7 +51,8 @@ XAI-Studio-Video/
 ├── CHANGELOG.md
 ├── docs/
 │   ├── architecture.md
-│   └── reference-extraction.md
+│   ├── reference-extraction.md
+│   └── action-design.md
 ├── templates/
 │   └── master-creative-spec.md
 ├── primitives/
@@ -109,6 +113,39 @@ notices object → reaches → picks it up → hesitates → looks toward camera
 
 Only add exact pose geometry when contact, silhouette, anatomy, or repeated model failure requires it.
 
+## Dense action: grammar, physics, reaction, camera
+
+For combat, chase, sports, panic, dance confrontation, or other fast scenes, use four additional controls when needed:
+
+```text
+Action Grammar
+→ how movements and actors causally connect
+
+Physics Lock
+→ what creates stylized effects and what is forbidden
+
+Reaction Evidence
+→ how dust, fabric, props, light, and the environment prove force
+
+Camera Imperfection
+→ motivated lag, overshoot, reacquisition, or impact response
+```
+
+A good action prompt should make force readable through causes and consequences rather than rely on adjectives or arbitrary spectacle.
+
+Example pattern:
+
+```text
+physical movement
+→ contact / redirection
+→ local effect
+→ environmental reaction
+→ camera reaction if motivated
+→ settling / next state
+```
+
+See `docs/action-design.md`.
+
 ## Evidence-first reference analysis
 
 Reference reverse-engineering should reconstruct visible effects, not speculate about hidden production details.
@@ -152,6 +189,7 @@ Examples:
 - camera-roll reveal
 - whip transition
 - splash-cover transition
+- reactive pursuit with camera lag/reacquisition
 
 ### Stillness primitives
 
