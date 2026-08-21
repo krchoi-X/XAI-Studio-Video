@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Convert a rough video idea into a **director-style storyboard draft** that expresses not only shot order, but also timing, emotional weight, camera intent, continuity, and pacing.
+Convert a rough story or scene idea into a **director-style Storyboard Spec draft** that preserves story intent, beat order, emotional weight, continuity, composition, and narrative tempo before expensive image or video rendering.
 
-This skill is for planning before expensive video generation.
+This skill is not a renderer. It is a directing and previsualization skill.
 
-It should behave like a director preparing a first continuity board for discussion, not like an image prompt generator that immediately freezes every decision.
+It should behave like a director preparing a continuity board for discussion, not like an image model that immediately freezes every visual decision.
 
 The first output is always a **draft for collaborative revision**.
 
@@ -16,11 +16,12 @@ The first output is always a **draft for collaborative revision**.
 
 Use this skill when the user wants to:
 
-- turn an idea into a storyboard
-- plan a short film, vlog, scene, music-video beat, action scene, or emotional sequence
-- decide shot order before video generation
-- express tempo, long holds, inserts, slow motion, or emotional pacing
-- prepare a storyboard reference for MiniMax H3 or another multimodal video model
+- turn an idea into a storyboard or visual sequence
+- plan a short film, vlog, scene, music-video beat, action scene, emotional sequence, graphic novel, comic, or illustration sequence
+- decide beat/panel/shot order before expensive generation
+- express tempo, long holds, inserts, slow motion, visual pauses, reveals, or emotional pacing
+- prepare a storyboard reference for MiniMax H3 or another multimodal model
+- create low-cost visual planning that can later feed a high-quality image renderer
 
 Read `docs/storyboard-directing.md` before finalizing a storyboard plan.
 
@@ -36,7 +37,8 @@ Extract:
 - emotional movement
 - viewer attention path
 - procedural or physical action
-- emotional peak
+- relationship change
+- reveal / payoff
 - final impression
 
 If the user says:
@@ -60,63 +62,78 @@ routine → crack in composure → suppression → continuation → fragile reco
 For each beat specify:
 
 - beat ID
-- purpose
+- narrative purpose
 - entry state
 - action/change
 - exit state
 - emotional state
 - key visual evidence
 - continuity carried forward
+- importance / survival priority
 
 Use the minimum number of beats needed to express the scene clearly.
 
-### 3. Assign a Tempo Map
+### 3. Assign a Narrative Tempo Map
 
 For every beat estimate:
 
-- duration
 - tempo role
-- shot weight
+- relative weight
+- attention hold: brief / normal / extended / dominant
 - motion density
-- camera energy
+- camera/view energy
 - emotional weight
 - transition pressure
+- optional video duration hint
 
-Do not assume equal-duration panels.
+Do not assume equal-duration or equal-size panels.
 
-### 4. Choose shot language to serve the beat
+Tempo is medium-neutral. Do not reduce it to seconds unless the target medium needs seconds.
 
-Select framing based on dramatic purpose:
+### 4. Choose visual language to serve the beat
+
+For video-oriented planning, use shot language such as:
 
 - WS / long shot for spatial relation, isolation, context
 - MS / MCU for action plus emotion
 - CU / ECU for emotional linger, detail, hesitation
 - Insert for procedural or symbolic detail
 - OTS for relational tension
-- Top / low / ground-level only when it adds meaning
 
-Do not add unusual camera angles merely for visual variety.
+For graphic-novel/comic planning, translate the same intent into:
 
-### 5. Represent long holds explicitly
+- panel scale
+- silent panel
+- panel density
+- page-turn reveal
+- dialogue density
+- negative space
+- reading rhythm
+
+Do not add unusual camera angles or panel tricks merely for visual variety.
+
+### 5. Represent emotional holds explicitly
 
 When a beat should linger:
 
-- increase estimated duration
-- reduce motion density
-- state what subtle motion remains
-- indicate HOLD / slow push-in / static observational camera
-- explain the reason for the hold
+- increase relative weight / attention hold
+- reduce unnecessary motion or visual information
+- state what subtle change remains
+- explain why the audience should stay there
 
-### 6. Use slow motion only as emphasis
+For video, this may become HOLD / slow push-in / static observational camera.
+For sequential art, this may become a large silent panel, repeated close-up, or more negative space.
+
+### 6. Use slow motion only when target medium is video
 
 Specify:
 
 - trigger
 - what becomes readable during the slowdown
-- approximate duration
+- approximate duration if needed
 - return-to-real-time point
 
-Do not use slow motion as generic cinematic decoration.
+For static media, translate the same emphasis into panel scale, repetition, fragmentation, or another medium-appropriate device.
 
 ### 7. Preserve emotional continuity
 
@@ -132,50 +149,76 @@ while
 face and breath enter a restrained emotional linger
 ```
 
-### 8. Produce an annotated storyboard plan before image generation
+### 8. Produce the Storyboard Spec before image generation
 
-Each panel specification should include:
+Each panel/shot specification should include:
 
 - panel/shot number
-- approximate duration
-- shot size
+- beat ID
+- narrative purpose
+- relative weight
+- optional duration hint
+- scale / framing
 - composition
-- camera behavior
+- camera/view behavior
 - subject action
 - emotional note
-- shot purpose
 - transition
 - continuity state
+- relevant reference roles
 
-### 9. Produce a storyboard-image prompt only after the plan exists
+The **Storyboard Spec**, not the rendered storyboard image, is the source of truth.
 
-The image prompt should ask for a director's continuity-board look, not merely a comic grid.
+### 9. Render only after the plan exists
 
-Require visible or clearly associated annotations for:
+A rough storyboard image is a disposable previsualization artifact.
 
-- shot number
-- duration
-- shot type
-- camera direction
-- emotional note
-- hold / slow motion / transition where relevant
+The storyboard renderer should optimize for:
 
-If timing differs strongly, allow panel sizes to differ to communicate visual weight.
+1. composition
+2. blocking
+3. character recognizability enough for planning
+4. expression readability
+5. continuity
+6. speed and cost
 
-### 10. Stop at draft and invite revision through the artifact itself
+Do not require final-image polish.
 
-Label the result `Storyboard Draft 0`.
+Use `docs/storyboard-rendering.md` when compiling the spec for an image renderer.
+
+### 10. Keep renderer/model choice replaceable
+
+The approved Storyboard Spec should be usable by:
+
+```text
+cloud image model
+local image model
+5090-pod image model
+future image model
+video model adapter
+graphic-novel panel renderer
+```
+
+Do not encode provider-specific safety rules, syntax, or aesthetics into the canonical Storyboard Spec.
+
+### 11. Stop at draft and revise collaboratively
+
+Label the first result `Storyboard Draft 0`.
 
 Do not silently lock:
 
+- final beat count
 - final duration
-- final number of panels
-- final camera style
+- final panel count
+- final camera/view style
 - final emotional intensity
+- final target renderer
 
-Instead, make the current assumptions visible so the user can revise them.
+Make assumptions visible so the user can revise them.
 
 When the user changes one beat, preserve accepted beats unless continuity requires propagation.
+
+The user is the final director.
 
 ---
 
@@ -186,17 +229,55 @@ When the user changes one beat, preserve accepted beats unless continuity requir
 
 ## Director Intent
 
-## Emotional Arc
+## Target Medium
+
+## Emotional / Narrative Arc
 
 ## Beat Sheet
 
-## Tempo Map
+## Narrative Tempo Map
 
-## Annotated Panel Plan
+## Annotated Panel / Shot Plan
 
-## Storyboard Image Prompt
+## Rough Storyboard Rendering Prompt
 
 ## Assumptions / Open Creative Decisions
+
+## Review State
+```
+
+---
+
+## Target-medium branching
+
+### Video
+
+Compile:
+
+```text
+Storyboard Spec
+→ shot durations / cut rhythm / motion / camera / audio
+→ video model adapter
+```
+
+### Graphic novel / comic
+
+Compile:
+
+```text
+Storyboard Spec
+→ panel size / page layout / silent beats / dialogue density / page-turn reveals
+→ high-quality panel renderer
+```
+
+### Illustration sequence
+
+Compile:
+
+```text
+Storyboard Spec
+→ selected hero frames / ordering / visual pauses
+→ high-quality image renderer
 ```
 
 ---
@@ -210,13 +291,15 @@ Character Reference
 → identity, hair, body, wardrobe
 
 Storyboard Reference
-→ shot order, framing, blocking, relative timing, emotional emphasis
+→ beat order, framing, blocking, relative emphasis
 
-Text Prompt
-→ dialogue, temporal instructions, role assignment, details not reliably visible in the board
+Text Storyboard Spec / Runtime Prompt
+→ dialogue, timing, emotional tempo, role assignment, continuity, details not reliably visible in the board
 ```
 
-Do not rely on the storyboard image to communicate every timing nuance by itself. Compile the approved Tempo Map into the H3 runtime prompt.
+Do not rely on a storyboard image alone to communicate timing nuance.
+
+MiniMax's official H3 documentation describes H3 as an omni-modal system and its H3-Context-IR as performing instruction parsing, cross-modal association, temporal understanding, and complex logical reasoning. Use that strength by clearly defining what each reference controls.
 
 ---
 
@@ -224,16 +307,17 @@ Do not rely on the storyboard image to communicate every timing nuance by itself
 
 A storyboard draft is good when:
 
-- the user's emotional idea survives the translation into shots
-- the most important beat receives enough screen time
-- shot duration has narrative purpose
-- the camera serves attention rather than decoration
-- long shots, close-ups, holds, inserts, and slow motion have distinct roles
+- the user's story and emotional idea survive the translation into panels/shots
+- the most important beat receives enough attention
+- narrative tempo is visible even before final rendering
+- visual framing serves attention rather than decoration
 - procedural actions do not crowd out emotion
-- continuity is clear between panels
+- continuity is clear between beats
 - the storyboard can be revised one beat at a time
-- the eventual video model receives a clearer problem than the original loose idea
+- the same approved spec can feed video, graphic novel, or illustration workflows
+- rough storyboard quality can remain low without losing production information
+- final image/video model choice remains replaceable
 
 ## Guiding maxim
 
-**Direct the viewer's time and attention, not just the sequence of images.**
+**Direct the audience's story, time, and attention first; render it beautifully later.**
