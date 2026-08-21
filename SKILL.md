@@ -4,7 +4,7 @@
 
 Use this skill to design, critique, reverse-engineer, or adapt prompts for AI-generated video.
 
-The skill is not a collection of decorative prompt phrases. Its job is to convert a creative goal into a structured temporal specification that preserves identity, controls motion, and can be adapted to different video engines.
+The skill is not a collection of decorative prompt phrases. Its job is to convert a creative goal into a structured temporal specification that preserves identity, controls motion, separates evidence from inference, and can be adapted to different video engines.
 
 ## Operating rules
 
@@ -243,23 +243,107 @@ Record:
 
 Successful motion patterns should be promoted into the primitive library.
 
+### 15. Give every prompt layer a visual responsibility
+
+Do not let multiple sections compete to control the same thing unless redundancy is intentional.
+
+Typical responsibilities:
+- Character DNA controls identity.
+- Visual DNA controls scene appearance, light, color, optics, and texture.
+- Shot Graph controls temporal state changes.
+- Camera DNA controls framing and camera behavior.
+- Motion DNA controls subject motion grammar.
+- Constraints protect invariants and known failure points.
+
+When a generation fails, identify which responsibility layer failed before rewriting anything else.
+
+### 16. Use an Action Skeleton before exact pose choreography
+
+Describe the essential causal action sequence first, then add only the pose detail needed for clarity.
+
+Example:
+
+```text
+notices object → reaches → picks it up → hesitates → looks toward camera → settles
+```
+
+Prefer an action skeleton when exact limb placement is not story-critical. Over-specifying every joint can reduce natural variation and make the prompt internally brittle.
+
+### 17. Preserve controlled randomness
+
+Do not eliminate useful generative variation.
+
+Separate control strength into three levels:
+
+```text
+Hard Lock       must remain stable
+Soft Guidance   preferred direction or range
+Creative Freedom model may decide within bounds
+```
+
+Good candidates for Creative Freedom:
+- tiny hand adjustments
+- exact blink timing
+- minor hair movement
+- incidental background motion
+- micro-expression timing
+
+Good candidates for Hard Lock:
+- identity
+- story-critical prop state
+- required spatial relationship
+- entry/exit state needed for continuity
+
+The goal is not maximum control. The goal is bounded freedom around a stable creative direction.
+
+### 18. Reverse-engineer references from visible evidence only
+
+When extracting a prompt or state description from an image/video reference:
+- describe what is visibly supported
+- separate observation from inference
+- do not invent exact camera bodies, lens models, brands, identities, or hidden context without evidence
+- extract reusable spatial, lighting, material, composition, and motion-relevant properties
+
+Reference analysis should produce a usable state description, not unsupported trivia.
+
+### 19. Expand successful results as Series Masters
+
+When one generation captures a valuable character, scene, or visual identity, treat it as a reusable series master rather than an isolated success.
+
+Pattern:
+
+```text
+Series Master
+→ preserve identity / world / visual anchors
+→ vary scene, action, framing, or mood selectively
+→ evaluate which properties remain stable
+→ promote robust properties into reusable DNA / primitives
+```
+
+Variants should change a small number of intentional axes while preserving the anchors that made the master successful.
+
 ## Output workflow
 
 When creating a new video prompt:
 
 1. Write Director Intent.
 2. Determine identity requirements.
-3. Assign Motion Budget.
-4. Build Shot Graph.
-5. Define camera behavior.
-6. Define subject macro motion.
-7. Define Micro Motion.
-8. Define Ambient Motion Field.
-9. Define visual/light/color behavior.
-10. Define Audio DNA if applicable.
-11. Add hard constraints and known failures.
-12. Compile to the target model through an adapter.
-13. Keep the Master Creative Spec separately from the Runtime Prompt.
+3. Identify reference evidence and assign reference roles.
+4. Separate Hard Locks, Soft Guidance, and Creative Freedom.
+5. Assign Motion Budget.
+6. Build the Action Skeleton.
+7. Build the Shot Graph from entry states, events, and exit states.
+8. Define camera behavior.
+9. Define subject macro motion.
+10. Define Micro Motion.
+11. Define Ambient Motion Field.
+12. Define visual/light/color behavior.
+13. Define Audio DNA if applicable.
+14. Add hard constraints and known failures.
+15. Compile to the target model through an adapter.
+16. Keep the Master Creative Spec separately from the Runtime Prompt.
+17. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
+18. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
 
 ## Evaluation checklist
 
@@ -273,7 +357,9 @@ A result is successful when:
 - the most important moment is temporally emphasized
 - the clip feels filmed rather than merely animated
 - aesthetic effects do not overpower identity or motion realism
+- action remains readable without unnecessary pose micromanagement
+- model creativity appears inside permitted bounds rather than breaking invariants
 
 ## Guiding maxim
 
-**Do not ask how to make everything move. Ask what must remain still, what deserves to move, and why.**
+**Preserve what matters, specify what changes, and leave freedom where variation can help.**
