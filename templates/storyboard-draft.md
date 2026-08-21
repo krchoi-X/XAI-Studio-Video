@@ -1,13 +1,14 @@
-# Storyboard Draft Template
+# Storyboard Spec Draft Template
 
 ## Project
 
 - name:
-- target duration:
-- aspect ratio:
-- target video model:
+- target medium: video / graphic_novel / comic / illustration_sequence / undecided
+- target duration or page/panel scope:
+- aspect ratio / page format:
+- candidate renderer(s):
 - character reference(s):
-- storyboard reference mode:
+- location / prop reference(s):
 
 ---
 
@@ -15,17 +16,18 @@
 
 Describe the experience of the scene in 3–6 sentences.
 
+- dramatic premise:
 - emotional tone:
 - viewer relationship:
-- emotional peak:
+- emotional / informational peak:
 - final impression:
 
 ---
 
-## Emotional Arc
+## Narrative / Emotional Arc
 
 ```text
-state → state → state → payoff/release
+state → state → state → payoff/release/cliffhanger
 ```
 
 ---
@@ -36,75 +38,129 @@ For each beat:
 
 ### B1
 
-- purpose:
+- narrative purpose:
 - entry state:
 - action/change:
 - exit state:
 - emotional state:
 - key visual evidence:
 - continuity carried forward:
+- importance: LOW / MEDIUM / HIGH
 
 Repeat as needed.
 
 ---
 
-## Tempo Map
+## Narrative Tempo Map
 
-| Beat | Duration | Tempo Role | Shot Weight | Motion Density | Camera Energy | Emotional Weight | Transition Pressure |
-|---|---:|---|---|---|---|---|---|
-| B1 | | | | | | | |
-| B2 | | | | | | | |
+| Beat | Tempo Role | Relative Weight | Attention Hold | Motion Density | View/Camera Energy | Emotional Weight | Transition Pressure | Video Duration Hint |
+|---|---|---|---|---|---|---|---|---:|
+| B1 | | | | | | | | |
+| B2 | | | | | | | | |
+
+`Video Duration Hint` is optional. Narrative tempo remains valid even when the target medium is static.
 
 ---
 
-## Annotated Panel Plan
+## Annotated Panel / Shot Plan
 
-### Panel 1
+### Panel / Shot 1
 
 - beat:
-- duration:
-- shot size:
-- framing/composition:
-- camera behavior:
+- narrative purpose:
+- relative weight:
+- optional duration hint:
+- scale / shot size:
+- framing / composition:
+- camera/view behavior:
 - subject action:
 - emotional note:
-- shot purpose:
+- visual evidence:
 - transition:
 - continuity state:
+- character reference role:
+- location / prop reference role:
 - annotation marks:
 
 Repeat as needed.
 
 ---
 
-## Long-Hold / Slow-Motion Notes
+## Tempo Translation Notes
 
-### Long holds
+### Video
 
-- panel:
-- why it holds:
-- permitted micro-motion:
-- exit cue:
+- long holds:
+- fast inserts:
+- slow motion:
+- cut rhythm:
+- camera speed:
+- audio / silence rhythm:
 
-### Slow motion
+### Graphic novel / comic
 
-- panel/event:
-- trigger:
-- what must become readable:
-- approximate slow-motion duration:
-- return-to-real-time cue:
+- large / dominant panels:
+- small / fast panels:
+- silent panels:
+- page-turn reveals:
+- dialogue density:
+- negative space:
+- gutter / reading rhythm:
+
+### Illustration sequence
+
+- hero images:
+- visual pauses:
+- ordering / escalation:
+- recurring motifs:
+
+Fill only the target-medium section that is currently relevant.
 
 ---
 
-## Storyboard Image Prompt
+## Rough Storyboard Rendering Plan
 
-Write the prompt for generating the storyboard image only after the Beat Sheet, Tempo Map, and Annotated Panel Plan are approved enough for a visual draft.
+The rendered storyboard is a disposable planning artifact. The Storyboard Spec above remains canonical.
 
-Require a director's continuity-board presentation rather than a generic comic strip.
+### Renderer role
+
+- composition fidelity:
+- blocking fidelity:
+- character recognizability requirement:
+- expression readability requirement:
+- continuity requirement:
+- desired rough style:
+- quality / cost target:
+
+### Rough storyboard image prompt
+
+Write only after the Beat Sheet, Tempo Map, and Panel / Shot Plan are stable enough for a visual draft.
+
+Prefer a director's continuity-board presentation rather than a polished final illustration.
+
+---
+
+## Renderer Independence
+
+### Candidate rough-board renderer
+
+- model:
+- why selected:
+- limitations:
+
+### Candidate final renderer
+
+- model:
+- why selected:
+- limitations:
+
+Do not place provider-specific syntax into the canonical Storyboard Spec.
 
 ---
 
 ## Video Model Handoff
+
+Fill only when target medium is video.
 
 ### Character Reference role
 
@@ -114,11 +170,10 @@ Require a director's continuity-board presentation rather than a generic comic s
 
 ### Storyboard Reference role
 
-- shot order:
+- beat order:
 - framing:
 - spatial blocking:
-- relative duration:
-- emotional emphasis:
+- relative emphasis:
 
 ### Text Prompt responsibilities
 
@@ -126,7 +181,24 @@ Require a director's continuity-board presentation rather than a generic comic s
 - timing details:
 - tempo instructions:
 - reference-role clarification:
+- continuity:
 - details not reliably visible in the storyboard:
+
+---
+
+## Graphic Novel / Comic Handoff
+
+Fill only when target medium is sequential static art.
+
+- page / panel grouping:
+- panel-size hierarchy:
+- silent beats:
+- page-turn reveal:
+- dialogue / caption allocation:
+- negative-space requirements:
+- final image generation order:
+
+Each final panel may be generated independently at high quality using the approved Storyboard Spec plus character/location/prop references.
 
 ---
 
@@ -142,11 +214,11 @@ Require a director's continuity-board presentation rather than a generic comic s
 
 - 
 
-### Timing changes
+### Tempo changes
 
 - 
 
-### Camera/framing changes
+### Framing / composition changes
 
 - 
 
@@ -155,5 +227,9 @@ Require a director's continuity-board presentation rather than a generic comic s
 - 
 
 ### Continuity dependencies
+
+- 
+
+### Renderer / medium changes
 
 - 
