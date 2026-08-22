@@ -508,6 +508,48 @@ subtle natural facial asymmetry
 
 Mitigation: state one shared gaze target, explicitly coordinate both eyes, and carry the languid mood through relaxed brow, softened mouth, facial muscles, breathing, and body posture.
 
+### 27. Scale eye-reflection detail to visible face size
+
+Do not burden every runtime prompt with microscopic eye-reflection instructions. Compile eye detail according to how many pixels the face and eyes will plausibly occupy in the final frame.
+
+Use this level-of-detail rule:
+
+```text
+full body / distant face
+→ omit explicit eye reflections
+
+medium or waist-up face
+→ request natural catchlights consistent with the scene lighting
+
+close portrait
+→ request physically coherent corneal reflections derived from the visible environment and lighting
+
+extreme eye close-up
+→ specify the reflected source, direction, curvature, and iris detail when story-relevant
+```
+
+Reflection and gaze have different responsibilities:
+
+- Gaze defines the single target both eyes track.
+- Catchlights and corneal reflections arise from light sources and the environment in front of the eyes, not merely from the named gaze target.
+- Reflections should sit on the moist curved corneal surfaces while the irises and pupils remain readable beneath them.
+- The two eyes may show slightly different perspective because of their positions, but the reflections must originate from the same plausible environment and light sources.
+- Prefer the model-neutral phrase `physically coherent eye reflections and catchlights derived naturally from the visible environment and lighting` when a close face warrants reflection guidance but no specific reflected object is story-critical.
+- Do not demand a recognizable miniature scene inside the iris in an ordinary portrait. Over-specific reflections at insufficient resolution can create malformed pupils, duplicated objects, or artificial eye graphics.
+- A premium or frontier renderer may infer plausible catchlights automatically, but the adapter must not assume optical correctness. Review hero images and identity masters visually.
+- For video, reflections and catchlights must remain attached to the curved eye surfaces and respond continuously to head, eye, camera, and lighting changes rather than flickering or showing an unrelated static image.
+
+Environmental example:
+
+```text
+subject standing by the sea
+→ gaze target remains explicit
+→ corneal highlights are derived from the bright sky, horizon light, sun direction, and nearby reflective water that actually sends light toward the eyes
+→ do not automatically insert a literal detailed ocean panorama inside each iris
+```
+
+The adapter owns this expansion. Character DNA should preserve iris color, eye shape, and identity anchors without hard-coding one environment's reflections.
+
 ## Output workflow
 
 When creating a new video prompt:
@@ -529,7 +571,7 @@ When creating a new video prompt:
 15. Add hard constraints and known failures.
 16. Compile to the target model through an adapter.
 17. Run the prompt-collision check on subject count, body state, framing, pose, wardrobe, and temporal ordering.
-18. For visible faces, verify one shared gaze target and coherent iris, pupil, eyelid, and catchlight behavior.
+18. For visible faces, verify one shared gaze target and coherent iris, pupil, eyelid, and catchlight behavior; add environment-derived reflection detail only when the shot scale supports it.
 19. Keep the Master Creative Spec separately from the Runtime Prompt.
 20. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
 21. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
@@ -555,6 +597,7 @@ A result is successful when:
 - character emotion remains continuous through spectacle
 - the runtime prompt describes one coherent subject/body/camera state rather than concatenated competing shots
 - both eyes maintain a coherent shared target and emotion wording does not destabilize eye anatomy
+- eye-reflection detail matches visible face size and remains physically consistent with the environment and lighting
 
 ## Guiding maxim
 
