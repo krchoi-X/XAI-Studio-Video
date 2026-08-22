@@ -19,10 +19,13 @@ For each target model/version, document:
 9. Whether audio generation/synchronization is native.
 10. Known failure modes and tested mitigations.
 11. Which restrictions are technical/model requirements versus provider-specific service policy.
+12. How the adapter detects and resolves collisions between subject count, body state, shot scale, pose, wardrobe, and temporal instructions.
 
 ## Compilation rule
 
 Do not blindly paste the entire Master Creative Spec into every model.
+
+Do not concatenate independently complete runtime prompts either. Compile a single camera-visible state for each image or video time state. A portrait master plus a full-body prompt is not a valid merge: remove the portrait shot language, retain only the necessary identity features, and let the requested full-body framing control the compiled shot.
 
 Example:
 
@@ -43,6 +46,18 @@ I2V Runtime Prompt
 - identity-stability wording
 - only visual details not already obvious from reference
 ```
+
+Before execution, verify:
+
+```text
+one intended subject count
+one continuous body per subject
+one compatible framing/camera distance per time state
+pose, crop, anatomy, and wardrobe do not contradict one another
+temporal changes are sequenced rather than composited
+```
+
+Example of a known collision: asking for `all ten toes visible` while also requiring closed shoes. Compile this as `both shoes, including their soles, remain fully inside the frame` when the goal is crop control.
 
 ## Policy separation rule
 

@@ -416,6 +416,50 @@ fear → involuntary competence → shock → renewed pressure → uncertain res
 
 Avoid automatic triumphant hero posing unless that is the intended character beat.
 
+### 25. Compile one coherent subject, body, and camera state
+
+Do not create a runtime prompt by concatenating independently complete prompts. A character master written as a portrait and a separate full-body shot prompt can be interpreted as two simultaneous image concepts, producing a close-up face with a miniature or duplicated body layered over it.
+
+At runtime, assemble one prompt from responsibility layers and remove competing declarations:
+
+```text
+one subject / one anatomically coherent body
+→ one framing and camera-distance state
+→ one pose or action state
+→ only the identity features needed to preserve the character
+→ wardrobe
+→ environment, light, and finish
+```
+
+Apply these rules to both image and video prompts:
+
+- Declare the intended shot type once. Do not retain `portrait`, `close-up`, or headshot language when compiling a true full-body shot.
+- Put composition-critical framing early, especially for head-to-toe, wide, distant, or multi-subject shots.
+- Compress Character DNA into identity features; do not paste a complete master portrait prompt unchanged into every shot prompt.
+- Describe a single subject and a single continuous body when prior tests show duplication, miniature-body, collage, or body-overlay failures.
+- Remove mutually exclusive instructions. For example, `all ten toes visible` conflicts with closed shoes; use `the soles of both shoes remain inside the frame` when the character is shod.
+- Do not repeat the subject as though introducing a second rendering task. Merge face, body, pose, wardrobe, and framing into one camera-visible state.
+- For video, distinguish the starting visual state from temporal change. Character DNA preserves identity; the Shot Graph and Motion DNA change that same body through time rather than describing another version of the person.
+- Keep runtime prompts within the target model's useful instruction capacity. Prefer a shorter coherent prompt over a long prompt containing competing high-priority concepts.
+
+Before rendering, run a prompt-collision check:
+
+1. Is there exactly one intended subject count and one body state?
+2. Is there exactly one active shot scale and camera distance at each time state?
+3. Do pose, crop, wardrobe, and anatomy descriptions agree?
+4. Did compilation accidentally preserve a complete prompt for a different shot type?
+5. For video, are changes ordered in time instead of layered into one frame?
+
+Known production failure:
+
+```text
+complete photorealistic portrait prompt
++ complete head-to-toe fashion prompt
+→ giant close-up face with a small full body composited over it
+```
+
+Mitigation: remove portrait-shot language, declare one coherent adult body, place full-length framing first, merge only the necessary identity features, and eliminate wardrobe/anatomy contradictions.
+
 ## Output workflow
 
 When creating a new video prompt:
@@ -436,9 +480,10 @@ When creating a new video prompt:
 14. Define Audio DNA if applicable.
 15. Add hard constraints and known failures.
 16. Compile to the target model through an adapter.
-17. Keep the Master Creative Spec separately from the Runtime Prompt.
-18. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
-19. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
+17. Run the prompt-collision check on subject count, body state, framing, pose, wardrobe, and temporal ordering.
+18. Keep the Master Creative Spec separately from the Runtime Prompt.
+19. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
+20. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
 
 ## Evaluation checklist
 
@@ -459,6 +504,7 @@ A result is successful when:
 - environmental reactions provide believable evidence of force
 - camera imperfection feels motivated rather than random
 - character emotion remains continuous through spectacle
+- the runtime prompt describes one coherent subject/body/camera state rather than concatenated competing shots
 
 ## Guiding maxim
 
