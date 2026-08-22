@@ -20,6 +20,7 @@ For each target model/version, document:
 10. Known failure modes and tested mitigations.
 11. Which restrictions are technical/model requirements versus provider-specific service policy.
 12. How the adapter detects and resolves collisions between subject count, body state, shot scale, pose, wardrobe, and temporal instructions.
+13. How the adapter preserves coordinated eyes and one shared gaze target when compiling mood, facial asymmetry, blinks, or gaze transitions.
 
 ## Compilation rule
 
@@ -55,9 +56,13 @@ one continuous body per subject
 one compatible framing/camera distance per time state
 pose, crop, anatomy, and wardrobe do not contradict one another
 temporal changes are sequenced rather than composited
+both eyes share one plausible target with coherent pupils, eyelids, and catchlights
+emotion wording does not replace the gaze-direction specification
 ```
 
 Example of a known collision: asking for `all ten toes visible` while also requiring closed shoes. Compile this as `both shoes, including their soles, remain fully inside the frame` when the goal is crop control.
+
+Example of a known facial failure: `subtle facial asymmetry + slightly drowsy + relaxed eyelids + absent-minded` without a shared gaze target may send the eyes in different directions. Localize identity asymmetry away from the eyes when necessary, specify one target for both eyes, and express languor through brow, mouth, facial tension, breathing, head angle, and posture. Upscaling is not a repair step for malformed eyes; correct or reject the source image first.
 
 ## Policy separation rule
 

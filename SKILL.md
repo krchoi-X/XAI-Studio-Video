@@ -460,6 +460,54 @@ complete photorealistic portrait prompt
 
 Mitigation: remove portrait-shot language, declare one coherent adult body, place full-length framing first, merge only the necessary identity features, and eliminate wardrobe/anatomy contradictions.
 
+### 26. Separate emotional expression from eye coordination
+
+Do not rely on vague mood words to control the eyes. Terms such as `drowsy`, `relaxed eyelids`, `absent-minded`, or `subtle facial asymmetry` can combine into divergent pupils, mismatched eyelids, or an unintended crossed/wall-eyed gaze when the prompt does not define a shared visual target.
+
+Treat these as separate responsibilities:
+
+```text
+eye anatomy and coordination
+→ both eyes belong to the same face and track the same target
+
+gaze direction
+→ one explicit camera-relative or scene-relative target
+
+emotional expression
+→ brow, facial muscle tension, mouth, breath, and posture
+```
+
+For identity-sensitive image and video prompts:
+
+- Give both eyes one shared target whenever the gaze must be readable: directly toward the camera, slightly camera-left, toward a named object, or another unambiguous point.
+- Keep both irises and pupils consistently aligned toward that target, with coherent catchlights from the same light source.
+- Express sleepiness, languor, sadness, distraction, or intoxication primarily through the brow, mouth, facial tension, breathing, head angle, and posture unless asymmetric eyelid behavior is intentionally required.
+- If natural facial asymmetry is part of Character DNA, localize it to safe features such as cheeks, jawline, or mouth corners when eye coordination is important. Do not let general asymmetry silently authorize conflicting gaze directions.
+- Avoid stacking several eye-relaxation phrases without a gaze lock. `Slightly drowsy + relaxed eyelids + absent-minded` is not a complete eye-direction specification.
+- For video, preserve the same coordinated binocular target through blinks and gaze transitions. Move both eyes together to the next target before or with the head according to Motion DNA.
+- Do not expect an upscaler to repair incorrect eye anatomy or gaze. Reject, rerender, or inpaint the source image before upscaling. When inpainting, repair both eyes and their surrounding eyelids together rather than independently.
+
+Before accepting a face, verify:
+
+1. Do both eyes focus on the same plausible point?
+2. Are iris direction, pupil position, eyelid shape, and catchlights mutually coherent?
+3. Is the intended emotion carried without sacrificing binocular coordination?
+4. Does facial asymmetry preserve identity without becoming an eye-direction error?
+5. For video, do blinks and gaze shifts remain coordinated over time?
+
+Known production failure:
+
+```text
+subtle natural facial asymmetry
++ slightly drowsy
++ relaxed eyelids
++ absent-minded softness
++ no shared gaze target
+→ each eye looks in a different direction
+```
+
+Mitigation: state one shared gaze target, explicitly coordinate both eyes, and carry the languid mood through relaxed brow, softened mouth, facial muscles, breathing, and body posture.
+
 ## Output workflow
 
 When creating a new video prompt:
@@ -481,9 +529,10 @@ When creating a new video prompt:
 15. Add hard constraints and known failures.
 16. Compile to the target model through an adapter.
 17. Run the prompt-collision check on subject count, body state, framing, pose, wardrobe, and temporal ordering.
-18. Keep the Master Creative Spec separately from the Runtime Prompt.
-19. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
-20. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
+18. For visible faces, verify one shared gaze target and coherent iris, pupil, eyelid, and catchlight behavior.
+19. Keep the Master Creative Spec separately from the Runtime Prompt.
+20. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
+21. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
 
 ## Evaluation checklist
 
@@ -505,6 +554,7 @@ A result is successful when:
 - camera imperfection feels motivated rather than random
 - character emotion remains continuous through spectacle
 - the runtime prompt describes one coherent subject/body/camera state rather than concatenated competing shots
+- both eyes maintain a coherent shared target and emotion wording does not destabilize eye anatomy
 
 ## Guiding maxim
 
