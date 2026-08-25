@@ -2,110 +2,126 @@
 
 Updated: 2026-08-25
 
-This file is the project-local handoff from the broader `krchoi-X/personal-ai-knowledge` research/backlog. It exists because the Codex project attached to `XAI-Studio-Video` may not have access to that private knowledge repository or the ChatGPT conversation that produced the priorities.
+This file is the project-local execution handoff. It should reflect what is most useful to do next, not everything that is technically interesting.
 
-## P0 — Analyze toyxyz MiniMax-H3-prompter before building more H3 prompt/timeline UI
+## Operating principle
 
-- Source: https://github.com/toyxyz/ComfyUI_toyxyz_test_nodes
-- Central reference: `personal-ai-knowledge/backlog/2026-08.md` → `2026-08-25 — toyxyz MiniMax-H3-prompter 선행 구현 분석`
+The current bottleneck is not lack of architecture ideas. Too many parallel tracks have accumulated while local generation is too slow for casual practice and RunPod/Vast lifecycle operation is still not routine. Character DNA is also not yet mature enough to justify treating it as a prerequisite for making content.
+
+For now, use **one planned main task + one lightweight content lane**:
+
+1. Main task: make one cloud 5090 production path repeatable from start to finish.
+2. Content lane: when spare time appears, make something small with the current tools instead of opening a new infrastructure/design project.
+
+Do not promote a new research/architecture item to P0 unless it directly blocks the main task.
+
+## P0 — Build operational fluency with one repeatable RunPod 5090 content loop
+
 - Priority: `P0`
-- Status: `COMPLETE` — static decision recorded in `docs/toyxyz-h3-prompter-review.md`; no installation or integration performed
+- Status: `READY`
+- Owner: `Codex + Manual`
 
 ### Context
 
-XAI-Studio-Video has been evolving toward a prompt-first H3 workflow with storyboard/shot structure, timeline-aware prompting, image/video/audio references, VIDEO-DNA-style constraints, and model/backend adapters. Before this discovery, a reasonable path was to implement more of that H3 timeline/prompter layer directly in this repository.
+The user can already provision and use RunPod/Vast, but the sequence is not yet familiar enough to feel effortless. As a result, each cloud session carries setup friction and the user falls back to the local RTX 4070, where H3/video generation is too slow for casual creative practice.
 
-On 2026-08-25, `toyxyz/ComfyUI_toyxyz_test_nodes` added a `Minimax-H3-prompter` that already covers a large part of the same problem space:
+At the same time, the project has accumulated many worthwhile tracks: Character DNA, H3 adapters, toyxyz patterns, WanGP, Render Broker, Vast/RunPod automation, upscale, multiple model experiments, and UI ideas. Continuing to expand all of them now increases coordination cost without increasing the number of finished pieces.
 
-- editable shot timeline
-- `@alias` insertion for image/video/audio references
-- Auto/T2VA/I2VA/FL2VA/L2VA/REF2VA routing
-- first/last/exact-frame/subject image roles
-- video roles such as motion, camera, cuts/rhythm, continuation/editing
-- audio roles such as voice, dialogue/lyrics, ambience, music/rhythm
-- H3 `17k+5` frame-grid alignment
-- Qwen3.8-27B + Vision prompt expansion for REF2VA and all modes
-- lighter H3 Prompt Rewriter 8B path for non-REF2VA modes
-- prompt constraints for action progression, hand/object continuity, locomotion, style/reference-medium locking, and action visibility
-
-This overlaps enough with planned XAI-Studio-Video work that continuing to design a new H3 prompter first creates a real duplicate-development risk.
+RunPod is the first provider to practice because the user already has an account, balance, prior Pod experience, and a network volume. Vast remains a later portability target, not a simultaneous learning task.
 
 ### Priority rationale
 
-This is P0 **not because the external node should be installed or adopted immediately**, but because its architecture must be understood before more local H3 prompt/timeline code is written.
+This outranks `h3_intent` schema work and additional renderer architecture because the practical bottleneck is **getting from an idea to a finished artifact without setup hesitation**.
 
-It outranks new H3 UI/prompter implementation because a short reverse-engineering pass can eliminate unnecessary work and reveal reusable schemas or compiler rules.
+A perfect cloud abstraction is less valuable right now than being able to repeat the same known path reliably. Once the user has a stable operational loop, automation and provider abstraction can be added based on observed friction rather than anticipated friction.
+
+### Success criterion
+
+Demonstrate the same basic cycle repeatedly with a known workflow:
+
+1. choose the known RunPod template / GPU / network volume;
+2. deploy the Pod;
+3. verify the expected workspace, models, and UI/endpoint;
+4. run one predetermined small content job;
+5. save the exact prompt/settings and resulting artifact;
+6. copy/register the result in durable local/Drive storage;
+7. verify the result is recoverable outside the Pod;
+8. terminate the Pod cleanly and confirm no unintended billable compute remains.
+
+The first goal is not maximum image/video quality. The goal is that the lifecycle becomes boring and predictable.
 
 ### Depends on
 
-`None` for static analysis.
-
-Runtime tests depend on an appropriate local/cloud environment and model files, but those are not required for the first deliverable.
+- Existing RunPod account and network volume.
+- One known-good generation workflow already present or easy to restore.
 
 ### Blocks
 
-Until this analysis is complete, defer decisions on:
+- confident 5090 experimentation;
+- casual content production without falling back to the slow 4070;
+- later automation of provisioning/cleanup;
+- meaningful RunPod-vs-Vast comparison based on actual repeated use.
 
-- creating a new H3 shot-timeline UI
-- finalizing XAI-Studio-Video reference-role schema
-- writing a new H3 prompt compiler from scratch
-- committing to an internal H3 mode-routing design
+### Codex next action
 
-### Next action
+Reduce the current RunPod path to a **single operator runbook/checklist** using the existing repo assets. Reuse the existing Render Broker / GPU worker work where it helps, but do not make automation a prerequisite.
 
-Codex should perform a static architecture review first. Do not start with installation.
+The runbook must state:
 
-Inspect at minimum:
+- what template/environment to choose;
+- what persistent storage to attach;
+- where models/workspace/results live;
+- how to verify readiness;
+- the exact minimal test job;
+- where the result is copied or registered;
+- how to verify billing/cleanup before ending the session;
+- what to do when the desired 5090 is unavailable.
 
-1. `nodes/minimax_h3_prompter.py`
-2. related JS/web frontend code used by the prompter
-3. prompt/system-prompt JSON or configuration files
-4. `test_minimax_h3_prompter.py`
-
-Compare toyxyz against current XAI-Studio-Video using these axes:
-
-- shot schema
-- timeline model
-- reference asset schema (`asset + role + strength + timeline placement`)
-- H3 mode routing
-- prompt compiler / constraint layers
-- generated outputs and downstream interface
-- separation between frontend state, prompt compiler, and ComfyUI node execution
-
-Produce one short decision note with three options:
-
-- `reuse`
-- `fork/adapt`
-- `borrow-pattern-only`
-
-For each option, estimate maintenance burden, coupling to toyxyz, amount of duplicate code avoided, and compatibility with XAI-Studio-Video's storyboard/VIDEO-DNA direction.
-
-Default evaluation bias: **reuse-first, but modular-backend-first**. A one-node UI does not automatically imply that XAI-Studio-Video should become a monolithic custom node internally.
+Prefer a manual-but-repeatable checklist first. Automate only steps that prove annoying across repeated real sessions.
 
 ### Not now
 
-Do **not**:
+Do **not** make the following prerequisites for this P0:
 
-- vendor the entire `ComfyUI_toyxyz_test_nodes` repo into XAI-Studio-Video
-- install all CaptureCam/ComfyCouple/legacy utilities just to study the H3 prompter
-- replace existing storyboard rules immediately
-- build a new competing H3 timeline/prompter UI before the comparison note exists
-- treat Qwen3.8-27B or LightX2V model choices as permanently fixed architecture
+- completing Character DNA;
+- implementing a new H3 timeline UI;
+- implementing `h3_intent` schema;
+- supporting both RunPod and Vast at once;
+- full Render Broker auto-provisioning;
+- perfect one-click orchestration;
+- testing every H3 checkpoint/LoRA/upscaler.
 
-## After P0
+## Lightweight content lane — make small finished things with current capability
 
-Do not automatically start another research item just because the P0 note is finished. Use the P0 result to decide the next implementation step.
+This is deliberately **not another engineering project**.
 
-Relevant broader references already tracked in the central knowledge repo include:
+When the user has a spare creative window, use an existing acceptable character/reference image and a known workflow to make a small finished artifact: a short everyday clip, simple visual gag, mood shot, micro-vlog beat, or other low-dependency piece.
 
-- MiniMax H3 Motion Context — long clip chaining / continuity
-- MiniMax H3 Director — multi-mode/segment execution and rerender patterns
-- MMH3 Ultimate Upscale — low-VRAM latent finishing
-- H3 × Z-Image checkpoint — quality/detail A/B candidate
-- Hanimix PiD_AIO — useful as a general AIO/workflow-abstraction reference, but it is **not currently ahead of the H3 prompter analysis for this video repo**
+Rules:
 
-These are context, not an instruction to implement them all.
+- Character DNA completion is not required.
+- Do not redesign the pipeline before creating the piece.
+- Prefer one character, one location, one beat, one short clip.
+- Reuse existing references/prompts/workflows.
+- If the result is good, keep it as content even if the underlying system is imperfect.
+- If it fails, record only the failure that is likely to recur; do not turn every failure into a new architecture project.
+
+After several real pieces exist, use their repeated failures to decide what Character DNA or workflow automation actually needs to solve.
+
+## Completed / deferred architecture work
+
+### toyxyz MiniMax-H3-prompter review — COMPLETE
+
+Static review is complete in `docs/toyxyz-h3-prompter-review.md` with decision `borrow-pattern-only`. Keep the result as reference; it is no longer the active P0.
+
+### `h3_intent` adapter schema — DEFERRED
+
+This remains a sensible next architecture step after the operational loop is routine, but it does not currently block making content.
+
+### Vast provider routine — DEFERRED
+
+Practice Vast after the RunPod lifecycle is familiar enough that the comparison is between two known workflows rather than two sources of friction.
 
 ## Handoff maintenance rule
 
-When ChatGPT/personal-ai-knowledge changes the priority of a video/H3/XAI-Studio-Video item, this file should be updated as the local execution snapshot. Detailed research history remains in `personal-ai-knowledge`; this file should stay concise enough for Codex to determine the next action without reading unrelated AI research.
+When priorities change, keep this document deliberately short and execution-oriented. Broad research history belongs in `personal-ai-knowledge`; this file should answer only: **what is the one planned task now, why is it first, and what should not distract from it**.
