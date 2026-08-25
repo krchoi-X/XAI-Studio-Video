@@ -1,0 +1,51 @@
+{
+  "environment_version": "wangp-h3-5090-v1",
+  "image": "ghcr.io/YOUR_ACCOUNT/xai-wangp-h3:0.1.0",
+  "workspace_mount": "/workspace",
+  "container_disk_gb": 150,
+  "max_hourly_price": 1.5,
+  "ports": {
+    "web": 7860,
+    "mcp": 8000,
+    "health": 8080,
+    "ssh": 22
+  },
+  "worker_env": {
+    "WANGP_SERVICE_MODE": "mcp",
+    "WANGP_PROFILE": "4",
+    "WANGP_ATTENTION": "sage2",
+    "WANGP_VRAM_SAFETY": "0.90"
+  },
+  "runpod": {
+    "name": "xai-wangp-h3-5090",
+    "gpu_type_ids": [
+      "NVIDIA GeForce RTX 5090"
+    ],
+    "gpu_count": 1,
+    "cloud_type": "COMMUNITY",
+    "interruptible": false,
+    "volume_gb": 200,
+    "network_volume_id": "",
+    "allowed_cuda_versions": [
+      "13.0",
+      "12.9",
+      "12.8"
+    ],
+    "min_ram_per_gpu_gb": 64,
+    "min_vcpu_per_gpu": 8
+  },
+  "vast": {
+    "label": "xai-wangp-h3-5090",
+    "gpu_names": [
+      "RTX 5090"
+    ],
+    "gpu_count": 1,
+    "min_gpu_ram_mb": 30000,
+    "min_reliability": 0.99,
+    "verified_only": true,
+    "offer_type": "ondemand",
+    "search_limit": 10,
+    "volume_id": null,
+    "runtype": "ssh_direct"
+  }
+}

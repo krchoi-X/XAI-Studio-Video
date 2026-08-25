@@ -557,6 +557,14 @@ Prefer one or a few intentional variation axes rather than uncontrolled full-sce
 
 ## 20. Result Log
 
+- project ID:
+- prompt ID / parent prompt ID:
+- prompt record path / file SHA-256 / runtime-prompt SHA-256:
+- handoff target:
+- run ID / status: queued / running / succeeded / failed / interrupted / unknown
+- submitted / started / finished timestamps:
+- output path / embedded-metadata match:
+- last progress / error summary:
 - model/version:
 - settings:
 - seed:

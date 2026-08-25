@@ -1,3 +1,8 @@
+---
+name: xai-studio-video
+description: Design, persist, submit, and evaluate structured model-adapted prompts for AI-generated video, including local WanGP execution with durable prompt/result matching.
+---
+
 # XAI-Studio-Video Skill
 
 ## Purpose
@@ -573,8 +578,39 @@ When creating a new video prompt:
 17. Run the prompt-collision check on subject count, body state, framing, pose, wardrobe, and temporal ordering.
 18. For visible faces, verify one shared gaze target and coherent iris, pupil, eyelid, and catchlight behavior; add environment-derived reflection detail only when the shot scale supports it.
 19. Keep the Master Creative Spec separately from the Runtime Prompt.
-20. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
-21. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
+20. Before returning a renderer-ready prompt, persist its lineage as described in **Prompt handoff persistence** below. Do not make the user copy the prompt into a separate record.
+21. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
+22. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
+
+## Prompt handoff persistence
+
+Hermes owns the durable record through the renderer handoff. The Render Broker owns execution routing across local WanGP, RunPod, Vast.ai, or another renderer; no execution target owns creative history. Read `docs/render-broker.md` before provisioning or routing remote compute.
+
+Resolve every bundled path from the directory containing this `SKILL.md`, never
+from Hermes's current working directory. For local WanGP, the executable is
+`<skill-root>/tools/local_wangp.py`; verify that absolute path exists before
+claiming it is unavailable. Read `docs/wangp-recorder.md` before the first local
+submission. Under Hermes, use
+`D:\AI_Studio\outputs\video-prompts\projects\<project-id>` as the durable project
+root unless the user explicitly selects another location. Create a unique run
+directory for every submission and never overwrite an earlier prompt or result.
+
+Before displaying or submitting a final runtime prompt:
+
+1. Create or reuse `projects/<project-id>/` in the XAI-Studio repository.
+2. Preserve the user's original idea verbatim in `project.md`; append later direction changes with timestamps instead of replacing the original.
+3. Save every renderer-ready prompt as `prompts/<prompt-id>.md`. Include the target renderer, source idea, parent prompt when revised, Character DNA version or path, reference roles, assumptions, and the exact copy-ready prompt.
+4. Write the exact copy-ready prompt, with no Markdown wrapper, to `prompts/<prompt-id>.txt` as well as the annotated Markdown record.
+5. Write `handoff.json` with `project_id`, `prompt_id`, `status: "prompt_ready"`, target renderer/model, creation time, both prompt paths, and any source-reference paths. Replace this file only when a newer prompt is intentionally handed off; preserve older prompt files.
+6. Compute and store separate SHA-256 values for the annotated Markdown record and the exact `.txt` runtime prompt in `handoff.json` using a filesystem tool. Do not invent a hash. The runtime-prompt hash is the renderer matching key.
+7. If a renderer tool is available, create a run record with `status: "queued"` before calling it. Treat an explicit local, RunPod, or Vast destination as a Hard Lock; otherwise ask the Render Broker for compatible available routes. Submit the exact `.txt` prompt, store the broker and provider job IDs, and poll asynchronously. Never hold the user-facing turn open for a long render when a durable job ID can be polled later.
+8. If no renderer tool is available, return the copy-ready prompt to the user together with the project ID and prompt ID in a short manual-handoff note.
+
+Do not require the user to fill an experiment table. If filesystem access is unavailable or persistence fails, state that the handoff is not durably recorded instead of silently proceeding.
+
+Prefer the Render Broker over a direct renderer call. For local WanGP, the broker may use its MCP tools: inspect the model schema/defaults, submit with `wangp_generate`, store the returned job ID, and poll with `wangp_get_job`. Remote adapters must expose the same durable job contract. The run record must exist before submission and record every transition: queued, provisioning, starting, running, uploading, succeeded, failed, interrupted, timed out, capacity unavailable, or unknown. Use a persistent bridge/recorder for long renders so status updates do not depend on the Hermes chat remaining open. On success, attach generated artifact paths and verify checksums and embedded metadata against the saved runtime prompt before releasing compute. On failure, preserve the structured error and last progress even when no media file exists.
+
+If manual paste is unavoidable, a separate WanGP Recorder should claim responsibility by hashing the exact submitted prompt text and matching it to the saved runtime-prompt hash. It must journal the run before generation starts. Hermes must not mark a run successful merely because it produced a prompt.
 
 ## Evaluation checklist
 

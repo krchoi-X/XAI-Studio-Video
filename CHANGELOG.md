@@ -6,6 +6,10 @@ Promoted storyboarding from a video-specific reference trick into a medium-neutr
 
 ### Added
 
+- provider-neutral RunPod / Vast.ai WanGP GPU worker skeleton with a pinned OCI environment, persistent workspace layout, health contract, dry-run request generation, explicit billable execution, and Vast offer price guardrail
+- WanGP prompt/result recorder that journals before submission, stores job/progress events, records failures without an artifact, and verifies successful MP4 metadata against the exact saved prompt hash
+- detached local WanGP runner with pre-submit recording, effective settings capture, single-worker GPU lock, browser-independent progress/status, and automatic result/failure finalization
+
 - `skills/storyboard-director/SKILL.md` expanded into a medium-neutral directing skill
 - `docs/storyboard-directing.md` rewritten around Storyboard Spec as the source of truth
 - `docs/storyboard-rendering.md`
@@ -50,6 +54,7 @@ Promoted storyboarding from a video-specific reference trick into a medium-neutr
 
 ### Next candidates
 
+- toyxyz MiniMax-H3-prompter P0 static architecture review completed; decision: borrow patterns first, defer vendoring/forking/new H3 UI until an adapter-level comparison and real render test
 - MiniMax H3 storyboard adapter
 - renderer adapter examples for local / pod / cloud image models
 - graphic-novel page-layout adapter
