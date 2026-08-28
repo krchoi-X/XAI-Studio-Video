@@ -85,6 +85,7 @@ See:
 - `skills/storyboard-director/SKILL.md`
 - `docs/storyboard-directing.md`
 - `docs/storyboard-rendering.md`
+- `docs/ai-image-curation-system-review.md`
 - `templates/storyboard-draft.md`
 
 ## Renderer independence
