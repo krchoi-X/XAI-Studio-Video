@@ -29,9 +29,12 @@ docker push ghcr.io/YOUR_ACCOUNT/xai-wangp-h3:0.1.0
 ```
 
 The image contains WanGP and Python dependencies, but not the large model
-checkpoints. Keep checkpoints under `/workspace/models` on a persistent volume.
-The first boot therefore remains a model-cache warm-up; subsequent instances
-reuse the volume.
+checkpoints. RunPod may keep checkpoints under `/workspace/models` on its
+persistent network volume. Vast defaults to an empty-start, one-session worker:
+the bootstrap downloads only the required model profile, results are exported
+and verified, and the instance is destroyed rather than stopped.
+
+The full Vast operator procedure is in `docs/vast-ephemeral-runbook.md`.
 
 ## 2. Create a local configuration
 
@@ -81,6 +84,11 @@ python infra/gpu-worker/provision.py vast-create --config infra/gpu-worker/confi
 passed explicitly so that a stale marketplace selection cannot silently exceed
 the approved budget.
 
+Treat each Vast create as a fresh machine. The selected image, bootstrap
+version, model manifest, prompt/settings, and artifact destination must all be
+known before `--execute` is used. Do not depend on files from an earlier Vast
+instance.
+
 ## 5. Readiness contract
 
 After the provider reports the instance running, require all of these before
@@ -108,6 +116,8 @@ Hermes and the Render Broker own submission and durable records.
   the WanGP model schema.
 - Final media must be copied and checksum-verified before an ephemeral instance
   is stopped or destroyed.
+- Vast instances must be destroyed after verified export. `Stop` is only a
+  temporary recovery action because instance storage remains billable.
 - Vast hosts vary. Keep `verified`, reliability, VRAM, disk, and price filters
   enabled instead of choosing only the cheapest offer.
 

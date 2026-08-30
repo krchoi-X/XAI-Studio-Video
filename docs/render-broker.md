@@ -84,7 +84,11 @@ artifact manifest
 shutdown-ready
 ```
 
-Keep models on provider persistent volumes as a cache when economical. A RunPod network volume or Vast volume may reduce cold starts, but provider volumes are not the canonical result archive.
+Keep models on a RunPod persistent network volume as a cache when economical.
+Vast uses disposable, empty-start workers by default: bootstrap the required
+model profile for one session, export and verify all artifacts, then destroy the
+instance. A Vast volume is allowed only as an explicit per-session override and
+is never the canonical result archive.
 
 ## Durable run lifecycle
 
@@ -134,6 +138,13 @@ Use the REST API to list/create/manage Pods and attach an existing network volum
 
 Use the API or CLI to search offers, create/start/stop/destroy instances, attach an existing volume, and copy artifacts. Marketplace host variation makes template validation, disk/network checks, and post-start health checks mandatory.
 
+The default Vast lifecycle is `create -> bootstrap -> render -> export ->
+verify -> destroy`. Do not keep stopped Vast instances as caches: stopped
+instance storage remains billable and restart availability is not guaranteed.
+Every bootstrap must work against an empty workspace from the pinned image and
+model manifest. Follow `docs/vast-ephemeral-runbook.md` for the operator gate
+and mandatory teardown checks.
+
 ## Cost and cleanup guardrails
 
 - Never create billable compute unless the user requested rendering or enabled an explicit auto-provision policy.
@@ -142,6 +153,9 @@ Use the API or CLI to search offers, create/start/stop/destroy instances, attach
 - Upload and verify artifacts before stopping or destroying compute.
 - Stop or terminate according to cache policy; report resources intentionally left billable.
 - Do not automatically delete persistent volumes.
+- For Vast, destroy the instance after verified export. A stopped instance is
+  only a temporary recovery state and must include a recorded blocker and daily
+  storage cost.
 
 ## Initial implementation boundary
 
