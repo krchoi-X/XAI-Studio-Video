@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "migrated_at": "2026-08-31T00:12:58+00:00",
+  "asset_root": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs",
+  "artifacts": [
+    {
+      "relative_path": "krea2/run-20260831-085906-f3e11e21.jpg",
+      "sha256": "21a7eea6c7c1d45e200d9f6faf59e77552e3269b2a8ef524f1ca88b018c7757b",
+      "byte_count": 153448,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260831-085906-f3e11e21_1.jpg",
+      "sha256": "d6999714ed072db25d7a5b6b49106fc3c4be4622730eca14c18008832eb468b1",
+      "byte_count": 149061,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_1.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260831-085906-f3e11e21_2.jpg",
+      "sha256": "37514fb06143511e6a81bab67e4f7c438dc55cf8bede59f2f8c82fe9d8c6311c",
+      "byte_count": 156353,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_2.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260831-085906-f3e11e21_3.jpg",
+      "sha256": "456e72efcf80af603fd0862bbd16fd7e9fdfccc759dfed9c2d1360ca861244b3",
+      "byte_count": 148269,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_3.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260831-085716-965c648e.jpg",
+      "sha256": "0ce33425cdc207fce10a11e9c30e36e6fb0c0dab808ecfbf324d3558957abb15",
+      "byte_count": 159847,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\z-image\\run-20260831-085716-965c648e.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260831-085716-965c648e_1.jpg",
+      "sha256": "46236f13c0418966fb2b6306bf629c4a7df15a959194b2a39c502ab9b3fe7e20",
+      "byte_count": 166507,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\z-image\\run-20260831-085716-965c648e_1.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260831-085716-965c648e_2.jpg",
+      "sha256": "fd540675278696b3c0a5222a2476065b6dd5b6c0da8ed8e0698325fda60e9af6",
+      "byte_count": 162725,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\z-image\\run-20260831-085716-965c648e_2.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260831-085716-965c648e_3.jpg",
+      "sha256": "49da116c52000655b643cf558c8742ae741ad310e4226175945d542b81ddb7fd",
+      "byte_count": 163249,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\z-image\\run-20260831-085716-965c648e_3.jpg"
+    }
+  ]
+}

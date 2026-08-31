@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/scene-spec-v1.schema.json",
+  "title": "XAI Studio Character Scene Spec",
+  "type": "object",
+  "required": ["schema_version", "character", "character_version", "mode"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "character": {"type": "string", "pattern": "^ch-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "character_version": {"type": "integer", "minimum": 1},
+    "mode": {"enum": ["strict_translation", "creative_expansion", "exact"]},
+    "hair_state": {"type": "string", "minLength": 1},
+    "hair": {"type": "string", "minLength": 1},
+    "wardrobe": {"type": "string"},
+    "coverage": {"enum": ["user-specified", "none", "clothed"]},
+    "activity": {"type": "string"},
+    "pose": {"type": "string"},
+    "expression": {"type": "string"},
+    "props": {"type": "string"},
+    "camera": {"type": "string"},
+    "lens": {"type": "string"},
+    "lighting": {"type": "string"},
+    "location": {"type": "string"},
+    "scene_style": {"type": "string"},
+    "negative_constraints": {"type": "string"}
+  },
+  "additionalProperties": false
+}

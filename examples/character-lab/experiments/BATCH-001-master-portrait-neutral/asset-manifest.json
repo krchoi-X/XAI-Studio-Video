@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "migrated_at": "2026-08-31T00:12:59+00:00",
+  "asset_root": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs",
+  "artifacts": [
+    {
+      "relative_path": "chroma/chroma-01.png",
+      "sha256": "fe956b900a49e3b2ca72b9639616e14560901472f96caefcd0025b3b405580fa",
+      "byte_count": 5791745,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\chroma\\chroma-01.png"
+    },
+    {
+      "relative_path": "chroma/chroma-02.png",
+      "sha256": "586a1db8e2392f3ba2a17f896544a6d5e4f388c5e1b9b2be7b31c8aaa75f1427",
+      "byte_count": 5091362,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\chroma\\chroma-02.png"
+    },
+    {
+      "relative_path": "chroma/chroma-03.png",
+      "sha256": "024de3637a75a41e987b175ae169c33ef1e561f0e61cf89e4cd17fefa2bf120b",
+      "byte_count": 4857965,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\chroma\\chroma-03.png"
+    },
+    {
+      "relative_path": "chroma/chroma-04.png",
+      "sha256": "9f63cd85a7643690c45e4916b143059d542a239d1d95e235b5c94a2ebc5188b3",
+      "byte_count": 5529995,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\chroma\\chroma-04.png"
+    },
+    {
+      "relative_path": "chroma/chroma-05.png",
+      "sha256": "98342a6468fb11f78a8c7f4132e076ce983263efbcec44beded12cfd1db0aa37",
+      "byte_count": 5463819,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\chroma\\chroma-05.png"
+    },
+    {
+      "relative_path": "gpt-image/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "byte_count": 1,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\gpt-image\\.gitkeep"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-02.png",
+      "sha256": "7539d4e63c5427ba5660fdfa3cb7c787aeeb9c96c209244483eb9df5864818e6",
+      "byte_count": 2029923,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\gpt-image\\gpt-image-02.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-03.png",
+      "sha256": "55110e766efc34e2388cc90b167a8c8ed15ac6ed11c9d7bcefed3c45260d42af",
+      "byte_count": 2239337,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\gpt-image\\gpt-image-03.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-04.png",
+      "sha256": "bdfed5c9894d293575f2320696b9bae18fe00ed6bca07d783ee5e5b127efab1d",
+      "byte_count": 2133411,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\gpt-image\\gpt-image-04.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-05.png",
+      "sha256": "dc97d08ca53b42361e3bb2c955a2f1ecdad51f163172930917b3542c62617c0b",
+      "byte_count": 2496635,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\gpt-image\\gpt-image-05.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-06.png",
+      "sha256": "030858016e7fcdc3eb0d1342af67a7508460f230fa1c91bd77924d795224abca",
+      "byte_count": 2344356,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\gpt-image\\gpt-image-06.png"
+    },
+    {
+      "relative_path": "gpt-image-exploratory/gpt-image-01-structured.png",
+      "sha256": "f0f1c56c25ac70b5e02cd2ae8c8c3dda327ef1a8e20dd7d81e77891f7c84b336",
+      "byte_count": 2137366,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\gpt-image-exploratory\\gpt-image-01-structured.png"
+    },
+    {
+      "relative_path": "grok-image/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "byte_count": 1,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\grok-image\\.gitkeep"
+    },
+    {
+      "relative_path": "grok-image/grok-image-01.jpg",
+      "sha256": "d9cf1e5951afa99c9240fce33dcddbb1dbe775359a820bc1fe827d01325ec6f8",
+      "byte_count": 512495,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\grok-image\\grok-image-01.jpg"
+    },
+    {
+      "relative_path": "grok-image/grok-image-02.jpg",
+      "sha256": "1047292d73aa0413ad6200e186d4c60765d48ba72a5a534c903ac5abecf2a549",
+      "byte_count": 502316,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\grok-image\\grok-image-02.jpg"
+    },
+    {
+      "relative_path": "grok-image/grok-image-03.jpg",
+      "sha256": "68a5db3b2a63ab41559537315b563596845c7d3657b5826f75f2c415c01330af",
+      "byte_count": 559088,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\grok-image\\grok-image-03.jpg"
+    },
+    {
+      "relative_path": "grok-image/grok-image-04.jpg",
+      "sha256": "3d639db795df1e1e72acd3f943b3c16cdfc552177fae9acd1ad5e9eb0c49eb6c",
+      "byte_count": 481909,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\grok-image\\grok-image-04.jpg"
+    },
+    {
+      "relative_path": "krea2/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "byte_count": 1,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\krea2\\.gitkeep"
+    },
+    {
+      "relative_path": "krea2/krea2-01.jpg",
+      "sha256": "c6c3903c5a8d6de76622938c535d83d64c1ed8a1ec1a3f7267f82696529c7528",
+      "byte_count": 256441,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\krea2\\krea2-01.jpg"
+    },
+    {
+      "relative_path": "krea2/krea2-02.jpg",
+      "sha256": "99dd0ee316702d6966489dd6926828209f26ceb2ec82a93318e05e1c04769c25",
+      "byte_count": 265565,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\krea2\\krea2-02.jpg"
+    },
+    {
+      "relative_path": "krea2/krea2-03.jpg",
+      "sha256": "63c53d5d5547585bf84de74692e9d2d3ca935fa52a866380932f7a73c0cf83f1",
+      "byte_count": 262749,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\krea2\\krea2-03.jpg"
+    },
+    {
+      "relative_path": "krea2/krea2-04.jpg",
+      "sha256": "6d366e4d8e559a1122b9417639dc3f5fedab4505f2c3cebf14fb3f591a6c2417",
+      "byte_count": 264727,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\krea2\\krea2-04.jpg"
+    },
+    {
+      "relative_path": "krea2/krea2-05.jpg",
+      "sha256": "eb040bc1c2a69410df1cd4e44a01a9fa0bf140d9297d61f126e8c32feedd465c",
+      "byte_count": 253569,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\krea2\\krea2-05.jpg"
+    },
+    {
+      "relative_path": "krea2-large/krea2-large-01.png",
+      "sha256": "a156eb3aa0d79994ed3c42ab9f5e02694f6423c87b2cac9741891abf9ae05842",
+      "byte_count": 2101098,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\krea2-large\\krea2-large-01.png"
+    },
+    {
+      "relative_path": "meta-image/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "byte_count": 1,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\meta-image\\.gitkeep"
+    },
+    {
+      "relative_path": "nano-banana/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "byte_count": 1,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\nano-banana\\.gitkeep"
+    },
+    {
+      "relative_path": "qwen-image3-pro/qwen-image3-pro-01.png",
+      "sha256": "8ff628679543562da0ef4900c68170287fc24bf64e541a0a03f887820229d55d",
+      "byte_count": 5934716,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\qwen-image3-pro\\qwen-image3-pro-01.png"
+    },
+    {
+      "relative_path": "z-image/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "byte_count": 1,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\z-image\\.gitkeep"
+    },
+    {
+      "relative_path": "z-image/z-image-01.jpg",
+      "sha256": "bee5be9055324e7627dc95b8a764d5a27a8812c7f1171630997ea76b3b650a94",
+      "byte_count": 253283,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\z-image\\z-image-01.jpg"
+    },
+    {
+      "relative_path": "z-image/z-image-02.jpg",
+      "sha256": "4970e35107ce233aaa8cb093e43564493e78cf750d544f13a2f82207447e3b58",
+      "byte_count": 265845,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\z-image\\z-image-02.jpg"
+    },
+    {
+      "relative_path": "z-image/z-image-03.jpg",
+      "sha256": "b09966eab9c184537cce53d565abaa20dfde2c7b49899b8592eb0c6c1802e0e3",
+      "byte_count": 255014,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\z-image\\z-image-03.jpg"
+    },
+    {
+      "relative_path": "z-image/z-image-04.jpg",
+      "sha256": "fafc68468983eabe7305f828ff463fe1dc71df2607655e556e2a2ab774493f23",
+      "byte_count": 231934,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\z-image\\z-image-04.jpg"
+    },
+    {
+      "relative_path": "z-image/z-image-05.jpg",
+      "sha256": "002a20a7ea691a47340d7f7426007621455dae0f98e418419875268556b2a400",
+      "byte_count": 219259,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\BATCH-001-master-portrait-neutral\\outputs\\z-image\\z-image-05.jpg"
+    }
+  ]
+}

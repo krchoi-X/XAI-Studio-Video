@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-143820-7a842f7e",
+  "project_id": "SCENE-20260831-143819-jung-haewon-surprise-shower-greeting",
+  "prompt_id": "SCENE-20260831-143819-jung-haewon-surprise-shower-greeting-z-image",
+  "status": "needs_review",
+  "created_at": "2026-08-31T14:38:20+09:00",
+  "updated_at": "2026-08-31T14:39:57+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-40552",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\prompt.txt",
+    "sha256": "19ec05e34c6ed64d484606000470c0df5169609a2d8897f64e255abf8ccdeb8d",
+    "normalized_sha256": "b92f3593500c9809a3da29d0e65c4f59d86fc9399c2f0b1e40cbd9f8e7b4be31",
+    "byte_count": 3482
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 2,
+      "repeat_generation": 1,
+      "seed": 831143820,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\outputs\\z-image\\run-20260831-143820-7a842f7e.jpg",
+      "sha256": "66ecf1e8645b1e98d150851a212e1d77c409d27b74d1e57f41819f49630371b0",
+      "byte_count": 163141,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T14:39:56+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\outputs\\z-image\\run-20260831-143820-7a842f7e_1.jpg",
+      "sha256": "9895e3ee4a2b071a13c38352ced4e96334cdae16b6c807efb8875b4eba7d2a1a",
+      "byte_count": 157691,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T14:39:57+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 26800,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\runs\\run-20260831-143820-7a842f7e",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\runs\\run-20260831-143820-7a842f7e\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\runs\\run-20260831-143820-7a842f7e\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\runs\\run-20260831-143820-7a842f7e\\worker.stderr.log"
+  }
+}

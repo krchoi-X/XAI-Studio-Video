@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "ch-jung-haewon",
+  "name": "정해원",
+  "romanized_name": "Jung Haewon",
+  "status": "candidate",
+  "version": 1,
+  "stable_dna": {
+    "adult_age_range": "young adult; exact age not established",
+    "visual_background": "Korean woman",
+    "face": {
+      "shape": "small refined softly narrow oval face, lean cheeks, delicate slightly pointed chin, subtle natural asymmetry",
+      "eyes": "medium-large almond-shaped deep-brown eyes, calm clear observant gaze, neither overly round nor sharp",
+      "eyebrows": "fine natural softly shaped brows following the bone structure",
+      "nose": "slim straight refined bridge with a softly shaped natural tip",
+      "lips": "softly full natural-pink lips with a gentle cupid's bow",
+      "jaw": "gentle clean jawline with a delicate chin"
+    },
+    "body": {
+      "height_impression": "tall and very slim with an elegant believable silhouette",
+      "limb_proportions": "long legs and slim long arms",
+      "shoulders": "narrow shoulders",
+      "torso": "long neck, delicate collarbones, clean balanced posture",
+      "bust": "natural and unexaggerated; not yet more specifically approved",
+      "waist": "slim natural waist; not yet more specifically approved",
+      "pelvis_hips": "realistic feminine proportions without exaggeration; not yet more specifically approved",
+      "lower_body": "long-legged and very slim with realistic volume",
+      "body_hair": "not established; preserve natural realism and do not invent a conspicuous trait"
+    },
+    "hair": "dark brown to near-black, long straight to softly textured hair falling well below the chest, center or slightly off-center part, realistic separated strands and flyaways",
+    "skin": "clear bright hydrated skin with fine realistic texture and subtle tonal variation; never waxy, plastic, or airbrushed",
+    "distinctive_marks": [],
+    "recognition_anchors": [
+      "very long dark straight-hair silhouette",
+      "long neck and delicate collarbones",
+      "calm observant deep-brown almond eyes",
+      "small narrow oval face and gentle cupid's-bow lips"
+    ]
+  },
+  "scene_defaults": {
+    "expression": "calm, quiet, thoughtful softness with an almost-emerging smile",
+    "makeup": "transparent natural makeup, sheer base, faint diffused pink blush, minimal eye definition",
+    "gaze": "both eyes share one clear target; calm direct or scene-directed gaze"
+  },
+  "approved_references": [],
+  "prompt_sources": [
+    "D:/codex/personal-ai-knowledge/creative-studio/projects/character-library/characters/ch-jung-haewon/identity.md",
+    "D:/codex/personal-ai-knowledge/creative-studio/projects/character-library/characters/ch-jung-haewon/appearance-profiles.md",
+    "D:/codex/personal-ai-knowledge/creative-studio/projects/character-library/production/prompt-modules/ch-jung-haewon/appearance-base.md"
+  ],
+  "lora_associations": [],
+  "video_test_associations": [],
+  "provenance": {
+    "created_at": "2026-08-16T00:00:00+09:00",
+    "updated_at": "2026-08-30T22:59:37+00:00",
+    "created_by": "codex-migration",
+    "sources": [
+      "user-provided-appearance-prompt-2026-08-16"
+    ],
+    "change_reason": "Initial normalization into Character Manager schema v1",
+    "stable_dna_sha256": "7be607bafe72e7a08a765d8d765c259db19808fab014b7ee385d541a3906fac2"
+  }
+}

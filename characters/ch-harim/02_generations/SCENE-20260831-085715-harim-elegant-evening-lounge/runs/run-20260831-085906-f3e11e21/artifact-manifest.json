@@ -1,0 +1,45 @@
+{
+  "run_id": "run-20260831-085906-f3e11e21",
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21.jpg",
+      "sha256": "21a7eea6c7c1d45e200d9f6faf59e77552e3269b2a8ef524f1ca88b018c7757b",
+      "byte_count": 153448,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T09:03:01+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_1.jpg",
+      "sha256": "d6999714ed072db25d7a5b6b49106fc3c4be4622730eca14c18008832eb468b1",
+      "byte_count": 149061,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T09:03:01+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_2.jpg",
+      "sha256": "37514fb06143511e6a81bab67e4f7c438dc55cf8bede59f2f8c82fe9d8c6311c",
+      "byte_count": 156353,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T09:03:01+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_3.jpg",
+      "sha256": "456e72efcf80af603fd0862bbd16fd7e9fdfccc759dfed9c2d1360ca861244b3",
+      "byte_count": 148269,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T09:03:01+09:00"
+    }
+  ]
+}

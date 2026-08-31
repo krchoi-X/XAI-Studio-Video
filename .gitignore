@@ -1,0 +1,17 @@
+# Local models, source drops, and reverse-engineering scratch space
+inbox/
+tmp/
+
+# Python/runtime noise
+__pycache__/
+*.py[cod]
+*.log
+
+# Generated media belongs in D:\AI_Studio\library, not Git
+characters/**/*.png
+characters/**/*.jpg
+characters/**/*.jpeg
+characters/**/*.webp
+characters/**/*.mp4
+characters/**/*.mov
+

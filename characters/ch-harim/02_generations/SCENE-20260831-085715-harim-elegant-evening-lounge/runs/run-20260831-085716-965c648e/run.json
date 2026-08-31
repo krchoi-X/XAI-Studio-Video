@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-085716-965c648e",
+  "project_id": "SCENE-20260831-085715-harim-elegant-evening-lounge",
+  "prompt_id": "SCENE-20260831-085715-harim-elegant-evening-lounge-z-image",
+  "status": "needs_review",
+  "created_at": "2026-08-31T08:57:16+09:00",
+  "updated_at": "2026-08-31T08:59:05+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-22232",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\prompt.txt",
+    "sha256": "5bac62d380f84a2428db4ac68298e3a6fb95e9caeec80d290d3ee51b2dd3be02",
+    "normalized_sha256": "571eb6386f49181643ee7ace95ab4a2c0a9ff3866ca0f3820b28e49a0b7b7e50",
+    "byte_count": 3032
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 4,
+      "repeat_generation": 1,
+      "seed": 831085716,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\z-image\\run-20260831-085716-965c648e.jpg",
+      "sha256": "0ce33425cdc207fce10a11e9c30e36e6fb0c0dab808ecfbf324d3558957abb15",
+      "byte_count": 159847,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:59:05+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\z-image\\run-20260831-085716-965c648e_1.jpg",
+      "sha256": "46236f13c0418966fb2b6306bf629c4a7df15a959194b2a39c502ab9b3fe7e20",
+      "byte_count": 166507,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:59:05+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\z-image\\run-20260831-085716-965c648e_2.jpg",
+      "sha256": "fd540675278696b3c0a5222a2476065b6dd5b6c0da8ed8e0698325fda60e9af6",
+      "byte_count": 162725,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:59:05+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\z-image\\run-20260831-085716-965c648e_3.jpg",
+      "sha256": "49da116c52000655b643cf558c8742ae741ad310e4226175945d542b81ddb7fd",
+      "byte_count": 163249,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:59:05+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 33268,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\runs\\run-20260831-085716-965c648e",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\runs\\run-20260831-085716-965c648e\\effective-settings.json",
+      "--output-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\runs\\run-20260831-085716-965c648e\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\runs\\run-20260831-085716-965c648e\\worker.stderr.log"
+  }
+}

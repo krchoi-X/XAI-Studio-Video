@@ -1,0 +1,18 @@
+{
+  "settings_version": 2.73,
+  "model_type": "z_image",
+  "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 2,
+  "repeat_generation": 1,
+  "seed": 831143820,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Z Image Turbo"
+}

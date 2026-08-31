@@ -2,6 +2,14 @@
 
 Updated: 2026-08-25
 
+## P0 — Codex-controlled Hermes Character Manager
+
+- Source: GitHub issue #2
+- Status: `IN PROGRESS` — schema, deterministic control CLI, Hermes skill, and Jung Hae-won/Harim migrations implemented
+- Next action: connect the tablet app to `characters/index.json`, expose candidate review, and promote human-approved references without making SQLite the identity source of truth
+
+The control plane takes precedence over additional bulk character generation. Hermes + the configured local Ollama model drafts repetitive character records; repository validation, Stable DNA hashing, promotion rules, and indexing remain deterministic and Codex-controlled. See `docs/character-manager.md`.
+
 This file is the project-local handoff from the broader `krchoi-X/personal-ai-knowledge` research/backlog. It exists because the Codex project attached to `XAI-Studio-Video` may not have access to that private knowledge repository or the ChatGPT conversation that produced the priorities.
 
 ## P0 — Analyze toyxyz MiniMax-H3-prompter before building more H3 prompt/timeline UI

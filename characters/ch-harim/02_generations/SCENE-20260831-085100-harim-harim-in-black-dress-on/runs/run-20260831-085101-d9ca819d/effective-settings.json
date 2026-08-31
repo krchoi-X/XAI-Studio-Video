@@ -1,0 +1,20 @@
+{
+  "settings_version": 2.73,
+  "model_type": "z_image",
+  "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 4,
+  "repeat_generation": 1,
+  "seed": 831085101,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Z Image Turbo",
+  "prompt": "Create one photorealistic image of exactly one adult character.\n\nSTABLE CHARACTER IDENTITY — preserve without reinterpretation:\nAn adult Korean woman character named Harim. Face: refined slightly cat-like face; calm dark-brown eyes with subtly upturned outer corners; defined dark eyebrows; refined straight nose with a clean bridge; small mouth with softly full lips; sharp clean jawline. Hair: long straight dark hair with realistic strand definition. Skin: soft pale skin with realistic texture and soft highlight roll-off. Body: tall-looking, slim, healthy, elegant, and believable; long arms and long legs; shoulders relatively narrow shoulders; torso long neck, slim healthy torso, no visible rib protrusion; bust natural proportion consistent with a slim healthy adult; not exaggerated; waist narrow and clearly defined; pelvis and hips moderately developed hips with a graceful waist-to-hip transition; lower body healthy believable lower-body volume supporting the developed hip line; never skeletal; body hair not established; preserve natural realism and do not invent a conspicuous trait. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nSCENE DELTA — applies only to this generation:\nPose: Sitting gracefully on a plush, neutral-toned sofa, leaning slightly back with one arm resting on the sofa armrest and her hands folded in her lap.\nExpression: Calm and serene expression, subtle smile, eyes looking directly at the camera with a soft, intelligent gaze.\nOutfit: Elegant black midi-length sleeveless dress with a high neckline, cinched at the narrow waist to highlight her silhouette, fabric draping smoothly over her hips, paired with simple black heels.\nCamera and framing: Medium shot, waist-up crop, framing from the mid-torso to the top of the head, ensuring the crop boundary ends clearly above the hips and crotch.\nLens and perspective: 85mm prime lens, f/1.8, creating a shallow depth of field that softly blurs the living room background.\nLighting: Soft, warm indoor lighting from a side window, creating gentle highlights on her soft pale skin and realistic hair texture.\nLocation: A modern, minimalist living room with a clean, neutral-toned sofa and subtle interior decor.\nAction: Relaxing comfortably on the sofa, posing for a sophisticated portrait.\nScene styling: Long straight dark hair styled neatly with realistic strand definition, minimal natural makeup to accentuate her refined cat-like facial features, small elegant silver earrings.\n\nMaintain one coherent face, one anatomically continuous adult body, one active shot scale, coordinated eyes sharing one target, realistic hands, and a complete plausible outfit covering every visible body region. If this is a waist-up portrait, crop above the hips and crotch; do not extend the frame downward unless lower garments are explicitly visible. Do not let scene variables alter the Stable Character Identity.\n\nAvoid: No other people, no exaggerated bust, no skeletal appearance, no visible rib protrusion, no messy hair, no bright harsh lighting, no cropped-off limbs, no revealing clothing that leaves the lower body accidentally unclothed.\n",
+  "output_filename": "run-20260831-085101-d9ca819d"
+}

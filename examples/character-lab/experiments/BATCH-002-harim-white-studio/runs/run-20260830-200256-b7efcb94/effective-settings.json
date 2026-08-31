@@ -1,0 +1,20 @@
+{
+  "settings_version": 2.73,
+  "model_type": "z_image",
+  "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 10,
+  "repeat_generation": 1,
+  "seed": 830202601,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Z Image Turbo",
+  "prompt": "Harim, a young adult Korean woman in her early 20s, photographed alone in a clean seamless white studio under bright, soft artificial lighting. A photorealistic premium editorial portfolio test shot for establishing a character's visual identity.\n\nShe has a tall-looking, long-limbed, elegant figure with a slim but healthy and believable body. Her waist is narrow and defined, and her hips are more developed than the East Asian average, creating a graceful waist-to-hip transition. She looks delicate and feminine, but not underweight, bony, skeletal, or emaciated. Her ribcage is not visibly protruding. Her shoulders are relatively narrow, her neck is long, and her posture is upright, natural, calm, poised, and effortless.\n\nHer face has a slightly cat-like, refined beauty: defined dark eyebrows, calm dark-brown eyes with subtly upturned outer corners, a refined straight nose with a clean bridge, a small mouth with softly full lips, and a sharp clean jawline. She has soft pale skin, long straight dark hair, natural makeup, realistic skin texture, natural hair-strand definition, and a quiet but striking presence. Her beauty feels memorable and realistic rather than flashy or artificial. Her expression is restrained and neutral, or has a nearly imperceptible smile. She looks directly or nearly directly at the camera.\n\nShow her in a full-body or three-quarter-to-full-body composition, with her complete silhouette clearly readable and her feet included when the framing is full-body. Emphasize her tall-looking natural proportions, long legs, long arms, defined waist, graceful hips, and elegant silhouette without exaggeration or anatomical distortion.\n\nShe wears a fitted sleeveless knit top or camisole in white, cream, or very pale gray, paired with high-waisted tailored shorts in a similar neutral tone. Minimal, modern styling. White pointed heels may be included as a subtle variation.\n\nThe background is pure white or soft warm white, uncluttered and seamless. Bright, even, soft studio light creates gentle shadows that preserve dimensionality around the jawline, collarbone, waist, hips, and legs. Full-frame portrait-photography look, approximately 50-85mm lens equivalent, natural perspective, no wide-angle distortion, sharp focus on the subject, soft highlight roll-off, clean elegant minimal realism.\n\nAvoid: multiple people, cropped head, cropped feet in a full-body frame, wide-angle distortion, warped anatomy, malformed hands, extra fingers or limbs, extreme hourglass exaggeration, skeletal thinness, visible ribs, plastic skin, glossy beauty retouching, heavy makeup, flashy glamour styling, clutter, props, text, logos, watermarks.\n",
+  "output_filename": "run-20260830-200256-b7efcb94"
+}

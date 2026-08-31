@@ -1,0 +1,20 @@
+{
+  "settings_version": 2.73,
+  "model_type": "z_image",
+  "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 4,
+  "repeat_generation": 1,
+  "seed": 831175642,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Z Image Turbo",
+  "prompt": "Create one photorealistic image of exactly one adult character.\n\nSTABLE CHARACTER IDENTITY — preserve without reinterpretation:\nAn adult Korean woman character named Harim. Face: small, slightly elongated oval face with a subtly cat-like overall impression; almond-shaped dark-brown eyes with subtly raised outer corners and a calm, cool, reserved gaze; defined dark eyebrows with a clean noticeable shape; refined straight nose with a clean bridge; small mouth with softly full lips; slim, clean, sharp jawline. Hair: near-black long hair reaching around mid-back, straight or softly naturally bent, fine-to-medium strands, smooth controlled shine; default Hair State A is a high ponytail near the crown with soft crown volume, thin face-framing strands, wispy fringe or side-bangs, and partially visible forehead; approved alternatives are long hair down, a slim matte black headband, or a compact updo with a minimal signature U-shaped pin. Skin: pale neutral East Asian skin tone with realistic texture and soft highlight roll-off. Body: tall-looking and long-lined through coordinated relative proportions, never vertical stretching; slim long arms including relatively long forearms, and long straight legs; shoulders relatively narrow shoulders; torso long neck, compact light upper torso, small ribcage appearance, and flat but soft lower abdomen; bust small-to-moderate natural bust, consistent across scenes; waist narrow and clearly defined; pelvis and hips pelvis subtly broader than the East Asian average, with a graceful waist transition and gentle feminine hip roundness, never exaggerated; lower body long and light lower-body impression with slim thighs and calves and healthy soft-tissue volume; body hair naturally sparse; dark brown to near-black if visible. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nSCENE DELTA — applies only to this generation:\nPose: Sitting relaxed on a modern fabric sofa, legs crossed at the ankles, leaning back slightly with one arm resting on the sofa armrest.\nExpression: Calm, cool, reserved gaze, looking directly at the camera with a serene and composed expression.\nOutfit: Completely unclothed, wearing no garments or underwear, showcasing her natural pale neutral skin tone, small-to-moderate natural bust, narrow waist, and subtle hip line.\nCamera and framing: Full body shot, eye-level, capturing her from head to toe, including the sofa and the floor area below her.\nLens and perspective: 50mm prime lens, creating a natural perspective.\nLighting: Soft, diffused natural light from a window, creating gentle highlight roll-off on her skin.\nLocation: A minimalist, modern living room with a clean, neutral-toned sofa.\nAction: Sitting still and relaxed on the sofa.\nScene styling: Near-black long hair worn down, flowing naturally over her shoulders.\n\nMaintain one coherent face, one anatomically continuous adult body, one active shot scale, coordinated eyes sharing one target, realistic hands, and a complete plausible outfit covering every visible body region. If this is a waist-up portrait, crop above the hips and crotch; do not extend the frame downward unless lower garments are explicitly visible. Do not let scene variables alter the Stable Character Identity.\n\nAvoid: No clothing, no underwear, no jewelry, no other people, no exaggerated curves, no vertical stretching, no messy hair, no heavy makeup.\n",
+  "output_filename": "run-20260831-175641-5c5098e4"
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-085906-f3e11e21",
+  "project_id": "SCENE-20260831-085715-harim-elegant-evening-lounge",
+  "prompt_id": "SCENE-20260831-085715-harim-elegant-evening-lounge-krea2",
+  "status": "needs_review",
+  "created_at": "2026-08-31T08:59:06+09:00",
+  "updated_at": "2026-08-31T09:03:01+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-44700",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\prompt.txt",
+    "sha256": "5bac62d380f84a2428db4ac68298e3a6fb95e9caeec80d290d3ee51b2dd3be02",
+    "normalized_sha256": "571eb6386f49181643ee7ace95ab4a2c0a9ff3866ca0f3820b28e49a0b7b7e50",
+    "byte_count": 3032
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 4,
+      "repeat_generation": 1,
+      "seed": 831085717,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21.jpg",
+      "sha256": "21a7eea6c7c1d45e200d9f6faf59e77552e3269b2a8ef524f1ca88b018c7757b",
+      "byte_count": 153448,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T09:03:01+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_1.jpg",
+      "sha256": "d6999714ed072db25d7a5b6b49106fc3c4be4622730eca14c18008832eb468b1",
+      "byte_count": 149061,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T09:03:01+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_2.jpg",
+      "sha256": "37514fb06143511e6a81bab67e4f7c438dc55cf8bede59f2f8c82fe9d8c6311c",
+      "byte_count": 156353,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T09:03:01+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_3.jpg",
+      "sha256": "456e72efcf80af603fd0862bbd16fd7e9fdfccc759dfed9c2d1360ca861244b3",
+      "byte_count": 148269,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T09:03:01+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 38940,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\runs\\run-20260831-085906-f3e11e21",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\runs\\run-20260831-085906-f3e11e21\\effective-settings.json",
+      "--output-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\runs\\run-20260831-085906-f3e11e21\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\runs\\run-20260831-085906-f3e11e21\\worker.stderr.log"
+  }
+}

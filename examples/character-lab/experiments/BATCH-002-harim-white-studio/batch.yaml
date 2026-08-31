@@ -1,0 +1,39 @@
+schema_version: 1
+session:
+  id: BATCH-002-harim-white-studio
+  character_id: ch-harim
+  character_name: Harim
+  title: White Studio Full-Body Portfolio
+  status: completed
+  created_at: 2026-08-30 00:00:00+09:00
+  prompt_file: prompt.txt
+  asset_root: D:\AI_Studio\library\characters\ch-harim\generations\BATCH-002-harim-white-studio\outputs
+jobs:
+- backend: local-wangp
+  model: z_image
+  count: 10
+  seed: 830202601
+  resolution: 768x1024
+  steps: 8
+  settings_file: z-image.settings.json
+  output_dir: outputs/z-image
+  status: completed
+- backend: local-wangp
+  model: krea2_turbo_moody_krea
+  count: 10
+  seed: 830202602
+  resolution: 768x1024
+  steps: 8
+  settings_file: krea2.settings.json
+  output_dir: outputs/krea2
+  status: completed
+- backend: codex-imagegen
+  model: gpt-image
+  count: 10
+  seed: null
+  prompt_file: prompt.txt
+  output_dir: outputs/gpt-image
+  status: completed
+review:
+  surface: personal-prompt-studio
+  initial_state: needs_review

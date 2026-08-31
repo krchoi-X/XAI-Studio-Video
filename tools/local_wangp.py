@@ -140,8 +140,9 @@ def json_safe(value: Any) -> Any:
 def worker(args: argparse.Namespace) -> dict[str, Any]:
     run_dir = Path(args.run_dir).resolve()
     wangp_root = Path(args.wangp_root).resolve()
-    lock = acquire_lock(wangp_root / "outputs" / ".xai-local-worker.lock")
+    lock = None
     try:
+        lock = acquire_lock(wangp_root / "outputs" / ".xai-local-worker.lock")
         sys.path.insert(0, str(wangp_root))
         from shared.api import init
 
@@ -191,7 +192,8 @@ def worker(args: argparse.Namespace) -> dict[str, Any]:
         except Exception:
             raise
     finally:
-        lock.close()
+        if lock is not None:
+            lock.close()
 
 
 def status(args: argparse.Namespace) -> dict[str, Any]:

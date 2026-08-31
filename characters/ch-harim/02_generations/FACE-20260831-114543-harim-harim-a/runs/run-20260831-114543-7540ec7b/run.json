@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-114543-7540ec7b",
+  "project_id": "FACE-20260831-114543-harim-harim-a",
+  "prompt_id": "FACE-20260831-114543-harim-harim-a-z-image",
+  "status": "needs_review",
+  "created_at": "2026-08-31T11:45:43+09:00",
+  "updated_at": "2026-08-31T11:48:43+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-3404",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\FACE-20260831-114543-harim-harim-a\\prompt.txt",
+    "sha256": "8e878b0cac5caf6770ec371f933a3f87f80dee74ca504b287aefda694604b8d8",
+    "normalized_sha256": "2257ca35d873d8512b9e79b74b804aa8c5b480ff5c2340c23d2fc8faed107c8d",
+    "byte_count": 1021
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\FACE-20260831-114543-harim-harim-a\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 8,
+      "repeat_generation": 1,
+      "seed": 831114544,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs\\z-image\\run-20260831-114543-7540ec7b.jpg",
+      "sha256": "b040f9c2c10143d06592e1f2e2d90118703f360117d6cf26db709487f75934e6",
+      "byte_count": 168490,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:48:43+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs\\z-image\\run-20260831-114543-7540ec7b_1.jpg",
+      "sha256": "c6800d2baa95489d3ec1abbb10bc455707af97cca6bb44aea6b3113b3b37d71b",
+      "byte_count": 169984,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:48:43+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs\\z-image\\run-20260831-114543-7540ec7b_2.jpg",
+      "sha256": "5591b1923a3386fcf5e97830975f798fbf41aa9e01ba95983e441bc614d93447",
+      "byte_count": 174163,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:48:43+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs\\z-image\\run-20260831-114543-7540ec7b_3.jpg",
+      "sha256": "b5499dbcac6c260c1d306c2c13b289850453ef1678e526ad3188930562f987bb",
+      "byte_count": 157626,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:48:43+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs\\z-image\\run-20260831-114543-7540ec7b_4.jpg",
+      "sha256": "50c6661bdf00425c4076e92b7513cd63de039cf06f7dc28590b1d4eab6dd601b",
+      "byte_count": 166207,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:48:43+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs\\z-image\\run-20260831-114543-7540ec7b_5.jpg",
+      "sha256": "fb26e00342c9e6edeef57839f0a723f448e2c4ef63cc9192f8c336d302436a79",
+      "byte_count": 151490,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:48:43+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs\\z-image\\run-20260831-114543-7540ec7b_6.jpg",
+      "sha256": "c0a64f583c3d2e93f6801041a2abe88871614c43dfd1ac32954f32c60bc6280a",
+      "byte_count": 160356,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:48:43+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs\\z-image\\run-20260831-114543-7540ec7b_7.jpg",
+      "sha256": "23fc098c3eec86f895d860711b405d1d036cd09c8bd6fb41fa33a541aab41d85",
+      "byte_count": 174342,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:48:43+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 30280,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\FACE-20260831-114543-harim-harim-a\\runs\\run-20260831-114543-7540ec7b",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\FACE-20260831-114543-harim-harim-a\\runs\\run-20260831-114543-7540ec7b\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\FACE-20260831-114543-harim-harim-a\\runs\\run-20260831-114543-7540ec7b\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\FACE-20260831-114543-harim-harim-a\\runs\\run-20260831-114543-7540ec7b\\worker.stderr.log"
+  }
+}

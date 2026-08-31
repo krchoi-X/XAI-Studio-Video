@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "FACE-20260831-114543-harim-harim-a",
+    "character_id": "ch-harim",
+    "character_name": "하림",
+    "romanized_name": "Harim",
+    "title": "HARIM-A face discovery",
+    "phase": "face-discovery",
+    "direction": "HARIM-A",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\FACE-20260831-114543-harim-harim-a\\outputs",
+    "created_at": "2026-08-31T02:45:43+00:00",
+    "prompt_file": "prompt.txt",
+    "metadata_file": "metadata.json",
+    "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "z_image",
+      "count": 8,
+      "seed": 831114544,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "z-image.settings.json",
+      "output_dir": "outputs/z-image",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\FACE-20260831-114543-harim-harim-a\\runs\\run-20260831-114543-7540ec7b"
+    },
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 8,
+      "seed": 831114545,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\FACE-20260831-114543-harim-harim-a\\runs\\run-20260831-114853-005aedf4"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "taxonomy": "face-discovery",
+    "initial_state": "face-exploration"
+  }
+}

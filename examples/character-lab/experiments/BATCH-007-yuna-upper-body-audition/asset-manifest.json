@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "migrated_at": "2026-08-31T00:13:01+00:00",
+  "asset_root": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs",
+  "artifacts": [
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91.jpg",
+      "sha256": "0643d748780122964433e49299aa7e2f9509dded3cdbe696105fb064d2cb2928",
+      "byte_count": 217041,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91_1.jpg",
+      "sha256": "c71783425666a785821ff04e92270674820991ddd94725f51cc190bc4b894499",
+      "byte_count": 222928,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91_1.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91_2.jpg",
+      "sha256": "26c689739a095f3254b7cdee326f65c302ff018b57b285e2479f4ce211a71c59",
+      "byte_count": 221689,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91_2.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91_3.jpg",
+      "sha256": "596952ae4da31d42a44d523a7892149c6600d9fe2e730a2b9115018f92b6e962",
+      "byte_count": 214218,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91_3.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91_4.jpg",
+      "sha256": "90dea05716179b9c31b2f52a2fa2327b80a597947ce6c6c0782ba9893e521ea0",
+      "byte_count": 221827,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91_4.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91_5.jpg",
+      "sha256": "9157cb5cc493bf63e1100c59b7bb5aa5085eee60625142378da3a69e8e49163f",
+      "byte_count": 213157,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91_5.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91_6.jpg",
+      "sha256": "199c39d43bbceccb05eb70766be84b9bb3150aeeb6ec7582f3f92901bf577db4",
+      "byte_count": 215840,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91_6.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91_7.jpg",
+      "sha256": "f0086784d75ef651d92f71992469531e73e0e2ed85592a7e3cd22c1d0394cb3d",
+      "byte_count": 210343,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91_7.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91_8.jpg",
+      "sha256": "f1d91de1f645db7b463560d75c508f791de0a4af09a1f518fe1bec0e33782501",
+      "byte_count": 218449,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91_8.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-211504-690c3a91_9.jpg",
+      "sha256": "fa3731c428d281d462850c80efa200eed2021eb648597b3aa0acf38ebedbccec",
+      "byte_count": 212849,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\krea2\\run-20260830-211504-690c3a91_9.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a.jpg",
+      "sha256": "8ce8ec6a612763982b97db74539fbc7b13952d1b926d2ccf53f4caecf09f4362",
+      "byte_count": 190838,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a_1.jpg",
+      "sha256": "cfd877c5a9cfff9b84aab01a39eccc86b85838d3675c91e1380881a3d46c86c6",
+      "byte_count": 211902,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a_1.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a_2.jpg",
+      "sha256": "cd7d0b737e8a6c535009089f22176f5041df69718586611d9639e61ce807d824",
+      "byte_count": 190860,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a_2.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a_3.jpg",
+      "sha256": "18f07f5f177d49397a61e2888726c97aecee9723e0c73ebe7f99f6ed7317a418",
+      "byte_count": 188306,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a_3.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a_4.jpg",
+      "sha256": "bca6672f288b00af86a280e832b87638f77a9ac86b94cefe9ee8d8fba81bc514",
+      "byte_count": 196043,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a_4.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a_5.jpg",
+      "sha256": "3e68b0a8a2b0603103ae029089f834669ec7b7115246e987229ef3359c3f5672",
+      "byte_count": 176464,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a_5.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a_6.jpg",
+      "sha256": "138125aa72e32e774ec7698b35008cfec43e30cd0089a979b55450eed49d7453",
+      "byte_count": 187511,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a_6.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a_7.jpg",
+      "sha256": "5a9e7b4ea26cdcfb53b35abc2a471b397da1413ae75807a1d79ee37b3c5690c7",
+      "byte_count": 203166,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a_7.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a_8.jpg",
+      "sha256": "920ff97cfcc164e2d6fa0886908857c58f43cd8604ab4e049c87cde71b77dfe3",
+      "byte_count": 223915,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a_8.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-211134-9a12163a_9.jpg",
+      "sha256": "da264738f5a74bde4d870aed4b126fc456f32f0fb393ac2d1737627167c3d4d3",
+      "byte_count": 192073,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-yuna\\generations\\BATCH-007-yuna-upper-body-audition\\outputs\\z-image\\run-20260830-211134-9a12163a_9.jpg"
+    }
+  ]
+}

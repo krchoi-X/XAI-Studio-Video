@@ -1,0 +1,105 @@
+{
+  "run_id": "run-20260830-200507-5a90fc0e",
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e.jpg",
+      "sha256": "502c38d60919161af49cbd449d88a91db69fa91faabcfcc6f3bda6add4194352",
+      "byte_count": 94372,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:39+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_1.jpg",
+      "sha256": "596147afa416faf046c4a3e42457885b3d368a057363212cd8712fc5251fe71f",
+      "byte_count": 86527,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:39+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_2.jpg",
+      "sha256": "5c2ec550bf297aa7dacdbc882901b493f0255e7d2dd074d28bb51aa64149f546",
+      "byte_count": 88733,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:39+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_3.jpg",
+      "sha256": "b4597cfda41a5127669a712a314d8c4c836ca95ee87740428543ce4bac47a81f",
+      "byte_count": 86184,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:39+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_4.jpg",
+      "sha256": "978be7a63f60a4e9957ef299b7a894da887989a418349006247d973617384117",
+      "byte_count": 88128,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:40+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_5.jpg",
+      "sha256": "1dcd73e438ae0695901a44ad94ec356287b333a0416722864d00e3689049e5a6",
+      "byte_count": 86561,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:40+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_6.jpg",
+      "sha256": "0f536c4ec8257b17301fa007022c3e1327158ee6f98033a80d710f46be017c01",
+      "byte_count": 88984,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:40+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_7.jpg",
+      "sha256": "cb28709f9ee432a8e992d548f8f7021e97825618297937fa7ab0d2d86a03adb5",
+      "byte_count": 87931,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:40+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_8.jpg",
+      "sha256": "ad425ca6fe49bd93290ae9874b319cb2c59a08cbad1f7ab1dca498cc1633f700",
+      "byte_count": 87236,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:40+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_9.jpg",
+      "sha256": "2b75ec814c12bb5ba54c23b999bc2de7fdb9f9b9c58ebac133676895e03c6209",
+      "byte_count": 87080,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:08:40+09:00"
+    }
+  ]
+}

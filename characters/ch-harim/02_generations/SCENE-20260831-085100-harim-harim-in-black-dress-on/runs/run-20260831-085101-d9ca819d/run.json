@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-085101-d9ca819d",
+  "project_id": "SCENE-20260831-085100-harim-harim-in-black-dress-on",
+  "prompt_id": "SCENE-20260831-085100-harim-harim-in-black-dress-on-z-image",
+  "status": "needs_review",
+  "created_at": "2026-08-31T08:51:01+09:00",
+  "updated_at": "2026-08-31T08:55:53+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-23384",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\prompt.txt",
+    "sha256": "8e05bbaa82212da3275a2ac4db9e23c10b937c241879b7ceb87827668f64cfe3",
+    "normalized_sha256": "be817e5569302f6ac2157cccce46b0540edb127035cf9b7d5a03f0cd1139a7e0",
+    "byte_count": 3250
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 4,
+      "repeat_generation": 1,
+      "seed": 831085101,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs\\z-image\\run-20260831-085101-d9ca819d.jpg",
+      "sha256": "bdb5ebdc307a8d315c101fe781223a216e0a46553800d064b62c52a6f3909ef8",
+      "byte_count": 162456,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:55:52+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs\\z-image\\run-20260831-085101-d9ca819d_1.jpg",
+      "sha256": "33dab5a35c9489968edad0cfdb6b2da0c86e14ffb2796fc455bacee4a7ef88cb",
+      "byte_count": 161888,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:55:52+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs\\z-image\\run-20260831-085101-d9ca819d_2.jpg",
+      "sha256": "4d7b1cda0e41d94c7bd64ba5cf7370dc700358c2b53b679e87eb808b35b6e861",
+      "byte_count": 169257,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:55:53+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs\\z-image\\run-20260831-085101-d9ca819d_3.jpg",
+      "sha256": "a761fa5542c25ba5de22593d33530967f999c73d58cb01939c3d3625fe90dbcb",
+      "byte_count": 161504,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:55:53+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 50688,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\runs\\run-20260831-085101-d9ca819d",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\runs\\run-20260831-085101-d9ca819d\\effective-settings.json",
+      "--output-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\runs\\run-20260831-085101-d9ca819d\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\runs\\run-20260831-085101-d9ca819d\\worker.stderr.log"
+  }
+}

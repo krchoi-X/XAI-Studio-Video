@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "FACE-20260831-115317-jung-haewon-haewon-a",
+    "character_id": "ch-jung-haewon",
+    "character_name": "정해원",
+    "romanized_name": "Jung Haewon",
+    "title": "HAEWON-A face discovery",
+    "phase": "face-discovery",
+    "direction": "HAEWON-A",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs",
+    "created_at": "2026-08-31T02:53:17+00:00",
+    "prompt_file": "prompt.txt",
+    "metadata_file": "metadata.json",
+    "stable_dna_sha256": "7be607bafe72e7a08a765d8d765c259db19808fab014b7ee385d541a3906fac2"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "z_image",
+      "count": 8,
+      "seed": 831115318,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "z-image.settings.json",
+      "output_dir": "outputs/z-image",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\FACE-20260831-115317-jung-haewon-haewon-a\\runs\\run-20260831-115317-b53cf7fa"
+    },
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 8,
+      "seed": 831115319,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\FACE-20260831-115317-jung-haewon-haewon-a\\runs\\run-20260831-115617-30c2a32f"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "taxonomy": "face-discovery",
+    "initial_state": "face-exploration"
+  }
+}

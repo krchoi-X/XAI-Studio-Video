@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260831-194820-jung-haewon-scene-variation",
+  "character_id": "ch-jung-haewon",
+  "character_version": 1,
+  "stable_dna_sha256": "7be607bafe72e7a08a765d8d765c259db19808fab014b7ee385d541a3906fac2",
+  "created_at": "2026-08-31T10:48:20+00:00",
+  "created_by": "web-prompt-pipeline",
+  "local_model": null,
+  "source_request": "자연스러운 긴 웨이브",
+  "runtime_prompt_sha256": "fe80ad840777e9a585e5979fe80ec31fca6a186216727201f2b33a75b0d8bf25",
+  "scene_delta": null,
+  "prompt_strategy": "identity-merge",
+  "immutable_constraints": {}
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-193808-1f88e8a3",
+  "project_id": "SCENE-20260831-193808-jung-haewon-scene-variation",
+  "prompt_id": "SCENE-20260831-193808-jung-haewon-scene-variation-z-image",
+  "status": "needs_review",
+  "created_at": "2026-08-31T19:38:08+09:00",
+  "updated_at": "2026-08-31T19:40:08+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-37792",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\prompt.txt",
+    "sha256": "2a4162e852476687f974119f7979b97d82188dc10a861b183d9942aec19a56f8",
+    "normalized_sha256": "85910fb8e100c68ccab8c05447af9a24f93dd472a7f537bcc46b89ddfe9a99fb",
+    "byte_count": 2172
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 5,
+      "repeat_generation": 1,
+      "seed": 831193809,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-193808-1f88e8a3.jpg",
+      "sha256": "f5356b30bc934a76d0472cfdd9601aa15fd3440d4c60dd3a6b53cca2104f8102",
+      "byte_count": 116552,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:40:08+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-193808-1f88e8a3_1.jpg",
+      "sha256": "d9daa0fcbf895bc27cb588d82ff8723e4868dd94fb836465cdc5072f2c854a6f",
+      "byte_count": 111861,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:40:08+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-193808-1f88e8a3_2.jpg",
+      "sha256": "f277287437e6e80cf50654bdca7f1fe931fab8d83c78a7eb50ce2c650e59552e",
+      "byte_count": 126765,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:40:08+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-193808-1f88e8a3_3.jpg",
+      "sha256": "3f8743a58e6920c579d594baff1092c5781463f0850c9b3dc7bb4dd31eac5b74",
+      "byte_count": 115488,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:40:08+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-193808-1f88e8a3_4.jpg",
+      "sha256": "a106c438f79aa883c0ba891ed9c1d2e74650dff9c89a682d712b7cd089e42c5c",
+      "byte_count": 130755,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:40:08+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 45144,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\runs\\run-20260831-193808-1f88e8a3",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\runs\\run-20260831-193808-1f88e8a3\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\runs\\run-20260831-193808-1f88e8a3\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-193808-jung-haewon-scene-variation\\runs\\run-20260831-193808-1f88e8a3\\worker.stderr.log"
+  }
+}

@@ -1,0 +1,14 @@
+schema_version: 1
+batch_id: BATCH-001
+selections: []
+
+# Example:
+# selections:
+#   - selected_file: z-image-003.png
+#     source_file: ../outputs/z-image/z-image-003.png
+#     engine: z-image
+#     prompt_file: ../engine-prompts/z-image.md
+#     settings_file: ../batch.yaml
+#     selection_stage: engine-survivor
+#     selected_by: user
+#     reason: "Distinctive face, coherent eyes, natural skin; strongest identity candidate."

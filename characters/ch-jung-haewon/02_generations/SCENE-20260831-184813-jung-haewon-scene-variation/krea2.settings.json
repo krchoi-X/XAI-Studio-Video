@@ -1,0 +1,19 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_turbo_moody_krea",
+  "base_model_type": "krea2_turbo",
+  "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 5,
+  "repeat_generation": 1,
+  "seed": 831184815,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Moody Krea 2 V7 INT8"
+}

@@ -1,0 +1,45 @@
+{
+  "run_id": "run-20260831-175641-5c5098e4",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-175641-harim-harim-nude-on-sofa\\outputs\\z-image\\run-20260831-175641-5c5098e4.jpg",
+      "sha256": "4e01b9e28dc5702034955de7f4dc8907565fb0792963e5f71e8f59a997b667dd",
+      "byte_count": 169882,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T18:03:26+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-175641-harim-harim-nude-on-sofa\\outputs\\z-image\\run-20260831-175641-5c5098e4_1.jpg",
+      "sha256": "20956d1b6dfaa1fa967ae1022e97e2f8d1d91e253e0c9e3353482c63c55c0183",
+      "byte_count": 166908,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T18:03:26+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-175641-harim-harim-nude-on-sofa\\outputs\\z-image\\run-20260831-175641-5c5098e4_2.jpg",
+      "sha256": "d473ba5b384ecdf986e4d77893fbf3d723a4243b6c519d04d708ee3d3d397003",
+      "byte_count": 174210,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T18:03:26+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-175641-harim-harim-nude-on-sofa\\outputs\\z-image\\run-20260831-175641-5c5098e4_3.jpg",
+      "sha256": "2e8be70478f227978479e5949688356f7a217db7007f0c7b83abf66dd790130e",
+      "byte_count": 178031,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T18:03:26+09:00"
+    }
+  ]
+}

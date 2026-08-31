@@ -1,0 +1,28 @@
+batch_id,engine,filename,prompt_variant,seed,identity,realism,eyes,skin_lips,distinctiveness,selected,selection_stage,notes
+BATCH-001,gpt-image-exploratory,gpt-image-01-structured.png,structured-normalization,not-provided,,,,,,false,excluded,"Semantically equivalent structured prompt; not a strict verbatim comparison"
+BATCH-001,gpt-image,gpt-image-02.png,common-prompt-v1-verbatim,not-provided,,,,,,false,unreviewed,
+BATCH-001,gpt-image,gpt-image-03.png,common-prompt-v1-verbatim,not-provided,,,,,,false,unreviewed,
+BATCH-001,gpt-image,gpt-image-04.png,common-prompt-v1-verbatim,not-provided,,,,,,false,unreviewed,
+BATCH-001,gpt-image,gpt-image-05.png,common-prompt-v1-verbatim,not-provided,,,,,,false,unreviewed,
+BATCH-001,gpt-image,gpt-image-06.png,common-prompt-v1-verbatim,not-provided,,,,,,false,unreviewed,
+BATCH-001,krea2,krea2-01.jpg,common-prompt-v1-wangp-normalized,242498957,,,,,,false,unreviewed,
+BATCH-001,krea2,krea2-02.jpg,common-prompt-v1-wangp-normalized,242498957,,,,,,false,unreviewed,
+BATCH-001,krea2,krea2-03.jpg,common-prompt-v1-wangp-normalized,242498957,,,,,,false,unreviewed,
+BATCH-001,krea2,krea2-04.jpg,common-prompt-v1-wangp-normalized,242498957,,,,,,false,unreviewed,
+BATCH-001,krea2,krea2-05.jpg,common-prompt-v1-wangp-normalized,242498957,,,,,,false,unreviewed,
+BATCH-001,z-image,z-image-01.jpg,common-prompt-v1-wangp-normalized,5109044,,,,,,false,unreviewed,
+BATCH-001,z-image,z-image-02.jpg,common-prompt-v1-wangp-normalized,5109044,,,,,,false,unreviewed,
+BATCH-001,z-image,z-image-03.jpg,common-prompt-v1-wangp-normalized,5109044,,,,,,false,unreviewed,
+BATCH-001,z-image,z-image-04.jpg,common-prompt-v1-wangp-normalized,5109044,,,,,,false,unreviewed,
+BATCH-001,z-image,z-image-05.jpg,common-prompt-v1-wangp-normalized,5109044,,,,,,false,unreviewed,
+BATCH-001,krea2-large,krea2-large-01.png,paid-single-candidate-venice-normalized,23045818,,,,,,false,unreviewed,"Paid model; only one candidate generated"
+BATCH-001,qwen-image3-pro,qwen-image3-pro-01.png,paid-single-candidate-venice-normalized,17001595,,,,,,false,unreviewed,"Paid model; only one candidate generated"
+BATCH-001,chroma,chroma-01.png,common-prompt-v1-venice-normalized,46141571,,,,,,false,unreviewed,
+BATCH-001,chroma,chroma-02.png,common-prompt-v1-venice-normalized,73178285,,,,,,false,unreviewed,
+BATCH-001,chroma,chroma-03.png,common-prompt-v1-venice-normalized,72069576,,,,,,false,unreviewed,
+BATCH-001,chroma,chroma-04.png,common-prompt-v1-venice-normalized,10714853,,,,,,false,unreviewed,
+BATCH-001,chroma,chroma-05.png,common-prompt-v1-venice-normalized,9211667,,,,,,false,unreviewed,
+BATCH-001,grok-image,grok-image-01.jpg,common-prompt-v1-user-reported,not-exposed,,,,,,false,unreviewed,"Prompt/settings not embedded; UUID d04075ad-f2ed-459e-84f7-4ca7e2c0ea7d"
+BATCH-001,grok-image,grok-image-02.jpg,common-prompt-v1-user-reported,not-exposed,,,,,,false,unreviewed,"Prompt/settings not embedded; UUID 709e686c-eb88-43ac-8d8f-8427f0875487"
+BATCH-001,grok-image,grok-image-03.jpg,common-prompt-v1-user-reported,not-exposed,,,,,,false,unreviewed,"Prompt/settings not embedded; UUID 71adc754-fb5e-402c-8786-a9021af4c75b"
+BATCH-001,grok-image,grok-image-04.jpg,common-prompt-v1-user-reported,not-exposed,,,,,,false,unreviewed,"Prompt/settings not embedded; UUID bc42da61-81b4-4e80-9bd3-653368ca2ea5"

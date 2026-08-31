@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "migrated_at": "2026-08-31T00:12:59+00:00",
+  "asset_root": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs",
+  "artifacts": [
+    {
+      "relative_path": "gpt-image/gpt-image-01.png",
+      "sha256": "6ee0ae03988a8e9c72b31739d2e63f9e68065940e4486f288460473d210a88ec",
+      "byte_count": 1479081,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-01.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-02.png",
+      "sha256": "9e5b517bb0b3d270cafee870f01570ba30c0f96c899f51d74d9e8990a883a0bf",
+      "byte_count": 1553699,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-02.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-03.png",
+      "sha256": "139c860e65dca8ab996f1fc60c67f17f7ff81471f1f00dcdb2cf52a388929c33",
+      "byte_count": 1481640,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-03.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-04.png",
+      "sha256": "a6cdcf194129807e5e54912f9b5b9a342cdfde908e61e6ea7af3a6d7943584ef",
+      "byte_count": 1466464,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-04.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-05.png",
+      "sha256": "97d3ed12ad0cd8854c17a29d181f0c1aa8c25d475ccbeca7a389edf9c23d3ee8",
+      "byte_count": 1609411,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-05.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-06.png",
+      "sha256": "bbbfafe481cf3fcf90a97176cdc1d5a144267a11a6b50ba6e585f21004115dcf",
+      "byte_count": 1459907,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-06.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-07.png",
+      "sha256": "20dc6e62a7774ad441389e2e10d825b9c11d18a99c2c9b93a1862746f1c4a0a1",
+      "byte_count": 1382795,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-07.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-08.png",
+      "sha256": "fbdfc6d410bcd0e0f3ffa8b8a7536b5cb5a3c2f9bf37511be9427081ed1d1719",
+      "byte_count": 1440929,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-08.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-09.png",
+      "sha256": "24c3f0519112769bd9230f4bf51e3dca6f3357ccd3ea81162cf0278458db5212",
+      "byte_count": 1620779,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-09.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-10.png",
+      "sha256": "36c1647041ae8d07d8787670b11b0c8727ee7371ea92a8cc65c469d75d91672e",
+      "byte_count": 1531584,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\gpt-image\\gpt-image-10.png"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b.jpg",
+      "sha256": "635b8c4c23a71da62373385a848d428eaf6fe472f354c4b6e8b4e82019a38d8f",
+      "byte_count": 113310,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b_1.jpg",
+      "sha256": "e796ee780f4c963b4af08181627c9df25dbe8bcca71916e1934c2ac2d1453b51",
+      "byte_count": 112411,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b_1.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b_2.jpg",
+      "sha256": "1229ac235a3f2599d5a2de03ad1664076aa1e340d29a458bdb53dd73e3dd46c0",
+      "byte_count": 115502,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b_2.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b_3.jpg",
+      "sha256": "bcf8ba65ada5bbce0a20c6b2243c889739273f2e882d40c3ffaec0f98381c1cb",
+      "byte_count": 115291,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b_3.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b_4.jpg",
+      "sha256": "af2ee80e20681d853bf574d931ac9e1a02e59e7c0c2b93eebe45bd8f96803f1b",
+      "byte_count": 116073,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b_4.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b_5.jpg",
+      "sha256": "5514832f1a5ca71ae19a79f3902f72f7744e86c1e8b2d8198887e0a7efc22e19",
+      "byte_count": 115623,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b_5.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b_6.jpg",
+      "sha256": "b4e64dc887858987a793349ed407768190359d96ccf0878d0380f15f652bd976",
+      "byte_count": 113870,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b_6.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b_7.jpg",
+      "sha256": "dda35b1240f33f8600f60a058fdc46e3597164169ef544853b0c94a929336360",
+      "byte_count": 116404,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b_7.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b_8.jpg",
+      "sha256": "1b94ed1125abbce09a2a78824c16da70ea057a46bc83f9189e46f049bd586c76",
+      "byte_count": 113691,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b_8.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-201111-5be4805b_9.jpg",
+      "sha256": "9cff947af3cd5b54cfea69809e76adfc287851aaf8da6de9dc5bcd3edbc5af66",
+      "byte_count": 116288,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\krea2\\run-20260830-201111-5be4805b_9.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e.jpg",
+      "sha256": "502c38d60919161af49cbd449d88a91db69fa91faabcfcc6f3bda6add4194352",
+      "byte_count": 94372,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e_1.jpg",
+      "sha256": "596147afa416faf046c4a3e42457885b3d368a057363212cd8712fc5251fe71f",
+      "byte_count": 86527,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_1.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e_2.jpg",
+      "sha256": "5c2ec550bf297aa7dacdbc882901b493f0255e7d2dd074d28bb51aa64149f546",
+      "byte_count": 88733,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_2.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e_3.jpg",
+      "sha256": "b4597cfda41a5127669a712a314d8c4c836ca95ee87740428543ce4bac47a81f",
+      "byte_count": 86184,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_3.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e_4.jpg",
+      "sha256": "978be7a63f60a4e9957ef299b7a894da887989a418349006247d973617384117",
+      "byte_count": 88128,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_4.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e_5.jpg",
+      "sha256": "1dcd73e438ae0695901a44ad94ec356287b333a0416722864d00e3689049e5a6",
+      "byte_count": 86561,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_5.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e_6.jpg",
+      "sha256": "0f536c4ec8257b17301fa007022c3e1327158ee6f98033a80d710f46be017c01",
+      "byte_count": 88984,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_6.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e_7.jpg",
+      "sha256": "cb28709f9ee432a8e992d548f8f7021e97825618297937fa7ab0d2d86a03adb5",
+      "byte_count": 87931,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_7.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e_8.jpg",
+      "sha256": "ad425ca6fe49bd93290ae9874b319cb2c59a08cbad1f7ab1dca498cc1633f700",
+      "byte_count": 87236,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_8.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-200507-5a90fc0e_9.jpg",
+      "sha256": "2b75ec814c12bb5ba54c23b999bc2de7fdb9f9b9c58ebac133676895e03c6209",
+      "byte_count": 87080,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\BATCH-002-harim-white-studio\\outputs\\z-image\\run-20260830-200507-5a90fc0e_9.jpg"
+    }
+  ]
+}

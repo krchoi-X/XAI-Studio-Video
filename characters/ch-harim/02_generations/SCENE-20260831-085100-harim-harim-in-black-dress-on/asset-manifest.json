@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "migrated_at": "2026-08-31T00:12:58+00:00",
+  "asset_root": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs",
+  "artifacts": [
+    {
+      "relative_path": "z-image/run-20260831-085101-d9ca819d.jpg",
+      "sha256": "bdb5ebdc307a8d315c101fe781223a216e0a46553800d064b62c52a6f3909ef8",
+      "byte_count": 162456,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs\\z-image\\run-20260831-085101-d9ca819d.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260831-085101-d9ca819d_1.jpg",
+      "sha256": "33dab5a35c9489968edad0cfdb6b2da0c86e14ffb2796fc455bacee4a7ef88cb",
+      "byte_count": 161888,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs\\z-image\\run-20260831-085101-d9ca819d_1.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260831-085101-d9ca819d_2.jpg",
+      "sha256": "4d7b1cda0e41d94c7bd64ba5cf7370dc700358c2b53b679e87eb808b35b6e861",
+      "byte_count": 169257,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs\\z-image\\run-20260831-085101-d9ca819d_2.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260831-085101-d9ca819d_3.jpg",
+      "sha256": "a761fa5542c25ba5de22593d33530967f999c73d58cb01939c3d3625fe90dbcb",
+      "byte_count": 161504,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085100-harim-harim-in-black-dress-on\\outputs\\z-image\\run-20260831-085101-d9ca819d_3.jpg"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "migrated_at": "2026-08-31T00:12:58+00:00",
+  "asset_root": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\outputs",
+  "artifacts": [
+    {
+      "relative_path": "krea2/run-20260831-083125-8437b3a4.jpg",
+      "sha256": "304fe2b59c7980274233dc329524eedb63289e9204c470b1de139522c9126ea7",
+      "byte_count": 152895,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\outputs\\krea2\\run-20260831-083125-8437b3a4.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260831-082934-f99ac3fd.jpg",
+      "sha256": "4adfd1738d8ef6e84e6a9bec6f9f8cc07df7c7d8d3198631c40c95592bdc77dd",
+      "byte_count": 114124,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\outputs\\z-image\\run-20260831-082934-f99ac3fd.jpg"
+    }
+  ]
+}

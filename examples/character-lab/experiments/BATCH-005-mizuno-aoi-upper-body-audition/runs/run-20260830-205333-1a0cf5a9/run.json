@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260830-205333-1a0cf5a9",
+  "project_id": "BATCH-005-mizuno-aoi-upper-body-audition",
+  "prompt_id": "BATCH-005-mizuno-aoi-upper-body-audition-v1",
+  "status": "needs_review",
+  "created_at": "2026-08-30T20:53:33+09:00",
+  "updated_at": "2026-08-30T20:57:20+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-33396",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\prompt.txt",
+    "sha256": "31e66cf39306330df4aa531b4cb518a1ced81d098b2c914baa108b9743f4789e",
+    "normalized_sha256": "65e10bac696dbdeaccab58776bd800f262c127ba96511fd326b85d96198e46e2",
+    "byte_count": 2592
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 10,
+      "repeat_generation": 1,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "seed": 830202651,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9.jpg",
+      "sha256": "df3f33c702d98a1f5ce59932ce10cde3c2fb543eb20b838d96906880b475e983",
+      "byte_count": 154329,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:19+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9_1.jpg",
+      "sha256": "a8abcdb3a51f1fc8bf21521049ac384ce43707a8dc248e30bb775208417d1af3",
+      "byte_count": 146707,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:19+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9_2.jpg",
+      "sha256": "16ac8710fe5ba15a36e7cefbb4affd9c56facfa477694d2f3550cfb4584ede9e",
+      "byte_count": 151603,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:19+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9_3.jpg",
+      "sha256": "c75bca55fc6f5898b8b5bebb5a85f6226996528fd6618e43d53affa2f33a862e",
+      "byte_count": 167492,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:20+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9_4.jpg",
+      "sha256": "3d989f7ccfb6a7cbee4509e620d21585a411dbd55239b3914cb7463fb89f9ea0",
+      "byte_count": 156387,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:20+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9_5.jpg",
+      "sha256": "9df171b3da4cfb6e5b845c7777df1cdfabc627fb1d83188cec6fcf2f321de75d",
+      "byte_count": 151362,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:20+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9_6.jpg",
+      "sha256": "bafaa6123f71e06f10f94e0ceb62ee97b7c428515808b7e857d065535ae4fa33",
+      "byte_count": 167368,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:20+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9_7.jpg",
+      "sha256": "740bbb7c649000e8aca8106f0f42597742567ee192706f1dfefe6a9eea205821",
+      "byte_count": 154080,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:20+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9_8.jpg",
+      "sha256": "ed09cb0babe109b6e56b7fd2a923cc58db943ecf24ed148693b585fed70b477c",
+      "byte_count": 162637,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:20+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image\\run-20260830-205333-1a0cf5a9_9.jpg",
+      "sha256": "63ffe772ecdfbe829e63bc6931f5a8f8bbd6f6c3f92489993ebd55c68e908a98",
+      "byte_count": 157684,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T20:57:20+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 28304,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\runs\\run-20260830-205333-1a0cf5a9",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\runs\\run-20260830-205333-1a0cf5a9\\effective-settings.json",
+      "--output-dir",
+      "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\runs\\run-20260830-205333-1a0cf5a9\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-005-mizuno-aoi-upper-body-audition\\runs\\run-20260830-205333-1a0cf5a9\\worker.stderr.log"
+  }
+}

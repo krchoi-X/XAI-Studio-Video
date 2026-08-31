@@ -1,0 +1,25 @@
+{
+  "run_id": "run-20260831-143820-7a842f7e",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\outputs\\z-image\\run-20260831-143820-7a842f7e.jpg",
+      "sha256": "66ecf1e8645b1e98d150851a212e1d77c409d27b74d1e57f41819f49630371b0",
+      "byte_count": 163141,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T14:39:56+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-143819-jung-haewon-surprise-shower-greeting\\outputs\\z-image\\run-20260831-143820-7a842f7e_1.jpg",
+      "sha256": "9895e3ee4a2b071a13c38352ced4e96334cdae16b6c807efb8875b4eba7d2a1a",
+      "byte_count": 157691,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T14:39:57+09:00"
+    }
+  ]
+}

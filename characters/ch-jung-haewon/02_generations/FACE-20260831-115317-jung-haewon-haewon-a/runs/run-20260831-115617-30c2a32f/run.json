@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-115617-30c2a32f",
+  "project_id": "FACE-20260831-115317-jung-haewon-haewon-a",
+  "prompt_id": "FACE-20260831-115317-jung-haewon-haewon-a-krea2",
+  "status": "needs_review",
+  "created_at": "2026-08-31T11:56:17+09:00",
+  "updated_at": "2026-08-31T12:00:33+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-52032",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\FACE-20260831-115317-jung-haewon-haewon-a\\prompt.txt",
+    "sha256": "58dbf182dc107fa3c70d9e4370df1e38aa34a1450f285909827972c7bfbfb466",
+    "normalized_sha256": "658427058200ca7122af327c7051c8d56642271fc6a47c624aa33fec13781c8e",
+    "byte_count": 948
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\FACE-20260831-115317-jung-haewon-haewon-a\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 8,
+      "repeat_generation": 1,
+      "seed": 831115319,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\krea2\\run-20260831-115617-30c2a32f.jpg",
+      "sha256": "b84571e809c0c09949f7143ab5fbebd80d295212a79e03f647d6166907609c4c",
+      "byte_count": 164964,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T12:00:32+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\krea2\\run-20260831-115617-30c2a32f_1.jpg",
+      "sha256": "b6de72ec38b95fe8a2c96db1ed695cfb7e69c531e4123cb1070d4dadda87cdd7",
+      "byte_count": 169685,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T12:00:32+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\krea2\\run-20260831-115617-30c2a32f_2.jpg",
+      "sha256": "238983c817735bee648d3029875ba30c18e955a74dbd1eeeda92e07bd585e858",
+      "byte_count": 176947,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T12:00:32+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\krea2\\run-20260831-115617-30c2a32f_3.jpg",
+      "sha256": "44ba620bf33a99201420d9fb34d1a1ca9ce32d23a142e782f4c4f00cbd9c0986",
+      "byte_count": 170738,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T12:00:32+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\krea2\\run-20260831-115617-30c2a32f_4.jpg",
+      "sha256": "af0b19f6f881a46f4f34b2207fe46ca5d879479944a737bf5c6e12f150b560ed",
+      "byte_count": 164698,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T12:00:32+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\krea2\\run-20260831-115617-30c2a32f_5.jpg",
+      "sha256": "96c21c7f2d19a7804ab1e51d0187debab07d76a9bcfc44209e4244559a9a1a27",
+      "byte_count": 174395,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T12:00:33+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\krea2\\run-20260831-115617-30c2a32f_6.jpg",
+      "sha256": "f72749346c4a5800b4166887fc4966eb64bf7a28dcbc3a58511e6492927cc333",
+      "byte_count": 178234,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T12:00:33+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\krea2\\run-20260831-115617-30c2a32f_7.jpg",
+      "sha256": "f939e3c8327748f399fc945beb019606bda714a98a6efd8bb8eaf48c93096578",
+      "byte_count": 167550,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T12:00:33+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 51656,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\FACE-20260831-115317-jung-haewon-haewon-a\\runs\\run-20260831-115617-30c2a32f",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\FACE-20260831-115317-jung-haewon-haewon-a\\runs\\run-20260831-115617-30c2a32f\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\FACE-20260831-115317-jung-haewon-haewon-a\\runs\\run-20260831-115617-30c2a32f\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\FACE-20260831-115317-jung-haewon-haewon-a\\runs\\run-20260831-115617-30c2a32f\\worker.stderr.log"
+  }
+}

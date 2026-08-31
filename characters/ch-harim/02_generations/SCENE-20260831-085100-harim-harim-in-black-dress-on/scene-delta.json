@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260831-085100-harim-harim-in-black-dress-on",
+  "character_id": "ch-harim",
+  "character_version": 1,
+  "stable_dna_sha256": "697a26d5306d788b1eb66d9635ba83032038b57aff4b8ab6d485b0abfeb0f85f",
+  "created_at": "2026-08-30T23:51:00+00:00",
+  "created_by": "hermes-local-llm",
+  "local_model": "meromero26b-a4b-hermes:latest",
+  "source_request": "하림이 검은 원피스를 입고 소파에 앉아 있는 사진",
+  "runtime_prompt_sha256": "8e05bbaa82212da3275a2ac4db9e23c10b937c241879b7ceb87827668f64cfe3",
+  "scene_delta": {
+    "title": "Harim in Black Dress on Sofa",
+    "pose": "Sitting gracefully on a plush, neutral-toned sofa, leaning slightly back with one arm resting on the sofa armrest and her hands folded in her lap.",
+    "expression": "Calm and serene expression, subtle smile, eyes looking directly at the camera with a soft, intelligent gaze.",
+    "outfit": "Elegant black midi-length sleeveless dress with a high neckline, cinched at the narrow waist to highlight her silhouette, fabric draping smoothly over her hips, paired with simple black heels.",
+    "camera": "Medium shot, waist-up crop, framing from the mid-torso to the top of the head, ensuring the crop boundary ends clearly above the hips and crotch.",
+    "lens": "85mm prime lens, f/1.8, creating a shallow depth of field that softly blurs the living room background.",
+    "lighting": "Soft, warm indoor lighting from a side window, creating gentle highlights on her soft pale skin and realistic hair texture.",
+    "location": "A modern, minimalist living room with a clean, neutral-toned sofa and subtle interior decor.",
+    "action": "Relaxing comfortably on the sofa, posing for a sophisticated portrait.",
+    "styling": "Long straight dark hair styled neatly with realistic strand definition, minimal natural makeup to accentuate her refined cat-like facial features, small elegant silver earrings.",
+    "negative_constraints": "No other people, no exaggerated bust, no skeletal appearance, no visible rib protrusion, no messy hair, no bright harsh lighting, no cropped-off limbs, no revealing clothing that leaves the lower body accidentally unclothed."
+  }
+}

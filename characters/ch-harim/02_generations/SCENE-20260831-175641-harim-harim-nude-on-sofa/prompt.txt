@@ -1,0 +1,19 @@
+Create one photorealistic image of exactly one adult character.
+
+STABLE CHARACTER IDENTITY — preserve without reinterpretation:
+An adult Korean woman character named Harim. Face: small, slightly elongated oval face with a subtly cat-like overall impression; almond-shaped dark-brown eyes with subtly raised outer corners and a calm, cool, reserved gaze; defined dark eyebrows with a clean noticeable shape; refined straight nose with a clean bridge; small mouth with softly full lips; slim, clean, sharp jawline. Hair: near-black long hair reaching around mid-back, straight or softly naturally bent, fine-to-medium strands, smooth controlled shine; default Hair State A is a high ponytail near the crown with soft crown volume, thin face-framing strands, wispy fringe or side-bangs, and partially visible forehead; approved alternatives are long hair down, a slim matte black headband, or a compact updo with a minimal signature U-shaped pin. Skin: pale neutral East Asian skin tone with realistic texture and soft highlight roll-off. Body: tall-looking and long-lined through coordinated relative proportions, never vertical stretching; slim long arms including relatively long forearms, and long straight legs; shoulders relatively narrow shoulders; torso long neck, compact light upper torso, small ribcage appearance, and flat but soft lower abdomen; bust small-to-moderate natural bust, consistent across scenes; waist narrow and clearly defined; pelvis and hips pelvis subtly broader than the East Asian average, with a graceful waist transition and gentle feminine hip roundness, never exaggerated; lower body long and light lower-body impression with slim thighs and calves and healthy soft-tissue volume; body hair naturally sparse; dark brown to near-black if visible. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.
+
+SCENE DELTA — applies only to this generation:
+Pose: Sitting relaxed on a modern fabric sofa, legs crossed at the ankles, leaning back slightly with one arm resting on the sofa armrest.
+Expression: Calm, cool, reserved gaze, looking directly at the camera with a serene and composed expression.
+Outfit: Completely unclothed, wearing no garments or underwear, showcasing her natural pale neutral skin tone, small-to-moderate natural bust, narrow waist, and subtle hip line.
+Camera and framing: Full body shot, eye-level, capturing her from head to toe, including the sofa and the floor area below her.
+Lens and perspective: 50mm prime lens, creating a natural perspective.
+Lighting: Soft, diffused natural light from a window, creating gentle highlight roll-off on her skin.
+Location: A minimalist, modern living room with a clean, neutral-toned sofa.
+Action: Sitting still and relaxed on the sofa.
+Scene styling: Near-black long hair worn down, flowing naturally over her shoulders.
+
+Maintain one coherent face, one anatomically continuous adult body, one active shot scale, coordinated eyes sharing one target, realistic hands, and a complete plausible outfit covering every visible body region. If this is a waist-up portrait, crop above the hips and crotch; do not extend the frame downward unless lower garments are explicitly visible. Do not let scene variables alter the Stable Character Identity.
+
+Avoid: No clothing, no underwear, no jewelry, no other people, no exaggerated curves, no vertical stretching, no messy hair, no heavy makeup.

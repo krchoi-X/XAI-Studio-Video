@@ -1,0 +1,10 @@
+schema_version: 1
+character_id: ch-jung-haewon
+status: unapproved
+approved_at: null
+approved_by: null
+identity_master: null
+references: []
+
+# Every approved file must identify source_batch, source_engine, source_file,
+# prompt_file, settings_file, and the user's approval reason.

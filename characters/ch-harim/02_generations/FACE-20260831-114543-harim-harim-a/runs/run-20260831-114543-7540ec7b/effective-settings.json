@@ -1,0 +1,20 @@
+{
+  "settings_version": 2.73,
+  "model_type": "z_image",
+  "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 8,
+  "repeat_generation": 1,
+  "seed": 831114544,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Z Image Turbo",
+  "prompt": "Create a photorealistic face-exploration portrait of Harim, a young adult Korean woman in her early 20s.\n\nHarim has a small slightly elongated oval face, defined dark eyebrows, almond-shaped dark-brown eyes with subtly upturned outer corners, a refined straight nose, a small mouth with softly full lips, and a slim clean jawline. Her beauty should feel cool, elegant, realistic, and slightly cat-like, with a calm and quietly striking presence.\n\nShow a chest-up portrait in a minimal bright neutral studio with soft even lighting. Use a 50–85mm portrait-photography look. Keep styling simple: natural makeup, near-black straight hair, no strong accessories, and a neutral or very faint restrained smile. Her gaze should be direct or near-direct, calm and a little aloof.\n\nThis image is for face discovery. Emphasize a chic, memorable face that is distinct from softer and more introspective characters. Avoid exaggerated glamour, overly sharp feline styling, influencer makeup, plastic skin, or doll-like proportions.\n",
+  "output_filename": "run-20260831-114543-7540ec7b"
+}

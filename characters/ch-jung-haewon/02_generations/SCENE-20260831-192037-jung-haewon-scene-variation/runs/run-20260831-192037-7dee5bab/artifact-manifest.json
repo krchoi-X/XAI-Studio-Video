@@ -1,0 +1,55 @@
+{
+  "run_id": "run-20260831-192037-7dee5bab",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-192037-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-192037-7dee5bab.jpg",
+      "sha256": "96e4ed33860522f22556018079398cab1736c15074a140b4711caa097b3687cd",
+      "byte_count": 125199,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:29:15+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-192037-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-192037-7dee5bab_1.jpg",
+      "sha256": "ae7746b02782a0ea555e3b30c1160c357e60844982843551ee334de68727d4b3",
+      "byte_count": 112840,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:29:15+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-192037-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-192037-7dee5bab_2.jpg",
+      "sha256": "4d5a4ed1b75535566e6f78001a58ff57a9d9055902e8f4c77c5cbc7cde272bf0",
+      "byte_count": 119461,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:29:15+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-192037-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-192037-7dee5bab_3.jpg",
+      "sha256": "9d556d9e2b9fd3200e97aa852f1d46755906ff161415909fe2f38651b40753a5",
+      "byte_count": 124530,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:29:15+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-192037-jung-haewon-scene-variation\\outputs\\z-image\\run-20260831-192037-7dee5bab_4.jpg",
+      "sha256": "cdf9b0e99b644866d07aeaec95ca4a6aa57e3ed67eec9f64889c199de7032794",
+      "byte_count": 127993,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T19:29:15+09:00"
+    }
+  ]
+}

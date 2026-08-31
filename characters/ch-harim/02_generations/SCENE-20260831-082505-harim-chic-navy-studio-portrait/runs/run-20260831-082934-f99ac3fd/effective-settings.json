@@ -1,0 +1,20 @@
+{
+  "settings_version": 2.73,
+  "model_type": "z_image",
+  "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "seed": 831082506,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Z Image Turbo",
+  "prompt": "Create one photorealistic image of exactly one adult character.\n\nSTABLE CHARACTER IDENTITY — preserve without reinterpretation:\nAn adult Korean woman character named Harim. Face: refined slightly cat-like face; calm dark-brown eyes with subtly upturned outer corners; defined dark eyebrows; refined straight nose with a clean bridge; small mouth with softly full lips; sharp clean jawline. Hair: long straight dark hair with realistic strand definition. Skin: soft pale skin with realistic texture and soft highlight roll-off. Body: tall-looking, slim, healthy, elegant, and believable; long arms and long legs; shoulders relatively narrow shoulders; torso long neck, slim healthy torso, no visible rib protrusion; bust natural proportion consistent with a slim healthy adult; not exaggerated; waist narrow and clearly defined; pelvis and hips moderately developed hips with a graceful waist-to-hip transition; lower body healthy believable lower-body volume supporting the developed hip line; never skeletal; body hair not established; preserve natural realism and do not invent a conspicuous trait. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nSCENE DELTA — applies only to this generation:\nPose: Waist-up composition, standing naturally beside a minimalist studio chair, body angled slightly while facing the camera directly.\nExpression: Calm, professional, and serene expression with a subtle, natural gaze.\nOutfit: Tailored fine dark navy blazer over a clean ivory inner top, professional and polished.\nCamera and framing: High-resolution studio camera, waist-up framing, sharp focus on the subject.\nLens and perspective: 85mm f/1.8 portrait lens, creating a soft, blurred background.\nLighting: Softbox studio lighting, even illumination with gentle highlights on the skin, clean and professional atmosphere.\nLocation: Minimalist professional photo studio with a neutral, clean background.\nAction: Posing calmly for a professional portfolio photograph, looking directly into the lens.\nScene styling: Neat and polished, long straight dark hair styled smoothly, subtle professional makeup.\n\nMaintain one coherent face, one anatomically continuous adult body, one active shot scale, coordinated eyes sharing one target, realistic hands, and clothing that fits the described pose. Do not let scene variables alter the Stable Character Identity.\n\nAvoid: No extra people, no exaggerated body proportions, no messy hair, no casual or sloppy clothing, no heavy jewelry, no distorted anatomy.\n",
+  "output_filename": "run-20260831-082934-f99ac3fd"
+}

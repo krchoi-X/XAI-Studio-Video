@@ -1,0 +1,21 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_turbo_moody_krea",
+  "base_model_type": "krea2_turbo",
+  "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 4,
+  "repeat_generation": 1,
+  "seed": 831085717,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Moody Krea 2 V7 INT8",
+  "prompt": "Create one photorealistic image of exactly one adult character.\n\nSTABLE CHARACTER IDENTITY — preserve without reinterpretation:\nAn adult Korean woman character named Harim. Face: refined slightly cat-like face; calm dark-brown eyes with subtly upturned outer corners; defined dark eyebrows; refined straight nose with a clean bridge; small mouth with softly full lips; sharp clean jawline. Hair: long straight dark hair with realistic strand definition. Skin: soft pale skin with realistic texture and soft highlight roll-off. Body: tall-looking, slim, healthy, elegant, and believable; long arms and long legs; shoulders relatively narrow shoulders; torso long neck, slim healthy torso, no visible rib protrusion; bust natural proportion consistent with a slim healthy adult; not exaggerated; waist narrow and clearly defined; pelvis and hips moderately developed hips with a graceful waist-to-hip transition; lower body healthy believable lower-body volume supporting the developed hip line; never skeletal; body hair not established; preserve natural realism and do not invent a conspicuous trait. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nSCENE DELTA — applies only to this generation:\nPose: Sitting gracefully on a plush velvet sofa, legs crossed at the ankles, leaning slightly back with one arm resting on the sofa cushion.\nExpression: Calm, subtle, enigmatic smile, eyes looking towards the camera with a soft gaze.\nOutfit: A sophisticated, form-fitting black midi-length cocktail dress with a subtle sweetheart neckline and long sleeves. The dress reaches mid-calf, paired with sheer black stockings and elegant black high-heeled pumps.\nCamera and framing: Medium full shot, capturing her from the head down to the mid-calf, framing her sitting on the sofa.\nLens and perspective: 50mm prime lens, shallow depth of field to softly blur the background.\nLighting: Warm, ambient indoor lighting from a nearby floor lamp, creating soft highlights on her pale skin and hair.\nLocation: A luxurious, modern living room with a dark velvet sofa and a minimalist background.\nAction: Relaxing on the sofa, posing for a portrait.\nScene styling: Long straight dark hair styled neatly behind her shoulders, minimal jewelry including small silver earrings, natural makeup emphasizing her cat-like eyes.\n\nMaintain one coherent face, one anatomically continuous adult body, one active shot scale, coordinated eyes sharing one target, realistic hands, and a complete plausible outfit covering every visible body region. If this is a waist-up portrait, crop above the hips and crotch; do not extend the frame downward unless lower garments are explicitly visible. Do not let scene variables alter the Stable Character Identity.\n\nAvoid: No other people, no exaggerated bust, no skeletal appearance, no visible rib protrusion, no messy hair, no bright/harsh lighting, no casual/sporty clothing, no bare lower body.\n",
+  "output_filename": "run-20260831-085906-f3e11e21"
+}

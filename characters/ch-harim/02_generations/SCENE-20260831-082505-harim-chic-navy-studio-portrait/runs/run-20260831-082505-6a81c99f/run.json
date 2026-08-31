@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-082505-6a81c99f",
+  "project_id": "SCENE-20260831-082505-harim-chic-navy-studio-portrait",
+  "prompt_id": "SCENE-20260831-082505-harim-chic-navy-studio-portrait-z-image",
+  "status": "failed",
+  "created_at": "2026-08-31T08:25:05+09:00",
+  "updated_at": "2026-08-31T08:29:34+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": null,
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\prompt.txt",
+    "sha256": "08b83b6eb9c5072705b6c28a3370e3cfc3b2fb9cb138e80ffc4177b6deb4565a",
+    "normalized_sha256": "e5ea7978aaf15d672499322d1ad73d9b5873969beeb6ac5e536bdb397ac17c18",
+    "byte_count": 2616
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 1,
+      "repeat_generation": 1,
+      "seed": 831082506,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [],
+  "error": {
+    "message": "sandbox lock permission denied; resubmitting with local permission",
+    "last_progress": "not started",
+    "recorded_at": "2026-08-31T08:29:34+09:00"
+  },
+  "local_worker": {
+    "pid": 7500,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\runs\\run-20260831-082505-6a81c99f",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\runs\\run-20260831-082505-6a81c99f\\effective-settings.json",
+      "--output-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\runs\\run-20260831-082505-6a81c99f\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\runs\\run-20260831-082505-6a81c99f\\worker.stderr.log"
+  }
+}

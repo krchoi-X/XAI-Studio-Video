@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "session_id": "FACE-20260831-114543-harim-harim-a",
+  "character": "ch-harim",
+  "character_version": 2,
+  "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7",
+  "phase": "face-discovery",
+  "direction": "HARIM-A",
+  "created_at": "2026-08-31T02:45:43+00:00",
+  "prompt_source": "docs/character-face-discovery-workflow.md",
+  "runtime_prompt_sha256": "8e878b0cac5caf6770ec371f933a3f87f80dee74ca504b287aefda694604b8d8",
+  "constraints": {
+    "body_dna_applied": false,
+    "signature_hair_minimized": true,
+    "scene_variables_locked": true
+  }
+}

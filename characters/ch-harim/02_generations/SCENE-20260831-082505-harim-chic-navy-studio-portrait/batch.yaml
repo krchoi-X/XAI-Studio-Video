@@ -1,0 +1,38 @@
+schema_version: 1
+session:
+  id: SCENE-20260831-082505-harim-chic-navy-studio-portrait
+  character_id: ch-harim
+  character_name: 하림
+  romanized_name: Harim
+  title: Chic Navy Studio Portrait
+  status: completed
+  visibility: restricted
+  created_at: '2026-08-30T23:25:05+00:00'
+  prompt_file: prompt.txt
+  scene_delta_file: scene-delta.json
+  stable_dna_sha256: 697a26d5306d788b1eb66d9635ba83032038b57aff4b8ab6d485b0abfeb0f85f
+  asset_root: D:\AI_Studio\library\characters\ch-harim\generations\SCENE-20260831-082505-harim-chic-navy-studio-portrait\outputs
+jobs:
+- backend: local-wangp
+  model: z_image
+  count: 1
+  seed: 831082506
+  resolution: 768x1024
+  steps: 8
+  settings_file: z-image.settings.json
+  output_dir: outputs/z-image
+  status: completed
+  run_dir: D:\codex\XAI-studio\characters\ch-harim\02_generations\SCENE-20260831-082505-harim-chic-navy-studio-portrait\runs\run-20260831-082934-f99ac3fd
+- backend: local-wangp
+  model: krea2_turbo_moody_krea
+  count: 1
+  seed: 831082507
+  resolution: 768x1024
+  steps: 8
+  settings_file: krea2.settings.json
+  output_dir: outputs/krea2
+  status: completed
+  run_dir: D:\codex\XAI-studio\characters\ch-harim\02_generations\SCENE-20260831-082505-harim-chic-navy-studio-portrait\runs\run-20260831-083125-8437b3a4
+review:
+  surface: personal-prompt-studio
+  initial_state: needs_review

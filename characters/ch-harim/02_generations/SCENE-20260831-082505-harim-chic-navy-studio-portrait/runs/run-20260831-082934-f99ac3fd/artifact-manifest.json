@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260831-082934-f99ac3fd",
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\outputs\\z-image\\run-20260831-082934-f99ac3fd.jpg",
+      "sha256": "4adfd1738d8ef6e84e6a9bec6f9f8cc07df7c7d8d3198631c40c95592bdc77dd",
+      "byte_count": 114124,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:31:16+09:00"
+    }
+  ]
+}

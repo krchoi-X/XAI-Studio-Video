@@ -1,0 +1,11 @@
+# Character media is working data. Keep prompts and text records in Git.
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.avif
+*.gif
+*.mp4
+*.mov
+*.mkv
+*.webm

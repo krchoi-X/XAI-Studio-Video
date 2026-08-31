@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260830-210623-5039dab0",
+  "project_id": "BATCH-006-oh-jian-upper-body-audition",
+  "prompt_id": "BATCH-006-oh-jian-upper-body-audition-v1",
+  "status": "needs_review",
+  "created_at": "2026-08-30T21:06:23+09:00",
+  "updated_at": "2026-08-30T21:11:26+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-49328",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\prompt.txt",
+    "sha256": "577e10d66b3f538992e5264286df73aeacbcbb72d6bb3ebc4c27fa4f8cbabe73",
+    "normalized_sha256": "07d6873f0378deaa39af53e5b0cd96be5633c953903d76b3a37873ea8ecf42e2",
+    "byte_count": 3321
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 10,
+      "repeat_generation": 1,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "seed": 830202662,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0.jpg",
+      "sha256": "9fd69171b92ffeb9b3a89d589265b53ffd7f3f81deccda339fc98d2ef4e59de2",
+      "byte_count": 153897,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:25+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_1.jpg",
+      "sha256": "8a10fea87b070512382057ecca90abea437f155959480e1dace7e7f6e3afea07",
+      "byte_count": 155007,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:25+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_2.jpg",
+      "sha256": "daab01bf5e3dc10d2e2ff725b61cfa11704fa8f8f2d40f5a339c0cbb7e3dc4bd",
+      "byte_count": 152258,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:25+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_3.jpg",
+      "sha256": "a0b952f3e540333e024fc672c7dd4ebb448ca83c243ed1a8974d3920d8221412",
+      "byte_count": 150826,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:25+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_4.jpg",
+      "sha256": "a87f0e3275aafbc860b831d141570f4f355be57549bbc69865f163c2b006bf18",
+      "byte_count": 154768,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:25+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_5.jpg",
+      "sha256": "ecf4fb81ae3216366e6469f89eaa8556766b849fa39b2e417685a870a7916edc",
+      "byte_count": 155356,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:25+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_6.jpg",
+      "sha256": "6215dfdc5c02d221f953cf04bae7efb591edcb5a408281211146fd957047a6fb",
+      "byte_count": 150747,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:25+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_7.jpg",
+      "sha256": "a854cda5af2f6ba2c859733eaa1a40bc154ef69e9dfe7ff242c4c6d07cfd47bc",
+      "byte_count": 150977,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:26+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_8.jpg",
+      "sha256": "83bcf1cd11030f3605adf88262a40fbd76a62266600ed1a8f09027df1e247d12",
+      "byte_count": 154035,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:26+09:00"
+    },
+    {
+      "path": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_9.jpg",
+      "sha256": "9b7bdc20cd39e7dfecfb2e25d9e4e2c4b906f0914c3f0e674b7713d6197f5835",
+      "byte_count": 156685,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-30T21:11:26+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 47468,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\runs\\run-20260830-210623-5039dab0",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\runs\\run-20260830-210623-5039dab0\\effective-settings.json",
+      "--output-dir",
+      "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\runs\\run-20260830-210623-5039dab0\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\examples\\character-lab\\experiments\\BATCH-006-oh-jian-upper-body-audition\\runs\\run-20260830-210623-5039dab0\\worker.stderr.log"
+  }
+}

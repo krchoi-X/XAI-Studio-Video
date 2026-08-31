@@ -1,0 +1,85 @@
+{
+  "run_id": "run-20260831-115317-b53cf7fa",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\z-image\\run-20260831-115317-b53cf7fa.jpg",
+      "sha256": "f66e01ca0a232bc69e511867dd7f4c53c6ad3d4c865aad79c061b4c9f0d648d0",
+      "byte_count": 155190,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:56:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\z-image\\run-20260831-115317-b53cf7fa_1.jpg",
+      "sha256": "a5e91ea5e7a8c22449e6149b97db5583e036330e3902d9af26cbc22d9ded77ea",
+      "byte_count": 158902,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:56:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\z-image\\run-20260831-115317-b53cf7fa_2.jpg",
+      "sha256": "5aa8fcc81e3c1fc309efff106557668a1b23b6595307332f0140f78fb38a0872",
+      "byte_count": 161734,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:56:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\z-image\\run-20260831-115317-b53cf7fa_3.jpg",
+      "sha256": "77741716c1b9806332994f033f19f30beaba2f378b1f421e6a84d0856e8814a8",
+      "byte_count": 147095,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:56:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\z-image\\run-20260831-115317-b53cf7fa_4.jpg",
+      "sha256": "6a01f31d633b03e48c80407b3c519a3ae66eaa2beaf37c53736002fe82507d74",
+      "byte_count": 160029,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:56:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\z-image\\run-20260831-115317-b53cf7fa_5.jpg",
+      "sha256": "e91e41e66280b7dc52c0942c93146fe26d2128d7f0b47c78152d970a3e23f651",
+      "byte_count": 154338,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:56:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\z-image\\run-20260831-115317-b53cf7fa_6.jpg",
+      "sha256": "75e912b4b00ee7b59f970e39a625429496bd06a28e29e7c0d5c27e573009b223",
+      "byte_count": 139632,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:56:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\FACE-20260831-115317-jung-haewon-haewon-a\\outputs\\z-image\\run-20260831-115317-b53cf7fa_7.jpg",
+      "sha256": "076e8c8aa2b0571a14d2321683e8ddbe8c0a9d124728ea5af62c17c27363f493",
+      "byte_count": 142785,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T11:56:08+09:00"
+    }
+  ]
+}

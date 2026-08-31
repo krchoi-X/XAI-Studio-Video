@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/character-v1.schema.json",
+  "title": "XAI Studio Character",
+  "type": "object",
+  "required": ["schema_version", "id", "name", "status", "version", "stable_dna", "scene_defaults", "provenance"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^ch-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "name": {"type": "string", "minLength": 1},
+    "romanized_name": {"type": "string"},
+    "status": {"enum": ["draft", "candidate", "approved", "deprecated"]},
+    "version": {"type": "integer", "minimum": 1},
+    "stable_dna": {
+      "type": "object",
+      "required": ["adult_age_range", "visual_background", "face", "body", "hair", "skin", "distinctive_marks"],
+      "properties": {
+        "adult_age_range": {"type": "string", "minLength": 1},
+        "visual_background": {"type": "string", "minLength": 1},
+        "face": {
+          "type": "object",
+          "required": ["shape", "eyes", "eyebrows", "nose", "lips", "jaw"],
+          "additionalProperties": {"type": "string"}
+        },
+        "body": {
+          "type": "object",
+          "required": ["height_impression", "limb_proportions", "shoulders", "torso", "bust", "waist", "pelvis_hips", "lower_body", "body_hair"],
+          "additionalProperties": {"type": "string"}
+        },
+        "hair": {"type": "string", "minLength": 1},
+        "skin": {"type": "string", "minLength": 1},
+        "distinctive_marks": {"type": "array", "items": {"type": "string"}},
+        "recognition_anchors": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "scene_defaults": {
+      "type": "object",
+      "properties": {
+        "expression": {"type": "string"},
+        "makeup": {"type": "string"},
+        "gaze": {"type": "string"}
+      },
+      "additionalProperties": {"type": "string"}
+    },
+    "bounded_identity": {
+      "type": "object",
+      "properties": {
+        "hair_states": {
+          "type": "object",
+          "additionalProperties": {"type": "string", "minLength": 1}
+        }
+      },
+      "additionalProperties": false
+    },
+    "approved_references": {"type": "array", "items": {"type": "string"}},
+    "prompt_sources": {"type": "array", "items": {"type": "string"}},
+    "lora_associations": {"type": "array", "items": {"type": "string"}},
+    "video_test_associations": {"type": "array", "items": {"type": "string"}},
+    "provenance": {
+      "type": "object",
+      "required": ["created_at", "updated_at", "created_by", "sources"],
+      "properties": {
+        "created_at": {"type": "string"},
+        "updated_at": {"type": "string"},
+        "created_by": {"type": "string"},
+        "sources": {"type": "array", "items": {"type": "string"}},
+        "stable_dna_sha256": {"type": "string"},
+        "change_reason": {"type": "string"}
+      }
+    }
+  }
+}

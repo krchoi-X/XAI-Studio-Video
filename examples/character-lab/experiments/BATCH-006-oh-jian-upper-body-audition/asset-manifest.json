@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "migrated_at": "2026-08-31T00:13:01+00:00",
+  "asset_root": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs",
+  "artifacts": [
+    {
+      "relative_path": "gpt-image/gpt-image-01.png",
+      "sha256": "27bdb02b3723f42dbb8d18e18506bc74e565b10f3e05a17b741bf5adf17e10ff",
+      "byte_count": 2198595,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\gpt-image\\gpt-image-01.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-02.png",
+      "sha256": "ebe72714aae6dacb72d9d1f4c8f1163d22bbaf0c37c948834f251b69ca31deae",
+      "byte_count": 2323016,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\gpt-image\\gpt-image-02.png"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0.jpg",
+      "sha256": "9fd69171b92ffeb9b3a89d589265b53ffd7f3f81deccda339fc98d2ef4e59de2",
+      "byte_count": 153897,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0_1.jpg",
+      "sha256": "8a10fea87b070512382057ecca90abea437f155959480e1dace7e7f6e3afea07",
+      "byte_count": 155007,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_1.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0_2.jpg",
+      "sha256": "daab01bf5e3dc10d2e2ff725b61cfa11704fa8f8f2d40f5a339c0cbb7e3dc4bd",
+      "byte_count": 152258,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_2.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0_3.jpg",
+      "sha256": "a0b952f3e540333e024fc672c7dd4ebb448ca83c243ed1a8974d3920d8221412",
+      "byte_count": 150826,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_3.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0_4.jpg",
+      "sha256": "a87f0e3275aafbc860b831d141570f4f355be57549bbc69865f163c2b006bf18",
+      "byte_count": 154768,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_4.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0_5.jpg",
+      "sha256": "ecf4fb81ae3216366e6469f89eaa8556766b849fa39b2e417685a870a7916edc",
+      "byte_count": 155356,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_5.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0_6.jpg",
+      "sha256": "6215dfdc5c02d221f953cf04bae7efb591edcb5a408281211146fd957047a6fb",
+      "byte_count": 150747,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_6.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0_7.jpg",
+      "sha256": "a854cda5af2f6ba2c859733eaa1a40bc154ef69e9dfe7ff242c4c6d07cfd47bc",
+      "byte_count": 150977,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_7.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0_8.jpg",
+      "sha256": "83bcf1cd11030f3605adf88262a40fbd76a62266600ed1a8f09027df1e247d12",
+      "byte_count": 154035,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_8.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-210623-5039dab0_9.jpg",
+      "sha256": "9b7bdc20cd39e7dfecfb2e25d9e4e2c4b906f0914c3f0e674b7713d6197f5835",
+      "byte_count": 156685,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\krea2\\run-20260830-210623-5039dab0_9.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12.jpg",
+      "sha256": "2e9c99ed598ff9903cb9ae5d3d4bb9d9fb395e7ba84637ab0e33220c03ee0e44",
+      "byte_count": 129644,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12_1.jpg",
+      "sha256": "f781d6785e634180ef3597202fd828bc7e2b7a17febc385c197218cdd2c2d10d",
+      "byte_count": 128606,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12_1.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12_2.jpg",
+      "sha256": "e0f45caf5fa858e73822b22fb1679688bf096470f0a5f537c99b326e9a06017c",
+      "byte_count": 150283,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12_2.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12_3.jpg",
+      "sha256": "22b8a03e3eed94d071bb1ac4eb5c31a03764d5fd7c0b665fcd9642e8368ac96c",
+      "byte_count": 148493,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12_3.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12_4.jpg",
+      "sha256": "46bc282c22b59cf5dfddca9c161814beb258dc56c8b3760c0d13012354de8684",
+      "byte_count": 121755,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12_4.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12_5.jpg",
+      "sha256": "fbfbc24ffe74683d4f33a5bdcbfb53946bfed4e2ea759db55f6e94937832263c",
+      "byte_count": 129332,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12_5.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12_6.jpg",
+      "sha256": "2cce2ecac65c6c98a2a6c8117fe529fdedb41b3d44531cdd60f3a980614e7d70",
+      "byte_count": 148952,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12_6.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12_7.jpg",
+      "sha256": "16a65e865bcd0600020080b9d72c843995221323da466128bd12bcf676255be3",
+      "byte_count": 133503,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12_7.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12_8.jpg",
+      "sha256": "8dc2e57820cdb7d697b738b702a218f6c887a2e2bff0a01c6d1192ed6cfcf3c6",
+      "byte_count": 138507,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12_8.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-210243-05dd7d12_9.jpg",
+      "sha256": "c19a3262cd8ccf815c79c7a850349cf82ab282ebe375f48165685e44dcbaace8",
+      "byte_count": 143063,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-oh-jian\\generations\\BATCH-006-oh-jian-upper-body-audition\\outputs\\z-image\\run-20260830-210243-05dd7d12_9.jpg"
+    }
+  ]
+}

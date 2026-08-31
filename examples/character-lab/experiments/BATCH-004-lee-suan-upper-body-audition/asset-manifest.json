@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "migrated_at": "2026-08-31T00:13:00+00:00",
+  "asset_root": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs",
+  "artifacts": [
+    {
+      "relative_path": "gpt-image/gpt-image-01.png",
+      "sha256": "0656d3bce6ecbb5c883dcc916d176a45b784e6d2d9269d15cddc7d077952983c",
+      "byte_count": 2178874,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-01.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-02.png",
+      "sha256": "e27576e89277ca365e60a5a766b1ef9e2043e02e090ddea5cb5c47541b63ce1a",
+      "byte_count": 2029856,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-02.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-03.png",
+      "sha256": "6fb3db54a06c683fcbdc5462e98882f55d6f4fe02ef8c906a7c0ea608da14c16",
+      "byte_count": 2157999,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-03.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-04.png",
+      "sha256": "e18f0da6fea35fac2a83aeb21232991ef43867669b3f72f0b1b2839b5f09191a",
+      "byte_count": 2451784,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-04.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-05.png",
+      "sha256": "440e0181f95f51af94232647de88df952580bfe78c9f12d3b031296ca534c646",
+      "byte_count": 1948562,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-05.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-06.png",
+      "sha256": "7c4f204cc22c617c04d4957cc9800e37a0c81c8c1b51b8e7a038ca54743519de",
+      "byte_count": 2106604,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-06.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-07.png",
+      "sha256": "cb9a1adee35214376be372967fdf40dc7d5e7a03f067b45a2af167d4bae632a0",
+      "byte_count": 2051996,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-07.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-08.png",
+      "sha256": "555944f0c4bfd14de6370ced78bf3330e537a956ff8195b3f44a02de224e3bb5",
+      "byte_count": 1877365,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-08.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-09.png",
+      "sha256": "b07caffe7a9eaa8db3c8e45e6decb030937ce05d683167c5c1e204e14c55ce74",
+      "byte_count": 2204234,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-09.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-10.png",
+      "sha256": "61ec59d280c02fe254262bff4714205ab2c86df2bb837d96220a504e7ef364f4",
+      "byte_count": 1998241,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-10.png"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d.jpg",
+      "sha256": "22a0cb9babdad155bdd4363ab56c4e10f94dd8f0845d504d6f1deadb92a204ff",
+      "byte_count": 149576,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d_1.jpg",
+      "sha256": "bbbcd11a4fa4894356dca40410f602c2959ca672fefcdcedabeee3234af771e4",
+      "byte_count": 164926,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d_1.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d_2.jpg",
+      "sha256": "822b58d4fb0b12112a26262e56be91068a8c48489e4a14c1ce9d5c5d25ce2809",
+      "byte_count": 163833,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d_2.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d_3.jpg",
+      "sha256": "0e5575d746c5d1c9ef46522d6385361a3e89b77c25d462168f06a884ab6b864c",
+      "byte_count": 156309,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d_3.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d_4.jpg",
+      "sha256": "ed6f1bd7495ed1d79f1b60956309ca20a7a916d9e54239bee3bc5d4b586e59f9",
+      "byte_count": 168757,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d_4.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d_5.jpg",
+      "sha256": "b9c3d51da801422e671b401074bfef733fe2a8ab94e93e46d9ab8ae6453d7ac5",
+      "byte_count": 157427,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d_5.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d_6.jpg",
+      "sha256": "ee3d52577824b9c32e33196bd445f03480298a10c4d3b99805c09a3e3b0cf246",
+      "byte_count": 162340,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d_6.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d_7.jpg",
+      "sha256": "f195a2eacbd238e32771c9a18ae2e279a0024e17b6da38623ef99150c4486b20",
+      "byte_count": 164956,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d_7.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d_8.jpg",
+      "sha256": "cffb541e65d8820b9a4d7dd962bb5b95e97ef5cfe1fc03ea272d604830a32210",
+      "byte_count": 159193,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d_8.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-204822-4994a82d_9.jpg",
+      "sha256": "afdf6e570f7e0ee33c206f18e1150f895f4545f6ab2728380a90c707f50fc4cb",
+      "byte_count": 171133,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\krea2\\run-20260830-204822-4994a82d_9.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c.jpg",
+      "sha256": "5247e032edb0342757a45c1c0f0ba92d151fd8882af238f85d1faedf20bfaa31",
+      "byte_count": 105923,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c_1.jpg",
+      "sha256": "ecd98fbabdcccd50c2a2686f7d066161290b66fa7df1ddc3f585810c4feb298f",
+      "byte_count": 110435,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c_1.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c_2.jpg",
+      "sha256": "f478bb3d91dbb9c87f7b97fe9f0d658b36a98bc34405c34f44dfd2717367b42d",
+      "byte_count": 118618,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c_2.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c_3.jpg",
+      "sha256": "f3753a4a2a4ca4b325a962f0557e7d9974fa00c636a47ae3baaa558e8dab762c",
+      "byte_count": 110152,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c_3.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c_4.jpg",
+      "sha256": "c0271b1ca9ed62c80ecdcb3af0d1114d701733c83e7f6347dac4488a270e9df9",
+      "byte_count": 104850,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c_4.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c_5.jpg",
+      "sha256": "42684d5bed9bfcc84c091164c4c43566846211e6e8a9c51d103bb4937747f2c7",
+      "byte_count": 106950,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c_5.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c_6.jpg",
+      "sha256": "d004480c211725e7b8a0de9593f25145fcad3ccde4cdb6adb519b8c589bbcf2b",
+      "byte_count": 106642,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c_6.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c_7.jpg",
+      "sha256": "6ceb3a73061779879b8e2b69eb0b9285d27c1537e11443cc343bbba7fb046887",
+      "byte_count": 109645,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c_7.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c_8.jpg",
+      "sha256": "568c22c4e11896503584ff611f42b18ad19d3a269b531c432b246ad438e8be27",
+      "byte_count": 110265,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c_8.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-204452-a47c900c_9.jpg",
+      "sha256": "1793bd18d3c0d6c002b161b34d74e3fc4c65e59bcd9527dc689ca34520da6473",
+      "byte_count": 103846,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\z-image\\run-20260830-204452-a47c900c_9.jpg"
+    }
+  ]
+}

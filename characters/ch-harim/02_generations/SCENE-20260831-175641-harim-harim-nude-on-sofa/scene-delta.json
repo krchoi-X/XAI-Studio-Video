@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260831-175641-harim-harim-nude-on-sofa",
+  "character_id": "ch-harim",
+  "character_version": 2,
+  "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7",
+  "created_at": "2026-08-31T08:56:41+00:00",
+  "created_by": "hermes-local-llm",
+  "local_model": "meromero26b-a4b-hermes:latest",
+  "source_request": "알몸으로 소파에 앉은 하림",
+  "runtime_prompt_sha256": "479b4f9f0ea24c7a402f7683d569bc18bc9d12adf73463d585370140be48d5fa",
+  "scene_delta": {
+    "title": "Harim Nude on Sofa",
+    "pose": "Sitting relaxed on a modern fabric sofa, legs crossed at the ankles, leaning back slightly with one arm resting on the sofa armrest.",
+    "expression": "Calm, cool, reserved gaze, looking directly at the camera with a serene and composed expression.",
+    "outfit": "Completely unclothed, wearing no garments or underwear, showcasing her natural pale neutral skin tone, small-to-moderate natural bust, narrow waist, and subtle hip line.",
+    "camera": "Full body shot, eye-level, capturing her from head to toe, including the sofa and the floor area below her.",
+    "lens": "50mm prime lens, creating a natural perspective.",
+    "lighting": "Soft, diffused natural light from a window, creating gentle highlight roll-off on her skin.",
+    "location": "A minimalist, modern living room with a clean, neutral-toned sofa.",
+    "action": "Sitting still and relaxed on the sofa.",
+    "styling": "Near-black long hair worn down, flowing naturally over her shoulders.",
+    "negative_constraints": "No clothing, no underwear, no jewelry, no other people, no exaggerated curves, no vertical stretching, no messy hair, no heavy makeup."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260831-082505-harim-chic-navy-studio-portrait",
+  "character_id": "ch-harim",
+  "character_version": 1,
+  "stable_dna_sha256": "697a26d5306d788b1eb66d9635ba83032038b57aff4b8ab6d485b0abfeb0f85f",
+  "created_at": "2026-08-30T23:25:05+00:00",
+  "created_by": "hermes-local-llm",
+  "local_model": "meromero26b-a4b-hermes:latest",
+  "source_request": "파인 다크 네이비 재킷과 아이보리 이너를 입고, 스튜디오 의자 옆에 자연스럽게 서서 카메라를 바라보는 허리 위 포트폴리오 사진. 단정하고 차분한 분위기.",
+  "runtime_prompt_sha256": "e5ea7978aaf15d672499322d1ad73d9b5873969beeb6ac5e536bdb397ac17c18",
+  "scene_delta": {
+    "title": "Chic Navy Studio Portrait",
+    "pose": "Waist-up composition, standing naturally beside a minimalist studio chair, body angled slightly while facing the camera directly.",
+    "expression": "Calm, professional, and serene expression with a subtle, natural gaze.",
+    "outfit": "Tailored fine dark navy blazer over a clean ivory inner top, professional and polished.",
+    "camera": "High-resolution studio camera, waist-up framing, sharp focus on the subject.",
+    "lens": "85mm f/1.8 portrait lens, creating a soft, blurred background.",
+    "lighting": "Softbox studio lighting, even illumination with gentle highlights on the skin, clean and professional atmosphere.",
+    "location": "Minimalist professional photo studio with a neutral, clean background.",
+    "action": "Posing calmly for a professional portfolio photograph, looking directly into the lens.",
+    "styling": "Neat and polished, long straight dark hair styled smoothly, subtle professional makeup.",
+    "negative_constraints": "No extra people, no exaggerated body proportions, no messy hair, no casual or sloppy clothing, no heavy jewelry, no distorted anatomy."
+  }
+}

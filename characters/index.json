@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-31T01:19:37+00:00",
+  "characters": [
+    {
+      "id": "ch-harim",
+      "name": "하림",
+      "romanized_name": "Harim",
+      "status": "candidate",
+      "version": 2,
+      "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7",
+      "path": "characters/ch-harim/character.json"
+    },
+    {
+      "id": "ch-jung-haewon",
+      "name": "정해원",
+      "romanized_name": "Jung Haewon",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "7be607bafe72e7a08a765d8d765c259db19808fab014b7ee385d541a3906fac2",
+      "path": "characters/ch-jung-haewon/character.json"
+    }
+  ]
+}

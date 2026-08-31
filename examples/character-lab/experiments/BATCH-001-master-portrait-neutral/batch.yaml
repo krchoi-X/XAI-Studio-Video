@@ -1,0 +1,156 @@
+schema_version: 1
+batch_id: BATCH-001
+slug: master-portrait-neutral
+character_id: ch-jung-haewon
+status: planned
+intent:
+  portrait_type: master portrait
+  expression: neutral
+  framing: head-and-shoulders
+  purpose: Find a distinctive identity-master candidate that still reads as a natural
+    real person.
+  comparison_mode: common-prompt
+fixed_conditions:
+  aspect_ratio: '4:5'
+  target_resolution: 1024x1280
+  background: simple neutral background
+  lighting: soft natural portrait light
+  wardrobe: simple, non-distracting everyday clothing
+  reference_images: []
+generation_policy:
+  target_images_per_engine: 5
+  preserve_original_outputs: true
+  first_pass_survivors_per_engine: 2
+  seed_policy: record-when-provided
+engines:
+  z-image:
+    enabled: true
+    provider: local-wangp
+    model: Z-Image Turbo 6B INT8
+    checkpoint: ZImageTurbo_quanto_bf16_int8.safetensors
+    checkpoint_source: https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors
+    environment: local-rtx-4070-laptop
+    wangp_version: '12.53'
+    seed: 5109044
+    resolution: 1024x1024
+    batch_size: 5
+    steps: 8
+    cfg: null
+    sampler: null
+    scheduler: null
+    loras: []
+    refine: false
+    upscale: false
+    output_format: jpeg_95
+    generation_time_seconds: 114
+    created_at: '2026-08-26T21:09:19+09:00'
+    generated_images: 5
+  krea2:
+    enabled: true
+    provider: local-wangp
+    model: Moody Krea 2 V7 INT8
+    base_model: Krea2 Turbo
+    checkpoint: D:/AI/Models/image-generation/krea2/moodyKrea2Mix_v70_INT8.safetensors
+    environment: local-rtx-4070-laptop
+    wangp_version: '12.53'
+    seed: 242498957
+    resolution: 1024x1024
+    batch_size: 5
+    steps: 8
+    cfg: null
+    sampler: null
+    scheduler: null
+    loras: []
+    refine: false
+    upscale: false
+    output_format: jpeg_95
+    generation_time_seconds: 178
+    created_at: '2026-08-26T21:00:26+09:00'
+    generated_images: 5
+  gpt-image:
+    enabled: true
+    provider: openai-built-in-imagegen
+    model: unspecified-by-tool
+    service: Codex built-in image generation
+    environment: codex
+    seed: not-provided
+    resolution: 1024x1536
+    generated_images: 6
+    strict_comparison_files:
+    - gpt-image-02.png
+    - gpt-image-03.png
+    - gpt-image-04.png
+    - gpt-image-05.png
+    - gpt-image-06.png
+    exploratory_files:
+    - ../gpt-image-exploratory/gpt-image-01-structured.png
+  nano-banana:
+    enabled: true
+    provider: cloud-service
+    model: null
+    service: Nano Banana
+    environment: cloud-service
+  grok-image:
+    enabled: true
+    provider: xai-grok
+    model: Grok Image
+    environment: cloud-service
+    resolution: 1152x1728
+    generated_images: 4
+    seed: not-exposed
+    prompt_metadata: not-embedded
+    provenance_ids:
+    - d04075ad-f2ed-459e-84f7-4ca7e2c0ea7d
+    - 709e686c-eb88-43ac-8d8f-8427f0875487
+    - 71adc754-fb5e-402c-8786-a9021af4c75b
+    - bc42da61-81b4-4e80-9bd3-653368ca2ea5
+  meta-image:
+    enabled: true
+    provider: cloud-service
+    model: null
+    service: Meta Image
+    environment: cloud-service
+  krea2-large:
+    enabled: true
+    comparison_class: paid-single-candidate
+    provider: venice.ai
+    model: Krea v2 Large
+    environment: cloud-service
+    seed: 23045818
+    resolution: 832x1248
+    generated_images: 1
+    exif_datetime: 2026:08:26 13:08:28
+  qwen-image3-pro:
+    enabled: true
+    comparison_class: paid-single-candidate
+    provider: venice.ai
+    model: Qwen Image 3 Pro
+    environment: cloud-service
+    seed: 17001595
+    resolution: 1360x2040
+    generated_images: 1
+    exif_datetime: 2026:08:26 13:08:19
+  chroma:
+    enabled: true
+    provider: venice.ai
+    model: Chroma
+    environment: cloud-service
+    resolution: 1272x1896
+    steps: 10
+    cfg: 5
+    lora_strength: 0
+    seeds:
+    - 46141571
+    - 73178285
+    - 72069576
+    - 10714853
+    - 9211667
+    generated_images: 5
+    exif_datetime_range: 2026:08:26 13:17:52–13:19:19
+provenance:
+  created_at: 2026-08-26 Asia/Seoul
+  completed_at: null
+  operator: null
+  source_issue: krchoi-X/personal-ai-knowledge#1
+session:
+  asset_root: D:\AI_Studio\library\characters\ch-jung-haewon\generations\BATCH-001-master-portrait-neutral\outputs

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260831-085715-harim-elegant-evening-lounge",
+  "character_id": "ch-harim",
+  "character_version": 1,
+  "stable_dna_sha256": "697a26d5306d788b1eb66d9635ba83032038b57aff4b8ab6d485b0abfeb0f85f",
+  "created_at": "2026-08-30T23:57:15+00:00",
+  "created_by": "hermes-local-llm",
+  "local_model": "meromero26b-a4b-hermes:latest",
+  "source_request": "검은 원피스를 입고 소파에 앉은 하림",
+  "runtime_prompt_sha256": "5bac62d380f84a2428db4ac68298e3a6fb95e9caeec80d290d3ee51b2dd3be02",
+  "scene_delta": {
+    "title": "Elegant Evening Lounge",
+    "pose": "Sitting gracefully on a plush velvet sofa, legs crossed at the ankles, leaning slightly back with one arm resting on the sofa cushion.",
+    "expression": "Calm, subtle, enigmatic smile, eyes looking towards the camera with a soft gaze.",
+    "outfit": "A sophisticated, form-fitting black midi-length cocktail dress with a subtle sweetheart neckline and long sleeves. The dress reaches mid-calf, paired with sheer black stockings and elegant black high-heeled pumps.",
+    "camera": "Medium full shot, capturing her from the head down to the mid-calf, framing her sitting on the sofa.",
+    "lens": "50mm prime lens, shallow depth of field to softly blur the background.",
+    "lighting": "Warm, ambient indoor lighting from a nearby floor lamp, creating soft highlights on her pale skin and hair.",
+    "location": "A luxurious, modern living room with a dark velvet sofa and a minimalist background.",
+    "action": "Relaxing on the sofa, posing for a portrait.",
+    "styling": "Long straight dark hair styled neatly behind her shoulders, minimal jewelry including small silver earrings, natural makeup emphasizing her cat-like eyes.",
+    "negative_constraints": "No other people, no exaggerated bust, no skeletal appearance, no visible rib protrusion, no messy hair, no bright/harsh lighting, no casual/sporty clothing, no bare lower body."
+  }
+}

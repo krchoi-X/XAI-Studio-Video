@@ -1,0 +1,19 @@
+Create one photorealistic image of exactly one adult character.
+
+STABLE CHARACTER IDENTITY — preserve without reinterpretation:
+An adult Korean woman character named Harim. Face: refined slightly cat-like face; calm dark-brown eyes with subtly upturned outer corners; defined dark eyebrows; refined straight nose with a clean bridge; small mouth with softly full lips; sharp clean jawline. Hair: long straight dark hair with realistic strand definition. Skin: soft pale skin with realistic texture and soft highlight roll-off. Body: tall-looking, slim, healthy, elegant, and believable; long arms and long legs; shoulders relatively narrow shoulders; torso long neck, slim healthy torso, no visible rib protrusion; bust natural proportion consistent with a slim healthy adult; not exaggerated; waist narrow and clearly defined; pelvis and hips moderately developed hips with a graceful waist-to-hip transition; lower body healthy believable lower-body volume supporting the developed hip line; never skeletal; body hair not established; preserve natural realism and do not invent a conspicuous trait. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.
+
+SCENE DELTA — applies only to this generation:
+Pose: Sitting gracefully on a plush, neutral-toned sofa, leaning slightly back with one arm resting on the sofa armrest and her hands folded in her lap.
+Expression: Calm and serene expression, subtle smile, eyes looking directly at the camera with a soft, intelligent gaze.
+Outfit: Elegant black midi-length sleeveless dress with a high neckline, cinched at the narrow waist to highlight her silhouette, fabric draping smoothly over her hips, paired with simple black heels.
+Camera and framing: Medium shot, waist-up crop, framing from the mid-torso to the top of the head, ensuring the crop boundary ends clearly above the hips and crotch.
+Lens and perspective: 85mm prime lens, f/1.8, creating a shallow depth of field that softly blurs the living room background.
+Lighting: Soft, warm indoor lighting from a side window, creating gentle highlights on her soft pale skin and realistic hair texture.
+Location: A modern, minimalist living room with a clean, neutral-toned sofa and subtle interior decor.
+Action: Relaxing comfortably on the sofa, posing for a sophisticated portrait.
+Scene styling: Long straight dark hair styled neatly with realistic strand definition, minimal natural makeup to accentuate her refined cat-like facial features, small elegant silver earrings.
+
+Maintain one coherent face, one anatomically continuous adult body, one active shot scale, coordinated eyes sharing one target, realistic hands, and a complete plausible outfit covering every visible body region. If this is a waist-up portrait, crop above the hips and crotch; do not extend the frame downward unless lower garments are explicitly visible. Do not let scene variables alter the Stable Character Identity.
+
+Avoid: No other people, no exaggerated bust, no skeletal appearance, no visible rib protrusion, no messy hair, no bright harsh lighting, no cropped-off limbs, no revealing clothing that leaves the lower body accidentally unclothed.

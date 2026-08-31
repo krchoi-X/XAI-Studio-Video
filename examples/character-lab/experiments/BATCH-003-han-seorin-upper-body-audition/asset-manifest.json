@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "migrated_at": "2026-08-31T00:13:00+00:00",
+  "asset_root": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs",
+  "artifacts": [
+    {
+      "relative_path": "gpt-image/gpt-image-01.png",
+      "sha256": "94fc4ec202baa8d9c95322849945496458566d7f24fb9b1004f74ac4f4ae6683",
+      "byte_count": 1993310,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-01.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-02.png",
+      "sha256": "87a8e403f23928f75db00407d08eb81f482985df67eab97452c972277401aa3f",
+      "byte_count": 1974133,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-02.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-03.png",
+      "sha256": "b0ea5a396b79c9a8165ee4812c0b3a3d082ed2bcaaeb980612e8cfe3cdadd7d3",
+      "byte_count": 1797532,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-03.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-04.png",
+      "sha256": "4e585690b94222debfb9c9706ada7046784de5d61f753b7297e99ba91bd16a18",
+      "byte_count": 2448384,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-04.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-05.png",
+      "sha256": "8c660d9e51b1e726c56db181b8bb7830bf99863d04ee225da5f41dc1cc55745f",
+      "byte_count": 1963886,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-05.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-06.png",
+      "sha256": "700c86d4cbf3a903868975d0402f0e79f623c37049f8bb0f706e533c1d065191",
+      "byte_count": 2105973,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-06.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-07.png",
+      "sha256": "98aa4bc8ec2085c2a64e8db2390ce0e6bc5f038da6b7e837d2ede6a90f3d7873",
+      "byte_count": 2193475,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-07.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-08.png",
+      "sha256": "8bded6149e8bc586c3873470967533c4ab5e26307b006df0a9861d3de6a9c3bb",
+      "byte_count": 1992373,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-08.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-09.png",
+      "sha256": "5001c2801a11de0c93987f021f5302347f5d95322cd875b999ffd99d0c7fd495",
+      "byte_count": 1812698,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-09.png"
+    },
+    {
+      "relative_path": "gpt-image/gpt-image-10.png",
+      "sha256": "fdade776cb248cb1bd10910854b62c17165dee51314299c54238589de24787c2",
+      "byte_count": 2195619,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\gpt-image\\gpt-image-10.png"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3.jpg",
+      "sha256": "2cf8a566a931aa74bf1e3b03b3873dab8b66bd774ac8a74ccbc792fff7721409",
+      "byte_count": 159149,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3_1.jpg",
+      "sha256": "44e80b7c1146fcba42d975415b0753fa26d2f8fcec0bd5330225234e12d1f49a",
+      "byte_count": 161950,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3_1.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3_2.jpg",
+      "sha256": "2832ee5814fc2ead3dc966eaee598ae17edc9c26a8918ae265bc6fd72c22779c",
+      "byte_count": 158970,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3_2.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3_3.jpg",
+      "sha256": "a1f40d1290d25cf2f1ba49ac5e425f1d09a868aa23de164d7e140d3c72ee2807",
+      "byte_count": 161360,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3_3.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3_4.jpg",
+      "sha256": "fc96497a1c8cf274ef525cb95bc8cdeb584502e8ac233cecd3fba872c559baf3",
+      "byte_count": 150823,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3_4.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3_5.jpg",
+      "sha256": "9d682a8364a7dd3efd51de35fe88628b619c3839fcecccef48cffa391734fc6e",
+      "byte_count": 159943,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3_5.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3_6.jpg",
+      "sha256": "1ddbc75aa33b094adcfd00be8b4f56f7924339943e9e1ff617117abb795af124",
+      "byte_count": 158931,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3_6.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3_7.jpg",
+      "sha256": "9bc92bf99d87e03922ab056cc9e60814b10203067640841a88c08a12dfbd1f63",
+      "byte_count": 158699,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3_7.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3_8.jpg",
+      "sha256": "32856d6cd7e9cac7f27a6bb1cbf39189f354324c6f12fa04e069980aae5d7435",
+      "byte_count": 158456,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3_8.jpg"
+    },
+    {
+      "relative_path": "krea2/run-20260830-203942-09b211c3_9.jpg",
+      "sha256": "786700069b01ed8b6b89bac6b2307341015cd62957feaffc654dc8ac0d311461",
+      "byte_count": 159000,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\krea2\\run-20260830-203942-09b211c3_9.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63.jpg",
+      "sha256": "7a78daa807e9c0ce37963a8283b4b79ca783bbbb2e395c33600330c9b10152ab",
+      "byte_count": 105784,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63_1.jpg",
+      "sha256": "31fec3e54086a7b195759913080f959b8719da14479b678e9bd0e3225ad64051",
+      "byte_count": 123955,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63_1.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63_2.jpg",
+      "sha256": "55ce3016df5538fd5aaf13c3e755049c14aa50fcb4225f4eec327bf4b1a08ac7",
+      "byte_count": 103464,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63_2.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63_3.jpg",
+      "sha256": "04a86c476a161d7a1c239e8935a531e2e27d0bcd77aab08b4e70df9da19039f1",
+      "byte_count": 132782,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63_3.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63_4.jpg",
+      "sha256": "b693c2945b86a6f0fe77a97032e7aeccea0e83b5e229c34d0d05bb5adce1ba72",
+      "byte_count": 143716,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63_4.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63_5.jpg",
+      "sha256": "8f7a994e0b0243fce72f0dc958a157b388325bf5d9a26f827131a019ddd5006c",
+      "byte_count": 125905,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63_5.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63_6.jpg",
+      "sha256": "25923e381bf386974a98f329db857d4f7cec4ddb49d2de8756adf5e89116157c",
+      "byte_count": 137899,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63_6.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63_7.jpg",
+      "sha256": "2e48bf9a3c842d535c9aa2af16d566aed66c1bbe128f58a5ba9793dd8cd7a020",
+      "byte_count": 98892,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63_7.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63_8.jpg",
+      "sha256": "5b082376528bfab611cd7451fd316cb12a47e441d43ddad8ae540263ed40885c",
+      "byte_count": 126760,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63_8.jpg"
+    },
+    {
+      "relative_path": "z-image/run-20260830-203552-b6c59a63_9.jpg",
+      "sha256": "9f5e5f0850d9a727f0aa627e8038a492149efe98a54301d838ed36f69edafbee",
+      "byte_count": 125720,
+      "library_path": "D:\\AI_Studio\\library\\characters\\ch-han-seorin\\generations\\BATCH-003-han-seorin-upper-body-audition\\outputs\\z-image\\run-20260830-203552-b6c59a63_9.jpg"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+schema_version: 1
+session:
+  id: BATCH-005-mizuno-aoi-upper-body-audition
+  character_id: ch-mizuno-aoi
+  character_name: 미즈노 아오이
+  romanized_name: Mizuno Aoi
+  title: Mizuno Aoi Upper-Body Character Audition
+  status: running
+  prompt_file: prompt.txt
+  source_prompt: D:\codex\personal-ai-knowledge\creative-studio\projects\character-library\production\prompt-modules\ch-mizuno-aoi\appearance-base.md
+  asset_root: D:\AI_Studio\library\characters\ch-mizuno-aoi\generations\BATCH-005-mizuno-aoi-upper-body-audition\outputs
+jobs:
+- backend: local-wangp
+  model: z_image
+  count: 10
+  seed: 830202651
+  resolution: 768x1024
+  steps: 8
+  settings_file: z-image.settings.json
+  output_dir: outputs/z-image
+  status: queued
+- backend: local-wangp
+  model: krea2_turbo_moody_krea
+  count: 10
+  seed: 830202652
+  resolution: 768x1024
+  steps: 8
+  settings_file: krea2.settings.json
+  output_dir: outputs/krea2
+  status: queued
+- backend: codex-imagegen
+  model: gpt-image
+  count: 10
+  seed: null
+  prompt_file: prompt.txt
+  output_dir: outputs/gpt-image
+  status: queued
+review:
+  surface: personal-prompt-studio
+  initial_state: needs_review

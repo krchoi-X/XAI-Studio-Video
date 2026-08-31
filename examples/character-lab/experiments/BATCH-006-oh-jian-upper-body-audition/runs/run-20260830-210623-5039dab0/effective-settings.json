@@ -1,0 +1,21 @@
+{
+  "settings_version": 2.73,
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 10,
+  "repeat_generation": 1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "model_type": "krea2_turbo_moody_krea",
+  "base_model_type": "krea2_turbo",
+  "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+  "seed": 830202662,
+  "type": "Moody Krea 2 V7 INT8",
+  "prompt": "A photorealistic full-body portrait of a young Korean woman with a distinctive, believable beauty that feels like a real person rather than a generic AI face. Her entire body is fully visible from head to toe. She has a slim, tall, well-proportioned figure with long graceful lines, narrow shoulders, a refined waistline, and long slender legs, creating an elegant and feminine silhouette. Her body looks naturally lean and well-maintained, with soft curves and realistic proportions.\n\nHer face is small and refined, with a softly slim oval-to-heart-shaped face, lean cheeks, a smooth jawline, and a delicate slightly pointed chin. Her features are balanced and attractive without looking overly symmetrical. She has clear, calm almond-shaped eyes of medium-to-large size, softly defined eyelids, neat natural lashes, and expressive brown eyes with a gentle, intelligent gaze. Her nose is slim and straight with a refined bridge and a neat tip. Her lips are naturally shaped, soft pink, and lightly glossy, with a fresh hydrated look.\n\nHer skin is very clear, smooth, and luminous, with an even complexion, a soft hydrated glow, and a delicate natural sheen. The skin looks clean, fresh, and well-moisturized, with fine realistic texture, never waxy, plastic, or overly airbrushed. She wears sheer transparent makeup with a thin natural-looking base, subtle eye makeup, a soft peach-pink flush, and naturally glossy lips, creating a clean, refined, no-makeup makeup look.\n\nHer hair is dark brown to soft black, naturally beautiful and softly styled, with fine strands and realistic texture. A few wispy face-framing strands fall naturally around the forehead, cheeks, or temples, giving her a soft, living presence. The overall impression is elegant, fresh, feminine, and believable, with realistic facial proportions, true-to-life skin tones, subtle natural asymmetry, and the feeling of a real photographed person rather than an artificial beauty.\n\nCreate a standardized photorealistic upper-body character audition portrait. Show one young adult woman alone, framed from approximately the waist or upper hips to above the head, with both shoulders and the complete hairstyle visible. She faces the camera directly or at a restrained three-quarter angle with a calm neutral expression or an almost imperceptible smile. Preserve the character-specific face, hair, skin, and recognition anchors above.\n\nUse a clean seamless soft-white studio background, bright soft even artificial lighting, gentle dimensional shadows around the eyes, nose, jawline, neck, and collarbones, and a realistic full-frame 70-85mm portrait-photography look. Wardrobe is a simple modest sleeveless or short-sleeved knit top in white, cream, or very pale gray. Natural skin pores, believable eye reflections, individual hair strands, subtle natural asymmetry, and minimal beauty retouching. Premium editorial casting-test photograph intended to decide whether this visual character should continue into development.\n\nAvoid: extra people, cropped crown or missing hairstyle, hands prominently covering the face, wide-angle distortion, warped anatomy, malformed eyes, mismatched gaze, plastic skin, excessive smoothing, heavy makeup, flashy glamour styling, jewelry as a dominant feature, props, clutter, text, logos, and watermarks.\n",
+  "output_filename": "run-20260830-210623-5039dab0"
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-083125-8437b3a4",
+  "project_id": "SCENE-20260831-082505-harim-chic-navy-studio-portrait",
+  "prompt_id": "SCENE-20260831-082505-harim-chic-navy-studio-portrait-krea2",
+  "status": "needs_review",
+  "created_at": "2026-08-31T08:31:25+09:00",
+  "updated_at": "2026-08-31T08:32:52+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-32608",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\prompt.txt",
+    "sha256": "08b83b6eb9c5072705b6c28a3370e3cfc3b2fb9cb138e80ffc4177b6deb4565a",
+    "normalized_sha256": "e5ea7978aaf15d672499322d1ad73d9b5873969beeb6ac5e536bdb397ac17c18",
+    "byte_count": 2616
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 1,
+      "repeat_generation": 1,
+      "seed": 831082507,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\outputs\\krea2\\run-20260831-083125-8437b3a4.jpg",
+      "sha256": "304fe2b59c7980274233dc329524eedb63289e9204c470b1de139522c9126ea7",
+      "byte_count": 152895,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T08:32:52+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 35860,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\runs\\run-20260831-083125-8437b3a4",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\runs\\run-20260831-083125-8437b3a4\\effective-settings.json",
+      "--output-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\runs\\run-20260831-083125-8437b3a4\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260831-082505-harim-chic-navy-studio-portrait\\runs\\run-20260831-083125-8437b3a4\\worker.stderr.log"
+  }
+}
