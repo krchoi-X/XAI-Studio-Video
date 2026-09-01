@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/storyboard-candidates-v1.schema.json",
+  "title": "XAI Studio Storyboard Candidates v1",
+  "type": "object",
+  "required": ["schema_version", "request_id", "status", "storyboards", "errors"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "request_id": {"type": "string", "pattern": "^req_[A-Za-z0-9_-]+$"},
+    "status": {"enum": ["needs_user_choice", "failed"]},
+    "storyboards": {"type": "array", "maxItems": 3, "items": {"$ref": "#/$defs/storyboard"}},
+    "errors": {"type": "array", "items": {"$ref": "#/$defs/error"}}
+  },
+  "$defs": {
+    "storyboard": {
+      "type": "object",
+      "required": ["id", "title", "summary", "shots"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^sb_[A-Za-z0-9_-]+$"},
+        "title": {"type": "string", "minLength": 1},
+        "summary": {"type": "string", "minLength": 1},
+        "shots": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/shot"}}
+      },
+      "additionalProperties": false
+    },
+    "shot": {
+      "type": "object",
+      "required": ["id", "purpose", "description", "continuity", "sample_request"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^shot_[A-Za-z0-9_-]+$"},
+        "purpose": {"type": "string", "minLength": 1},
+        "description": {"type": "string", "minLength": 1},
+        "continuity": {"type": "object"},
+        "sample_request": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "error": {
+      "type": "object",
+      "required": ["code", "message"],
+      "properties": {"code": {"type": "string", "minLength": 1}, "message": {"type": "string", "minLength": 1}, "field": {"type": ["string", "null"]}},
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
