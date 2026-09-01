@@ -85,6 +85,7 @@ See:
 - `skills/storyboard-director/SKILL.md`
 - `docs/storyboard-directing.md`
 - `docs/storyboard-rendering.md`
+- `docs/agent-development-production-roles.md` — Codex/Claude development plane and Hermes production-agent role split
 - `docs/ai-image-curation-system-review.md`
 - `templates/storyboard-draft.md`
 
