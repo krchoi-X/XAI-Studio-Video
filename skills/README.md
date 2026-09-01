@@ -4,6 +4,14 @@ Use the root `SKILL.md` for the general XAI-Studio-Video production framework. L
 
 ## Available skills
 
+### `idea-to-production`
+
+Path: `skills/idea-to-production/SKILL.md`
+
+Use when a natural-language content idea should become 2–3 directing alternatives, an explicitly chosen low-cost sample, and then a reviewed final render. It owns the durable v1 contract flow and Prompt Trace, but never edits Character DNA or resolves an asset ID by guessing a filesystem path.
+
+Use `storyboard-director` alone when the user only wants story, beat, pacing, or shot design without starting a production request. Use `idea-to-production` when those choices must continue through sample and final production.
+
 ### `storyboard-director`
 
 Path: `skills/storyboard-director/SKILL.md`
@@ -43,6 +51,18 @@ rough story / scene idea
         ├─ video flow → root XAI-Studio-Video → model adapter
         ├─ graphic-novel/comic flow → panel/layout adapter → image renderer
         └─ illustration-sequence flow → selected-frame renderer
+```
+
+For an executable production request:
+
+```text
+natural-language production idea
+→ idea-to-production
+→ 2–3 storyboard candidates
+→ explicit user choice
+→ low-cost sample
+→ per-shot review
+→ final render
 ```
 
 The Storyboard Spec is the source of truth. Rough storyboard images are replaceable visualization artifacts.

@@ -83,6 +83,7 @@ This lets the studio use cheap storyboards to decide which expensive images or v
 See:
 
 - `skills/storyboard-director/SKILL.md`
+- `skills/idea-to-production/SKILL.md`
 - `docs/storyboard-directing.md`
 - `docs/storyboard-rendering.md`
 - `docs/ai-image-curation-system-review.md`
