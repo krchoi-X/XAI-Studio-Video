@@ -25,3 +25,19 @@ Rules:
 7. Missing references and renderer failures are structured errors, not guessed substitutions.
 
 Claude package C3 may add workflow prose, templates, validation instructions, and deterministic fixtures. It must not rename schema fields, widen enums, or edit queue/API/adaptor implementations.
+
+## Durable storyboard worker
+
+`tools/idea_production_worker.py` is the execution boundary used by the private Studio API. The caller creates one request directory containing:
+
+- `request.json` — valid `idea-production-request-v1`;
+- `resolved-references.json` — approved adapter results for every character and asset ID;
+- `status.json` — initial durable queue state.
+
+Then it starts:
+
+```text
+python tools/idea_production_worker.py --job-dir <request-dir> --repo-root <this-repository>
+```
+
+The worker writes `storyboards.json` and atomically updates `status.json`. It stops at `needs_user_choice`; it never starts a renderer or changes Character DNA. Missing adapter references fail before the local LLM is called.
