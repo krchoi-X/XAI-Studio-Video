@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_nightwalk",
+  "status": "needs_user_choice",
+  "storyboards": [
+    {
+      "id": "sb_nightwalk_streetlights",
+      "title": "Under the Streetlights",
+      "summary": "Wet asphalt doing the work. She passes through pools of sodium light and the walk reads as ordinary rather than cinematic.",
+      "shots": [
+        {
+          "id": "shot_01",
+          "purpose": "Place her in the light-and-dark rhythm of the street.",
+          "description": "Medium wide of Jung Haewon walking toward camera on a wet residential street, streetlight pools on the asphalt, reflections breaking under her steps.",
+          "continuity": {
+            "carries_from": null,
+            "location": "wet residential street after rain",
+            "time_of_day": "night",
+            "wardrobe": "dark coat over everyday clothes",
+            "emotional_state": "tired, unhurried"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_nightwalk",
+            "storyboard_id": "sb_nightwalk_streetlights",
+            "shot_id": "shot_01",
+            "stage": "sample",
+            "character_ids": ["ch-jung-haewon"],
+            "reference_asset_ids": [],
+            "prompt_strategy": "creative_expansion",
+            "raw_user_prompt": "Jung Haewon walks home under streetlights after rain.",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-jung-haewon",
+              "character_version": 1,
+              "mode": "creative_expansion",
+              "coverage": "clothed",
+              "location": "wet residential street after rain, night",
+              "activity": "walking toward camera through pools of streetlight",
+              "camera": "medium wide, eye level, static",
+              "lighting": "sodium streetlights overhead with wet-asphalt reflections"
+            },
+            "immutable_constraints": {
+              "coverage": "clothed",
+              "additional_people": false
+            },
+            "engines": ["z-image"],
+            "count": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "sb_nightwalk_reflection",
+      "title": "Reflection First",
+      "summary": "The reflection carries the shot and she enters it late. Riskier to render, which is exactly why it should be sampled cheaply first.",
+      "shots": [
+        {
+          "id": "shot_01",
+          "purpose": "Let the puddle carry the image before she does.",
+          "description": "Low-angle shot of a puddle holding an inverted streetlight, Jung Haewon entering the top of frame in a dark coat, footfall about to break the surface.",
+          "continuity": {
+            "carries_from": null,
+            "location": "wet residential street after rain",
+            "time_of_day": "night",
+            "wardrobe": "dark coat over everyday clothes",
+            "emotional_state": "tired, unhurried"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_nightwalk",
+            "storyboard_id": "sb_nightwalk_reflection",
+            "shot_id": "shot_01",
+            "stage": "sample",
+            "character_ids": ["ch-jung-haewon"],
+            "reference_asset_ids": [],
+            "prompt_strategy": "creative_expansion",
+            "raw_user_prompt": "Jung Haewon walks home under streetlights after rain.",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-jung-haewon",
+              "character_version": 1,
+              "mode": "creative_expansion",
+              "coverage": "clothed",
+              "location": "wet residential street after rain, night",
+              "activity": "stepping toward a puddle that reflects a streetlight",
+              "camera": "low angle close to the ground, puddle filling the lower two thirds",
+              "lighting": "single sodium streetlight inverted in the water"
+            },
+            "immutable_constraints": {
+              "coverage": "clothed",
+              "additional_people": false
+            },
+            "engines": ["z-image"],
+            "count": 2
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

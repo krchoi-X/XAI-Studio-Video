@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_crosswalk_exact",
+  "action": "create_storyboards",
+  "idea": "harim, high ponytail, navy wool coat, standing at a rain-wet crosswalk at night, neon reflections on the asphalt, 85mm, shallow depth of field, no cars",
+  "character_ids": ["ch-harim"],
+  "candidate_count": 2,
+  "mode": "exact",
+  "constraints": {},
+  "reference_asset_ids": ["asset_ch-harim_0f2c9a41"],
+  "output_intent": "image"
+}

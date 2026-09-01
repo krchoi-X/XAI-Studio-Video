@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "job_id": "job_20260901_bob_override_sample_01",
+  "request_id": "req_20260901_bob_override",
+  "storyboard_id": "sb_bob_frontal",
+  "shot_id": "shot_01",
+  "stage": "sample",
+  "character_ids": ["ch-harim"],
+  "reference_asset_ids": [],
+  "prompt_strategy": "strict_translation",
+  "raw_user_prompt": "Harim in the studio, new short haircut, plain grey backdrop, waist-up portrait.",
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-harim",
+    "character_version": 2,
+    "mode": "strict_translation",
+    "hair": "short blunt bob just below the jaw; no hair below the shoulders",
+    "coverage": "clothed",
+    "location": "plain grey studio backdrop",
+    "camera": "waist-up frontal portrait, eye level",
+    "lighting": "even soft key with a gentle fill, no dramatic shadow"
+  },
+  "immutable_constraints": {
+    "hair": "short blunt bob just below the jaw; no hair below the shoulders",
+    "coverage": "clothed",
+    "additional_people": false
+  },
+  "engines": ["z-image"],
+  "count": 2,
+  "prompt_trace": {
+    "raw_user_prompt": "Harim in the studio, new short haircut, plain grey backdrop, waist-up portrait.",
+    "structured_scene_spec": {
+      "schema_version": 1,
+      "character": "ch-harim",
+      "character_version": 2,
+      "mode": "strict_translation",
+      "hair": "short blunt bob just below the jaw; no hair below the shoulders",
+      "coverage": "clothed",
+      "location": "plain grey studio backdrop",
+      "camera": "waist-up frontal portrait, eye level",
+      "lighting": "even soft key with a gentle fill, no dramatic shadow"
+    },
+    "after_character_dna_merge": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 - EXPLICIT USER SCENE. Preserve this meaning without adding or removing wardrobe, coverage, props, people, or actions:\nHarim in the studio, new short haircut, plain grey backdrop, waist-up portrait.\n\nIMMUTABLE CONSTRAINTS:\n- hair: short blunt bob just below the jaw; no hair below the shoulders\n- coverage: clothed\n- additional_people: false\n\nAUTHORITATIVE SCENE SPEC. These values replace same-named Stable DNA fields rather than being appended to them:\n- hair: short blunt bob just below the jaw; no hair below the shoulders\n- coverage: clothed\n- location: plain grey studio backdrop\n- camera: waist-up frontal portrait, eye level\n- lighting: even soft key with a gentle fill, no dramatic shadow\n\nPRIORITY 2 - STABLE CHARACTER IDENTITY. Apply identity only; it must not override the explicit scene:\nEarly 20s adult Korean woman. Small, slightly elongated oval face with a subtly cat-like overall impression. Almond-shaped dark-brown eyes with subtly raised outer corners and a calm, cool, reserved gaze. Defined dark eyebrows with a clean noticeable shape. Refined straight nose with a clean bridge. Small mouth with softly full lips. Slim, clean, sharp jawline. Pale neutral East Asian skin tone with realistic texture and soft highlight roll-off. Tall-looking and long-lined through coordinated relative proportions. Narrow shoulders, long neck, compact light upper torso, narrow defined waist, long straight legs.\n\nMaintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state.",
+    "after_constraint_validation": {
+      "ok": true,
+      "precedence": [
+        "explicit_user_constraints",
+        "stable_character_dna",
+        "scene_requirements",
+        "style_enrichment",
+        "optional_creative_detail"
+      ],
+      "applied_constraints": ["additional_people", "coverage", "hair"],
+      "conflicts": [
+        {
+          "constraint": "hair",
+          "outranked": "stable_dna.hair",
+          "resolution": "constraint_wins",
+          "detail": "Stable DNA specifies near-black long hair to mid-back with a default high ponytail. The explicit constraint replaces it for this run only; characters/ch-harim/character.json is unchanged and its version and hash are unaffected."
+        }
+      ],
+      "dropped_enrichment": [],
+      "errors": []
+    },
+    "after_scene_style_expansion": null,
+    "final_prompt_sent_to_hermes": null,
+    "final_prompt_sent_to_image_engine": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 - EXPLICIT USER SCENE. Preserve this meaning without adding or removing wardrobe, coverage, props, people, or actions:\nHarim in the studio, new short haircut, plain grey backdrop, waist-up portrait.\n\nIMMUTABLE CONSTRAINTS:\n- hair: short blunt bob just below the jaw; no hair below the shoulders\n- coverage: clothed\n- additional_people: false\n\nAUTHORITATIVE SCENE SPEC. These values replace same-named Stable DNA fields rather than being appended to them:\n- hair: short blunt bob just below the jaw; no hair below the shoulders\n- coverage: clothed\n- location: plain grey studio backdrop\n- camera: waist-up frontal portrait, eye level\n- lighting: even soft key with a gentle fill, no dramatic shadow\n\nPRIORITY 2 - STABLE CHARACTER IDENTITY. Apply identity only; it must not override the explicit scene:\nEarly 20s adult Korean woman. Small, slightly elongated oval face with a subtly cat-like overall impression. Almond-shaped dark-brown eyes with subtly raised outer corners and a calm, cool, reserved gaze. Defined dark eyebrows with a clean noticeable shape. Refined straight nose with a clean bridge. Small mouth with softly full lips. Slim, clean, sharp jawline. Pale neutral East Asian skin tone with realistic texture and soft highlight roll-off. Tall-looking and long-lined through coordinated relative proportions. Narrow shoulders, long neck, compact light upper torso, narrow defined waist, long straight legs.\n\nMaintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state.\n\nAvoid: long hair, hair below the shoulders, ponytail, additional people, text overlay, warped hands.",
+    "suppressed_stable_dna_fields": ["hair"]
+  }
+}

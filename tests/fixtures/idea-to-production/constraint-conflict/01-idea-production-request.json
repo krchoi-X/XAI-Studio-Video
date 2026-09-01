@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_bob_override",
+  "action": "create_storyboards",
+  "idea": "Harim in the studio, new short haircut, plain grey backdrop, waist-up portrait.",
+  "character_ids": ["ch-harim"],
+  "candidate_count": 2,
+  "mode": "strict_translation",
+  "constraints": {
+    "hair": "short blunt bob just below the jaw; no hair below the shoulders",
+    "coverage": "clothed",
+    "additional_people": false
+  },
+  "reference_asset_ids": [],
+  "output_intent": "image"
+}

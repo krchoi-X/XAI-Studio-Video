@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_seawalk",
+  "status": "needs_user_choice",
+  "storyboards": [
+    {
+      "id": "sb_seawalk_quiet_walk",
+      "title": "Quiet Walk",
+      "summary": "Observational and unhurried. The camera stays beside her at a polite distance and lets the end of a shift settle on its own. The ice cream is ordinary, not a prop.",
+      "shots": [
+        {
+          "id": "shot_01",
+          "purpose": "Establish that the working day is over and the walk has already begun.",
+          "description": "Medium wide of Harim walking left to right along a seafront promenade in a navy wool coat, holding a single-scoop cone at waist height, sea and low sun behind her.",
+          "continuity": {
+            "carries_from": null,
+            "location": "seafront promenade",
+            "time_of_day": "late afternoon",
+            "wardrobe": "navy wool coat",
+            "hair_state": "A",
+            "props": "single-scoop ice cream cone",
+            "emotional_state": "settling after a long shift"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_seawalk",
+            "storyboard_id": "sb_seawalk_quiet_walk",
+            "shot_id": "shot_01",
+            "stage": "sample",
+            "character_ids": ["ch-harim"],
+            "reference_asset_ids": ["asset_ch-harim_0f2c9a41"],
+            "prompt_strategy": "creative_expansion",
+            "raw_user_prompt": "Harim finishes her shift and walks by the sea eating ice cream.",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-harim",
+              "character_version": 2,
+              "mode": "creative_expansion",
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "seafront promenade beside a low sea wall, late afternoon",
+              "activity": "walking at an unhurried pace while holding a single-scoop ice cream cone",
+              "camera": "medium wide, eye level, tracking parallel with the subject",
+              "lighting": "low warm sun from behind with a soft rim along the coat shoulder"
+            },
+            "immutable_constraints": {
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "seafront promenade",
+              "additional_people": false
+            },
+            "engines": ["z-image"],
+            "count": 2
+          }
+        },
+        {
+          "id": "shot_02",
+          "purpose": "Hold on the moment the day stops mattering.",
+          "description": "Medium close-up from the side as Harim pauses at the sea wall, eats without hurry and looks out past the camera, coat collar catching the last light.",
+          "continuity": {
+            "carries_from": "shot_01",
+            "location": "seafront promenade",
+            "time_of_day": "late afternoon",
+            "wardrobe": "navy wool coat",
+            "hair_state": "A",
+            "props": "single-scoop ice cream cone, partly eaten",
+            "emotional_state": "quiet release"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_seawalk",
+            "storyboard_id": "sb_seawalk_quiet_walk",
+            "shot_id": "shot_02",
+            "stage": "sample",
+            "character_ids": ["ch-harim"],
+            "reference_asset_ids": ["asset_ch-harim_0f2c9a41"],
+            "prompt_strategy": "creative_expansion",
+            "raw_user_prompt": "Harim finishes her shift and walks by the sea eating ice cream.",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-harim",
+              "character_version": 2,
+              "mode": "creative_expansion",
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "at a low sea wall on the promenade, late afternoon",
+              "activity": "pausing at the wall and eating slowly while looking out to sea",
+              "expression": "calm neutral expression easing slightly",
+              "camera": "medium close-up, three-quarter profile, static",
+              "lighting": "low warm sun raking across the face from screen right"
+            },
+            "immutable_constraints": {
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "seafront promenade",
+              "additional_people": false
+            },
+            "engines": ["z-image"],
+            "count": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "sb_seawalk_last_light",
+      "title": "Last Light",
+      "summary": "Warmer and tighter. The sun is nearly gone and the walk is read through what the light does to her rather than through the geography of the promenade.",
+      "shots": [
+        {
+          "id": "shot_01",
+          "purpose": "Open inside the feeling instead of the location.",
+          "description": "Close-up of the cone and one bare hand against the navy coat, sea bokeh behind, sun almost down.",
+          "continuity": {
+            "carries_from": null,
+            "location": "seafront promenade",
+            "time_of_day": "sunset",
+            "wardrobe": "navy wool coat",
+            "hair_state": "A",
+            "props": "single-scoop ice cream cone",
+            "emotional_state": "unguarded"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_seawalk",
+            "storyboard_id": "sb_seawalk_last_light",
+            "shot_id": "shot_01",
+            "stage": "sample",
+            "character_ids": ["ch-harim"],
+            "reference_asset_ids": ["asset_ch-harim_0f2c9a41"],
+            "prompt_strategy": "creative_expansion",
+            "raw_user_prompt": "Harim finishes her shift and walks by the sea eating ice cream.",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-harim",
+              "character_version": 2,
+              "mode": "creative_expansion",
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "seafront promenade at sunset",
+              "activity": "holding an ice cream cone close to the chest while walking",
+              "camera": "close-up on the hand and cone with the face soft in the upper frame",
+              "lens": "85mm, shallow depth of field",
+              "lighting": "warm low sun flaring from screen left"
+            },
+            "immutable_constraints": {
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "seafront promenade",
+              "additional_people": false
+            },
+            "engines": ["z-image"],
+            "count": 2
+          }
+        },
+        {
+          "id": "shot_02",
+          "purpose": "Widen out once the feeling has landed.",
+          "description": "Wide of a small figure in a navy coat far along the empty promenade, sea filling most of the frame, last band of orange on the horizon.",
+          "continuity": {
+            "carries_from": "shot_01",
+            "location": "seafront promenade",
+            "time_of_day": "sunset",
+            "wardrobe": "navy wool coat",
+            "hair_state": "A",
+            "props": "single-scoop ice cream cone",
+            "emotional_state": "solitary but not sad"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_seawalk",
+            "storyboard_id": "sb_seawalk_last_light",
+            "shot_id": "shot_02",
+            "stage": "sample",
+            "character_ids": ["ch-harim"],
+            "reference_asset_ids": ["asset_ch-harim_0f2c9a41"],
+            "prompt_strategy": "creative_expansion",
+            "raw_user_prompt": "Harim finishes her shift and walks by the sea eating ice cream.",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-harim",
+              "character_version": 2,
+              "mode": "creative_expansion",
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "long empty seafront promenade at sunset",
+              "activity": "walking away from camera along the promenade",
+              "camera": "wide, static, subject small in frame",
+              "lighting": "last band of orange on the horizon, cool blue elsewhere"
+            },
+            "immutable_constraints": {
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "seafront promenade",
+              "additional_people": false
+            },
+            "engines": ["z-image"],
+            "count": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "sb_seawalk_single_frame",
+      "title": "One Frame",
+      "summary": "A single image that has to carry the whole idea. Cheapest to produce and the right choice if the run is really about identity and wardrobe rather than sequence.",
+      "shots": [
+        {
+          "id": "shot_01",
+          "purpose": "Say end-of-shift, sea, and ice cream in one readable frame.",
+          "description": "Three-quarter medium shot of Harim on the promenade mid-step with the cone raised, sea wall and water behind, work bag still on her shoulder.",
+          "continuity": {
+            "carries_from": null,
+            "location": "seafront promenade",
+            "time_of_day": "late afternoon",
+            "wardrobe": "navy wool coat",
+            "hair_state": "A",
+            "props": "single-scoop ice cream cone, shoulder bag",
+            "emotional_state": "end-of-shift ease"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_seawalk",
+            "storyboard_id": "sb_seawalk_single_frame",
+            "shot_id": "shot_01",
+            "stage": "sample",
+            "character_ids": ["ch-harim"],
+            "reference_asset_ids": ["asset_ch-harim_0f2c9a41"],
+            "prompt_strategy": "creative_expansion",
+            "raw_user_prompt": "Harim finishes her shift and walks by the sea eating ice cream.",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-harim",
+              "character_version": 2,
+              "mode": "creative_expansion",
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "seafront promenade with a low sea wall and open water behind",
+              "activity": "mid-step with the ice cream cone raised, shoulder bag still worn",
+              "props": "single-scoop ice cream cone and a plain shoulder bag",
+              "camera": "three-quarter medium shot, eye level",
+              "lighting": "soft late-afternoon daylight, no hard shadow on the face"
+            },
+            "immutable_constraints": {
+              "wardrobe": "navy wool coat",
+              "coverage": "clothed",
+              "location": "seafront promenade",
+              "additional_people": false
+            },
+            "engines": ["z-image"],
+            "count": 2
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

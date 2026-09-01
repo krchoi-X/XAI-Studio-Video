@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_crosswalk_exact",
+  "status": "needs_user_choice",
+  "storyboards": [
+    {
+      "id": "sb_crosswalk_exact",
+      "title": "Exact prompt, unmodified",
+      "summary": "exact mode: candidate_count 2 is clamped to one storyboard because producing variants would require rewriting the supplied prompt. The shot description is the idea string character for character, including its lowercase start and missing final period.",
+      "shots": [
+        {
+          "id": "shot_01",
+          "purpose": "Render the supplied prompt without creative rewriting.",
+          "description": "harim, high ponytail, navy wool coat, standing at a rain-wet crosswalk at night, neon reflections on the asphalt, 85mm, shallow depth of field, no cars",
+          "continuity": {
+            "carries_from": null,
+            "note": "exact mode does not derive continuity; nothing is inferred beyond the supplied text"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_crosswalk_exact",
+            "storyboard_id": "sb_crosswalk_exact",
+            "shot_id": "shot_01",
+            "stage": "sample",
+            "character_ids": ["ch-harim"],
+            "reference_asset_ids": ["asset_ch-harim_0f2c9a41"],
+            "prompt_strategy": "exact",
+            "raw_user_prompt": "harim, high ponytail, navy wool coat, standing at a rain-wet crosswalk at night, neon reflections on the asphalt, 85mm, shallow depth of field, no cars",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-harim",
+              "character_version": 2,
+              "mode": "exact"
+            },
+            "immutable_constraints": {},
+            "engines": ["z-image"],
+            "count": 2
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

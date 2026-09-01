@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_missing_ref",
+  "action": "create_storyboards",
+  "idea": "Jung Haewon on a rooftop at dusk, matching the reference lighting.",
+  "character_ids": ["ch-jung-haewon"],
+  "candidate_count": 3,
+  "mode": "creative_expansion",
+  "constraints": {
+    "coverage": "clothed",
+    "additional_people": false
+  },
+  "reference_asset_ids": [
+    "asset_ch-jung-haewon_deadbeef",
+    "asset_ch-jung-haewon_0badc0de"
+  ],
+  "output_intent": "image"
+}

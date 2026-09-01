@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "description": "Deterministic fixtures for the idea-to-production v1 contracts. Owned by Claude package C3. Every file is validated against a Codex-owned schema by validate_fixtures.py; no field name or enum in this directory may deviate from those schemas.",
+  "schemas": {
+    "idea_production_request": "schemas/idea-production-request-v1.schema.json",
+    "storyboard_candidates": "schemas/storyboard-candidates-v1.schema.json",
+    "renderer_job_request": "schemas/renderer-job-request-v1.schema.json",
+    "production_job_result": "schemas/production-job-result-v1.schema.json",
+    "scene_spec": "schemas/scene-spec-v1.schema.json"
+  },
+  "cases": [
+    {
+      "name": "normal",
+      "summary": "Happy path. Idea to 3 candidates, explicit choice, cheap sample, then final on both engines. No conflicts, no suppression, no errors.",
+      "request_id": "req_20260901_seawalk",
+      "files": [
+        {
+          "path": "normal/01-idea-production-request.json",
+          "schema": "idea_production_request",
+          "expect": {"mode": "creative_expansion", "candidate_count": 3}
+        },
+        {
+          "path": "normal/02-storyboard-candidates.json",
+          "schema": "storyboard_candidates",
+          "expect": {"status": "needs_user_choice", "storyboard_count": 3, "error_codes": []}
+        },
+        {
+          "path": "normal/03-sample-renderer-job-request.json",
+          "schema": "renderer_job_request",
+          "expect": {
+            "stage": "sample",
+            "prompt_strategy": "creative_expansion",
+            "engines": ["z-image"],
+            "count": 2,
+            "suppressed_stable_dna_fields": []
+          }
+        },
+        {
+          "path": "normal/04-sample-production-job-result.json",
+          "schema": "production_job_result",
+          "expect": {
+            "status": "completed",
+            "progress": {"completed": 2, "failed": 0, "total": 2},
+            "asset_count": 2,
+            "result_session_id_null": false,
+            "error_codes": []
+          }
+        },
+        {
+          "path": "normal/05-final-renderer-job-request.json",
+          "schema": "renderer_job_request",
+          "expect": {
+            "stage": "final",
+            "prompt_strategy": "creative_expansion",
+            "engines": ["z-image", "krea2"],
+            "count": 4,
+            "suppressed_stable_dna_fields": []
+          }
+        },
+        {
+          "path": "normal/06-final-production-job-result.json",
+          "schema": "production_job_result",
+          "expect": {
+            "status": "completed",
+            "progress": {"completed": 8, "failed": 0, "total": 8},
+            "asset_count": 8,
+            "result_session_id_null": false,
+            "error_codes": []
+          }
+        }
+      ],
+      "case_checks": ["distinct_job_ids", "job_total_matches_count_times_engines", "sample_before_final"]
+    },
+    {
+      "name": "exact",
+      "summary": "exact mode. candidate_count 2 is clamped to one storyboard with one shot whose description is the idea verbatim; the Prompt Trace is still produced in full and its stages are equal.",
+      "request_id": "req_20260901_crosswalk_exact",
+      "files": [
+        {
+          "path": "exact/01-idea-production-request.json",
+          "schema": "idea_production_request",
+          "expect": {"mode": "exact", "candidate_count": 2}
+        },
+        {
+          "path": "exact/02-storyboard-candidates.json",
+          "schema": "storyboard_candidates",
+          "expect": {"status": "needs_user_choice", "storyboard_count": 1, "error_codes": []}
+        },
+        {
+          "path": "exact/03-sample-renderer-job-request.json",
+          "schema": "renderer_job_request",
+          "expect": {"stage": "sample", "prompt_strategy": "exact", "engines": ["z-image"], "count": 2}
+        },
+        {
+          "path": "exact/04-sample-production-job-result.json",
+          "schema": "production_job_result",
+          "expect": {
+            "status": "completed",
+            "progress": {"completed": 2, "failed": 0, "total": 2},
+            "asset_count": 2,
+            "result_session_id_null": false,
+            "error_codes": []
+          }
+        }
+      ],
+      "case_checks": [
+        "exact_clamped_to_one_storyboard",
+        "exact_shot_description_is_idea_verbatim",
+        "distinct_job_ids",
+        "job_total_matches_count_times_engines"
+      ]
+    },
+    {
+      "name": "constraint-conflict",
+      "summary": "Two sub-cases. Resolvable: an explicit hair constraint outranks Stable DNA hair, which is suppressed for the run while the character record is untouched. Unresolvable: two level-1 constraints contradict each other and the run fails with a structured error.",
+      "request_id": "req_20260901_bob_override",
+      "files": [
+        {
+          "path": "constraint-conflict/01-idea-production-request.json",
+          "schema": "idea_production_request",
+          "expect": {"mode": "strict_translation", "candidate_count": 2}
+        },
+        {
+          "path": "constraint-conflict/02-storyboard-candidates.json",
+          "schema": "storyboard_candidates",
+          "expect": {"status": "needs_user_choice", "storyboard_count": 2, "error_codes": []}
+        },
+        {
+          "path": "constraint-conflict/03-sample-renderer-job-request.json",
+          "schema": "renderer_job_request",
+          "expect": {
+            "stage": "sample",
+            "prompt_strategy": "strict_translation",
+            "engines": ["z-image"],
+            "count": 2,
+            "suppressed_stable_dna_fields": ["hair"]
+          }
+        },
+        {
+          "path": "constraint-conflict/04-unresolvable-idea-production-request.json",
+          "schema": "idea_production_request",
+          "request_id": "req_20260901_unresolvable",
+          "expect": {"mode": "strict_translation", "candidate_count": 2}
+        },
+        {
+          "path": "constraint-conflict/05-unresolvable-storyboard-candidates.json",
+          "schema": "storyboard_candidates",
+          "request_id": "req_20260901_unresolvable",
+          "expect": {
+            "status": "failed",
+            "storyboard_count": 0,
+            "error_codes": ["constraint_conflict_unresolvable"]
+          }
+        }
+      ],
+      "case_checks": ["conflict_recorded_in_trace", "suppression_matches_conflicts"]
+    },
+    {
+      "name": "missing-reference",
+      "summary": "Two reference asset IDs are not resolved by the approved adapter. The run stops with one structured error per unresolved ID, emits no storyboards, and selects no substitute.",
+      "request_id": "req_20260901_missing_ref",
+      "files": [
+        {
+          "path": "missing-reference/01-idea-production-request.json",
+          "schema": "idea_production_request",
+          "expect": {"mode": "creative_expansion", "candidate_count": 3}
+        },
+        {
+          "path": "missing-reference/02-storyboard-candidates.json",
+          "schema": "storyboard_candidates",
+          "expect": {
+            "status": "failed",
+            "storyboard_count": 0,
+            "error_codes": ["reference_not_found", "reference_not_found"]
+          }
+        }
+      ],
+      "case_checks": ["one_error_per_unresolved_reference"]
+    },
+    {
+      "name": "renderer-failure",
+      "summary": "A sample render fails on VRAM with one image already stored, the first retry is interrupted with nothing stored, and the second retry completes. Each attempt is a new job_id under the same request_id and the prompt is byte-identical across all three.",
+      "request_id": "req_20260901_nightwalk",
+      "files": [
+        {
+          "path": "renderer-failure/01-idea-production-request.json",
+          "schema": "idea_production_request",
+          "expect": {"mode": "creative_expansion", "candidate_count": 2}
+        },
+        {
+          "path": "renderer-failure/02-storyboard-candidates.json",
+          "schema": "storyboard_candidates",
+          "expect": {"status": "needs_user_choice", "storyboard_count": 2, "error_codes": []}
+        },
+        {
+          "path": "renderer-failure/03-sample-renderer-job-request.json",
+          "schema": "renderer_job_request",
+          "expect": {"stage": "sample", "prompt_strategy": "creative_expansion", "engines": ["z-image"], "count": 2}
+        },
+        {
+          "path": "renderer-failure/04-sample-production-job-result-failed.json",
+          "schema": "production_job_result",
+          "expect": {
+            "status": "failed",
+            "progress": {"completed": 1, "failed": 1, "total": 2},
+            "asset_count": 1,
+            "result_session_id_null": false,
+            "error_codes": ["engine_out_of_memory"]
+          }
+        },
+        {
+          "path": "renderer-failure/05-retry-renderer-job-request.json",
+          "schema": "renderer_job_request",
+          "expect": {"stage": "sample", "prompt_strategy": "creative_expansion", "engines": ["z-image"], "count": 1}
+        },
+        {
+          "path": "renderer-failure/06-retry-production-job-result-interrupted.json",
+          "schema": "production_job_result",
+          "expect": {
+            "status": "interrupted",
+            "progress": {"completed": 0, "failed": 0, "total": 1},
+            "asset_count": 0,
+            "result_session_id_null": true,
+            "error_codes": ["renderer_interrupted"]
+          }
+        },
+        {
+          "path": "renderer-failure/07-second-retry-renderer-job-request.json",
+          "schema": "renderer_job_request",
+          "expect": {"stage": "sample", "prompt_strategy": "creative_expansion", "engines": ["z-image"], "count": 1}
+        },
+        {
+          "path": "renderer-failure/08-second-retry-production-job-result-completed.json",
+          "schema": "production_job_result",
+          "expect": {
+            "status": "completed",
+            "progress": {"completed": 1, "failed": 0, "total": 1},
+            "asset_count": 1,
+            "result_session_id_null": false,
+            "error_codes": []
+          }
+        }
+      ],
+      "case_checks": [
+        "distinct_job_ids",
+        "job_total_matches_count_times_engines",
+        "retry_preserves_prompt",
+        "failed_result_keeps_partial_assets"
+      ]
+    }
+  ]
+}

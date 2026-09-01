@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_bob_override",
+  "status": "needs_user_choice",
+  "storyboards": [
+    {
+      "id": "sb_bob_frontal",
+      "title": "Frontal Record",
+      "summary": "A flat, well-lit frontal portrait whose job is to record the new haircut against the existing face. The explicit hair constraint outranks Stable DNA hair and suppresses it for this run; every other identity field still applies and characters/ch-harim/character.json is untouched.",
+      "shots": [
+        {
+          "id": "shot_01",
+          "purpose": "Record the new hair length unambiguously against a neutral backdrop.",
+          "description": "Waist-up frontal portrait of Harim against a plain grey backdrop, short blunt bob ending just below the jaw, even soft key, shoulders square to camera.",
+          "continuity": {
+            "carries_from": null,
+            "location": "plain grey studio backdrop",
+            "wardrobe": "plain dark top",
+            "hair_state": "override: short blunt bob just below the jaw",
+            "suppresses_stable_dna": ["hair"],
+            "emotional_state": "neutral, documentary"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_bob_override",
+            "storyboard_id": "sb_bob_frontal",
+            "shot_id": "shot_01",
+            "stage": "sample",
+            "character_ids": ["ch-harim"],
+            "reference_asset_ids": [],
+            "prompt_strategy": "strict_translation",
+            "raw_user_prompt": "Harim in the studio, new short haircut, plain grey backdrop, waist-up portrait.",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-harim",
+              "character_version": 2,
+              "mode": "strict_translation",
+              "hair": "short blunt bob just below the jaw; no hair below the shoulders",
+              "coverage": "clothed",
+              "location": "plain grey studio backdrop",
+              "camera": "waist-up frontal portrait, eye level",
+              "lighting": "even soft key with a gentle fill, no dramatic shadow"
+            },
+            "immutable_constraints": {
+              "hair": "short blunt bob just below the jaw; no hair below the shoulders",
+              "coverage": "clothed",
+              "additional_people": false
+            },
+            "engines": ["z-image"],
+            "count": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "sb_bob_three_quarter",
+      "title": "Three-Quarter Turn",
+      "summary": "The same override read at an angle, where a bob is easiest to verify against the jawline. Same suppression, different framing.",
+      "shots": [
+        {
+          "id": "shot_01",
+          "purpose": "Verify the cut against the jawline where length is hardest to fake.",
+          "description": "Waist-up three-quarter portrait of Harim against a plain grey backdrop, short blunt bob ending just below the jaw, head turned twenty degrees, soft directional key from screen left.",
+          "continuity": {
+            "carries_from": null,
+            "location": "plain grey studio backdrop",
+            "wardrobe": "plain dark top",
+            "hair_state": "override: short blunt bob just below the jaw",
+            "suppresses_stable_dna": ["hair"],
+            "emotional_state": "neutral, documentary"
+          },
+          "sample_request": {
+            "schema_version": 1,
+            "request_id": "req_20260901_bob_override",
+            "storyboard_id": "sb_bob_three_quarter",
+            "shot_id": "shot_01",
+            "stage": "sample",
+            "character_ids": ["ch-harim"],
+            "reference_asset_ids": [],
+            "prompt_strategy": "strict_translation",
+            "raw_user_prompt": "Harim in the studio, new short haircut, plain grey backdrop, waist-up portrait.",
+            "scene_spec": {
+              "schema_version": 1,
+              "character": "ch-harim",
+              "character_version": 2,
+              "mode": "strict_translation",
+              "hair": "short blunt bob just below the jaw; no hair below the shoulders",
+              "coverage": "clothed",
+              "location": "plain grey studio backdrop",
+              "pose": "head turned twenty degrees from camera, shoulders relaxed",
+              "camera": "waist-up three-quarter portrait, eye level",
+              "lighting": "soft directional key from screen left with a low fill"
+            },
+            "immutable_constraints": {
+              "hair": "short blunt bob just below the jaw; no hair below the shoulders",
+              "coverage": "clothed",
+              "additional_people": false
+            },
+            "engines": ["z-image"],
+            "count": 2
+          }
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

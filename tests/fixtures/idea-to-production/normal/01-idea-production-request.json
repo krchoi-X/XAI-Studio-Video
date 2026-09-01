@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_seawalk",
+  "action": "create_storyboards",
+  "idea": "Harim finishes her shift and walks by the sea eating ice cream.",
+  "character_ids": ["ch-harim"],
+  "candidate_count": 3,
+  "mode": "creative_expansion",
+  "constraints": {
+    "wardrobe": "navy wool coat",
+    "coverage": "clothed",
+    "location": "seafront promenade",
+    "additional_people": false
+  },
+  "reference_asset_ids": ["asset_ch-harim_0f2c9a41"],
+  "output_intent": "image"
+}

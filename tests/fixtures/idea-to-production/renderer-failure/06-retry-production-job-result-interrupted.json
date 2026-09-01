@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "job_id": "job_20260901_nightwalk_sample_02",
+  "request_id": "req_20260901_nightwalk",
+  "status": "interrupted",
+  "progress": {
+    "completed": 0,
+    "failed": 0,
+    "total": 1,
+    "message": "worker stopped before reporting; outcome of image 1 of 1 is unknown"
+  },
+  "result_session_id": null,
+  "asset_ids": [],
+  "errors": [
+    {
+      "code": "renderer_interrupted",
+      "message": "The local WanGP worker stopped before the job reported a result. Nothing was durably stored, so no outcome is claimed for image 1 of 1. The request and job record are retained and the job is retryable as a new job_id."
+    }
+  ]
+}

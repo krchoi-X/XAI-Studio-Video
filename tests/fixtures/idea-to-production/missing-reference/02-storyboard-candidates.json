@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_missing_ref",
+  "status": "failed",
+  "storyboards": [],
+  "errors": [
+    {
+      "code": "reference_not_found",
+      "message": "Reference asset 'asset_ch-jung-haewon_deadbeef' was not resolved by the approved adapter. Choose an asset from the Gallery or remove it from the request. No substitute was selected.",
+      "field": "reference_asset_ids"
+    },
+    {
+      "code": "reference_not_found",
+      "message": "Reference asset 'asset_ch-jung-haewon_0badc0de' was not resolved by the approved adapter. Choose an asset from the Gallery or remove it from the request. No substitute was selected.",
+      "field": "reference_asset_ids"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "job_id": "job_20260901_nightwalk_sample_01",
+  "request_id": "req_20260901_nightwalk",
+  "storyboard_id": "sb_nightwalk_streetlights",
+  "shot_id": "shot_01",
+  "stage": "sample",
+  "character_ids": ["ch-jung-haewon"],
+  "reference_asset_ids": [],
+  "prompt_strategy": "creative_expansion",
+  "raw_user_prompt": "Jung Haewon walks home under streetlights after rain.",
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-jung-haewon",
+    "character_version": 1,
+    "mode": "creative_expansion",
+    "coverage": "clothed",
+    "location": "wet residential street after rain, night",
+    "activity": "walking toward camera through pools of streetlight",
+    "camera": "medium wide, eye level, static",
+    "lighting": "sodium streetlights overhead with wet-asphalt reflections"
+  },
+  "immutable_constraints": {
+    "coverage": "clothed",
+    "additional_people": false
+  },
+  "engines": ["z-image"],
+  "count": 2,
+  "prompt_trace": {
+    "raw_user_prompt": "Jung Haewon walks home under streetlights after rain.",
+    "structured_scene_spec": {
+      "schema_version": 1,
+      "character": "ch-jung-haewon",
+      "character_version": 1,
+      "mode": "creative_expansion",
+      "coverage": "clothed",
+      "location": "wet residential street after rain, night",
+      "activity": "walking toward camera through pools of streetlight",
+      "camera": "medium wide, eye level, static",
+      "lighting": "sodium streetlights overhead with wet-asphalt reflections"
+    },
+    "after_character_dna_merge": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 - EXPLICIT USER SCENE:\nJung Haewon walks home under streetlights after rain.\n\nIMMUTABLE CONSTRAINTS:\n- coverage: clothed\n- additional_people: false\n\nAUTHORITATIVE SCENE SPEC:\n- coverage: clothed\n- location: wet residential street after rain, night\n- activity: walking toward camera through pools of streetlight\n- camera: medium wide, eye level, static\n- lighting: sodium streetlights overhead with wet-asphalt reflections\n\nPRIORITY 2 - STABLE CHARACTER IDENTITY for ch-jung-haewon version 1, applied as identity only.\n\nMaintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state.",
+    "after_constraint_validation": {
+      "ok": true,
+      "precedence": [
+        "explicit_user_constraints",
+        "stable_character_dna",
+        "scene_requirements",
+        "style_enrichment",
+        "optional_creative_detail"
+      ],
+      "applied_constraints": ["additional_people", "coverage"],
+      "conflicts": [],
+      "dropped_enrichment": [],
+      "errors": []
+    },
+    "after_scene_style_expansion": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 - EXPLICIT USER SCENE:\nJung Haewon walks home under streetlights after rain.\n\nIMMUTABLE CONSTRAINTS:\n- coverage: clothed\n- additional_people: false\n\nAUTHORITATIVE SCENE SPEC:\n- coverage: clothed\n- location: wet residential street after rain, night\n- activity: walking toward camera through pools of streetlight\n- camera: medium wide, eye level, static\n- lighting: sodium streetlights overhead with wet-asphalt reflections\n\nPRIORITY 2 - STABLE CHARACTER IDENTITY for ch-jung-haewon version 1, applied as identity only.\n\nPRIORITY 3-5 - ENRICHED SCENE DELTA:\nPose: mid-stride, hands in coat pockets, shoulders slightly raised against the cold.\nExpression: tired and unguarded, no performance for the camera.\nOutfit: dark coat over everyday clothes.\nCamera and framing: medium wide, eye level, static, street receding behind her.\nLens and perspective: 35mm, natural perspective.\nLighting: sodium streetlights overhead, wet asphalt returning broken reflections.\nLocation: wet residential street after rain, night.\nAction: walking toward camera through pools of streetlight.\nScene styling: low-saturation night palette, practical light sources only.\n\nMaintain one coherent face, one anatomically continuous adult body, one active shot scale, and realistic hands.\n\nAvoid: additional people, text overlay, warped hands, duplicated limbs, daylight.",
+    "final_prompt_sent_to_hermes": null,
+    "final_prompt_sent_to_image_engine": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 - EXPLICIT USER SCENE:\nJung Haewon walks home under streetlights after rain.\n\nIMMUTABLE CONSTRAINTS:\n- coverage: clothed\n- additional_people: false\n\nAUTHORITATIVE SCENE SPEC:\n- coverage: clothed\n- location: wet residential street after rain, night\n- activity: walking toward camera through pools of streetlight\n- camera: medium wide, eye level, static\n- lighting: sodium streetlights overhead with wet-asphalt reflections\n\nPRIORITY 2 - STABLE CHARACTER IDENTITY for ch-jung-haewon version 1, applied as identity only.\n\nPRIORITY 3-5 - ENRICHED SCENE DELTA:\nPose: mid-stride, hands in coat pockets, shoulders slightly raised against the cold.\nExpression: tired and unguarded, no performance for the camera.\nOutfit: dark coat over everyday clothes.\nCamera and framing: medium wide, eye level, static, street receding behind her.\nLens and perspective: 35mm, natural perspective.\nLighting: sodium streetlights overhead, wet asphalt returning broken reflections.\nLocation: wet residential street after rain, night.\nAction: walking toward camera through pools of streetlight.\nScene styling: low-saturation night palette, practical light sources only.\n\nMaintain one coherent face, one anatomically continuous adult body, one active shot scale, and realistic hands.\n\nAvoid: additional people, text overlay, warped hands, duplicated limbs, daylight.",
+    "suppressed_stable_dna_fields": []
+  }
+}

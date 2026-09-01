@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_nightwalk",
+  "action": "create_storyboards",
+  "idea": "Jung Haewon walks home under streetlights after rain.",
+  "character_ids": ["ch-jung-haewon"],
+  "candidate_count": 2,
+  "mode": "creative_expansion",
+  "constraints": {
+    "coverage": "clothed",
+    "additional_people": false
+  },
+  "reference_asset_ids": [],
+  "output_intent": "image"
+}

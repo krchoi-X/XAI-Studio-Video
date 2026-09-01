@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "job_id": "job_20260901_crosswalk_exact_sample_01",
+  "request_id": "req_20260901_crosswalk_exact",
+  "storyboard_id": "sb_crosswalk_exact",
+  "shot_id": "shot_01",
+  "stage": "sample",
+  "character_ids": ["ch-harim"],
+  "reference_asset_ids": ["asset_ch-harim_0f2c9a41"],
+  "prompt_strategy": "exact",
+  "raw_user_prompt": "harim, high ponytail, navy wool coat, standing at a rain-wet crosswalk at night, neon reflections on the asphalt, 85mm, shallow depth of field, no cars",
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-harim",
+    "character_version": 2,
+    "mode": "exact"
+  },
+  "immutable_constraints": {},
+  "engines": ["z-image"],
+  "count": 2,
+  "prompt_trace": {
+    "raw_user_prompt": "harim, high ponytail, navy wool coat, standing at a rain-wet crosswalk at night, neon reflections on the asphalt, 85mm, shallow depth of field, no cars",
+    "structured_scene_spec": {
+      "schema_version": 1,
+      "character": "ch-harim",
+      "character_version": 2,
+      "mode": "exact"
+    },
+    "after_character_dna_merge": "harim, high ponytail, navy wool coat, standing at a rain-wet crosswalk at night, neon reflections on the asphalt, 85mm, shallow depth of field, no cars",
+    "after_constraint_validation": {
+      "ok": true,
+      "precedence": [
+        "explicit_user_constraints",
+        "stable_character_dna",
+        "scene_requirements",
+        "style_enrichment",
+        "optional_creative_detail"
+      ],
+      "applied_constraints": [],
+      "conflicts": [],
+      "dropped_enrichment": [],
+      "errors": [],
+      "exact_mode_note": "No DNA merge, no enrichment, and no normalization were applied. The lowercase start and the missing final period are preserved deliberately."
+    },
+    "after_scene_style_expansion": null,
+    "final_prompt_sent_to_hermes": null,
+    "final_prompt_sent_to_image_engine": "harim, high ponytail, navy wool coat, standing at a rain-wet crosswalk at night, neon reflections on the asphalt, 85mm, shallow depth of field, no cars",
+    "suppressed_stable_dna_fields": []
+  }
+}

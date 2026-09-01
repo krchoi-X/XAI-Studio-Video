@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "request_id": "req_20260901_unresolvable",
+  "status": "failed",
+  "storyboards": [],
+  "errors": [
+    {
+      "code": "constraint_conflict_unresolvable",
+      "message": "Explicit constraints 'coverage' (clothed) and 'wardrobe' (no clothing) contradict each other and share the highest precedence level, so the precedence ladder cannot rank them. Revise one of the two and resubmit.",
+      "field": "constraints.wardrobe"
+    }
+  ]
+}
