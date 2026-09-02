@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-02T01:08:31+00:00",
+  "updated_at": "2026-09-02T12:01:01+00:00",
   "characters": [
     {
       "id": "ch-harim",
@@ -25,8 +25,8 @@
       "name": "Lia",
       "romanized_name": "Lia",
       "status": "candidate",
-      "version": 1,
-      "stable_dna_sha256": "36f396cfd89e00e500997b83dc9809361afdd1e5a17d9d86e98ca31aa9c6d786",
+      "version": 2,
+      "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
       "path": "characters/ch-lia/character.json"
     }
   ]

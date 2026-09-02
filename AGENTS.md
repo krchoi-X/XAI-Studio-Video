@@ -42,3 +42,9 @@ A review/research task can be P0 because it prevents duplicate implementation. I
 ## Scope discipline
 
 Prefer reuse and comparison before rebuilding functionality already implemented elsewhere. Preserve existing project architecture unless the current priority item explicitly calls for an architectural change.
+
+## Character image request routing
+
+Natural-language requests to generate still images of an existing character must use the same canonical pipeline as Hermes and the tablet app: `tools/character_scene.py produce`. Read `skills/character-manager/SKILL.md` before translating the request. The user does not need to know CLI syntax, session folder conventions, prompt strategies, or per-engine count semantics.
+
+When character, engine, count, and prompt are clear, translate and execute the request. Do not create an ad-hoc batch script or guessed generation directory. Use `--actor codex` for Codex-originated CLI submissions, `--actor hermes` for Hermes, and `--actor web` only through the web worker. A pasted identity prompt is runtime input, not authorization to edit canonical DNA. Report any meaningful mismatch with `character.json`, preserve the canonical record, and keep the exact request in Prompt Trace.

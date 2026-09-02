@@ -34,10 +34,6 @@ HAIR_VARIATIONS = {
     "어깨 길이 단정한 보브": "a sleek, clearly defined shoulder-length bob; no hair extending below the shoulders, no ponytail, no bun, no extensions",
     "자연스러운 긴 웨이브": "long hair worn fully down in clearly visible natural waves from mid-length to the ends; not straight, not tied up",
 }
-HAIR_MARKERS = (
-    "헤어", "머리", "생머리", "포니테일", "로우 번", "번 헤어", "보브", "웨이브",
-    "hair", "ponytail", "bun", "bob", "braid", "pixie", "bangs", "hairstyle",
-)
 SCENE_FIELDS = {
     "hair_state", "hair", "wardrobe", "coverage", "activity", "pose", "expression",
     "props", "camera", "lens", "lighting", "location", "scene_style", "negative_constraints",
@@ -83,12 +79,13 @@ def build_scene_spec(request: str, immutable: dict[str, str], supplied: dict[str
     if hair_state:
         scene_spec["hair_state"] = hair_state
     elif "hair" not in scene_spec:
-        lowered = request.lower()
         matched = next((value for phrase, value in HAIR_VARIATIONS.items() if phrase in request), None)
         if matched:
             scene_spec["hair"] = matched
-        elif any(marker in lowered for marker in HAIR_MARKERS):
-            scene_spec["hair"] = request.strip()
+        # Do not treat an entire free-form prompt as a hair override merely
+        # because it mentions hair or bangs. Doing so suppresses canonical
+        # hair DNA and duplicates the whole prompt under Scene Spec. Callers
+        # must pass an explicit scene_spec.hair for non-standard overrides.
     wardrobe = immutable.get("wardrobe", "").strip()
     if wardrobe:
         scene_spec["wardrobe"] = wardrobe

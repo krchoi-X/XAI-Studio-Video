@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260902-213918-d0b2773a",
+  "project_id": "SCENE-20260902-213917-lia-photorealistic-close-up-portrait-of",
+  "prompt_id": "SCENE-20260902-213917-lia-photorealistic-close-up-portrait-of-krea2",
+  "status": "failed",
+  "created_at": "2026-09-02T21:39:18+09:00",
+  "updated_at": "2026-09-02T21:39:18+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": null,
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-213917-lia-photorealistic-close-up-portrait-of\\prompt.txt",
+    "sha256": "8fbbc030187eeb0431809daac0a2b7047238c2861f0476d4b51e1c60225954e2",
+    "normalized_sha256": "2cfce0adfe89ebf8bf8304c5c3947fd98676a362f93e747b70cd31bcfb81e57a",
+    "byte_count": 5222
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-213917-lia-photorealistic-close-up-portrait-of\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 5,
+      "repeat_generation": 1,
+      "seed": 902213918,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [],
+  "error": {
+    "message": "RuntimeError: another XAI local WanGP worker already holds the GPU lock",
+    "last_progress": null,
+    "recorded_at": "2026-09-02T21:39:18+09:00"
+  },
+  "local_worker": {
+    "pid": 2984,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-213917-lia-photorealistic-close-up-portrait-of\\runs\\run-20260902-213918-d0b2773a",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-213917-lia-photorealistic-close-up-portrait-of\\runs\\run-20260902-213918-d0b2773a\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-213917-lia-photorealistic-close-up-portrait-of\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-213917-lia-photorealistic-close-up-portrait-of\\runs\\run-20260902-213918-d0b2773a\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-213917-lia-photorealistic-close-up-portrait-of\\runs\\run-20260902-213918-d0b2773a\\worker.stderr.log"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260831-220407-9d64d832",
+  "project_id": "SCENE-20260831-220407-jung-haewon-she-is-standing-on-a",
+  "prompt_id": "SCENE-20260831-220407-jung-haewon-she-is-standing-on-a-z-image",
+  "status": "needs_review",
+  "created_at": "2026-08-31T22:04:07+09:00",
+  "updated_at": "2026-08-31T22:06:10+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-9208",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-220407-jung-haewon-she-is-standing-on-a\\prompt.txt",
+    "sha256": "b95a3f3aceeccf784632e56daca915b077a82bfd84b0a47beb43f08f26caf77c",
+    "normalized_sha256": "78742a4d7b910394cd7a05d0ad8e12a0bac71b0fad8b821db1b714ba2808da19",
+    "byte_count": 2381
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-220407-jung-haewon-she-is-standing-on-a\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 2,
+      "repeat_generation": 1,
+      "seed": 831220408,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-220407-jung-haewon-she-is-standing-on-a\\outputs\\z-image\\run-20260831-220407-9d64d832.jpg",
+      "sha256": "e897c5a368b48d25884b69937a0de8cafc940da507a8cde0bd797c21403230a2",
+      "byte_count": 150871,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T22:06:10+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-220407-jung-haewon-she-is-standing-on-a\\outputs\\z-image\\run-20260831-220407-9d64d832_1.jpg",
+      "sha256": "09e05daca36a5dc606e74b05790c6c1d57f897081c00213f19f887a792b4864a",
+      "byte_count": 150694,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-08-31T22:06:10+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 42452,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-220407-jung-haewon-she-is-standing-on-a\\runs\\run-20260831-220407-9d64d832",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-220407-jung-haewon-she-is-standing-on-a\\runs\\run-20260831-220407-9d64d832\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260831-220407-jung-haewon-she-is-standing-on-a\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-220407-jung-haewon-she-is-standing-on-a\\runs\\run-20260831-220407-9d64d832\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260831-220407-jung-haewon-she-is-standing-on-a\\runs\\run-20260831-220407-9d64d832\\worker.stderr.log"
+  }
+}

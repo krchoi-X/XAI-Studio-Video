@@ -1,6 +1,6 @@
 ---
 name: character-manager
-description: Create, inspect, or update XAI-Studio character records with Stable DNA protection and Scene Delta separation. Use for natural-language requests to make or revise a character; do not use for merely rendering an already-defined prompt.
+description: Create, inspect, update, or generate still images for XAI-Studio characters with Stable DNA protection and Scene Delta separation. Use for all natural-language character still-image requests, including rendering an already-defined prompt.
 ---
 
 # Character Manager
@@ -51,13 +51,19 @@ For an existing character, use the scene pipeline instead of editing Character D
 python tools/character_scene.py produce --character ch-harim --request "긴 코트를 입고 창가에 기대 선 상반신 사진" --count 4 --strategy strict_translation --actor hermes
 ```
 
+This is also the required route for ordinary requests such as "Lia 얼굴 이미지 5개를 Krea2로 만들어줘" followed by a prompt. The operator does not need to mention `character_scene.py`, `produce`, `strict_translation`, `actor`, or a session path. Resolve a display name through `characters/index.json`, preserve the supplied prompt verbatim, and translate explicit engine and quantity words into `--engines` and the per-engine `--count`. If multiple engines are requested and the operator gives only a total, state the proposed per-engine split before execution only when the split is not obvious.
+
+Do not improvise a shell loop, temporary batch script, or directory such as `face_master_<date>`. A new immediate request must call `produce --character ... --request ...`; the tool creates the session structure. Use `produce --session-dir` only for a session previously created by `prepare` and only after verifying both `batch.yaml` and `prompt.txt` exist.
+
+Before submission, compare identity-bearing prompt details with canonical `character.json`. A pasted prompt does not authorize a DNA edit. If details differ, briefly report them and keep them as runtime-only guidance unless the operator explicitly requests a canonical update. Do not reject or rewrite an otherwise clear image request merely because it repeats canonical DNA.
+
 Pass `--model <ollama-model-name>` when the user selects another installed local LLM; otherwise use the configured MeroMero default.
 
 When the request changes a normally stable visual field for one scene, compile it as an authoritative Scene Spec override instead of appending contradictory DNA. Hairstyle requests are detected deterministically; for other explicit overrides use `--scene-spec-json`, for example `--scene-spec-json '{"hair":"a sleek shoulder-length bob; no hair below the shoulders"}'`. For a bounded state use `{"hair_state":"A"}` and require that state to exist in the character's `bounded_identity.hair_states`; never send the literal state ID as the hairstyle. The runtime compiler must omit the replaced `stable_dna.hair` sentence, preserve canonical DNA on disk, and record the override in Prompt Trace.
 
 Use `strict_translation` for identity, reference, wardrobe, coverage, and consistency work. Use `creative_expansion` only when the operator wants non-conflicting scene enrichment. The legacy strategy names remain accepted for old jobs. Every new session must pass Scene Spec validation before WanGP is invoked.
 
-The local LLM writes a Scene Delta and one exact runtime prompt, then local WanGP renders Z-Image and Krea2 sequentially. The command waits until artifacts are durably recorded. Keep the per-engine count modest (default 4, maximum 20) so tablet review remains practical.
+The scene compiler writes one exact runtime prompt, then local WanGP renders Z-Image and Krea2 sequentially. `strict_translation` is deterministic and does not call the local LLM; `creative_expansion` uses the configured local LLM. The command waits until artifacts are durably recorded. Keep the per-engine count modest (default 4, maximum 20) so tablet review remains practical.
 
 Use `prepare` instead of `produce` when the user wants to inspect the prompt before rendering. Never describe a render as complete until `batch.yaml` and the recorder run both say completed and the output files exist.
 

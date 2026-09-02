@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260902-164003-7e4eb08e",
+  "project_id": "SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of",
+  "prompt_id": "SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of-krea2",
+  "status": "needs_review",
+  "created_at": "2026-09-02T16:40:03+09:00",
+  "updated_at": "2026-09-02T16:43:25+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-28532",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\prompt.txt",
+    "sha256": "488ff742a9676b8b57c9c9a8537954fc752d73d4fdfda92fe6a135bcd5908b88",
+    "normalized_sha256": "d4ada75b41dc71510488f4abe6a81c7b3e3cd5eedfaf024d6c2738a2c75b7522",
+    "byte_count": 14498
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 4,
+      "repeat_generation": 1,
+      "seed": 902164004,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\outputs\\krea2\\run-20260902-164003-7e4eb08e.jpg",
+      "sha256": "73ad672521280369e44444b1c35f0bfa4b0eb1b2ab23df82d5ef2374672b2d2c",
+      "byte_count": 225020,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T16:43:25+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\outputs\\krea2\\run-20260902-164003-7e4eb08e_1.jpg",
+      "sha256": "c3922e1e5b915c85e816fa62451eb69b9e92161ae3453ef33beac4baab38981a",
+      "byte_count": 234729,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T16:43:25+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\outputs\\krea2\\run-20260902-164003-7e4eb08e_2.jpg",
+      "sha256": "fa6990b7f4fcb6220af2eaf6242f675d1c6f672539a2f2638e4f6e574eaa555a",
+      "byte_count": 229605,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T16:43:25+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\outputs\\krea2\\run-20260902-164003-7e4eb08e_3.jpg",
+      "sha256": "29b3d18b2b6c9739e94b8e30de268ed849b45a92c3911259024bd330ec326319",
+      "byte_count": 225845,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T16:43:25+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 4152,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\runs\\run-20260902-164003-7e4eb08e",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\runs\\run-20260902-164003-7e4eb08e\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\runs\\run-20260902-164003-7e4eb08e\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-164003-lia-photorealistic-candid-lifestyle-photograph-of\\runs\\run-20260902-164003-7e4eb08e\\worker.stderr.log"
+  }
+}

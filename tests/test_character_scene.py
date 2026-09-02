@@ -43,6 +43,14 @@ class CharacterScenePromptTests(unittest.TestCase):
         prompt = scene.identity_merge_prompt(self.character, "창가에 앉은 상반신 사진", {})
         self.assertIn("Hair: dark hair", prompt)
 
+    def test_generic_hair_mention_does_not_turn_entire_request_into_override(self):
+        request = "Portrait with long dark hair, full bangs, and natural skin"
+        spec = scene.build_scene_spec(request, {})
+        self.assertNotIn("hair", spec)
+        prompt = scene.identity_merge_prompt(self.character, request, {}, spec)
+        self.assertIn("Hair: dark hair", prompt)
+        self.assertNotIn(f"- hair: {request}", prompt)
+
     def test_explicit_scene_spec_is_recorded_and_suppresses_hair(self):
         spec = scene.build_scene_spec("새로운 모습", {}, {"hair": "short silver pixie cut"})
         prompt = scene.identity_merge_prompt(self.character, "새로운 모습", {}, spec)

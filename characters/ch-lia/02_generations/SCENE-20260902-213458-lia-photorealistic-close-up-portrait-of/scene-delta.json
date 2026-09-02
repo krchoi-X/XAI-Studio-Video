@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260902-213458-lia-photorealistic-close-up-portrait-of",
+  "character_id": "ch-lia",
+  "character_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "created_at": "2026-09-02T12:34:58+00:00",
+  "created_by": "hermes",
+  "local_model": null,
+  "source_request": "Photorealistic close-up portrait of Lia, an original young adult East-Asian-looking woman with a globally neutral identity, not resembling any specific real person.\n\nShe is tall and slender, with a slim slightly elongated face, gently narrow lower face, slightly narrow brow-to-brow distance, large soft slightly elongated dark-brown eyes, a small refined nose, soft natural lips, and a calm faint smile. Her beauty is pure, translucent, quiet, and understated. Her skin is a defining feature: very clear, fresh, translucent-looking pale skin with subtle inner luminosity, realistic fine pores, soft natural texture, and minimal everyday makeup. She should look beautiful even with very light makeup. No waxy skin, no beauty-filter smoothing, no heavy foundation.\n\nShe has long near-black hair with soft natural texture and soft full bangs across the forehead. A few separated strands, baby hairs, and subtle flyaways should be visible. Her lips are soft rose-beige with a natural satin finish, gently closed, delicate and realistic.\n\nShe is indoors near a window in her small seaside home. The background is softly out of focus and quiet, with only a hint of a pale wall, window light, and muted interior atmosphere. Keep the focus on her face, eyes, skin, lips, and hair texture.\n\nExpression: calm direct gaze toward the camera, relaxed eyelids, gentle faint smile, quiet warmth, not posing like a model.\n\nLighting: soft natural daylight from a nearby window, clean highlight roll-off across cheeks and nose bridge, subtle shadows, no unexplained glow.\n\nCamera: full-frame 85mm lens, eye level, close distance, vertical 4:5 portrait, crown to upper chest framing, both eyes in sharp focus, realistic depth of field, natural perspective.\n\nOverall mood: intimate, natural, quietly beautiful, realistic lifestyle portrait.\n\nAvoid: celebrity resemblance, heavy makeup, glossy lipstick, plastic skin, doll face, overexposure, extreme bokeh, fashion editorial styling, exaggerated expression, text, watermark.",
+  "runtime_prompt_sha256": "8fbbc030187eeb0431809daac0a2b7047238c2861f0476d4b51e1c60225954e2",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {},
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-lia",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

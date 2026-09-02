@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260902-213458-lia-photorealistic-close-up-portrait-of",
+    "character_id": "ch-lia",
+    "character_name": "Lia",
+    "romanized_name": "Lia",
+    "title": "Photorealistic close-up portrait of Lia, an original young adult East-Asian-looking woman with a globally neutral identity, not resembling any specific real person.\n\nShe is tall and slender, with a slim slightly elongated face, gently narrow lower face, slightly narrow brow-to-brow distance, large soft slightly elongated dark-brown eyes, a small refined nose, soft natural lips, and a calm faint smile. Her beauty is pure, translucent, quiet, and understated. Her skin is a defining feature: very clear, fresh, translucent-looking pale skin with subtle inner luminosity, realistic fine pores, soft natural texture, and minimal everyday makeup. She should look beautiful even with very light makeup. No waxy skin, no beauty-filter smoothing, no heavy foundation.\n\nShe has long near-black hair with soft natural texture and soft full bangs across the forehead. A few separated strands, baby hairs, and subtle flyaways should be visible. Her lips are soft rose-beige with a natural satin finish, gently closed, delicate and realistic.\n\nShe is indoors near a window in her small seaside home. The background is softly out of focus and quiet, with only a hint of a pale wall, window light, and muted interior atmosphere. Keep the focus on her face, eyes, skin, lips, and hair texture.\n\nExpression: calm direct gaze toward the camera, relaxed eyelids, gentle faint smile, quiet warmth, not posing like a model.\n\nLighting: soft natural daylight from a nearby window, clean highlight roll-off across cheeks and nose bridge, subtle shadows, no unexplained glow.\n\nCamera: full-frame 85mm lens, eye level, close distance, vertical 4:5 portrait, crown to upper chest framing, both eyes in sharp focus, realistic depth of field, natural perspective.\n\nOverall mood: intimate, natural, quietly beautiful, realistic lifestyle portrait.\n\nAvoid: celebrity resemblance, heavy makeup, glossy lipstick, plastic skin, doll face, overexposure, extreme bokeh, fashion editorial styling, exaggerated expression, text, watermark.",
+    "status": "prepared",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-213458-lia-photorealistic-close-up-portrait-of\\outputs",
+    "created_at": "2026-09-02T12:34:58+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 5,
+      "seed": 902213459,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "running",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-213458-lia-photorealistic-close-up-portrait-of\\runs\\run-20260902-213458-41e8bc2f"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}
