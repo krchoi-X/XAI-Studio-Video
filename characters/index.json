@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-31T01:19:37+00:00",
+  "updated_at": "2026-09-02T01:08:31+00:00",
   "characters": [
     {
       "id": "ch-harim",
@@ -19,6 +19,15 @@
       "version": 1,
       "stable_dna_sha256": "7be607bafe72e7a08a765d8d765c259db19808fab014b7ee385d541a3906fac2",
       "path": "characters/ch-jung-haewon/character.json"
+    },
+    {
+      "id": "ch-lia",
+      "name": "Lia",
+      "romanized_name": "Lia",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "36f396cfd89e00e500997b83dc9809361afdd1e5a17d9d86e98ca31aa9c6d786",
+      "path": "characters/ch-lia/character.json"
     }
   ]
 }
