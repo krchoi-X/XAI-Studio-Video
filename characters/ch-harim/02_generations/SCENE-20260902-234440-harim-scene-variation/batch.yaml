@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260902-234440-harim-scene-variation",
+    "character_id": "ch-harim",
+    "character_name": "하림",
+    "romanized_name": "Harim",
+    "title": "알몸으로 샤워를 하는 전신 장면. 두 손으로 머리를 감싸고 샤워기에서 나오는 물을 맞고 있음",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-234440-harim-scene-variation\\outputs",
+    "created_at": "2026-09-02T14:44:40+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "z_image",
+      "count": 4,
+      "seed": 902234441,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "z-image.settings.json",
+      "output_dir": "outputs/z-image",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-234440-harim-scene-variation\\runs\\run-20260902-234440-43a5a7a3"
+    },
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 4,
+      "seed": 902234442,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-234440-harim-scene-variation\\runs\\run-20260902-234640-e5713856"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}

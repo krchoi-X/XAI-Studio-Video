@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260902-225031-lia-scene-variation",
+  "character_id": "ch-lia",
+  "character_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "created_at": "2026-09-02T13:50:31+00:00",
+  "created_by": "hermes",
+  "local_model": null,
+  "source_request": "포니테일로 머리를 묶고 있는 장면",
+  "runtime_prompt_sha256": "39c5330e952e37570bd522734e4a15d7eed9b07ebf3cde5dc511f86b03a0bcd2",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "user-specified"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-lia",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

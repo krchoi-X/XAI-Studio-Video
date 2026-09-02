@@ -1,0 +1,45 @@
+{
+  "run_id": "run-20260902-233947-e6f5f516",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-233947-harim-scene-variation\\outputs\\z-image\\run-20260902-233947-e6f5f516.jpg",
+      "sha256": "e10505bad4364b35621b1242b91f87e0b7441fb5579cc657b42b5fc821c31000",
+      "byte_count": 110958,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:41:44+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-233947-harim-scene-variation\\outputs\\z-image\\run-20260902-233947-e6f5f516_1.jpg",
+      "sha256": "a6b7d386045a74727a02b0cab0045ff057aeee0fb6f443d6a92f3242a529b9ad",
+      "byte_count": 104436,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:41:44+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-233947-harim-scene-variation\\outputs\\z-image\\run-20260902-233947-e6f5f516_2.jpg",
+      "sha256": "8de86413829205237f019607523b4055d882b4e93bab65438c7498a33e68354b",
+      "byte_count": 112222,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:41:44+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-233947-harim-scene-variation\\outputs\\z-image\\run-20260902-233947-e6f5f516_3.jpg",
+      "sha256": "ba4ff86fdbb470e70075027da6de5f5be2b75d69ca68a4a934464d8cf1e3b079",
+      "byte_count": 105891,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:41:44+09:00"
+    }
+  ]
+}

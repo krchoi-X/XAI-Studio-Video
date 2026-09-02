@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260902-232013-jung-haewon-scene-variation",
+  "character_id": "ch-jung-haewon",
+  "character_version": 1,
+  "stable_dna_sha256": "7be607bafe72e7a08a765d8d765c259db19808fab014b7ee385d541a3906fac2",
+  "created_at": "2026-09-02T14:20:13+00:00",
+  "created_by": "hermes",
+  "local_model": null,
+  "source_request": "알몸으로 샤워를 하는 전신 장면. 두 손으로 머리를 감싸고 샤워기에서 나오는 물을 맞고 있음",
+  "runtime_prompt_sha256": "848098ca1858aab6fc0b5778256177d841304a6385cedcd49fb1d6fcb9196843",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "user-specified"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-jung-haewon",
+    "character_version": 1,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

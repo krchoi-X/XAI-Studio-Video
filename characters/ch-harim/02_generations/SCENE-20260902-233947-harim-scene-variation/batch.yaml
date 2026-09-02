@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260902-233947-harim-scene-variation",
+    "character_id": "ch-harim",
+    "character_name": "하림",
+    "romanized_name": "Harim",
+    "title": "포니테일로 머리를 묶고 있는 장면",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-233947-harim-scene-variation\\outputs",
+    "created_at": "2026-09-02T14:39:47+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "z_image",
+      "count": 4,
+      "seed": 902233948,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "z-image.settings.json",
+      "output_dir": "outputs/z-image",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-233947-harim-scene-variation\\runs\\run-20260902-233947-e6f5f516"
+    },
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 4,
+      "seed": 902233949,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-233947-harim-scene-variation\\runs\\run-20260902-234147-3137c154"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}

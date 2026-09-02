@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260902-233453-harim-scene-variation",
+  "character_id": "ch-harim",
+  "character_version": 2,
+  "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7",
+  "created_at": "2026-09-02T14:34:53+00:00",
+  "created_by": "hermes",
+  "local_model": null,
+  "source_request": "무언가 생각하고 있는 얼굴 클로즈업",
+  "runtime_prompt_sha256": "adb3d3054f6ed30df198fc649c05e3eb119df8fde882bc76636ac0adbe9da884",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "user-specified"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-harim",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

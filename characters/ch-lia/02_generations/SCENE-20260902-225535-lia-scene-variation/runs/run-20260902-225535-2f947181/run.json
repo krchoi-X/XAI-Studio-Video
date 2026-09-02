@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260902-225535-2f947181",
+  "project_id": "SCENE-20260902-225535-lia-scene-variation",
+  "prompt_id": "SCENE-20260902-225535-lia-scene-variation-z-image",
+  "status": "needs_review",
+  "created_at": "2026-09-02T22:55:35+09:00",
+  "updated_at": "2026-09-02T22:57:36+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-59532",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-225535-lia-scene-variation\\prompt.txt",
+    "sha256": "6accbce3f8f746feee1819e449370df6bfda523dc889ed81bada4866cc5416cf",
+    "normalized_sha256": "9106e8982e6bdcb2f802415c897fb8c47368d4c5e09802722c73490959b6c974",
+    "byte_count": 3342
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-225535-lia-scene-variation\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 4,
+      "repeat_generation": 1,
+      "seed": 902225536,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-225535-lia-scene-variation\\outputs\\z-image\\run-20260902-225535-2f947181.jpg",
+      "sha256": "b224035795523aea952af76074e74ccc64508e8817a297cc719ea5e6c6dfac6c",
+      "byte_count": 173736,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T22:57:36+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-225535-lia-scene-variation\\outputs\\z-image\\run-20260902-225535-2f947181_1.jpg",
+      "sha256": "c23d91094621b2dee414ce652e7f4a078694461512a37d4c469c562412e83cbb",
+      "byte_count": 181415,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T22:57:36+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-225535-lia-scene-variation\\outputs\\z-image\\run-20260902-225535-2f947181_2.jpg",
+      "sha256": "65b7ff26186c64bb88718dee1232585339e94b8cb21f0ea1e70de51aec591770",
+      "byte_count": 178498,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T22:57:36+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-225535-lia-scene-variation\\outputs\\z-image\\run-20260902-225535-2f947181_3.jpg",
+      "sha256": "9e61fe65d06c7c8fbda6474c2ed6401a4ce818af8ec8c08677cff81257a6461d",
+      "byte_count": 203755,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T22:57:36+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 63128,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-225535-lia-scene-variation\\runs\\run-20260902-225535-2f947181",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-225535-lia-scene-variation\\runs\\run-20260902-225535-2f947181\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-225535-lia-scene-variation\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-225535-lia-scene-variation\\runs\\run-20260902-225535-2f947181\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-225535-lia-scene-variation\\runs\\run-20260902-225535-2f947181\\worker.stderr.log"
+  }
+}

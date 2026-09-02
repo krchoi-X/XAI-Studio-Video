@@ -1,0 +1,44 @@
+{
+  "schema_version": 3,
+  "precedence": [
+    "explicit_user_constraints",
+    "immutable_scene_fields",
+    "stable_character_dna",
+    "bounded_identity_variables",
+    "scene_requirements",
+    "style_enrichment",
+    "optional_creative_detail"
+  ],
+  "strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "user-specified"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-harim",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": [],
+  "raw_user_prompt": "알몸으로 샤워를 하는 전신 장면. 두 손으로 머리를 감싸고 샤워기에서 나오는 물을 맞고 있음",
+  "structured_scene_spec": {
+    "schema_version": 1,
+    "character": "ch-harim",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "after_character_dna_merge": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 — EXPLICIT USER SCENE. Preserve this meaning without adding or removing wardrobe, coverage, props, people, or actions:\n알몸으로 샤워를 하는 전신 장면. 두 손으로 머리를 감싸고 샤워기에서 나오는 물을 맞고 있음\n\nIMMUTABLE CONSTRAINTS:\n- No additional immutable fields. Preserve the user's wording.\n\nAUTHORITATIVE SCENE SPEC. These values replace same-named Stable DNA fields rather than being appended to them:\n- No structured field overrides.\n\nPRIORITY 2 — STABLE CHARACTER IDENTITY. Apply identity only; it must not override the explicit scene:\nAn adult Korean woman character named Harim. Face: small, slightly elongated oval face with a subtly cat-like overall impression; almond-shaped dark-brown eyes with subtly raised outer corners and a calm, cool, reserved gaze; defined dark eyebrows with a clean noticeable shape; refined straight nose with a clean bridge; small mouth with softly full lips; slim, clean, sharp jawline. Hair: near-black long hair reaching around mid-back, straight or softly naturally bent, fine-to-medium strands, smooth controlled shine; default Hair State A is a high ponytail near the crown with soft crown volume, thin face-framing strands, wispy fringe or side-bangs, and partially visible forehead; approved alternatives are long hair down, a slim matte black headband, or a compact updo with a minimal signature U-shaped pin. Skin: pale neutral East Asian skin tone with realistic texture and soft highlight roll-off. Body: tall-looking and long-lined through coordinated relative proportions, never vertical stretching; slim long arms including relatively long forearms, and long straight legs; shoulders relatively narrow shoulders; torso long neck, compact light upper torso, small ribcage appearance, and flat but soft lower abdomen; bust small-to-moderate natural bust, consistent across scenes; waist narrow and clearly defined; pelvis and hips pelvis subtly broader than the East Asian average, with a graceful waist transition and gentle feminine hip roundness, never exaggerated; lower body long and light lower-body impression with slim thighs and calves and healthy soft-tissue volume; body hair naturally sparse; dark brown to near-black if visible. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nMaintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state. Do not add optional creative details that change the scene's meaning.",
+  "after_constraint_validation": {
+    "status": "passed",
+    "errors": [],
+    "warnings": []
+  },
+  "after_scene_enrichment": null,
+  "after_scene_style_expansion": null,
+  "final_prompt_sent_to_hermes": null,
+  "final_prompt_sent_to_image_engine": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 — EXPLICIT USER SCENE. Preserve this meaning without adding or removing wardrobe, coverage, props, people, or actions:\n알몸으로 샤워를 하는 전신 장면. 두 손으로 머리를 감싸고 샤워기에서 나오는 물을 맞고 있음\n\nIMMUTABLE CONSTRAINTS:\n- No additional immutable fields. Preserve the user's wording.\n\nAUTHORITATIVE SCENE SPEC. These values replace same-named Stable DNA fields rather than being appended to them:\n- No structured field overrides.\n\nPRIORITY 2 — STABLE CHARACTER IDENTITY. Apply identity only; it must not override the explicit scene:\nAn adult Korean woman character named Harim. Face: small, slightly elongated oval face with a subtly cat-like overall impression; almond-shaped dark-brown eyes with subtly raised outer corners and a calm, cool, reserved gaze; defined dark eyebrows with a clean noticeable shape; refined straight nose with a clean bridge; small mouth with softly full lips; slim, clean, sharp jawline. Hair: near-black long hair reaching around mid-back, straight or softly naturally bent, fine-to-medium strands, smooth controlled shine; default Hair State A is a high ponytail near the crown with soft crown volume, thin face-framing strands, wispy fringe or side-bangs, and partially visible forehead; approved alternatives are long hair down, a slim matte black headband, or a compact updo with a minimal signature U-shaped pin. Skin: pale neutral East Asian skin tone with realistic texture and soft highlight roll-off. Body: tall-looking and long-lined through coordinated relative proportions, never vertical stretching; slim long arms including relatively long forearms, and long straight legs; shoulders relatively narrow shoulders; torso long neck, compact light upper torso, small ribcage appearance, and flat but soft lower abdomen; bust small-to-moderate natural bust, consistent across scenes; waist narrow and clearly defined; pelvis and hips pelvis subtly broader than the East Asian average, with a graceful waist transition and gentle feminine hip roundness, never exaggerated; lower body long and light lower-body impression with slim thighs and calves and healthy soft-tissue volume; body hair naturally sparse; dark brown to near-black if visible. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nMaintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state. Do not add optional creative details that change the scene's meaning.",
+  "invoked_by": "hermes",
+  "hermes_agent_used": true,
+  "local_llm_used": false,
+  "created_at": "2026-09-02T14:44:40+00:00"
+}

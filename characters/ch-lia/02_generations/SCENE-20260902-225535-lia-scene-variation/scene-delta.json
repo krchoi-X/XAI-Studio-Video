@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260902-225535-lia-scene-variation",
+  "character_id": "ch-lia",
+  "character_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "created_at": "2026-09-02T13:55:35+00:00",
+  "created_by": "hermes",
+  "local_model": null,
+  "source_request": "알몸으로 샤워를 하는 전신 장면. 두 손으로 머리를 감싸고 샤워기에서 나오는 물을 맞고 있음",
+  "runtime_prompt_sha256": "6accbce3f8f746feee1819e449370df6bfda523dc889ed81bada4866cc5416cf",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "user-specified"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-lia",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

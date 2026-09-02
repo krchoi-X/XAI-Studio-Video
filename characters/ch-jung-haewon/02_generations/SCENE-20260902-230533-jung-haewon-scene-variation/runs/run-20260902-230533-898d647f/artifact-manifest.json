@@ -1,0 +1,45 @@
+{
+  "run_id": "run-20260902-230533-898d647f",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260902-230533-jung-haewon-scene-variation\\outputs\\z-image\\run-20260902-230533-898d647f.jpg",
+      "sha256": "2bf88e92caad78eeec0e59bed512088173456982a7749316f85f4b5f6b4f82e0",
+      "byte_count": 176394,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:07:32+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260902-230533-jung-haewon-scene-variation\\outputs\\z-image\\run-20260902-230533-898d647f_1.jpg",
+      "sha256": "dbce106477ba213aaa4b8417c494ca3e20220b193dea7ee4c6247866b36c056e",
+      "byte_count": 170150,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:07:32+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260902-230533-jung-haewon-scene-variation\\outputs\\z-image\\run-20260902-230533-898d647f_2.jpg",
+      "sha256": "466d08c0343b101b841d7545a06c344bf2170ed945a17b335700140c4896c870",
+      "byte_count": 171214,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:07:32+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260902-230533-jung-haewon-scene-variation\\outputs\\z-image\\run-20260902-230533-898d647f_3.jpg",
+      "sha256": "72ccdd46051c6194196ae9d9e9c2f228744a8f8e9ee6021045aeb4bb6489b53f",
+      "byte_count": 171353,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:07:32+09:00"
+    }
+  ]
+}

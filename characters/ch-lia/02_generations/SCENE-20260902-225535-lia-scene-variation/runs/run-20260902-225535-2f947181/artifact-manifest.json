@@ -1,0 +1,45 @@
+{
+  "run_id": "run-20260902-225535-2f947181",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-225535-lia-scene-variation\\outputs\\z-image\\run-20260902-225535-2f947181.jpg",
+      "sha256": "b224035795523aea952af76074e74ccc64508e8817a297cc719ea5e6c6dfac6c",
+      "byte_count": 173736,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T22:57:36+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-225535-lia-scene-variation\\outputs\\z-image\\run-20260902-225535-2f947181_1.jpg",
+      "sha256": "c23d91094621b2dee414ce652e7f4a078694461512a37d4c469c562412e83cbb",
+      "byte_count": 181415,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T22:57:36+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-225535-lia-scene-variation\\outputs\\z-image\\run-20260902-225535-2f947181_2.jpg",
+      "sha256": "65b7ff26186c64bb88718dee1232585339e94b8cb21f0ea1e70de51aec591770",
+      "byte_count": 178498,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T22:57:36+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-225535-lia-scene-variation\\outputs\\z-image\\run-20260902-225535-2f947181_3.jpg",
+      "sha256": "9e61fe65d06c7c8fbda6474c2ed6401a4ce818af8ec8c08677cff81257a6461d",
+      "byte_count": 203755,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T22:57:36+09:00"
+    }
+  ]
+}

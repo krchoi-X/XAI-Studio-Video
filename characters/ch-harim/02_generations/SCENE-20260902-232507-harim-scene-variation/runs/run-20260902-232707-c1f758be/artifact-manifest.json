@@ -1,0 +1,45 @@
+{
+  "run_id": "run-20260902-232707-c1f758be",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-232507-harim-scene-variation\\outputs\\krea2\\run-20260902-232707-c1f758be.jpg",
+      "sha256": "04037415cdcd286da08ea632f8adbc6c48a06264874c9a0d5e54873ab243e5a4",
+      "byte_count": 140093,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:29:49+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-232507-harim-scene-variation\\outputs\\krea2\\run-20260902-232707-c1f758be_1.jpg",
+      "sha256": "af3a00230bbd65cced1a5b3b65f3c2e3199ed2fefbd6d60fb669f83a955f0370",
+      "byte_count": 139183,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:29:49+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-232507-harim-scene-variation\\outputs\\krea2\\run-20260902-232707-c1f758be_2.jpg",
+      "sha256": "b5169051ba73331aa682cf3c0ee6f401ff067b72cad9441e1661cbf36875334f",
+      "byte_count": 138387,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:29:49+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-232507-harim-scene-variation\\outputs\\krea2\\run-20260902-232707-c1f758be_3.jpg",
+      "sha256": "6f366822604414d660058ddabddae1745e9e98a0a6e3ecb250de73c2c9680a0a",
+      "byte_count": 141078,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:29:49+09:00"
+    }
+  ]
+}

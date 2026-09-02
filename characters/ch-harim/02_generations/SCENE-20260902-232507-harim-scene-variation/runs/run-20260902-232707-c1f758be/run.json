@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260902-232707-c1f758be",
+  "project_id": "SCENE-20260902-232507-harim-scene-variation",
+  "prompt_id": "SCENE-20260902-232507-harim-scene-variation-krea2",
+  "status": "needs_review",
+  "created_at": "2026-09-02T23:27:07+09:00",
+  "updated_at": "2026-09-02T23:29:49+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-51188",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-232507-harim-scene-variation\\prompt.txt",
+    "sha256": "a186b616c79174bb9a2b044ef565cba4ad0a7bfba7668492d3c7344fe2f4de7c",
+    "normalized_sha256": "b2bd0d206c0ecd31f2229d3067338b417bae8a8086daeba65afb8a49654ee720",
+    "byte_count": 2636
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-232507-harim-scene-variation\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 4,
+      "repeat_generation": 1,
+      "seed": 902232509,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-232507-harim-scene-variation\\outputs\\krea2\\run-20260902-232707-c1f758be.jpg",
+      "sha256": "04037415cdcd286da08ea632f8adbc6c48a06264874c9a0d5e54873ab243e5a4",
+      "byte_count": 140093,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:29:49+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-232507-harim-scene-variation\\outputs\\krea2\\run-20260902-232707-c1f758be_1.jpg",
+      "sha256": "af3a00230bbd65cced1a5b3b65f3c2e3199ed2fefbd6d60fb669f83a955f0370",
+      "byte_count": 139183,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:29:49+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-232507-harim-scene-variation\\outputs\\krea2\\run-20260902-232707-c1f758be_2.jpg",
+      "sha256": "b5169051ba73331aa682cf3c0ee6f401ff067b72cad9441e1661cbf36875334f",
+      "byte_count": 138387,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:29:49+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-232507-harim-scene-variation\\outputs\\krea2\\run-20260902-232707-c1f758be_3.jpg",
+      "sha256": "6f366822604414d660058ddabddae1745e9e98a0a6e3ecb250de73c2c9680a0a",
+      "byte_count": 141078,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-02T23:29:49+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 42108,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-232507-harim-scene-variation\\runs\\run-20260902-232707-c1f758be",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-232507-harim-scene-variation\\runs\\run-20260902-232707-c1f758be\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260902-232507-harim-scene-variation\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-232507-harim-scene-variation\\runs\\run-20260902-232707-c1f758be\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-harim\\02_generations\\SCENE-20260902-232507-harim-scene-variation\\runs\\run-20260902-232707-c1f758be\\worker.stderr.log"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260902-234440-harim-scene-variation",
+  "character_id": "ch-harim",
+  "character_version": 2,
+  "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7",
+  "created_at": "2026-09-02T14:44:40+00:00",
+  "created_by": "hermes",
+  "local_model": null,
+  "source_request": "알몸으로 샤워를 하는 전신 장면. 두 손으로 머리를 감싸고 샤워기에서 나오는 물을 맞고 있음",
+  "runtime_prompt_sha256": "ab2f8aa55093e98d66f3289254bda5e14610fe3731985f8e4db65ebe19fe3160",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "user-specified"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-harim",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

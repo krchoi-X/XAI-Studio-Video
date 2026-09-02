@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260903-080521-75d303cd",
+  "project_id": "SCENE-20260903-080520-lia-lia-natural-skin-texture-close",
+  "prompt_id": "SCENE-20260903-080520-lia-lia-natural-skin-texture-close-krea2",
+  "status": "needs_review",
+  "created_at": "2026-09-03T08:05:21+09:00",
+  "updated_at": "2026-09-03T08:09:08+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-33936",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\prompt.txt",
+    "sha256": "adf1fcce3e6a59a708a6c03284be3a324dbe4c91e15e368ab18d40fde192aa55",
+    "normalized_sha256": "21ab00679e657138ae40ceba7822dbdbd6c9d3c1b5d2037f1f0bcccdba2937d5",
+    "byte_count": 4760
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 4,
+      "repeat_generation": 1,
+      "seed": 903080521,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\outputs\\krea2\\run-20260903-080521-75d303cd.jpg",
+      "sha256": "08856925014dd5ed269b2271ce76f5af17c4579479035580bd35cd85c17a7366",
+      "byte_count": 176525,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-03T08:09:08+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\outputs\\krea2\\run-20260903-080521-75d303cd_1.jpg",
+      "sha256": "b4fbc4885c3cad09985b7eb7cc28cc6fbedf1767bffeb126707c97f9ec72c8c7",
+      "byte_count": 191771,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-03T08:09:08+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\outputs\\krea2\\run-20260903-080521-75d303cd_2.jpg",
+      "sha256": "869420454a9d5b8d32564f028bebcbeb2fb5d8876e9f4caa2c921ecd305df337",
+      "byte_count": 189542,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-03T08:09:08+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\outputs\\krea2\\run-20260903-080521-75d303cd_3.jpg",
+      "sha256": "a4a456a932ed050b88833b0f94bdca4033b918be7c29240f14182a020632a589",
+      "byte_count": 187260,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-03T08:09:08+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 37216,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\runs\\run-20260903-080521-75d303cd",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\runs\\run-20260903-080521-75d303cd\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\runs\\run-20260903-080521-75d303cd\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\runs\\run-20260903-080521-75d303cd\\worker.stderr.log"
+  }
+}

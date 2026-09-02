@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260902-233947-harim-scene-variation",
+  "character_id": "ch-harim",
+  "character_version": 2,
+  "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7",
+  "created_at": "2026-09-02T14:39:47+00:00",
+  "created_by": "hermes",
+  "local_model": null,
+  "source_request": "포니테일로 머리를 묶고 있는 장면",
+  "runtime_prompt_sha256": "ec2c5bbcd573c2f66619a8fca169594cf15db1ddda87a07067c9594641f197f6",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "user-specified"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-harim",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260903-080520-lia-lia-natural-skin-texture-close",
+    "character_id": "ch-lia",
+    "character_name": "Lia",
+    "romanized_name": "Lia",
+    "title": "Lia - Natural Skin Texture Close-up",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\outputs",
+    "created_at": "2026-09-02T23:05:20+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "creative_expansion",
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 4,
+      "seed": 903080521,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260903-080520-lia-lia-natural-skin-texture-close\\runs\\run-20260903-080521-75d303cd"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}

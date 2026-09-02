@@ -1,0 +1,21 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_turbo_moody_krea",
+  "base_model_type": "krea2_turbo",
+  "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 4,
+  "repeat_generation": 1,
+  "seed": 902234442,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Moody Krea 2 V7 INT8",
+  "prompt": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 — EXPLICIT USER SCENE. Preserve this meaning without adding or removing wardrobe, coverage, props, people, or actions:\n알몸으로 샤워를 하는 전신 장면. 두 손으로 머리를 감싸고 샤워기에서 나오는 물을 맞고 있음\n\nIMMUTABLE CONSTRAINTS:\n- No additional immutable fields. Preserve the user's wording.\n\nAUTHORITATIVE SCENE SPEC. These values replace same-named Stable DNA fields rather than being appended to them:\n- No structured field overrides.\n\nPRIORITY 2 — STABLE CHARACTER IDENTITY. Apply identity only; it must not override the explicit scene:\nAn adult Korean woman character named Harim. Face: small, slightly elongated oval face with a subtly cat-like overall impression; almond-shaped dark-brown eyes with subtly raised outer corners and a calm, cool, reserved gaze; defined dark eyebrows with a clean noticeable shape; refined straight nose with a clean bridge; small mouth with softly full lips; slim, clean, sharp jawline. Hair: near-black long hair reaching around mid-back, straight or softly naturally bent, fine-to-medium strands, smooth controlled shine; default Hair State A is a high ponytail near the crown with soft crown volume, thin face-framing strands, wispy fringe or side-bangs, and partially visible forehead; approved alternatives are long hair down, a slim matte black headband, or a compact updo with a minimal signature U-shaped pin. Skin: pale neutral East Asian skin tone with realistic texture and soft highlight roll-off. Body: tall-looking and long-lined through coordinated relative proportions, never vertical stretching; slim long arms including relatively long forearms, and long straight legs; shoulders relatively narrow shoulders; torso long neck, compact light upper torso, small ribcage appearance, and flat but soft lower abdomen; bust small-to-moderate natural bust, consistent across scenes; waist narrow and clearly defined; pelvis and hips pelvis subtly broader than the East Asian average, with a graceful waist transition and gentle feminine hip roundness, never exaggerated; lower body long and light lower-body impression with slim thighs and calves and healthy soft-tissue volume; body hair naturally sparse; dark brown to near-black if visible. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nMaintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state. Do not add optional creative details that change the scene's meaning.\n",
+  "output_filename": "run-20260902-234640-e5713856"
+}

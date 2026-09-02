@@ -1,0 +1,20 @@
+{
+  "settings_version": 2.73,
+  "model_type": "z_image",
+  "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 4,
+  "repeat_generation": 1,
+  "seed": 902224024,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Z Image Turbo",
+  "prompt": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 — EXPLICIT USER SCENE. Preserve this meaning without adding or removing wardrobe, coverage, props, people, or actions:\n한여름 햇빛아래에서 공원 벤치에 앉아있는 상반신\n\nIMMUTABLE CONSTRAINTS:\n- No additional immutable fields. Preserve the user's wording.\n\nAUTHORITATIVE SCENE SPEC. These values replace same-named Stable DNA fields rather than being appended to them:\n- No structured field overrides.\n\nPRIORITY 2 — STABLE CHARACTER IDENTITY. Apply identity only; it must not override the explicit scene:\nAn adult East-Asian-looking woman with a globally neutral original identity and no resemblance to a specific real person character named Lia. Face: slim, slightly elongated oval face with a gently narrow and softly tapered lower face, never a sharp V-line; large, soft, slightly elongated dark-brown eyes that never read wide-set, with relaxed eyelids and a calm coordinated gaze; natural softly defined dark eyebrows with slightly narrow brow-to-brow and glabella spacing; small refined nose with soft, balanced and believable proportions, not a celebrity-specific likeness; soft rose-beige lips, gently closed, with delicate natural volume, understated realistic texture and a natural satin finish; gently narrow, softly tapered and balanced lower face, never an exaggerated sharp V-line. Hair: long near-black hair with soft natural texture and soft full bangs across the forehead; lived-in rather than salon-perfect, with natural root volume, grouped strands, a few separated fibers, baby hairs, subtle flyaways, realistic overlap and gravity-driven fall. Skin: very clear, fresh, translucent-looking pale skin with subtle inner luminosity, realistic fine pores, soft natural texture, faint natural blood tone and gentle cheek color, smooth highlight roll-off and minimal everyday base makeup; never waxy, porcelain-like, glossy or beauty-filter smoothed. Body: tall-looking with a natural slender silhouette, long legs and a relatively compact torso; long-legged with anatomically normal arms; natural shoulder-to-elbow and elbow-to-wrist lengths, wrists around upper-thigh level when relaxed, and natural hand size; shoulders slim natural shoulder line without exaggerated width or fragility; torso relatively compact, slim, healthy and believable torso; never fragile, skeletal or bodybuilder-toned; bust natural adult proportion that is not a defining identity trait and remains consistent across scenes; waist natural narrow slender waist without exaggerated glamour shaping; pelvis and hips natural feminine proportion without excessive curves as a defining trait; lower body healthy slender lower-body silhouette with long legs and realistic full-body anatomy; never shortened legs or stretched fashion-model proportions; body hair natural and not an identity-defining feature. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nMaintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state. Do not add optional creative details that change the scene's meaning.\n",
+  "output_filename": "run-20260902-224024-bbd087ff"
+}

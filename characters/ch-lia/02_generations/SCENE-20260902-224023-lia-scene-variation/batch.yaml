@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260902-224023-lia-scene-variation",
+    "character_id": "ch-lia",
+    "character_name": "Lia",
+    "romanized_name": "Lia",
+    "title": "한여름 햇빛아래에서 공원 벤치에 앉아있는 상반신",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260902-224023-lia-scene-variation\\outputs",
+    "created_at": "2026-09-02T13:40:23+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "z_image",
+      "count": 4,
+      "seed": 902224024,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "z-image.settings.json",
+      "output_dir": "outputs/z-image",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-224023-lia-scene-variation\\runs\\run-20260902-224024-bbd087ff"
+    },
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 4,
+      "seed": 902224025,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260902-224023-lia-scene-variation\\runs\\run-20260902-224234-bbd8d972"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}
