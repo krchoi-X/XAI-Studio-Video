@@ -12,6 +12,8 @@ import wangp_recorder
 
 
 DEFAULT_WANGP_ROOT = Path(r"D:\AI\WanGP")
+KREA2_EDIT_MODELS = {"krea2_raw_edit", "krea2_turbo_edit"}
+IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -25,6 +27,34 @@ def load_settings(path: Path, prompt: str, run_id: str) -> dict[str, Any]:
     settings["prompt"] = prompt
     settings["output_filename"] = run_id
     return settings
+
+
+def validate_reference_settings(settings: dict[str, Any]) -> list[dict[str, Any]]:
+    provenance = settings.get("_xai")
+    if not isinstance(provenance, dict) or provenance.get("kind") != "reference_variation":
+        return []
+    model_type = str(settings.get("base_model_type") or settings.get("model_type") or "")
+    if model_type not in KREA2_EDIT_MODELS:
+        raise ValueError("reference variation requires a Krea2 edit architecture; text-to-image fallback is disabled")
+    raw_refs = settings.get("image_refs")
+    refs = raw_refs if isinstance(raw_refs, list) else [raw_refs] if raw_refs else []
+    if not 1 <= len(refs) <= 2:
+        raise ValueError("Krea2 reference variation requires one or two reference images")
+    asset_ids = provenance.get("reference_asset_ids") or []
+    records = []
+    for index, value in enumerate(refs):
+        path = Path(str(value)).resolve()
+        if not path.is_file():
+            raise ValueError(f"reference image not found: {path}")
+        if path.suffix.lower() not in IMAGE_SUFFIXES:
+            raise ValueError(f"unsupported reference image: {path}")
+        records.append({
+            "asset_id": str(asset_ids[index]) if index < len(asset_ids) else None,
+            "path": str(path),
+            "sha256": wangp_recorder.sha256_file(path),
+            "byte_count": path.stat().st_size,
+        })
+    return records
 
 
 def resolve_python(wangp_root: Path, explicit: str | None) -> Path:
@@ -73,8 +103,14 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     )
     run_dir = Path(run["run_dir"])
     effective_settings = load_settings(settings_path, prompt, run["run_id"])
+    reference_records = validate_reference_settings(effective_settings)
     effective_path = run_dir / "effective-settings.json"
     write_json(effective_path, effective_settings)
+    if reference_records:
+        record = wangp_recorder.load_run(run_dir)
+        record["reference_inputs"] = reference_records
+        record["variation"] = effective_settings.get("_xai")
+        wangp_recorder.save_run(run_dir, record)
     stdout_path = run_dir / "worker.stdout.log"
     stderr_path = run_dir / "worker.stderr.log"
     command = [
@@ -147,6 +183,7 @@ def worker(args: argparse.Namespace) -> dict[str, Any]:
         from shared.api import init
 
         settings = json.loads(Path(args.settings_file).read_text(encoding="utf-8"))
+        settings.pop("_xai", None)
         record = wangp_recorder.load_run(run_dir)
         record["status"] = "running"
         record["provider_job_id"] = f"local-pid-{os.getpid()}"
@@ -225,7 +262,7 @@ def build_parser() -> argparse.ArgumentParser:
     start.add_argument("--wangp-root", default=str(DEFAULT_WANGP_ROOT))
     start.add_argument("--wangp-python")
     start.add_argument("--output-dir", default=str(DEFAULT_WANGP_ROOT / "outputs"))
-    start.add_argument("--profile", default="4")
+    start.add_argument("--profile", type=int, default=4)
     start.add_argument("--vram-safety", type=float, default=0.8)
     start.set_defaults(handler=submit)
 

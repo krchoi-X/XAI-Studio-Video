@@ -28,6 +28,32 @@ class LocalWanGPTests(unittest.TestCase):
 
         self.assertEqual(local_wangp.json_safe(Progress(2, 20)), {"current_step": 2, "total_steps": 20})
 
+    def test_reference_variation_records_hash_and_rejects_text_fallback(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            image = Path(directory) / "source.png"
+            image.write_bytes(b"image-bytes")
+            settings = {
+                "model_type": "krea2_turbo_edit",
+                "base_model_type": "krea2_turbo_edit",
+                "image_refs": [str(image)],
+                "_xai": {"kind": "reference_variation", "reference_asset_ids": ["ast-1"]},
+            }
+            records = local_wangp.validate_reference_settings(settings)
+            self.assertEqual(records[0]["asset_id"], "ast-1")
+            self.assertEqual(records[0]["sha256"], local_wangp.wangp_recorder.sha256_file(image))
+            settings["base_model_type"] = "krea2_turbo"
+            with self.assertRaisesRegex(ValueError, "fallback is disabled"):
+                local_wangp.validate_reference_settings(settings)
+
+    def test_reference_variation_requires_existing_image(self) -> None:
+        settings = {
+            "model_type": "krea2_turbo_edit",
+            "image_refs": ["missing.png"],
+            "_xai": {"kind": "reference_variation"},
+        }
+        with self.assertRaisesRegex(ValueError, "not found"):
+            local_wangp.validate_reference_settings(settings)
+
 
 if __name__ == "__main__":
     unittest.main()
