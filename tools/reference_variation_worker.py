@@ -13,6 +13,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from reference_transformation_contract import normalize_request
+
 
 TERMINAL_RUN_STATES = {"succeeded", "needs_review", "failed", "cancelled", "interrupted", "timed_out"}
 
@@ -52,6 +54,7 @@ def wait_for_run(run_dir: Path, timeout_seconds: int = 1800) -> dict[str, Any]:
 
 
 def settings_for(request: dict[str, Any], seed: int, wangp_root: Path) -> dict[str, Any]:
+    plan = request.get("_normalized_plan") or normalize_request(request)
     return {
         "settings_version": 2.73,
         "model_type": "krea2_turbo_edit",
@@ -72,15 +75,17 @@ def settings_for(request: dict[str, Any], seed: int, wangp_root: Path) -> dict[s
         "loras_multipliers": "",
         "image_quality": "jpeg_95",
         "_xai": {
-            "kind": "reference_variation",
-            "schema_version": 1,
+            "kind": "reference_transformation",
+            "schema_version": 2,
+            "source_schema_version": plan["source_schema_version"],
             "variation_id": request["variation_id"],
             "character_id": request["character_id"],
             "reference_asset_ids": [request["reference_asset_id"]],
             "operator_request": request["operator_request"],
-            "preserve": request["preserve"],
-            "changes": request["changes"],
-            "strength": request["strength"],
+            "operations": plan["operations"],
+            "effective_preserve": plan["effective_preserve"],
+            "resolved_strategy": plan["resolved_strategy"],
+            "effective_strength": plan["effective_strength"],
         },
     }
 
@@ -89,6 +94,15 @@ def run(args: argparse.Namespace) -> int:
     job_dir = Path(args.job_dir).resolve()
     repo_root = Path(args.repo_root).resolve()
     request = json.loads((job_dir / "request.json").read_text(encoding="utf-8"))
+    plan = normalize_request(request)
+    request["_normalized_plan"] = plan
+    if plan["resolved_strategy"] != "identity_edit":
+        update_status(
+            job_dir, "blocked_capability", progress="검증된 레퍼런스 재구성 경로가 필요함",
+            error=f"Strategy {plan['resolved_strategy']} is not locally verified; no text-to-image fallback was used",
+            resolved_strategy=plan["resolved_strategy"], strategy_reason=plan["strategy_reason"],
+        )
+        return 3
     source = Path(request["reference_path"]).resolve()
     if not source.is_file() or sha256_file(source) != request["reference_sha256"]:
         raise ValueError("reference image is missing or no longer matches its queued SHA-256")
@@ -113,14 +127,21 @@ def run(args: argparse.Namespace) -> int:
     settings_path = session_dir / "krea2.settings.json"
     prompt_path.write_text(request["compiled_prompt"].strip() + "\n", encoding="utf-8")
     write_json(session_dir / "prompt-trace.json", {
-        "schema_version": 1,
-        "kind": "reference_variation",
+        "schema_version": 2,
+        "kind": "reference_transformation",
         "raw_user_prompt": request["operator_request"],
-        "variation_spec": {key: request[key] for key in ("reference_asset_id", "preserve", "changes", "strength", "count")},
+        "source_schema_version": plan["source_schema_version"],
+        "normalized_operations": plan["operations"],
+        "requested_preserve": plan["requested_preserve"],
+        "resolved_conflicts": plan["resolved_conflicts"],
+        "effective_preserve": plan["effective_preserve"],
+        "strategy": {"requested": plan["requested_strategy"], "resolved": plan["resolved_strategy"], "reason": plan["strategy_reason"]},
+        "stages": [{"id": "stage-1", "strategy": "identity_edit", "reference_asset_id": request["reference_asset_id"]}],
+        "effective_strength": plan["effective_strength"],
         "compiled_edit_instruction": request["compiled_prompt"],
         "reference": {"asset_id": request["reference_asset_id"], "path": str(source), "sha256": request["reference_sha256"], "byte_count": request["reference_byte_count"]},
         "source_prompt": request.get("source_prompt"),
-        "renderer": {"engine": "krea2_identity_edit", "model_type": "krea2_turbo_edit", "identity_edit_lora_activation": "preset-owned"},
+        "renderer": {"engine": "krea2_identity_edit", "model_type": "krea2_turbo_edit", "identity_edit_lora_activation": "preset-owned", "reference_binding": "image_refs"},
         "created_at": request["created_at"],
     })
     batch = {

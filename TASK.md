@@ -35,12 +35,12 @@ Provide the execution-side contract for reliable reference-bound changes to face
 - [x] Verify the dedicated Krea2 edit model, Identity Edit preset, Qwen vision encoder, and reference hash guard.
 - [x] Confirm current v1 strength is metadata-only and pose/hand requests need a distinct strategy.
 - [x] Add schema, fixture, normalizer, and tests (`9 passed`, including existing worker tests).
-- [ ] Update worker/trace after the contract checkpoint.
+- [x] Update the worker to normalize v1/v2, emit Prompt Trace v2 for identity edits, and block unverified recomposition before GPU submission.
 - [ ] Calibrate and integrate.
 
 ## Next
 
-Commit this contract checkpoint. Next, make the worker consume normalized plans and emit Prompt Trace v2 while retaining v1 queued-job behavior.
+Commit the worker integration checkpoint. Next, design the capped calibration run; do not execute GPU work without user approval.
 
 ## Contract Impact
 

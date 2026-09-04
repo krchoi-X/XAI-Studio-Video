@@ -1,6 +1,7 @@
 import json
 import tempfile
 import unittest
+from types import SimpleNamespace
 from pathlib import Path
 
 import reference_variation_worker as worker
@@ -37,6 +38,26 @@ class ReferenceVariationWorkerTests(unittest.TestCase):
             self.assertEqual(state["status"], "running")
             self.assertEqual(state["created_at"], "then")
             self.assertEqual(state["progress"], "one")
+
+    def test_unverified_recomposition_blocks_before_reference_or_gpu_access(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            job = Path(directory)
+            request = self.request()
+            request.update({
+                "schema_version": 2,
+                "kind": "reference_transformation",
+                "operations": [{"id": "hand", "kind": "hand_gesture", "instruction": "손을 볼에 대기", "strength": "moderate"}],
+                "requested_preserve": ["identity", "pose", "wardrobe"],
+                "requested_strategy": "auto",
+            })
+            (job / "request.json").write_text(json.dumps(request), encoding="utf-8")
+            (job / "status.json").write_text('{"status":"queued"}', encoding="utf-8")
+            result = worker.run(SimpleNamespace(job_dir=str(job), repo_root=directory))
+            state = json.loads((job / "status.json").read_text(encoding="utf-8"))
+            self.assertEqual(result, 3)
+            self.assertEqual(state["status"], "blocked_capability")
+            self.assertEqual(state["resolved_strategy"], "recompose_with_reference")
+            self.assertIn("no text-to-image fallback", state["error"])
 
 
 if __name__ == "__main__":
