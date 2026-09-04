@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260903-130051-lia-scene-variation",
+    "character_id": "ch-lia",
+    "character_name": "Lia",
+    "romanized_name": "Lia",
+    "title": "미간이 좀더 좁게, 눈은 좀더 크게. 부드러운 인상, 아이돌같은 화장",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260903-130051-lia-scene-variation\\outputs",
+    "created_at": "2026-09-03T04:00:51+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 2,
+      "seed": 903130052,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260903-130051-lia-scene-variation\\runs\\run-20260903-130052-3b26f948"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}
