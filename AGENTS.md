@@ -87,6 +87,12 @@ Do not invoke a second LLM merely to repeat checks that deterministic tools can 
 
 For the rationale and examples, read `docs/agent-handoff-protocol.md`.
 
+### Contract impact and integration-owned files
+
+File ownership is not enough when a change affects another agent's reader or existing records. Before changing a schema, API, CLI, persisted manifest, directory convention, or other producer/consumer boundary, add a concise `Contract impact` section to `TASK.md` naming producers, consumers, old persisted examples, compatibility/migration behavior, rollback, and deterministic verification. Prefer a backward-compatible reader and old-version fixture before enabling a new writer.
+
+Files outside a bounded package are not ownerless. Shared schemas, migrations, CLI entry points, package/build configuration, root launch scripts, architecture documents, and cross-module fixtures are integration-owned by Codex unless the active task explicitly assigns them otherwise. Claude Code may edit them only with named consumers, file scope, and acceptance checks. Commit a contract checkpoint before downstream work begins; the receiving agent must inspect the Git diff rather than rely on a conversation summary.
+
 ## Priority interpretation
 
 Do not treat `P0` as permission to install, integrate, or rewrite code immediately.

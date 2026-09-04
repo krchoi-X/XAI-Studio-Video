@@ -1,10 +1,10 @@
 # Current Task
 
-Status: READY — begin with the RunPod inventory and runbook; no cloud spend is authorized by this file.
+Status: READY — governance update complete; resume the RunPod inventory. No cloud spend is authorized by this file.
 
 ## Goal
 
-Make one RunPod 5090 workflow repeatable from provisioning through verified local recovery and compute termination. Produce a short operator runbook first, then use one deliberately small content job to validate it with the user.
+First make the four-repository boundary and cross-agent contract-change protocol durable. Then make one RunPod 5090 workflow repeatable from provisioning through verified local recovery and compute termination.
 
 ## Constraints / Must Preserve
 
@@ -38,18 +38,19 @@ Make one RunPod 5090 workflow repeatable from provisioning through verified loca
 
 ## Plan
 
-1. Inventory existing RunPod templates, worker scripts, model paths, storage conventions, and prior run notes.
-2. Write a manual operator checklist covering provision, attach storage, readiness, one minimal job, download/register, checksum verification, and termination/billing confirmation.
-3. Review the checklist with the user before starting billable compute.
-4. Run one small pilot and save its prompt/settings/result manifest outside the Pod.
-5. Record only repeated or material friction; automate the smallest proven pain point afterward.
-6. After the loop is repeatable, return to automatic first-pass curation and tablet batch controls.
+1. Add the repository map, contract-impact checklist, and integration-owned shared-file rule to durable instructions.
+2. Commit and privately back up that governance change.
+3. Inventory existing RunPod templates, worker scripts, model paths, storage conventions, and prior run notes.
+4. Write a manual operator checklist covering provision, attach storage, readiness, one minimal job, download/register, checksum verification, and termination/billing confirmation.
+5. Review the checklist with the user before starting billable compute.
+6. Run one small pilot and record only repeated or material friction.
 
 ## Progress
 
 - [x] Pulled the credit-aware handoff protocol from public upstream.
 - [x] Recovered and committed three Lia scene-variation metadata sessions locally.
 - [x] Confirmed those sessions contain compact metadata only, not generated media or credentials.
+- [x] Record repository roles and cross-agent contract/shared-file coordination rules.
 - [ ] Inventory the existing RunPod path.
 - [ ] Draft and verify the operator runbook.
 - [ ] Run the user-approved pilot.
@@ -62,7 +63,14 @@ Make one RunPod 5090 workflow repeatable from provisioning through verified loca
 
 ## Next
 
-Search the repository for existing RunPod templates, endpoints, worker commands, storage paths, and cleanup notes. Produce an evidence-based inventory before editing or provisioning anything.
+Search for existing RunPod templates, endpoints, worker commands, storage paths, and cleanup notes before editing or provisioning anything.
+
+## Contract Impact
+
+- Documentation-only operating contract; no runtime schema, CLI, or persisted record changed.
+- Readers: Codex and Claude Code sessions working in this repository.
+- Compatibility: additive; existing work remains valid, while shared-contract changes now require explicit impact records.
+- Verification: documentation review and Git diff; no code tests required for this checkpoint.
 
 ## Blockers / Uncertainties
 
