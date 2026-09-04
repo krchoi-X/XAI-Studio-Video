@@ -31,7 +31,7 @@ def load_settings(path: Path, prompt: str, run_id: str) -> dict[str, Any]:
 
 def validate_reference_settings(settings: dict[str, Any]) -> list[dict[str, Any]]:
     provenance = settings.get("_xai")
-    if not isinstance(provenance, dict) or provenance.get("kind") != "reference_variation":
+    if not isinstance(provenance, dict) or provenance.get("kind") not in {"reference_variation", "reference_transformation"}:
         return []
     model_type = str(settings.get("base_model_type") or settings.get("model_type") or "")
     if model_type not in KREA2_EDIT_MODELS:

@@ -29,6 +29,20 @@ class ReferenceVariationWorkerTests(unittest.TestCase):
         self.assertEqual(settings["activated_loras"], [])
         self.assertEqual(settings["_xai"]["reference_asset_ids"], ["ast-test"])
 
+    def test_compiled_instruction_uses_template_safe_prose_instead_of_json(self) -> None:
+        request = self.request()
+        request.update({
+            "schema_version": 2,
+            "kind": "reference_transformation",
+            "operations": [{"id": "op-1", "kind": "facial_feature", "instruction": "미간을 넓게", "strength": "subtle"}],
+            "requested_preserve": ["identity", "wardrobe"],
+        })
+        plan = worker.normalize_request(request)
+        prompt = worker.compile_edit_instruction(request, plan)
+        self.assertNotIn("{", prompt)
+        self.assertNotIn("}", prompt)
+        self.assertIn("- facial_feature [subtle]: 미간을 넓게", prompt)
+
     def test_status_updates_are_atomic_and_keep_prior_fields(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             job = Path(directory)

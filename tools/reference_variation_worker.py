@@ -19,6 +19,24 @@ from reference_transformation_contract import normalize_request
 TERMINAL_RUN_STATES = {"succeeded", "needs_review", "failed", "cancelled", "interrupted", "timed_out"}
 
 
+def compile_edit_instruction(request: dict[str, Any], plan: dict[str, Any]) -> str:
+    """Build WanGP-safe prose; its prompt templater treats JSON braces as variables."""
+    lines = [
+        "Edit the provided reference image.",
+        f"Requested change: {request['operator_request'].strip()}",
+        "Explicit operations:",
+    ]
+    for operation in plan["operations"]:
+        lines.append(
+            f"- {operation['kind']} [{operation['strength']}]: {operation['instruction'].strip()}"
+        )
+    lines.extend([
+        "Preserve exactly: " + ", ".join(plan["effective_preserve"]) + ".",
+        "Do not invent, add, remove, or alter any unrequested visual detail.",
+    ])
+    return "\n".join(lines)
+
+
 def now() -> str:
     return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
 
@@ -96,6 +114,7 @@ def run(args: argparse.Namespace) -> int:
     request = json.loads((job_dir / "request.json").read_text(encoding="utf-8"))
     plan = normalize_request(request)
     request["_normalized_plan"] = plan
+    compiled_prompt = compile_edit_instruction(request, plan)
     if plan["resolved_strategy"] != "identity_edit":
         update_status(
             job_dir, "blocked_capability", progress="검증된 레퍼런스 재구성 경로가 필요함",
@@ -125,7 +144,7 @@ def run(args: argparse.Namespace) -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
     prompt_path = session_dir / "prompt.txt"
     settings_path = session_dir / "krea2.settings.json"
-    prompt_path.write_text(request["compiled_prompt"].strip() + "\n", encoding="utf-8")
+    prompt_path.write_text(compiled_prompt + "\n", encoding="utf-8")
     write_json(session_dir / "prompt-trace.json", {
         "schema_version": 2,
         "kind": "reference_transformation",
@@ -138,7 +157,7 @@ def run(args: argparse.Namespace) -> int:
         "strategy": {"requested": plan["requested_strategy"], "resolved": plan["resolved_strategy"], "reason": plan["strategy_reason"]},
         "stages": [{"id": "stage-1", "strategy": "identity_edit", "reference_asset_id": request["reference_asset_id"]}],
         "effective_strength": plan["effective_strength"],
-        "compiled_edit_instruction": request["compiled_prompt"],
+        "compiled_edit_instruction": compiled_prompt,
         "reference": {"asset_id": request["reference_asset_id"], "path": str(source), "sha256": request["reference_sha256"], "byte_count": request["reference_byte_count"]},
         "source_prompt": request.get("source_prompt"),
         "renderer": {"engine": "krea2_identity_edit", "model_type": "krea2_turbo_edit", "identity_edit_lora_activation": "preset-owned", "reference_binding": "image_refs"},

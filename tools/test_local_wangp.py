@@ -54,6 +54,15 @@ class LocalWanGPTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "not found"):
             local_wangp.validate_reference_settings(settings)
 
+    def test_reference_transformation_v2_also_requires_bound_image(self) -> None:
+        settings = {
+            "model_type": "krea2_turbo_edit",
+            "image_refs": ["missing.png"],
+            "_xai": {"kind": "reference_transformation", "reference_asset_ids": ["ast-2"]},
+        }
+        with self.assertRaisesRegex(ValueError, "not found"):
+            local_wangp.validate_reference_settings(settings)
+
 
 if __name__ == "__main__":
     unittest.main()
