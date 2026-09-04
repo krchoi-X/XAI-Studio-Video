@@ -4,18 +4,88 @@
 
 This repository is the implementation workspace for the user's AI video prompt/storyboard/workflow project.
 
-The broader research and decision history lives separately in the private repository `krchoi-X/personal-ai-knowledge`. A Codex session attached to this repository may not have that repository or the original ChatGPT conversation in context.
+The broader research and decision history lives separately in the private repository `krchoi-X/personal-ai-knowledge`. A Codex or Claude Code session attached to this repository may not have that repository or the original ChatGPT conversation in context.
 
 ## Mandatory startup read order
 
 Before choosing new work or interpreting an old TODO, read in this order:
 
-1. `docs/current-priorities.md` — current project-specific execution order and rationale.
-2. `docs/architecture.md` — durable architecture decisions.
-3. `SKILL.md` — current skill behavior and prompt rules.
-4. Other relevant files under `docs/`, `skills/`, `adapters/`, and `templates/`.
+1. `AGENTS.md` — durable agent operating rules.
+2. `TASK.md` — current task intent, constraints, progress, and next step.
+3. `docs/current-priorities.md` — current project-specific execution order and rationale.
+4. `docs/architecture.md` — durable architecture decisions.
+5. `SKILL.md` — current skill behavior and prompt rules.
+6. Other relevant files under `docs/`, `skills/`, `adapters/`, and `templates/`.
 
-If the user gives a direct objective in the current Codex session, that objective overrides the handoff file.
+If the user gives a direct objective in the current session, that objective overrides `TASK.md`, but update `TASK.md` before implementation so another agent can recover the work later.
+
+## Durable cross-agent handoff protocol
+
+This repository is intentionally designed so work can move between Codex and Claude Code without relying on either model's conversation history or on a final handoff message.
+
+Why this exists:
+- subscription/credit limits can be reached without a useful warning;
+- an agent may disappear before it can summarize its work;
+- copying prompts manually between agents is error-prone and wastes context;
+- the repository, not an agent conversation, must be the durable shared state.
+
+Therefore:
+
+### Before modifying code for a new task
+
+1. Read this file and `TASK.md`.
+2. Inspect the relevant code and Git state.
+3. Create or refresh `TASK.md` with, at minimum:
+   - Goal
+   - Constraints / Must Preserve
+   - Must NOT Do
+   - Plan
+   - Progress
+   - Next
+   - Blockers or uncertainties, if any
+4. Only then begin implementation.
+
+Do not defer task documentation until the end of a session.
+
+### During implementation
+
+- Keep `TASK.md` concise and reasonably current after meaningful milestones, not after every minor edit.
+- Prefer coherent Git checkpoints/commits when practical so another agent can reconstruct progress from history.
+- Do not spend large token budgets narrating internal reasoning. Record only durable facts needed for recovery: what changed, what remains, important constraints, failed approaches that should not be repeated, and relevant files.
+- Never assume there will be an end-of-session handoff opportunity.
+
+### If inheriting work from another agent
+
+Do not ask the user to reconstruct the previous conversation unless repository evidence is genuinely insufficient.
+
+Reconstruct state in this order:
+
+1. actual code and working tree;
+2. `git status`, `git log`, and relevant `git diff`;
+3. tests / typecheck / lint / build results;
+4. `TASK.md`;
+5. prior agent prose, if available.
+
+Code and Git state outrank stale task notes. If `TASK.md` conflicts with the implementation, verify the code and update `TASK.md` rather than forcing the code back to an obsolete note.
+
+### Verification before LLM review
+
+Use deterministic checks first whenever they can judge correctness:
+- tests;
+- typecheck;
+- lint;
+- build;
+- schema validation or other project-specific checks.
+
+Do not invoke a second LLM merely to repeat checks that deterministic tools can settle. Escalate to another strong model/reviewer mainly when correctness is not mechanically verifiable, the change radius is large, or architecture boundaries may have drifted.
+
+### Retry and scope guardrails
+
+- After two materially similar failed implementation attempts, stop repeating the same approach. Re-scope the task, diagnose the underlying issue, or escalate to a stronger planner/executor.
+- Treat expected file scope and diff size in `TASK.md` as guardrails. If the implementation expands materially beyond them, pause and reassess before continuing.
+- Do not perform unrelated refactors while completing a scoped task.
+
+For the rationale and examples, read `docs/agent-handoff-protocol.md`.
 
 ## Priority interpretation
 
