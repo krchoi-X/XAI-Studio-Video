@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "kind": "reference_variation",
+  "variation_id": "var-fixture-v1",
+  "character_id": "ch-fixture",
+  "reference_asset_id": "ast-fixture-source",
+  "reference_path": "D:/AI_Studio/library/fixtures/source.png",
+  "reference_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "reference_byte_count": 123456,
+  "operator_request": "강한 자연광으로 변경",
+  "preserve": ["identity", "unmentioned_face_geometry", "hairstyle", "expression", "pose", "lighting", "camera", "framing", "wardrobe", "background", "accessories", "body_proportions"],
+  "changes": {"lighting": "강한 자연광으로 변경"},
+  "strength": "subtle",
+  "count": 4,
+  "engine": "krea2_identity_edit"
+}
