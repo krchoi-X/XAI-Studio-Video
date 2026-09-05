@@ -86,6 +86,7 @@ See:
 - `skills/idea-to-production/SKILL.md`
 - `docs/storyboard-directing.md`
 - `docs/storyboard-rendering.md`
+- `docs/reference-driven-production-pipeline.md` — canonical/master assets, role-separated references, no-recursive-derivation, scene blocking, gaze/reaction, and Generation Packet guidance for Codex/Claude/Hermes
 - `docs/agent-development-production-roles.md` — Codex/Claude development plane and Hermes production-agent role split
 - `docs/ai-image-curation-system-review.md`
 - `templates/storyboard-draft.md`
