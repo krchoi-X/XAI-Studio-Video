@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "ch-mizuno-aoi",
+  "name": "아오이",
+  "romanized_name": "Aoi",
+  "status": "candidate",
+  "version": 1,
+  "stable_dna": {
+    "adult_age_range": "young adult",
+    "visual_background": "East-Asian-looking woman with an original identity and no resemblance to a specific real person",
+    "face": {
+      "shape": "compact, slightly rounded to softly oval face with subtle youthful cheek fullness, while remaining unmistakably adult",
+      "eyes": "lively eyes with strong emotional readability and an adult, self-aware gaze",
+      "eyebrows": "expressive natural brows that clearly support a wide emotional range",
+      "nose": "natural refined nose with balanced proportions suited to the compact softly rounded face",
+      "lips": "soft but distinct lips with natural adult proportions",
+      "jaw": "soft rounded jawline that avoids both a childlike look and a narrow polished Hae-won-like silhouette"
+    },
+    "body": {
+      "height_impression": "adult feminine presence with healthy, mature and self-confident proportions",
+      "limb_proportions": "natural adult limb lengths and anatomically consistent hands and feet",
+      "shoulders": "natural feminine shoulder line with confident posture",
+      "torso": "healthy mature torso with adult proportions and self-assured body language",
+      "bust": "natural mature adult proportion, consistent across scenes and never treated as the sole identity anchor",
+      "waist": "natural adult waist with body-aware but believable proportions",
+      "pelvis_hips": "healthy mature feminine proportions without anatomical exaggeration",
+      "lower_body": "healthy adult lower-body proportions with natural anatomical balance",
+      "body_hair": "natural and not an identity-defining feature"
+    },
+    "hair": "short dark hair, preferably a jaw-length or softly layered bob that frames the rounded face; it may be tucked behind one ear to reveal her signature earring, and must not resemble Lia or Hae-won's long straight-hair silhouette",
+    "skin": "healthy realistic skin with visible natural texture and tonal variation; never waxy, plastic, porcelain-like or beauty-filter smoothed",
+    "distinctive_marks": [
+      "one consistent signature earring style, visible across casual, work, swim and evening contexts; exact sculptural design remains unresolved until visual review"
+    ],
+    "recognition_anchors": [
+      "compact slightly rounded or softly oval adult face",
+      "subtle residual cheek fullness without childlike proportions",
+      "short dark jaw-length or softly layered bob silhouette",
+      "lively emotionally readable eyes and expressive brows",
+      "healthy mature feminine proportions and confident adult posture",
+      "one consistent signature earring",
+      "clear visual separation from Lia's elongated softness and Hae-won's narrow restrained polish"
+    ]
+  },
+  "scene_defaults": {
+    "expression": "emotionally open and highly readable, ranging from broad natural laughter to visible tears while retaining mature self-possession",
+    "makeup": "context-appropriate natural makeup that preserves realistic skin texture",
+    "gaze": "socially confident, direct and emotionally responsive adult gaze",
+    "wardrobe_direction": "body-aware, confident adult styling with fitted silhouettes and context-appropriate variation; never adolescent or accidental-looking",
+    "work_context": "reliable nomadic designer working from cafes, studios, temporary apartments and travel locations"
+  },
+  "approved_references": [],
+  "prompt_sources": [
+    "XAI-Studio-Private/docs/characters/aoi.md"
+  ],
+  "lora_associations": [],
+  "video_test_associations": [],
+  "provenance": {
+    "created_at": "2026-09-05T00:00:00+00:00",
+    "updated_at": "2026-09-05T00:45:02+00:00",
+    "created_by": "codex-private-repository-migration",
+    "sources": [
+      "krchoi-X/XAI-Studio-Private Aoi Character DNA v0.1"
+    ],
+    "change_reason": "Register user-authored private Aoi DNA v0.1 for web production and night-batch selection",
+    "stable_dna_sha256": "aebf2c5b95feae8785d487d33ce132fe0d8aa8b1e84542b944a3f35d3df63089"
+  }
+}

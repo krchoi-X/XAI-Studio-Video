@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "ch-yuna",
+  "name": "유나",
+  "romanized_name": "Yuna",
+  "status": "candidate",
+  "version": 1,
+  "stable_dna": {
+    "adult_age_range": "adult; exact age not established",
+    "visual_background": "cultural and national background not established; original identity with no real-person resemblance",
+    "face": {
+      "shape": "slender balanced face with a delicate jawline; exact facial geometry remains unresolved",
+      "eyes": "calm expressive eyes; exact shape and iris color remain unresolved",
+      "eyebrows": "neatly groomed natural eyebrows",
+      "nose": "natural proportionate nose; exact form remains unresolved",
+      "lips": "natural pink lips",
+      "jaw": "delicate balanced jawline"
+    },
+    "body": {
+      "height_impression": "elegant adult presence; exact height and build remain unresolved",
+      "limb_proportions": "natural anatomically consistent adult limbs",
+      "shoulders": "natural adult shoulder line; exact width unresolved",
+      "torso": "natural balanced adult torso and elegant neck line",
+      "bust": "natural adult proportion; not established as an identity anchor",
+      "waist": "natural adult proportion; exact shape unresolved",
+      "pelvis_hips": "natural adult proportion; exact shape unresolved",
+      "lower_body": "natural anatomically balanced adult lower body",
+      "body_hair": "natural and not identity-defining"
+    },
+    "hair": "long dark-brown to chestnut-brown hair well below the shoulders, with warm highlights, a center or slightly off-center part, soft root volume, loose S-waves beginning around the cheekbones to jawline, light layers, airy separated strands and realistic flyaways",
+    "skin": "clear hydrated skin with soft natural luminosity and realistic visible texture; never waxy or airbrushed",
+    "distinctive_marks": [],
+    "recognition_anchors": [
+      "long flowing dark-brown to chestnut S-wave silhouette",
+      "loose waves beginning around cheekbone to jaw level",
+      "soft root volume with center or slightly off-center part",
+      "fine face-framing strands around face and collarbones",
+      "slender face, delicate jaw and elegant neck line"
+    ]
+  },
+  "scene_defaults": {
+    "expression": "calm natural expression",
+    "makeup": "natural makeup preserving realistic skin texture",
+    "gaze": "calm expressive coordinated gaze"
+  },
+  "approved_references": [],
+  "prompt_sources": [
+    "personal-ai-knowledge/creative-studio/projects/character-library/characters/ch-yuna/appearance-profiles.md"
+  ],
+  "lora_associations": [],
+  "video_test_associations": [],
+  "provenance": {
+    "created_at": "2026-09-05T00:00:00+00:00",
+    "updated_at": "2026-09-05T00:47:33+00:00",
+    "created_by": "codex-knowledge-repository-migration",
+    "sources": [
+      "user-provided-appearance-prompt-2026-08-16"
+    ],
+    "change_reason": "Expose existing user-authored visual profile in web production selection",
+    "stable_dna_sha256": "81331412e313cc1a75718e0a53e9a12cc360baa0e889f70fe13fe26699bde9ae"
+  }
+}

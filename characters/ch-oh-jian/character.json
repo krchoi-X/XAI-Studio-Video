@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "ch-oh-jian",
+  "name": "오지안",
+  "romanized_name": "Oh Ji-an",
+  "status": "candidate",
+  "version": 1,
+  "stable_dna": {
+    "adult_age_range": "adult; exact age not established",
+    "visual_background": "Korean woman with an original identity and no real-person resemblance",
+    "face": {
+      "shape": "small refined face between a slender soft oval and heart shape, lean cheeks and subtle natural asymmetry",
+      "eyes": "clear calm medium-to-large almond-shaped brown eyes with softly defined lids",
+      "eyebrows": "natural clean brows following the facial structure",
+      "nose": "slender straight refined bridge with a neat natural tip",
+      "lips": "naturally shaped soft-pink lips with fresh subtle moisture",
+      "jaw": "smooth narrow jawline with a delicate slightly pointed chin"
+    },
+    "body": {
+      "height_impression": "tall slim balanced adult silhouette",
+      "limb_proportions": "long slender limbs with realistic adult anatomy",
+      "shoulders": "narrow natural shoulders",
+      "torso": "long graceful body line with a refined natural waist",
+      "bust": "natural unexaggerated adult proportion",
+      "waist": "refined natural waist without exaggeration",
+      "pelvis_hips": "soft realistic feminine proportions",
+      "lower_body": "long slender legs with realistic volume",
+      "body_hair": "natural and not identity-defining"
+    },
+    "hair": "dark brown to soft black hair with fine realistic texture, natural movement and irregular wisps around the forehead, cheeks and temples; length, part and tying style are scene-variable",
+    "skin": "clean hydrated realistic skin with natural color, fine texture and subtle peach-pink vitality; never waxy, plastic or airbrushed",
+    "distinctive_marks": [],
+    "recognition_anchors": [
+      "small refined oval-to-heart face and delicate pointed chin",
+      "clear calm almond-shaped brown eyes",
+      "dark-brown to soft-black natural hair",
+      "slender straight nose with neat tip",
+      "natural skin color, fine texture and subtle peach-pink vitality"
+    ]
+  },
+  "scene_defaults": {
+    "expression": "fresh composed natural expression",
+    "makeup": "thin natural base, delicate eye definition and soft peach-pink color",
+    "gaze": "calm clear coordinated gaze"
+  },
+  "approved_references": [],
+  "prompt_sources": [
+    "personal-ai-knowledge/creative-studio/projects/character-library/characters/ch-oh-jian/appearance-profiles.md"
+  ],
+  "lora_associations": [],
+  "video_test_associations": [],
+  "provenance": {
+    "created_at": "2026-09-05T00:00:00+00:00",
+    "updated_at": "2026-09-05T00:47:33+00:00",
+    "created_by": "codex-knowledge-repository-migration",
+    "sources": [
+      "user-provided-appearance-prompt-2026-08-16"
+    ],
+    "change_reason": "Expose existing user-authored visual profile in web production selection",
+    "stable_dna_sha256": "2e63858e48f97bd2f1602972fd647efa01cb783523e9afe0d5067561174099db"
+  }
+}

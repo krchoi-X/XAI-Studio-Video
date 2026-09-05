@@ -1,7 +1,16 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-02T12:01:01+00:00",
+  "updated_at": "2026-09-05T00:47:34+00:00",
   "characters": [
+    {
+      "id": "ch-han-seorin",
+      "name": "한서린",
+      "romanized_name": "Han Seorin",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "4eeb821426903b884e51fd84659cd31da0e6f1060f65b3b387d1a793028551be",
+      "path": "characters/ch-han-seorin/character.json"
+    },
     {
       "id": "ch-harim",
       "name": "하림",
@@ -21,6 +30,15 @@
       "path": "characters/ch-jung-haewon/character.json"
     },
     {
+      "id": "ch-lee-suan",
+      "name": "이수안",
+      "romanized_name": "Lee Suan",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "6aace2be7b8330432ed905127f840dfdfbc4d3e4168caac17b45a6e53eae0d4b",
+      "path": "characters/ch-lee-suan/character.json"
+    },
+    {
       "id": "ch-lia",
       "name": "Lia",
       "romanized_name": "Lia",
@@ -28,6 +46,33 @@
       "version": 2,
       "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
       "path": "characters/ch-lia/character.json"
+    },
+    {
+      "id": "ch-mizuno-aoi",
+      "name": "아오이",
+      "romanized_name": "Aoi",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "aebf2c5b95feae8785d487d33ce132fe0d8aa8b1e84542b944a3f35d3df63089",
+      "path": "characters/ch-mizuno-aoi/character.json"
+    },
+    {
+      "id": "ch-oh-jian",
+      "name": "오지안",
+      "romanized_name": "Oh Ji-an",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "2e63858e48f97bd2f1602972fd647efa01cb783523e9afe0d5067561174099db",
+      "path": "characters/ch-oh-jian/character.json"
+    },
+    {
+      "id": "ch-yuna",
+      "name": "유나",
+      "romanized_name": "Yuna",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "81331412e313cc1a75718e0a53e9a12cc360baa0e889f70fe13fe26699bde9ae",
+      "path": "characters/ch-yuna/character.json"
     }
   ]
 }
