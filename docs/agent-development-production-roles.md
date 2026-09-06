@@ -1,7 +1,7 @@
 # Agent Development & Production Role Split
 
 Status: **Draft operating architecture**  
-Updated: 2026-09-01
+Updated: 2026-09-06
 
 ## Goal
 
@@ -285,6 +285,34 @@ That turns development-model credits into recurring production cost.
 4. Prefer small, testable changes.
 5. Production jobs must not modify canonical skills unless explicitly running a development workflow.
 
+## Project-specific ownership exception: XAI Control Tower
+
+The local RTX 4070 job-observability project is intentionally assigned differently from the default integration split.
+
+For **XAI Control Tower**:
+
+```text
+Claude Code
+→ primary implementation owner
+→ host telemetry, process discovery, WanGP adapter, local backend,
+  SQLite state, tablet UI, tests and debugging
+
+Codex
+→ canonical repository documentation
+→ architecture/integration records
+→ cross-project compatibility review
+→ occasional implementation review when credits permit
+
+Hermes / WanGP / Codex / Claude / local web apps
+→ observed or initiating workloads, not Control Tower owners
+```
+
+Reason: Codex credit availability is a practical continuity constraint. The Control Tower is a bounded subsystem that Claude Code can own end to end without making the wider repository dependent on uninterrupted Codex capacity.
+
+This exception does **not** imply a global role reversal for every repository task. It is a deliberate per-project ownership decision.
+
+Reference: `docs/control-tower-local-job-observability.md`.
+
 ## Escalation logic
 
 Suggested ownership:
@@ -296,16 +324,17 @@ Hermes
 Claude Code
 → skill/prompt/workflow refinement
 → bounded UI implementation/polish
+→ clearly assigned bounded subsystem ownership (for example Control Tower)
 
 Codex
 → repository-wide integration
-→ persistence, jobs, APIs, architecture implementation
+→ persistence, jobs, APIs, architecture implementation unless a subsystem is explicitly reassigned
 
 Codex + Claude review
 → only for hard cross-cutting changes when the added cost is justified
 ```
 
-The precise model used inside each tool may change; the role boundary should remain stable.
+The precise model used inside each tool may change; the role boundary should remain stable unless an explicit project-level ownership decision overrides it.
 
 ## Architectural principle
 
