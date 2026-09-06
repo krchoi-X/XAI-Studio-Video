@@ -1,188 +1,93 @@
-# Current Task
+# Current Task — XAI Control Tower v0.1
 
-Status: IN PROGRESS — audit, commit, and push all suitable unpushed XAI-Studio-Video work so it is remotely accessible.
+Owner: Claude Code (explicit per-project exception, see `docs/agent-development-production-roles.md`)
+Status: COMPLETE — v0.1 (M0–M3) implemented, tested, and running locally; awaiting user review from the tablet
+Started / completed: 2026-09-06
 
-## Active Goal
-
-Publish the completed Aoi vlog plan together with other pending repository records and the two commits already ahead of `origin/main`.
-
-## Active Constraints / Must Preserve
-
-- Review all untracked generation records before staging.
-- Do not add large generated image/video binaries, credentials, locks, caches, or machine-private runtime files.
-- Preserve existing user and agent work; include suitable prompt, manifest, settings, review-frame, and provenance records as requested.
-- Verify the commit and push against the configured `origin`.
-
-## Active Must NOT Do
-
-- Do not rewrite history or force-push.
-- Do not invent a remote for a separate repository that has none configured.
-- Do not push private character material to an unrelated public repository.
-
-## Active Plan / Progress
-
-- [x] Inspected three related workspace paths.
-- [x] Confirmed `D:\\codex\\XAI-studio` is on `main`, two commits ahead of `origin/main`, with pending generation records and the Aoi vlog plan.
-- [x] Confirmed Personal Prompt Studio has local curation edits but no Git remote configured, so it cannot be pushed safely without a user-supplied destination.
-- [ ] Audit pending XAI-Studio-Video files and sizes for binaries/secrets.
-- [ ] Stage suitable work, review staged diff, commit, and push `main` normally.
-- [ ] Verify local HEAD equals `origin/main` after push.
-
-## Active Next
-
-Audit pending content and stage only repository-safe records.
-
-## Active Blockers / Uncertainties
-
-- Personal Prompt Studio has no configured remote; its three curation changes will remain local unless a remote is supplied later.
-
-## Active Contract Impact
-
-None. Publishing existing additive records and documentation; no contract change.
-
----
-
-## Previous Task Snapshot — Aoi vlog concept planning
-
-Status: COMPLETE — five Aoi vlog concepts drafted and persisted; no image or video generation performed.
-
-## Active Goal
-
-Create and persist five distinct vlog concepts built from Aoi's canonical character DNA and established scene defaults. Each concept should establish a different facet of her confident young-adult nomadic-designer life and remain executable as a later short-form vlog.
-
-## Active Constraints / Must Preserve
-
-- Keep canonical Aoi Stable DNA unchanged.
-- Treat career, wardrobe, location, dialogue, and emotional beats as concept/scene material, not Stable DNA additions.
-- Preserve Aoi's emotionally open range, socially confident gaze, short dark bob, signature earring, professional competence, and believable young-adult presence.
-- Include variety across work, travel, appearance confidence, setbacks/crying, and recovery.
-- Plan only; do not generate media or enqueue renders.
-
-## Active Must NOT Do
-
-- Do not edit `characters/ch-mizuno-aoi/character.json`.
-- Do not assume a fixed voice, relationship, home, or biography that is not canonical.
-- Do not turn every episode into fashion posing or professional success; preserve everyday friction and emotional contrast.
-
-## Active Plan / Progress
-
-- [x] Read Aoi Character Core and the existing Lia vlog brief for planning granularity.
-- [x] Wrote five distinct concepts with hook, beat sequence, emotional turn, visual identity, and production notes in `docs/aoi-vlog-concepts-01.md`.
-- [x] Verified the document contains exactly five numbered concepts.
-- [x] Confirmed no renderer submission or media generation was performed.
-
-## Active Next
-
-User review; select one concept for a later shot-level production brief if desired.
-
-## Active Blockers / Uncertainties
-
-- None. Dialogue language and exact episode duration remain intentionally open for later production.
-
-## Active Contract Impact
-
-None. Documentation-only concept planning; no schema, API, CLI, or persisted generation contract changes.
-
----
-
-## Previous Task Snapshot — Aoi image review
-
-Status: COMPLETE — regenerated Aoi's ten corrected images as three canonical sessions and synced all 10 assets into the running web review app (2026-09-06).
-
-## Active Goal
-
-Use the canonical character scene pipeline for `ch-mizuno-aoi` to generate 10 still images that preserve her early-twenties identity while emphasizing confident professional presence, open emotional range, and tasteful mini-dress looks with genuinely flat sandals and naturally long-looking legs. Sync the completed session so it is reviewable in the existing web app.
-
-## Active Constraints / Must Preserve
-
-- Preserve canonical Aoi Stable DNA; wardrobe, emotion, pose, lens, and framing are runtime Scene Delta only.
-- Aoi must read as an adult age 22–24.
-- Flat sandals must have zero heel, wedge, or platform.
-- Correct the prior short-leg appearance through natural adult proportions, high-waisted styling, hip/waist-height camera, 70–85 mm portrait perspective, sufficient camera distance, and full head-to-toe framing.
-- Include professional confidence, intense sorrowful crying, and relaxed appearance confidence.
-- Use `tools/character_scene.py produce --actor codex` and preserve the exact request in Prompt Trace.
-- Make the resulting session visible to the web/tablet review flow.
-
-## Active Must NOT Do
-
-- Do not edit `characters/ch-mizuno-aoi/character.json` or approve a reference automatically.
-- Do not overwrite prior generated sets.
-- Do not use sexualized, voyeuristic, or anatomically exaggerated framing.
-
-## Active Plan / Progress
-
-- [x] Recovered the interrupted task and read repository/character-manager instructions.
-- [x] Confirmed prior manually generated images are not the canonical web-app generation path.
-- [x] Generated three professional-confidence images in `SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional`.
-- [x] Generated two intense-crying images in `SCENE-20260906-105354-mizuno-aoi-aoi-the-same-original-fictional`.
-- [x] Generated five long-leg mini-dress/flat-sandal images in `SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional`.
-- [x] Verified all three `batch.yaml` records completed and 3+2+5 output files exist.
-- [x] Synced the repository through `POST /api/sync`; API imported 10 new assets and each session returns the expected asset count.
-- [x] Verified the web app is serving HTML at `http://127.0.0.1:8787/`.
-
-## Active Next
-
-User review in the Aoi character workspace. Ignore the earlier composite session `SCENE-20260906-104136-mizuno-aoi-22-70-85mm`; visual QA found wardrobe/identity failures, so the three replacement sessions are the valid review set.
-
-## Active Blockers / Uncertainties
-
-- None. The replacement sessions are complete and indexed.
-
-## Active Contract Impact
-
-None expected. Additive generation session and review index records only; no schema or API changes.
-
----
-
-## Previous Task Snapshot
-
-Status: AWAITING USER REVIEW — Lia 10-second MiniMax H3 Ref2VA morning-coffee vlog, four episodes rendered (2026-09-06 00:26–02:05 KST).
+The previous `TASK.md` (publish/audit task plus three completed generation snapshots) is preserved verbatim in
+`docs/task-archive/2026-09-06-pre-control-tower-task-snapshot.md`. Its open item (audit and push the pending
+generation records under `characters/`) is **not** part of this task and remains for the user/Codex. Those pending
+records were left untouched and are not included in the Control Tower commit.
 
 ## Goal
 
-From one user-supplied Lia reference image (window-lit selfie holding a coffee mug, heather blue-gray T-shirt, sea through the window, three red-and-blue bracelets on the right wrist), render four 10-second H3 Ref2VA vlog clips with native audio, one after another, on the local WanGP background runner.
+Build the local-first observability web app described in `docs/control-tower-local-job-observability.md`:
+answer "what is the RTX 4070 doing right now, who started it, how far is it, when will it finish, what did it produce"
+from a tablet over Tailscale, using host telemetry + process observation + a canonical Job model fed by the existing
+WanGP run records. Declare v0.1 at M3.
 
-Prompts, settings, run records and review frames live in `characters/ch-lia/02_generations/VIDEO-20260906-lia-morning-coffee-vlog-candidates/` (see its `README.md`, including the Run log table). MP4 outputs are in `D:\AI_Studio\library\characters\ch-lia\videos\VIDEO-20260906-lia-morning-coffee-vlog-candidates\`.
+## Result
 
-## Constraints / Must Preserve
+Run, access, API, verification and limits: `docs/control-tower-v0.1.md`.
 
-- Canonical Lia Stable DNA v2 unchanged; the reference image is a runtime reference only (copied to `D:\AI_Studio\library\characters\ch-lia\imports\inbox\GPT\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png`, not approved).
-- Same Ref2VA settings as the accepted pilot (`minimax_h3_ref2va_pruned`, 576x768, 20 steps, profile 4, vram-safety 0.8) except `video_length` 243 (17*14+5 = 10.125 s).
-- Episodes follow `lia-life-dna-v1.1.md` (Private repo); the cat stays off-screen (sound only) because its appearance is not canon yet.
-- Recorder run created before each submission; exact prompt, effective settings, events, logs and MP4 retained per run.
+```bash
+python -X utf8 -m control_tower            # http://127.0.0.1:8790/  ·  tailnet http://100.122.180.40:8790/
+python -X utf8 -m control_tower --check    # one-shot sample, no server
+python -X utf8 -m unittest discover -s tests -p "test_control_tower*.py"   # 35 tests
+```
 
-## Must NOT Do
+## Scope delivered (v0.1)
 
-- Do not edit Character DNA or approve the reference.
-- Do not stop the user's WanGP Web UI (pid 28264, port 7860); killing processes was denied by the permission policy. All four 243-frame runs completed with it resident, so coexistence is now verified on the RTX 4070 Laptop 8 GB.
+- M0 Host monitor: GPU utilization, VRAM, temperature, power, clocks, GPU process list via `nvidia-smi`; failures
+  reported as `ok:false` + reason, never as zeros.
+- M1 Process observatory: Claude Code / Codex / Hermes / WanGP / ComfyUI / Ollama / Gallery / XAI tools / other
+  Python classified; elapsed, CPU, GPU presence; agent working/idle/offline with 45 s grace; untracked GPU workload
+  with heuristic identification; idle desktop helpers on the GPU are not counted as workload.
+- M2 Job model + adapters: canonical Job (`requested_by` ≠ `executor` ≠ `engine` ≠ `model`), progress types
+  `step`/`items`/`exact` (measured) vs `phase`/`activity`/`unknown` (inferred), ETA from recent step EMA or learned
+  per-workstation history with explicit basis, outputs, dead-worker → `interrupted`, stale-event note; adapters for
+  WanGP recorder runs, Hermes night batches, Gallery web jobs; parent linking; SQLite WAL history.
+- M3 Tablet UI: NOW RUNNING / GPU / AGENTS & PROCESSES / QUEUE / RECENT RESULTS, SSE live updates (full snapshot only
+  on change, tiny host ticks otherwise), job detail dialog, inline outputs with Range support, restricted-session
+  thumbnails blurred until tapped, single-column layout on tablet width.
 
-## Progress
+## Constraints honoured
 
-- [x] Reference image located in Downloads and copied into the Lia inbox.
-- [x] Prompts 01–04 and matching `*.settings.json` written.
-- [x] Episode 01 `run-20260906-002654-ac69262f`: needs_review, identity held, sip / glance-down / lines present.
-- [x] Episode 02 `run-20260906-005142-29e8ca26`: needs_review, identity held, head turn / hair tuck / lowered gaze present.
-- [x] Episode 03 `run-20260906-011642-2f5f3a6f`: needs_review, identity held, sip / mug down / hair gather / line present.
-- [x] Episode 04 `run-20260906-014111-04975d8a`: needs_review, identity held, mug down / ukulele strum / laugh / line present.
-- [x] Each run ~24 min; all 10.125 s H.264 + AAC; review frames in `review-0N/`.
+- Read-only over `characters/**`, `D:\AI_Studio\library`, Gallery data, night-batch and web-job dirs; own state only in
+  `D:\AI_Studio\control-tower\control_tower.sqlite3` (outside the repo, safe to delete).
+- No fabricated percentages; measured vs inferred is explicit in API (`progress.measured`) and UI.
+- No cloud GPU, job creation, process kill/restart, notifications, auth, or Prometheus stack.
+- No edits to `tools/*`, `schemas/*`, `skills/*`, README, or Tailscale serve config.
+- Only packages already in the Hermes venv (fastapi, uvicorn, sse-starlette, psutil, pydantic, httpx, PyYAML).
 
-## Findings
+## Verification
 
-- Identity, wardrobe, bracelets, mug and room held in every sampled frame of all four clips; no face drift observed.
-- Action chains rendered in prompt order; H3 followed multi-beat 10-second instructions well.
-- Recurring deviation: while speaking, the smile is wider and more toothy than the DNA's "faint quiet smile". If refining, add explicit "small closed-mouth smile, no wide grin" wording.
-- Episode 04 ukulele reads tenor-sized rather than soprano.
-- `prompt_exact_match` is false on every run, as in the pilot (WanGP embeds its own prompt copy); normalized match also false. Known, not a defect of these runs.
-- Audio content (speech intelligibility, cat meow, ukulele) has not been listened to; only level presence was checked.
+- 35 Control Tower unit tests pass (`unittest`; pytest is not installed in either local interpreter).
+- Whole-repo `unittest discover` : 58 pass, 1 pre-existing import error (`test_reference_transformation_contract`
+  needs pytest) unrelated to this work; `tools/test_wangp_recorder.py` + `tools/test_local_wangp.py` (8) pass.
+- Live: 111 jobs discovered from existing records; real stale run `run-20260905-194403-2748fb0b` surfaced as
+  `interrupted`; simulated running job (fixture + sleeping worker, no GPU use) showed measured step progress, ETA
+  from recent steps, then `interrupted` after the worker exited; SSE mix verified with curl; MP4 Range → 206;
+  reachable on the tailnet IP from the host; tablet viewport checked in the in-app browser.
+- `git status`: the four pre-existing modified files under `characters/ch-lia/.../Lia_Vlog_Test_Session` were already
+  modified before this task began; the service changed nothing under `characters/`.
 
-## Next
+## Decisions
 
-User decision: accept any of the four as vlog baselines, or refine (smile wording, ukulele size). Then decide whether the reference image should be promoted toward an approved Lia reference. Optionally listen to the audio tracks and record speech quality in the README.
+- Package `control_tower/` at repo root (bounded subsystem; `tools/` stays Codex CLI space).
+- `nvidia-smi` CSV polling (2 s) instead of pynvml; per-process VRAM is unavailable on Windows WDDM anyway.
+- SSE with two event types (`overview`, `host`) to keep tablet traffic small; JSON polling fallback in the UI.
+- Port 8790; bind `0.0.0.0` so the tailnet IP works without `tailscale serve` (command documented for HTTPS).
+- Job IDs `wangp:<run_id>`, `night:<batch_id>`, `web:<gen_id>`; timing key `model|resolution|steps|frames[|bN]`.
+- The TestClient cannot close an infinite SSE response without deadlocking, so SSE is tested through `sse_frame()`
+  plus a live curl check, not through the streaming endpoint.
+
+## Contract impact
+
+None to shared contracts. Control Tower only reads `run.json` / `events.jsonl` / `artifact-manifest.json` /
+`batch.yaml` / `prompt-trace.json` / night-batch `status.json` + `plan.json` / web `status.json` + `request.json`.
+Its own API (`/api/*` on 8790) is consumed only by its bundled UI. Rollback = delete `control_tower/`, the four
+`tests/test_control_tower_*.py` files, `docs/control-tower-v0.1.md`, and the SQLite file.
+
+## Next (suggested, not started)
+
+1. User opens `http://100.122.180.40:8790/` on the tablet; optionally `tailscale serve --bg --https=8790 http://127.0.0.1:8790`.
+2. Autostart: add a scheduled task / supervisor like `personal-prompt-studio/register-studio-autostart.ps1` (integration-owned; Codex).
+3. If useful: a voluntary phase-event file for Claude Code / Codex, ComfyUI adapter, WanGP Web UI queue reading,
+   Gallery status widget linking here (`docs/control-tower-local-job-observability.md` §13, §17).
 
 ## Blockers / Uncertainties
 
-- Two stale `WanGPSession.get_model_schema` python processes from 2026-09-05 (pids 60100/67780) are still alive and consuming CPU; they could not be stopped under the current permission policy. They did not block generation.
-
-## Contract Impact
-
-None. Additive generation and run artifacts only; no schema, API, CLI, or application contract changed.
+- Tailscale reachability from the tablet itself is unverified in this session (host-side check only). Windows Firewall
+  may prompt once for python.exe.
+- Older sessions without `invoked_by` show `requested_by: unknown` by design.

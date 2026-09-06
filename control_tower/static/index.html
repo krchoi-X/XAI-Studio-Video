@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>XAI Control Tower</title>
+<style>
+  :root {
+    --bg: #0f1216; --panel: #171b21; --panel2: #1d222a; --line: #2a313b; --text: #e6e9ee; --muted: #8b95a5;
+    --ok: #3ddc84; --warn: #ffb02e; --bad: #ff5c5c; --accent: #5aa9ff; --measured: #5aa9ff; --inferred: #b48cff;
+    --radius: 14px; --gap: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.4 -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif; }
+  body { padding: 14px; padding-bottom: 40px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  header h1 { font-size: 20px; letter-spacing: .08em; margin: 0; font-weight: 700; }
+  header .meta { color: var(--muted); font-size: 13px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--muted); margin-right: 6px; vertical-align: middle; }
+  .dot.ok { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+  .dot.warn { background: var(--warn); }
+  .dot.bad { background: var(--bad); }
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; min-width: 0; }
+  .card h2 { margin: 0 0 10px; font-size: 12px; letter-spacing: .14em; color: var(--muted); font-weight: 700; text-transform: uppercase; display: flex; justify-content: space-between; align-items: baseline; }
+  .card h2 small { letter-spacing: 0; text-transform: none; font-weight: 400; }
+  .span12 { grid-column: span 12; } .span8 { grid-column: span 8; } .span6 { grid-column: span 6; } .span4 { grid-column: span 4; }
+  @media (max-width: 900px) { .span8, .span6, .span4 { grid-column: span 12; } }
+  @media (min-width: 901px) and (max-width: 1300px) { .span4 { grid-column: span 6; } }
+  .muted { color: var(--muted); } .small { font-size: 13px; } .mono { font-family: ui-monospace, Consolas, monospace; font-size: 13px; }
+  .banner { background: #2a1d10; border: 1px solid #6b4a1a; color: #ffd48a; border-radius: var(--radius); padding: 12px 16px; margin-bottom: var(--gap); }
+  .banner b { color: #ffc766; }
+  .banner .row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; font-size: 14px; }
+  .job { border: 1px solid var(--line); background: var(--panel2); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; }
+  .job .title { font-size: 18px; font-weight: 600; margin-bottom: 4px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .job .who { color: var(--muted); font-size: 13px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .who span b { color: var(--text); font-weight: 500; }
+  .bar { height: 14px; background: #0b0e12; border-radius: 8px; overflow: hidden; margin: 10px 0 6px; position: relative; border: 1px solid var(--line); }
+  .bar > i { display: block; height: 100%; background: var(--measured); width: 0; transition: width .6s ease; }
+  .bar.inferred > i { background: repeating-linear-gradient(45deg, var(--inferred) 0 8px, #6d4fb3 8px 16px); animation: slide 1.2s linear infinite; width: 100%; opacity: .55; }
+  @keyframes slide { from { background-position: 0 0; } to { background-position: 32px 0; } }
+  .stats { display: flex; gap: 16px; flex-wrap: wrap; font-size: 15px; }
+  .stats b { font-size: 22px; font-weight: 700; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--line); color: var(--muted); }
+  .tag.measured { color: var(--measured); border-color: var(--measured); }
+  .tag.inferred { color: var(--inferred); border-color: var(--inferred); }
+  .tag.status-running { color: var(--ok); border-color: var(--ok); } .tag.status-queued, .tag.status-starting { color: var(--warn); border-color: var(--warn); }
+  .tag.status-failed, .tag.status-interrupted { color: var(--bad); border-color: var(--bad); } .tag.status-needs_review, .tag.status-succeeded { color: var(--ok); border-color: var(--ok); }
+  .gpu-big { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .gpu-big div { background: var(--panel2); border-radius: 10px; padding: 10px; text-align: center; }
+  .gpu-big b { display: block; font-size: 26px; }
+  .gpu-big span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  .vram { height: 10px; background: #0b0e12; border-radius: 6px; margin-top: 10px; overflow: hidden; border: 1px solid var(--line); }
+  .vram i { display: block; height: 100%; background: var(--accent); }
+  canvas.spark { width: 100%; height: 48px; display: block; margin-top: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  td, th { padding: 6px 6px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .agents { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media (max-width: 600px) { .agents { grid-template-columns: 1fr; } .gpu-big { grid-template-columns: repeat(2, 1fr); } }
+  .agent { background: var(--panel2); border-radius: 10px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .agent .name { font-weight: 600; }
+  .agent .state { font-size: 13px; color: var(--muted); text-align: right; }
+  .agent.working .state { color: var(--ok); }
+  .results { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .result { background: var(--panel2); border-radius: 12px; border: 1px solid var(--line); overflow: hidden; cursor: pointer; }
+  .result .thumbs { display: flex; gap: 2px; background: #000; height: 150px; overflow: hidden; }
+  .result .thumbs img, .result .thumbs video { flex: 1; min-width: 0; object-fit: cover; height: 150px; background: #000; }
+  .result .thumbs { position: relative; }
+  .result .thumbs.restricted img, .result .thumbs.restricted video { filter: blur(18px) brightness(.6); }
+  .result .thumbs.restricted::after { content: 'restricted · tap to reveal'; position: absolute; color: #ddd; font-size: 12px; left: 0; right: 0; text-align: center; top: 66px; }
+  .result .body { padding: 10px 12px; }
+  .result .t { font-weight: 600; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .result .m { color: var(--muted); font-size: 12px; margin-top: 4px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .empty { color: var(--muted); padding: 10px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  button { background: var(--panel2); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; font-size: 14px; cursor: pointer; }
+  dialog { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius); max-width: 900px; width: calc(100vw - 30px); padding: 18px; }
+  dialog::backdrop { background: rgba(0,0,0,.6); }
+  dialog pre { background: #0b0e12; padding: 10px; border-radius: 8px; overflow: auto; max-height: 40vh; font-size: 12px; }
+  .kv { display: grid; grid-template-columns: 150px 1fr; gap: 4px 12px; font-size: 14px; }
+  .kv div:nth-child(odd) { color: var(--muted); }
+  .kv .path { word-break: break-all; font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+  .outputs-big { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+  .outputs-big img, .outputs-big video { max-height: 220px; max-width: 100%; border-radius: 8px; background: #000; }
+  .legend { color: var(--muted); font-size: 12px; margin-top: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>XAI CONTROL TOWER</h1>
+  <div class="meta">
+    <span><i id="online" class="dot"></i><span id="machine">—</span></span>
+    <span id="clock">—</span>
+    <span id="link" class="small">connecting…</span>
+    <a id="gallery" href="#" target="_blank">Open Gallery ↗</a>
+  </div>
+</header>
+
+<div id="untracked"></div>
+
+<div class="grid">
+  <section class="card span8">
+    <h2>Now running <small id="running-count" class="muted"></small></h2>
+    <div id="running"></div>
+    <div class="legend"><span class="tag measured">measured</span> step / item counts reported by the runtime &nbsp; <span class="tag inferred">inferred</span> process alive, no measurable progress</div>
+  </section>
+
+  <section class="card span4">
+    <h2>GPU <small id="gpu-name" class="muted"></small></h2>
+    <div id="gpu"></div>
+    <canvas class="spark" id="spark" width="600" height="48"></canvas>
+    <div id="gpu-procs" class="small muted" style="margin-top:8px"></div>
+  </section>
+
+  <section class="card span6">
+    <h2>Agents / processes <small id="proc-count" class="muted"></small></h2>
+    <div class="agents" id="agents"></div>
+    <details style="margin-top:10px"><summary class="muted small">process list</summary>
+      <div style="overflow-x:auto"><table id="procs"></table></div>
+    </details>
+  </section>
+
+  <section class="card span6">
+    <h2>Queue <small id="queue-count" class="muted"></small></h2>
+    <div id="queue"></div>
+  </section>
+
+  <section class="card span12">
+    <h2>Recent results <small class="muted">WanGP runs · newest first</small></h2>
+    <div class="results" id="recent"></div>
+  </section>
+</div>
+
+<dialog id="detail"><div id="detail-body"></div><div style="margin-top:12px;text-align:right"><button onclick="document.getElementById('detail').close()">Close</button></div></dialog>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let state = null, lastSnapshotAt = 0, historyTimer = null;
+
+function fmtDur(s) {
+  if (s === null || s === undefined) return '—';
+  s = Math.max(0, Math.round(s));
+  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+  if (h) return `${h}h ${String(m).padStart(2, '0')}m`;
+  if (m) return `${m}m ${String(sec).padStart(2, '0')}s`;
+  return `${sec}s`;
+}
+function ago(iso) {
+  if (!iso) return '—';
+  const d = (Date.now() - new Date(iso).getTime()) / 1000;
+  return d < 0 ? 'now' : fmtDur(d) + ' ago';
+}
+function esc(s) { return String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function tag(text, cls) { return `<span class="tag ${cls || ''}">${esc(text)}</span>`; }
+function outputUrl(job, i) { return `/api/jobs/${encodeURIComponent(job.job_id)}/outputs/${i}`; }
+
+function renderRunning(view) {
+  const running = view.active.filter(j => j.status === 'running' || j.status === 'starting');
+  $('running-count').textContent = running.length ? `${running.length} active` : '';
+  if (!running.length) {
+    const idle = view.untracked.length ? 'No tracked job is running, but see the untracked workload above.' : 'Nothing is running. GPU is idle as far as every adapter can tell.';
+    $('running').innerHTML = `<div class="empty">${idle}</div>`;
+    return;
+  }
+  $('running').innerHTML = running.map(j => {
+    const p = j.progress, measured = p.measured;
+    const bar = measured
+      ? `<div class="bar"><i style="width:${p.percent}%"></i></div>`
+      : `<div class="bar inferred"><i></i></div>`;
+    const eta = j.eta_seconds !== null && j.eta_seconds !== undefined
+      ? `<span><b>${fmtDur(j.eta_seconds)}</b> ETA <span class="muted small">(${j.eta_basis === 'history' ? 'from past runs' : 'from recent steps'})</span></span>`
+      : `<span class="muted">ETA unavailable</span>`;
+    const pct = measured ? `<span><b>${p.percent}%</b></span>` : `<span><b>${esc(j.status.toUpperCase())}</b></span>`;
+    return `<div class="job" onclick="openDetail('${esc(j.job_id)}')">
+      <div class="title"><span>${esc(j.title)}</span><span>${tag(j.status, 'status-' + j.status)} ${tag(measured ? 'measured' : 'inferred', measured ? 'measured' : 'inferred')}</span></div>
+      <div class="who">
+        <span>requested by <b>${esc(j.requested_by)}</b></span><span>executor <b>${esc(j.executor)}</b></span>
+        <span>engine <b>${esc(j.engine || '—')}</b></span><span>model <b>${esc(j.model || '—')}</b></span>
+        ${j.worker_pid ? `<span>PID <b>${j.worker_pid}</b>${j.worker_alive === false ? ' (dead)' : ''}</span>` : ''}
+        ${j.parent_job_id ? `<span>part of <b>${esc(j.parent_job_id)}</b></span>` : ''}
+      </div>
+      ${bar}
+      <div class="stats">${pct}<span>${esc(p.label)}</span>${eta}<span><b>${fmtDur(j.elapsed_seconds)}</b> elapsed</span>
+        ${p.runtime_percent !== null && p.runtime_percent !== undefined ? `<span class="muted small">runtime reports ${p.runtime_percent}%</span>` : ''}
+        ${j.last_event_at ? `<span class="muted small">last event ${ago(j.last_event_at)}</span>` : ''}</div>
+      ${j.note ? `<div class="small" style="color:var(--warn);margin-top:6px">⚠ ${esc(j.note)}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function renderUntracked(view) {
+  const u = view.untracked;
+  if (!u.length) { $('untracked').innerHTML = ''; return; }
+  $('untracked').innerHTML = u.map(x => `<div class="banner"><b>Untracked workload detected</b> — ${esc(x.reason)}
+    <div class="row"><span>GPU <b>${x.gpu_utilization_percent ?? '—'}%</b></span>
+      ${x.executable ? `<span class="mono">${esc(x.executable.split(/[\\/]/).pop())}</span>` : ''}
+      ${x.pid ? `<span>PID ${x.pid}</span>` : ''}
+      ${x.elapsed_seconds !== null && x.elapsed_seconds !== undefined ? `<span>runtime ${fmtDur(x.elapsed_seconds)}</span>` : ''}
+      <span>Likely: <b>${esc(x.likely)}</b> <span class="small">(${esc(x.confidence)})</span></span>
+      ${x.cwd ? `<span class="mono">cwd ${esc(x.cwd)}</span>` : ''}</div></div>`).join('');
+}
+
+function renderGpu(view) {
+  const h = view.host;
+  if (!h.ok || !h.gpus.length) {
+    $('gpu').innerHTML = `<div class="empty">GPU telemetry unavailable: ${esc(h.error || 'unknown')}</div>`;
+    $('gpu-name').textContent = ''; $('gpu-procs').textContent = ''; return;
+  }
+  const g = h.gpus[0];
+  $('gpu-name').textContent = g.name.replace('NVIDIA GeForce ', '');
+  const v = (x, unit = '') => x === null || x === undefined ? '—' : `${Math.round(x)}${unit}`;
+  const memPct = g.memory_total_mib ? (g.memory_used_mib / g.memory_total_mib * 100) : 0;
+  $('gpu').innerHTML = `<div class="gpu-big">
+      <div><b>${v(g.utilization_percent, '%')}</b><span>GPU</span></div>
+      <div><b>${g.memory_used_mib === null ? '—' : (g.memory_used_mib / 1024).toFixed(1)}<span style="font-size:14px;color:var(--muted)">/${(g.memory_total_mib / 1024).toFixed(0)}G</span></b><span>VRAM</span></div>
+      <div><b>${v(g.temperature_c, '°')}</b><span>Temp</span></div>
+      <div><b>${v(g.power_draw_w, 'W')}</b><span>Power${g.power_limit_w ? ' /' + Math.round(g.power_limit_w) : ''}</span></div>
+    </div><div class="vram"><i style="width:${memPct}%"></i></div>
+    <div class="small muted" style="margin-top:6px">driver ${esc(g.driver_version || '—')} · ${esc(g.pstate || '')} · ${v(g.sm_clock_mhz, ' MHz')} · sampled ${ago(h.sampled_at)}</div>`;
+  const procs = g.processes || [];
+  $('gpu-procs').innerHTML = procs.length
+    ? 'GPU processes: ' + procs.map(p => `<span class="mono">${esc(p.name.split(/[\\/]/).pop())}</span> PID ${p.pid}${p.used_memory_mib ? ' ' + Math.round(p.used_memory_mib) + ' MiB' : ''}`).join(' · ')
+    : 'no compute process on the GPU';
+}
+
+function renderAgents(view) {
+  const p = view.processes;
+  $('proc-count').textContent = p.total_processes ? `${p.total_processes} processes · scanned ${ago(p.scanned_at)}` : '';
+  $('agents').innerHTML = p.agents.map(a => {
+    let detail = '';
+    if (a.state === 'working') detail = `● Working ${a.active_since ? fmtDur((Date.now() - new Date(a.active_since)) / 1000) : ''}${a.on_gpu ? ' · GPU' : ''}`;
+    else if (a.state === 'idle') detail = `○ Idle${a.last_active_at ? ' · active ' + ago(a.last_active_at) : ''}`;
+    else detail = '— Offline';
+    const up = a.oldest_started_at ? `<div class="small muted">up ${fmtDur((Date.now() - new Date(a.oldest_started_at)) / 1000)} · ${a.process_count} proc · ${a.cpu_percent}% cpu</div>` : '';
+    return `<div class="agent ${a.state}"><div><div class="name">${esc(a.label)}</div>${up}</div><div class="state">${detail}</div></div>`;
+  }).join('');
+  const rows = p.processes.slice(0, 40).map(pr => `<tr><td>${esc(pr.label)}${pr.agent ? ` <span class="muted small">(${esc(pr.agent)})</span>` : ''}</td>
+    <td class="num">${pr.pid}</td><td class="num">${pr.cpu_percent}%</td><td class="num">${pr.memory_rss_mb ?? '—'} MB</td>
+    <td class="num">${fmtDur(pr.elapsed_seconds)}</td><td>${pr.on_gpu ? '<span class="tag measured">GPU</span>' : ''}${pr.active ? ' <span class="tag">cpu</span>' : ''}</td></tr>`);
+  $('procs').innerHTML = `<tr><th>process</th><th>pid</th><th>cpu</th><th>rss</th><th>elapsed</th><th></th></tr>` + rows.join('');
+}
+
+function renderQueue(view) {
+  const q = view.queue;
+  $('queue-count').textContent = q.length ? `${q.length} waiting` : '';
+  const batches = view.active.filter(j => j.source === 'night-batch' || j.source === 'web-job');
+  let html = batches.map(j => `<div class="job" onclick="openDetail('${esc(j.job_id)}')"><div class="title"><span>${esc(j.title)}</span>${tag(j.status, 'status-' + j.status)}</div>
+      <div class="who"><span>requested by <b>${esc(j.requested_by)}</b></span><span>executor <b>${esc(j.executor)}</b></span><span>${esc(j.progress.label)}</span><span>${fmtDur(j.elapsed_seconds)} elapsed</span></div>
+      ${j.progress.measured ? `<div class="bar"><i style="width:${j.progress.percent}%"></i></div>` : ''}</div>`).join('');
+  html += q.length ? `<ol style="margin:6px 0 0 18px;padding:0">` + q.map(r => `<li style="margin-bottom:6px">${esc(r.title)} <span class="muted small">${(r.engines || []).join(', ')}${r.count ? ' ×' + r.count : ''} · ${esc(r.requested_by)}</span></li>`).join('') + `</ol>` : '';
+  $('queue').innerHTML = html || '<div class="empty">Queue is empty.</div>';
+}
+
+function renderRecent(view) {
+  const r = view.recent;
+  if (!r.length) { $('recent').innerHTML = '<div class="empty">No completed runs found.</div>'; return; }
+  $('recent').innerHTML = r.map(j => {
+    const outs = j.outputs.filter(o => o.exists).slice(0, 3);
+    const restricted = j.details && j.details.visibility === 'restricted';
+    const thumbs = outs.map((o, i) => o.kind === 'video'
+      ? `<video src="${outputUrl(j, o.index)}" preload="metadata" muted playsinline></video>`
+      : o.kind === 'image' ? `<img src="${outputUrl(j, o.index)}" loading="lazy" alt="">` : `<div class="muted small" style="padding:10px">${esc(o.path.split(/[\\/]/).pop())}</div>`).join('');
+    const kinds = j.outputs.length ? `${j.outputs.length} ${j.outputs[0].kind === 'video' ? 'clip' : 'image'}${j.outputs.length > 1 ? 's' : ''}` : (j.outcome === 'failed' ? 'no output' : '—');
+    return `<div class="result" onclick="openDetail('${esc(j.job_id)}')">
+      <div class="thumbs${restricted ? ' restricted' : ''}"${restricted ? ' onclick="event.stopPropagation(); this.classList.toggle(\'restricted\')" title="restricted session — tap to reveal"' : ''}>${thumbs || `<div class="muted small" style="padding:12px">${esc(j.error || j.status)}</div>`}</div>
+      <div class="body"><div class="t" title="${esc(j.title)}">${esc(j.title)}</div>
+      <div class="m">${tag(j.status, 'status-' + j.status)}<span>${kinds}</span><span>${fmtDur(j.elapsed_seconds)}</span><span>${esc(j.requested_by)}</span><span>${ago(j.finished_at)}</span></div></div></div>`;
+  }).join('');
+}
+
+function drawSpark(history) {
+  const c = $('spark'), ctx = c.getContext('2d');
+  ctx.clearRect(0, 0, c.width, c.height);
+  if (!history || history.length < 2) return;
+  const w = c.width, h = c.height, n = history.length;
+  ctx.strokeStyle = '#5aa9ff'; ctx.lineWidth = 2; ctx.beginPath();
+  history.forEach((s, i) => { const x = i / (n - 1) * w, y = h - (s.util || 0) / 100 * (h - 4) - 2; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
+  ctx.stroke();
+  ctx.fillStyle = '#8b95a5'; ctx.font = '11px sans-serif'; ctx.fillText('GPU % · last 30 min', 4, 12);
+}
+
+async function loadHistory() {
+  try { const r = await fetch('/api/host?history_minutes=30'); const d = await r.json(); drawSpark(d.history); } catch (e) {}
+}
+
+function render(view) {
+  state = view; lastSnapshotAt = Date.now();
+  $('machine').textContent = view.service.machine;
+  $('online').className = 'dot ' + (view.host.ok ? 'ok' : 'warn');
+  $('gallery').href = view.service.gallery_url;
+  renderUntracked(view); renderRunning(view); renderGpu(view); renderAgents(view); renderQueue(view); renderRecent(view);
+}
+
+async function openDetail(jobId) {
+  const r = await fetch('/api/jobs/' + encodeURIComponent(jobId));
+  const j = await r.json();
+  const outs = (j.outputs || []).filter(o => o.exists).map(o => o.kind === 'video'
+    ? `<video src="${outputUrl(j, o.index)}" controls preload="metadata" playsinline></video>`
+    : o.kind === 'image' ? `<a href="${outputUrl(j, o.index)}" target="_blank"><img src="${outputUrl(j, o.index)}" alt=""></a>` : '').join('');
+  const kv = [['status', j.status], ['requested by', j.requested_by], ['executor', j.executor], ['engine / model', `${j.engine || '—'} / ${j.model || '—'}`],
+    ['progress', `${j.progress.label} (${j.progress.type}${j.progress.measured ? ', measured' : ', inferred'})`],
+    ['ETA', j.eta_seconds != null ? `${fmtDur(j.eta_seconds)} (${j.eta_basis})` : 'unavailable'],
+    ['started / finished', `${j.started_at || '—'} → ${j.finished_at || '—'}`], ['elapsed', fmtDur(j.elapsed_seconds)],
+    ['character / session', `${j.character_id || '—'} / ${j.session_id || '—'}`], ['worker PID', j.worker_pid ? `${j.worker_pid}${j.worker_alive === false ? ' (not running)' : ''}` : '—'],
+    ['parent job', j.parent_job_id || '—'], ['error', j.error || '—'], ['note', j.note || '—'], ['run dir', `<span class="path">${esc(j.run_dir || '')}</span>`]];
+  $('detail-body').innerHTML = `<h3 style="margin:0 0 10px">${esc(j.title)} <span class="muted small">${esc(j.job_id)}</span></h3>
+    <div class="outputs-big">${outs}</div>
+    <div class="kv">${kv.map(([k, v]) => `<div>${k}</div><div>${k === 'run dir' ? v : esc(v)}</div>`).join('')}</div>
+    ${(j.outputs || []).length ? `<div class="small muted" style="margin-top:8px">outputs:<br>${j.outputs.map(o => `<span class="path">${esc(o.path)}</span>${o.exists ? '' : ' (missing)'}`).join('<br>')}</div>` : ''}
+    <details style="margin-top:10px"><summary class="muted small">details / recent events</summary><pre>${esc(JSON.stringify({details: j.details, recent_events: j.recent_events}, null, 2))}</pre></details>`;
+  $('detail').showModal();
+}
+
+function connect() {
+  const es = new EventSource('/api/events');
+  es.addEventListener('overview', ev => { $('link').textContent = 'live'; render(JSON.parse(ev.data)); });
+  es.addEventListener('host', ev => {
+    if (!state) return;
+    const d = JSON.parse(ev.data); state.host = d.host; state.untracked = d.untracked; lastSnapshotAt = Date.now();
+    $('online').className = 'dot ' + (state.host.ok ? 'ok' : 'warn'); renderUntracked(state); renderGpu(state);
+    if (!state.active.some(j => j.status === 'running')) renderRunning(state);
+  });
+  es.onerror = () => { $('link').textContent = 'reconnecting…'; };
+}
+async function poll() { try { const r = await fetch('/api/overview'); render(await r.json()); } catch (e) { $('link').textContent = 'offline'; } }
+
+poll(); connect(); loadHistory();
+setInterval(() => { $('clock').textContent = new Date().toLocaleTimeString(); if (Date.now() - lastSnapshotAt > 20000) poll(); }, 1000);
+setInterval(loadHistory, 30000);
+// durations/ago texts are computed client-side; refresh them without waiting for a new snapshot
+setInterval(() => { if (state) { renderAgents(state); renderRunning(state); } }, 10000);
+</script>
+</body>
+</html>
