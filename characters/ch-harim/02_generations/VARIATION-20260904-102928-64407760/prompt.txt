@@ -1,0 +1,8 @@
+Edit the provided reference image.
+Requested change: 미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로
+Explicit operations:
+- facial_feature [subtle]: 미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로
+- wardrobe [subtle]: 미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로
+- lighting [subtle]: 미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로
+Preserve exactly: identity, hairstyle, expression, pose, camera, framing, background, body_proportions.
+Do not invent, add, remove, or alter any unrequested visual detail.

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260906-105354-mizuno-aoi-aoi-the-same-original-fictional",
+  "character_id": "ch-mizuno-aoi",
+  "character_version": 1,
+  "stable_dna_sha256": "aebf2c5b95feae8785d487d33ce132fe0d8aa8b1e84542b944a3f35d3df63089",
+  "created_at": "2026-09-06T01:53:54+00:00",
+  "created_by": "codex",
+  "local_model": null,
+  "source_request": "Aoi, the same original fictional adult woman age 22 to 24, alone in a quiet apartment crying intensely and sorrowfully after painful news. Tears stream down both cheeks, eyes red and wet, face crumpled, breath catching; emotionally raw rather than pretty-crying, while retaining adult dignity. She is fully clothed in an opaque charcoal cardigan, opaque black crew-neck knit top, and loose gray trousers. Short jaw-length dark bob and right-ear silver loop with cobalt-blue bead. Natural documentary photography, medium-to-full seated composition. No nudity, no sheer or transparent clothing, no sexualized framing, no text or watermark.",
+  "runtime_prompt_sha256": "790cd9845f1101fb9c97bb67e2ff37ad8394591a4cd309e0da5edebbfb396af0",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {},
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-mizuno-aoi",
+    "character_version": 1,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

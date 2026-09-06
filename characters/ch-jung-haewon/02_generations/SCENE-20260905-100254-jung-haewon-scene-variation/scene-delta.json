@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260905-100254-jung-haewon-scene-variation",
+  "character_id": "ch-jung-haewon",
+  "character_version": 1,
+  "stable_dna_sha256": "7be607bafe72e7a08a765d8d765c259db19808fab014b7ee385d541a3906fac2",
+  "created_at": "2026-09-05T01:02:54+00:00",
+  "created_by": "hermes",
+  "local_model": null,
+  "source_request": "바닷가에 서서 멀리 보고 있는 옆모습",
+  "runtime_prompt_sha256": "10c34cfdca3000eb3592400bef9d741b0a1eafd6dacc7874eeb21549125d1a6e",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "user-specified"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-jung-haewon",
+    "character_version": 1,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

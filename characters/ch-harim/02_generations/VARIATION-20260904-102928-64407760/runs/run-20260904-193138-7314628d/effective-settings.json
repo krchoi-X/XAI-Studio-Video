@@ -1,0 +1,69 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_turbo_edit",
+  "base_model_type": "krea2_turbo_edit",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Turbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\SCENE-20260831-085715-harim-elegant-evening-lounge\\outputs\\krea2\\run-20260831-085906-f3e11e21_1.jpg"
+  ],
+  "remove_background_images_ref": 0,
+  "num_inference_steps": 8,
+  "guidance_scale": 0,
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "seed": 1788517899,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "_xai": {
+    "kind": "reference_transformation",
+    "schema_version": 2,
+    "source_schema_version": 2,
+    "variation_id": "var_cf09a231be9142f9abda3d2564407760",
+    "character_id": "ch-harim",
+    "reference_asset_ids": [
+      "ast_5c87030405117dc7f2412bbc"
+    ],
+    "operator_request": "미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로",
+    "operations": [
+      {
+        "id": "op-1",
+        "kind": "facial_feature",
+        "instruction": "미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로",
+        "strength": "subtle"
+      },
+      {
+        "id": "op-2",
+        "kind": "wardrobe",
+        "instruction": "미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로",
+        "strength": "subtle"
+      },
+      {
+        "id": "op-3",
+        "kind": "lighting",
+        "instruction": "미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로",
+        "strength": "subtle"
+      }
+    ],
+    "effective_preserve": [
+      "identity",
+      "hairstyle",
+      "expression",
+      "pose",
+      "camera",
+      "framing",
+      "background",
+      "body_proportions"
+    ],
+    "resolved_strategy": "identity_edit",
+    "effective_strength": {
+      "mode": "prompt_only_unvalidated",
+      "profile_version": null
+    }
+  },
+  "prompt": "Edit the provided reference image.\nRequested change: 미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로\nExplicit operations:\n- facial_feature [subtle]: 미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로\n- wardrobe [subtle]: 미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로\n- lighting [subtle]: 미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로\nPreserve exactly: identity, hairstyle, expression, pose, camera, framing, background, body_proportions.\nDo not invent, add, remove, or alter any unrequested visual detail.\n",
+  "output_filename": "run-20260904-193138-7314628d"
+}

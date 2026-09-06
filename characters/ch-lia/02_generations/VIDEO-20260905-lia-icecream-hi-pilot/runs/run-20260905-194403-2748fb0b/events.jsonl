@@ -1,0 +1,4 @@
+{"at":"2026-09-05T19:44:03+09:00","state":"queued","prompt_sha256":"2a7cf403d4683deedf5e75d65628aa12e47beabe1dd854cc0a49e5c91042bd4a","target":"local"}
+{"at":"2026-09-05T19:44:03+09:00","state":"starting","local_worker_pid":71920}
+{"at":"2026-09-05T19:44:59+09:00","state":"failed","message":"PermissionError: [Errno 13] Permission denied: 'D:\\\\AI\\\\WanGP\\\\outputs\\\\.xai-local-worker.lock'"}
+{"at":"2026-09-05T19:45:21+09:00","state":"running","provider_job_id":"local-pid-64332"}

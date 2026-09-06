@@ -1,0 +1,35 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+  ],
+  "resolution": "576x768",
+  "video_length": 243,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "seed": -1,
+  "_xai": {
+    "kind": "lia_video_vlog_candidate",
+    "character_id": "ch-lia",
+    "character_dna_version": 2,
+    "reference_role": "main_subject_identity_and_output_dimensions",
+    "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+    "episode": "04-ukulele-cat-complaint",
+    "requested_seconds": 10,
+    "frame_grid": "17k+5 @24fps -> 243 frames (10.125 s)"
+  },
+  "prompt": "subject_definitions:\n<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve her long loose near-black hair with soft full bangs, natural pale skin texture, heather blue-gray T-shirt, and exactly three thin red-and-blue knotted bracelets on her right wrist. Do not reinterpret, beautify, stylize, or replace her face.\n\nsummary:\n[reference generation] One ten-second cozy morning selfie vlog. <Subject 1> sets her coffee down, lifts a small plain wooden ukulele into frame, strums three slightly clumsy chords, an unseen cat meows in complaint off-screen, she stops, laughs quietly with lowered eyes and says to the camera, (S1) <d>[English] Everyone's a critic.</d>\n\nretention_analysis:\n<Subject 1> (appears throughout [Shot 1]): fully_preserved — exact facial identity, facial proportions, eyes, nose, lips, jaw, hair, skin, T-shirt, and right-wrist bracelets remain unchanged from <Picture 1>. Only her hands, the mug leaving the frame, the ukulele entering the frame, her mouth, gaze, and subtle expression may change. The cat is never shown on screen.\n\ndetailed_description:\nThe target video is one continuous ten-second photorealistic selfie-style vlog shot in the same bright window-lit room as <Picture 1>, with the sea visible through the window on the left and the wooden shelf on the right. [Shot 1] <Subject 1> starts exactly in the pose of <Picture 1>, holding the mug in her right hand. She lowers the mug and sets it down below the bottom of the frame, then reaches down and lifts a small plain natural-wood soprano ukulele into frame, holding its neck with her left hand and resting the body against her chest. With her right hand, the three bracelets visible on the wrist, she strums three slow, slightly hesitant and imperfect chords while looking down at the strings, not at the camera. A cat meows loudly once off-screen, as if complaining. She stops strumming, holds still for a beat, lowers her gaze and laughs quietly with her mouth mostly closed, then looks up at the lens and says with a small smile, (S1) <d>[English] Everyone's a critic.</d> The clip ends with her still holding the ukulele and a faint quiet smile. Keep her face consistently identical to <Picture 1> before, during, and after every movement. Restrained, physically coherent hand motion with correct finger-to-string contact. Fixed eye-level framing with only minimal handheld breathing. No cut, no zoom, no cat on screen, no added person, no wardrobe change, no face reshaping, no eye enlargement, no beauty-filter transformation.\n\noverall_soundscape:\nQuiet daytime room tone, soft distant waves through the window, a small ceramic sound as the mug is set down, three soft slightly off-tune ukulele strums, one loud complaining off-screen cat meow, a quiet short laugh, and synchronized soft natural speech in a calm quiet voice.\n\nnon_diegetic_music:\nNone.\n",
+  "output_filename": "run-20260906-014111-04975d8a"
+}

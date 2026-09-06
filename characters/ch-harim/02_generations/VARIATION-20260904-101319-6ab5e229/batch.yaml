@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "VARIATION-20260904-101319-6ab5e229",
+    "title": "Reference variation · 미간을 조금 넓히고, 흰색 란제리로 옷을 바꾸고 강한 자연광 조명으로",
+    "character_id": "ch-harim",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\VARIATION-20260904-101319-6ab5e229\\outputs",
+    "visibility": "restricted",
+    "phase": "reference-variation",
+    "prompt_trace_file": "prompt-trace.json"
+  },
+  "engines": {
+    "krea2": {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_edit",
+      "count": 4,
+      "reference_asset_id": "ast_5c87030405117dc7f2412bbc"
+    }
+  },
+  "jobs": []
+}

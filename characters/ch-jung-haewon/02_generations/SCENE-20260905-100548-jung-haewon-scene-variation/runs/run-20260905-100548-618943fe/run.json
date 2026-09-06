@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260905-100548-618943fe",
+  "project_id": "SCENE-20260905-100548-jung-haewon-scene-variation",
+  "prompt_id": "SCENE-20260905-100548-jung-haewon-scene-variation-krea2",
+  "status": "needs_review",
+  "created_at": "2026-09-05T10:05:48+09:00",
+  "updated_at": "2026-09-05T10:08:36+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-16188",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\prompt.txt",
+    "sha256": "834d076d7a166bc539fecbd01e10b8b468fb3abe544e0066d2524c70faf9884c",
+    "normalized_sha256": "815ee714e4dae085638803892c2f896e845fc50d2be4d40d6f383476534f3693",
+    "byte_count": 2407
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 4,
+      "repeat_generation": 1,
+      "seed": 905100549,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\outputs\\krea2\\run-20260905-100548-618943fe.jpg",
+      "sha256": "393b3f236f0f184a59fe11ea59131bbc2aff317e4ae468a7595fc26f417b7ee5",
+      "byte_count": 179613,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T10:08:35+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\outputs\\krea2\\run-20260905-100548-618943fe_1.jpg",
+      "sha256": "5ec76fbee23b19be06c7b45e7a9a162daa9b65e902fe33ff9afa4dd7182532d1",
+      "byte_count": 173662,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T10:08:36+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\outputs\\krea2\\run-20260905-100548-618943fe_2.jpg",
+      "sha256": "3f458d493ca3c1bf194c919d2e3d36c8e8751e20376342ebeda0bf6d53933a4f",
+      "byte_count": 177373,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T10:08:36+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\outputs\\krea2\\run-20260905-100548-618943fe_3.jpg",
+      "sha256": "c55bdb703523ca98e8832db0c7ff3b4c01484a213d284f8dcfbf3ed6afc37235",
+      "byte_count": 177925,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T10:08:36+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 65852,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\runs\\run-20260905-100548-618943fe",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\runs\\run-20260905-100548-618943fe\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-jung-haewon\\generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\runs\\run-20260905-100548-618943fe\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-jung-haewon\\02_generations\\SCENE-20260905-100548-jung-haewon-scene-variation\\runs\\run-20260905-100548-618943fe\\worker.stderr.log"
+  }
+}

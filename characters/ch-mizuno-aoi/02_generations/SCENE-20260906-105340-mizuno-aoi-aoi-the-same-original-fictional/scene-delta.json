@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional",
+  "character_id": "ch-mizuno-aoi",
+  "character_version": 1,
+  "stable_dna_sha256": "aebf2c5b95feae8785d487d33ce132fe0d8aa8b1e84542b944a3f35d3df63089",
+  "created_at": "2026-09-06T01:53:40+00:00",
+  "created_by": "codex",
+  "local_model": null,
+  "source_request": "Aoi, the same original fictional adult woman age 22 to 24, confidently leading a design presentation in a bright modern architecture studio. She wears a fully opaque navy tailored blazer, opaque white crew-neck shirt, high-waisted charcoal trousers, and black flat loafers. Short jaw-length dark bob and her right-ear silver loop with cobalt-blue bead. Relaxed mastery, direct gaze, open shoulders, youthful professional confidence. Premium natural editorial photography. Full body, camera at waist height, 85mm lens perspective, generous shooting distance, natural long adult leg proportions, entire shoes visible. No nudity, no sheer fabric, no transparent clothing, no dress, no high heels, no sexualized pose, no wide-angle distortion, no text or watermark.",
+  "runtime_prompt_sha256": "6783712ba20d81488066376da4e595362ddce0a265e0a9e0e89b9dbeb7acf622",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {},
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-mizuno-aoi",
+    "character_version": 1,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

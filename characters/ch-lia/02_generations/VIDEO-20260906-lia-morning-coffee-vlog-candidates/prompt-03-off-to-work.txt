@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve her long loose near-black hair with soft full bangs, natural pale skin texture, heather blue-gray T-shirt, the speckled ceramic coffee mug, and exactly three thin red-and-blue knotted bracelets on her right wrist. Do not reinterpret, beautify, stylize, or replace her face.
+
+summary:
+[reference generation] One ten-second morning-before-work selfie vlog. <Subject 1> finishes the last sip of coffee, sets the mug down out of frame, sighs softly, and says, (S1) <d>[English] Okay. Shift starts at ten.</d> She gathers her hair over one shoulder with both hands as if about to tie it, pauses, looks at the camera and says with a small smile, (S1) <d>[English] I'll bring a rice ball home.</d>
+
+retention_analysis:
+<Subject 1> (appears throughout [Shot 1]): fully_preserved — exact facial identity, facial proportions, eyes, nose, lips, jaw, hair color and bangs, skin, T-shirt, and right-wrist bracelets remain unchanged from <Picture 1>. Only her hands, the mug leaving the frame, the gathering of her long hair over her shoulder, her mouth, gaze, and subtle expression may change. The bangs stay down and unchanged.
+
+detailed_description:
+The target video is one continuous ten-second photorealistic selfie-style vlog shot in the same bright window-lit room as <Picture 1>, with the sea visible through the window on the left and the wooden shelf on the right. [Shot 1] <Subject 1> starts exactly in the pose of <Picture 1>. She takes one last small sip, lowers the mug and sets it down below the bottom of the frame with her right hand, then straightens up. She exhales a quiet small sigh, looks at the camera and says, (S1) <d>[English] Okay. Shift starts at ten.</d> She raises both hands, gathers her long hair loosely to one side over her shoulder as if about to tie a ponytail, the three bracelets visible on her right wrist as her hands move, and pauses mid-motion. She glances at the lens, briefly lowers her gaze, then smiles quietly and says, (S1) <d>[English] I'll bring a rice ball home.</d> The clip ends with her hands still holding the gathered hair and a faint smile. Keep her face consistently identical to <Picture 1> before, during, and after every movement. Restrained, physically coherent hand and hair motion. Fixed eye-level framing with only minimal handheld breathing. No cut, no zoom, no completed hair tie, no added person, no wardrobe change, no face reshaping, no eye enlargement, no beauty-filter transformation.
+
+overall_soundscape:
+Quiet daytime room tone, soft distant waves through the window, a small ceramic sound as the mug is set down, a soft exhale, subtle hair and fabric movement, and synchronized soft natural speech in a calm quiet voice.
+
+non_diegetic_music:
+None.

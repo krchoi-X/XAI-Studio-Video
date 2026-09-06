@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve her long loose near-black hair with soft full bangs, natural pale skin texture, heather blue-gray T-shirt, the speckled ceramic coffee mug, and exactly three thin red-and-blue knotted bracelets on her right wrist. Do not reinterpret, beautify, stylize, or replace her face.
+
+summary:
+[reference generation] One quiet ten-second morning selfie vlog at home. <Subject 1> sips her coffee, greets the camera softly, (S1) <d>[English] Morning.</d>, an unseen cat meows off-screen, she glances down toward the sound with a small smile, then looks back at the camera and says, (S1) <d>[English] She's up before me, as usual.</d>
+
+retention_analysis:
+<Subject 1> (appears throughout [Shot 1]): fully_preserved — exact facial identity, facial proportions, eyes, nose, lips, jaw, hair, skin, T-shirt, mug, and right-wrist bracelets remain unchanged from <Picture 1>. Only her mouth, gaze, head angle, subtle smile, and the small hand movement with the mug may change. The cat is never shown on screen.
+
+detailed_description:
+The target video is one continuous ten-second photorealistic selfie-style vlog shot in the same bright window-lit room as <Picture 1>, with the calm sea and sandy beach visible through the window on the left and the wooden shelf on the right. [Shot 1] <Subject 1> starts exactly in the pose of <Picture 1>, holding the mug in her right hand. She lifts the mug, takes one small quiet sip, lowers it slightly, and says softly to the camera, (S1) <d>[English] Morning.</d> A cat meows once off-screen below the frame. She glances down and to her side for about one second with a faint amused smile, then returns her gaze to the lens and says, (S1) <d>[English] She's up before me, as usual.</d> She ends with a quiet natural smile and a slightly lowered gaze, not holding eye contact for long. Keep her face consistently identical to <Picture 1> before, during, and after speaking. Restrained, physically coherent motion. Fixed eye-level framing with only minimal handheld breathing. No cut, no zoom, no cat on screen, no added person, no wardrobe change, no face reshaping, no eye enlargement, no beauty-filter transformation.
+
+overall_soundscape:
+Quiet daytime room tone, soft distant waves through the window, a small ceramic mug sound, one clear off-screen cat meow, and synchronized soft natural speech in a calm quiet voice.
+
+non_diegetic_music:
+None.

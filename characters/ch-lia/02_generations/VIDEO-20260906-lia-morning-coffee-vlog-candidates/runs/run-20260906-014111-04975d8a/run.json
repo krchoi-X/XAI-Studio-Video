@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260906-014111-04975d8a",
+  "project_id": "ch-lia-vlog",
+  "prompt_id": "lia-morning-coffee-04-ukulele-cat-complaint-ref2va-v1",
+  "status": "needs_review",
+  "created_at": "2026-09-06T01:41:11+09:00",
+  "updated_at": "2026-09-06T02:04:57+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-64624",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\prompt-04-ukulele-cat-complaint.txt",
+    "sha256": "f9e03ba016d8df59c8587140bb165f28bf48426a6b8fae24a1177fe2802d8ba0",
+    "normalized_sha256": "324457c5abe99c638df32b199e66a710c95865a8229aef92d3e863603c1cdedc",
+    "byte_count": 2950
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\prompt-04-ukulele-cat-complaint.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+      ],
+      "resolution": "576x768",
+      "video_length": 243,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "seed": -1,
+      "_xai": {
+        "kind": "lia_video_vlog_candidate",
+        "character_id": "ch-lia",
+        "character_dna_version": 2,
+        "reference_role": "main_subject_identity_and_output_dimensions",
+        "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+        "episode": "04-ukulele-cat-complaint",
+        "requested_seconds": 10,
+        "frame_grid": "17k+5 @24fps -> 243 frames (10.125 s)"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\run-20260906-014111-04975d8a.mp4",
+      "sha256": "a1e23eb674518e065fe6088a538e87fa1afb2ff908426a7939b6be482f45ae96",
+      "byte_count": 10249759,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "bf1a2ccb145cb3b9fa673e2f90581209b4307df8402551a7c84d289d3de2c336",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T02:04:57+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 66000,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-014111-04975d8a",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-014111-04975d8a\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-lia-morning-coffee-vlog-candidates",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-014111-04975d8a\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-014111-04975d8a\\worker.stderr.log"
+  }
+}

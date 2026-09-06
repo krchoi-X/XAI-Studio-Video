@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260906-105340-30c37b63",
+  "project_id": "SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional",
+  "prompt_id": "SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional-krea2",
+  "status": "needs_review",
+  "created_at": "2026-09-06T10:53:40+09:00",
+  "updated_at": "2026-09-06T10:55:31+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-11684",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\prompt.txt",
+    "sha256": "6783712ba20d81488066376da4e595362ddce0a265e0a9e0e89b9dbeb7acf622",
+    "normalized_sha256": "59641abe8a868fbec580f5b2d1f0ea36c588b98fc59fac196e5bb11d34c502ed",
+    "byte_count": 3413
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 3,
+      "repeat_generation": 1,
+      "seed": 906105341,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\outputs\\krea2\\run-20260906-105340-30c37b63.jpg",
+      "sha256": "4762403b3cabdecbcf357630ab2451f6b2b759137c238d7086e91a1585c59fb5",
+      "byte_count": 185069,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T10:55:31+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\outputs\\krea2\\run-20260906-105340-30c37b63_1.jpg",
+      "sha256": "505160f0ea17d1d2e2ff3d2325674f3d4f9f5c8e67dd00c6dd65e5a88bf20849",
+      "byte_count": 180555,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T10:55:31+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\outputs\\krea2\\run-20260906-105340-30c37b63_2.jpg",
+      "sha256": "e4ea638e99e510f8d1098b0c1d908c2a4f9d53dc723482d5ee9512ec4e47d694",
+      "byte_count": 180065,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T10:55:31+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 30772,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105340-30c37b63",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105340-30c37b63\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105340-30c37b63\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105340-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105340-30c37b63\\worker.stderr.log"
+  }
+}

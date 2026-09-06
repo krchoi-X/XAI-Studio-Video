@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260906-105409-de1ce196",
+  "project_id": "SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional",
+  "prompt_id": "SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional-krea2",
+  "status": "failed",
+  "created_at": "2026-09-06T10:54:09+09:00",
+  "updated_at": "2026-09-06T10:54:10+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": null,
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional\\prompt.txt",
+    "sha256": "a977908195602732f8d182ea577d882b4b765443b10e7be3f8ea9ae8e6c2bae8",
+    "normalized_sha256": "922677f14767fee4cd1e4eedae35df2b4dc1199c801f7a71b785177a02d16832",
+    "byte_count": 3661
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 5,
+      "repeat_generation": 1,
+      "seed": 906105410,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [],
+  "error": {
+    "message": "RuntimeError: another XAI local WanGP worker already holds the GPU lock",
+    "last_progress": null,
+    "recorded_at": "2026-09-06T10:54:10+09:00"
+  },
+  "local_worker": {
+    "pid": 24616,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105409-de1ce196",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105409-de1ce196\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105409-de1ce196\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105409-de1ce196\\worker.stderr.log"
+  }
+}

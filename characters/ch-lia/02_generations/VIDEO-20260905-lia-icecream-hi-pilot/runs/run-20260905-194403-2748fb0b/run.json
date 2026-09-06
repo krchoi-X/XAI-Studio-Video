@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260905-194403-2748fb0b",
+  "project_id": "ch-lia-vlog",
+  "prompt_id": "lia-icecream-hi-v1",
+  "status": "running",
+  "created_at": "2026-09-05T19:44:03+09:00",
+  "updated_at": "2026-09-05T19:45:21+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-64332",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\prompt.txt",
+    "sha256": "2a7cf403d4683deedf5e75d65628aa12e47beabe1dd854cc0a49e5c91042bd4a",
+    "normalized_sha256": "8899ad960effae77685a7af29bc3c009df00c2aef0f0fd06f3137292cea62688",
+    "byte_count": 1761
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\minimax-h3-ref2va.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png"
+      ],
+      "resolution": "576x768",
+      "video_length": 124,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "image_refs_relative_size": 100,
+      "remove_background_images_ref": 0,
+      "seed": -1,
+      "_xai": {
+        "kind": "lia_video_pilot",
+        "character_id": "ch-lia",
+        "character_dna_version": 2,
+        "reference_role": "main_subject_and_output_dimensions",
+        "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png"
+      }
+    }
+  },
+  "artifacts": [],
+  "error": {
+    "message": "PermissionError: [Errno 13] Permission denied: 'D:\\\\AI\\\\WanGP\\\\outputs\\\\.xai-local-worker.lock'",
+    "last_progress": null,
+    "recorded_at": "2026-09-05T19:44:59+09:00"
+  },
+  "local_worker": {
+    "pid": 71920,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\runs\\run-20260905-194403-2748fb0b",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\runs\\run-20260905-194403-2748fb0b\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260905-lia-icecream-hi-pilot",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\runs\\run-20260905-194403-2748fb0b\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\runs\\run-20260905-194403-2748fb0b\\worker.stderr.log"
+  }
+}

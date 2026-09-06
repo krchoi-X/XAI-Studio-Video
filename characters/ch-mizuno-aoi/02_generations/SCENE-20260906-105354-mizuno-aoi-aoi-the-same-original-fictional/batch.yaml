@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260906-105354-mizuno-aoi-aoi-the-same-original-fictional",
+    "character_id": "ch-mizuno-aoi",
+    "character_name": "아오이",
+    "romanized_name": "Aoi",
+    "title": "Aoi, the same original fictional adult woman age 22 to 24, alone in a quiet apartment crying intensely and sorrowfully after painful news. Tears stream down both cheeks, eyes red and wet, face crumpled, breath catching; emotionally raw rather than pretty-crying, while retaining adult dignity. She is fully clothed in an opaque charcoal cardigan, opaque black crew-neck knit top, and loose gray trousers. Short jaw-length dark bob and right-ear silver loop with cobalt-blue bead. Natural documentary photography, medium-to-full seated composition. No nudity, no sheer or transparent clothing, no sexualized framing, no text or watermark.",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-105354-mizuno-aoi-aoi-the-same-original-fictional\\outputs",
+    "created_at": "2026-09-06T01:53:54+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "aebf2c5b95feae8785d487d33ce132fe0d8aa8b1e84542b944a3f35d3df63089"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 2,
+      "seed": 906105355,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105354-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105640-6e25f9c5"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}

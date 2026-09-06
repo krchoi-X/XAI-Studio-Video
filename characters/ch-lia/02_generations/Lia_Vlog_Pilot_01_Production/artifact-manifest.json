@@ -1,0 +1,25 @@
+{
+  "project": "Lia Vlog Pilot 01",
+  "reference_id": "N/A",
+  "style": "clean skin, groomed makeup, strong natural lighting (window/outdoor), sharp highlights, maintain facial identity",
+  "model": "minimax_h3_ref2va_pruned",
+  "shots": [
+    {
+      "shot_id": "SHOT-01",
+      "description": "Lia eating ice cream, looks at camera, says 'Hi.' (10s)",
+      "duration": 10,
+      "prompt": "Lia, clean skin, groomed makeup, eating ice cream, looking at camera, gentle smile, saying 'Hi.', soft natural window lighting, high clarity, photorealistic",
+      "settings_template": {
+        "model_type": "minimax_h3_ref2va_pruned",
+        "video_prompt_type": "KI",
+        "resolution": "576x768",
+        "video_length": 243,
+        "num_inference_steps": 20,
+        "guidance_scale": 1.0,
+        "flow_shift": 12.0,
+        "seed": -1
+      },
+      "reference_image": null
+    }
+  ]
+}

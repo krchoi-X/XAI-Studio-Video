@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve her long loose near-black hair with soft full bangs, natural pale skin texture, heather blue-gray T-shirt, the speckled ceramic coffee mug, and exactly three thin red-and-blue knotted bracelets on her right wrist. Do not reinterpret, beautify, stylize, or replace her face.
+
+summary:
+[reference generation] One quiet ten-second observational morning vlog. <Subject 1> turns her head to look out the window at the sea, says, (S1) <d>[English] The sea is really calm today.</d>, turns back to the camera, tucks a strand of hair behind her ear, and says, (S1) <d>[English] Maybe a walk later. Ice cream on the way.</d>
+
+retention_analysis:
+<Subject 1> (appears throughout [Shot 1]): fully_preserved — exact facial identity, facial proportions, eyes, nose, lips, jaw, hair, skin, T-shirt, mug, and right-wrist bracelets remain unchanged from <Picture 1>. Only her head turn, gaze, mouth, subtle smile, and the small hair-tuck with her free left hand may change.
+
+detailed_description:
+The target video is one continuous ten-second photorealistic selfie-style vlog shot in the same bright window-lit room as <Picture 1>, with the calm sea and sandy beach visible through the window on the left. [Shot 1] <Subject 1> starts exactly in the pose of <Picture 1>, holding the mug in her right hand. She slowly turns her head about 30 degrees toward the window, looks at the sea for a moment, and says in a soft voice, (S1) <d>[English] The sea is really calm today.</d> She turns back toward the lens, lifts her left hand and tucks a loose strand of hair behind her ear, looks at the camera briefly, and says, (S1) <d>[English] Maybe a walk later. Ice cream on the way.</d> She ends with a faint quiet smile and lowers her gaze to the mug. The mug stays in her right hand at chest height throughout, and the three bracelets stay visible on that wrist. Keep her face consistently identical to <Picture 1> before, during, and after the head turn and speech. Restrained, physically coherent motion with natural hair movement. Fixed eye-level framing with only minimal handheld breathing. No cut, no zoom, no camera pan, no added person, no wardrobe change, no face reshaping, no eye enlargement, no beauty-filter transformation.
+
+overall_soundscape:
+Quiet daytime room tone, soft distant waves and a faint sea breeze through the window, and synchronized soft natural speech in a calm quiet voice.
+
+non_diegetic_music:
+None.

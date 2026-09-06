@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve her hair, skin, ivory top, and three thin red-and-blue bracelets on her right wrist. Do not reinterpret, beautify, stylize, or replace her face.
+
+summary:
+[reference generation] One simple five-second selfie vlog. <Subject 1> takes one small bite of vanilla ice cream, looks at the camera, and says clearly, (S1) <d>[English] Hi!</d> with a small natural smile.
+
+retention_analysis:
+<Subject 1> (appears throughout [Shot 1]): fully_preserved — exact facial identity, facial proportions, eyes, nose, lips, jaw, hair, skin, ivory top, and right-wrist bracelets remain unchanged from <Picture 1>. Only the right-hand pose, ice-cream cone, mouth movement, gaze, and subtle smile may change.
+
+detailed_description:
+The target video is one continuous five-second photorealistic selfie shot in the same bright window setting as <Picture 1>. [Shot 1] <Subject 1> holds a small vanilla ice-cream cone in her right hand near her mouth. She takes one small bite, lowers the cone slightly, looks directly into the lens, says clearly, (S1) <d>[English] Hi!</d>, and ends with a small quiet smile. Keep her face consistently identical to <Picture 1> before, during, and after speaking. Keep the motion restrained and physically coherent. Fixed eye-level framing with only minimal handheld breathing. No cut, no zoom, no head turn, no large expression, no added person, no wardrobe change, no face reshaping, no eye enlargement, and no beauty-filter transformation.
+
+overall_soundscape:
+Quiet daytime room tone, subtle distant seaside ambience, a soft ice-cream bite sound, and synchronized clear speech saying “Hi!”
+
+non_diegetic_music:
+None.

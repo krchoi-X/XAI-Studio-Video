@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional",
+    "character_id": "ch-mizuno-aoi",
+    "character_name": "아오이",
+    "romanized_name": "Aoi",
+    "title": "Aoi, the same original fictional adult woman age 22 to 24, confidently walking through a bright contemporary gallery district. She proudly and comfortably enjoys her youthful appearance. She wears a short but tasteful fully opaque cobalt-blue structured mini dress with high neckline, fitted high waist and short sleeves, plus simple black flat leather sandals with a completely flat thin sole: zero heel, zero wedge, zero platform. Short jaw-length dark bob and right-ear silver loop with cobalt-blue bead. Premium non-voyeuristic fashion editorial photography. Vertical head-to-toe framing, camera at waist height, 85mm lens perspective, generous shooting distance, natural long adult legs occupying slightly more than half her height, entire feet and sandals visible. Relaxed confident stride and easy smile. No nudity, no cleavage, no sheer fabric, no transparent or skin-colored clothing, no high heels, no low-angle sexual framing, no wide-angle distortion, no exaggerated anatomy, no text or watermark.",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional\\outputs",
+    "created_at": "2026-09-06T01:54:09+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "aebf2c5b95feae8785d487d33ce132fe0d8aa8b1e84542b944a3f35d3df63089"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 5,
+      "seed": 906105410,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-105409-mizuno-aoi-aoi-the-same-original-fictional\\runs\\run-20260906-105837-14219536"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260905-094228-eb07d4c8",
+  "project_id": "SCENE-20260905-094228-lia-scene-variation",
+  "prompt_id": "SCENE-20260905-094228-lia-scene-variation-krea2",
+  "status": "needs_review",
+  "created_at": "2026-09-05T09:42:28+09:00",
+  "updated_at": "2026-09-05T09:45:26+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-70392",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260905-094228-lia-scene-variation\\prompt.txt",
+    "sha256": "ff2eb38e259892f2795a015b9fb0cb153930054c7a306a92a1a035c48c2f2ebe",
+    "normalized_sha256": "8b2f621bdcd155790979c01fcd95f935390750edf75854ac11beb2272348fdb4",
+    "byte_count": 3274
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260905-094228-lia-scene-variation\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 4,
+      "repeat_generation": 1,
+      "seed": 905094229,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260905-094228-lia-scene-variation\\outputs\\krea2\\run-20260905-094228-eb07d4c8.jpg",
+      "sha256": "59524d29cb8c3adeecb6ab4f49c7bd0c47202e2e4548b3125b79eab0271d8587",
+      "byte_count": 176590,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T09:45:26+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260905-094228-lia-scene-variation\\outputs\\krea2\\run-20260905-094228-eb07d4c8_1.jpg",
+      "sha256": "d6d3879b1e2a9584e0da5e972ec41c173e6988147783f8181996632dad3a4ffa",
+      "byte_count": 175237,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T09:45:26+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260905-094228-lia-scene-variation\\outputs\\krea2\\run-20260905-094228-eb07d4c8_2.jpg",
+      "sha256": "f4b9e24c2c6977ac5becfbc1aee49d24323a6b0c794c40b8c9c2d4f8cdb47a38",
+      "byte_count": 170206,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T09:45:26+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260905-094228-lia-scene-variation\\outputs\\krea2\\run-20260905-094228-eb07d4c8_3.jpg",
+      "sha256": "fd0293900b24fa60cead9a80c37f3f719e6587b9b72576aa247b43a5d3e66eb4",
+      "byte_count": 173096,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T09:45:26+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 49024,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260905-094228-lia-scene-variation\\runs\\run-20260905-094228-eb07d4c8",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260905-094228-lia-scene-variation\\runs\\run-20260905-094228-eb07d4c8\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260905-094228-lia-scene-variation\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260905-094228-lia-scene-variation\\runs\\run-20260905-094228-eb07d4c8\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260905-094228-lia-scene-variation\\runs\\run-20260905-094228-eb07d4c8\\worker.stderr.log"
+  }
+}

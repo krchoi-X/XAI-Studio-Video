@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260905-195347-45ca1b30",
+  "project_id": "ch-lia-vlog",
+  "prompt_id": "lia-icecream-hi-fl2va-v1",
+  "status": "needs_review",
+  "created_at": "2026-09-05T19:53:47+09:00",
+  "updated_at": "2026-09-05T20:52:17+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-72084",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\prompt.txt",
+    "sha256": "c0f373f15a53c2c96033c1c90c424842adb10599ef1303d158b1058d3e753620",
+    "normalized_sha256": "6f50ed28ab0889a1fd748d5525c145758bfa630a4e4ae6890a35313c43f2a18c",
+    "byte_count": 1765
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\minimax-h3-ref2va.settings.json",
+    "value": {
+      "model_type": "minimax_h3_fl2va_pruned",
+      "video_prompt_type": "",
+      "audio_prompt_type": "",
+      "image_start": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png",
+      "resolution": "576x768",
+      "video_length": 124,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "seed": -1,
+      "_xai": {
+        "kind": "lia_video_pilot",
+        "character_id": "ch-lia",
+        "character_dna_version": 2,
+        "reference_role": "start_image_and_main_subject",
+        "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260905-lia-icecream-hi-pilot\\run-20260905-195347-45ca1b30.mp4",
+      "sha256": "90de3e25cb68016b4deb0a2e79355cac75e9b2c90964093db5cdd08ca31444b0",
+      "byte_count": 5134332,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "64f997f32290b5ba1f977c1fb674518c0e9fa71713dc5ec4e53a1c2a27c6bcce",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T20:52:17+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 21436,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\runs\\run-20260905-195347-45ca1b30",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\runs\\run-20260905-195347-45ca1b30\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260905-lia-icecream-hi-pilot",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\runs\\run-20260905-195347-45ca1b30\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260905-lia-icecream-hi-pilot\\runs\\run-20260905-195347-45ca1b30\\worker.stderr.log"
+  }
+}

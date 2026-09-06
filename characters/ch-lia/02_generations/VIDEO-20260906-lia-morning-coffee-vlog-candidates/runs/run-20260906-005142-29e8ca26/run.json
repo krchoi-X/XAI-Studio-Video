@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260906-005142-29e8ca26",
+  "project_id": "ch-lia-vlog",
+  "prompt_id": "lia-morning-coffee-02-sea-is-calm-today-ref2va-v1",
+  "status": "needs_review",
+  "created_at": "2026-09-06T00:51:42+09:00",
+  "updated_at": "2026-09-06T01:16:15+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-25736",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\prompt-02-sea-is-calm-today.txt",
+    "sha256": "28473dcffc752f8db6f1114832fbbce4abb93d49f50ab47125a0f774a8763f7f",
+    "normalized_sha256": "7f16abd74c64339241d6b0751516d373751331c76595f81fa2e769634aeb65e5",
+    "byte_count": 2587
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\prompt-02-sea-is-calm-today.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+      ],
+      "resolution": "576x768",
+      "video_length": 243,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "seed": -1,
+      "_xai": {
+        "kind": "lia_video_vlog_candidate",
+        "character_id": "ch-lia",
+        "character_dna_version": 2,
+        "reference_role": "main_subject_identity_and_output_dimensions",
+        "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+        "episode": "02-sea-is-calm-today",
+        "requested_seconds": 10,
+        "frame_grid": "17k+5 @24fps -> 243 frames (10.125 s)"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\run-20260906-005142-29e8ca26.mp4",
+      "sha256": "01f05909d7a7bd2f9f554246c97192f6c10af5762a4ad63c0b24a9b96a35cc50",
+      "byte_count": 9483614,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "3e2e2520988cf918e78107c184f04f92c89fd699fd458a436b086313326a569b",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T01:16:15+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 53420,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-005142-29e8ca26",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-005142-29e8ca26\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-lia-morning-coffee-vlog-candidates",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-005142-29e8ca26\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-005142-29e8ca26\\worker.stderr.log"
+  }
+}

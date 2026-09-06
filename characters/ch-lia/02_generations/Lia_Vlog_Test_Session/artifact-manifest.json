@@ -1,0 +1,17 @@
+{
+  "project": "Lia Vlog Test Shot",
+  "input_run_id": "FALLBACK",
+  "model": "minimax_h3_ref2va_pruned",
+  "shots": [
+    {
+      "shot_id": "SHOT-01",
+      "prompt": "Selfie vlog style of Lia in a bright room. She takes a small bite of an ice cream cone, then looks at the camera, smiles softly, and says 'Hi.' Very clean skin texture, groomed makeup. Strong direct sunlight from a window creates vivid highlights on her face and eyes. Photorealistic, 4k, handheld vlog feel.",
+      "settings": {
+        "model_type": "minimax_h3_ref2va_pruned",
+        "video_length": 243,
+        "seed": -1
+      },
+      "reference_path": ""
+    }
+  ]
+}

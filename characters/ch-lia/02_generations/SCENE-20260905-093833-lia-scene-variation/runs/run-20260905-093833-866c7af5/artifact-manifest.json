@@ -1,0 +1,45 @@
+{
+  "run_id": "run-20260905-093833-866c7af5",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260905-093833-lia-scene-variation\\outputs\\krea2\\run-20260905-093833-866c7af5.jpg",
+      "sha256": "ef80d9bea15009348eb6191128660536e36128858ba50703add9373e49b364dc",
+      "byte_count": 175961,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T09:42:17+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260905-093833-lia-scene-variation\\outputs\\krea2\\run-20260905-093833-866c7af5_1.jpg",
+      "sha256": "2421a0b4926bc192945ac88400c78ec9c3b2b094a23ac98a96fbe072bbf49792",
+      "byte_count": 178892,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T09:42:17+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260905-093833-lia-scene-variation\\outputs\\krea2\\run-20260905-093833-866c7af5_2.jpg",
+      "sha256": "0ab607c31df7cb5315f4751ff9955aabcbb7561caa2f089a84c0fe5ae2552ca7",
+      "byte_count": 188407,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T09:42:17+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260905-093833-lia-scene-variation\\outputs\\krea2\\run-20260905-093833-866c7af5_3.jpg",
+      "sha256": "f4d3cacd742a8d3be45658e965ea3d4ffe2ec36044c8c74478448708ec1609a9",
+      "byte_count": 176010,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T09:42:17+09:00"
+    }
+  ]
+}

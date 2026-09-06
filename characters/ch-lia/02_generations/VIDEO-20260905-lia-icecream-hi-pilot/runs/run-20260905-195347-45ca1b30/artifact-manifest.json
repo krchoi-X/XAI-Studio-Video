@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260905-195347-45ca1b30",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260905-lia-icecream-hi-pilot\\run-20260905-195347-45ca1b30.mp4",
+      "sha256": "90de3e25cb68016b4deb0a2e79355cac75e9b2c90964093db5cdd08ca31444b0",
+      "byte_count": 5134332,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "64f997f32290b5ba1f977c1fb674518c0e9fa71713dc5ec4e53a1c2a27c6bcce",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-05T20:52:17+09:00"
+    }
+  ]
+}

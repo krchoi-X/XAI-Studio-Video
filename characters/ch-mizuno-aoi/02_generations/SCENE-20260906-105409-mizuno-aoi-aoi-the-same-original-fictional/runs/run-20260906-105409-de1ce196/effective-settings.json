@@ -1,0 +1,21 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_turbo_moody_krea",
+  "base_model_type": "krea2_turbo",
+  "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 5,
+  "repeat_generation": 1,
+  "seed": 906105410,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Moody Krea 2 V7 INT8",
+  "prompt": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 — EXPLICIT USER SCENE. Preserve this meaning without adding or removing wardrobe, coverage, props, people, or actions:\nAoi, the same original fictional adult woman age 22 to 24, confidently walking through a bright contemporary gallery district. She proudly and comfortably enjoys her youthful appearance. She wears a short but tasteful fully opaque cobalt-blue structured mini dress with high neckline, fitted high waist and short sleeves, plus simple black flat leather sandals with a completely flat thin sole: zero heel, zero wedge, zero platform. Short jaw-length dark bob and right-ear silver loop with cobalt-blue bead. Premium non-voyeuristic fashion editorial photography. Vertical head-to-toe framing, camera at waist height, 85mm lens perspective, generous shooting distance, natural long adult legs occupying slightly more than half her height, entire feet and sandals visible. Relaxed confident stride and easy smile. No nudity, no cleavage, no sheer fabric, no transparent or skin-colored clothing, no high heels, no low-angle sexual framing, no wide-angle distortion, no exaggerated anatomy, no text or watermark.\n\nIMMUTABLE CONSTRAINTS:\n- No additional immutable fields. Preserve the user's wording.\n\nAUTHORITATIVE SCENE SPEC. These values replace same-named Stable DNA fields rather than being appended to them:\n- No structured field overrides.\n\nPRIORITY 2 — STABLE CHARACTER IDENTITY. Apply identity only; it must not override the explicit scene:\nAn adult East-Asian-looking woman with an original identity and no resemblance to a specific real person character named Aoi. Face: compact, slightly rounded to softly oval face with subtle youthful cheek fullness, while remaining unmistakably adult; lively eyes with strong emotional readability and an adult, self-aware gaze; expressive natural brows that clearly support a wide emotional range; natural refined nose with balanced proportions suited to the compact softly rounded face; soft but distinct lips with natural adult proportions; soft rounded jawline that avoids both a childlike look and a narrow polished Hae-won-like silhouette. Hair: short dark hair, preferably a jaw-length or softly layered bob that frames the rounded face; it may be tucked behind one ear to reveal her signature earring, and must not resemble Lia or Hae-won's long straight-hair silhouette. Skin: healthy realistic skin with visible natural texture and tonal variation; never waxy, plastic, porcelain-like or beauty-filter smoothed. Body: adult feminine presence with healthy, mature and self-confident proportions; natural adult limb lengths and anatomically consistent hands and feet; shoulders natural feminine shoulder line with confident posture; torso healthy mature torso with adult proportions and self-assured body language; bust natural mature adult proportion, consistent across scenes and never treated as the sole identity anchor; waist natural adult waist with body-aware but believable proportions; pelvis and hips healthy mature feminine proportions without anatomical exaggeration; lower body healthy adult lower-body proportions with natural anatomical balance; body hair natural and not an identity-defining feature. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nMaintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state. Do not add optional creative details that change the scene's meaning.\n",
+  "output_filename": "run-20260906-105409-de1ce196"
+}

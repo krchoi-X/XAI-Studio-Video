@@ -1,0 +1,32 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png"
+  ],
+  "resolution": "576x768",
+  "video_length": 124,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "seed": -1,
+  "_xai": {
+    "kind": "lia_video_pilot",
+    "character_id": "ch-lia",
+    "character_dna_version": 2,
+    "reference_role": "main_subject_identity_and_output_dimensions",
+    "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png"
+  },
+  "prompt": "subject_definitions:\n<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve her hair, skin, ivory top, and three thin red-and-blue bracelets on her right wrist. Do not reinterpret, beautify, stylize, or replace her face.\n\nsummary:\n[reference generation] One simple five-second selfie vlog. <Subject 1> takes one small bite of vanilla ice cream, looks at the camera, and says clearly, (S1) <d>[English] Hi!</d> with a small natural smile.\n\nretention_analysis:\n<Subject 1> (appears throughout [Shot 1]): fully_preserved — exact facial identity, facial proportions, eyes, nose, lips, jaw, hair, skin, ivory top, and right-wrist bracelets remain unchanged from <Picture 1>. Only the right-hand pose, ice-cream cone, mouth movement, gaze, and subtle smile may change.\n\ndetailed_description:\nThe target video is one continuous five-second photorealistic selfie shot in the same bright window setting as <Picture 1>. [Shot 1] <Subject 1> holds a small vanilla ice-cream cone in her right hand near her mouth. She takes one small bite, lowers the cone slightly, looks directly into the lens, says clearly, (S1) <d>[English] Hi!</d>, and ends with a small quiet smile. Keep her face consistently identical to <Picture 1> before, during, and after speaking. Keep the motion restrained and physically coherent. Fixed eye-level framing with only minimal handheld breathing. No cut, no zoom, no head turn, no large expression, no added person, no wardrobe change, no face reshaping, no eye enlargement, and no beauty-filter transformation.\n\noverall_soundscape:\nQuiet daytime room tone, subtle distant seaside ambience, a soft ice-cream bite sound, and synchronized clear speech saying “Hi!”\n\nnon_diegetic_music:\nNone.\n",
+  "output_filename": "run-20260905-221957-28b47a30"
+}

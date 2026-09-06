@@ -1,0 +1,28 @@
+{
+  "model_type": "minimax_h3_fl2va_pruned",
+  "video_prompt_type": "",
+  "audio_prompt_type": "",
+  "image_start": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png",
+  "resolution": "576x768",
+  "video_length": 124,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "seed": -1,
+  "_xai": {
+    "kind": "lia_video_pilot",
+    "character_id": "ch-lia",
+    "character_dna_version": 2,
+    "reference_role": "start_image_and_main_subject",
+    "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png"
+  },
+  "prompt": "subject_definitions:\n<Subject 1> is Lia, the adult woman in the start image. Preserve her exact facial identity, large soft dark-brown eyes, long near-black hair with soft full bangs, natural translucent skin texture, ivory top, and exactly three thin red-and-blue knotted bracelets on her right wrist.\n\nsummary:\n[reference generation] A simple five-second handheld selfie vlog. Lia takes one small bite of vanilla ice cream, looks into the camera, and says, (S1) <d>[English] Hi!</d> with a faint natural smile.\n\nretention_analysis:\n<Subject 1> (appears throughout [Shot 1]): fully_preserved — keep her identity, face, hair, skin, ivory clothing, right-wrist bracelets, and adult proportions recognizable and unchanged. Add only a small vanilla ice-cream cone in her right hand and subtle natural motion.\n\ndetailed_description:\nThe target video is one continuous five-second photorealistic selfie-vlog shot in soft daylight near the same bright window. [Shot 1] Begin with Lia already holding a small vanilla ice-cream cone in her right hand near her mouth. She takes one small, neat bite, lowers the cone slightly, then shifts her eyes to the lens. She clearly says, (S1) <d>[English] Hi!</d> and finishes with her faint, quiet, unposed smile. Her head, shoulders, gaze, lips, fingers, cone, and exactly three thin red-and-blue bracelets remain stable and physically coherent. The camera stays at eye level with only gentle natural handheld breathing. No cut, no zoom, no large gesture, no added person, no wardrobe change, no scene change.\n\noverall_soundscape:\nQuiet indoor daytime room tone, a very soft distant seaside ambience through the window, a subtle ice-cream bite sound, and Lia's synchronized clear voice saying “Hi!”\n\nnon_diegetic_music:\nNone.\n",
+  "output_filename": "run-20260905-195347-45ca1b30"
+}

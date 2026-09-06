@@ -1,0 +1,35 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+  ],
+  "resolution": "576x768",
+  "video_length": 243,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "seed": -1,
+  "_xai": {
+    "kind": "lia_video_vlog_candidate",
+    "character_id": "ch-lia",
+    "character_dna_version": 2,
+    "reference_role": "main_subject_identity_and_output_dimensions",
+    "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+    "episode": "02-sea-is-calm-today",
+    "requested_seconds": 10,
+    "frame_grid": "17k+5 @24fps -> 243 frames (10.125 s)"
+  },
+  "prompt": "subject_definitions:\n<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve her long loose near-black hair with soft full bangs, natural pale skin texture, heather blue-gray T-shirt, the speckled ceramic coffee mug, and exactly three thin red-and-blue knotted bracelets on her right wrist. Do not reinterpret, beautify, stylize, or replace her face.\n\nsummary:\n[reference generation] One quiet ten-second observational morning vlog. <Subject 1> turns her head to look out the window at the sea, says, (S1) <d>[English] The sea is really calm today.</d>, turns back to the camera, tucks a strand of hair behind her ear, and says, (S1) <d>[English] Maybe a walk later. Ice cream on the way.</d>\n\nretention_analysis:\n<Subject 1> (appears throughout [Shot 1]): fully_preserved — exact facial identity, facial proportions, eyes, nose, lips, jaw, hair, skin, T-shirt, mug, and right-wrist bracelets remain unchanged from <Picture 1>. Only her head turn, gaze, mouth, subtle smile, and the small hair-tuck with her free left hand may change.\n\ndetailed_description:\nThe target video is one continuous ten-second photorealistic selfie-style vlog shot in the same bright window-lit room as <Picture 1>, with the calm sea and sandy beach visible through the window on the left. [Shot 1] <Subject 1> starts exactly in the pose of <Picture 1>, holding the mug in her right hand. She slowly turns her head about 30 degrees toward the window, looks at the sea for a moment, and says in a soft voice, (S1) <d>[English] The sea is really calm today.</d> She turns back toward the lens, lifts her left hand and tucks a loose strand of hair behind her ear, looks at the camera briefly, and says, (S1) <d>[English] Maybe a walk later. Ice cream on the way.</d> She ends with a faint quiet smile and lowers her gaze to the mug. The mug stays in her right hand at chest height throughout, and the three bracelets stay visible on that wrist. Keep her face consistently identical to <Picture 1> before, during, and after the head turn and speech. Restrained, physically coherent motion with natural hair movement. Fixed eye-level framing with only minimal handheld breathing. No cut, no zoom, no camera pan, no added person, no wardrobe change, no face reshaping, no eye enlargement, no beauty-filter transformation.\n\noverall_soundscape:\nQuiet daytime room tone, soft distant waves and a faint sea breeze through the window, and synchronized soft natural speech in a calm quiet voice.\n\nnon_diegetic_music:\nNone.\n",
+  "output_filename": "run-20260906-005142-29e8ca26"
+}

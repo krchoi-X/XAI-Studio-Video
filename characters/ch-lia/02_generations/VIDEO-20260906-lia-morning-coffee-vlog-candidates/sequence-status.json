@@ -1,0 +1,51 @@
+{
+  "started_at": "2026-09-06T00:26:53",
+  "episodes": {
+    "01-good-morning-cat": {
+      "status": "needs_review",
+      "run_id": "run-20260906-002654-ac69262f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-002654-ac69262f",
+      "worker_pid": 62680,
+      "error": null,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\run-20260906-002654-ac69262f.mp4"
+      ],
+      "finished_at": "2026-09-06T00:51:21"
+    },
+    "02-sea-is-calm-today": {
+      "status": "needs_review",
+      "run_id": "run-20260906-005142-29e8ca26",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-005142-29e8ca26",
+      "worker_pid": 53420,
+      "error": null,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\run-20260906-005142-29e8ca26.mp4"
+      ],
+      "finished_at": "2026-09-06T01:16:22"
+    },
+    "03-off-to-work": {
+      "status": "needs_review",
+      "run_id": "run-20260906-011642-2f5f3a6f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-011642-2f5f3a6f",
+      "worker_pid": 62460,
+      "error": null,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\run-20260906-011642-2f5f3a6f.mp4"
+      ],
+      "finished_at": "2026-09-06T01:40:51"
+    },
+    "04-ukulele-cat-complaint": {
+      "status": "needs_review",
+      "run_id": "run-20260906-014111-04975d8a",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\runs\\run-20260906-014111-04975d8a",
+      "worker_pid": 66000,
+      "error": null,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\run-20260906-014111-04975d8a.mp4"
+      ],
+      "finished_at": "2026-09-06T02:05:23"
+    }
+  },
+  "finished": true,
+  "finished_at": "2026-09-06T02:05:43"
+}

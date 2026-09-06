@@ -1,0 +1,15 @@
+Create one photorealistic image of exactly one adult character.
+
+PRIORITY 1 — EXPLICIT USER SCENE. Preserve this meaning without adding or removing wardrobe, coverage, props, people, or actions:
+얼굴 클로즈업
+
+IMMUTABLE CONSTRAINTS:
+- No additional immutable fields. Preserve the user's wording.
+
+AUTHORITATIVE SCENE SPEC. These values replace same-named Stable DNA fields rather than being appended to them:
+- No structured field overrides.
+
+PRIORITY 2 — STABLE CHARACTER IDENTITY. Apply identity only; it must not override the explicit scene:
+An adult East-Asian-looking woman with an original identity and no resemblance to a specific real person character named Aoi. Face: compact, slightly rounded to softly oval face with subtle youthful cheek fullness, while remaining unmistakably adult; lively eyes with strong emotional readability and an adult, self-aware gaze; expressive natural brows that clearly support a wide emotional range; natural refined nose with balanced proportions suited to the compact softly rounded face; soft but distinct lips with natural adult proportions; soft rounded jawline that avoids both a childlike look and a narrow polished Hae-won-like silhouette. Hair: short dark hair, preferably a jaw-length or softly layered bob that frames the rounded face; it may be tucked behind one ear to reveal her signature earring, and must not resemble Lia or Hae-won's long straight-hair silhouette. Skin: healthy realistic skin with visible natural texture and tonal variation; never waxy, plastic, porcelain-like or beauty-filter smoothed. Body: adult feminine presence with healthy, mature and self-confident proportions; natural adult limb lengths and anatomically consistent hands and feet; shoulders natural feminine shoulder line with confident posture; torso healthy mature torso with adult proportions and self-assured body language; bust natural mature adult proportion, consistent across scenes and never treated as the sole identity anchor; waist natural adult waist with body-aware but believable proportions; pelvis and hips healthy mature feminine proportions without anatomical exaggeration; lower body healthy adult lower-body proportions with natural anatomical balance; body hair natural and not an identity-defining feature. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.
+
+Maintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state. Do not add optional creative details that change the scene's meaning.

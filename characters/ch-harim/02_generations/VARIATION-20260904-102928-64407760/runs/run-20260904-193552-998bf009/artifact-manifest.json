@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260904-193552-998bf009",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-harim\\generations\\VARIATION-20260904-102928-64407760\\outputs\\krea2\\run-20260904-193552-998bf009.jpg",
+      "sha256": "e68d6c71654cfe2708c5f5c8283af71ba44d92738f7b42b4fcb28c3a43f70912",
+      "byte_count": 150755,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-04T19:38:12+09:00"
+    }
+  ]
+}

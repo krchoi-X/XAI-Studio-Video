@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260906-005142-29e8ca26",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-lia-morning-coffee-vlog-candidates\\run-20260906-005142-29e8ca26.mp4",
+      "sha256": "01f05909d7a7bd2f9f554246c97192f6c10af5762a4ad63c0b24a9b96a35cc50",
+      "byte_count": 9483614,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "3e2e2520988cf918e78107c184f04f92c89fd699fd458a436b086313326a569b",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T01:16:15+09:00"
+    }
+  ]
+}
