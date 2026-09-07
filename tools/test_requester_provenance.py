@@ -149,6 +149,75 @@ class RecorderProvenanceTests(unittest.TestCase):
             self.assertIsNone(result["requested_by"])
 
 
+class SessionProvenanceTests(unittest.TestCase):
+    def session(self, root: Path, **fields) -> dict:
+        namespace = argparse.Namespace(
+            session_dir=str(root), requested_by=None, executor=None, engine=None, model=None,
+            character_id=None, title=None, user_request=None, source_idea=None, status=None, session_id=None)
+        for key, value in fields.items():
+            setattr(namespace, key, value)
+        return wangp_recorder.write_session(namespace)
+
+    def test_writes_canonical_record(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "VIDEO-20260907-210000-lia-demo"
+            root.mkdir()
+            result = self.session(root, requested_by="Grok", engine="WanGP", model="minimax_h3_ref2va_pruned",
+                                  character_id="ch-lia", title="Lia demo", user_request="세 컷 만들어줘", status="running")
+            record = json.loads((root / "session-provenance.json").read_text(encoding="utf-8"))
+            self.assertEqual(record["requested_by"], "grok")
+            self.assertEqual(record["session_id"], "VIDEO-20260907-210000-lia-demo")
+            self.assertEqual(record["engine"], "WanGP")
+            self.assertEqual(record["model"], "minimax_h3_ref2va_pruned")
+            self.assertEqual(record["user_request_verbatim"], "세 컷 만들어줘")
+            self.assertEqual(record["schema_version"], 1)
+            self.assertEqual(result["requested_by"], "grok")
+
+    def test_update_is_idempotent_and_preserves_unknown_keys(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "VIDEO-x"
+            root.mkdir()
+            self.session(root, requested_by="grok", status="running")
+            path = root / "session-provenance.json"
+            record = json.loads(path.read_text(encoding="utf-8"))
+            record["custom_note"] = "kept"
+            path.write_text(json.dumps(record), encoding="utf-8")
+            created_at = record["created_at"]
+            self.session(root, status="completed")  # no requester needed once recorded
+            updated = json.loads(path.read_text(encoding="utf-8"))
+            self.assertEqual(updated["requested_by"], "grok")
+            self.assertEqual(updated["status"], "completed")
+            self.assertEqual(updated["custom_note"], "kept")
+            self.assertEqual(updated["created_at"], created_at)
+
+    def test_requires_a_requester_the_first_time(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "VIDEO-y"
+            root.mkdir()
+            with self.assertRaisesRegex(ValueError, "requested-by is required"):
+                self.session(root, title="no requester")
+            self.assertFalse((root / "session-provenance.json").exists())
+
+    def test_session_requester_priority_and_absence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.assertIsNone(wangp_recorder.session_requester(root))
+            (root / "prompt-trace.json").write_text(json.dumps({"invoked_by": "codex"}), encoding="utf-8")
+            self.assertEqual("codex", wangp_recorder.session_requester(root))
+            # an agent's own handoff record, including a nested provenance block, is read
+            (root / "handoff.json").write_bytes(b"\xef\xbb\xbf" + json.dumps({"provenance": {"requested_by": "grok"}}).encode("utf-8"))
+            self.assertEqual("grok", wangp_recorder.session_requester(root))
+            # the canonical record wins over everything else
+            (root / "session-provenance.json").write_text(json.dumps({"requested_by": "claude"}), encoding="utf-8")
+            self.assertEqual("claude", wangp_recorder.session_requester(root))
+
+    def test_batch_session_created_by_is_read(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "batch.yaml").write_text(json.dumps({"session": {"created_by": "hermes"}}), encoding="utf-8")
+            self.assertEqual("hermes", wangp_recorder.session_requester(root))
+
+
 class SubmitEndToEndTests(unittest.TestCase):
     """Real submit -> detached worker -> run record, with a fake WanGP (no GPU)."""
 
@@ -219,6 +288,54 @@ class SubmitEndToEndTests(unittest.TestCase):
             record = self.wait_terminal(Path(submitted["run_dir"]))
             self.assertIsNone(record["requested_by"])
             self.assertNotIn("--requested-by", record["local_worker"]["command"])
+
+    def test_submit_inherits_the_requester_from_the_session_record(self):
+        """The production case: Grok records the session once, then every submit into it is attributed."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            session = root / "VIDEO-20260907-220000-lia-demo"
+            session.mkdir()
+            wangp_recorder.write_session(argparse.Namespace(
+                session_dir=str(session), requested_by="grok", executor=None, engine="WanGP", model=None,
+                character_id="ch-lia", title=None, user_request=None, source_idea=None, status="running", session_id=None))
+            wangp = make_fake_wangp(root)
+            prompt = session / "shot.txt"
+            prompt.write_text("a quiet sea\n", encoding="utf-8")
+            settings = session / "shot.settings.json"
+            settings.write_text(json.dumps({"model_type": "fake_model"}), encoding="utf-8")
+            import os
+
+            env = {k: v for k, v in os.environ.items() if k != "XAI_REQUESTED_BY"}
+            completed = subprocess.run(
+                [sys.executable, str(TOOLS / "local_wangp.py"), "submit", "--runs-root", str(session / "runs"),
+                 "--prompt-file", str(prompt), "--settings-file", str(settings), "--project-id", session.name,
+                 "--prompt-id", "shot-01", "--wangp-root", str(wangp), "--wangp-python", sys.executable,
+                 "--output-dir", str(root / "outputs")],
+                cwd=str(REPO), capture_output=True, text=True, encoding="utf-8", timeout=120, env=env)
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            submitted = json.loads(completed.stdout)
+            self.assertEqual(submitted["requested_by"], "grok", "no flag, no env: inherited from the session record")
+            record = self.wait_terminal(Path(submitted["run_dir"]))
+            self.assertEqual(record["requested_by"], "grok")
+
+    def test_explicit_flag_overrides_the_session_record(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            session = root / "VIDEO-z"
+            session.mkdir()
+            (session / "session-provenance.json").write_text(json.dumps({"requested_by": "grok"}), encoding="utf-8")
+            wangp = make_fake_wangp(root)
+            (session / "shot.txt").write_text("p\n", encoding="utf-8")
+            (session / "shot.settings.json").write_text("{}", encoding="utf-8")
+            completed = subprocess.run(
+                [sys.executable, str(TOOLS / "local_wangp.py"), "submit", "--runs-root", str(session / "runs"),
+                 "--prompt-file", str(session / "shot.txt"), "--settings-file", str(session / "shot.settings.json"),
+                 "--project-id", "p", "--prompt-id", "q", "--wangp-root", str(wangp), "--wangp-python", sys.executable,
+                 "--output-dir", str(root / "outputs"), "--requested-by", "claude"],
+                cwd=str(REPO), capture_output=True, text=True, encoding="utf-8", timeout=120)
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            self.assertEqual(json.loads(completed.stdout)["requested_by"], "claude")
+            self.wait_terminal(Path(json.loads(completed.stdout)["run_dir"]))
 
     def test_invalid_requester_is_rejected_before_any_record_is_written(self):
         with tempfile.TemporaryDirectory() as directory:

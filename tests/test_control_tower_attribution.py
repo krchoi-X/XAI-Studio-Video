@@ -158,6 +158,27 @@ class AttributionTests(unittest.TestCase):
         self.assertEqual(job.engine, "WanGP")
         self.assertEqual(job.model, "minimax_h3_ref2va_pruned")
 
+    def test_session_provenance_file_supplies_requester_title_and_character(self):
+        session = self.root / "ch-lia" / "02_generations" / "VIDEO-20260907-220000-lia-demo"
+        run_dir = session / "runs" / "run-sp"
+        run_dir.mkdir(parents=True)
+        (session / "session-provenance.json").write_text(json.dumps({
+            "schema_version": 1, "session_id": session.name, "requested_by": "grok", "engine": "WanGP",
+            "model": "minimax_h3_ref2va_pruned", "character_id": "ch-lia", "title": "Lia sundress micro-vlog",
+            "user_request_verbatim": "10초 스티치로 만들어줘",
+        }), encoding="utf-8")
+        # a competing older record must not win over the canonical one
+        (session / "handoff.json").write_text(json.dumps({"requested_by": "codex"}), encoding="utf-8")
+        (run_dir / "run.json").write_text(json.dumps({
+            "run_id": "run-sp", "status": "needs_review", "created_at": iso(T0), "updated_at": iso(T0),
+            "target": "local", "renderer": "WanGP", "settings": {"value": {}}, "artifacts": [],
+        }), encoding="utf-8")
+        (run_dir / "events.jsonl").write_text("", encoding="utf-8")
+        job = WangpRunAdapter([self.root], pid_alive=lambda pid: False).discover(now=T0 + timedelta(minutes=1))[0]
+        self.assertEqual((job.requested_by, job.requested_by_basis), ("grok", "record"))
+        self.assertEqual(job.title, "Lia sundress micro-vlog")
+        self.assertEqual(job.character_id, "ch-lia")
+
     def test_null_requested_by_key_does_not_claim_a_requester(self):
         """New records always carry the key; a null value must not read as a requester."""
         session = self.root / "ch-x" / "02_generations" / "VIDEO-20260907-110000-x"

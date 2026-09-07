@@ -91,8 +91,15 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     prompt_path = Path(args.prompt_file).resolve()
     settings_path = Path(args.settings_file).resolve()
     prompt = prompt_path.read_text(encoding="utf-8")
-    # Requester is explicit (flag) or taken from XAI_REQUESTED_BY in the caller's environment; never guessed.
+    # Requester resolution order, all of them explicit statements by the caller or by the session record:
+    #   --requested-by  ->  $XAI_REQUESTED_BY  ->  the session's own provenance record  ->  null.
+    # Nothing is inferred; when every source is silent the run records null and the Control Tower falls back
+    # to observing the worker process.
     requested_by = wangp_recorder.normalize_actor(args.requested_by if args.requested_by is not None else os.environ.get("XAI_REQUESTED_BY"))
+    if not requested_by:
+        # <session>/runs/<run-id> is the layout every producer uses, so the session is the runs-root's parent
+        session_dir = Path(args.runs_root).resolve().parent
+        requested_by = wangp_recorder.normalize_actor(wangp_recorder.session_requester(session_dir))
     executor = args.executor or DEFAULT_EXECUTOR
     run = wangp_recorder.prepare_run(
         argparse.Namespace(
@@ -296,7 +303,23 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def force_utf8_stdio() -> None:
+    """Emit UTF-8 regardless of the console code page.
+
+    Callers (character_scene, the web worker, agent orchestrators) decode this output as UTF-8, while a Windows
+    console defaults to cp949 here. Korean prompts and error messages would otherwise be undecodable.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            try:
+                reconfigure(encoding="utf-8")
+            except (OSError, ValueError):
+                pass
+
+
 def main(argv: list[str] | None = None) -> int:
+    force_utf8_stdio()
     args = build_parser().parse_args(argv)
     result = args.handler(args)
     print(json.dumps(result, ensure_ascii=False, indent=2))

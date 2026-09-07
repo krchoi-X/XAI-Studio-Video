@@ -50,6 +50,54 @@ The value is written to `run.json` (`requested_by`, `executor`), echoed in the `
 `submit` and `status` print, and passed to the detached worker's command line. The Control Tower then shows the job
 as `grok (from record)` instead of inferring the requester from process telemetry.
 
+## Recording a production session
+
+Record the session **once, before the first render**, then every submission into it inherits the requester. This is
+the rule for real production work, not only for tests:
+
+```powershell
+python tools/wangp_recorder.py session `
+  --session-dir characters/ch-lia/02_generations/VIDEO-20260907-181254-lia-sundress-shift-cat `
+  --requested-by grok `
+  --engine WanGP --model minimax_h3_ref2va_pruned `
+  --character-id ch-lia --title "Lia micro-vlog: sundress to shift to cat" `
+  --user-request "<the operator's request, verbatim>" `
+  --status running
+```
+
+That writes `<session>/session-provenance.json`:
+
+```json
+{
+  "schema_version": 1,
+  "session_id": "VIDEO-20260907-181254-lia-sundress-shift-cat",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-lia",
+  "title": "Lia micro-vlog: sundress to shift to cat",
+  "user_request_verbatim": "…",
+  "status": "running",
+  "created_at": "…",
+  "updated_at": "…"
+}
+```
+
+Rules:
+
+- Write it **before** submitting the first job, and run the same command again with `--status completed` (or
+  `failed`) when the session ends. Re-running is safe: it merges, keeps `created_at`, and preserves any extra keys
+  you added yourself.
+- It never rewrites `handoff.json`, `batch.yaml` or `prompt-trace.json`. Keep your own session file if you have one.
+- Requester resolution for each submission: `--requested-by` → `XAI_REQUESTED_BY` → the session record
+  (`session-provenance.json` → `handoff.json` → `batch.yaml` `session.created_by` → `prompt-trace.json`
+  `invoked_by`) → `null`. Nothing is ever invented.
+- Say who asked, not what ran: `requested_by` is the agent or person; `executor` is the runner; `engine` is WanGP;
+  `model` is the checkpoint. The Control Tower shows all four separately.
+- For character stills the scene pipeline already does this for you: `character_scene.py --actor <agent>` records
+  `created_by` in `batch.yaml` and forwards it to every run.
+
 ## Commands
 
 Create the run before clicking Generate or calling `wangp_generate`:

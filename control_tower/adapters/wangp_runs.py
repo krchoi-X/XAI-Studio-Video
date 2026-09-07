@@ -3,8 +3,10 @@
 Sources (all read-only):
   <session>/runs/<run_id>/run.json          status, prompt, settings, artifacts, local_worker.pid
   <session>/runs/<run_id>/events.jsonl      queued/starting/running(+preview step events)/completed/failed
-  <session>/batch.yaml                      scene session title, character, id
-  <session>/prompt-trace.json               invoked_by (hermes | codex | web)
+  <session>/session-provenance.json         requested_by / title / character (written by wangp_recorder session)
+  <session>/batch.yaml                      scene session title, character, id, created_by
+  <session>/prompt-trace.json               invoked_by (hermes | codex | web | grok | claude)
+  <session>/handoff.json                    an agent's own session record, read for its requester only
 """
 from __future__ import annotations
 
@@ -92,6 +94,10 @@ def load_session_context(session_dir: Path) -> SessionContext:
     # Explicit provenance, first hit wins: prompt-trace.json (scene pipeline), then optional keys another
     # producer may write into batch.yaml / handoff.json / sequence-status.json. Nothing is guessed here.
     candidates: list[dict[str, Any]] = []
+    # session-provenance.json is written by `tools/wangp_recorder.py session` and is the most authoritative
+    provenance = read_json_safe(session_dir / "session-provenance.json")
+    if isinstance(provenance, dict):
+        candidates.append(provenance)
     trace = read_json_safe(session_dir / "prompt-trace.json")
     if isinstance(trace, dict):
         candidates.append(trace)
@@ -110,6 +116,9 @@ def load_session_context(session_dir: Path) -> SessionContext:
             ctx.requested_by = actor
             ctx.requested_by_basis = "record"
             break
+    if isinstance(provenance, dict):
+        ctx.title = str(provenance.get("title") or ctx.title)
+        ctx.character_id = provenance.get("character_id") or ctx.character_id
     if ctx.title == session_dir.name:
         readme = session_dir / "README.md"
         if readme.is_file():
@@ -157,12 +166,8 @@ class WangpRunAdapter:
 
     def session_context(self, session_dir: Path) -> SessionContext:
         key = str(session_dir)
-        stamp = (
-            _mtime(session_dir / "batch.yaml"),
-            _mtime(session_dir / "prompt-trace.json"),
-            _mtime(session_dir / "handoff.json"),
-            _mtime(session_dir / "sequence-status.json"),
-        )
+        stamp = tuple(_mtime(session_dir / name) for name in
+                      ("batch.yaml", "prompt-trace.json", "handoff.json", "sequence-status.json", "session-provenance.json"))
         cached = self._session_cache.get(key)
         if cached and cached[0] == stamp:
             return cached[1]

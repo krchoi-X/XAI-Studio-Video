@@ -1,3 +1,72 @@
+# Scoped Task — Session provenance record for real production (v0.1.3)
+
+Owner / Active editor: Claude Code (same explicit assignment as v0.1.2)
+Status: COMPLETE — implemented, unit-tested, live-verified with Korean text (2026-09-07)
+
+## Goal
+
+Close the last gap: when Grok Bot (or any agent) actually **produces**, the session itself must carry a durable,
+uniform record of who asked, what executed it, which engine/model, and the verbatim request — not just the per-run
+`requested_by` added in v0.1.2. Then document the rule and the exact calls, and write a handover note for Grok.
+
+## Findings
+
+- Grok already writes a rich `handoff.json` per video session with `requested_by`, `requesting_agent`,
+  `user_request_verbatim`, `provenance`, `character`, `target_renderer`, `model`, `prompts[]`, `results[]`. The
+  convention exists but is ad hoc, undocumented and unsupported by any tool, so each agent invents its own shape.
+- That file even contains Grok's own note that `--actor` had no `grok` choice and `submit` had no requester flag
+  (both fixed in v0.1.2).
+- Scene sessions get `batch.yaml` with `session.created_by`; manual/video sessions get nothing tool-written.
+- Studio importer consumes only `batch.yaml`; nothing consumes a new session file, so adding one is additive.
+
+## Plan
+
+1. `tools/wangp_recorder.py session` writes/updates a canonical `<session>/session-provenance.json`
+   (schema_version 1; merge-friendly; never rewrites `handoff.json`, which stays Grok's own).
+2. `tools/local_wangp.py submit` inherits the requester from that record (then `handoff.json`, `batch.yaml`
+   `created_by`, `prompt-trace.json` `invoked_by`) when `--requested-by`/`XAI_REQUESTED_BY` are absent. A value read
+   from an explicit session record is a record, not a guess; nothing is invented when all are absent.
+3. Control Tower reads `session-provenance.json` first among session provenance candidates.
+4. Tests for the writer, the inheritance chain, and the Control Tower read.
+5. Docs: `docs/wangp-recorder.md` production recording rules + exact calls; `GROK.md` rules; a handover note for Grok.
+
+## Contract impact
+
+- Producers: `wangp_recorder.py session` (new, optional), agents writing sessions by hand.
+- Consumers: `local_wangp.py submit` (requester inheritance), Control Tower `WangpRunAdapter` (session context).
+- New optional file `session-provenance.json`; no existing file is rewritten; `handoff.json`, `batch.yaml`,
+  `prompt-trace.json` keep their current meaning and remain readable. Sessions without it behave exactly as today.
+- Studio importer reads only `batch.yaml` and is unaffected. No migration. Rollback: revert the commit; the extra
+  file is inert for every other consumer.
+- Deterministic verification: `unittest discover -s tools`, `-s tests`, plus a no-GPU submit that inherits the
+  requester from a session record and reads back as `record` in the running Control Tower.
+
+## Delivered
+
+| File | Change |
+|---|---|
+| `tools/wangp_recorder.py` | `session` subcommand writes/updates `<session>/session-provenance.json` (merge-friendly, idempotent, requires a requester only the first time); `session_requester()` / `requester_in()` read the priority chain incl. nested `provenance` blocks and BOM files |
+| `tools/local_wangp.py` | `submit` inherits the requester from the session record when the flag and env are absent |
+| `tools/wangp_recorder.py`, `tools/local_wangp.py` | `force_utf8_stdio()`: JSON output is UTF-8 whatever the console code page — found live, a Korean `--user-request` produced cp949 bytes that callers decoding UTF-8 could not read |
+| `control_tower/adapters/wangp_runs.py` | reads `session-provenance.json` first for requester, title and character |
+| `tools/test_requester_provenance.py` | +7 tests (writer, idempotent update, required-first-time, priority chain, batch `created_by`, submit inheritance, flag override) |
+| `tests/test_control_tower_attribution.py` | session-provenance read incl. losing competing `handoff.json` |
+| `docs/wangp-recorder.md` | "Recording a production session": rules, record shape, resolution order |
+| `docs/grok-production-recording-note.md` (new) | the handover note for Grok, in Korean |
+| `GROK.md` (Codex's untracked file, working tree only) | production recording rules and exact calls |
+
+## Verification
+
+- `tools`: 28 tests pass. `tests`: 75 run, 74 pass + the pre-existing `test_reference_transformation_contract`
+  import error (needs pytest, unrelated).
+- Live, no GPU: registered a session with `wangp_recorder.py session --requested-by grok` (Korean title and request),
+  then submitted **with no flag and no environment variable**. The run inherited `grok`, and after a Control Tower
+  restart it reads `grok (record)` with executor `local-wangp-worker`, engine `WanGP`,
+  model `minimax_h3_ref2va_pruned`, character `ch-lia`, and the Korean title intact.
+- Grok's real render running during this work continued to display as `grok (record)`; nothing was disturbed.
+
+---
+
 # Scoped Task — Explicit requester provenance on the WanGP submit path (v0.1.2)
 
 Owner / Active editor: Claude Code (explicitly assigned by the user on 2026-09-07 for this task: `tools/local_wangp.py`,

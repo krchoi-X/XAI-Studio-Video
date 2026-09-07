@@ -125,6 +125,92 @@ def prepare_run(args: argparse.Namespace) -> dict[str, Any]:
     return {"run_dir": str(run_dir), **record}
 
 
+SESSION_PROVENANCE = "session-provenance.json"
+# Session files that may carry an explicit requester, most authoritative first. `session-provenance.json` is
+# written by `wangp_recorder.py session`; the others are existing conventions kept readable.
+SESSION_PROVENANCE_FILES = (SESSION_PROVENANCE, "handoff.json", "batch.yaml", "prompt-trace.json")
+PROVENANCE_KEYS = ("requested_by", "invoked_by", "actor", "created_by", "requester")
+
+
+def read_json_file(path: Path) -> Any:
+    """Read JSON tolerating a UTF-8 BOM, which some orchestrators write."""
+    return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def requester_in(record: Any) -> str | None:
+    """Explicit requester recorded in a session file, or None. Never guesses."""
+    if isinstance(record, dict):
+        candidates = [record]
+        session = record.get("session")
+        if isinstance(session, dict):
+            candidates.append(session)
+        provenance = record.get("provenance")
+        if isinstance(provenance, dict):
+            candidates.append(provenance)
+        for candidate in candidates:
+            for key in PROVENANCE_KEYS:
+                value = candidate.get(key)
+                if isinstance(value, str) and value.strip() and value.strip().lower() not in {"unknown", "none", "null"}:
+                    return value.strip().lower()
+    return None
+
+
+def session_requester(session_dir: Path) -> str | None:
+    """Requester recorded for a production session, read from the known session files in priority order."""
+    for name in SESSION_PROVENANCE_FILES:
+        path = session_dir / name
+        if not path.is_file():
+            continue
+        try:
+            found = requester_in(read_json_file(path))
+        except (OSError, ValueError):
+            continue
+        if found:
+            return found
+    return None
+
+
+def write_session(args: argparse.Namespace) -> dict[str, Any]:
+    """Create or update the canonical provenance record for a production session.
+
+    Merge-friendly and idempotent: unknown existing keys are preserved, only supplied fields are replaced.
+    It never touches handoff.json / batch.yaml, which belong to the agent or tool that wrote them.
+    """
+    session_dir = Path(args.session_dir).resolve()
+    if not session_dir.is_dir():
+        raise ValueError(f"session directory not found: {session_dir}")
+    path = session_dir / SESSION_PROVENANCE
+    record: dict[str, Any] = {}
+    if path.is_file():
+        existing = read_json_file(path)
+        if isinstance(existing, dict):
+            record = existing
+    requested_by = normalize_actor(args.requested_by)
+    if not requested_by and not record.get("requested_by"):
+        raise ValueError("--requested-by is required when the session has no recorded requester")
+    supplied = {
+        "requested_by": requested_by,
+        "executor": args.executor,
+        "engine": args.engine,
+        "model": args.model,
+        "character_id": args.character_id,
+        "title": args.title,
+        "user_request_verbatim": args.user_request,
+        "source_idea": args.source_idea,
+        "status": args.status,
+    }
+    record.setdefault("schema_version", 1)
+    record["session_id"] = args.session_id or record.get("session_id") or session_dir.name
+    record["session_dir"] = str(session_dir)
+    for key, value in supplied.items():
+        if value is not None:
+            record[key] = value
+    record.setdefault("created_at", now())
+    record["updated_at"] = now()
+    write_json(path, record)
+    return {"session_provenance": str(path), **record}
+
+
 def update_state(args: argparse.Namespace) -> dict[str, Any]:
     run_dir = Path(args.run_dir).resolve()
     record = load_run(run_dir)
@@ -240,6 +326,20 @@ def build_parser() -> argparse.ArgumentParser:
     prepare.add_argument("--executor", help="what will execute the run, e.g. local-wangp-worker, render-broker, wangp-webui (optional)")
     prepare.set_defaults(handler=prepare_run)
 
+    session = sub.add_parser("session", help="create or update the session provenance record for a production session")
+    session.add_argument("--session-dir", required=True)
+    session.add_argument("--requested-by", help="who asked for this production: grok, claude, codex, hermes, web, user, ...")
+    session.add_argument("--executor", help="what runs the jobs, e.g. local-wangp-worker")
+    session.add_argument("--engine", help="rendering engine, e.g. WanGP, ComfyUI")
+    session.add_argument("--model", help="model or workflow, e.g. minimax_h3_ref2va_pruned")
+    session.add_argument("--character-id")
+    session.add_argument("--title")
+    session.add_argument("--user-request", help="the operator's request, verbatim")
+    session.add_argument("--source-idea")
+    session.add_argument("--status", help="prepared | running | needs_review | completed | failed")
+    session.add_argument("--session-id")
+    session.set_defaults(handler=write_session)
+
     state = sub.add_parser("state")
     state.add_argument("--run-dir", required=True)
     state.add_argument("--state", choices=("provisioning", "starting", "running", "uploading", "interrupted", "timed_out"), required=True)
@@ -261,7 +361,23 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def force_utf8_stdio() -> None:
+    """Emit UTF-8 regardless of the console code page.
+
+    Callers (character_scene, the web worker, agent orchestrators) decode this output as UTF-8, while a Windows
+    console defaults to cp949 here. Korean prompts and error messages would otherwise be undecodable.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            try:
+                reconfigure(encoding="utf-8")
+            except (OSError, ValueError):
+                pass
+
+
 def main(argv: list[str] | None = None) -> int:
+    force_utf8_stdio()
     args = build_parser().parse_args(argv)
     print(json.dumps(args.handler(args), ensure_ascii=False, indent=2))
     return 0
