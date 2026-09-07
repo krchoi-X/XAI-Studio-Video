@@ -129,7 +129,7 @@ Live on this workstation:
 
 | basis | source |
 |---|---|
-| `record` | an explicit key in the run/session records: `invoked_by` (scene `prompt-trace.json`), or `requested_by` / `actor` / `created_by` / `requester` in `run.json`, `batch.yaml` session, `handoff.json`, `sequence-status.json` (BOM-tolerant) |
+| `record` | an explicit key in the run/session records: `requested_by` written at submit time by `tools/local_wangp.py submit --requested-by …`, `invoked_by` (scene `prompt-trace.json`), or `actor` / `created_by` / `requester` in `run.json`, `batch.yaml` session, `handoff.json`, `sequence-status.json` (BOM-tolerant) |
 | `parent` | the run belongs to a Hermes night batch or a Gallery web job |
 | `process-env` | observed live: the worker process environment carries an agent marker (Grok Bot `SAND_LOCAL_EXEC_GENERATION` / `SAND_DATA_ROOT`, Claude Code `CLAUDECODE` / `CLAUDE_CODE_SESSION_ID`, Codex `CODEX_*`, Hermes `HERMES_SPAWN` / `HERMES_PARENT_PID`). Only variable names are read. The observation is persisted in the Control Tower database, so it survives run completion and restarts. |
 | `process-lineage` | observed live: a classified agent process is an ancestor of the worker |
@@ -141,8 +141,19 @@ parent by `tools/local_wangp.py`) are credited to Grok via the environment marke
 render runs. Any agent whose requested job is running is shown as Working with the note that the activity is inferred from
 the job. The two Grok trio sessions from 2026-09-06/07 are attributed manually because they finished before this version.
 
-Not done here (Codex-owned follow-up): adding `grok` / `claude` to the `--actor` enum of `tools/character_scene.py` so the
-scene pipeline records the requester explicitly.
+### Recording the requester at submit time (v0.1.2, 2026-09-07)
+
+The submit path now records the requester instead of leaving it to observation. `tools/local_wangp.py submit` and
+`tools/wangp_recorder.py prepare` take `--requested-by <actor>` (default from `XAI_REQUESTED_BY`, else `null`) and an
+optional `--executor` (default `local-wangp-worker`). Both land in `run.json` as top-level `requested_by` / `executor`,
+in the `queued` event, and in the JSON printed by `submit` / `status`; the value is also placed on the detached
+worker's command line. `tools/character_scene.py --actor` now accepts `grok` and `claude` in addition to
+`codex` / `hermes` / `web` / `user`, writes `created_by` into the session `batch.yaml`, and forwards it to the runner.
+`tools/reference_variation_worker.py` submits as `web`.
+
+Requester, executor, engine and model stay four separate fields: `requested_by` (who asked), `executor` (what ran it),
+`renderer` (WanGP), and `settings.value.model_type` (the model). A missing requester stays `null`; it is never guessed,
+and Control Tower falls back to the observation bases below. See `docs/wangp-recorder.md` for the calling convention.
 
 ## Known limits (v0.1)
 

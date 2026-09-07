@@ -64,6 +64,7 @@ class WebJobAdapter:
             source="web-job",
             title=title,
             requested_by="web",
+            requested_by_basis="record",  # the job exists because the Gallery web app created it
             executor="web-generation-worker",
             engine="WanGP",
             model=", ".join(str(e) for e in engines) if engines else None,

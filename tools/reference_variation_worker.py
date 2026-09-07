@@ -187,6 +187,7 @@ def run(args: argparse.Namespace) -> int:
             "--project-id", request["variation_id"], "--prompt-id", f"candidate-{index + 1}",
             "--wangp-root", str(wangp_root), "--wangp-python", str(Path(args.wangp_python).resolve()),
             "--output-dir", str(output_dir),
+            "--requested-by", "web",  # the tablet/Gallery asked for this variation
         ]
         submitted = subprocess.run(command, cwd=str(repo_root), capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60)
         if submitted.returncode != 0:

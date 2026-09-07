@@ -12,6 +12,7 @@ import wangp_recorder
 
 
 DEFAULT_WANGP_ROOT = Path(r"D:\AI\WanGP")
+DEFAULT_EXECUTOR = "local-wangp-worker"  # what runs the job; distinct from requested_by, renderer, and model_type
 KREA2_EDIT_MODELS = {"krea2_raw_edit", "krea2_turbo_edit"}
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
 
@@ -90,6 +91,9 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     prompt_path = Path(args.prompt_file).resolve()
     settings_path = Path(args.settings_file).resolve()
     prompt = prompt_path.read_text(encoding="utf-8")
+    # Requester is explicit (flag) or taken from XAI_REQUESTED_BY in the caller's environment; never guessed.
+    requested_by = wangp_recorder.normalize_actor(args.requested_by if args.requested_by is not None else os.environ.get("XAI_REQUESTED_BY"))
+    executor = args.executor or DEFAULT_EXECUTOR
     run = wangp_recorder.prepare_run(
         argparse.Namespace(
             runs_root=args.runs_root,
@@ -99,6 +103,8 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
             target="local",
             settings_file=str(settings_path),
             run_id=args.run_id,
+            requested_by=requested_by,
+            executor=executor,
         )
     )
     run_dir = Path(run["run_dir"])
@@ -122,6 +128,9 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
         "--profile", str(args.profile),
         "--vram-safety", str(args.vram_safety),
     ]
+    if requested_by:
+        # visible on the detached worker's command line for process observers; the record is the source of truth
+        command += ["--requested-by", requested_by]
     creationflags = 0
     popen_kwargs: dict[str, Any] = {}
     if os.name == "nt":
@@ -137,7 +146,8 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     record["local_worker"] = {"pid": process.pid, "command": command, "stdout": str(stdout_path), "stderr": str(stderr_path)}
     wangp_recorder.save_run(run_dir, record)
     wangp_recorder.append_event(run_dir, "starting", local_worker_pid=process.pid)
-    return {"run_id": run["run_id"], "run_dir": str(run_dir), "worker_pid": process.pid, "status": "starting"}
+    return {"run_id": run["run_id"], "run_dir": str(run_dir), "worker_pid": process.pid, "status": "starting",
+            "requested_by": requested_by, "executor": executor}
 
 
 def acquire_lock(path: Path):
@@ -264,6 +274,9 @@ def build_parser() -> argparse.ArgumentParser:
     start.add_argument("--output-dir", default=str(DEFAULT_WANGP_ROOT / "outputs"))
     start.add_argument("--profile", type=int, default=4)
     start.add_argument("--vram-safety", type=float, default=0.8)
+    start.add_argument("--requested-by", default=None,
+                       help="who asked for this run (grok, claude, codex, hermes, web, user, ...); defaults to $XAI_REQUESTED_BY, else recorded as null")
+    start.add_argument("--executor", default=None, help=f"what executes the run (default {DEFAULT_EXECUTOR})")
     start.set_defaults(handler=submit)
 
     work = sub.add_parser("worker", help=argparse.SUPPRESS)
@@ -273,6 +286,7 @@ def build_parser() -> argparse.ArgumentParser:
     work.add_argument("--output-dir", required=True)
     work.add_argument("--profile", required=True)
     work.add_argument("--vram-safety", required=True, type=float)
+    work.add_argument("--requested-by", default=None, help=argparse.SUPPRESS)  # informational; run.json is authoritative
     work.set_defaults(handler=worker)
 
     show = sub.add_parser("status")

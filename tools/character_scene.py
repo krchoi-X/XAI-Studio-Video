@@ -20,6 +20,9 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 ASSET_LIBRARY = Path(r"D:\AI_Studio\library")
 RUNNER = ROOT / "tools" / "local_wangp.py"
+# Who may ask for a scene session. The value is provenance only (invoked_by / created_by / requested_by);
+# it never changes prompts, seeds, or which engine runs.
+ACTORS = ("codex", "hermes", "web", "grok", "claude", "user")
 TEMPLATES = ROOT / "examples" / "character-lab" / "experiments" / "BATCH-002-harim-white-studio"
 ENGINES = {
     "z-image": ("z-image.settings.json", "z_image"),
@@ -310,7 +313,7 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
         jobs.append({"backend": "local-wangp", "model": model_name, "count": count, "seed": settings["seed"], "resolution": settings["resolution"], "steps": settings["num_inference_steps"], "settings_file": template_name, "output_dir": f"outputs/{engine}", "status": "prepared"})
     batch = {
         "schema_version": 1,
-        "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": title, "status": "prepared", "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "scene_spec_file": "scene_spec.json", "scene_delta_file": "scene-delta.json", "prompt_trace_file": "prompt-trace.json", "prompt_strategy": operating_mode, "stable_dna_sha256": cm.stable_hash(character)},
+        "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": title, "status": "prepared", "created_by": actor, "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "scene_spec_file": "scene_spec.json", "scene_delta_file": "scene-delta.json", "prompt_trace_file": "prompt-trace.json", "prompt_strategy": operating_mode, "stable_dna_sha256": cm.stable_hash(character)},
         "jobs": jobs,
         "review": {"surface": "personal-prompt-studio", "initial_state": "needs_review"},
     }
@@ -319,9 +322,24 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     return root
 
 
+def session_requester(root: Path, batch: dict[str, Any]) -> str | None:
+    """Requester recorded when the session was prepared: batch.yaml created_by, else prompt-trace invoked_by.
+    Older sessions without either return None so the run record stays null (never guessed)."""
+    value = (batch.get("session") or {}).get("created_by")
+    if not value:
+        trace_path = root / "prompt-trace.json"
+        if trace_path.is_file():
+            try:
+                value = json.loads(trace_path.read_text(encoding="utf-8-sig")).get("invoked_by")
+            except (OSError, ValueError):
+                value = None
+    return str(value) if value else None
+
+
 def submit(root: Path, wait: bool) -> list[dict[str, Any]]:
     batch = yaml.safe_load((root / "batch.yaml").read_text(encoding="utf-8"))
     asset_root = Path(batch["session"]["asset_root"]).resolve() if batch["session"].get("asset_root") else root / "outputs"
+    requester = session_requester(root, batch)
     results = []
     for job in batch["jobs"]:
         if job.get("status") == "completed":
@@ -330,6 +348,8 @@ def submit(root: Path, wait: bool) -> list[dict[str, Any]]:
             raise RuntimeError(f"{Path(job['output_dir']).name} is already running")
         engine = Path(job["output_dir"]).name
         command = [sys.executable, str(RUNNER), "submit", "--runs-root", str(root / "runs"), "--prompt-file", str(root / "prompt.txt"), "--settings-file", str(root / job["settings_file"]), "--project-id", root.name, "--prompt-id", f"{root.name}-{engine}", "--output-dir", str(asset_root / engine)]
+        if requester:
+            command += ["--requested-by", requester]
         completed = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace", check=True)
         result = json.loads(completed.stdout)
         results.append(result)
@@ -371,7 +391,7 @@ def main() -> int:
     draft.add_argument("--strategy", choices=tuple(STRATEGY_ALIASES), default="strict_translation")
     draft.add_argument("--constraints-json", default="{}")
     draft.add_argument("--scene-spec-json", default="{}")
-    draft.add_argument("--actor", choices=("codex", "hermes", "web"), default="codex")
+    draft.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
     produce = sub.add_parser("produce")
     produce.add_argument("--character")
     produce.add_argument("--request")
@@ -382,7 +402,7 @@ def main() -> int:
     produce.add_argument("--strategy", choices=tuple(STRATEGY_ALIASES), default="strict_translation")
     produce.add_argument("--constraints-json", default="{}")
     produce.add_argument("--scene-spec-json", default="{}")
-    produce.add_argument("--actor", choices=("codex", "hermes", "web"), default="codex")
+    produce.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
     args = parser.parse_args()
     try:
         if args.command == "produce" and args.session_dir:

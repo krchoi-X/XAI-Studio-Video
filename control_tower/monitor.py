@@ -306,7 +306,10 @@ class MonitorService:
             if gp.pid in tracked_family:
                 continue
             ai_runtime = kind in AI_RUNTIME_KINDS
-            significant = ai_runtime or util >= self.config.untracked_gpu_util_threshold
+            # An AI runtime on the GPU that no job accounts for is always worth reporting. A generic process
+            # (a browser, a desktop app's model helper) only counts when high GPU use is otherwise unexplained;
+            # when a tracked job is running it already explains the utilization.
+            significant = ai_runtime or (util >= self.config.untracked_gpu_util_threshold and not any_tracked_running)
             if not significant:
                 continue
             if info is None:

@@ -124,6 +124,27 @@ class ApiTests(unittest.TestCase):
             self.assertEqual(view["untracked"], [])
             self.assertEqual({a["agent"]: a["state"] for a in view["processes"]["agents"]}["codex"], "idle")
 
+    def test_running_job_explains_high_util_so_helper_is_not_untracked(self):
+        """A desktop app on the GPU must not be reported while a tracked job explains the utilization."""
+        helper = {"pid": 27584, "ppid": 1, "name": "ChatGPT.exe", "exe": r"C:\Program Files\WindowsApps\OpenAI.Codex_26\app\ChatGPT.exe",
+                  "cmdline": r'"C:\Program Files\WindowsApps\OpenAI.Codex_26\app\ChatGPT.exe" --type=utility', "create_time": T0.timestamp(), "rss": 1, "cpu": 0.0}
+        client, _ = self.make_client([self.running], gpu=FakeGpu(util=100.0, pids=(28141, 27584)),
+                                     rows=[wangp_worker_row(28141), helper])
+        with client:
+            view = client.get("/api/overview").json()
+            self.assertEqual(view["counts"]["running"], 1)
+            self.assertEqual(view["untracked"], [])
+
+    def test_ai_runtime_on_gpu_is_reported_even_while_another_job_runs(self):
+        """A second WanGP process that no job accounts for is still surfaced."""
+        client, _ = self.make_client([self.running], gpu=FakeGpu(util=100.0, pids=(28141, 17421)),
+                                     rows=[wangp_worker_row(28141), wangp_worker_row(17421)])
+        with client:
+            view = client.get("/api/overview").json()
+            untracked = view["untracked"]
+            self.assertEqual([u["pid"] for u in untracked], [17421])
+            self.assertEqual(untracked[0]["reason"], "AI runtime holding the GPU")
+
     def test_high_util_without_process_reports_unidentified(self):
         client, _ = self.make_client([], gpu=FakeGpu(util=90.0, pids=()), rows=[])
         with client:

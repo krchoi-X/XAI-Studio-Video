@@ -70,6 +70,7 @@ class NightBatchAdapter:
             source="night-batch",
             title=str(plan.get("title") or batch_id),
             requested_by=str(plan.get("created_by") or "hermes"),
+            requested_by_basis="record" if plan.get("created_by") else None,
             executor="hermes-night-batch-runner",
             engine="WanGP",
             model=", ".join(engines) if engines else None,

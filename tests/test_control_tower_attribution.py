@@ -138,6 +138,41 @@ class AttributionTests(unittest.TestCase):
         finally:
             svc.db.close()
 
+    def test_submit_time_requested_by_and_executor_from_run_json(self):
+        """A run recorded by `local_wangp.py submit --requested-by grok` reads as grok (record)."""
+        session = self.root / "ch-x" / "02_generations" / "VIDEO-20260907-100000-x"
+        run_dir = session / "runs" / "run-explicit"
+        run_dir.mkdir(parents=True)
+        (run_dir / "run.json").write_text(json.dumps({
+            "schema_version": 1, "run_id": "run-explicit", "project_id": "p", "prompt_id": "shot-01",
+            "status": "running", "created_at": iso(T0), "updated_at": iso(T0), "target": "local", "renderer": "WanGP",
+            "requested_by": "grok", "executor": "local-wangp-worker",
+            "settings": {"value": {"model_type": "minimax_h3_ref2va_pruned", "resolution": "576x768", "num_inference_steps": 20}},
+            "artifacts": [], "error": None, "local_worker": {"pid": 4242},
+        }), encoding="utf-8")
+        (run_dir / "events.jsonl").write_text(
+            json.dumps({"at": iso(T0), "state": "queued", "requested_by": "grok"}) + "\n", encoding="utf-8")
+        job = WangpRunAdapter([self.root], pid_alive=lambda pid: True).discover(now=T0 + timedelta(minutes=1))[0]
+        self.assertEqual((job.requested_by, job.requested_by_basis), ("grok", "record"))
+        self.assertEqual(job.executor, "local-wangp-worker", "executor is recorded, not inferred")
+        self.assertEqual(job.engine, "WanGP")
+        self.assertEqual(job.model, "minimax_h3_ref2va_pruned")
+
+    def test_null_requested_by_key_does_not_claim_a_requester(self):
+        """New records always carry the key; a null value must not read as a requester."""
+        session = self.root / "ch-x" / "02_generations" / "VIDEO-20260907-110000-x"
+        run_dir = session / "runs" / "run-null"
+        run_dir.mkdir(parents=True)
+        (run_dir / "run.json").write_text(json.dumps({
+            "run_id": "run-null", "status": "needs_review", "created_at": iso(T0), "updated_at": iso(T0),
+            "target": "local", "renderer": "WanGP", "requested_by": None, "executor": None,
+            "settings": {"value": {}}, "artifacts": [],
+        }), encoding="utf-8")
+        (run_dir / "events.jsonl").write_text("", encoding="utf-8")
+        job = WangpRunAdapter([self.root], pid_alive=lambda pid: False).discover(now=T0 + timedelta(minutes=1))[0]
+        self.assertEqual((job.requested_by, job.requested_by_basis), ("unknown", None))
+        self.assertEqual(job.executor, "wangp", "no recorded executor falls back to the inferred one")
+
     def test_explicit_record_keys_including_bom(self):
         self.assertEqual(explicit_requester({"invoked_by": "hermes"}), "hermes")
         self.assertEqual(explicit_requester({"requested_by": "Grok Bot"}), "grok bot")

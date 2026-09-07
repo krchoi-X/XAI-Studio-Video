@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 import sys
 import uuid
@@ -12,6 +13,21 @@ from typing import Any
 
 
 TERMINAL_STATES = {"succeeded", "failed", "cancelled", "interrupted", "timed_out"}
+# Requester identity recorded at submit time (who asked for the run). Canonical values used across the repo:
+# grok, claude, codex, hermes, web, user. Any lowercase token is accepted so a new caller can name itself;
+# it is never guessed - a missing value is recorded as null and Control Tower falls back to observation.
+ACTOR_PATTERN = re.compile(r"^[a-z0-9][a-z0-9._-]{0,31}$")
+
+
+def normalize_actor(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip().lower().replace(" ", "-")
+    if not text:
+        return None
+    if not ACTOR_PATTERN.match(text):
+        raise ValueError(f"invalid requester token: {value!r} (use a short lowercase name such as grok, claude, codex, hermes, web, user)")
+    return text
 
 
 def now() -> str:
@@ -77,6 +93,8 @@ def prepare_run(args: argparse.Namespace) -> dict[str, Any]:
         settings_path = Path(args.settings_file).resolve()
         settings = json.loads(settings_path.read_text(encoding="utf-8"))
     created_at = now()
+    requested_by = normalize_actor(getattr(args, "requested_by", None))
+    executor = getattr(args, "executor", None) or None
     record = {
         "schema_version": 1,
         "run_id": run_id,
@@ -87,6 +105,10 @@ def prepare_run(args: argparse.Namespace) -> dict[str, Any]:
         "updated_at": created_at,
         "target": args.target,
         "renderer": "WanGP",
+        # provenance: who asked (requested_by) is distinct from what ran it (executor), the engine (renderer)
+        # and the model (settings.value.model_type). Both are optional and null when the caller did not say.
+        "requested_by": requested_by,
+        "executor": executor,
         "provider_job_id": None,
         "prompt": {
             "path": str(prompt_path),
@@ -99,7 +121,7 @@ def prepare_run(args: argparse.Namespace) -> dict[str, Any]:
         "error": None,
     }
     save_run(run_dir, record)
-    append_event(run_dir, "queued", prompt_sha256=record["prompt"]["sha256"], target=args.target)
+    append_event(run_dir, "queued", prompt_sha256=record["prompt"]["sha256"], target=args.target, requested_by=requested_by, executor=executor)
     return {"run_dir": str(run_dir), **record}
 
 
@@ -214,6 +236,8 @@ def build_parser() -> argparse.ArgumentParser:
     prepare.add_argument("--target", choices=("local", "runpod", "vast"), required=True)
     prepare.add_argument("--settings-file")
     prepare.add_argument("--run-id")
+    prepare.add_argument("--requested-by", help="who asked for this run: grok, claude, codex, hermes, web, user, ... (recorded as null when omitted)")
+    prepare.add_argument("--executor", help="what will execute the run, e.g. local-wangp-worker, render-broker, wangp-webui (optional)")
     prepare.set_defaults(handler=prepare_run)
 
     state = sub.add_parser("state")

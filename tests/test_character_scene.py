@@ -85,6 +85,85 @@ class CharacterScenePromptTests(unittest.TestCase):
         self.assertIn("Outfit: none", prompt)
         self.assertNotIn("complete plausible outfit", prompt)
 
+    def test_session_requester_prefers_batch_created_by(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            batch = {"session": {"created_by": "grok"}, "jobs": []}
+            (root / "prompt-trace.json").write_text(json.dumps({"invoked_by": "codex"}), encoding="utf-8")
+            self.assertEqual("grok", scene.session_requester(root, batch))
+
+    def test_session_requester_falls_back_to_prompt_trace_and_stays_none(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.assertIsNone(scene.session_requester(root, {"session": {}}), "no record means no guess")
+            # BOM-prefixed trace files are written by some orchestrators
+            (root / "prompt-trace.json").write_bytes(b"\xef\xbb\xbf" + json.dumps({"invoked_by": "hermes"}).encode("utf-8"))
+            self.assertEqual("hermes", scene.session_requester(root, {"session": {}}))
+
+    def test_submit_forwards_requester_to_the_runner(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            asset_root = root / "assets"
+            asset_root.mkdir()
+            (root / "prompt.txt").write_text("p", encoding="utf-8")
+            (root / "z-image.settings.json").write_text("{}", encoding="utf-8")
+            (root / "batch.yaml").write_text(json.dumps({
+                "session": {"asset_root": str(asset_root), "status": "prepared", "created_by": "grok"},
+                "jobs": [{"output_dir": "outputs/z-image", "status": "prepared", "count": 1, "settings_file": "z-image.settings.json"}],
+            }), encoding="utf-8")
+            calls = []
+
+            class Completed:
+                stdout = json.dumps({"run_dir": str(root / "runs" / "run-1"), "run_id": "run-1"})
+
+            def fake_run(command, **kwargs):
+                calls.append(command)
+                (root / "runs" / "run-1").mkdir(parents=True, exist_ok=True)
+                (root / "runs" / "run-1" / "run.json").write_text(json.dumps({"status": "needs_review", "artifacts": [{"path": "a"}]}), encoding="utf-8")
+                return Completed()
+
+            original = scene.subprocess.run
+            scene.subprocess.run = fake_run
+            try:
+                scene.submit(root, wait=True)
+            finally:
+                scene.subprocess.run = original
+            self.assertIn("--requested-by", calls[0])
+            self.assertEqual("grok", calls[0][calls[0].index("--requested-by") + 1])
+
+    def test_submit_omits_requester_for_legacy_sessions(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            asset_root = root / "assets"
+            asset_root.mkdir()
+            (root / "prompt.txt").write_text("p", encoding="utf-8")
+            (root / "z-image.settings.json").write_text("{}", encoding="utf-8")
+            (root / "batch.yaml").write_text(json.dumps({
+                "session": {"asset_root": str(asset_root), "status": "prepared"},
+                "jobs": [{"output_dir": "outputs/z-image", "status": "prepared", "count": 1, "settings_file": "z-image.settings.json"}],
+            }), encoding="utf-8")
+            calls = []
+
+            class Completed:
+                stdout = json.dumps({"run_dir": str(root / "runs" / "run-1"), "run_id": "run-1"})
+
+            def fake_run(command, **kwargs):
+                calls.append(command)
+                (root / "runs" / "run-1").mkdir(parents=True, exist_ok=True)
+                (root / "runs" / "run-1" / "run.json").write_text(json.dumps({"status": "needs_review", "artifacts": [{"path": "a"}]}), encoding="utf-8")
+                return Completed()
+
+            original = scene.subprocess.run
+            scene.subprocess.run = fake_run
+            try:
+                scene.submit(root, wait=True)
+            finally:
+                scene.subprocess.run = original
+            self.assertNotIn("--requested-by", calls[0])
+
+    def test_actor_choices_include_grok_and_claude(self):
+        self.assertEqual(("codex", "hermes", "web", "grok", "claude", "user"), scene.ACTORS)
+
     def test_existing_session_submit_skips_completed_engines(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

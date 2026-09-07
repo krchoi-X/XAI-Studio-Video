@@ -350,7 +350,9 @@ class WangpRunAdapter:
             title=title,
             requested_by=requested_by,
             requested_by_basis=requested_by_basis,
-            executor=EXECUTOR_LOCAL_WORKER if worker_pid else "wangp" if run.get("target") == "local" else str(run.get("target") or "unknown"),
+            # an executor recorded at submit time wins over the inference from the run shape
+            executor=str(run.get("executor")) if run.get("executor") else (
+                EXECUTOR_LOCAL_WORKER if worker_pid else "wangp" if run.get("target") == "local" else str(run.get("target") or "unknown")),
             engine=str(run.get("renderer") or "WanGP"),
             model=str(model) if model else None,
             status=status,
