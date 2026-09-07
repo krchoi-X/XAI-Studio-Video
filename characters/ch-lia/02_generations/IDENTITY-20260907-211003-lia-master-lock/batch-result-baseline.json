@@ -1,0 +1,23 @@
+{
+  "session": "IDENTITY-20260907-211003-lia-master-lock",
+  "finished_at": "2026-09-08T02:11:16+09:00",
+  "results": [
+    {
+      "shot": "ng-00-rebuild-same",
+      "status": "needs_review",
+      "run_id": "run-20260908-011915-308fca46",
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260907-211003-lia-master-lock\\outputs\\krea2-edit\\run-20260908-011915-308fca46.jpg"
+      ]
+    },
+    {
+      "shot": "rw-00-rebuild-same",
+      "status": "needs_review",
+      "run_id": "run-20260908-012616-be8a164b",
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260907-211003-lia-master-lock\\outputs\\krea2-edit\\run-20260908-012616-be8a164b.jpg"
+      ],
+      "note": "the batch waiter timed out at 45 min; the run itself completed in 58.8 min"
+    }
+  ]
+}

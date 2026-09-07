@@ -1,7 +1,8 @@
 # Scoped Task — Character identity lock (master reference → identity image set)
 
 Owner / Active editor: Claude Code
-Status: IN PROGRESS — step 1 (master selection) awaiting the operator's pick
+Status: IN PROGRESS — master picked (#4); engine and failure modes measured; awaiting the operator's
+review of the overnight results and a decision on renting a GPU
 Started: 2026-09-07
 First character: **ch-lia** (chosen by the user)
 
@@ -123,6 +124,60 @@ WanGP applies NAG only when `NAG_scale > 1`, and every settings file this projec
 so no negative prompt has ever had any effect here. The first attempt at `NAG_scale: 3` was rejected in validation
 ("NAG Scale must be at most 1.5") in 20 seconds without touching the GPU, and the batch stopped rather than
 retrying. Corrected to 1.5, which is the cap and still above the activation threshold.
+
+### Engine comparison on the no-change baseline — measured (2026-09-08 02:25)
+
+Same master, same "change nothing" prompt, three engine settings:
+
+| setting | cosine vs master | wall clock |
+|---|---|---|
+| Krea2 **RAW**, 20 steps, guidance 2, negative prompt | **0.913** | 59 min |
+| Krea2 Turbo, 8 steps, guidance 0 | 0.779 | 9 min |
+| Krea2 Turbo + NAG 1.5 + negative prompt | 0.691 | 7 min |
+
+**RAW is the answer to the floor.** Round-trip loss falls from 0.22 to 0.09, and the eye shape the operator cares
+about survives visibly — the elongated eyes stay elongated instead of rounding. Sheet:
+`D:\AI_Studio
+eports\lia-identity-candidates\compare-engine-baseline.jpg`.
+
+**NAG made it worse and is dropped.** Pushing away from "generic idealized AI beauty" also pushed away from the
+master, which shares those traits. A far narrower negative might work, but the wide one is counterproductive.
+
+**RAW costs 2.89 min per step, 59 min per image on this laptop.** My earlier 20-minute estimate was wrong: the
+undistilled model is heavy and 8 GB forces constant offloading. A twelve-image set would be about twelve hours
+locally. This is now a second, independent reason to rent a GPU: on a 32 GB card RAW runs without offloading, so
+both the identity set *and* the LoRA training become practical there. The pod is no longer only a training story.
+
+Correction: the batch record first showed `rw-00-rebuild-same` as failed. That was my waiter giving up at 45
+minutes, not the run; it completed normally at 58.8 minutes and the record has been fixed.
+
+### RAW does not fix rotation — measured (2026-09-08 03:54)
+
+| shot | engine | cosine vs master |
+|---|---|---|
+| no change | RAW | 0.913 |
+| turn 45 | RAW | 0.542 |
+| turn 45 | turbo | 0.580 |
+
+RAW is no better than turbo at a 45-degree turn, and the two turned images land in the same "other person"
+territory. This separates two failure modes that were previously confused:
+
+1. **Reconstruction fidelity** — how much identity is lost simply passing through the model. RAW fixes this
+   (0.779 → 0.913).
+2. **Novel-view synthesis** — inventing a view the reference does not contain. Neither engine fixes this, and a
+   bigger model will not either, because the information is absent rather than badly reproduced.
+
+That settles the architecture. The edit route can produce *variation* of the same person (expression, hair,
+wardrobe, lighting, framing) but not *angles*. Angles have to come from something that carries one identity
+through the intermediate views — the H3 video turnaround — or from a LoRA that has learned the identity.
+
+Note on the bootstrap: a character LoRA does **not** need multi-angle training images to produce multi-angle
+output. The base model already knows how faces rotate; the LoRA supplies identity. Angle coverage in the dataset
+improves the result but is not a precondition. So the set can be built as: RAW for same-person variation, video
+turnaround for whatever angle coverage it yields, then train.
+
+Cost note: this run took 86.8 minutes, against 58.8 for the no-change shot. Budget 60–90 minutes per RAW image
+on this laptop.
 
 ### Prepared, not yet run
 

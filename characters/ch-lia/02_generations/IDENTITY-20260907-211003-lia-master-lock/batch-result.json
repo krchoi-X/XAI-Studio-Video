@@ -1,0 +1,14 @@
+{
+  "session": "IDENTITY-20260907-211003-lia-master-lock",
+  "finished_at": "2026-09-08T03:54:06+09:00",
+  "results": [
+    {
+      "shot": "rw-02-turn-45",
+      "status": "needs_review",
+      "run_id": "run-20260908-022715-dd20cdc4",
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260907-211003-lia-master-lock\\outputs\\krea2-edit\\run-20260908-022715-dd20cdc4.jpg"
+      ]
+    }
+  ]
+}
