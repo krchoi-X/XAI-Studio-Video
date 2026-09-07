@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260907-175102-f714dc7d",
+  "project_id": "SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing",
+  "prompt_id": "SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing-krea2",
+  "status": "needs_review",
+  "created_at": "2026-09-07T17:51:02+09:00",
+  "updated_at": "2026-09-07T17:52:36+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-32292",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing\\prompt.txt",
+    "sha256": "7cbfa765564325cc421daab284b454a2071da35f7cd6ff192025e742c31f8593",
+    "normalized_sha256": "3ccccd664eaab85411c7cf6b84e46d49988a901b8cd572a95cdaa4a432271b8f",
+    "byte_count": 4027
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_moody_krea",
+      "base_model_type": "krea2_turbo",
+      "model_filename": "D:\\AI\\Models\\image-generation\\krea2\\moodyKrea2Mix_v70_INT8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 2,
+      "repeat_generation": 1,
+      "seed": 907175103,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Moody Krea 2 V7 INT8"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175102-f714dc7d.jpg",
+      "sha256": "11dd69dac46bcf01f8daee686a88956fcfddd522455889009b780ec68dbb4c49",
+      "byte_count": 214508,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T17:52:36+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175102-f714dc7d_1.jpg",
+      "sha256": "0b90d312a90238e4685a7ae0c9778d84dbc5c9fde5d8489e660458f78d17f637",
+      "byte_count": 220437,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T17:52:36+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 34700,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing\\runs\\run-20260907-175102-f714dc7d",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing\\runs\\run-20260907-175102-f714dc7d\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing\\runs\\run-20260907-175102-f714dc7d\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260907-175102-lia-fully-clothed-adult-woman-wearing\\runs\\run-20260907-175102-f714dc7d\\worker.stderr.log"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-05T00:47:34+00:00",
+  "updated_at": "2026-09-06T10:52:52+00:00",
   "characters": [
     {
       "id": "ch-han-seorin",
@@ -46,6 +46,15 @@
       "version": 2,
       "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
       "path": "characters/ch-lia/character.json"
+    },
+    {
+      "id": "ch-mizuki-reika",
+      "name": "미즈키 레이카",
+      "romanized_name": "Mizuki Reika",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "11ce5b9501577c82d60051075ab7b4301297e858c137866711ff92711c0447c1",
+      "path": "characters/ch-mizuki-reika/character.json"
     },
     {
       "id": "ch-mizuno-aoi",

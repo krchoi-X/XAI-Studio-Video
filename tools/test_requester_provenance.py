@@ -211,6 +211,16 @@ class SessionProvenanceTests(unittest.TestCase):
             (root / "session-provenance.json").write_text(json.dumps({"requested_by": "claude"}), encoding="utf-8")
             self.assertEqual("claude", wangp_recorder.session_requester(root))
 
+    def test_yaml_batch_requester_is_read_and_malformed_yaml_falls_back(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            batch = root / "batch.yaml"
+            batch.write_text("session:\n  created_by: grok\n", encoding="utf-8-sig")
+            self.assertEqual("grok", wangp_recorder.session_requester(root))
+            batch.write_text("session: [broken", encoding="utf-8")
+            (root / "prompt-trace.json").write_text('{"invoked_by": "claude"}', encoding="utf-8")
+            self.assertEqual("claude", wangp_recorder.session_requester(root))
+
     def test_batch_session_created_by_is_read(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

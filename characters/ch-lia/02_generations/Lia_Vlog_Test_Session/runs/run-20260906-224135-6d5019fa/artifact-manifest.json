@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260906-224135-6d5019fa",
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\run-20260906-224135-6d5019fa.mp4",
+      "sha256": "bf55df8fc763f3c1e9e71f6f56ca3e8235f20178c720b151d54abad946333d22",
+      "byte_count": 10058827,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "d31eb814784e3cd670ca3094104799ebfc944bbb3e5bab422e0d5f9a4fabafeb",
+      "prompt_exact_match": true,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-06T23:10:28+09:00"
+    }
+  ]
+}

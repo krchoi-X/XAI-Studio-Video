@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing",
+  "character_id": "ch-lia",
+  "character_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "created_at": "2026-09-07T08:52:43+00:00",
+  "created_by": "codex",
+  "local_model": null,
+  "source_request": "FULLY CLOTHED adult woman wearing a Japanese convenience-store part-time employee uniform with short-sleeve collared polo shirt and dark work pants, hair in a neat ponytail with bangs, standing behind the checkout counter, three thin red-and-blue knotted bracelets on right wrist, quiet closed-mouth smile, photorealistic workplace photo, modest attire, no nudity",
+  "runtime_prompt_sha256": "7cbfa765564325cc421daab284b454a2071da35f7cd6ff192025e742c31f8593",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "clothed",
+    "wardrobe": "Japanese convenience-store part-time employee uniform: short-sleeve collared polo shirt and dark work pants, fully clothed, torso and legs covered"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-lia",
+    "character_version": 2,
+    "mode": "strict_translation",
+    "coverage": "clothed",
+    "wardrobe": "Japanese convenience-store part-time employee uniform: short-sleeve collared polo shirt and dark work pants, fully clothed, torso and legs covered",
+    "hair": "a clearly visible low ponytail tied at the nape, with the hair pulled away from the shoulders",
+    "location": "convenience store interior behind checkout counter",
+    "activity": "standing behind the checkout counter at work",
+    "expression": "quiet closed-mouth faint smile",
+    "props": "checkout counter, store shelves",
+    "negative_constraints": "nudity, bare chest, lingerie, swimsuit, towel, robe"
+  },
+  "suppressed_stable_dna_fields": [
+    "hair"
+  ]
+}

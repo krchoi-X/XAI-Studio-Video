@@ -1,7 +1,11 @@
 # Agent Development & Production Role Split
 
-Status: **Draft operating architecture**  
-Updated: 2026-09-06
+Status: **Operating roles; shared policy accepted 2026-09-07**
+Updated: 2026-09-07
+
+## Shared policy amendment — 2026-09-07
+
+The user requires consistent instructions, handoffs and artifact review across Codex, Claude Code, Grok Bot and any LLM hosted by Hermes. [Shared workflow](shared-agent-workflow.md) defines entrypoints, task ownership and installation verification; [artifact contract](artifact-and-review-contract.md) defines shared paths and web destinations. Agent names below are default host roles, not exclusive permissions or separate output silos. Explicit bounded assignments remain authoritative. The Hermes diagrams describe the existing default production path; another explicitly assigned executor follows the same contracts. This amendment governs interpretation of the historical examples below.
 
 ## Goal
 
@@ -315,6 +319,12 @@ Reference: `docs/control-tower-local-job-observability.md`.
 
 ## Escalation logic
 
+### 2026-09-06 decision: Grok Bot bounded development and production trial
+
+The user added Grok Bot as an eligible worker for bounded development and image/video batch operation trials. Hermes remains a supported production worker; superiority or replacement is not established. Grok Bot owns the isolated `external_media_import/**` first assignment described in `docs/grok-bot-handoff.md`. Codex retains shared-contract and Gallery integration ownership; Claude retains Control Tower ownership. The user subsequently expanded the first assignment to images and videos, including Gallery thumbnails, playback, duration and resolution. The handoff explicitly assigns the necessary Studio importer, API, shared-type and Gallery files to Grok Bot, with backward-compatible image contracts and Codex compatibility review; database migrations remain outside scope. Actual generation is a separate operator-triggered trial.
+
+The original Hermes-centred diagram below describes the existing path, not an exclusive worker requirement. Distinguish the requesting actor, Grok Bot as executor, and the actual image/video provider and model. Honour an explicitly requested engine; do not silently substitute local generation for GPT or another named service.
+
 Suggested ownership:
 
 ```text
@@ -338,7 +348,7 @@ The precise model used inside each tool may change; the role boundary should rem
 
 ## Architectural principle
 
-**The user directs content. Hermes produces content. Codex and Claude improve the production system.**
+**The user directs content. Assigned production agents produce through shared contracts. Assigned development agents improve the system.**
 
 This allows model and provider changes without forcing the user to learn a new production workflow.
 
@@ -358,17 +368,6 @@ Local LLM / Image / Video / GPU services
 Codex / Claude Code
 ```
 
-## Next implementation milestones
+## Implementation status and next work
 
-1. Define the web UI's five canonical states:
-   - Idea
-   - Storyboard
-   - Sample
-   - Review
-   - Final
-2. Define the JSON contract for Idea → Storyboard.
-3. Create the first Hermes `idea-to-storyboard` skill.
-4. Add structured generation-job state.
-5. Connect one low-cost sample image/video path.
-6. Add per-shot approve / regenerate.
-7. Keep model/provider selection behind an advanced settings layer.
+Use [current priorities](current-priorities.md) and the applicable TASK instead of treating this role document as a backlog. Idea-to-production contracts and skills already exist; inspect them before proposing duplicates. Control Tower retains its Claude ownership exception. Grok's external importer has its own scoped task and remaining live checks. No role assignment in this document automatically starts an agent or a production job.

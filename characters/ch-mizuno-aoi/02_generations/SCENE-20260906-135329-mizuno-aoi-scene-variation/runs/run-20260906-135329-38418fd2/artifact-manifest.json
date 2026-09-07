@@ -1,0 +1,35 @@
+{
+  "run_id": "run-20260906-135329-38418fd2",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-135329-mizuno-aoi-scene-variation\\outputs\\z-image\\run-20260906-135329-38418fd2.jpg",
+      "sha256": "b8888529c008d85bc1e1dfadf3c20cdbe9dee79b46bd694e36c3042eb882a4a7",
+      "byte_count": 171121,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T13:55:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-135329-mizuno-aoi-scene-variation\\outputs\\z-image\\run-20260906-135329-38418fd2_1.jpg",
+      "sha256": "9a8a733643402650de090b1af40b6cda30301c286f245196ee3a8f4595b0f4a7",
+      "byte_count": 162911,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T13:55:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-135329-mizuno-aoi-scene-variation\\outputs\\z-image\\run-20260906-135329-38418fd2_2.jpg",
+      "sha256": "6f39c52105d5e9f00f6d45889dd40368f89d1cf31d7c6ff571f48cf7ace27f96",
+      "byte_count": 167418,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T13:55:07+09:00"
+    }
+  ]
+}

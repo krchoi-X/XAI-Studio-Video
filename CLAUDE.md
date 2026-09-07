@@ -1,5 +1,5 @@
 @AGENTS.md
 
-# Claude Code note
+# Claude Code entrypoint
 
-Treat `AGENTS.md` as the canonical cross-agent instruction file for this repository. Do not create a second independent set of project rules here. Read `TASK.md` and reconstruct current work from Git state before continuing interrupted Codex work.
+`AGENTS.md` is the shared policy for all project agents. Read the applicable task and reconstruct current work from Git before continuing. See [shared workflow](docs/shared-agent-workflow.md) for ownership/handoff and [artifact contract](docs/artifact-and-review-contract.md) when producing or presenting results. Retain explicit scoped assignments, including Control Tower. Do not keep an independent policy here or label direct Claude execution as codex.

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait",
+  "character_id": "ch-mizuki-reika",
+  "character_version": 1,
+  "stable_dna_sha256": "11ce5b9501577c82d60051075ab7b4301297e858c137866711ff92711c0447c1",
+  "created_at": "2026-09-06T10:53:20+00:00",
+  "created_by": "codex",
+  "local_model": null,
+  "source_request": "그 설정을 이용해서 레이카 기본 이미지 후보가 될 이미지 10개를 만들어줘. Initial base identity candidate portrait of Mizuki Reika. Photorealistic professional model casting photograph, one adult woman, chest-up front-facing portrait at eye level, face clearly visible, long sleek black hair behind the shoulders, simple black crew-neck top, neutral light-gray seamless studio background, large soft diffused light, realistic skin texture, restrained minimal makeup, calm relaxed mouth and direct gaze, 85mm portrait lens. Keep the complete head in frame. No glasses, no accessories, no text, no collage. Explore seed variations for initial face selection; no reference has been approved yet.",
+  "runtime_prompt_sha256": "41a17e67c0606540665c9c98a25da03b2c9e8a2dfd8c010218e1523c417114ee",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {},
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-mizuki-reika",
+    "character_version": 1,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "ch-mizuki-reika",
+  "name": "미즈키 레이카",
+  "romanized_name": "Mizuki Reika",
+  "status": "candidate",
+  "version": 1,
+  "stable_dna": {
+    "adult_age_range": "23-year-old adult woman",
+    "visual_background": "Japanese woman",
+    "face": {
+      "shape": "slender slightly elongated oval face, subtly defined cheekbones, slight youthful cheek softness",
+      "eyes": "slightly elongated almond-shaped dark-brown eyes with subtly lifted outer corners",
+      "eyebrows": "relatively low eyebrow-to-eye distance",
+      "nose": "straight refined nose bridge",
+      "lips": "small-to-medium mouth, defined cupid bow, naturally fuller lower lip",
+      "jaw": "softly tapered lower face, defined but not overly sharp jaw, no exaggerated V-line"
+    },
+    "body": {
+      "height_impression": "about 178 cm, tall slender healthy professional fashion model",
+      "limb_proportions": "long legs and arms",
+      "shoulders": "straight elegant shoulders and long neck",
+      "torso": "lean healthy professional-model proportions, never skeletal",
+      "bust": "unspecified; natural proportion consistent with slender healthy build",
+      "waist": "narrow waist",
+      "pelvis_hips": "natural proportion consistent with slender healthy build; exact dimensions unspecified",
+      "lower_body": "long model-proportioned legs, healthy lean build",
+      "body_hair": "unspecified"
+    },
+    "hair": "long jet-black naturally sleek smooth hair",
+    "skin": "pale warm-ivory to neutral-ivory skin, realistic pores and microtexture, natural satin finish",
+    "distinctive_marks": [],
+    "recognition_anchors": [
+      "slender slightly elongated oval face with subtle cheek softness",
+      "almond-shaped dark-brown eyes with subtly lifted outer corners",
+      "long jet-black hair",
+      "tall healthy slender model proportions"
+    ]
+  },
+  "scene_defaults": {
+    "expression": "controlled restrained professional expression",
+    "makeup": "restrained cat-eye liner, faint cool-pink blush, muted-rose lips",
+    "gaze": "direct, controlled, slightly heavy-lidded"
+  },
+  "approved_references": [],
+  "prompt_sources": [
+    "D:/codex/XAI-Studio-Private/XAI-Studio/personal-prompt-studio/docs/characters/mizuki-reika.md"
+  ],
+  "lora_associations": [],
+  "video_test_associations": [],
+  "provenance": {
+    "created_at": "2026-09-06T10:52:46+00:00",
+    "updated_at": "2026-09-06T10:52:52+00:00",
+    "created_by": "codex",
+    "sources": [
+      "XAI-Studio-Private commit 2e6de2c: mizuki-reika.md"
+    ],
+    "change_reason": "User requested ten initial image candidates; faithful source transcription after local draft timed out",
+    "stable_dna_sha256": "11ce5b9501577c82d60051075ab7b4301297e858c137866711ff92711c0447c1"
+  }
+}

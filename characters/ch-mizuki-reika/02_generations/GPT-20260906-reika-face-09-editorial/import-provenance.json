@@ -1,0 +1,23 @@
+[
+  {
+    "file": "face-09-editorial-1.png",
+    "original_path": "D:\\codex\\XAI-studio\\output\\reika-gpt-expression-study-20260906\\face-09-editorial-1.png",
+    "sha256": "ba3411fb8db4ac28aa5ce2807a1ac56e32fb9e47da4c357d4ac13734010a33b7",
+    "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Black jacket editorial 1: chest-up frontal studio portrait, structured oversized black tailored blazer over a simple black top, gray seamless studio. Controlled cool confident fashion expression, relaxed closed lips, direct slightly heavy-lidded gaze. Large softbox high camera-right and gentle negative fill, elegant restrained makeup, 85mm lens.",
+    "reference_image": "D:\\codex\\XAI-studio\\output\\reika-gpt-candidates-20260906\\reika-gpt-09.png"
+  },
+  {
+    "file": "face-09-editorial-2.png",
+    "original_path": "D:\\codex\\XAI-studio\\output\\reika-gpt-expression-study-20260906\\face-09-editorial-2.png",
+    "sha256": "9e4dd5226379d9ed83da20e525673511f15aad35fdc995f2a3da45972a3624dd",
+    "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Black jacket editorial 2: waist-up three-quarter pose with face turned toward lens, same black tailored blazer and black top, off-white studio, elegant hand lightly on lapel. Restrained sophisticated unsmiling editorial expression, dark chic luxury fashion mood. Soft directional studio lighting, natural facial anatomy.",
+    "reference_image": "D:\\codex\\XAI-studio\\output\\reika-gpt-candidates-20260906\\reika-gpt-09.png"
+  },
+  {
+    "file": "face-09-editorial-3.png",
+    "original_path": "D:\\codex\\XAI-studio\\output\\reika-gpt-expression-study-20260906\\face-09-editorial-3.png",
+    "sha256": "35edfeb3be0292f072ac10ef20c4e19adc30c59e6be10f1e0ca8fbf8a57ffb50",
+    "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Black jacket editorial 3: seated waist-up editorial portrait with shoulders slightly angled, black tailored blazer and black top, minimalist gray studio, gaze directly at camera, composed self-possessed unsmiling expression. Subtle side light models cheekbones without harshness. Hands naturally resting out of face area.",
+    "reference_image": "D:\\codex\\XAI-studio\\output\\reika-gpt-candidates-20260906\\reika-gpt-09.png"
+  }
+]

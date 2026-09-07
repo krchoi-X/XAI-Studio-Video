@@ -1,0 +1,32 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+  ],
+  "resolution": "576x768",
+  "video_length": 243,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "seed": -1,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "_xai": {
+    "kind": "lia_intro_10s",
+    "character_id": "ch-lia",
+    "character_dna_version": 2,
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+    "reference_role": "main_subject_identity_and_output_dimensions",
+    "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+    "episode": "intro-01-hi-im-lia",
+    "title": "Direct soft self-intro",
+    "requested_seconds": 10,
+    "frame_grid": "17k+5 @24fps -> 243 frames (10.125 s)",
+    "prompt_mode": "FG",
+    "expected_queue_items": 1
+  }
+}

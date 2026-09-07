@@ -1,0 +1,25 @@
+{
+  "run_id": "run-20260907-180834-2a6549b3",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-180834-lia-fully-clothed-adult-woman-at\\outputs\\krea2\\run-20260907-180834-2a6549b3.jpg",
+      "sha256": "7a8135ed863dcbaa6b364a3df30b978cd29ffa2b9512a5e1d1eebc429612317b",
+      "byte_count": 194825,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T18:10:07+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-180834-lia-fully-clothed-adult-woman-at\\outputs\\krea2\\run-20260907-180834-2a6549b3_1.jpg",
+      "sha256": "5e08c0b7669b679957518e1adc66f048347550ce586ca52a04579addb0e3c687",
+      "byte_count": 189554,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T18:10:07+09:00"
+    }
+  ]
+}

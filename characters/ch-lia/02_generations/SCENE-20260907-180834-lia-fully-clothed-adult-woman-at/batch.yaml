@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260907-180834-lia-fully-clothed-adult-woman-at",
+    "character_id": "ch-lia",
+    "character_name": "Lia",
+    "romanized_name": "Lia",
+    "title": "FULLY CLOTHED adult woman at home in a simple T-shirt and shorts, loose hair with bangs, sitting on a small seaside-house veranda playing with a cream tabby cat and a ball of yarn, three thin red-and-blue knotted bracelets on right wrist, quiet closed-mouth smile, photorealistic, modest attire",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-180834-lia-fully-clothed-adult-woman-at\\outputs",
+    "created_at": "2026-09-07T09:08:34+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 2,
+      "seed": 907180835,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260907-180834-lia-fully-clothed-adult-woman-at\\runs\\run-20260907-180834-2a6549b3"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}

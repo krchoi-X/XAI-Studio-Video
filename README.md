@@ -1,5 +1,9 @@
 # XAI-Studio-Video
 
+## Agent and result entrypoints
+
+All agents start at [AGENTS.md](AGENTS.md). [Shared workflow](docs/shared-agent-workflow.md) covers Codex, Claude Code, Grok Bot and Hermes-hosted models. [Artifact and review contract](docs/artifact-and-review-contract.md) maps durable folders to existing Studio surfaces. See [current priorities](docs/current-priorities.md) for active work and [verification](docs/verification.md) for scoped checks.
+
 Version: **0.3.0-draft**
 
 A reusable skillset and production-design framework for AI visual storytelling, with video as the first production target.

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260907-014509-869cf294",
+  "project_id": "VIDEO-20260906-233747-lia-intro-10s-trio",
+  "prompt_id": "intro-02-quiet-presence",
+  "status": "needs_review",
+  "created_at": "2026-09-07T01:45:09+09:00",
+  "updated_at": "2026-09-07T03:46:58+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-36596",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\intro-02-quiet-presence.txt",
+    "sha256": "9209f3b9b574a740d79d020afafcf69869a1993eff77fbffbcf4b2cb90779a60",
+    "normalized_sha256": "c963ff3d9df173db487e4b16706f3bd1105ae71b706567b84b3e877d88d8af5a",
+    "byte_count": 1809
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\intro-02-quiet-presence.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+      ],
+      "resolution": "576x768",
+      "video_length": 243,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "seed": -1,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "_xai": {
+        "kind": "lia_intro_10s",
+        "character_id": "ch-lia",
+        "character_dna_version": 2,
+        "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+        "reference_role": "main_subject_identity_and_output_dimensions",
+        "reference_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+        "episode": "intro-02-quiet-presence",
+        "title": "Near-still identity presence",
+        "requested_seconds": 10,
+        "frame_grid": "17k+5 @24fps -> 243 frames (10.125 s)",
+        "prompt_mode": "FG",
+        "expected_queue_items": 1
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-233747-lia-intro-10s-trio\\run-20260907-014509-869cf294.mp4",
+      "sha256": "2ca3dee7e79eccb2e7f20a953111e33e3c30d4dbe2845316f94d75910b39ad9b",
+      "byte_count": 8912004,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "57ec737b16a1e00ddc2caf12f93c7c39af7871c154e07a4f931c27cb58dd5a3b",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T03:46:58+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 33520,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\runs\\run-20260907-014509-869cf294",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\runs\\run-20260907-014509-869cf294\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-233747-lia-intro-10s-trio",
+      "--profile",
+      "1",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\runs\\run-20260907-014509-869cf294\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\runs\\run-20260907-014509-869cf294\\worker.stderr.log"
+  }
+}

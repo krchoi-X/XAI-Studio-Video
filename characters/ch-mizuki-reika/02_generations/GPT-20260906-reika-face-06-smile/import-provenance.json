@@ -1,0 +1,23 @@
+[
+  {
+    "file": "face-06-smile-1.png",
+    "original_path": "D:\\codex\\XAI-studio\\output\\reika-gpt-expression-study-20260906\\face-06-smile-1.png",
+    "sha256": "6ac7817c14ae89e51ddac7b95e8858eafa4a97e41b231eabe8f71c8e5f25bdac",
+    "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Bright everyday smile 1: chest-up candid portrait at home beside a window, ivory cotton casual crew-neck top. Broad genuinely delighted tooth-showing smile, eyes bright and naturally crinkling, relaxed posture. Warm soft daylight, uncluttered home softly blurred behind. Preserve exact reference identity as facial muscles move naturally.",
+    "reference_image": "D:\\codex\\XAI-studio\\output\\reika-gpt-candidates-20260906\\reika-gpt-06.png"
+  },
+  {
+    "file": "face-06-smile-2.png",
+    "original_path": "D:\\codex\\XAI-studio\\output\\reika-gpt-expression-study-20260906\\face-06-smile-2.png",
+    "sha256": "e4a6127534d1d0e5847fdad0659ef5a61ac977f045bc0f452787add218ca360b",
+    "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Bright everyday smile 2: waist-up candid photograph in a cozy cafe, soft pale-blue casual knit top, holding a simple mug low at chest level. A broad spontaneous happy laugh with teeth visible and smiling eyes, face toward camera, relaxed shoulders. Gentle window daylight and softly blurred cafe background, natural skin and facial expression.",
+    "reference_image": "D:\\codex\\XAI-studio\\output\\reika-gpt-candidates-20260906\\reika-gpt-06.png"
+  },
+  {
+    "file": "face-06-smile-3.png",
+    "original_path": "D:\\codex\\XAI-studio\\output\\reika-gpt-expression-study-20260906\\face-06-smile-3.png",
+    "sha256": "7fee4693a9a66d373aabbc20cf14e4bc2da7abdf7917a3f67a74d9491dffe481",
+    "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Bright everyday smile 3: candid waist-up at home in a simple bright kitchen, light pink casual top and ivory apron, long black hair loosely tied back with face unobstructed. Beaming genuine smile, delighted lively eyes, naturally visible teeth, as if pleased with a small cooking success. Soft morning daylight, simple domestic background, no other people.",
+    "reference_image": "D:\\codex\\XAI-studio\\output\\reika-gpt-candidates-20260906\\reika-gpt-06.png"
+  }
+]

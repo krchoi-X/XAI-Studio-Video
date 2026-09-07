@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260906-195320-537cb7fb",
+  "project_id": "SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait",
+  "prompt_id": "SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait-z-image",
+  "status": "needs_review",
+  "created_at": "2026-09-06T19:53:20+09:00",
+  "updated_at": "2026-09-06T19:55:39+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-13068",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\prompt.txt",
+    "sha256": "41a17e67c0606540665c9c98a25da03b2c9e8a2dfd8c010218e1523c417114ee",
+    "normalized_sha256": "9cc94a5c4997861bdeddf7ae298ad456a03cfae1f7441ff66d677fada9013d61",
+    "byte_count": 2754
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\z-image.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "z_image",
+      "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 8,
+      "batch_size": 5,
+      "repeat_generation": 1,
+      "seed": 906195321,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "NAG_scale": 1,
+      "NAG_tau": 3.5,
+      "NAG_alpha": 0.5,
+      "type": "Z Image Turbo"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb.jpg",
+      "sha256": "f39b600afb1c37509672faad8d7c7e2377e2854345e5e608046c74ef878a22fa",
+      "byte_count": 129624,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:38+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb_1.jpg",
+      "sha256": "6d8efe56d232c44f118d8c48214be4438397fb3abc09273f976c9f618820c7ba",
+      "byte_count": 123230,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:38+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb_2.jpg",
+      "sha256": "a7239278b2453e73cad1cef28e8da74fc1748173012c85dc276b9a5bda44a18c",
+      "byte_count": 118597,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:38+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb_3.jpg",
+      "sha256": "db542574db2ac7ac22f728a044df1f11f5079e0a3e770806f17430079dfbe57c",
+      "byte_count": 128409,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:38+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb_4.jpg",
+      "sha256": "301dc9ab730a28fb103d69543593ba5523146d0b916e46b00c4148952ca8e1ee",
+      "byte_count": 129649,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:39+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 32664,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\runs\\run-20260906-195320-537cb7fb",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\runs\\run-20260906-195320-537cb7fb\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\runs\\run-20260906-195320-537cb7fb\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\runs\\run-20260906-195320-537cb7fb\\worker.stderr.log"
+  }
+}

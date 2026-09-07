@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve her slim slightly elongated oval face, large soft slightly elongated dark-brown eyes, small refined nose, soft rose-beige gently closed satin-finish lips, fresh translucent pale skin with visible fine pores, long near-black hair with soft full lived-in bangs, and exactly three thin red-and-blue knotted bracelets on her right wrist when the wrist is visible. Do not reinterpret, beautify, stylize, celebrity-resemble, or replace her face.
+
+summary:
+[reference generation] One quiet ten-second introduction selfie. <Subject 1> looks at the camera with a faint closed-mouth smile, breathes once, and softly says, (S1) <d>[English] Hi. I'm Lia.</d>, then holds a calm natural pause with lowered gaze.
+
+retention_analysis:
+<Subject 1> (appears throughout [Shot 1]): fully_preserved — exact facial identity, hair, skin, and bracelet anchors remain unchanged from <Picture 1>. Only micro head motion, one natural blink, mouth for speech, and a faint closed-mouth smile may change.
+
+detailed_description:
+The target video is one continuous ten-second photorealistic selfie-style introduction shot matching the lighting and room feel of <Picture 1>. Motion budget LOW. [Shot 1] <Subject 1> starts near the pose of <Picture 1>, calm coordinated gaze at the lens, faint quiet unposed closed-mouth smile. She blinks once naturally, then says softly, (S1) <d>[English] Hi. I'm Lia.</d> After speaking she keeps a small closed-mouth smile and slightly lowers her gaze, not holding eye contact for long. Keep identity locked to <Picture 1> before, during, and after speech. Minimal handheld breathing only. No cut, no zoom, no wardrobe change, no beauty-filter skin, no exaggerated influencer smile, no eye enlargement.
+
+overall_soundscape:
+Quiet room tone and synchronized soft natural speech in a calm quiet voice.
+
+non_diegetic_music:
+None.

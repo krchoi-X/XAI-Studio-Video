@@ -1,0 +1,32 @@
+2026-09-06T23:50:46.840244+09:00 lineage/README/handoff documentation written
+2026-09-06T23:50:46.840244+09:00 intro-01 submitted run-20260906-233805-e06397d6
+2026-09-06T23:56:28+09:00   progress intro-01 denoising 0/20
+2026-09-07T00:00:37+09:00   progress intro-01 denoising 3/20
+2026-09-07T00:10:23+09:00   progress intro-01 denoising 5/20
+2026-09-07T00:21:37+09:00   progress intro-01 denoising 6/20
+2026-09-07T00:26:49+09:00   progress intro-01 denoising 7/20
+2026-09-07T00:37:17+09:00   progress intro-01 denoising 9/20
+2026-09-07T00:47:49+09:00   progress intro-01 denoising 11/20
+2026-09-07T01:09:40+09:00   progress intro-01 denoising 15/20
+2026-09-07T01:19:54+09:00   progress intro-01 denoising 16/20
+2026-09-07T01:30:03+09:00   progress intro-01 denoising 18/20
+2026-09-07T01:44:48+09:00 intro-01-hi-im-lia: needs_review error=None artifacts=['D:\AI_Studio\library\characters\ch-lia\videos\VIDEO-20260906-233747-lia-intro-10s-trio\run-20260906-233805-e06397d6.mp4'] duration=~122min 10.125s 608x736 h264+aac
+2026-09-07T01:45:27+09:00 intro-02-quiet-presence: submitted run-20260907-014509-869cf294 worker pid 33520
+2026-09-07T01:53:39+09:00   progress intro-02 denoising 1/20
+2026-09-07T02:03:54+09:00   progress intro-02 denoising 2/20
+2026-09-07T02:18:07+09:00   progress intro-02 denoising 5/20
+2026-09-07T02:31:37+09:00   progress intro-02 denoising 7/20
+2026-09-07T02:45:07+09:00   progress intro-02 denoising 9/20
+2026-09-07T02:58:41+09:00   progress intro-02 denoising 12/20
+2026-09-07T03:12:17+09:00   progress intro-02 denoising 14/20
+2026-09-07T03:25:51+09:00   progress intro-02 denoising 16/20
+2026-09-07T03:53:16+09:00 intro-02-quiet-presence: needs_review error=None artifacts=['D:\AI_Studio\library\characters\ch-lia\videos\VIDEO-20260906-233747-lia-intro-10s-trio\run-20260907-014509-869cf294.mp4'] duration=~122min 10.125s 608x736 h264+aac
+2026-09-07T03:53:51+09:00 intro-03-this-is-home: submitted run-20260907-035336-51283fc4 worker pid 26700
+2026-09-07T04:23:17+09:00   progress intro-03 denoising 4/20
+2026-09-07T04:36:50+09:00   progress intro-03 denoising 6/20
+2026-09-07T04:50:25+09:00   progress intro-03 denoising 9/20
+2026-09-07T05:05:14+09:00   progress intro-03 denoising 11/20
+2026-09-07T05:18:48+09:00   progress intro-03 denoising 13/20
+2026-09-07T05:32:17+09:00   progress intro-03 denoising 16/20
+2026-09-07T05:59:43+09:00 intro-03-this-is-home: needs_review error=None artifacts=['D:\AI_Studio\library\characters\ch-lia\videos\VIDEO-20260906-233747-lia-intro-10s-trio\run-20260907-035336-51283fc4.mp4'] duration=~123min 10.125s 608x736 h264+aac
+2026-09-07T05:59:43+09:00 sequence finished

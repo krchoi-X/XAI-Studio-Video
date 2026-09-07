@@ -1,0 +1,1 @@
+FULLY CLOTHED adult woman at home in a simple T-shirt and shorts, loose hair with bangs, sitting on a small seaside-house veranda playing with a cream tabby cat and a ball of yarn, three thin red-and-blue knotted bracelets on right wrist, quiet closed-mouth smile, photorealistic, modest attire

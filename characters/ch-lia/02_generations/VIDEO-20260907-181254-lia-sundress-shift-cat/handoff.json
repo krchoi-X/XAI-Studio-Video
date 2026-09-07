@@ -1,0 +1,116 @@
+{
+  "project_id": "VIDEO-20260907-181254-lia-sundress-shift-cat",
+  "status": "running",
+  "target_renderer": "local-wangp",
+  "model": "minimax_h3_ref2va_pruned",
+  "created_at": "2026-09-07T18:20:44.592944+09:00",
+  "source_idea": "Sundress to Shift to Cat (~10s stitch): hard cuts A beach sundress / B store uniform / D home+cat",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat",
+  "runs_root": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs",
+  "output_dir": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat",
+  "readme": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\README.md",
+  "references": {
+    "beach_sundress": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-133257-lia-scene-variation\\outputs\\krea2\\run-20260906-133438-8db5720b.jpg",
+      "sha256": "2acf40bfda49559e0cd3c64bcb1a47ac33de4abfa8a697a000b6e7788052de83"
+    },
+    "work_uniform": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175243-8e09c94a_1.jpg",
+      "sha256": "2376ce1d1661b7afe9e28f70012e581ead9b871ae741e647ceb2fa804fd147e7"
+    },
+    "home_cat": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-180834-lia-fully-clothed-adult-woman-at\\outputs\\krea2\\run-20260907-180834-2a6549b3.jpg",
+      "sha256": "7a8135ed863dcbaa6b364a3df30b978cd29ffa2b9512a5e1d1eebc429612317b"
+    },
+    "face_home_window": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "sha256": "e2df345058cd5d29644f804b39612919ad773debe9388e6bb6cfaa5d64ad0502"
+    }
+  },
+  "prompts": [
+    {
+      "prompt_id": "beat-A-beach-sundress",
+      "title": "OUTING beach sundress walk",
+      "prompt_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-A-beach-sundress.txt",
+      "settings_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-A-beach-sundress.settings.json",
+      "runtime_prompt_sha256": "2ba0257674bc37bdcd77aa5b022482eb93097fc70869489357a6a527f4022766",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-133257-lia-scene-variation\\outputs\\krea2\\run-20260906-133438-8db5720b.jpg"
+      ]
+    },
+    {
+      "prompt_id": "beat-B-store-uniform",
+      "title": "WORK convenience-store uniform",
+      "prompt_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-B-store-uniform.txt",
+      "settings_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-B-store-uniform.settings.json",
+      "runtime_prompt_sha256": "3948afba4f15b08ab39935f522af1f638cee0b26bdb70ceef0f53fb12c3b8712",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175243-8e09c94a_1.jpg"
+      ]
+    },
+    {
+      "prompt_id": "beat-D-home-cat",
+      "title": "HOME casual play with cat",
+      "prompt_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-D-home-cat.txt",
+      "settings_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-D-home-cat.settings.json",
+      "runtime_prompt_sha256": "46641056f91104629bdc0dae462421f2b712128ba0f376bb333986d046b8ceef",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-180834-lia-fully-clothed-adult-woman-at\\outputs\\krea2\\run-20260907-180834-2a6549b3.jpg"
+      ]
+    }
+  ],
+  "updated_at": "2026-09-07T19:36:24+09:00",
+  "character": {
+    "id": "ch-lia",
+    "version": 2,
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+    "character_json": "D:\\\\codex\\\\XAI-studio\\\\characters\\\\ch-lia\\\\character.json"
+  },
+  "active_run": {
+    "prompt_id": "beat-B-store-uniform",
+    "run_id": "run-20260907-193615-bf59802b",
+    "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-193615-bf59802b",
+    "requested_by": "grok"
+  },
+  "results": [
+    {
+      "prompt_id": "beat-A-beach-sundress",
+      "run_id": "run-20260907-182114-c1387088",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-182114-c1387088",
+      "status": "needs_review",
+      "artifact": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-182114-c1387088.mp4",
+      "artifact_sha256": "52d2e37b7439677c9b22669029f8a169d85e86e9fef069d2c8d174ac0f624076",
+      "approx_render_minutes": 71,
+      "started_at": "2026-09-07T18:21:14+09:00",
+      "finished_at": "2026-09-07T19:34:41+09:00",
+      "lineage": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-182114-c1387088\\lineage.json",
+      "error": null,
+      "requested_by": "grok",
+      "requesting_agent": "grok"
+    }
+  ],
+  "stitch": {
+    "order": [
+      "beat-A-beach-sundress",
+      "beat-B-store-uniform",
+      "beat-D-home-cat"
+    ],
+    "target": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\lia-sundress-shift-cat-10s.mp4",
+    "method": "ffmpeg concat demuxer",
+    "status": "pending"
+  },
+  "orchestrator": "grok",
+  "requested_by": "grok",
+  "requesting_agent": "grok",
+  "user_request_verbatim": "Produce Lia micro-vlog on ArtXorn (machineId 0971135d-fb18-40e4-8e1f-e07f6e78bc25). One GPU job at a time. Report final paths to parent.\n\n## Story (locked)\nTitle: Sundress to Shift to Cat (~10s stitch)\nBeats (hard cuts between wardrobe states):\n- A 0–3s OUTING: thin sundress, loose hair, beach walk\n- B 3–6.5s WORK: convenience-store uniform + ponytail, working register/shelves\n- D 6.5–10s HOME: T-shirt+shorts, play with cat (provisional cream/tabby — cat appearance not canon yet)\n\nDNA: D:\\codex\\XAI-studio\\characters\\ch-lia\\character.json + life dna (seaside house, convenience store job, 3 red-blue wrist bracelets, quiet smile).\n\n## Refs already available\n- Beach sundress: D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-133257-lia-scene-variation\\outputs\\krea2\\run-20260906-133438-8db5720b.jpg\n- Face/home window: D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ (file matching *10_31_54*.png)\n\n## Steps\n1. Preflight: control_tower --check and doctor; abort if GPU busy.\n2. Create still refs if missing via character_scene (work; home+cat).\n3. Create session VIDEO-<stamp>-lia-sundress-shift-cat with lineage docs; mirror under video-prompts.\n4. Three short WanGP clips minimax_h3_ref2va_pruned KI 576x768 video_length 73 steps 20 profile 1 vram-safety 0.8.\n5. Submit sequentially; poll; update docs.\n6. Stitch with ffmpeg concat to lia-sundress-shift-cat-10s.mp4.\n\nDo not edit Stable DNA. Do not parallel WanGP jobs.",
+  "provenance": {
+    "requested_by": "grok",
+    "requesting_agent": "grok",
+    "cli_actor_note": "character_scene --actor has no grok choice (codex|hermes|web only); stills used CLI-required --actor codex but requesting agent is grok. local_wangp submit has no requester flag yet.",
+    "still_sessions": {
+      "work_uniform": "SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing",
+      "home_cat": "SCENE-20260907-180834-lia-fully-clothed-adult-woman-at",
+      "work_rejected_nude_attempt": "SCENE-20260907-173926-lia-convenience-store-part-time-uniform"
+    }
+  }
+}

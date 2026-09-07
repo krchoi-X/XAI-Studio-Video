@@ -1,0 +1,11 @@
+{
+  "run_id": "run-20260907-115635-4dd42756",
+  "prompt_id": "dyn-03-lookback-exit",
+  "status": "needs_review",
+  "artifacts": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\run-20260907-115635-4dd42756.mp4"
+  ],
+  "artifact_sha256": "dd4f65aa6b2c5b3a959b2b9cafbc5dabf413b0b9a757e7b8d600e9723e0aff60",
+  "lineage": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\runs\\run-20260907-115635-4dd42756\\lineage.json",
+  "written_at": "2026-09-07T13:56:50+09:00"
+}

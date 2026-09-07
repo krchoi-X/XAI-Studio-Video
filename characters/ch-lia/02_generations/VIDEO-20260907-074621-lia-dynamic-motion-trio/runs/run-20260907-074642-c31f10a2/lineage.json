@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "project_id": "VIDEO-20260907-074621-lia-dynamic-motion-trio",
+  "prompt_id": "dyn-01-cafe-exit-beach-cut",
+  "run_id": "run-20260907-074642-c31f10a2",
+  "character_id": "ch-lia",
+  "character_dna_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "source_idea": "More moving Lia videos: cafe stand-leave with cut to beach short-dress wind walk; plus other DNA-based motion clips; same person identity critical.",
+  "inputs": {
+    "runtime_prompt_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\dyn-01-cafe-exit-beach-cut.txt",
+    "runtime_prompt_sha256": "2157ae47bbd59dbf280ef0d4d70ea9afdf8e3d5b9b16cbbff899bf3a3631c28e",
+    "settings_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\dyn-01-cafe-exit-beach-cut.settings.json",
+    "effective_settings_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\runs\\run-20260907-074642-c31f10a2\\effective-settings.json",
+    "reference_images": [
+      {
+        "role": "cafe_scene_identity",
+        "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\krea2\\run-20260906-134255-f8ffdd8c.jpg",
+        "sha256": "6954f1779ed1f5e29a297aa9c23d73c959df16681efe92a54c257bb29202952d",
+        "byte_count": 152189
+      },
+      {
+        "role": "beach_dress_identity",
+        "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-133257-lia-scene-variation\\outputs\\krea2\\run-20260906-133438-8db5720b.jpg",
+        "sha256": "2acf40bfda49559e0cd3c64bcb1a47ac33de4abfa8a697a000b6e7788052de83",
+        "byte_count": 176204
+      }
+    ],
+    "model_type": "minimax_h3_ref2va_pruned",
+    "video_prompt_type": "KI",
+    "resolution": "576x768",
+    "video_length": 243,
+    "num_inference_steps": 20,
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "profile": 1,
+    "vram_safety": 0.8
+  },
+  "prior_pattern": {
+    "copied_from_session": "VIDEO-20260906-233747-lia-intro-10s-trio",
+    "settings_basis": "minimax_h3_ref2va_pruned / KI / 576x768 / video_length 243",
+    "reference_basis": "cafe + beach scene variation refs from SCENE-20260906"
+  },
+  "outputs": {
+    "output_dir": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio",
+    "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\runs\\run-20260907-074642-c31f10a2",
+    "status_at_lineage_write": "needs_review",
+    "status": "needs_review",
+    "artifact_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\run-20260907-074642-c31f10a2.mp4",
+    "artifact_sha256": "d6e898cdef092ca91c367805bd5d3fb1d176bdb8a3052c5ca9b7228080421560",
+    "artifact_byte_count": 11232391,
+    "duration_sec": 10.125,
+    "resolution": "576x768",
+    "codecs": "h264+aac",
+    "approx_render_minutes": 129
+  },
+  "written_at": "2026-09-07T09:55:46+09:00",
+  "finished_at": "2026-09-07T09:54:52+09:00"
+}

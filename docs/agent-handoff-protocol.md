@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repository may be edited by more than one coding agent, especially Codex and Claude Code. The goal is **not** to build another model router or orchestration application. The goal is to make agent switching cheap, predictable, and recoverable using artifacts the repository already has: files, Git history, and deterministic verification.
+This repository may be edited by more than one coding agent, including Codex, Claude Code, Grok Bot and development workflows in Hermes. The goal is **not** to build another model router or orchestration application. The goal is to make agent switching cheap, predictable, and recoverable using artifacts the repository already has: files, Git history, and deterministic verification.
 
 The design is optimized for a solo developer using subscription-based coding tools where usage/credit limits may be reached unexpectedly.
 
@@ -66,6 +66,8 @@ It should remain compact enough to function as a map, not become a complete ency
 Claude Code uses `CLAUDE.md`, while Codex naturally consumes `AGENTS.md`. Maintaining two independent instruction sets creates documentation drift.
 
 Therefore `CLAUDE.md` imports and points to `AGENTS.md`. Claude-specific notes should remain minimal.
+
+The [shared agent workflow](shared-agent-workflow.md) defines host entrypoints, one-editor-per-scope ownership, installed-copy verification and truthful attribution. Its 2026-09-07 rules apply to all agents; the Codex/Claude examples below are illustrative. A scoped package TASK must not overwrite the root main task.
 
 ### `TASK.md` — current intent and recovery hint
 
@@ -227,7 +229,7 @@ These should remain optional layers around the repository protocol, not prerequi
 
 ## Summary for coding agents
 
-If you are Codex or Claude Code working in this repository:
+For every agent working in this repository:
 
 - Assume your session can disappear at any time.
 - Do not keep critical task state only in conversation memory.

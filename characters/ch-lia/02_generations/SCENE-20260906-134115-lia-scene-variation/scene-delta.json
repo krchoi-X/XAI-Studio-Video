@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260906-134115-lia-scene-variation",
+  "character_id": "ch-lia",
+  "character_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "created_at": "2026-09-06T04:41:15+00:00",
+  "created_by": "hermes",
+  "local_model": null,
+  "source_request": "카페에 앉아 차가운 빙수를 먹는 장면",
+  "runtime_prompt_sha256": "7ce2519e47884ce9cff52a1f9d870b7582ea0236290f71386ae8d8179c9f4b03",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "user-specified"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-lia",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

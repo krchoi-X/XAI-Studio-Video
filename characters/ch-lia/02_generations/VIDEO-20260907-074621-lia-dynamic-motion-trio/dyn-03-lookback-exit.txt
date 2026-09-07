@@ -1,0 +1,18 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. Preserve exact facial identity from <Picture 1> throughout: slim slightly elongated oval face, soft dark-brown eyes with coordinated gaze, translucent pale skin texture, soft rose-beige lips, long near-black hair with soft full bangs (cafe hair-clip allowed if present in <Picture 1>), and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep cafe-appropriate practical clothing from <Picture 1>. Do not replace her face.
+
+summary:
+[reference generation] Ten-second motion beat. <Subject 1> walks out of the cafe toward bright outdoor light, briefly looks back over her shoulder toward the interior with a faint closed-mouth smile, then turns forward and continues walking with a clearer stride.
+
+retention_analysis:
+<Subject 1>: fully_preserved identity and cafe wardrobe from <Picture 1>. Only stand-to-walk transition, shoulder look-back, smile, and outdoor stride may change.
+
+detailed_description:
+Motion budget MEDIUM. Photorealistic cafe-to-street continuity, single shot preferred.
+[Shot 1] Start standing near the cafe exit matching <Picture 1> identity. <Subject 1> walks toward the open doorway / bright exterior. At the threshold she looks back over her right shoulder toward the cafe for about one second — calm coordinated gaze, faint closed-mouth smile — then faces forward and steps into brighter outdoor light with a natural walking stride. Hair and clothes show light motion from the movement and doorway air. Head upright, no influencer wave, no toothy grin, no identity drift. Handheld follow with minimal shake. No cut required. No beauty filter.
+
+overall_soundscape:
+Cafe murmur fading into outdoor ambience and footsteps. No speech. No music.
+
+non_diegetic_music:
+None.

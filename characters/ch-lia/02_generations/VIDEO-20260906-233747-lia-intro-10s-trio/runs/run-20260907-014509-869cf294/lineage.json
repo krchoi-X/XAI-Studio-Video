@@ -1,0 +1,51 @@
+﻿{
+    "prior_pattern":  {
+                          "reference_basis":  "same GPT inbox morning-window selfie family used by coffee vlog candidates",
+                          "settings_basis":  "minimax_h3_ref2va_pruned / KI / 576x768 / video_length 243",
+                          "copied_from_session":  "VIDEO-20260906-lia-morning-coffee-vlog-candidates"
+                      },
+    "schema_version":  1,
+    "outputs":  {
+                    "output_dir":  "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-233747-lia-intro-10s-trio",
+                    "status_at_lineage_write":  "needs_review",
+                    "run_dir":  "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\runs\\run-20260907-014509-869cf294",
+                    "artifact_path":  "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-233747-lia-intro-10s-trio\\run-20260907-014509-869cf294.mp4",
+                    "artifact_sha256":  "2ca3dee7e79eccb2e7f20a953111e33e3c30d4dbe2845316f94d75910b39ad9b",
+                    "artifact_byte_count":  8912004,
+                    "duration_sec":  10.125,
+                    "resolution":  "608x736",
+                    "codecs":  "h264+aac",
+                    "approx_render_minutes":  122
+                },
+    "character_dna_version":  2,
+    "written_at":  "2026-09-07T03:53:16.341780+09:00",
+    "inputs":  {
+                   "num_inference_steps":  20,
+                   "expected_queue_items":  1,
+                   "video_prompt_type":  "KI",
+                   "effective_settings_path":  "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\runs\\run-20260907-014509-869cf294\\effective-settings.json",
+                   "model_type":  "minimax_h3_ref2va_pruned",
+                   "runtime_prompt_sha256":  "9209f3b9b574a740d79d020afafcf69869a1993eff77fbffbcf4b2cb90779a60",
+                   "reference_images":  [
+                                            {
+                                                "path":  "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026??9??4???ㅽ썑 10_31_54.png",
+                                                "sha256":  "e2df345058cd5d29644f804b39612919ad773debe9388e6bb6cfaa5d64ad0502",
+                                                "byte_count":  2195395,
+                                                "note":  "Runtime reference only; not an approved canonical reference (approved_references is empty).",
+                                                "role":  "main_subject_identity_and_output_dimensions"
+                                            }
+                                        ],
+                   "runtime_prompt_path":  "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\intro-02-quiet-presence.txt",
+                   "video_length":  243,
+                   "prompt_mode":  "FG",
+                   "resolution":  "576x768",
+                   "settings_path":  "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\intro-02-quiet-presence.settings.json"
+               },
+    "source_idea":  "Make about three ~10s Lia introduction videos with WanGP, expressing her from Stable DNA.",
+    "stable_dna_sha256":  "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+    "prompt_id":  "intro-02-quiet-presence",
+    "project_id":  "VIDEO-20260906-233747-lia-intro-10s-trio",
+    "run_id":  "run-20260907-014509-869cf294",
+    "character_id":  "ch-lia",
+    "finished_at":  "2026-09-07T03:46:58+09:00"
+}

@@ -1,0 +1,37 @@
+{
+  "engine": "gpt",
+  "provider": "OpenAI",
+  "model": "fixture-model",
+  "items": [
+    {
+      "file": "a.png",
+      "source": "D:\\codex\\XAI-studio\\external_media_import\\tests\\fixtures\\a.png",
+      "prompt": "red square prompt A",
+      "references": [
+        "ref-a"
+      ]
+    },
+    {
+      "file": "b.jpg",
+      "source": "D:\\codex\\XAI-studio\\external_media_import\\tests\\fixtures\\b.jpg",
+      "prompt": "green square prompt B",
+      "user_request": "make green"
+    },
+    {
+      "file": "c.webp",
+      "source": "D:\\codex\\XAI-studio\\external_media_import\\tests\\fixtures\\c.webp",
+      "prompt": "blue square prompt C"
+    },
+    {
+      "file": "sample.mp4",
+      "source": "D:\\codex\\XAI-studio\\external_media_import\\tests\\fixtures\\sample.mp4",
+      "prompt": "blue video prompt",
+      "engine": "gpt"
+    },
+    {
+      "file": "sample.webm",
+      "source": "D:\\codex\\XAI-studio\\external_media_import\\tests\\fixtures\\sample.webm",
+      "prompt": "red video prompt"
+    }
+  ]
+}

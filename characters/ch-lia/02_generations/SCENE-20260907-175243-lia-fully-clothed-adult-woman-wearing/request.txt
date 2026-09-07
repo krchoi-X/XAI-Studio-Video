@@ -1,0 +1,1 @@
+FULLY CLOTHED adult woman wearing a Japanese convenience-store part-time employee uniform with short-sleeve collared polo shirt and dark work pants, hair in a neat ponytail with bangs, standing behind the checkout counter, three thin red-and-blue knotted bracelets on right wrist, quiet closed-mouth smile, photorealistic workplace photo, modest attire, no nudity

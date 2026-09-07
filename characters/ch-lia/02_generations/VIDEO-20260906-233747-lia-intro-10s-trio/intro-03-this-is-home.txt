@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve long near-black lived-in bangs, translucent pale natural skin, soft rose-beige lips, practical easygoing clothes from the reference, and exactly three thin red-and-blue knotted bracelets on her right wrist when the wrist is visible. Do not reinterpret or replace her face.
+
+summary:
+[reference generation] One quiet ten-second home introduction. <Subject 1> glances toward the bright window, looks back to the camera with a faint closed-mouth smile, briefly shows her right wrist bracelets as she adjusts her mug or hand, and softly says, (S1) <d>[English] This is home.</d>
+
+retention_analysis:
+<Subject 1> (appears throughout [Shot 1]): fully_preserved — identity, bangs, skin, clothes, and three bracelets unchanged from <Picture 1>. Only head turn, gaze, small hand motion, and mouth for one short line may change.
+
+detailed_description:
+The target video is one continuous ten-second photorealistic selfie-style home intro matching the bright window-lit space of <Picture 1>. Motion budget LOW-MEDIUM. [Shot 1] <Subject 1> starts near the pose of <Picture 1>. She turns her head about 20–30 degrees toward the window light for one beat, then returns to the lens with a faint quiet closed-mouth smile. She makes a small right-hand adjustment so the three thin red-and-blue knotted bracelets read clearly for about one second, then says softly, (S1) <d>[English] This is home.</d> She ends with lowered gaze and stillness. Keep face identical to <Picture 1> throughout. Minimal handheld breathing. No cut, no zoom, no wardrobe change, no beauty filter, no toothy grin, no added people.
+
+overall_soundscape:
+Quiet room tone, soft distant outdoor ambience through the window, and synchronized soft natural speech.
+
+non_diegetic_music:
+None.

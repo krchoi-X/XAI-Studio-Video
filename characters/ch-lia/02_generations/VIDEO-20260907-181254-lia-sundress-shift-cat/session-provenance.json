@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "session_id": "VIDEO-20260907-181254-lia-sundress-shift-cat",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat",
+  "requested_by": "grok",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-lia",
+  "title": "Sundress to Shift to Cat (~10s stitch)",
+  "user_request_verbatim": "Produce Lia micro-vlog on ArtXorn (machineId 0971135d-fb18-40e4-8e1f-e07f6e78bc25). One GPU job at a time. Report final paths to parent.\n\n## Story (locked)\nTitle: Sundress to Shift to Cat (~10s stitch)\nBeats (hard cuts between wardrobe states):\n- A 0–3s OUTING: thin sundress, loose hair, beach walk\n- B 3–6.5s WORK: convenience-store uniform + ponytail, working register/shelves\n- D 6.5–10s HOME: T-shirt+shorts, play with cat (provisional cream/tabby — cat appearance not canon yet)\n\nDNA: D:\\codex\\XAI-studio\\characters\\ch-lia\\character.json + life dna (seaside house, convenience store job, 3 red-blue wrist bracelets, quiet smile).\n\n## Refs already available\n- Beach sundress: D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-133257-lia-scene-variation\\outputs\\krea2\\run-20260906-133438-8db5720b.jpg\n- Face/home window: D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ (file matching *10_31_54*.png)\n\n## Steps\n1. Preflight: control_tower --check and doctor; abort if GPU busy.\n2. Create still refs if missing via character_scene (work; home+cat).\n3. Create session VIDEO-<stamp>-lia-sundress-shift-cat with lineage docs; mirror under video-prompts.\n4. Three short WanGP clips minimax_h3_ref2va_pruned KI 576x768 video_length 73 steps 20 profile 1 vram-safety 0.8.\n5. Submit sequentially; poll; update docs.\n6. Stitch with ffmpeg concat to lia-sundress-shift-cat-10s.mp4.\n\nDo not edit Stable DNA. Do not parallel WanGP jobs.",
+  "source_idea": "Hard-cut wardrobe micro-vlog: beach sundress / store uniform / home+cat",
+  "status": "running",
+  "created_at": "2026-09-07T20:14:38+09:00",
+  "updated_at": "2026-09-07T20:14:38+09:00"
+}

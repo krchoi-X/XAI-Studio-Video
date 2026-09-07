@@ -1,0 +1,18 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. HARD LOCK face identity to Picture 1: slim slightly elongated oval face, soft dark-brown eyes, translucent pale natural skin with fine pores, soft rose-beige lips, long near-black loose hair with bangs, tall slender silhouette, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep the home casual top and bottom from <Picture 1>. Do not replace her face or turn her into a different person. <Subject 2> is the cream tabby cat in <Picture 1> (provisional appearance, not canon).
+
+summary:
+[reference generation] One continuous ~3.5-second medium-motion home beat. <Subject 1> sits on a small veranda in casual home clothes, playing with a cream tabby cat and yarn, quiet closed-mouth faint smile.
+
+retention_analysis:
+<Subject 1>: fully_preserved identity and home wardrobe from <Picture 1>. <Subject 2>: preserve cream tabby look from <Picture 1>. Only play motion and yarn interaction may change.
+
+detailed_description:
+Motion budget MEDBUM for play interaction, LOW for face. Photorealistic small seaside-house veranda / doorway home interior soft daylight.
+[Shot 1] <Subject 1> sits in casual home clothes with loose hair, interacting gently with a cream tabby cat and yarn (petting, dangling yarn, or soft play). Quiet closed-mouth faint smile toward the cat then briefly toward camera. Right-wrist bracelets visible when the wrist is in frame. Cat only in this beat. Gentle handheld breathing; no crash zooms. No cut. No beauty filter. No speech. Stay fully clothed.
+
+overall_soundscape:
+Soft home ambience, light yarn rustle, quiet cat sound. No speech. No music.
+
+non_diegetic_music:
+None.

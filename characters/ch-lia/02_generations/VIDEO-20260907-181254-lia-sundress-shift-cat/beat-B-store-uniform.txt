@@ -1,0 +1,18 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. HARD LOCK face identity to Picture 1: slim slightly elongated oval face, soft dark-brown eyes, translucent pale natural skin with fine pores, soft rose-beige lips, bangs with ponytail, tall slender silhouette, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep the convenience-store part-time uniform and ponytail from <Picture 1>. Do not replace her face or turn her into a different person.
+
+summary:
+[reference generation] One continuous ~3.5-second medium-motion convenience-store work beat. <Subject 1> works the register/shelves in uniform with ponytail, quiet closed-mouth faint smile.
+
+retention_analysis:
+<Subject 1>: fully_preserved identity and store-uniform wardrobe from <Picture 1>. Only work hand/body motion and glance timing may change.
+
+detailed_description:
+Motion budget MEDIUM for work actions, LOW for face. Photorealistic convenience-store interior, bright fluorescent light.
+[Shot 1] <Subject 1> stands behind the checkout counter in uniform and ponytail, handling a simple register or shelf restock motion with natural arm movement. Head mostly toward the counter/work, then a brief glance toward camera with a quiet closed-mouth faint smile. Right-wrist bracelets visible when the wrist enters frame. Gentle handheld breathing; no crash zooms. No cut. No beauty filter. No speech. No second person as focus. No cat. Stay fully clothed in uniform.
+
+overall_soundscape:
+Quiet store ambience, soft register beep or shelf rustle. No speech. No music.
+
+non_diegetic_music:
+None.

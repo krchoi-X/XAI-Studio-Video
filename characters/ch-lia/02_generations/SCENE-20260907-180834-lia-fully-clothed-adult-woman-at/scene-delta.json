@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260907-180834-lia-fully-clothed-adult-woman-at",
+  "character_id": "ch-lia",
+  "character_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "created_at": "2026-09-07T09:08:34+00:00",
+  "created_by": "codex",
+  "local_model": null,
+  "source_request": "FULLY CLOTHED adult woman at home in a simple T-shirt and shorts, loose hair with bangs, sitting on a small seaside-house veranda playing with a cream tabby cat and a ball of yarn, three thin red-and-blue knotted bracelets on right wrist, quiet closed-mouth smile, photorealistic, modest attire",
+  "runtime_prompt_sha256": "5a96364b0d2ca9768ed0e52c78c9f2b67cc2a768d4a98ff87be1b87c8a8941ad",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {
+    "coverage": "clothed",
+    "wardrobe": "casual home clothes"
+  },
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-lia",
+    "character_version": 2,
+    "mode": "strict_translation",
+    "coverage": "clothed",
+    "wardrobe": "casual home clothes",
+    "hair": "long near-black hair worn loose with soft bangs",
+    "location": "small seaside house veranda",
+    "expression": "quiet closed-mouth faint smile"
+  },
+  "suppressed_stable_dna_fields": [
+    "hair"
+  ]
+}

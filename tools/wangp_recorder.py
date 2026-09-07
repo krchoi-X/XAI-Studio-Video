@@ -162,7 +162,15 @@ def session_requester(session_dir: Path) -> str | None:
         if not path.is_file():
             continue
         try:
-            found = requester_in(read_json_file(path))
+            if path.suffix == ".yaml":
+                import yaml
+                try:
+                    data = yaml.safe_load(path.read_text(encoding="utf-8-sig"))
+                except yaml.YAMLError:
+                    continue
+            else:
+                data = read_json_file(path)
+            found = requester_in(data)
         except (OSError, ValueError):
             continue
         if found:

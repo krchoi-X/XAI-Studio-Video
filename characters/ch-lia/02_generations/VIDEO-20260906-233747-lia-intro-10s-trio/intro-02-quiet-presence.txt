@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. Preserve the exact same person and facial identity from <Picture 1> throughout the entire video. Preserve her slim slightly elongated oval face with gently narrow non-V-line lower face, slightly narrow brow spacing, large soft dark-brown eyes with relaxed eyelids, soft rose-beige lips, translucent pale natural skin texture, long near-black hair with soft full lived-in bangs and subtle flyaways, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Do not reinterpret or replace her face.
+
+summary:
+[reference generation] One quiet ten-second near-still introduction portrait. <Subject 1> simply exists for the camera: soft breathing, one blink, a tiny gaze settle toward the lens, and a faint closed-mouth smile — no dialogue.
+
+retention_analysis:
+<Subject 1> (appears throughout [Shot 1]): fully_preserved — identity anchors unchanged from <Picture 1>. Only breathing, one blink, tiny head correction, and faint smile timing may change.
+
+detailed_description:
+The target video is one continuous ten-second photorealistic close-to-medium portrait matching <Picture 1>. Motion budget LOW. [Shot 1] <Subject 1> begins still, eyes sharing one calm camera target. Soft natural breathing moves her chest and shoulders almost invisibly. She blinks once. A few bang strands shift slightly. Near the middle she forms a faint quiet closed-mouth smile and settles her gaze more directly at the lens for about two seconds, then softens again. No speech. No big gesture. Fixed framing with minimal handheld breathing. No cut, no zoom, no beauty filter, no glossy skin, no exaggerated expression.
+
+overall_soundscape:
+Quiet daytime room tone only. No speech. No music.
+
+non_diegetic_music:
+None.

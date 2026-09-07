@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260907-173926-lia-convenience-store-part-time-uniform",
+  "character_id": "ch-lia",
+  "character_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "created_at": "2026-09-07T08:39:26+00:00",
+  "created_by": "codex",
+  "local_model": null,
+  "source_request": "convenience store part-time uniform, hair in ponytail, standing behind counter, three thin red-and-blue knotted bracelets on right wrist, photorealistic",
+  "runtime_prompt_sha256": "6017eb6c5650c69389b4347beab2223b341153a99255ba67e0b569504a75d39b",
+  "scene_delta": null,
+  "prompt_strategy": "strict_translation",
+  "immutable_constraints": {},
+  "scene_spec": {
+    "schema_version": 1,
+    "character": "ch-lia",
+    "character_version": 2,
+    "mode": "strict_translation"
+  },
+  "suppressed_stable_dna_fields": []
+}

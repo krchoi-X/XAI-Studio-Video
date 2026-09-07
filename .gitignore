@@ -15,3 +15,13 @@ characters/**/*.webp
 characters/**/*.mp4
 characters/**/*.mov
 
+
+# Test scratch and generated output media
+.pytest_cache/
+.pytest_tmp/
+output/**/*.png
+output/**/*.jpg
+output/**/*.jpeg
+output/**/*.webp
+output/**/*.mp4
+output/**/*.webm

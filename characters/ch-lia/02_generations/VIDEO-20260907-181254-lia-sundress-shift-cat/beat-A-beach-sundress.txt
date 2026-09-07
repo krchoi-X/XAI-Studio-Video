@@ -1,0 +1,18 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. HARD LOCK face identity to Picture 1: slim slightly elongated oval face, soft dark-brown eyes, translucent pale natural skin with fine pores, soft rose-beige lips, long near-black lived-in bangs, tall slender long-legged silhouette, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep the thin sundress and loose hair from <Picture 1>. Do not replace her face or turn her into a different person.
+
+summary:
+[reference generation] One continuous ~3-second medium-motion beach outing walk. <Subject 1> walks along the shoreline in a thin sundress with loose hair, faint closed-mouth smile, natural sea breeze.
+
+retention_analysis:
+<Subject 1>: fully_preserved identity and sundress wardrobe from <Picture 1>. Only walking gait, light breeze on dress/hair, and smile timing may change.
+
+detailed_description:
+Motion budget MEDIUM for walking, LOW for face. Photorealistic sunny beach outing.
+[Shot 1] <Subject 1> walks parallel to the water in a thin sundress, loose hair with bangs moving lightly in the breeze. Natural long-legged gait, head upright, chin level, eyes mostly forward with a quiet closed-mouth faint smile. Right-wrist bracelets visible during arm swing when the wrist is in frame. Soft side-follow / handheld breathing; no crash zooms. No cut. No beauty filter. No speech. No second person. No cat.
+
+overall_soundscape:
+Sea breeze, soft surf, footsteps on sand. No speech. No music.
+
+non_diegetic_music:
+None.

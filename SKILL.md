@@ -11,6 +11,8 @@ Use this skill to design, critique, reverse-engineer, or adapt prompts for AI-ge
 
 The skill is not a collection of decorative prompt phrases. Its job is to convert a creative goal into a structured temporal specification that preserves identity, controls motion, separates evidence from inference, and can be adapted to different video engines.
 
+Read `AGENTS.md` and `docs/artifact-and-review-contract.md` from the verified project checkout before persistence or execution. These rules apply to every host using this skill.
+
 ## Operating rules
 
 ### 1. Start from Director Intent
@@ -584,20 +586,14 @@ When creating a new video prompt:
 
 ## Prompt handoff persistence
 
-Hermes owns the durable record through the renderer handoff. The Render Broker owns execution routing across local WanGP, RunPod, Vast.ai, or another renderer; no execution target owns creative history. Read `docs/render-broker.md` before provisioning or routing remote compute.
+The executing agent owns the durable record through the renderer handoff (Hermes in its production host). The Render Broker owns execution routing across local WanGP, RunPod, Vast.ai, or another renderer; no execution target owns creative history. Read `docs/render-broker.md` before provisioning or routing remote compute.
 
-Resolve every bundled path from the directory containing this `SKILL.md`, never
-from Hermes's current working directory. For local WanGP, the executable is
-`<skill-root>/tools/local_wangp.py`; verify that absolute path exists before
-claiming it is unavailable. Read `docs/wangp-recorder.md` before the first local
-submission. Under Hermes, use
-`D:\AI_Studio\outputs\video-prompts\projects\<project-id>` as the durable project
-root unless the user explicitly selects another location. Create a unique run
-directory for every submission and never overwrite an earlier prompt or result.
+Resolve `tool_root` to the verified repository checkout, or to a complete installed bundle containing the required tools and docs. Resolve all tool/doc paths from that root, never from an arbitrary working directory. For local WanGP, verify `<tool_root>/tools/local_wangp.py` exists before claiming it is unavailable. This executable root is distinct from the project data root below. Read `docs/wangp-recorder.md` before the first local
+submission. Resolve one `project_root` using `docs/artifact-and-review-contract.md`: explicit user location, existing project location when resuming, otherwise `D:\AI_Studio\outputs\video-prompts\projects\<project-id>` for new standalone video work across all agents. Keep legacy repository projects in place. Character session workflows retain their existing root. Create a unique run directory per submission; never overwrite an earlier prompt or result.
 
 Before displaying or submitting a final runtime prompt:
 
-1. Create or reuse `projects/<project-id>/` in the XAI-Studio repository.
+1. Create or reuse the resolved `project_root`; all paths below are relative to it. Do not create a second repository copy.
 2. Preserve the user's original idea verbatim in `project.md`; append later direction changes with timestamps instead of replacing the original.
 3. Save every renderer-ready prompt as `prompts/<prompt-id>.md`. Include the target renderer, source idea, parent prompt when revised, Character DNA version or path, reference roles, assumptions, and the exact copy-ready prompt.
 4. Write the exact copy-ready prompt, with no Markdown wrapper, to `prompts/<prompt-id>.txt` as well as the annotated Markdown record.
@@ -610,7 +606,7 @@ Do not require the user to fill an experiment table. If filesystem access is una
 
 Prefer the Render Broker over a direct renderer call. For local WanGP, the broker may use its MCP tools: inspect the model schema/defaults, submit with `wangp_generate`, store the returned job ID, and poll with `wangp_get_job`. Remote adapters must expose the same durable job contract. The run record must exist before submission and record every transition: queued, provisioning, starting, running, uploading, succeeded, failed, interrupted, timed out, capacity unavailable, or unknown. Use a persistent bridge/recorder for long renders so status updates do not depend on the Hermes chat remaining open. On success, attach generated artifact paths and verify checksums and embedded metadata against the saved runtime prompt before releasing compute. On failure, preserve the structured error and last progress even when no media file exists.
 
-If manual paste is unavoidable, a separate WanGP Recorder should claim responsibility by hashing the exact submitted prompt text and matching it to the saved runtime-prompt hash. It must journal the run before generation starts. Hermes must not mark a run successful merely because it produced a prompt.
+If manual paste is unavoidable, a separate WanGP Recorder should claim responsibility by hashing the exact submitted prompt text and matching it to the saved runtime-prompt hash. It must journal the run before generation starts. No executing agent may mark a run successful merely because it produced a prompt.
 
 ## Evaluation checklist
 

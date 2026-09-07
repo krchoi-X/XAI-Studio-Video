@@ -1,0 +1,43 @@
+{
+  "project_id": "VIDEO-20260907-074621-lia-dynamic-motion-trio",
+  "updated_at": "2026-09-07T13:56:50+09:00",
+  "sequence_status": "finished",
+  "jobs": [
+    {
+      "prompt_id": "dyn-01-cafe-exit-beach-cut",
+      "status": "needs_review",
+      "run_id": "run-20260907-074642-c31f10a2",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\runs\\run-20260907-074642-c31f10a2",
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\run-20260907-074642-c31f10a2.mp4"
+      ],
+      "error": null,
+      "duration_approx": "~129 min",
+      "finished_at": "2026-09-07T09:54:52+09:00"
+    },
+    {
+      "prompt_id": "dyn-02-beach-wind-stride",
+      "status": "needs_review",
+      "run_id": "run-20260907-095602-0152a6a7",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\runs\\run-20260907-095602-0152a6a7",
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\run-20260907-095602-0152a6a7.mp4"
+      ],
+      "error": null,
+      "duration_approx": "~120 min",
+      "finished_at": "2026-09-07T11:55:15+09:00"
+    },
+    {
+      "prompt_id": "dyn-03-lookback-exit",
+      "status": "needs_review",
+      "run_id": "run-20260907-115635-4dd42756",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\runs\\run-20260907-115635-4dd42756",
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\run-20260907-115635-4dd42756.mp4"
+      ],
+      "error": null,
+      "duration_approx": "~120 min",
+      "finished_at": "2026-09-07T13:55:43+09:00"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "settings_version": 2.73,
+  "model_type": "z_image",
+  "model_filename": "https://huggingface.co/DeepBeepMeep/Z-Image/resolve/main/ZImageTurbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 8,
+  "batch_size": 3,
+  "repeat_generation": 1,
+  "seed": 906134925,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "NAG_scale": 1,
+  "NAG_tau": 3.5,
+  "NAG_alpha": 0.5,
+  "type": "Z Image Turbo",
+  "prompt": "Create one photorealistic image of exactly one adult character.\n\nPRIORITY 1 — EXPLICIT USER SCENE. Preserve this meaning without adding or removing wardrobe, coverage, props, people, or actions:\n실내 수영장에서 분홍색 비키니를 입고 물밖으로 나오는 장면\n\nIMMUTABLE CONSTRAINTS:\n- No additional immutable fields. Preserve the user's wording.\n\nAUTHORITATIVE SCENE SPEC. These values replace same-named Stable DNA fields rather than being appended to them:\n- No structured field overrides.\n\nPRIORITY 2 — STABLE CHARACTER IDENTITY. Apply identity only; it must not override the explicit scene:\nAn adult East-Asian-looking woman with an original identity and no resemblance to a specific real person character named Aoi. Face: compact, slightly rounded to softly oval face with subtle youthful cheek fullness, while remaining unmistakably adult; lively eyes with strong emotional readability and an adult, self-aware gaze; expressive natural brows that clearly support a wide emotional range; natural refined nose with balanced proportions suited to the compact softly rounded face; soft but distinct lips with natural adult proportions; soft rounded jawline that avoids both a childlike look and a narrow polished Hae-won-like silhouette. Hair: short dark hair, preferably a jaw-length or softly layered bob that frames the rounded face; it may be tucked behind one ear to reveal her signature earring, and must not resemble Lia or Hae-won's long straight-hair silhouette. Skin: healthy realistic skin with visible natural texture and tonal variation; never waxy, plastic, porcelain-like or beauty-filter smoothed. Body: adult feminine presence with healthy, mature and self-confident proportions; natural adult limb lengths and anatomically consistent hands and feet; shoulders natural feminine shoulder line with confident posture; torso healthy mature torso with adult proportions and self-assured body language; bust natural mature adult proportion, consistent across scenes and never treated as the sole identity anchor; waist natural adult waist with body-aware but believable proportions; pelvis and hips healthy mature feminine proportions without anatomical exaggeration; lower body healthy adult lower-body proportions with natural anatomical balance; body hair natural and not an identity-defining feature. Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables.\n\nMaintain one coherent adult subject, one anatomically continuous body, coordinated eyes sharing one target, realistic hands, and one active camera state. Do not add optional creative details that change the scene's meaning.\n",
+  "output_filename": "run-20260906-134925-127c34c0"
+}

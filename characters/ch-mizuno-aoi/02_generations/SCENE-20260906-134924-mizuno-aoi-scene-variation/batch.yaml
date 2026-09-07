@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260906-134924-mizuno-aoi-scene-variation",
+    "character_id": "ch-mizuno-aoi",
+    "character_name": "아오이",
+    "romanized_name": "Aoi",
+    "title": "실내 수영장에서 분홍색 비키니를 입고 물밖으로 나오는 장면",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-mizuno-aoi\\generations\\SCENE-20260906-134924-mizuno-aoi-scene-variation\\outputs",
+    "created_at": "2026-09-06T04:49:24+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "aebf2c5b95feae8785d487d33ce132fe0d8aa8b1e84542b944a3f35d3df63089"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "z_image",
+      "count": 3,
+      "seed": 906134925,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "z-image.settings.json",
+      "output_dir": "outputs/z-image",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-134924-mizuno-aoi-scene-variation\\runs\\run-20260906-134925-127c34c0"
+    },
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 3,
+      "seed": 906134926,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-mizuno-aoi\\02_generations\\SCENE-20260906-134924-mizuno-aoi-scene-variation\\runs\\run-20260906-135105-ce982ba9"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}

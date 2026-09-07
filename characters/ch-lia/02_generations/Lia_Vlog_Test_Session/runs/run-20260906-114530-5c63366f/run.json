@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260906-114530-5c63366f",
+  "project_id": "lia-vlog-test",
+  "prompt_id": "shot-01",
+  "status": "failed",
+  "created_at": "2026-09-06T11:45:30+09:00",
+  "updated_at": "2026-09-06T11:45:55+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-23248",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-test-10s-01\\prompt.txt",
+    "sha256": "d31eb814784e3cd670ca3094104799ebfc944bbb3e5bab422e0d5f9a4fabafeb",
+    "normalized_sha256": "d31eb814784e3cd670ca3094104799ebfc944bbb3e5bab422e0d5f9a4fabafeb",
+    "byte_count": 364
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-test-10s-01\\settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "resolution": "576x768",
+      "video_length": 243,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "seed": -1
+    }
+  },
+  "artifacts": [],
+  "error": {
+    "message": "You must provide at least one Reference Image",
+    "last_progress": null,
+    "recorded_at": "2026-09-06T11:45:55+09:00"
+  },
+  "local_worker": {
+    "pid": 22612,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-20260906-114530-5c63366f",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-20260906-114530-5c63366f\\effective-settings.json",
+      "--output-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session",
+      "--profile",
+      "1",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-20260906-114530-5c63366f\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-20260906-114530-5c63366f\\worker.stderr.log"
+  }
+}

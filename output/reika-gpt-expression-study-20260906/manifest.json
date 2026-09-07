@@ -1,0 +1,102 @@
+{
+  "engine": "GPT built-in image generation",
+  "references": "../reika-gpt-candidates-20260906/reika-gpt-{06,09}.png",
+  "images": [
+    {
+      "face": "06",
+      "scene": "editorial",
+      "number": 1,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Black jacket editorial 1: chest-up frontal studio portrait, structured oversized black tailored blazer over a simple black top, gray seamless studio. Controlled cool confident fashion expression, relaxed closed lips, direct slightly heavy-lidded gaze. Large softbox high camera-right and gentle negative fill, elegant restrained makeup, 85mm lens.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-a8a27bd8-a764-437c-a91d-0efb08922164.png",
+      "file": "face-06-editorial-1.png"
+    },
+    {
+      "face": "06",
+      "scene": "editorial",
+      "number": 2,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Black jacket editorial 2: waist-up three-quarter pose with face turned toward lens, same black tailored blazer and black top, off-white studio, elegant hand lightly on lapel. Restrained sophisticated unsmiling editorial expression, dark chic luxury fashion mood. Soft directional studio lighting, natural facial anatomy.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-a1456e54-7e80-407e-8c81-46a11f2e2181.png",
+      "file": "face-06-editorial-2.png"
+    },
+    {
+      "face": "06",
+      "scene": "editorial",
+      "number": 3,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Black jacket editorial 3: seated waist-up editorial portrait with shoulders slightly angled, black tailored blazer and black top, minimalist gray studio, gaze directly at camera, composed self-possessed unsmiling expression. Subtle side light models cheekbones without harshness. Hands naturally resting out of face area.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-f0cc0643-1854-439d-b214-224c9bccb13b.png",
+      "file": "face-06-editorial-3.png"
+    },
+    {
+      "face": "06",
+      "scene": "smile",
+      "number": 1,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Bright everyday smile 1: chest-up candid portrait at home beside a window, ivory cotton casual crew-neck top. Broad genuinely delighted tooth-showing smile, eyes bright and naturally crinkling, relaxed posture. Warm soft daylight, uncluttered home softly blurred behind. Preserve exact reference identity as facial muscles move naturally.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-ab90a85d-96c4-4742-a11b-1b41de7149b9.png",
+      "file": "face-06-smile-1.png"
+    },
+    {
+      "face": "06",
+      "scene": "smile",
+      "number": 2,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Bright everyday smile 2: waist-up candid photograph in a cozy cafe, soft pale-blue casual knit top, holding a simple mug low at chest level. A broad spontaneous happy laugh with teeth visible and smiling eyes, face toward camera, relaxed shoulders. Gentle window daylight and softly blurred cafe background, natural skin and facial expression.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-aa210b78-2d32-46de-b073-cbf8fab18987.png",
+      "file": "face-06-smile-2.png"
+    },
+    {
+      "face": "06",
+      "scene": "smile",
+      "number": 3,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Bright everyday smile 3: candid waist-up at home in a simple bright kitchen, light pink casual top and ivory apron, long black hair loosely tied back with face unobstructed. Beaming genuine smile, delighted lively eyes, naturally visible teeth, as if pleased with a small cooking success. Soft morning daylight, simple domestic background, no other people.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-448f9ff6-b698-4e51-b66c-818a16ebd582.png",
+      "file": "face-06-smile-3.png"
+    },
+    {
+      "face": "09",
+      "scene": "editorial",
+      "number": 1,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Black jacket editorial 1: chest-up frontal studio portrait, structured oversized black tailored blazer over a simple black top, gray seamless studio. Controlled cool confident fashion expression, relaxed closed lips, direct slightly heavy-lidded gaze. Large softbox high camera-right and gentle negative fill, elegant restrained makeup, 85mm lens.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-b9112def-0c80-4cee-b655-1f4310a142f9.png",
+      "file": "face-09-editorial-1.png"
+    },
+    {
+      "face": "09",
+      "scene": "editorial",
+      "number": 2,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Black jacket editorial 2: waist-up three-quarter pose with face turned toward lens, same black tailored blazer and black top, off-white studio, elegant hand lightly on lapel. Restrained sophisticated unsmiling editorial expression, dark chic luxury fashion mood. Soft directional studio lighting, natural facial anatomy.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-21fbfb40-a6aa-4b49-8a00-011bf5703f7c.png",
+      "file": "face-09-editorial-2.png"
+    },
+    {
+      "face": "09",
+      "scene": "editorial",
+      "number": 3,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Black jacket editorial 3: seated waist-up editorial portrait with shoulders slightly angled, black tailored blazer and black top, minimalist gray studio, gaze directly at camera, composed self-possessed unsmiling expression. Subtle side light models cheekbones without harshness. Hands naturally resting out of face area.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-6d39149f-3c76-44e6-a202-3c1f76a0ca4f.png",
+      "file": "face-09-editorial-3.png"
+    },
+    {
+      "face": "09",
+      "scene": "smile",
+      "number": 1,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Bright everyday smile 1: chest-up candid portrait at home beside a window, ivory cotton casual crew-neck top. Broad genuinely delighted tooth-showing smile, eyes bright and naturally crinkling, relaxed posture. Warm soft daylight, uncluttered home softly blurred behind. Preserve exact reference identity as facial muscles move naturally.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-55c4b3ae-e00c-47c0-8d4e-2e885d55e657.png",
+      "file": "face-09-smile-1.png"
+    },
+    {
+      "face": "09",
+      "scene": "smile",
+      "number": 2,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Bright everyday smile 2: waist-up candid photograph in a cozy cafe, soft pale-blue casual knit top, holding a simple mug low at chest level. A broad spontaneous happy laugh with teeth visible and smiling eyes, face toward camera, relaxed shoulders. Gentle window daylight and softly blurred cafe background, natural skin and facial expression.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-d4e7e0f3-fb59-4fb1-91cd-bbb0e0a313f6.png",
+      "file": "face-09-smile-2.png"
+    },
+    {
+      "face": "09",
+      "scene": "smile",
+      "number": 3,
+      "prompt": "Use the attached image solely as the exact facial identity reference for fictional Mizuki Reika, 23-year-old adult Japanese fashion model. Preserve her individual eye shape and spacing, nose, lips, jaw, facial proportions, long jet-black hair and skin tone faithfully; do not substitute a generic model face. Photorealistic natural skin texture, healthy slender adult proportions. One person, one photograph, no collage, text or watermark. Portrait orientation, face large enough to compare identity. Bright everyday smile 3: candid waist-up at home in a simple bright kitchen, light pink casual top and ivory apron, long black hair loosely tied back with face unobstructed. Beaming genuine smile, delighted lively eyes, naturally visible teeth, as if pleased with a small cooking success. Soft morning daylight, simple domestic background, no other people.",
+      "source": "C:/Users/krcho/.codex/generated_images/01a0760a-9514-7442-a059-54f347ed5799/exec-c15573c5-6f89-4ee8-815b-64a35d99421e.png",
+      "file": "face-09-smile-3.png"
+    }
+  ]
+}

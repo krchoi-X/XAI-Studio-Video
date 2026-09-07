@@ -5,7 +5,9 @@ description: Create, inspect, update, or generate still images for XAI-Studio ch
 
 # Character Manager
 
-Use the repository CLI as the authority; do not invent a parallel folder convention.
+Read `AGENTS.md` and `docs/artifact-and-review-contract.md` from the verified checkout for shared routing and output rules. This skill's `produce` and night-batch commands cover supported local engines. An explicitly requested external engine takes precedence: use its available authorized tool and existing external import/Gallery route; never silently replace it with local generation.
+
+Use the repository CLI as the authority for local generation and character records; do not invent a parallel folder convention. Follow `docs/shared-agent-workflow.md` for truthful actor attribution; the current CLI only accepts codex/hermes/web.
 
 Run commands from the XAI-Studio-Video Git root containing `HERMES.md` and `tools/character_manager.py` (currently `D:\codex\XAI-studio`). If the current directory differs, change to that root first. Never resolve `tools/` relative to the installed external-skill copy.
 

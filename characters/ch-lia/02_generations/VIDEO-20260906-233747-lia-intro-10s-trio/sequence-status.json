@@ -1,0 +1,43 @@
+﻿{
+    "updated_at":  "2026-09-07T05:59:43+09:00",
+    "sequence_status":  "finished",
+    "jobs":  [
+                 {
+                     "run_id":  "run-20260906-233805-e06397d6",
+                     "duration_approx":  "~122 min",
+                     "prompt_id":  "intro-01-hi-im-lia",
+                     "artifacts":  [
+                                       "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-233747-lia-intro-10s-trio\\run-20260906-233805-e06397d6.mp4"
+                                   ],
+                     "status":  "needs_review",
+                     "run_dir":  "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\runs\\run-20260906-233805-e06397d6",
+                     "error":  null,
+                     "finished_at":  "2026-09-07T01:40:00+09:00"
+                 },
+                 {
+                     "run_id":  "run-20260907-014509-869cf294",
+                     "duration_approx":  "~122 min",
+                     "prompt_id":  "intro-02-quiet-presence",
+                     "artifacts":  [
+                                       "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-233747-lia-intro-10s-trio\\run-20260907-014509-869cf294.mp4"
+                                   ],
+                     "status":  "needs_review",
+                     "run_dir":  "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\runs\\run-20260907-014509-869cf294",
+                     "error":  null,
+                     "finished_at":  "2026-09-07T03:46:58+09:00"
+                 },
+                 {
+                     "run_id":  "run-20260907-035336-51283fc4",
+                     "duration_approx":  "~123 min",
+                     "prompt_id":  "intro-03-this-is-home",
+                     "artifacts":  [
+                                       "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-233747-lia-intro-10s-trio\\run-20260907-035336-51283fc4.mp4"
+                                   ],
+                     "status":  "needs_review",
+                     "run_dir":  "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260906-233747-lia-intro-10s-trio\\runs\\run-20260907-035336-51283fc4",
+                     "error":  null,
+                     "finished_at":  "2026-09-07T05:56:53+09:00"
+                 }
+             ],
+    "project_id":  "VIDEO-20260906-233747-lia-intro-10s-trio"
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "GPT-20260906-reika-base-candidates",
+    "character_id": "ch-mizuki-reika",
+    "title": "레이카 · GPT 기본 얼굴 후보 10장",
+    "status": "completed",
+    "visibility": "standard",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\GPT-20260906-reika-base-candidates\\outputs",
+    "prompt_file": "prompt.txt"
+  },
+  "jobs": [
+    {
+      "backend": "openai",
+      "provider": "OpenAI",
+      "model": "GPT built-in image generation",
+      "count": 10,
+      "output_dir": "outputs/gpt",
+      "status": "completed"
+    }
+  ],
+  "review": {
+    "initial_state": "needs_review"
+  }
+}

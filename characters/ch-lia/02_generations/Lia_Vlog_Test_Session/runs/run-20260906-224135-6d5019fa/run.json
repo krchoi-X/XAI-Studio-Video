@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260906-224135-6d5019fa",
+  "project_id": "lia-vlog-batch-test",
+  "prompt_id": "batch-01",
+  "status": "succeeded",
+  "created_at": "2026-09-06T22:41:35+09:00",
+  "updated_at": "2026-09-06T23:10:28+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "provider_job_id": "local-pid-34272",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-test-10s-01\\prompt.txt",
+    "sha256": "d31eb814784e3cd670ca3094104799ebfc944bbb3e5bab422e0d5f9a4fabafeb",
+    "normalized_sha256": "d31eb814784e3cd670ca3094104799ebfc944bbb3e5bab422e0d5f9a4fabafeb",
+    "byte_count": 364
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-test-10s-01\\settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "resolution": "576x768",
+      "video_length": 243,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "seed": -1,
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png"
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\run-20260906-224135-6d5019fa.mp4",
+      "sha256": "bf55df8fc763f3c1e9e71f6f56ca3e8235f20178c720b151d54abad946333d22",
+      "byte_count": 10058827,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "d31eb814784e3cd670ca3094104799ebfc944bbb3e5bab422e0d5f9a4fabafeb",
+      "prompt_exact_match": true,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-06T23:10:28+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 20004,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-20260906-224135-6d5019fa",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-20260906-224135-6d5019fa\\effective-settings.json",
+      "--output-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session",
+      "--profile",
+      "1",
+      "--vram-safety",
+      "0.8"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-20260906-224135-6d5019fa\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\Lia_Vlog_Test_Session\\runs\\run-20260906-224135-6d5019fa\\worker.stderr.log"
+  }
+}

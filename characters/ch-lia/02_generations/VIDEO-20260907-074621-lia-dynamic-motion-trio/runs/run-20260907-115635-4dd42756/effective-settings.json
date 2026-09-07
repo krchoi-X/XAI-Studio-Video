@@ -1,0 +1,37 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 243,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "seed": -1,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\krea2\\run-20260906-134255-f8ffdd8c.jpg"
+  ],
+  "_xai": {
+    "kind": "lia_dynamic_motion",
+    "character_id": "ch-lia",
+    "character_dna_version": 2,
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+    "episode": "dyn-03-lookback-exit",
+    "title": "Cafe exit look-back then outdoor stride",
+    "motion_budget": "MEDIUM",
+    "identity_priority": "P0",
+    "requested_seconds": 10,
+    "frame_grid": "17k+5 @24fps -> 243 frames (10.125 s)",
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "reference_paths": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\krea2\\run-20260906-134255-f8ffdd8c.jpg"
+    ]
+  },
+  "prompt": "subject_definitions:\n<Subject 1> is the adult woman in <Picture 1>. Preserve exact facial identity from <Picture 1> throughout: slim slightly elongated oval face, soft dark-brown eyes with coordinated gaze, translucent pale skin texture, soft rose-beige lips, long near-black hair with soft full bangs (cafe hair-clip allowed if present in <Picture 1>), and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep cafe-appropriate practical clothing from <Picture 1>. Do not replace her face.\n\nsummary:\n[reference generation] Ten-second motion beat. <Subject 1> walks out of the cafe toward bright outdoor light, briefly looks back over her shoulder toward the interior with a faint closed-mouth smile, then turns forward and continues walking with a clearer stride.\n\nretention_analysis:\n<Subject 1>: fully_preserved identity and cafe wardrobe from <Picture 1>. Only stand-to-walk transition, shoulder look-back, smile, and outdoor stride may change.\n\ndetailed_description:\nMotion budget MEDIUM. Photorealistic cafe-to-street continuity, single shot preferred.\n[Shot 1] Start standing near the cafe exit matching <Picture 1> identity. <Subject 1> walks toward the open doorway / bright exterior. At the threshold she looks back over her right shoulder toward the cafe for about one second — calm coordinated gaze, faint closed-mouth smile — then faces forward and steps into brighter outdoor light with a natural walking stride. Hair and clothes show light motion from the movement and doorway air. Head upright, no influencer wave, no toothy grin, no identity drift. Handheld follow with minimal shake. No cut required. No beauty filter.\n\noverall_soundscape:\nCafe murmur fading into outdoor ambience and footsteps. No speech. No music.\n\nnon_diegetic_music:\nNone.\n",
+  "output_filename": "run-20260907-115635-4dd42756"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "character": "ch-lia",
+  "character_version": 2,
+  "mode": "strict_translation",
+  "coverage": "clothed",
+  "wardrobe": "Japanese convenience-store part-time employee uniform: short-sleeve collared polo shirt and dark work pants, fully clothed, torso and legs covered",
+  "hair": "a clearly visible low ponytail tied at the nape, with the hair pulled away from the shoulders",
+  "location": "convenience store interior behind checkout counter",
+  "activity": "standing behind the checkout counter at work",
+  "expression": "quiet closed-mouth faint smile",
+  "props": "checkout counter, store shelves",
+  "negative_constraints": "nudity, bare chest, lingerie, swimsuit, towel, robe"
+}

@@ -1,0 +1,25 @@
+{
+  "run_id": "run-20260907-173926-6fddc936",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-173926-lia-convenience-store-part-time-uniform\\outputs\\krea2\\run-20260907-173926-6fddc936.jpg",
+      "sha256": "8010400dbd298c7dcb854bf5a971d37176e977e243efabfc94c4d7d141befc19",
+      "byte_count": 217263,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T17:41:24+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-173926-lia-convenience-store-part-time-uniform\\outputs\\krea2\\run-20260907-173926-6fddc936_1.jpg",
+      "sha256": "68bc320a18104ef880a61243cc793b34eff82c03c1eb5d3c5b81254db2c90380",
+      "byte_count": 219357,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T17:41:24+09:00"
+    }
+  ]
+}

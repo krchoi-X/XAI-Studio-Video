@@ -1,0 +1,39 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 243,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "seed": -1,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\krea2\\run-20260906-134255-f8ffdd8c.jpg",
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-133257-lia-scene-variation\\outputs\\krea2\\run-20260906-133438-8db5720b.jpg"
+  ],
+  "_xai": {
+    "kind": "lia_dynamic_motion",
+    "character_id": "ch-lia",
+    "character_dna_version": 2,
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+    "episode": "dyn-01-cafe-exit-beach-cut",
+    "title": "Cafe stand-and-leave → cut → beach short-dress wind walk",
+    "motion_budget": "MEDIUM",
+    "identity_priority": "P0",
+    "requested_seconds": 10,
+    "frame_grid": "17k+5 @24fps -> 243 frames (10.125 s)",
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "reference_paths": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\krea2\\run-20260906-134255-f8ffdd8c.jpg",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-133257-lia-scene-variation\\outputs\\krea2\\run-20260906-133438-8db5720b.jpg"
+    ]
+  },
+  "prompt": "subject_definitions:\n<Subject 1> is the adult woman in <Picture 1> and the exact same person as the adult woman in <Picture 2>. Hard-lock facial identity across both pictures and the whole video: slim slightly elongated oval face, large soft slightly elongated dark-brown eyes with relaxed eyelids, small refined nose, soft rose-beige lips, fresh translucent pale skin with visible fine pores, long near-black hair with soft full lived-in bangs. Exactly three thin red-and-blue knotted bracelets on her right wrist whenever that wrist is visible. Do not celebrity-resemble, beautify-filter, enlarge eyes, or replace her face between shots.\n\nsummary:\n[reference generation] Ten-second two-beat motion piece. [Shot 1] In a cafe matching <Picture 1>, <Subject 1> stands up from her seat and walks toward the exit. A motivated near-full-frame occlusion (door frame / passersby blur / fabric) hides the cut. [Shot 2] Reveal on a sunny beach: same woman as <Picture 2>, now in a short light dress, walking along the sand while sea wind moves the dress and bangs.\n\nretention_analysis:\n<Subject 1>: fully_preserved face identity across Shot 1 and Shot 2. Wardrobe may change only across the hidden cut: Shot 1 keeps <Picture 1> cafe clothes and cafe hair-clip styling if present; Shot 2 keeps <Picture 2> short dress beach wardrobe. Bracelets remain the same three thin red-and-blue knots on the right wrist when visible.\n\ndetailed_description:\nMotion budget MEDIUM. Continuous photorealistic handheld-feeling clip with ONE hard cut hidden by occlusion.\n[Shot 1 | ~0-4s | cafe] Start near the seated cafe pose of <Picture 1>. <Subject 1> pushes her chair back, stands in one clean motion, turns toward the exit, and takes two walking steps. Head upright, shoulders aligned with travel, eyes mostly forward, faint closed-mouth smile. Cafe interior depth, practical daytime light.\nThen a motivated occluder fills most of the frame for a beat (dark door edge / body pass / fabric), hiding the transition.\n[Shot 2 | ~5-10s | beach] Occluder clears onto a bright sandy beach with sea and sky. <Subject 1> is the same face as Shot 1 / <Picture 2>, wearing the short light dress from <Picture 2>. She walks left-to-right along the shoreline with a natural long-legged stride. Sea breeze moves the short dress hem and a few bang strands; not a storm. Soft closed-mouth smile; optional brief 10-15 degree camera glance then eyes forward again. Bracelets catch light on the right wrist once.\nNo influencer posing, no beauty-filter skin, no identity drift across the cut, no extra people as main subjects, no dialogue required.\n\noverall_soundscape:\nCafe room murmur then outdoor sea breeze and soft footsteps on sand. No music bed.\n\nnon_diegetic_music:\nNone.\n",
+  "output_filename": "run-20260907-074642-c31f10a2"
+}

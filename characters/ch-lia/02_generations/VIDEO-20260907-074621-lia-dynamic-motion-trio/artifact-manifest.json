@@ -1,0 +1,42 @@
+{
+  "project": "Lia dynamic motion trio",
+  "session_id": "VIDEO-20260907-074621-lia-dynamic-motion-trio",
+  "model": "minimax_h3_ref2va_pruned",
+  "references": {
+    "cafe": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\krea2\\run-20260906-134255-f8ffdd8c.jpg",
+      "sha256": "6954f1779ed1f5e29a297aa9c23d73c959df16681efe92a54c257bb29202952d"
+    },
+    "beach_dress": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-133257-lia-scene-variation\\outputs\\krea2\\run-20260906-133438-8db5720b.jpg",
+      "sha256": "2acf40bfda49559e0cd3c64bcb1a47ac33de4abfa8a697a000b6e7788052de83"
+    }
+  },
+  "shots": [
+    {
+      "shot_id": "dyn-01-cafe-exit-beach-cut",
+      "title": "Cafe stand-and-leave → cut → beach short-dress wind walk",
+      "prompt_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\dyn-01-cafe-exit-beach-cut.txt",
+      "settings_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\dyn-01-cafe-exit-beach-cut.settings.json",
+      "run_id": "run-20260907-074642-c31f10a2",
+      "artifact": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\run-20260907-074642-c31f10a2.mp4"
+    },
+    {
+      "shot_id": "dyn-02-beach-wind-stride",
+      "title": "Beach short-dress wind walk with turn",
+      "prompt_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\dyn-02-beach-wind-stride.txt",
+      "settings_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\dyn-02-beach-wind-stride.settings.json",
+      "run_id": "run-20260907-095602-0152a6a7",
+      "artifact": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\run-20260907-095602-0152a6a7.mp4"
+    },
+    {
+      "shot_id": "dyn-03-lookback-exit",
+      "title": "Cafe exit look-back then outdoor stride",
+      "prompt_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\dyn-03-lookback-exit.txt",
+      "settings_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\dyn-03-lookback-exit.settings.json",
+      "run_id": "run-20260907-115635-4dd42756",
+      "artifact": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\run-20260907-115635-4dd42756.mp4"
+    }
+  ],
+  "updated_at": "2026-09-07T13:56:50+09:00"
+}

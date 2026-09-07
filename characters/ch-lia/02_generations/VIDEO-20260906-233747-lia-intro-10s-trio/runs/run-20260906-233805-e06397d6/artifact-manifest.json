@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260906-233805-e06397d6",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260906-233747-lia-intro-10s-trio\\run-20260906-233805-e06397d6.mp4",
+      "sha256": "f775261772c1ac678263bf65f8ae882a63d4792b8e5c84855a3042c3d858a5eb",
+      "byte_count": 8942922,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "6313b686bad7336277643bf949fde93f9c4505327e7f936e27a3796e16c28472",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T01:40:00+09:00"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "run_id": "run-20260906-195320-537cb7fb",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb.jpg",
+      "sha256": "f39b600afb1c37509672faad8d7c7e2377e2854345e5e608046c74ef878a22fa",
+      "byte_count": 129624,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:38+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb_1.jpg",
+      "sha256": "6d8efe56d232c44f118d8c48214be4438397fb3abc09273f976c9f618820c7ba",
+      "byte_count": 123230,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:38+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb_2.jpg",
+      "sha256": "a7239278b2453e73cad1cef28e8da74fc1748173012c85dc276b9a5bda44a18c",
+      "byte_count": 118597,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:38+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb_3.jpg",
+      "sha256": "db542574db2ac7ac22f728a044df1f11f5079e0a3e770806f17430079dfbe57c",
+      "byte_count": 128409,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:38+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs\\z-image\\run-20260906-195320-537cb7fb_4.jpg",
+      "sha256": "301dc9ab730a28fb103d69543593ba5523146d0b916e46b00c4148952ca8e1ee",
+      "byte_count": 129649,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T19:55:39+09:00"
+    }
+  ]
+}

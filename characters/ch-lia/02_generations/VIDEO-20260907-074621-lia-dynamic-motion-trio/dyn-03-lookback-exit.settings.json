@@ -1,0 +1,35 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 243,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "seed": -1,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\krea2\\run-20260906-134255-f8ffdd8c.jpg"
+  ],
+  "_xai": {
+    "kind": "lia_dynamic_motion",
+    "character_id": "ch-lia",
+    "character_dna_version": 2,
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+    "episode": "dyn-03-lookback-exit",
+    "title": "Cafe exit look-back then outdoor stride",
+    "motion_budget": "MEDIUM",
+    "identity_priority": "P0",
+    "requested_seconds": 10,
+    "frame_grid": "17k+5 @24fps -> 243 frames (10.125 s)",
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "reference_paths": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\krea2\\run-20260906-134255-f8ffdd8c.jpg"
+    ]
+  }
+}

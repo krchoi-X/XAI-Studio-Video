@@ -1,0 +1,6 @@
+{"at":"2026-09-06T11:45:30+09:00","state":"queued","prompt_sha256":"d31eb814784e3cd670ca3094104799ebfc944bbb3e5bab422e0d5f9a4fabafeb","target":"local"}
+{"at":"2026-09-06T11:45:30+09:00","state":"starting","local_worker_pid":22612}
+{"at":"2026-09-06T11:45:36+09:00","state":"running","provider_job_id":"local-pid-23248"}
+{"at":"2026-09-06T11:45:55+09:00","state":"error","data":{"message":"You must provide at least one Reference Image","task_index":1,"task_id":1,"stage":"validation"}}
+{"at":"2026-09-06T11:45:55+09:00","state":"completed","data":{"success":false,"generated_files":[],"errors":[{"message":"You must provide at least one Reference Image","task_index":1,"task_id":1,"stage":"validation"}],"total_tasks":1,"successful_tasks":0,"failed_tasks":1,"artifacts":[]}}
+{"at":"2026-09-06T11:45:55+09:00","state":"failed","message":"You must provide at least one Reference Image"}

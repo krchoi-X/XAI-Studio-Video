@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "project_id": "VIDEO-20260907-181254-lia-sundress-shift-cat",
+  "prompt_id": "beat-A-beach-sundress",
+  "run_id": "run-20260907-182114-c1387088",
+  "character_id": "ch-lia",
+  "character_dna_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "requested_by": "grok",
+  "requesting_agent": "grok",
+  "source_idea": "Sundress to Shift to Cat (~10s stitch) beat A OUTING beach sundress walk",
+  "user_request_ref": "handoff.json:user_request_verbatim",
+  "inputs": {
+    "runtime_prompt_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-A-beach-sundress.txt",
+    "runtime_prompt_sha256": "2ba0257674bc37bdcd77aa5b022482eb93097fc70869489357a6a527f4022766",
+    "runtime_prompt_text": "subject_definitions:\n<Subject 1> is the adult woman in <Picture 1>. HARD LOCK face identity to Picture 1: slim slightly elongated oval face, soft dark-brown eyes, translucent pale natural skin with fine pores, soft rose-beige lips, long near-black lived-in bangs, tall slender long-legged silhouette, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep the thin sundress and loose hair from <Picture 1>. Do not replace her face or turn her into a different person.\n\nsummary:\n[reference generation] One continuous ~3-second medium-motion beach outing walk. <Subject 1> walks along the shoreline in a thin sundress with loose hair, faint closed-mouth smile, natural sea breeze.\n\nretention_analysis:\n<Subject 1>: fully_preserved identity and sundress wardrobe from <Picture 1>. Only walking gait, light breeze on dress/hair, and smile timing may change.\n\ndetailed_description:\nMotion budget MEDIUM for walking, LOW for face. Photorealistic sunny beach outing.\n[Shot 1] <Subject 1> walks parallel to the water in a thin sundress, loose hair with bangs moving lightly in the breeze. Natural long-legged gait, head upright, chin level, eyes mostly forward with a quiet closed-mouth faint smile. Right-wrist bracelets visible during arm swing when the wrist is in frame. Soft side-follow / handheld breathing; no crash zooms. No cut. No beauty filter. No speech. No second person. No cat.\n\noverall_soundscape:\nSea breeze, soft surf, footsteps on sand. No speech. No music.\n\nnon_diegetic_music:\nNone.\n",
+    "settings_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-A-beach-sundress.settings.json",
+    "effective_settings_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-182114-c1387088\\effective-settings.json",
+    "reference_images": [
+      {
+        "role": "beach_sundress_identity",
+        "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-133257-lia-scene-variation\\outputs\\krea2\\run-20260906-133438-8db5720b.jpg",
+        "sha256": "2acf40bfda49559e0cd3c64bcb1a47ac33de4abfa8a697a000b6e7788052de83",
+        "byte_count": 176204
+      }
+    ],
+    "model_type": "minimax_h3_ref2va_pruned",
+    "video_prompt_type": "KI",
+    "resolution": "576x768",
+    "video_length": 73,
+    "num_inference_steps": 20,
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "profile": 1,
+    "vram_safety": 0.8
+  },
+  "outputs": {
+    "output_dir": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat",
+    "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-182114-c1387088",
+    "status": "needs_review",
+    "artifact_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-182114-c1387088.mp4",
+    "artifact_sha256": "52d2e37b7439677c9b22669029f8a169d85e86e9fef069d2c8d174ac0f624076",
+    "artifact_byte_count": 5083879,
+    "started_at": "2026-09-07T18:21:14+09:00",
+    "finished_at": "2026-09-07T19:34:41+09:00",
+    "approx_render_minutes": 71
+  },
+  "written_at": "2026-09-07T19:35:51+09:00",
+  "finished_at": "2026-09-07T19:34:41+09:00"
+}

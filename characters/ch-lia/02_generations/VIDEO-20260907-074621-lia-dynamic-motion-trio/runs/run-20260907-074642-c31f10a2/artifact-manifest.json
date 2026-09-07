@@ -1,0 +1,11 @@
+{
+  "run_id": "run-20260907-074642-c31f10a2",
+  "prompt_id": "dyn-01-cafe-exit-beach-cut",
+  "status": "needs_review",
+  "artifacts": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\run-20260907-074642-c31f10a2.mp4"
+  ],
+  "artifact_sha256": "d6e898cdef092ca91c367805bd5d3fb1d176bdb8a3052c5ca9b7228080421560",
+  "lineage": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-074621-lia-dynamic-motion-trio\\runs\\run-20260907-074642-c31f10a2\\lineage.json",
+  "written_at": "2026-09-07T09:55:46+09:00"
+}

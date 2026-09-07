@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "GPT-20260906-reika-face-09-smile",
+    "character_id": "ch-mizuki-reika",
+    "title": "레이카 · GPT 09번 · 환하게 웃는 일상 3장",
+    "status": "completed",
+    "visibility": "standard",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\GPT-20260906-reika-face-09-smile\\outputs",
+    "prompt_file": "prompt.txt"
+  },
+  "jobs": [
+    {
+      "backend": "openai",
+      "provider": "OpenAI",
+      "model": "GPT built-in image generation",
+      "count": 3,
+      "output_dir": "outputs/gpt",
+      "status": "completed"
+    }
+  ],
+  "review": {
+    "initial_state": "needs_review"
+  }
+}

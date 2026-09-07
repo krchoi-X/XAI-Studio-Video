@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait",
+    "character_id": "ch-mizuki-reika",
+    "character_name": "미즈키 레이카",
+    "romanized_name": "Mizuki Reika",
+    "title": "그 설정을 이용해서 레이카 기본 이미지 후보가 될 이미지 10개를 만들어줘. Initial base identity candidate portrait of Mizuki Reika. Photorealistic professional model casting photograph, one adult woman, chest-up front-facing portrait at eye level, face clearly visible, long sleek black hair behind the shoulders, simple black crew-neck top, neutral light-gray seamless studio background, large soft diffused light, realistic skin texture, restrained minimal makeup, calm relaxed mouth and direct gaze, 85mm portrait lens. Keep the complete head in frame. No glasses, no accessories, no text, no collage. Explore seed variations for initial face selection; no reference has been approved yet.",
+    "status": "completed",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\outputs",
+    "created_at": "2026-09-06T10:53:20+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "11ce5b9501577c82d60051075ab7b4301297e858c137866711ff92711c0447c1"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "z_image",
+      "count": 5,
+      "seed": 906195321,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "z-image.settings.json",
+      "output_dir": "outputs/z-image",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\runs\\run-20260906-195320-537cb7fb"
+    },
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 5,
+      "seed": 906195322,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE-20260906-195320-mizuki-reika-initial-base-identity-candidate-portrait\\runs\\run-20260906-195541-15fd3f12"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}

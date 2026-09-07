@@ -1,0 +1,18 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. Preserve exact facial identity from <Picture 1>: slim slightly elongated oval face, soft dark-brown eyes, translucent pale natural skin with fine pores, soft rose-beige lips, long near-black lived-in bangs, tall slender long-legged silhouette, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep the short light dress from <Picture 1>. Do not replace her face or turn her into a different person.
+
+summary:
+[reference generation] One continuous ten-second medium-motion beach walk. <Subject 1> strides along the shoreline, wind lifts the short dress hem and bangs, then she turns her head toward the camera with a faint closed-mouth smile before looking forward again.
+
+retention_analysis:
+<Subject 1>: fully_preserved identity and short-dress wardrobe from <Picture 1>. Only walking gait, wind-driven dress/hair, head turn, and smile timing may change.
+
+detailed_description:
+Motion budget MEDIUM-HIGH for walking, LOW for face. Photorealistic sunny beach, sea on one side.
+[Shot 1] <Subject 1> enters mid-stride, walking parallel to the water. Natural long-legged gait, head upright, chin level, eyes mostly forward. Steady sea breeze moves the short dress and a few separated bang strands with physically coherent lag — not chaotic whipping. Around mid-clip she turns her head about 30 degrees toward the lens for one second with a faint quiet closed-mouth smile, then returns eyes to the path and continues walking. Right-wrist bracelets visible during arm swing. Tracking/side follow with gentle handheld breathing; no crash zooms. No cut. No beauty filter. No exaggerated runway walk.
+
+overall_soundscape:
+Sea breeze, soft surf, footsteps on sand. No speech. No music.
+
+non_diegetic_music:
+None.

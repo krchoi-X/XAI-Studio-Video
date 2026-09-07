@@ -1,0 +1,35 @@
+{
+  "run_id": "run-20260906-134115-aed44cee",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\z-image\\run-20260906-134115-aed44cee.jpg",
+      "sha256": "795440d4ffa2a43e67f14499d0d73d381bd02e3d9b445865b16f76a73361c9c6",
+      "byte_count": 166736,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T13:42:54+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\z-image\\run-20260906-134115-aed44cee_1.jpg",
+      "sha256": "d880d5dbc87f50976e575276491252e0c346f9c06a573d47c6c12e1c49e8bb42",
+      "byte_count": 179971,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T13:42:54+09:00"
+    },
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260906-134115-lia-scene-variation\\outputs\\z-image\\run-20260906-134115-aed44cee_2.jpg",
+      "sha256": "19071daa5cebf55d577378f658e502b1d290739c39ecdd91edad3566469310ad",
+      "byte_count": 172537,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-06T13:42:54+09:00"
+    }
+  ]
+}
