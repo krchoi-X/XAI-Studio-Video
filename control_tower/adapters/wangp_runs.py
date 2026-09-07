@@ -40,7 +40,7 @@ def default_pid_alive(pid: int | None) -> bool:
 
 
 class SessionContext:
-    __slots__ = ("title", "character_id", "session_id", "requested_by", "kind", "session_dir", "visibility")
+    __slots__ = ("title", "character_id", "session_id", "requested_by", "requested_by_basis", "kind", "session_dir", "visibility")
 
     def __init__(self, session_dir: Path) -> None:
         self.session_dir = str(session_dir)
@@ -48,6 +48,7 @@ class SessionContext:
         self.title = session_dir.name
         self.character_id = None
         self.requested_by = "unknown"
+        self.requested_by_basis = None
         self.kind = "unknown"
         self.visibility = None
         parent = session_dir.parent
@@ -59,6 +60,20 @@ class SessionContext:
 
     def to_dict(self) -> dict[str, Any]:
         return {k: getattr(self, k) for k in self.__slots__}
+
+
+PROVENANCE_KEYS = ("requested_by", "invoked_by", "actor", "created_by", "requester")
+
+
+def explicit_requester(record: dict[str, Any] | None) -> str | None:
+    """Return an explicitly recorded requester from a provenance record, or None."""
+    if not isinstance(record, dict):
+        return None
+    for key in PROVENANCE_KEYS:
+        value = record.get(key)
+        if isinstance(value, str) and value.strip() and value.strip().lower() not in {"unknown", "none", "null"}:
+            return value.strip().lower()
+    return None
 
 
 def load_session_context(session_dir: Path) -> SessionContext:
@@ -74,11 +89,27 @@ def load_session_context(session_dir: Path) -> SessionContext:
             ctx.visibility = session.get("visibility") or None
         except Exception:
             pass
+    # Explicit provenance, first hit wins: prompt-trace.json (scene pipeline), then optional keys another
+    # producer may write into batch.yaml / handoff.json / sequence-status.json. Nothing is guessed here.
+    candidates: list[dict[str, Any]] = []
     trace = read_json_safe(session_dir / "prompt-trace.json")
-    if isinstance(trace, dict) and trace.get("invoked_by"):
-        ctx.requested_by = str(trace["invoked_by"])
-    elif isinstance(trace, dict) and trace.get("created_by"):
-        ctx.requested_by = str(trace["created_by"])
+    if isinstance(trace, dict):
+        candidates.append(trace)
+    if yaml is not None and batch_path.is_file():
+        try:
+            candidates.append((yaml.safe_load(batch_path.read_text(encoding="utf-8")) or {}).get("session") or {})
+        except Exception:
+            pass
+    for name in ("handoff.json", "sequence-status.json"):
+        extra = read_json_safe(session_dir / name)
+        if isinstance(extra, dict):
+            candidates.append(extra)
+    for record in candidates:
+        actor = explicit_requester(record)
+        if actor:
+            ctx.requested_by = actor
+            ctx.requested_by_basis = "record"
+            break
     if ctx.title == session_dir.name:
         readme = session_dir / "README.md"
         if readme.is_file():
@@ -103,7 +134,7 @@ class WangpRunAdapter:
         self.history_lookup = history_lookup or (lambda key: None)
         self.pid_alive = pid_alive
         self._run_cache: dict[str, tuple[tuple[float, float, int], Job]] = {}
-        self._session_cache: dict[str, tuple[tuple[float, float], SessionContext]] = {}
+        self._session_cache: dict[str, tuple[tuple[float, ...], SessionContext]] = {}
 
     # ------------------------------------------------------------------ discovery
     def run_dirs(self) -> list[Path]:
@@ -129,6 +160,8 @@ class WangpRunAdapter:
         stamp = (
             _mtime(session_dir / "batch.yaml"),
             _mtime(session_dir / "prompt-trace.json"),
+            _mtime(session_dir / "handoff.json"),
+            _mtime(session_dir / "sequence-status.json"),
         )
         cached = self._session_cache.get(key)
         if cached and cached[0] == stamp:
@@ -297,6 +330,12 @@ class WangpRunAdapter:
         elif run.get("error"):
             error = str(run["error"])
 
+        requested_by = ctx.requested_by
+        requested_by_basis = ctx.requested_by_basis
+        run_actor = explicit_requester(run)
+        if run_actor:
+            requested_by, requested_by_basis = run_actor, "record"
+
         title = ctx.title
         prompt_id = run.get("prompt_id")
         if ctx.kind == "video" and prompt_id:
@@ -309,7 +348,8 @@ class WangpRunAdapter:
             job_id=f"wangp:{run['run_id']}",
             source="wangp-run",
             title=title,
-            requested_by=ctx.requested_by,
+            requested_by=requested_by,
+            requested_by_basis=requested_by_basis,
             executor=EXECUTOR_LOCAL_WORKER if worker_pid else "wangp" if run.get("target") == "local" else str(run.get("target") or "unknown"),
             engine=str(run.get("renderer") or "WanGP"),
             model=str(model) if model else None,

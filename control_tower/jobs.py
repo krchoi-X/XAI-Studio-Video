@@ -93,8 +93,9 @@ class Job:
     job_id: str
     source: str  # wangp-run | night-batch | web-job
     title: str
-    requested_by: str  # hermes | codex | web | claude | manual | unknown
+    requested_by: str  # hermes | codex | web | claude | grok | unknown
     executor: str
+    requested_by_basis: str | None = None  # record | parent | process-env | process-lineage | manual | None
     engine: str | None = None
     model: str | None = None
     status: str = "unknown"

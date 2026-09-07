@@ -68,7 +68,8 @@ class ScanTests(unittest.TestCase):
         by_pid = {p.pid: p for p in snap.processes}
         self.assertIn(30, by_pid)
         self.assertTrue(by_pid[30].on_gpu)
-        self.assertEqual(by_pid[11].agent, "codex", "unclassified child inherits the parent agent")
+        self.assertIsNone(by_pid[11].agent)
+        self.assertEqual((by_pid[11].launched_by, by_pid[11].launched_by_basis), ("codex", "lineage"), "unclassified child is credited to the parent agent")
         self.assertIn(50, by_pid, "GPU-holding helper is still shown")
         self.assertNotIn(1, by_pid)
         agents = {a.agent: a for a in snap.agents}
@@ -81,6 +82,41 @@ class ScanTests(unittest.TestCase):
         self.assertIsNotNone(agents["codex"].active_since)
         self.assertEqual(agents["codex"].note, "activity inferred from CPU/GPU use, not a progress measure")
         self.assertGreater(by_pid[30].elapsed_seconds, 500)
+
+    def test_grok_classification_and_env_marker_attribution(self):
+        observer = ProcessObserver()
+        daemon_cmd = r'"C:\Program Files\Grok Bot\Grok Bot.exe" "C:\Program Files\Grok Bot\resources\app.asar\dist\local-exec-daemon\main.cjs"'
+        rows = [
+            row(1, 0, "explorer.exe", "explorer.exe"),
+            row(70, 1, "Grok Bot.exe", r'"C:\Program Files\Grok Bot\Grok Bot.exe"'),
+            row(71, 70, "Grok Bot.exe", daemon_cmd),
+            # detached WanGP worker: its parent (the submit process) is gone, but Grok's env markers survive
+            dict(row(80, 9999, "python.exe", WANGP_WORKER, cpu=200.0), env={"SAND_LOCAL_EXEC_GENERATION": "1", "HERMES_HOME": "x", "PATH": "y"}),
+            # a python process with only user-wide vars must not be attributed to hermes
+            dict(row(81, 1, "python.exe", "python.exe other.py", cpu=50.0), env={"HERMES_HOME": "x", "PATH": "y"}),
+            # Claude Code child (env marker) that is otherwise an unclassified process
+            dict(row(82, 1, "python.exe", "python.exe helper.py", cpu=50.0), env={"CLAUDECODE": "1"}),
+        ]
+        snap = observer.scan(gpu_pids={80: None}, rows=rows, now=time.time())
+        by_pid = {p.pid: p for p in snap.processes}
+        self.assertEqual((by_pid[71].kind, by_pid[71].agent), ("grok-exec-daemon", "grok"))
+        self.assertEqual((by_pid[70].kind, by_pid[70].agent), ("grok-desktop", "grok"))
+        self.assertEqual((by_pid[80].agent, by_pid[80].launched_by, by_pid[80].launched_by_basis), ("wangp", "grok", "env"))
+        self.assertIsNone(by_pid[81].launched_by)
+        self.assertEqual(by_pid[82].launched_by, "claude")
+        agents = {a.agent: a for a in snap.agents}
+        self.assertEqual(agents["grok"].state, "working", "Grok is working because the worker it launched is on the GPU")
+        self.assertTrue(agents["grok"].on_gpu)
+        self.assertEqual(agents["wangp"].state, "working")
+        self.assertEqual(agents["hermes"].state, "offline")
+        self.assertIn(80, agents["grok"].pids)
+
+    def test_detect_env_agent_priority(self):
+        from control_tower.processes import detect_env_agent
+        self.assertEqual(detect_env_agent(["SAND_DATA_ROOT", "CLAUDECODE"]), "grok")
+        self.assertEqual(detect_env_agent(["CODEX_SANDBOX"]), "codex")
+        self.assertEqual(detect_env_agent(["HERMES_SPAWN"]), "hermes")
+        self.assertIsNone(detect_env_agent(["HERMES_HOME", "HERMES_GIT_BASH_PATH", "PATH"]))
 
     def test_idle_grace_then_idle(self):
         observer = ProcessObserver()

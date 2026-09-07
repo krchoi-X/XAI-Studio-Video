@@ -20,7 +20,7 @@ from .db import Database
 from .gpu import HostSample, NvidiaSmiCollector
 from .jobs import COMPLETED_STATUSES, Job
 from .processes import AI_RUNTIME_KINDS, ProcessObserver, ProcessSnapshot
-from .util import iso_now, utc_now
+from .util import iso_now, read_json_safe, utc_now
 
 log = logging.getLogger("control_tower.monitor")
 
@@ -60,6 +60,8 @@ class MonitorService:
         self._last_jobs = 0.0
         self._timing_recorded: set[str] = set()
         self._proc_signature: Any = None
+        self._attribution_cache: dict[str, dict[str, Any]] | None = None
+        self._manual_cache: tuple[float, dict[str, Any]] = (0.0, {})
         self._job_signature: dict[str, str] = {}
         self._last_prune = 0.0
         # Seed the timing-recorded set with terminal jobs already persisted so restarts don't double count.
@@ -169,8 +171,77 @@ class MonitorService:
                 log.exception("adapter %s failed", name)
                 self.job_errors[name] = str(exc)
         link_parents(jobs)
+        self._attribute_jobs(jobs)
         self.jobs = jobs
+        self._mark_agents_with_running_jobs()
         return self._persist_jobs(jobs)
+
+    # ------------------------------------------------------------------ requester attribution
+    def _manual_attributions(self) -> dict[str, Any]:
+        path = self.config.db_path.parent / "attributions.json"
+        try:
+            stamp = path.stat().st_mtime
+        except OSError:
+            self._manual_cache = (0.0, {})
+            return {}
+        if self._manual_cache[0] != stamp:
+            data = read_json_safe(path)
+            self._manual_cache = (stamp, data if isinstance(data, dict) else {})
+        return self._manual_cache[1]
+
+    def _attribute_jobs(self, jobs: list[Job]) -> None:
+        """Fill `requested_by` for runs whose records say nothing, from (1) a persisted observation,
+        (2) the live worker process (env marker or parent lineage), (3) the manual attributions file."""
+        if self._attribution_cache is None:
+            try:
+                self._attribution_cache = self.db.get_attributions()
+            except Exception:
+                log.exception("attribution load failed")
+                self._attribution_cache = {}
+        manual = self._manual_attributions()
+        manual_sessions = manual.get("sessions") if isinstance(manual.get("sessions"), dict) else {}
+        manual_runs = manual.get("runs") if isinstance(manual.get("runs"), dict) else {}
+        by_pid = {p.pid: p for p in (self.procs.processes if self.procs else [])}
+        for job in jobs:
+            if job.source != "wangp-run":
+                continue
+            if job.requested_by != "unknown":
+                if job.requested_by_basis is None:
+                    job.requested_by_basis = "parent" if job.parent_job_id else "record"
+                continue
+            stored = self._attribution_cache.get(job.job_id)
+            if stored:
+                job.requested_by, job.requested_by_basis = stored["requested_by"], stored["basis"]
+                job.details["attribution_evidence"] = stored.get("evidence")
+                continue
+            if job.is_active and job.worker_pid:
+                proc = by_pid.get(job.worker_pid)
+                if proc and proc.launched_by:
+                    basis = "process-env" if proc.launched_by_basis == "env" else "process-lineage"
+                    evidence = f"worker PID {proc.pid} carries a {proc.launched_by} {proc.launched_by_basis} marker"
+                    job.requested_by, job.requested_by_basis = proc.launched_by, basis
+                    job.details["attribution_evidence"] = evidence
+                    self._attribution_cache[job.job_id] = {"requested_by": proc.launched_by, "basis": basis, "evidence": evidence}
+                    try:
+                        self.db.record_attribution(job.job_id, proc.launched_by, basis, evidence)
+                    except Exception:
+                        log.exception("attribution persistence failed")
+                    continue
+            run_id = str(job.details.get("run_id") or "")
+            entry = manual_runs.get(run_id) or (manual_sessions.get(job.session_id) if job.session_id else None)
+            if isinstance(entry, dict) and entry.get("requested_by"):
+                job.requested_by, job.requested_by_basis = str(entry["requested_by"]).lower(), "manual"
+                job.details["attribution_evidence"] = entry.get("note")
+
+    def _mark_agents_with_running_jobs(self) -> None:
+        """An agent whose requested job is running is working even if its own process looks idle."""
+        if not self.procs:
+            return
+        running_by = {j.requested_by for j in self.jobs if j.status == "running" and j.requested_by != "unknown"}
+        for agent in self.procs.agents:
+            if agent.agent in running_by and agent.state != "working":
+                agent.state = "working"
+                agent.note = "a job it requested is running (activity inferred from the job, not its own CPU)"
 
     def _persist_jobs(self, jobs: list[Job]) -> bool:
         payloads = [j.to_dict() for j in jobs]
@@ -333,6 +404,7 @@ def link_parents(jobs: list[Job]) -> None:
             job.parent_job_id = parent
             if job.requested_by == "unknown":
                 job.requested_by = "web" if parent.startswith("web:") else "hermes"
+                job.requested_by_basis = "parent"
 
 
 def _norm(path: str | None) -> str:

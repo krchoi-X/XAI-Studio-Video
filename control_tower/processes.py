@@ -18,11 +18,12 @@ except ImportError:  # pragma: no cover - psutil is present in the target venv
 from .util import iso_now
 
 # Agents shown in the AGENTS / PROCESSES section, in display order.
-AGENT_ORDER = ["claude", "codex", "hermes", "wangp", "comfyui", "gallery", "ollama", "xai-tools"]
+AGENT_ORDER = ["claude", "codex", "hermes", "grok", "wangp", "comfyui", "gallery", "ollama", "xai-tools"]
 AGENT_LABELS = {
     "claude": "Claude Code",
     "codex": "Codex",
     "hermes": "Hermes",
+    "grok": "Grok Bot",
     "wangp": "WanGP",
     "comfyui": "ComfyUI",
     "gallery": "Gallery (Prompt Studio)",
@@ -32,6 +33,17 @@ AGENT_LABELS = {
 # Kinds whose presence on the GPU means "AI workload", as opposed to a desktop app touching the GPU.
 AI_RUNTIME_KINDS = {"wangp-worker", "wangp-webui", "wangp", "comfyui", "ollama", "python", "xai-tool", "hermes-agent"}
 ACTIVE_CPU_PERCENT = 1.0  # percent of the whole machine (all cores = 100)
+# Environment-variable markers inherited by everything an agent spawns. They survive parent death (detached
+# WanGP workers) which parent-PID lineage does not. Only variable NAMES are inspected, never values.
+# Order matters: the first matching agent wins.
+ENV_MARKERS: list[tuple[str, tuple[str, ...]]] = [
+    ("grok", ("SAND_LOCAL_EXEC_GENERATION", "SAND_DATA_ROOT", "SAND_LAB", "SAND_PACKAGED")),
+    ("claude", ("CLAUDECODE", "CLAUDE_CODE_SESSION_ID", "CLAUDE_CODE_ENTRYPOINT", "CLAUDE_PID")),
+    ("codex", ("CODEX_SANDBOX", "CODEX_APP_TOOLS_PIPE_PATH", "CODEX_INTERNAL_ORIGINATOR_OVERRIDE", "CODEX_MCP_NODE_PATH", "CODEX_THREAD_ID")),
+    ("hermes", ("HERMES_SPAWN", "HERMES_PARENT_PID", "HERMES_DASHBOARD_SESSION_TOKEN", "HERMES_DESKTOP")),
+]
+# HERMES_HOME / HERMES_GIT_BASH_PATH are user-wide on this PC and therefore never used as markers.
+ENV_PROBE_NAMES = {"python.exe", "pythonw.exe", "python", "node.exe", "node", "cmd.exe", "powershell.exe", "pwsh.exe", "bash.exe", "uv.exe"}
 IDLE_GRACE_SECONDS = 45.0
 
 
@@ -53,6 +65,8 @@ class ProcessInfo:
     on_gpu: bool = False
     gpu_memory_mib: float | None = None
     active: bool = False
+    launched_by: str | None = None  # agent that spawned this process (directly or through descendants)
+    launched_by_basis: str | None = None  # env | lineage
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -110,6 +124,12 @@ def classify(name: str | None, cmdline: str | None, exe: str | None = None, cwd:
 
     if "control_tower" in c:
         return "control-tower", None, "Control Tower (this service)"
+    if n == "grok bot.exe" or "grok bot\\grok bot.exe" in e:
+        if "local-exec-daemon" in c:
+            return "grok-exec-daemon", "grok", "Grok Bot local exec daemon"
+        if "--type=" in c:
+            return "grok-desktop-helper", "grok", "Grok Bot desktop helper"
+        return "grok-desktop", "grok", "Grok Bot desktop app"
     if n == "claude.exe":
         if "claude-code" in e or "claude-code" in c or "--output-format" in c:
             return "claude-code", "claude", "Claude Code session"
@@ -151,7 +171,9 @@ def classify(name: str | None, cmdline: str | None, exe: str | None = None, cwd:
                 script = token.rsplit("\\", 1)[-1]
                 break
         return "xai-tool", "xai-tools", f"XAI tool {script}" if script else "XAI tool"
-    if "hermes_cli" in c or ("hermes-agent" in c and is_python):
+    # Only the Hermes CLI itself is the agent. The Hermes venv python is the PATH python on this PC, so a plain
+    # script run with it is just a Python process (its requester is found through env markers / lineage).
+    if "hermes_cli" in c:
         return "hermes-agent", "hermes", "Hermes agent server" if "serve" in c else "Hermes agent"
     if n == "hermes.exe":
         if "--type=" in c:
@@ -164,6 +186,15 @@ def classify(name: str | None, cmdline: str | None, exe: str | None = None, cwd:
     if n in {"node.exe", "node", "node_repl.exe"}:
         return "node", None, "Node process"
     return "other", None, name or "process"
+
+
+def detect_env_agent(env_names: Iterable[str]) -> str | None:
+    """Return the agent whose marker variables appear in a process environment (names only)."""
+    names = set(env_names)
+    for agent, markers in ENV_MARKERS:
+        if any(m in names for m in markers):
+            return agent
+    return None
 
 
 def _normalize_cpu(raw: float) -> float:
@@ -179,6 +210,7 @@ class ProcessObserver:
         self._agent_active_since: dict[str, str] = {}
         self._agent_last_active: dict[str, float] = {}
         self._agent_last_active_iso: dict[str, str] = {}
+        self._env_cache: dict[tuple[int, float | None], str | None] = {}
 
     # ------------------------------------------------------------------ raw collection
     def _iter_raw(self) -> Iterable[dict[str, Any]]:
@@ -209,6 +241,23 @@ class ProcessObserver:
                 "_proc": proc,
             })
         return rows
+
+    def _env_agent(self, row: dict[str, Any]) -> str | None:
+        """Agent marker from the process environment, cached for the process lifetime."""
+        if "env" in row:  # test rows supply the environment directly
+            return detect_env_agent(row["env"] or {})
+        key = (row["pid"], row.get("create_time"))
+        if key in self._env_cache:
+            return self._env_cache[key]
+        proc = row.get("_proc")
+        agent: str | None = None
+        if proc is not None:
+            try:
+                agent = detect_env_agent(proc.environ().keys())
+            except Exception:
+                agent = None
+        self._env_cache[key] = agent
+        return agent
 
     def _cwd(self, row: dict[str, Any]) -> str | None:
         proc = row.get("_proc")
@@ -256,6 +305,11 @@ class ProcessObserver:
                 seen += 1
             return None
 
+        live_keys = {(r["pid"], r.get("create_time")) for r in raw}
+        for key in list(self._env_cache):
+            if key not in live_keys:
+                del self._env_cache[key]
+
         processes: list[ProcessInfo] = []
         agent_cpu: dict[str, float] = {}
         agent_pids: dict[str, list[int]] = {}
@@ -264,21 +318,27 @@ class ProcessObserver:
         for r in raw:
             pid = r["pid"]
             kind, agent, label = classified[pid]
-            if agent is None and kind in {"other", "node", "python"}:
-                inherited = inherit(pid)
-                if inherited:
-                    agent = inherited
             cpu = _normalize_cpu(float(r.get("cpu") or 0.0))
             on_gpu = pid in gpu_pids
-            if agent:
-                agent_cpu[agent] = agent_cpu.get(agent, 0.0) + cpu
-                agent_pids.setdefault(agent, []).append(pid)
+            launched_by: str | None = None
+            launched_basis: str | None = None
+            if (r.get("name") or "").lower() in ENV_PROBE_NAMES and kind not in {"control-tower", "gallery", "ollama", "hermes-agent"}:
+                env_agent = self._env_agent(r)
+                if env_agent and env_agent != agent:
+                    launched_by, launched_basis = env_agent, "env"
+            if launched_by is None:
+                lineage = inherit(pid)
+                if lineage and lineage != agent:
+                    launched_by, launched_basis = lineage, "lineage"
+            for owner in {agent, launched_by} - {None}:
+                agent_cpu[owner] = agent_cpu.get(owner, 0.0) + cpu
+                agent_pids.setdefault(owner, []).append(pid)
                 # a desktop helper idling on the GPU (e.g. an on-device model utility) is not 'working'
-                agent_gpu[agent] = agent_gpu.get(agent, False) or (on_gpu and kind in AI_RUNTIME_KINDS)
+                agent_gpu[owner] = agent_gpu.get(owner, False) or (on_gpu and kind in AI_RUNTIME_KINDS)
                 ct = r.get("create_time")
-                if ct:
-                    agent_oldest[agent] = min(agent_oldest.get(agent, ct), ct)
-            interesting = kind not in {"other", "node"} or on_gpu or (agent is not None and cpu >= ACTIVE_CPU_PERCENT)
+                if ct and owner == agent:
+                    agent_oldest[owner] = min(agent_oldest.get(owner, ct), ct)
+            interesting = kind not in {"other", "node"} or on_gpu or ((agent or launched_by) is not None and cpu >= ACTIVE_CPU_PERCENT)
             if kind.endswith("-helper") and not on_gpu and cpu < ACTIVE_CPU_PERCENT:
                 interesting = False
             if not interesting:
@@ -292,7 +352,7 @@ class ProcessObserver:
                 created_at=created_iso, elapsed_seconds=max(0.0, now - ct) if ct else None,
                 cpu_percent=round(cpu, 1), memory_rss_mb=round(r["rss"] / 1048576, 1) if r.get("rss") else None,
                 on_gpu=on_gpu, gpu_memory_mib=gpu_pids.get(pid) if on_gpu else None,
-                active=cpu >= ACTIVE_CPU_PERCENT,
+                active=cpu >= ACTIVE_CPU_PERCENT, launched_by=launched_by, launched_by_basis=launched_basis,
             ))
         processes.sort(key=lambda p: (0 if p.on_gpu else 1, -(p.cpu_percent), p.pid))
         agents = self._agent_states(

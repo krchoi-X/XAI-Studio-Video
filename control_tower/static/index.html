@@ -154,6 +154,8 @@ function ago(iso) {
 }
 function esc(s) { return String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function tag(text, cls) { return `<span class="tag ${cls || ''}">${esc(text)}</span>`; }
+const BASIS_LABEL = { record: 'from record', parent: 'from parent job', 'process-env': 'observed: process env marker', 'process-lineage': 'observed: process lineage', manual: 'manual attribution' };
+function basisTag(j) { return j.requested_by_basis ? ` <span class="muted small" title="${esc(j.details && j.details.attribution_evidence || '')}">(${esc(BASIS_LABEL[j.requested_by_basis] || j.requested_by_basis)})</span>` : ''; }
 function outputUrl(job, i) { return `/api/jobs/${encodeURIComponent(job.job_id)}/outputs/${i}`; }
 
 function renderRunning(view) {
@@ -176,7 +178,7 @@ function renderRunning(view) {
     return `<div class="job" onclick="openDetail('${esc(j.job_id)}')">
       <div class="title"><span>${esc(j.title)}</span><span>${tag(j.status, 'status-' + j.status)} ${tag(measured ? 'measured' : 'inferred', measured ? 'measured' : 'inferred')}</span></div>
       <div class="who">
-        <span>requested by <b>${esc(j.requested_by)}</b></span><span>executor <b>${esc(j.executor)}</b></span>
+        <span>requested by <b>${esc(j.requested_by)}</b>${basisTag(j)}</span><span>executor <b>${esc(j.executor)}</b></span>
         <span>engine <b>${esc(j.engine || '—')}</b></span><span>model <b>${esc(j.model || '—')}</b></span>
         ${j.worker_pid ? `<span>PID <b>${j.worker_pid}</b>${j.worker_alive === false ? ' (dead)' : ''}</span>` : ''}
         ${j.parent_job_id ? `<span>part of <b>${esc(j.parent_job_id)}</b></span>` : ''}
@@ -230,13 +232,13 @@ function renderAgents(view) {
   $('proc-count').textContent = p.total_processes ? `${p.total_processes} processes · scanned ${ago(p.scanned_at)}` : '';
   $('agents').innerHTML = p.agents.map(a => {
     let detail = '';
-    if (a.state === 'working') detail = `● Working ${a.active_since ? fmtDur((Date.now() - new Date(a.active_since)) / 1000) : ''}${a.on_gpu ? ' · GPU' : ''}`;
+    if (a.state === 'working') detail = `● Working ${a.active_since ? fmtDur((Date.now() - new Date(a.active_since)) / 1000) : ''}${a.on_gpu ? ' · GPU' : ''}${a.note && a.note.startsWith('a job') ? ' · job' : ''}`;
     else if (a.state === 'idle') detail = `○ Idle${a.last_active_at ? ' · active ' + ago(a.last_active_at) : ''}`;
     else detail = '— Offline';
     const up = a.oldest_started_at ? `<div class="small muted">up ${fmtDur((Date.now() - new Date(a.oldest_started_at)) / 1000)} · ${a.process_count} proc · ${a.cpu_percent}% cpu</div>` : '';
     return `<div class="agent ${a.state}"><div><div class="name">${esc(a.label)}</div>${up}</div><div class="state">${detail}</div></div>`;
   }).join('');
-  const rows = p.processes.slice(0, 40).map(pr => `<tr><td>${esc(pr.label)}${pr.agent ? ` <span class="muted small">(${esc(pr.agent)})</span>` : ''}</td>
+  const rows = p.processes.slice(0, 40).map(pr => `<tr><td>${esc(pr.label)}${pr.agent ? ` <span class="muted small">(${esc(pr.agent)})</span>` : ''}${pr.launched_by ? ` <span class="muted small">launched by ${esc(pr.launched_by)} · ${esc(pr.launched_by_basis)}</span>` : ''}</td>
     <td class="num">${pr.pid}</td><td class="num">${pr.cpu_percent}%</td><td class="num">${pr.memory_rss_mb ?? '—'} MB</td>
     <td class="num">${fmtDur(pr.elapsed_seconds)}</td><td>${pr.on_gpu ? '<span class="tag measured">GPU</span>' : ''}${pr.active ? ' <span class="tag">cpu</span>' : ''}</td></tr>`);
   $('procs').innerHTML = `<tr><th>process</th><th>pid</th><th>cpu</th><th>rss</th><th>elapsed</th><th></th></tr>` + rows.join('');
@@ -266,7 +268,7 @@ function renderRecent(view) {
     return `<div class="result" onclick="openDetail('${esc(j.job_id)}')">
       <div class="thumbs${restricted ? ' restricted' : ''}"${restricted ? ' onclick="event.stopPropagation(); this.classList.toggle(\'restricted\')" title="restricted session — tap to reveal"' : ''}>${thumbs || `<div class="muted small" style="padding:12px">${esc(j.error || j.status)}</div>`}</div>
       <div class="body"><div class="t" title="${esc(j.title)}">${esc(j.title)}</div>
-      <div class="m">${tag(j.status, 'status-' + j.status)}<span>${kinds}</span><span>${fmtDur(j.elapsed_seconds)}</span><span>${esc(j.requested_by)}</span><span>${ago(j.finished_at)}</span></div></div></div>`;
+      <div class="m">${tag(j.status, 'status-' + j.status)}<span>${kinds}</span><span>${fmtDur(j.elapsed_seconds)}</span><span title="${esc(j.requested_by_basis || '')}">${esc(j.requested_by)}${j.requested_by_basis === 'manual' ? '*' : ''}</span><span>${ago(j.finished_at)}</span></div></div></div>`;
   }).join('');
 }
 
@@ -299,7 +301,7 @@ async function openDetail(jobId) {
   const outs = (j.outputs || []).filter(o => o.exists).map(o => o.kind === 'video'
     ? `<video src="${outputUrl(j, o.index)}" controls preload="metadata" playsinline></video>`
     : o.kind === 'image' ? `<a href="${outputUrl(j, o.index)}" target="_blank"><img src="${outputUrl(j, o.index)}" alt=""></a>` : '').join('');
-  const kv = [['status', j.status], ['requested by', j.requested_by], ['executor', j.executor], ['engine / model', `${j.engine || '—'} / ${j.model || '—'}`],
+  const kv = [['status', j.status], ['requested by', `${j.requested_by}${j.requested_by_basis ? ' (' + (BASIS_LABEL[j.requested_by_basis] || j.requested_by_basis) + ')' : ''}${j.details && j.details.attribution_evidence ? ' — ' + j.details.attribution_evidence : ''}`], ['executor', j.executor], ['engine / model', `${j.engine || '—'} / ${j.model || '—'}`],
     ['progress', `${j.progress.label} (${j.progress.type}${j.progress.measured ? ', measured' : ', inferred'})`],
     ['ETA', j.eta_seconds != null ? `${fmtDur(j.eta_seconds)} (${j.eta_basis})` : 'unavailable'],
     ['started / finished', `${j.started_at || '—'} → ${j.finished_at || '—'}`], ['elapsed', fmtDur(j.elapsed_seconds)],

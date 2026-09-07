@@ -38,7 +38,7 @@ def seconds_between(start: datetime | None, end: datetime | None) -> float | Non
 
 def read_json(path: Path) -> Any:
     """Read UTF-8 JSON. Never rely on the platform default encoding (cp949 on this PC)."""
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
 def read_json_safe(path: Path) -> Any | None:

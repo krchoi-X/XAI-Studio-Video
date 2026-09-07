@@ -123,6 +123,27 @@ Live on this workstation:
 - `git status` shows no changes under `characters/` caused by the service; the Gallery, Hermes, Codex, Claude and
   Ollama processes were left untouched.
 
+## Requester attribution (v0.1.1, 2026-09-07)
+
+`requested_by` now carries a `requested_by_basis` that says how it was determined, in this priority order:
+
+| basis | source |
+|---|---|
+| `record` | an explicit key in the run/session records: `invoked_by` (scene `prompt-trace.json`), or `requested_by` / `actor` / `created_by` / `requester` in `run.json`, `batch.yaml` session, `handoff.json`, `sequence-status.json` (BOM-tolerant) |
+| `parent` | the run belongs to a Hermes night batch or a Gallery web job |
+| `process-env` | observed live: the worker process environment carries an agent marker (Grok Bot `SAND_LOCAL_EXEC_GENERATION` / `SAND_DATA_ROOT`, Claude Code `CLAUDECODE` / `CLAUDE_CODE_SESSION_ID`, Codex `CODEX_*`, Hermes `HERMES_SPAWN` / `HERMES_PARENT_PID`). Only variable names are read. The observation is persisted in the Control Tower database, so it survives run completion and restarts. |
+| `process-lineage` | observed live: a classified agent process is an ancestor of the worker |
+| `manual` | `D:\AI_Studio\control-tower\attributions.json` (`sessions.<session_id>` / `runs.<run_id>`), for work that finished before Control Tower could observe it; shown with `*` in RECENT RESULTS |
+
+Grok Bot (`C:\Program Files\Grok Bot\Grok Bot.exe`, local exec daemon `local-exec-daemon\main.cjs`) is classified as agent
+`grok` and appears in AGENTS / PROCESSES. Processes it launches (including WanGP workers, which are detached from their
+parent by `tools/local_wangp.py`) are credited to Grok via the environment marker, so Grok shows **Working · GPU** while its
+render runs. Any agent whose requested job is running is shown as Working with the note that the activity is inferred from
+the job. The two Grok trio sessions from 2026-09-06/07 are attributed manually because they finished before this version.
+
+Not done here (Codex-owned follow-up): adding `grok` / `claude` to the `--actor` enum of `tools/character_scene.py` so the
+scene pipeline records the requester explicitly.
+
 ## Known limits (v0.1)
 
 - Tailscale reachability from the actual tablet was not exercised in the implementation session (only from the host).

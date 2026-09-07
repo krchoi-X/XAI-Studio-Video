@@ -39,6 +39,13 @@ CREATE TABLE IF NOT EXISTS host_samples (
 );
 CREATE INDEX IF NOT EXISTS host_samples_at ON host_samples(sampled_at);
 CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT);
+CREATE TABLE IF NOT EXISTS attributions (
+    job_id TEXT PRIMARY KEY,
+    requested_by TEXT NOT NULL,
+    basis TEXT NOT NULL,
+    evidence TEXT,
+    observed_at TEXT NOT NULL
+);
 """
 
 
@@ -138,6 +145,20 @@ class Database:
         with self._lock:
             rows = self._conn.execute("SELECT timing_key, mean_step_seconds, samples, updated_at FROM step_timings ORDER BY updated_at DESC").fetchall()
         return [{"key": r[0], "mean_step_seconds": r[1], "samples": r[2], "updated_at": r[3]} for r in rows]
+
+    # ------------------------------------------------------------------ attributions
+    def get_attributions(self) -> dict[str, dict[str, Any]]:
+        with self._lock:
+            rows = self._conn.execute("SELECT job_id, requested_by, basis, evidence, observed_at FROM attributions").fetchall()
+        return {r[0]: {"requested_by": r[1], "basis": r[2], "evidence": r[3], "observed_at": r[4]} for r in rows}
+
+    def record_attribution(self, job_id: str, requested_by: str, basis: str, evidence: str | None) -> None:
+        now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        with self._lock:
+            self._conn.execute(
+                "INSERT OR REPLACE INTO attributions(job_id, requested_by, basis, evidence, observed_at) VALUES(?,?,?,?,?)",
+                (job_id, requested_by, basis, evidence, now),
+            )
 
     # ------------------------------------------------------------------ host samples
     def record_host_sample(self, sampled_at: str, utilization: float | None, memory_used: float | None,
