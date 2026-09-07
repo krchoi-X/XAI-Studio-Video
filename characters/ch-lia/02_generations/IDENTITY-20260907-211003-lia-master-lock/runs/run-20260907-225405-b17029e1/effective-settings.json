@@ -1,0 +1,23 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_turbo_edit",
+  "base_model_type": "krea2_turbo_edit",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Turbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+  ],
+  "remove_background_images_ref": 0,
+  "num_inference_steps": 8,
+  "guidance_scale": 0,
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "seed": 907106,
+  "prompt": "Edit the provided reference image.\nRequested change: The same photograph, same pose, same background, same light and same clothes, but her hair is gathered into a high ponytail with the same soft full bangs.\nExplicit operations:\n- hair [moderate]: gather the hair into a high ponytail, keep the same bangs and near-black colour\nChange nothing else. Preserve exactly: identity, face geometry, eye spacing, nose shape, lip shape, jaw width, skin texture, hair length, expression, wardrobe, background, lighting, camera, framing, body proportions.\nCopy this specific person's face from the reference rather than drawing an attractive face: keep her exact eye spacing, exact eyelid shape, exact nose width and length, exact lip thickness, exact jaw width and the small natural irregularities and asymmetries of her face. Do not idealise, do not slim the jaw, do not enlarge the eyes, do not smooth the skin, do not restyle her into a generic beautiful face.\nIdentity impression that must survive: a slim, slightly elongated oval face with a gently narrow, softly tapered lower face and no sharp V-line; finely cut features that read faintly sharp and composed, softened by a faint quiet closed-lip smile; large soft slightly elongated dark-brown eyes with a calm unguarded gaze and slightly narrow brow-to-brow spacing; small refined nose; soft rose-beige lips with delicate natural volume; fresh translucent pale skin with visible fine pores and minimal everyday makeup; long near-black hair with soft full lived-in bangs; a limpid, unaffected, quietly natural presence - someone who lives alone by the sea rather than a styled celebrity.\nThis must read as the same individual as the reference image, recognisable at a glance.\n",
+  "output_filename": "run-20260907-225405-b17029e1"
+}

@@ -1,0 +1,9 @@
+Edit the provided reference image.
+Requested change: The same photograph, same background, same light and same clothes, but she has turned to a full left profile, 90 degrees to the camera.
+Explicit operations:
+- pose [exploratory]: rotate the head and shoulders to a full 90 degree left profile
+Change nothing else. Preserve exactly: identity, face geometry, eye shape, eye spacing, nose shape, lip shape, jaw width, skin texture, hairstyle, hair length, wardrobe, background, lighting, body proportions.
+Her eye shape must not move: slightly elongated almond eyes, not round; same upper lid curve, same outer corner angle, same lid crease.
+Copy this specific person's face from the reference rather than drawing an attractive face: keep her exact eye spacing, exact eyelid shape, exact nose width and length, exact lip thickness, exact jaw width and the small natural irregularities of her face.
+Impression to keep: slim slightly elongated oval face, gently tapered lower face with no sharp V-line, faint quiet closed-lip smile, calm unguarded gaze, fresh translucent pale skin with visible fine pores, long near-black hair with soft full lived-in bangs, limpid and unaffected rather than styled.
+This must read as the same individual as the reference image, recognisable at a glance.

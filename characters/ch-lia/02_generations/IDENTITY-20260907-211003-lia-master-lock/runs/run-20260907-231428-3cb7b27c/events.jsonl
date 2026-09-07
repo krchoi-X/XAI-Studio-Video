@@ -1,0 +1,6 @@
+{"at":"2026-09-07T23:14:28+09:00","state":"queued","prompt_sha256":"b8968f668eb421500d687063526a6c0473b6354604557fe474b581d5d787de76","target":"local","requested_by":"claude","executor":"local-wangp-worker"}
+{"at":"2026-09-07T23:14:28+09:00","state":"starting","local_worker_pid":29600}
+{"at":"2026-09-07T23:14:33+09:00","state":"running","provider_job_id":"local-pid-39844"}
+{"at":"2026-09-07T23:14:48+09:00","state":"error","data":{"message":"NAG Scale must be at most 1.5.","task_index":1,"task_id":1,"stage":"validation"}}
+{"at":"2026-09-07T23:14:48+09:00","state":"completed","data":{"success":false,"generated_files":[],"errors":[{"message":"NAG Scale must be at most 1.5.","task_index":1,"task_id":1,"stage":"validation"}],"total_tasks":1,"successful_tasks":0,"failed_tasks":1,"artifacts":[]}}
+{"at":"2026-09-07T23:14:48+09:00","state":"failed","message":"NAG Scale must be at most 1.5."}

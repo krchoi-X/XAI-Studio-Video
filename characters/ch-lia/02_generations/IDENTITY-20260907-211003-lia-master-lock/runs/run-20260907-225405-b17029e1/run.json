@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260907-225405-b17029e1",
+  "project_id": "IDENTITY-20260907-211003-lia-master-lock",
+  "prompt_id": "ax-05-hair-ponytail-only",
+  "status": "needs_review",
+  "created_at": "2026-09-07T22:54:05+09:00",
+  "updated_at": "2026-09-07T23:00:13+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-38244",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260907-211003-lia-master-lock\\ax-05-hair-ponytail-only.txt",
+    "sha256": "229b47b854f1993a0d7617223c75df6ed54371d937865c0a51056c25d597cc32",
+    "normalized_sha256": "cc4b565314b15546b214f3307bf0fad8b3f642310ffb77c63dafccb9f4630fa8",
+    "byte_count": 1732
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260907-211003-lia-master-lock\\ax-05-hair-ponytail-only.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_edit",
+      "base_model_type": "krea2_turbo_edit",
+      "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Turbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "video_prompt_type": "KI",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+      ],
+      "remove_background_images_ref": 0,
+      "num_inference_steps": 8,
+      "guidance_scale": 0,
+      "batch_size": 1,
+      "repeat_generation": 1,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "seed": 907106
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260907-211003-lia-master-lock\\outputs\\krea2-edit\\run-20260907-225405-b17029e1.jpg",
+      "sha256": "700c095a34330613813162ad8c0b66616af4877d3db52a48b62d8414d06d4fae",
+      "byte_count": 197540,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T23:00:13+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 30944,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260907-211003-lia-master-lock\\runs\\run-20260907-225405-b17029e1",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260907-211003-lia-master-lock\\runs\\run-20260907-225405-b17029e1\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260907-211003-lia-master-lock\\outputs\\krea2-edit",
+      "--profile",
+      "1",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260907-211003-lia-master-lock\\runs\\run-20260907-225405-b17029e1\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260907-211003-lia-master-lock\\runs\\run-20260907-225405-b17029e1\\worker.stderr.log"
+  }
+}

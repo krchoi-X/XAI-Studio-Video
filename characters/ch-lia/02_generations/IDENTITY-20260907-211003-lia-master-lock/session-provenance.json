@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "session_id": "IDENTITY-20260907-211003-lia-master-lock",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260907-211003-lia-master-lock",
+  "requested_by": "claude",
+  "engine": "WanGP",
+  "model": "krea2_turbo_edit",
+  "character_id": "ch-lia",
+  "title": "Lia identity lock — master validation",
+  "user_request_verbatim": "내가 상상했던 이미지는 #2, #4에 가까워. 조금은 날카로운 인상이지만 부드러운 미소가 있고 갸름한 얼굴이야. 도시적인 느낌이고",
+  "status": "queued",
+  "created_at": "2026-09-07T21:10:04+09:00",
+  "updated_at": "2026-09-07T21:15:20+09:00",
+  "source_idea": "Front reference cannot contain the profile; name the profile geometry once, measure where identity edit breaks, then use the H3 turnaround if it breaks."
+}

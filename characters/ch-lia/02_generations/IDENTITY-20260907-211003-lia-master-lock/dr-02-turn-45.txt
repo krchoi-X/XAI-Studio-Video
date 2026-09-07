@@ -1,0 +1,9 @@
+Edit the provided reference images.
+Requested change: The same photograph, same background, same light and same clothes, but she has turned about 45 degrees to her left into a three-quarter view. The second reference is a close-up of the same woman's face; use it to keep her facial features exact.
+Explicit operations:
+- pose [moderate]: rotate the head and shoulders about 45 degrees into a three-quarter view
+Change nothing else. Preserve exactly: identity, face geometry, eye shape, eye spacing, nose shape, lip shape, jaw width, skin texture, hairstyle, hair length, expression, wardrobe, background, lighting, body proportions.
+Her eye shape is the single feature that must not move: slightly elongated almond eyes, not round; the same upper lid curve, the same outer corner angle and the same lid crease as the reference. Do not enlarge them, do not round them, do not open them wider.
+Copy this specific person's face from the reference images rather than drawing an attractive face: keep her exact eye spacing, exact eyelid shape, exact nose width and length, exact lip thickness, exact jaw width and the small natural irregularities and asymmetries of her face. Do not idealise, do not slim the jaw, do not smooth the skin, do not restyle her into a generic beautiful face.
+Identity impression that must survive: a slim, slightly elongated oval face with a gently narrow, softly tapered lower face and no sharp V-line; finely cut features that read faintly sharp and composed, softened by a faint quiet closed-lip smile; calm unguarded gaze; small refined nose; soft rose-beige lips; fresh translucent pale skin with visible fine pores and minimal makeup; long near-black hair with soft full lived-in bangs; a limpid, unaffected, quietly natural presence.
+This must read as the same individual as the reference images, recognisable at a glance.

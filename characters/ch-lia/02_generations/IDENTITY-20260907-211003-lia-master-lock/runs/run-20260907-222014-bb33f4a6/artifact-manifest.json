@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260907-222014-bb33f4a6",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260907-211003-lia-master-lock\\outputs\\krea2-edit\\run-20260907-222014-bb33f4a6.jpg",
+      "sha256": "69ab87c9c90592e260ec92b9bd4ef1f4608b20a17d590f4784606267635c81e0",
+      "byte_count": 189702,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T22:32:20+09:00"
+    }
+  ]
+}
