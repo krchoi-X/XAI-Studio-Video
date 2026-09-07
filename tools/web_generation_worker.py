@@ -38,7 +38,8 @@ def main() -> int:
     if request.get("mode") == "face-discovery":
         command = [sys.executable, str(args.repo_root / "tools" / "face_discovery.py"), "produce",
             "--character", request["character_id"], "--direction", request["direction"],
-            "--count", str(request["count"]), "--engines", ",".join(request["engines"])]
+            "--count", str(request["count"]), "--engines", ",".join(request["engines"]),
+            "--actor", "web"]
     else:
         command = [sys.executable, str(args.repo_root / "tools" / "character_scene.py"), "produce",
             "--character", request["character_id"], "--request", request["prompt"],

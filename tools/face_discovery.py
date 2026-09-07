@@ -34,7 +34,7 @@ def discovery_prompt(character_id: str, direction: str) -> str:
     return match.group(1).strip()
 
 
-def prepare(character_id: str, direction: str, count: int, engines: list[str]) -> Path:
+def prepare(character_id: str, direction: str, count: int, engines: list[str], actor: str = "codex") -> Path:
     character_path = cm.CHARACTERS / character_id / "character.json"
     if not character_path.is_file():
         raise cm.CharacterError(f"unknown character: {character_id}")
@@ -51,7 +51,7 @@ def prepare(character_id: str, direction: str, count: int, engines: list[str]) -
     scene.write_json(root / "metadata.json", {
         "schema_version": 1, "session_id": session_id, "character": character_id,
         "character_version": character["version"], "stable_dna_sha256": cm.stable_hash(character),
-        "phase": "face-discovery", "direction": direction, "created_at": stamp(),
+        "phase": "face-discovery", "direction": direction, "created_at": stamp(), "created_by": actor,
         "prompt_source": "docs/character-face-discovery-workflow.md", "runtime_prompt_sha256": prompt_hash,
         "constraints": {"body_dna_applied": False, "signature_hair_minimized": True, "scene_variables_locked": True},
     })
@@ -67,7 +67,7 @@ def prepare(character_id: str, direction: str, count: int, engines: list[str]) -
         jobs.append({"backend": "local-wangp", "model": model_name, "count": count, "seed": settings["seed"], "resolution": settings["resolution"], "steps": settings["num_inference_steps"], "settings_file": template_name, "output_dir": f"outputs/{engine}", "status": "prepared"})
     scene.write_json(root / "batch.yaml", {
         "schema_version": 1,
-        "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": f"{direction} face discovery", "phase": "face-discovery", "direction": direction, "status": "prepared", "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "metadata_file": "metadata.json", "stable_dna_sha256": cm.stable_hash(character)},
+        "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": f"{direction} face discovery", "phase": "face-discovery", "direction": direction, "status": "prepared", "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "metadata_file": "metadata.json", "created_by": actor, "stable_dna_sha256": cm.stable_hash(character)},
         "jobs": jobs, "review": {"surface": "personal-prompt-studio", "taxonomy": "face-discovery", "initial_state": "face-exploration"},
     })
     return root
@@ -82,12 +82,13 @@ def main() -> int:
         command.add_argument("--direction", required=True)
         command.add_argument("--count", type=int, default=8)
         command.add_argument("--engines", default="z-image,krea2")
+        command.add_argument("--actor", choices=scene.ACTORS, default="codex", help="who is asking; recorded as created_by and forwarded to each run as requested_by")
     args = parser.parse_args()
     try:
         if not 1 <= args.count <= 12:
             raise cm.CharacterError("count must be between 1 and 12 per engine")
         engines = list(dict.fromkeys(item.strip() for item in args.engines.split(",") if item.strip()))
-        root = prepare(args.character, args.direction.upper(), args.count, engines)
+        root = prepare(args.character, args.direction.upper(), args.count, engines, args.actor)
         result = {"session_dir": str(root), "status": "prepared", "direction": args.direction.upper()}
         if args.command == "produce":
             result.update({"status": "completed", "runs": scene.submit(root, wait=True)})

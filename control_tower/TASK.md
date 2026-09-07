@@ -1,3 +1,87 @@
+# Scoped Task — Autostart, face-discovery requester, task/verification hygiene (v0.1.4)
+
+Owner / Active editor: Claude Code (Control Tower subsystem + the provenance work explicitly assigned 2026-09-07)
+Status: COMPLETE — implemented and verified 2026-09-07
+Working mode: Codex is coordination/final-integration only for the next three days; commit only my own scope,
+hand other scopes over with a reproduction, keep one GPU job at a time, no push or deployment.
+
+## Goal
+
+Three small, self-contained items the user approved. Explicitly **out** of scope by the user's decision:
+the Gallery status widget and a ComfyUI adapter.
+
+1. **Autostart** — Control Tower currently runs only because a session started it; a reboot loses the tablet
+   dashboard. The Gallery already has a scheduled task; Control Tower has none.
+2. **face-discovery requester** — `tools/face_discovery.py` takes no `--actor` and writes no `created_by`, so
+   face sessions (including tablet-triggered ones through `web_generation_worker.py`) record a null requester and
+   show as `unknown`. Reproduction: `python tools/face_discovery.py produce --character ch-harim --direction X …`
+   then read the session `batch.yaml`; `session.created_by` is absent.
+3. **Records** — my scoped TASK.md lacks commit ids and a "next actions" section; `docs/verification.md` does not
+   list the Control Tower suites, so they are missing from the shared regression selection.
+
+## Plan
+
+1. `control_tower/start.ps1`, `supervisor.ps1`, `stop.ps1`, `register-autostart.ps1` mirroring the Gallery pattern
+   (idempotent guard, restart loop with a stop marker, logon + standby-resume triggers). State and logs live in
+   `D:\AI_Studio\control-tower\`, which Control Tower already owns.
+2. `face_discovery.py --actor` (same choices as the scene pipeline, default `codex`), `created_by` in its session
+   record, and `--actor web` from `web_generation_worker.py`; tests.
+3. TASK.md commit ids + next actions; add the Control Tower suites to `docs/verification.md`.
+
+## Contract impact
+
+- Autostart: new scripts under `control_tower/` only; no repository launch script or existing task is touched. The
+  scheduled task is new (`XAI Control Tower`) and does not overlap the Gallery's. Rollback:
+  `schtasks /Delete /TN "XAI Control Tower"` plus `control_tower/stop.ps1`.
+- face-discovery: `--actor` is optional with today's behaviour as the default, and `created_by` is an additive
+  session key that the Control Tower and the requester resolver already read. Old sessions are unaffected; nothing
+  is relabelled. Producers: `face_discovery.py`, `web_generation_worker.py`. Consumers: requester resolver,
+  Control Tower session context.
+- `docs/verification.md` is Codex's shared file; the edit is additive (one section) and reported for their review.
+
+## Delivered
+
+| File | Change |
+|---|---|
+| `control_tower/start.ps1` | idempotent launcher; asks `/api/health` instead of checking the port, because `tailscale serve` also listens on 8790 to proxy the tablet |
+| `control_tower/supervisor.ps1` | restart loop, resolves the interpreter (`-Python`, `$XAI_CT_PYTHON`, the Hermes venv, then PATH), logs to `D:\AI_Studio\control-tower\` |
+| `control_tower/stop.ps1` | writes the stop marker and stops the server and supervisor |
+| `control_tower/register-autostart.ps1` | registers/removes the `XAI Control Tower` scheduled task (logon + Modern Standby resume), least privilege, interactive token |
+| `tools/face_discovery.py` | `--actor` (same choices as the scene pipeline, default `codex`); `created_by` in `batch.yaml` session and `metadata.json` |
+| `tools/web_generation_worker.py` | passes `--actor web` for tablet-triggered face discovery |
+| `tests/test_character_scene.py` | face-discovery actor test |
+| `docs/verification.md` | Control Tower service-lifecycle section; `tools/test_requester_provenance.py` added to the regression selection (Codex's file: additive edit, flagged for review) |
+| `docs/control-tower-v0.1.md` | autostart section; HTTPS tailnet URL; removed the now-verified tablet limitation |
+
+## Verification
+
+- `control_tower\start.ps1` started the supervisor and `/api/health` answered; killing the server process
+  (pid 31260) had the supervisor restart it within ~14 s (new pid 17904, health OK, logged in `supervisor.log`).
+- `schtasks /Run /TN "XAI Control Tower"` returned `LastTaskResult 0` and started no duplicate: the guard saw the
+  healthy service and exited. Task state `Ready`, action `start.ps1`, working directory `control_tower`.
+- Face discovery end to end: `face_discovery.py prepare --actor grok` wrote `created_by: grok` into both
+  `batch.yaml` and `metadata.json`, and `wangp_recorder.session_requester()` resolved `grok`; the temporary
+  session directory was deleted afterwards (`ch-harim` session count 12 before and after).
+- `tests/test_character_scene.py` 17 pass; Control Tower suites unaffected by this change.
+- Not verified: behaviour across an actual reboot (only logon-task on-demand execution was exercised).
+
+## Commits
+
+`a0c7895` Control Tower v0.1 · `4167b6d` Grok attribution · `87ce3a2` submit-time requester ·
+`d8366f4` session provenance record · this task's commit added below on completion.
+
+## Next actions
+
+1. Nothing outstanding in this scope. Remaining Control Tower limits stay deferred by the user's decision:
+   Gallery status widget and ComfyUI adapter are explicitly **not wanted**; live preview thumbnails and a WanGP
+   Web UI queue adapter remain open but unrequested.
+2. 35 old runs keep `unknown` requesters by design; add entries to
+   `D:\AI_Studio\control-tower\attributions.json` only if the user asks.
+3. The user's stated direction is character finalization, then an automated video pipeline, then story-driven
+   comic/novel work — one at a time. No work started on those; they need their own scoped task when chosen.
+
+---
+
 # Scoped Task — Session provenance record for real production (v0.1.3)
 
 Owner / Active editor: Claude Code (same explicit assignment as v0.1.2)

@@ -26,6 +26,20 @@ Defaults: bind `0.0.0.0:8790`, SQLite at `D:\AI_Studio\control-tower\control_tow
 `D:\codex\XAI-studio\characters`, night batches at `D:\AI_Studio\workspace\hermes-night-batches`, Gallery web jobs at
 `D:\codex\personal-prompt-studio\personal-prompt-studio\data\workspace\generation-jobs`.
 
+### Autostart (registered 2026-09-07)
+
+The scheduled task **XAI Control Tower** starts it at logon and after a standby resume, mirroring the Gallery's task:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File control_tower\register-autostart.ps1
+```
+
+`control_tower\start.ps1` launches `supervisor.ps1`, which restarts the server if it exits and stops when
+`D:\AI_Studio\control-tower\control-tower.stop` appears. `control_tower\stop.ps1` writes that marker and stops both.
+Logs: `D:\AI_Studio\control-tower\supervisor.log`, `server.stdout.log`, `server.stderr.log`. Remove the task with
+`register-autostart.ps1 -Unregister`. Both start and the task are idempotent: they do nothing when `/api/health`
+already answers.
+
 One-shot health check without serving:
 
 ```bash
@@ -43,18 +57,12 @@ Environment overrides: `XAI_CT_DB`, `XAI_CT_GALLERY_URL`, `XAI_CT_SCAN_ROOTS` (`
 | From | URL |
 |---|---|
 | this PC | http://127.0.0.1:8790/ |
-| tablet / phone on the tailnet | http://100.122.180.40:8790/ |
+| tablet / phone on the tailnet | https://artxorn.tailf10079.ts.net:8790/ (or http://100.122.180.40:8790/) |
 | API docs | http://127.0.0.1:8790/api/docs |
 
-The server binds `0.0.0.0`, so the tailnet IP works without extra configuration. To get an HTTPS tailnet name like the
-Gallery already has (`https://artxorn.tailf10079.ts.net`), run this once yourself (not done by the agent):
-
-```bash
-tailscale serve --bg --https=8790 http://127.0.0.1:8790
-```
-
-Then `https://artxorn.tailf10079.ts.net:8790/` reaches it. Windows Firewall may show a one-time prompt for
-`python.exe` the first time the tailnet interface is used; allow it on private networks.
+The server binds `0.0.0.0`, so the tailnet IP works without extra configuration. The HTTPS tailnet name is already
+served (`tailscale serve --bg --https=8790 http://127.0.0.1:8790`), which is why `tailscaled` also listens on 8790 -
+a plain port check is therefore not a valid "is Control Tower running" test; ask `/api/health` instead.
 
 Point the "Open Gallery" link at the tailnet name when serving to a tablet:
 `python -X utf8 -m control_tower --gallery-url https://artxorn.tailf10079.ts.net/`.
@@ -157,7 +165,6 @@ and Control Tower falls back to the observation bases below. See `docs/wangp-rec
 
 ## Known limits (v0.1)
 
-- Tailscale reachability from the actual tablet was not exercised in the implementation session (only from the host).
 - Live previews: the recorder stores only a PIL repr for WanGP preview frames, so a running job has no thumbnail;
   outputs appear when the run finishes.
 - Manually launched WanGP Web UI jobs (`wgp.py`, port 7860) are visible only as an untracked/WanGP process; their

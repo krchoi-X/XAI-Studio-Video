@@ -161,6 +161,28 @@ class CharacterScenePromptTests(unittest.TestCase):
                 scene.subprocess.run = original
             self.assertNotIn("--requested-by", calls[0])
 
+    def test_face_discovery_records_the_actor(self):
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location("face_discovery", TOOLS / "face_discovery.py")
+        face = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(face)
+        parser_actions = {}
+
+        # the CLI must offer the same actors as the scene pipeline, so grok/claude can identify themselves
+        import argparse
+
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--actor", choices=face.scene.ACTORS, default="codex")
+        self.assertEqual("grok", parser.parse_args(["--actor", "grok"]).actor)
+        self.assertIn("grok", face.scene.ACTORS)
+        # prepare() takes the actor and defaults to today's behaviour
+        import inspect
+
+        signature = inspect.signature(face.prepare)
+        self.assertIn("actor", signature.parameters)
+        self.assertEqual("codex", signature.parameters["actor"].default)
+
     def test_actor_choices_include_grok_and_claude(self):
         self.assertEqual(("codex", "hermes", "web", "grok", "claude", "user"), scene.ACTORS)
 

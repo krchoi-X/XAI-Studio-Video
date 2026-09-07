@@ -11,10 +11,20 @@ Use the project's selected Python environment. Inspect imports and tool requirem
 From the XAI-studio root, a broad explicit regression selection is:
 
 ```powershell
-python -m pytest tests external_media_import/tests tools/test_wangp_recorder.py tools/test_local_wangp.py tools/test_reference_variation_worker.py infra/gpu-worker/test_provision.py
+python -m pytest tests external_media_import/tests tools/test_wangp_recorder.py tools/test_local_wangp.py tools/test_requester_provenance.py tools/test_reference_variation_worker.py infra/gpu-worker/test_provision.py
 ```
 
+`tests/test_control_tower_*.py` are inside `tests` above. `tools/test_requester_provenance.py` starts a real detached
+worker against a fake WanGP root (no GPU, no model); it needs the interpreter to reach `tools/` on `PYTHONPATH`.
+
 Inspect collection with the same selection plus `--collect-only -q` if coverage is uncertain. Select only affected files for bounded changes; full runtime/GPU/provider execution is not implied by passing these tests. Check module resolution points into the intended checkout if multiple copies exist.
+
+## Control Tower service changes
+
+Unit tests do not cover the service lifecycle. After changing `control_tower/*.ps1` or the server entry point,
+verify by running it: `control_tower\start.ps1` (idempotent), `GET /api/health` on 127.0.0.1, kill the server process
+and confirm the supervisor restarts it, then `schtasks /Run /TN "XAI Control Tower"` for the logon path. Do not test
+the guard with a port listener check alone: `tailscale serve` also listens on 8790 to proxy the tablet.
 
 ## Studio changes
 
