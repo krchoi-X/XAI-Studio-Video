@@ -68,7 +68,7 @@ the Gallery status widget and a ComfyUI adapter.
 ## Commits
 
 `a0c7895` Control Tower v0.1 · `4167b6d` Grok attribution · `87ce3a2` submit-time requester ·
-`d8366f4` session provenance record · this task's commit added below on completion.
+`d8366f4` session provenance record · `c09d903` autostart + face-discovery requester.
 
 ## Next actions
 
