@@ -202,6 +202,47 @@ class WangpAdapterTests(unittest.TestCase):
         second = adapter.discover(now=self.now)[0]
         self.assertIs(first, second)
 
+    def test_run_outside_a_session_is_named_from_the_record(self):
+        """Hermes passes --runs-root <repo root>, so the run's parent is not a session directory."""
+        (self.root / "README.md").write_text("# XAI-Studio-Video\n", encoding="utf-8")
+        run_dir = self.root / "runs" / "run-loose"
+        run_dir.mkdir(parents=True)
+        (run_dir / "run.json").write_text(json.dumps({
+            "run_id": "run-loose", "project_id": "jun-cafe-scene", "prompt_id": "shot-01", "status": "failed",
+            "created_at": iso(T0), "updated_at": iso(T0), "target": "local", "renderer": "WanGP",
+            "requested_by": "hermes", "executor": "local-wangp-worker",
+            "settings": {"value": {"model_type": "minimax_h3"}}, "artifacts": [],
+            "error": {"message": "Unknown model type minimax_h3"},
+        }), encoding="utf-8")
+        (run_dir / "events.jsonl").write_text("", encoding="utf-8")
+        job = self.adapter().discover(now=self.now)[0]
+        self.assertEqual(job.title, "jun-cafe-scene · shot-01", "must not inherit the repository README heading")
+        self.assertIsNone(job.session_id)
+        self.assertIsNone(job.character_id)
+        self.assertEqual((job.requested_by, job.requested_by_basis), ("hermes", "record"))
+        self.assertEqual(job.executor, "local-wangp-worker")
+        self.assertEqual(job.error, "Unknown model type minimax_h3")
+
+    def test_loose_run_falls_back_to_the_run_id_when_nothing_was_recorded(self):
+        run_dir = self.root / "runs" / "run-bare"
+        run_dir.mkdir(parents=True)
+        (run_dir / "run.json").write_text(json.dumps({
+            "run_id": "run-bare", "status": "failed", "created_at": iso(T0), "updated_at": iso(T0),
+            "target": "local", "renderer": "WanGP", "settings": {"value": {}}, "artifacts": [],
+        }), encoding="utf-8")
+        (run_dir / "events.jsonl").write_text("", encoding="utf-8")
+        job = self.adapter().discover(now=self.now)[0]
+        self.assertEqual(job.title, "run-bare")
+        self.assertEqual(job.requested_by, "unknown")
+
+    def test_a_real_session_still_uses_its_own_title(self):
+        session = make_session(self.root, "ch-test", "SCENE-20260909-120000-test", "카페 장면", "hermes")
+        make_run(session, "run-in-session", "needs_review", [])
+        job = self.adapter().discover(now=self.now)[0]
+        self.assertEqual(job.title, "카페 장면 · z_image")
+        self.assertEqual(job.session_id, "SCENE-20260909-120000-test")
+        self.assertEqual(job.character_id, "ch-test")
+
     def test_scan_skips_outputs_dirs(self):
         session = make_session(self.root, "ch-test", "SCENE-1", "s", "hermes")
         (session / "outputs" / "runs" / "junk").mkdir(parents=True)

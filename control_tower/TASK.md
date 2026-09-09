@@ -1,3 +1,77 @@
+# Scoped Task — Show Hermes WanGP runs by name (v0.1.5)
+
+Owner / Active editor: Claude Code (Control Tower; the user explicitly assigned the Hermes-facing fix too)
+Status: COMPLETE — implemented and live-verified 2026-09-09
+
+## Symptom
+
+The user reports that a GPU job Hermes drives through WanGP still shows as unknown in the Control Tower.
+
+## Findings
+
+- **Hermes already records provenance correctly.** `runs/run-20260909-154245-f952a8e5/run.json` carries
+  `requested_by: hermes`, `executor: local-wangp-worker`. The submit-path work from v0.1.2 is doing its job.
+- **The record is in a place the Control Tower never scans.** Hermes passes `--runs-root D:\codex\XAI-studio\runs`,
+  i.e. the repository root, while `Config.scan_roots` defaults to `REPO/characters` only. The job is therefore not
+  "unknown" so much as invisible; during the render the dashboard can only show it as untracked GPU workload with a
+  heuristic guess. The same applies to `examples/character-lab/experiments/*/runs/` (about 30 August runs).
+- **A run outside a session directory would render badly even once scanned.** `SessionContext` takes
+  `run_dir.parent.parent` when the parent is `runs`, which for a root-level run resolves to the repository root; the
+  title would then be read from the repository `README.md` heading. It needs a no-session fallback to `project_id`.
+- **Unrelated Hermes defect, handed over rather than fixed here**: that run failed with
+  `Unknown model type minimax_h3`. WanGP's model ids are `minimax_h3_ref2va_pruned` and `minimax_h3_fl2va_pruned`;
+  the bare `minimax_h3` does not exist. Reproduction and correct values recorded for Hermes below.
+
+## Plan
+
+1. Scan the places runs actually appear: add `REPO/runs` and `REPO/examples` to the default scan roots.
+2. Give the WanGP adapter a no-session fallback so a run outside a session is titled from `project_id`/`prompt_id`
+   instead of inheriting the repository README heading, and reports no session id.
+3. Tests for both.
+4. Hermes-facing documentation: where runs must be written so they appear with a session, and the correct model ids.
+
+## Contract impact
+
+- Producers unchanged; this only widens what the Control Tower reads and how it titles session-less runs.
+- Consumers: the Control Tower UI and its own SQLite history. Job ids stay `wangp:<run_id>`, so previously recorded
+  history is unaffected; newly visible runs simply appear.
+- Old persisted examples: the ~30 `examples/character-lab` runs and any repo-root `runs/` records become visible.
+  Nothing is rewritten, relabelled or moved.
+- Rollback: revert the commit; scan roots return to `characters` only.
+- Verification: `unittest discover -s tests -p "test_control_tower*.py"`, plus the live service showing the Hermes
+  run by name.
+
+## Delivered
+
+| File | Change |
+|---|---|
+| `control_tower/config.py` | default scan roots now include `REPO/runs` and `REPO/examples`, so any producer's chosen runs-root inside the repository is seen |
+| `control_tower/adapters/wangp_runs.py` | `SessionContext.is_session` (a directory counts as a session only if it holds `batch.yaml`, `session-provenance.json`, `prompt-trace.json`, `handoff.json` or `sequence-status.json`); a session-less run is titled `project_id · prompt_id`, falls back to the run id, reports no session id, and no longer reads the repository README as its title |
+| `tests/test_control_tower_adapters.py` | +3 tests: session-less naming, bare-record fallback, and that a real session is unaffected |
+| `HERMES.md` | where run records must be written, the exact session + submit commands, and the valid H3 model ids |
+| `docs/wangp-recorder.md` | "Where the runs directory must be" with the expected layout |
+
+## Verification
+
+- 49 Control Tower tests pass.
+- Live: the Hermes run `run-20260909-154245-f952a8e5` now lists as **`jun-cafe-scene · shot-01`**, `hermes (record)`,
+  executor `local-wangp-worker`, status failed. Job total 146 → 160; the 13 newly visible
+  `examples/character-lab` runs from August carry no recorded requester and correctly show as unknown.
+
+## Handover to Hermes (not fixed here)
+
+That run failed before any GPU work with `Unknown model type minimax_h3`. Reproduction: submit with
+`settings.model_type = "minimax_h3"`. The installed H3 model ids are `minimax_h3_ref2va_pruned` and
+`minimax_h3_fl2va_pruned`; the non-pruned definitions exist but their checkpoints are not downloaded. Also move the
+runs-root from the repository root into the `ch-jun` session directory — `characters/ch-jun/` already exists.
+Both are written up in `HERMES.md`.
+
+## Progress
+
+- [x] Diagnosis, scan roots, no-session fallback, tests, Hermes documentation.
+
+---
+
 # Scoped Task — Autostart, face-discovery requester, task/verification hygiene (v0.1.4)
 
 Owner / Active editor: Claude Code (Control Tower subsystem + the provenance work explicitly assigned 2026-09-07)

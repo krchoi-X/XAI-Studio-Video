@@ -84,6 +84,22 @@ That writes `<session>/session-provenance.json`:
 }
 ```
 
+### Where the runs directory must be
+
+Pass `--runs-root <session>/runs`. The Control Tower names a job from its session, so a run whose parent is not a
+session directory can only be listed by its `project_id` and is not grouped with the character, prompts or outputs.
+Passing the repository root, as in `--runs-root D:\codex\XAI-studio\runs`, produces exactly that.
+
+```text
+characters/<character-id>/02_generations/<SESSION-ID>/
+    session-provenance.json        written by `wangp_recorder.py session`
+    <shot>.txt, <shot>.settings.json
+    runs/<run-id>/                 written by `local_wangp.py submit --runs-root <session>/runs`
+```
+
+The Control Tower also scans `runs/` and `examples/` at the repository root, so records already written there stay
+visible — but they appear without a session, character or grouping.
+
 Rules:
 
 - Write it **before** submitting the first job, and run the same command again with `--status completed` (or

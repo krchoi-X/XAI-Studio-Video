@@ -41,13 +41,21 @@ def default_pid_alive(pid: int | None) -> bool:
         return False
 
 
+# Files that make a directory a real production session rather than just the parent of a runs/ folder.
+SESSION_MARKERS = ("batch.yaml", "session-provenance.json", "prompt-trace.json", "handoff.json", "sequence-status.json")
+
+
 class SessionContext:
-    __slots__ = ("title", "character_id", "session_id", "requested_by", "requested_by_basis", "kind", "session_dir", "visibility")
+    __slots__ = ("title", "character_id", "session_id", "requested_by", "requested_by_basis", "kind", "session_dir",
+                 "visibility", "is_session")
 
     def __init__(self, session_dir: Path) -> None:
         self.session_dir = str(session_dir)
-        self.session_id = session_dir.name
-        self.title = session_dir.name
+        # A producer may pass any --runs-root, including the repository root. Only treat the parent as a session
+        # when it actually looks like one; otherwise the run would inherit the repository's own name and README.
+        self.is_session = any((session_dir / marker).is_file() for marker in SESSION_MARKERS)
+        self.session_id = session_dir.name if self.is_session else None
+        self.title = session_dir.name if self.is_session else ""
         self.character_id = None
         self.requested_by = "unknown"
         self.requested_by_basis = None
@@ -119,7 +127,7 @@ def load_session_context(session_dir: Path) -> SessionContext:
     if isinstance(provenance, dict):
         ctx.title = str(provenance.get("title") or ctx.title)
         ctx.character_id = provenance.get("character_id") or ctx.character_id
-    if ctx.title == session_dir.name:
+    if ctx.is_session and ctx.title == session_dir.name:
         readme = session_dir / "README.md"
         if readme.is_file():
             try:
@@ -341,12 +349,17 @@ class WangpRunAdapter:
         if run_actor:
             requested_by, requested_by_basis = run_actor, "record"
 
-        title = ctx.title
         prompt_id = run.get("prompt_id")
-        if ctx.kind == "video" and prompt_id:
+        if not ctx.is_session:
+            # No session directory: name the job from what the producer did record.
+            parts = [str(run.get("project_id") or "").strip(), str(prompt_id or "").strip()]
+            title = " · ".join(part for part in parts if part) or str(run["run_id"])
+        elif ctx.kind == "video" and prompt_id:
             title = f"{ctx.title} · {prompt_id}"
         elif model and ctx.kind in {"scene", "face", "variation"}:
             title = f"{ctx.title} · {model}"
+        else:
+            title = ctx.title
 
         elapsed = seconds_between(started, finished if finished else now) if status not in {"queued"} else None
         job = Job(
