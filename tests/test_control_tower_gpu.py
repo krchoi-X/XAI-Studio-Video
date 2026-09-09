@@ -68,5 +68,47 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(d["gpus"][0]["processes"][0]["pid"], 28141)
 
 
+
+
+class TailscaleServeParsingTests(unittest.TestCase):
+    """The Open Gallery link must point at the tailnet when the dashboard is opened from a tablet."""
+
+    SERVE_STATUS = (
+        "https://artxorn.tailf10079.ts.net (tailnet only)\n"
+        "|-- / proxy http://127.0.0.1:8787\n"
+        "\n"
+        "https://artxorn.tailf10079.ts.net:8443 (tailnet only)\n"
+        "|-- / proxy http://127.0.0.1:8800\n"
+        "\n"
+        "https://artxorn.tailf10079.ts.net:8790 (tailnet only)\n"
+        "|-- / proxy http://127.0.0.1:8790\n"
+    )
+
+    def test_finds_the_origin_serving_a_local_port(self):
+        from control_tower.tailscale import parse_serve_status
+
+        self.assertEqual(parse_serve_status(self.SERVE_STATUS, 8787), "https://artxorn.tailf10079.ts.net/")
+        self.assertEqual(parse_serve_status(self.SERVE_STATUS, 8800), "https://artxorn.tailf10079.ts.net:8443/")
+        self.assertEqual(parse_serve_status(self.SERVE_STATUS, 8790), "https://artxorn.tailf10079.ts.net:8790/")
+
+    def test_unserved_port_and_junk_return_none(self):
+        from control_tower.tailscale import parse_serve_status
+
+        self.assertIsNone(parse_serve_status(self.SERVE_STATUS, 9999))
+        self.assertIsNone(parse_serve_status("", 8787))
+        self.assertIsNone(parse_serve_status("No serve config", 8787))
+
+    def test_a_port_that_only_matches_as_a_suffix_is_not_accepted(self):
+        from control_tower.tailscale import parse_serve_status
+
+        status = "https://host.ts.net (tailnet only)\n|-- / proxy http://127.0.0.1:18787\n"
+        self.assertIsNone(parse_serve_status(status, 8787))
+
+    def test_missing_tailscale_cli_is_not_an_error(self):
+        from control_tower.tailscale import detect_served_url
+
+        self.assertIsNone(detect_served_url(8787, executable="definitely-not-tailscale"))
+
+
 if __name__ == "__main__":
     unittest.main()

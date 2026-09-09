@@ -18,7 +18,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--scan-root", action="append", help="directory tree containing */runs/*/run.json (repeatable)")
     parser.add_argument("--night-batch-root", default=str(cfg.night_batch_root))
     parser.add_argument("--web-job-root", action="append", help="Gallery generation-jobs directory (repeatable)")
-    parser.add_argument("--gallery-url", default=cfg.gallery_url, help="link target for 'Open in Gallery'")
+    parser.add_argument("--gallery-url", default=cfg.gallery_url,
+                        help="Open Gallery link used when the dashboard is opened on this PC")
+    parser.add_argument("--gallery-tailnet-url", default=cfg.gallery_tailnet_url,
+                        help="Open Gallery link used from the tailnet; detected from `tailscale serve status` when omitted")
     parser.add_argument("--wangp-root", default=str(cfg.wangp_root))
     parser.add_argument("--host-interval", type=float, default=cfg.host_interval)
     parser.add_argument("--job-interval", type=float, default=cfg.job_interval)
@@ -38,6 +41,7 @@ def config_from_args(args: argparse.Namespace) -> Config:
     if args.web_job_root:
         cfg.web_job_roots = [Path(p) for p in args.web_job_root]
     cfg.gallery_url = args.gallery_url
+    cfg.gallery_tailnet_url = args.gallery_tailnet_url
     cfg.wangp_root = Path(args.wangp_root)
     cfg.host_interval = args.host_interval
     cfg.job_interval = args.job_interval

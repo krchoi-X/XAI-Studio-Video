@@ -64,8 +64,11 @@ The server binds `0.0.0.0`, so the tailnet IP works without extra configuration.
 served (`tailscale serve --bg --https=8790 http://127.0.0.1:8790`), which is why `tailscaled` also listens on 8790 -
 a plain port check is therefore not a valid "is Control Tower running" test; ask `/api/health` instead.
 
-Point the "Open Gallery" link at the tailnet name when serving to a tablet:
-`python -X utf8 -m control_tower --gallery-url https://artxorn.tailf10079.ts.net/`.
+The **Open Gallery** link follows how the dashboard was opened: the loopback URL on this PC, the tailnet URL from a
+tablet. The tailnet address is detected at startup by asking `tailscale serve status` which origin publishes the
+Gallery's local port, so no hostname is hard-coded. Override either side with `--gallery-url` /
+`--gallery-tailnet-url` (or `XAI_CT_GALLERY_URL` / `XAI_CT_GALLERY_TAILNET_URL`); when Tailscale is not serving the
+Gallery, both fall back to the local URL.
 
 ## API
 

@@ -27,7 +27,11 @@ class Config:
     night_batch_root: Path = DEFAULT_NIGHT_BATCH_ROOT
     web_job_roots: list[Path] = field(default_factory=lambda: list(DEFAULT_WEB_JOB_ROOTS))
     wangp_root: Path = DEFAULT_WANGP_ROOT
-    gallery_url: str = "http://127.0.0.1:8787/"
+    gallery_url: str = "http://127.0.0.1:8787/"  # used when the dashboard is opened on this PC
+    gallery_port: int = 8787
+    # Used when the dashboard is opened from the tailnet. Detected from `tailscale serve status` at startup
+    # unless set explicitly, so the tablet's Open Gallery link does not point at this PC's loopback.
+    gallery_tailnet_url: str | None = None
     host_interval: float = 2.0
     job_interval: float = 5.0
     process_interval: float = 3.0
@@ -44,6 +48,8 @@ class Config:
             cfg.db_path = Path(os.environ["XAI_CT_DB"])
         if os.environ.get("XAI_CT_GALLERY_URL"):
             cfg.gallery_url = os.environ["XAI_CT_GALLERY_URL"]
+        if os.environ.get("XAI_CT_GALLERY_TAILNET_URL"):
+            cfg.gallery_tailnet_url = os.environ["XAI_CT_GALLERY_TAILNET_URL"]
         if os.environ.get("XAI_CT_SCAN_ROOTS"):
             cfg.scan_roots = [Path(p) for p in os.environ["XAI_CT_SCAN_ROOTS"].split(os.pathsep) if p]
         return cfg

@@ -152,6 +152,14 @@ function ago(iso) {
   const d = (Date.now() - new Date(iso).getTime()) / 1000;
   return d < 0 ? 'now' : fmtDur(d) + ' ago';
 }
+// The Gallery listens on this PC's loopback and is published to the tailnet by `tailscale serve`, so the
+// right link depends on where the dashboard is being viewed from - a tablet cannot open 127.0.0.1.
+const LOOPBACK = ['localhost', '127.0.0.1', '::1', '[::1]'];
+function galleryLink(service, hostname) {
+  const local = service.gallery_url || '/';
+  if (LOOPBACK.includes(hostname)) return local;
+  return service.gallery_tailnet_url || local;
+}
 function esc(s) { return String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function tag(text, cls) { return `<span class="tag ${cls || ''}">${esc(text)}</span>`; }
 const BASIS_LABEL = { record: 'from record', parent: 'from parent job', 'process-env': 'observed: process env marker', 'process-lineage': 'observed: process lineage', manual: 'manual attribution' };
@@ -291,7 +299,7 @@ function render(view) {
   state = view; lastSnapshotAt = Date.now();
   $('machine').textContent = view.service.machine;
   $('online').className = 'dot ' + (view.host.ok ? 'ok' : 'warn');
-  $('gallery').href = view.service.gallery_url;
+  $('gallery').href = galleryLink(view.service, location.hostname);
   renderUntracked(view); renderRunning(view); renderGpu(view); renderAgents(view); renderQueue(view); renderRecent(view);
 }
 

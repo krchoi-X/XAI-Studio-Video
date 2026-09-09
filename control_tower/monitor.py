@@ -20,6 +20,7 @@ from .db import Database
 from .gpu import HostSample, NvidiaSmiCollector
 from .jobs import COMPLETED_STATUSES, Job
 from .processes import AI_RUNTIME_KINDS, ProcessObserver, ProcessSnapshot
+from .tailscale import detect_served_url
 from .util import iso_now, read_json_safe, utc_now
 
 log = logging.getLogger("control_tower.monitor")
@@ -64,6 +65,13 @@ class MonitorService:
         self._manual_cache: tuple[float, dict[str, Any]] = (0.0, {})
         self._job_signature: dict[str, str] = {}
         self._last_prune = 0.0
+        # Resolved once: asking the Tailscale CLI on every snapshot would be wasteful, and the serve
+        # configuration does not change while the service runs.
+        self.gallery_tailnet_url = config.gallery_tailnet_url or detect_served_url(config.gallery_port)
+        if self.gallery_tailnet_url:
+            log.info("gallery reachable from the tailnet at %s", self.gallery_tailnet_url)
+        else:
+            log.info("no tailnet URL found for the gallery; the dashboard will link %s", config.gallery_url)
         # Seed the timing-recorded set with terminal jobs already persisted so restarts don't double count.
         for row in self.db.list_jobs(limit=5000):
             if row.get("status") in COMPLETED_STATUSES:
@@ -370,7 +378,8 @@ class MonitorService:
         running = [j for j in active if j.status == "running"]
         return {
             "service": {"name": "XAI Control Tower", "version": "0.1.0", "started_at": self.started_at, "now": iso_now(),
-                        "machine": self.config.machine_label, "snapshot_version": self.version, "gallery_url": self.config.gallery_url,
+                        "machine": self.config.machine_label, "snapshot_version": self.version,
+                        "gallery_url": self.config.gallery_url, "gallery_tailnet_url": self.gallery_tailnet_url,
                         "adapter_errors": self.job_errors, "host_error_since": self.host_error_since},
             "host": host,
             "processes": procs,

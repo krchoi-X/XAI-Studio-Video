@@ -1,3 +1,42 @@
+# Scoped Task — Open Gallery link works from the tablet (v0.1.6)
+
+Owner / Active editor: Claude Code
+Status: COMPLETE — implemented and verified 2026-09-09
+
+## Symptom
+
+The dashboard's Open Gallery link was always `http://127.0.0.1:8787/`, which is this PC's loopback and therefore
+dead on the tablet.
+
+## Change
+
+The Gallery listens on loopback and is published to the tailnet by `tailscale serve`, so the correct link depends
+on where the page is being viewed from. The service now carries both addresses and the page picks by hostname:
+loopback hostnames get the local URL, anything else gets the tailnet URL.
+
+The tailnet address is **detected**, not hard-coded: `control_tower/tailscale.py` parses `tailscale serve status`
+for the origin whose root path proxies to the Gallery's local port. On this machine that resolves to
+`https://artxorn.tailf10079.ts.net/`. Detection runs once at startup; `--gallery-tailnet-url` /
+`XAI_CT_GALLERY_TAILNET_URL` override it, and everything falls back to the local URL when Tailscale is not serving.
+
+## Contract impact
+
+Additive only: `service.gallery_tailnet_url` joins the overview payload, `Config` gains `gallery_port` and
+`gallery_tailnet_url`, and the CLI gains `--gallery-tailnet-url`. No record, job or persisted file changes.
+Rollback: revert the commit; the link returns to the configured single URL.
+
+## Verification
+
+- 53 Control Tower tests pass, including four for the serve-status parser (correct origin per port, unserved port,
+  a port that only matches as a suffix, and a missing `tailscale` binary).
+- Live: startup logs `gallery reachable from the tailnet at https://artxorn.tailf10079.ts.net/`; the API returns
+  both URLs; in the browser the rendered link is the loopback URL, and `galleryLink` returns the tailnet URL for
+  `artxorn.tailf10079.ts.net` and for the raw tailnet IP, falling back to loopback when no tailnet URL is known.
+- The in-app browser blocks requests to the tailnet origin, so the tablet path itself was verified by evaluating
+  the link rule with each hostname rather than by loading the page over the tailnet.
+
+---
+
 # Scoped Task — Show Hermes WanGP runs by name (v0.1.5)
 
 Owner / Active editor: Claude Code (Control Tower; the user explicitly assigned the Hermes-facing fix too)
