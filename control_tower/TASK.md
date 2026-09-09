@@ -32,8 +32,9 @@ Rollback: revert the commit; the link returns to the configured single URL.
 - Live: startup logs `gallery reachable from the tailnet at https://artxorn.tailf10079.ts.net/`; the API returns
   both URLs; in the browser the rendered link is the loopback URL, and `galleryLink` returns the tailnet URL for
   `artxorn.tailf10079.ts.net` and for the raw tailnet IP, falling back to loopback when no tailnet URL is known.
-- The in-app browser blocks requests to the tailnet origin, so the tablet path itself was verified by evaluating
-  the link rule with each hostname rather than by loading the page over the tailnet.
+- The in-app browser blocks requests to the tailnet origin, so the link rule was first verified by evaluating it
+  with each hostname. **The operator then confirmed on the tablet that Open Gallery opens correctly**, closing the
+  last open check for this task.
 
 ---
 
