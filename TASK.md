@@ -1,7 +1,7 @@
 # Current task — Automatic character reference resolution for WanGP video
 
 Active editor: Codex
-Status: COMPLETE — default reference resolution committed
+Status: COMPLETE — default reference resolution committed; Hermes operating rule clarified
 Date: 2026-09-10
 
 ## Goal
@@ -23,7 +23,7 @@ Confirmed the latest corrected Hermes run uses valid H3 resolution/frame fields 
 Producer: `character.json` optional `reference_defaults.identity` record containing a path and provenance. Consumer: `tools/local_wangp.py submit` for `*_ref2va*` models. Explicit `image_refs` override it; no default remains a clear pre-launch error. Old character records stay valid. Rollback removes the optional record and resolver. Verify with a fake WanGP worker plus a missing-reference test.
 
 ## Next
-Hermes may submit the corrected Jun shot with empty `image_refs`; inspect the new run record for `reference_inputs[0].basis: character-default` before expanding the batch. Add durable defaults for other characters only when a user-selected base reference is known.
+The corrected Jun submission succeeded with the automatic default. Hermes must keep `image_refs` empty for ordinary Jun Ref2VA runs and must not pass `--character-id` to `local_wangp.py submit` (that option belongs only to session registration). A new explicit user-provided reference, first/last-frame workflow, prompt, settings, length, or output location overrides the default for that run. Add durable defaults for other characters only when a user-selected base reference is known.
 
 ## Verification
 - `tools/test_local_wangp.py`: 8 passed, including default injection, explicit-reference override and missing-default rejection.

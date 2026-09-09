@@ -39,6 +39,15 @@ session `character_id`, then injects that character's durable `reference_default
 is empty. An explicit non-empty `image_refs` value always overrides it. If no durable default exists, submission stops
 before a GPU worker starts; report that record gap instead of choosing the newest image yourself.
 
+For the normal Jun Ref2VA workflow, leave `image_refs` as `[]`; the session location and its registered
+`character_id: ch-jun` select Jun's durable default. **Do not pass `--character-id` to `local_wangp.py submit`**:
+it is a `wangp_recorder.py session` option and the submit CLI will reject it. After each new kind of submission,
+inspect `run.json` and confirm `reference_inputs[0].basis` is `character-default` before starting more shots.
+
+The operator's current instruction controls each production run. Apply their specified reference images or frames,
+prompt, video content, duration, resolution, and output destination to that run. Use the durable character default
+only when the operator has not supplied a run-specific visual reference; never silently replace an explicit reference.
+
 **Model ids**: `model_type` must be one of the ids listed in [WanGP model types](docs/wangp-models.md), which is
 generated from the installation. Anything else fails WanGP validation before any GPU work starts — a bare
 `minimax_h3` is not a model type; the installed H3 ids are `minimax_h3_ref2va_pruned` (reference image → video) and
