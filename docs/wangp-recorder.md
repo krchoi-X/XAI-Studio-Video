@@ -115,6 +115,10 @@ Rules:
   `model` is the checkpoint. The Control Tower shows all four separately.
 - For character stills the scene pipeline already does this for you: `character_scene.py --actor <agent>` records
   `created_by` in `batch.yaml` and forwards it to every run.
+- For a `*_ref2va*` character video, `local_wangp.py submit` fills empty `image_refs` from the session character's
+  durable `character.json.reference_defaults.identity` record. It records the path, hash, byte count and
+  `character-default` basis in `run.json`. A non-empty settings value remains authoritative; the tool never selects a
+  newest file or treats an unreviewed image as approved.
 
 ## Commands
 

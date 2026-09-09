@@ -63,6 +63,51 @@ class LocalWanGPTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "not found"):
             local_wangp.validate_reference_settings(settings)
 
+    def test_ref2va_uses_the_durable_character_default_reference(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            characters = root / "characters"
+            image = root / "jun.png"
+            image.write_bytes(b"identity image")
+            character_path = characters / "ch-jun" / "character.json"
+            character_path.parent.mkdir(parents=True)
+            character_path.write_text(json.dumps({"reference_defaults": {"identity": {
+                "path": str(image), "source": "human-selected base portrait",
+            }}}), encoding="utf-8")
+            session = characters / "ch-jun" / "02_generations" / "VIDEO-test"
+            session.mkdir(parents=True)
+            original = local_wangp.CHARACTERS
+            local_wangp.CHARACTERS = characters
+            try:
+                settings = {"model_type": "minimax_h3_ref2va_pruned", "image_refs": []}
+                records = local_wangp.resolve_character_default_reference(settings, session)
+            finally:
+                local_wangp.CHARACTERS = original
+            self.assertEqual(settings["image_refs"], [str(image.resolve())])
+            self.assertEqual(records[0]["basis"], "character-default")
+            self.assertEqual(records[0]["character_id"], "ch-jun")
+
+    def test_explicit_ref2va_reference_is_never_replaced(self) -> None:
+        settings = {"model_type": "minimax_h3_ref2va_pruned", "image_refs": ["chosen.png"]}
+        self.assertEqual(local_wangp.resolve_character_default_reference(settings, Path("missing-session")), [])
+        self.assertEqual(settings["image_refs"], ["chosen.png"])
+
+    def test_ref2va_without_a_default_fails_before_starting_worker(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            characters = Path(directory) / "characters"
+            session = characters / "ch-none" / "02_generations" / "VIDEO-test"
+            session.mkdir(parents=True)
+            (characters / "ch-none" / "character.json").write_text("{}", encoding="utf-8")
+            original = local_wangp.CHARACTERS
+            local_wangp.CHARACTERS = characters
+            try:
+                with self.assertRaisesRegex(ValueError, "no reference_defaults.identity"):
+                    local_wangp.resolve_character_default_reference(
+                        {"model_type": "minimax_h3_ref2va_pruned", "image_refs": []}, session,
+                    )
+            finally:
+                local_wangp.CHARACTERS = original
+
 
 if __name__ == "__main__":
     unittest.main()

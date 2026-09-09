@@ -15,6 +15,7 @@ DEFAULT_WANGP_ROOT = Path(r"D:\AI\WanGP")
 DEFAULT_EXECUTOR = "local-wangp-worker"  # what runs the job; distinct from requested_by, renderer, and model_type
 KREA2_EDIT_MODELS = {"krea2_raw_edit", "krea2_turbo_edit"}
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
+CHARACTERS = Path(__file__).resolve().parents[1] / "characters"
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -58,6 +59,67 @@ def validate_reference_settings(settings: dict[str, Any]) -> list[dict[str, Any]
     return records
 
 
+def _reference_values(settings: dict[str, Any]) -> list[str]:
+    raw_refs = settings.get("image_refs")
+    refs = raw_refs if isinstance(raw_refs, list) else [raw_refs] if raw_refs else []
+    return [str(value).strip() for value in refs if str(value).strip()]
+
+
+def _session_character_id(session_dir: Path) -> str | None:
+    """Find the durable character ID without inferring it from a display name."""
+    provenance_path = session_dir / "session-provenance.json"
+    if provenance_path.is_file():
+        try:
+            provenance = wangp_recorder.read_json_file(provenance_path)
+        except (OSError, ValueError):
+            provenance = None
+        if isinstance(provenance, dict) and str(provenance.get("character_id") or "").strip():
+            return str(provenance["character_id"]).strip()
+    # Established layout: characters/<character-id>/02_generations/<session>/runs.
+    if session_dir.parent.name == "02_generations" and session_dir.parent.parent.name.startswith("ch-"):
+        return session_dir.parent.parent.name
+    return None
+
+
+def resolve_character_default_reference(settings: dict[str, Any], session_dir: Path) -> list[dict[str, Any]]:
+    """Inject the explicitly selected identity reference for a Ref2VA character session.
+
+    A setting-provided reference always wins.  The fallback is not a newest-file search: it reads the optional,
+    durable `character.json.reference_defaults.identity` record authored for that character.
+    """
+    model_type = str(settings.get("base_model_type") or settings.get("model_type") or "").lower()
+    if "ref2va" not in model_type or _reference_values(settings):
+        return []
+    character_id = _session_character_id(session_dir)
+    if not character_id:
+        raise ValueError("Ref2VA requires image_refs; no character_id is recorded for this session")
+    character_path = CHARACTERS / character_id / "character.json"
+    try:
+        character = json.loads(character_path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise ValueError(f"Ref2VA character record not found: {character_path}") from exc
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"invalid character record: {character_path}") from exc
+    defaults = character.get("reference_defaults")
+    identity = defaults.get("identity") if isinstance(defaults, dict) else None
+    if not isinstance(identity, dict) or not str(identity.get("path") or "").strip():
+        raise ValueError(f"Ref2VA requires image_refs; {character_id} has no reference_defaults.identity record")
+    path = Path(str(identity["path"])).resolve()
+    if not path.is_file():
+        raise ValueError(f"character default reference not found: {path}")
+    if path.suffix.lower() not in IMAGE_SUFFIXES:
+        raise ValueError(f"unsupported character default reference: {path}")
+    settings["image_refs"] = [str(path)]
+    return [{
+        "path": str(path),
+        "sha256": wangp_recorder.sha256_file(path),
+        "byte_count": path.stat().st_size,
+        "character_id": character_id,
+        "basis": "character-default",
+        "source": identity.get("source"),
+    }]
+
+
 def resolve_python(wangp_root: Path, explicit: str | None) -> Path:
     candidates = [Path(explicit)] if explicit else []
     candidates.extend([wangp_root / "env_uv" / "Scripts" / "python.exe", wangp_root / ".venv" / "bin" / "python"])
@@ -95,10 +157,10 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     #   --requested-by  ->  $XAI_REQUESTED_BY  ->  the session's own provenance record  ->  null.
     # Nothing is inferred; when every source is silent the run records null and the Control Tower falls back
     # to observing the worker process.
+    session_dir = Path(args.runs_root).resolve().parent
     requested_by = wangp_recorder.normalize_actor(args.requested_by if args.requested_by is not None else os.environ.get("XAI_REQUESTED_BY"))
     if not requested_by:
-        # <session>/runs/<run-id> is the layout every producer uses, so the session is the runs-root's parent
-        session_dir = Path(args.runs_root).resolve().parent
+        # <session>/runs/<run-id> is the layout every producer uses, so the session is the runs-root's parent.
         requested_by = wangp_recorder.normalize_actor(wangp_recorder.session_requester(session_dir))
     executor = args.executor or DEFAULT_EXECUTOR
     run = wangp_recorder.prepare_run(
@@ -116,13 +178,15 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     )
     run_dir = Path(run["run_dir"])
     effective_settings = load_settings(settings_path, prompt, run["run_id"])
-    reference_records = validate_reference_settings(effective_settings)
+    reference_records = resolve_character_default_reference(effective_settings, session_dir)
+    reference_records.extend(validate_reference_settings(effective_settings))
     effective_path = run_dir / "effective-settings.json"
     write_json(effective_path, effective_settings)
     if reference_records:
         record = wangp_recorder.load_run(run_dir)
         record["reference_inputs"] = reference_records
-        record["variation"] = effective_settings.get("_xai")
+        if effective_settings.get("_xai"):
+            record["variation"] = effective_settings["_xai"]
         wangp_recorder.save_run(run_dir, record)
     stdout_path = run_dir / "worker.stdout.log"
     stderr_path = run_dir / "worker.stderr.log"

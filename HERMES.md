@@ -34,6 +34,11 @@ python tools/local_wangp.py submit --runs-root "$session\runs" `
 `--requested-by hermes` is already being recorded correctly; keep it. Close the session with the same `session`
 command and `--status completed` (or `failed`). Full rules: [WanGP recorder](docs/wangp-recorder.md#recording-a-production-session).
 
+For a character Ref2VA video, do not paste an image path into every settings file. `local_wangp.py submit` reads the
+session `character_id`, then injects that character's durable `reference_defaults.identity` record when `image_refs`
+is empty. An explicit non-empty `image_refs` value always overrides it. If no durable default exists, submission stops
+before a GPU worker starts; report that record gap instead of choosing the newest image yourself.
+
 **Model ids**: `model_type` must be one of the ids listed in [WanGP model types](docs/wangp-models.md), which is
 generated from the installation. Anything else fails WanGP validation before any GPU work starts — a bare
 `minimax_h3` is not a model type; the installed H3 ids are `minimax_h3_ref2va_pruned` (reference image → video) and
