@@ -109,6 +109,8 @@ Rules:
 - Requester resolution for each submission: `--requested-by` → `XAI_REQUESTED_BY` → the session record
   (`session-provenance.json` → `handoff.json` → `batch.yaml` `session.created_by` → `prompt-trace.json`
   `invoked_by`) → `null`. Nothing is ever invented.
+- `settings.model_type` must be an id from [WanGP model types](wangp-models.md); check it with
+  `python tools/wangp_models.py --check <model_type>` rather than guessing.
 - Say who asked, not what ran: `requested_by` is the agent or person; `executor` is the runner; `engine` is WanGP;
   `model` is the checkpoint. The Control Tower shows all four separately.
 - For character stills the scene pipeline already does this for you: `character_scene.py --actor <agent>` records

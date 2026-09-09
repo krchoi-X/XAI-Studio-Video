@@ -1,3 +1,53 @@
+# Scoped Task — Checked-in WanGP model_type reference (v0.1.7)
+
+Owner / Active editor: Claude Code (assigned by the user: "every agent should be able to reference it from the repo")
+Status: COMPLETE — implemented and verified 2026-09-09
+
+## Why
+
+Hermes submitted `model_type: minimax_h3`, which is not a WanGP model type, and the run failed in validation. The
+valid ids are the file names in `<wangp>/defaults` and `<wangp>/finetunes`, which no agent can know from memory —
+217 definitions exist and only 10 are usable here. A hand-written list in a document would go stale.
+
+## Delivered
+
+- `tools/wangp_models.py` — surveys the installation and reports which `model_type` values are actually usable.
+  A definition may borrow another model's weights (`URLs` naming another id), need extra `modules` (ControlNet
+  unions), need `loras`, or point at an absolute local path (finetunes); all four are resolved.
+  `--check <id>` exits 0 only when an id is usable, and suggests near matches otherwise — the guard that would have
+  caught this failure before the GPU was touched. `--write` regenerates the checked-in reference.
+- `docs/wangp-models.md` — generated reference, 10 usable of 217. The "not usable" section is narrowed to variants
+  of installed models, so it stays readable.
+- Linked from `AGENTS.md` (shared reading table), `HERMES.md` and `docs/wangp-recorder.md`.
+- `tests/test_wangp_models.py` — 9 tests over a synthetic WanGP tree: alternative weight files, borrowed weights,
+  missing module, missing LoRA, absent weights, absolute-path finetune, `--check` exit codes, generated output, and
+  the underscore-boundary variant rule.
+
+## Findings worth keeping
+
+- Usable here: `z_image`, `krea2_turbo`, `krea2_turbo_edit`, `krea2_turbo_moody_krea`, `krea2_raw`, `krea2_raw_edit`,
+  `flux_chroma`, `ltx2_25_22B_distilled`, `minimax_h3_ref2va_pruned`, `minimax_h3_fl2va_pruned`.
+- The four `z_image_control*` variants look installed because they share the base `z_image` weights, but their
+  ControlNet union modules are **not** downloaded. Pose-controlled generation is therefore not available today
+  without fetching those.
+- `krea2_turbo_moody_krea` is a finetune whose weights live outside `ckpts` at
+  `D:\AI\Models\image-generation\krea2\moodyKrea2Mix_v70_INT8.safetensors`.
+
+## Contract impact
+
+Additive. A new read-only tool and a generated document; no producer, record or schema changes. `AGENTS.md` gains
+one row in the reading table — a shared Codex-owned file, edited under the user's explicit instruction and flagged
+here for review. Rollback: delete the tool, the document and the tests, and revert the three link edits.
+
+## Verification
+
+- 9 new tests pass; the whole `tests` suite is 91 passing with the one pre-existing
+  `test_reference_transformation_contract` import error (needs pytest, unrelated).
+- `--check minimax_h3` exits 2 with "did you mean: minimax_h3_fl2va_pruned, minimax_h3_ref2va_pruned";
+  `--check minimax_h3_ref2va_pruned` exits 0.
+
+---
+
 # Scoped Task — Open Gallery link works from the tablet (v0.1.6)
 
 Owner / Active editor: Claude Code

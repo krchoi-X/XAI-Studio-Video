@@ -34,8 +34,13 @@ python tools/local_wangp.py submit --runs-root "$session\runs" `
 `--requested-by hermes` is already being recorded correctly; keep it. Close the session with the same `session`
 command and `--status completed` (or `failed`). Full rules: [WanGP recorder](docs/wangp-recorder.md#recording-a-production-session).
 
-**Model ids**: the only H3 checkpoints installed are `minimax_h3_ref2va_pruned` (reference image → video) and
-`minimax_h3_fl2va_pruned` (first/last frame → video). A bare `minimax_h3` is not a WanGP model type and fails
-validation with `Unknown model type minimax_h3` before any GPU work starts.
+**Model ids**: `model_type` must be one of the ids listed in [WanGP model types](docs/wangp-models.md), which is
+generated from the installation. Anything else fails WanGP validation before any GPU work starts — a bare
+`minimax_h3` is not a model type; the installed H3 ids are `minimax_h3_ref2va_pruned` (reference image → video) and
+`minimax_h3_fl2va_pruned` (first/last frame → video). Verify before submitting:
+
+```powershell
+python tools/wangp_models.py --check minimax_h3_ref2va_pruned
+```
 
 Resolve CLI paths from the verified repository checkout, not an installed skill copy. For direct supported local production use `--actor hermes`; use `web` only through the web worker. Preserve the exact request and canonical DNA. Execute a clear authorized request without making the user repeat it. Verify recorded outputs and sync separately; never mark a queued job complete. Use existing sequential local queues and shared Gallery destinations.
