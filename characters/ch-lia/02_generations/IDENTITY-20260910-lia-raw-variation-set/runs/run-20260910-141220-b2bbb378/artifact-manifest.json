@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260910-141220-b2bbb378",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-raw-variation-set\\outputs\\krea2-edit\\run-20260910-141220-b2bbb378.jpg",
+      "sha256": "be23bea22b114ebd524923d2ae1587070c6d020b7609598c6ad79e2cd938a167",
+      "byte_count": 136290,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-10T14:20:54+09:00"
+    }
+  ]
+}

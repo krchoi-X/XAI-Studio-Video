@@ -758,3 +758,93 @@ Every RAW shot today used two references, where Phase 1's 0.919 baseline used on
 nothing changed) and `rv-06` (one reference, studio backdrop) fill in that 2x2. Note the honest limit of it:
 `rw-00`'s prompt is in the "Edit the provided reference image / Requested change:" form and the `rv-*` prompts
 are prose, so that axis carries the prompt style along with the background change and cannot separate them.
+
+## Step 7 — what actually holds the face
+
+Three levers were tested against the same measurement. Two of them work, and neither is the one the phase
+started with.
+
+### The engine settings do nothing
+
+Three sampler-side levers, each on `turn-13`'s exact prompt and seed so nothing else varies:
+
+| shot | change | SFace | ArcFace |
+|---|---|---|---|
+| `turn-13` | baseline | 0.836 | 0.874 |
+| `turn-20` | `skip_steps` disabled | 0.836 | 0.874 |
+| `turn-21` | 20 → 30 inference steps | 0.830 | 0.871 |
+| `turn-22` | `image_refs_relative_size` 125 → 175 | 0.668 | 0.819 |
+
+`turn-20` returned numbers identical to the baseline to four decimal places, which means the default
+`skip_steps_multiplier: 0.08` at `skip_steps_start_step_perc: 25` was never firing - the setting is inert
+here either way. Half again as many steps buys nothing. Enlarging the reference inside the model makes SFace
+distinctly worse. **Identity on this path is not a sampler problem, and these three axes need not be revisited.**
+
+### The second reference: helps on video, hurts on stills
+
+On `minimax_h3_ref2va_pruned`, adding the master face crop as `<Picture 2>` lifts the whole distribution. Six
+dual-reference clips against the single-reference ones: four of six reach 0.84 or better on ArcFace, and no
+single-reference clip ever does. It is not a switch that guarantees a pass - the seed decides whether a given
+clip crosses - but at 12 minutes a clip, shooting several seeds and keeping the ones that pass is a
+production procedure rather than a problem.
+
+On `krea2_raw_edit` it does the opposite. The 2x2, with Phase 1's `rw-00` as the fourth cell:
+
+| | one reference | two references |
+|---|---|---|
+| nothing changed | `rw-00` 0.901 / **0.919** | `rv-05` 0.826 / 0.790 |
+| moved to a studio backdrop | `rv-06` 0.737 / 0.670 | `rv-04` 0.660 / 0.590 |
+
+Holding the prompt fixed, the second reference costs about 0.13 on ArcFace. That single fact explains every
+failed still today: all nine used two references. **Two references on the video path, one on the still path.**
+
+### Keeping the master's own room is the largest single lever
+
+Every turnaround up to `turn-17` moved her to "a plain unlit grey backdrop", on the assumption that a neutral
+setting would isolate the face. It does the opposite, and the still path had already said so - `rv-03`
+(change the light) at 0.557/0.525 and `rv-04` (change the background) at 0.660/0.590 were the two worst
+variations of the day, while hair-only and wardrobe-only with the room kept were the two best.
+
+`turn-18` and `turn-19` repeat the working recipe with the master's own seaside room and window light left in
+place. The controlled version is `turn-16` against `turn-23`: **same seed, same prompt structure, same two
+references, same settings, backdrop the only difference.**
+
+| clip | seed | setting | SFace | ArcFace | verdict |
+|---|---|---|---|---|---|
+| `turn-16` | 161803 | grey backdrop | 0.788 | 0.809 | drift |
+| `turn-23` | 161803 | her own room | **0.899** | **0.941** | **same** |
+| `turn-24` | 314159 | her own room | 0.900 | 0.917 | same |
+| `turn-18` | 5413 | her own room | 0.894 | 0.923 | same |
+| `turn-19` | 271828 | her own room | 0.890 | 0.925 | same |
+| `turn-25` | 141421 | her own room | 0.769 | 0.825 | drift |
+
+**+0.13 ArcFace from the backdrop alone**, and the pass rate for `same` on *both* recognisers goes from one
+clip in six to four in five. 0.941 also beats `rw-00`'s 0.919, so the video path now exceeds the best result
+the still path ever produced here.
+
+`turn-18` additionally produced the first off-axis frame to pass the calibrated line on its own terms: a
+three-quarter at yaw +0.14 scoring 0.835 / 0.898, `same`. Until then every off-axis frame was admitted by
+inheritance.
+
+Fifteen of the seventeen clips shot before this were paying that cost. The intuition that a clean neutral
+backdrop clarifies identity was simply wrong: the reference's own room and light are part of what the model
+uses to hold the face.
+
+### The variation cost order, and where variation should come from
+
+Consistent across both engines and both phases, cheapest first: **wardrobe → hair → background → lighting.**
+
+| shot | engine | change | SFace | ArcFace |
+|---|---|---|---|---|
+| `ax-01` (Phase 1) | turbo, 1 ref, edit form | wardrobe only | 0.885 | 0.849 |
+| `rv-08` | RAW, 1 ref, edit form | wardrobe only | 0.845 | 0.805 |
+| `rv-01` | RAW, 2 refs, prose | hair only | 0.709 | 0.737 |
+| `rv-07` | RAW, 1 ref, edit form | hair only | 0.674 | 0.673 |
+| `rv-04` | RAW, 2 refs, prose | background | 0.660 | 0.590 |
+| `rv-03` | RAW, 2 refs, prose | lighting | 0.557 | 0.525 |
+
+The best still edit of the day is `rv-08` at 0.845/0.805, and Phase 1's `ax-01` did better on the *fast* turbo
+path, so RAW is not even the right engine for a wardrobe change. Since the video path reaches 0.941 on the
+same face, the honest conclusion is that **variation should be shot rather than edited**: describe the
+ponytail or the sweater inside the clip and let the recipe that holds the identity hold it. `turn-29` and
+`turn-30` test exactly that.

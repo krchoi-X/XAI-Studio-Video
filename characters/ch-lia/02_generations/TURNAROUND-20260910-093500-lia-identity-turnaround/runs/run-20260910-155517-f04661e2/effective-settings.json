@@ -1,0 +1,26 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+  ],
+  "resolution": "576x768",
+  "video_length": 121,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "seed": 161803,
+  "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.\n",
+  "output_filename": "run-20260910-155517-f04661e2"
+}

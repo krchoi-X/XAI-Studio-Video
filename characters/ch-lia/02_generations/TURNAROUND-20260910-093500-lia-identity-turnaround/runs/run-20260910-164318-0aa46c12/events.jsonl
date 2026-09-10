@@ -1,0 +1,3 @@
+{"at":"2026-09-10T16:43:18+09:00","state":"queued","prompt_sha256":"76534251eb2ae86514b58ae4adc674f5f0eef2e972eebf2480d43dae44d241fb","target":"local","requested_by":"claude","executor":"local-wangp-worker"}
+{"at":"2026-09-10T16:43:18+09:00","state":"starting","local_worker_pid":45708}
+{"at":"2026-09-10T16:43:27+09:00","state":"running","provider_job_id":"local-pid-47512"}
