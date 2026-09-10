@@ -126,14 +126,22 @@ def report(args: argparse.Namespace) -> dict[str, Any]:
         frontal = [frame for frame in members if frame["yaw_bucket"] == "frontal"]
         continuity = [value for a, b in combinations(members, 2) if a["yaw_bucket"] == b["yaw_bucket"]
                       for value in pair_scores(a, b).values()]
-        admission = max((frame["scores"] for frame in frontal),
-                        key=lambda s: s.get("arcface") or 0, default={})
+        # Pick the frontal frame that stands up best on BOTH recognisers, not the one with the highest ArcFace.
+        # Ranking on ArcFace alone reports a clip as "disagree" when it also contains a frame that passes both,
+        # which is the difference between a usable clip and one that needs a human.
+        frontal_line = calibration["thresholds"].get("frontal", {})
+
+        def margin(scores: dict[str, float]) -> float:
+            ratios = [value / frontal_line[name] for name, value in scores.items() if frontal_line.get(name)]
+            return min(ratios) if ratios else max(scores.values(), default=0.0)
+
+        admission = max((frame["scores"] for frame in frontal), key=margin, default={})
         per_shot[shot] = {
             "frames": len(members),
             "buckets": sorted({frame["yaw_bucket"] for frame in members}, key=bucket_key),
             "admission_scores": admission,
             "admission_verdict": identity_score.classify(
-                admission, calibration["thresholds"].get("frontal", {}), calibration["drift_band_ceiling"]),
+                admission, frontal_line, calibration["drift_band_ceiling"]),
             "weakest_same_bucket_pair": round(min(continuity), 4) if continuity else None,
             "face_pixels_median": round(statistics.median(
                 [frame["face_pixels"][0] for frame in members if frame["face_pixels"]]), 1),

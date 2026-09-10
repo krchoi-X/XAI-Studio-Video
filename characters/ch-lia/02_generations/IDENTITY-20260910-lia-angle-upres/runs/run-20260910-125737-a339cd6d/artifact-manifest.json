@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260910-125737-a339cd6d",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-angle-upres\\outputs\\krea2-edit\\run-20260910-125737-a339cd6d.jpg",
+      "sha256": "22b7798bc0a293438acbec0dee5704395700af52d106955f13c369a6ad0f3faf",
+      "byte_count": 183120,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-10T13:06:03+09:00"
+    }
+  ]
+}

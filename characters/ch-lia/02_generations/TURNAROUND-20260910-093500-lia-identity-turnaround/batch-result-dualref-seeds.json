@@ -1,0 +1,50 @@
+{
+  "session": "TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "updated_at": "2026-09-10T14:02:59+09:00",
+  "results": [
+    {
+      "shot": "turn-14-dualref-mirrored-seed-c",
+      "status": "needs_review",
+      "run_id": "run-20260910-131458-a918f7c4",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-131458-a918f7c4",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-131458-a918f7c4.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "turn-15-dualref-mirrored-seed-d",
+      "status": "needs_review",
+      "run_id": "run-20260910-132658-2dad464c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-132658-2dad464c",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-132658-2dad464c.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "turn-16-dualref-seed-c",
+      "status": "needs_review",
+      "run_id": "run-20260910-133859-487f82cd",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-133859-487f82cd",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-133859-487f82cd.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "turn-17-dualref-seed-d",
+      "status": "needs_review",
+      "run_id": "run-20260910-135059-a2f7920f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-135059-a2f7920f",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-135059-a2f7920f.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260910-132658-2dad464c",
+  "project_id": "TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "prompt_id": "turn-15-dualref-mirrored-seed-d",
+  "status": "needs_review",
+  "created_at": "2026-09-10T13:26:58+09:00",
+  "updated_at": "2026-09-10T13:38:52+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-37476",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\turn-15-dualref-mirrored-seed-d.txt",
+    "sha256": "c64bf32365b3dfaf4b98917299348756c996f901180d88b8a07536f12bc09db4",
+    "normalized_sha256": "93f268ce6a34492a100d383f984954ee95a0a7f6bb4d816ab2d716f49ba8d6b6",
+    "byte_count": 2022
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\turn-15-dualref-mirrored-seed-d.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-04-mirrored.png",
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop-mirrored.png"
+      ],
+      "resolution": "576x768",
+      "video_length": 121,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "seed": 161803
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-132658-2dad464c.mp4",
+      "sha256": "92f362dfa739ba11882c147862aa11feb1713d60a60aa90696a452c0b8acec54",
+      "byte_count": 4174563,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "93f268ce6a34492a100d383f984954ee95a0a7f6bb4d816ab2d716f49ba8d6b6",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-10T13:38:52+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 30728,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-132658-2dad464c",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-132658-2dad464c\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-132658-2dad464c\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-132658-2dad464c\\worker.stderr.log"
+  }
+}

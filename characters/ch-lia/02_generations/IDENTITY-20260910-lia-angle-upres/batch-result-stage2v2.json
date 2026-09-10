@@ -1,6 +1,6 @@
 {
   "session": "IDENTITY-20260910-lia-angle-upres",
-  "updated_at": "2026-09-10T12:57:37+09:00",
+  "updated_at": "2026-09-10T13:14:57+09:00",
   "results": [
     {
       "shot": "up-03-frontal",
@@ -21,6 +21,28 @@
       "minutes": 8.7,
       "artifacts": [
         "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-angle-upres\\outputs\\krea2-edit\\run-20260910-124857-2a2be4a3.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "up-05-deep-three-quarter",
+      "status": "needs_review",
+      "run_id": "run-20260910-125737-a339cd6d",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-125737-a339cd6d",
+      "minutes": 8.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-angle-upres\\outputs\\krea2-edit\\run-20260910-125737-a339cd6d.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "up-06-profile",
+      "status": "needs_review",
+      "run_id": "run-20260910-130617-9382ff23",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-130617-9382ff23",
+      "minutes": 8.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-angle-upres\\outputs\\krea2-edit\\run-20260910-130617-9382ff23.jpg"
       ],
       "error": null
     }

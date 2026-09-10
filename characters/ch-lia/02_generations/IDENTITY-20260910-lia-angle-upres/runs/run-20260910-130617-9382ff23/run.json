@@ -1,24 +1,24 @@
 {
   "schema_version": 1,
-  "run_id": "run-20260910-125737-a339cd6d",
+  "run_id": "run-20260910-130617-9382ff23",
   "project_id": "IDENTITY-20260910-lia-angle-upres",
-  "prompt_id": "up-05-deep-three-quarter",
+  "prompt_id": "up-06-profile",
   "status": "needs_review",
-  "created_at": "2026-09-10T12:57:37+09:00",
-  "updated_at": "2026-09-10T13:06:03+09:00",
+  "created_at": "2026-09-10T13:06:17+09:00",
+  "updated_at": "2026-09-10T13:14:41+09:00",
   "target": "local",
   "renderer": "WanGP",
   "requested_by": "claude",
   "executor": "local-wangp-worker",
-  "provider_job_id": "local-pid-7172",
+  "provider_job_id": "local-pid-28284",
   "prompt": {
-    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\up-05-deep-three-quarter.txt",
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\up-06-profile.txt",
     "sha256": "7fa86a3bbf5b57bf06e474bb0fa03d76a58b27b2405864b6ce654d6e81432450",
     "normalized_sha256": "09861955144104a706c2fd27c3721855fb63063af275af3e55d1cd259e651cfd",
     "byte_count": 790
   },
   "settings": {
-    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\up-05-deep-three-quarter.settings.json",
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\up-06-profile.settings.json",
     "value": {
       "settings_version": 2.73,
       "model_type": "krea2_raw_edit",
@@ -28,7 +28,7 @@
       "resolution": "768x1024",
       "video_prompt_type": "KI",
       "image_refs": [
-        "D:\\AI_Studio\\reports\\lia-identity-phase2\\harvest\\turn-13-dualref-seed-b\\run-20260910-115326-5413e3f8-deep_three_quarter-01-f00050.png",
+        "D:\\AI_Studio\\reports\\lia-identity-phase2\\harvest\\turn-13-dualref-seed-b\\run-20260910-115326-5413e3f8-profile-01-f00104.png",
         "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
       ],
       "remove_background_images_ref": 0,
@@ -40,34 +40,34 @@
       "activated_loras": [],
       "loras_multipliers": "",
       "image_quality": "jpeg_95",
-      "seed": 912005
+      "seed": 912006
     }
   },
   "artifacts": [
     {
-      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-angle-upres\\outputs\\krea2-edit\\run-20260910-125737-a339cd6d.jpg",
-      "sha256": "22b7798bc0a293438acbec0dee5704395700af52d106955f13c369a6ad0f3faf",
-      "byte_count": 183120,
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-angle-upres\\outputs\\krea2-edit\\run-20260910-130617-9382ff23.jpg",
+      "sha256": "8a196e289bd195180644041eb85acd56f5d7f4669448f38bfc8131b3df9abf38",
+      "byte_count": 161652,
       "metadata_present": false,
       "embedded_prompt_sha256": null,
       "prompt_exact_match": false,
       "prompt_normalized_match": false,
-      "verified_at": "2026-09-10T13:06:03+09:00"
+      "verified_at": "2026-09-10T13:14:41+09:00"
     }
   ],
   "error": null,
   "local_worker": {
-    "pid": 4060,
+    "pid": 29152,
     "command": [
       "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
       "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
       "worker",
       "--run-dir",
-      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-125737-a339cd6d",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-130617-9382ff23",
       "--wangp-root",
       "D:\\AI\\WanGP",
       "--settings-file",
-      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-125737-a339cd6d\\effective-settings.json",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-130617-9382ff23\\effective-settings.json",
       "--output-dir",
       "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-angle-upres\\outputs\\krea2-edit",
       "--profile",
@@ -77,7 +77,7 @@
       "--requested-by",
       "claude"
     ],
-    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-125737-a339cd6d\\worker.stdout.log",
-    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-125737-a339cd6d\\worker.stderr.log"
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-130617-9382ff23\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-130617-9382ff23\\worker.stderr.log"
   }
 }

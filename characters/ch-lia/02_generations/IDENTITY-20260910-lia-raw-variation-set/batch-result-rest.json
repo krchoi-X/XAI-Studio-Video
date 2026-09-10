@@ -1,0 +1,17 @@
+{
+  "session": "IDENTITY-20260910-lia-raw-variation-set",
+  "updated_at": "2026-09-10T14:12:20+09:00",
+  "results": [
+    {
+      "shot": "rv-02-knit-sweater",
+      "status": "needs_review",
+      "run_id": "run-20260910-140300-a8f9e2f0",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-raw-variation-set\\runs\\run-20260910-140300-a8f9e2f0",
+      "minutes": 9.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-raw-variation-set\\outputs\\krea2-edit\\run-20260910-140300-a8f9e2f0.jpg"
+      ],
+      "error": null
+    }
+  ]
+}
