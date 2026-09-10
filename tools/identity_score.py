@@ -103,6 +103,26 @@ def yaw_proxy(face) -> float:
     return float(np.dot(np.asarray(nose, dtype=float) - midpoint, axis / interocular) / interocular)
 
 
+def pitch_proxy(face) -> float:
+    """Where the nose tip sits between the eye line and the mouth line, as a fraction of that distance.
+
+    Informational only, and deliberately not used for bucketing. It does track pitch - the level face reads
+    about 0.57-0.62, chin down rises to about 0.75, chin up falls to about 0.53 - but yaw confounds it, because
+    turning the head also foreshortens the eye-to-mouth axis: a level face at a deep three-quarter reads 0.50,
+    which is indistinguishable from a frontal face looking up. Separating the two needs more than five
+    landmarks, so the number is recorded and left to the reader rather than turned into a verdict.
+    """
+    right_eye, left_eye, nose = face[4:6], face[6:8], face[8:10]
+    right_mouth, left_mouth = face[10:12], face[12:14]
+    eye_mid = (np.asarray(right_eye, dtype=float) + np.asarray(left_eye, dtype=float)) / 2
+    mouth_mid = (np.asarray(right_mouth, dtype=float) + np.asarray(left_mouth, dtype=float)) / 2
+    axis = mouth_mid - eye_mid
+    length = float(np.linalg.norm(axis))
+    if length < 1e-6:
+        return 0.0
+    return float(np.dot(np.asarray(nose, dtype=float) - eye_mid, axis / length) / length)
+
+
 def yaw_bucket(proxy: float | None) -> str:
     if proxy is None:
         return "undetected"
@@ -138,6 +158,7 @@ def measure(path: Path) -> dict[str, Any]:
         "detected": face is not None,
         "yaw_proxy": None,
         "yaw_bucket": "undetected",
+        "pitch_proxy": None,
         "face_pixels": None,
         "detector_score": None,
         "sharpness": None,
@@ -150,6 +171,7 @@ def measure(path: Path) -> dict[str, Any]:
     record.update({
         "yaw_proxy": round(proxy, 4),
         "yaw_bucket": yaw_bucket(proxy),
+        "pitch_proxy": round(pitch_proxy(face), 4),
         "face_pixels": [round(float(face[2]), 1), round(float(face[3]), 1)],
         "detector_score": round(float(face[14]), 4),
         "sharpness": round(sharpness(aligned), 2),

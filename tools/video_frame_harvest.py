@@ -111,7 +111,17 @@ def harvest(args: argparse.Namespace) -> dict[str, Any]:
             buckets.setdefault(record["yaw_bucket"], []).append(record)
         kept = []
         for name in sorted(buckets):
-            for position, record in enumerate(sorted(buckets[name], key=rank)[:args.per_bucket]):
+            # The top of a bucket's ranking is usually a run of consecutive frames, which would spend the whole
+            # per-bucket budget on near-duplicates. Take the best, then the best that is far enough away in
+            # time to be a different view of the same angle.
+            chosen: list[dict[str, Any]] = []
+            for candidate in sorted(buckets[name], key=rank):
+                if len(chosen) >= args.per_bucket:
+                    break
+                if all(abs(candidate["frame_index"] - other["frame_index"]) >= args.min_gap
+                       for other in chosen):
+                    chosen.append(candidate)
+            for position, record in enumerate(chosen):
                 stem = f"{video.stem}-{name}-{position + 1:02d}-f{record['frame_index']:05d}"
                 destination = out_dir / f"{stem}.png"
                 shutil.copyfile(record["_source"], destination)
@@ -144,7 +154,8 @@ def harvest(args: argparse.Namespace) -> dict[str, Any]:
         report = {
             "schema_version": 1, "created_at": identity_score.now(), "video": str(video), "media": media,
             "sampling": {"every": args.every, "mirrored": args.mirror, "extracted": len(frames),
-                         "with_face": len(measured), "kept_per_bucket": args.per_bucket},
+                         "with_face": len(measured), "kept_per_bucket": args.per_bucket,
+                         "min_gap": args.min_gap},
             "prototype": {"path": str(Path(args.prototype).resolve()), "label": prototype.get("label")},
             "calibration": calibration,
             "bucket_counts": {name: len(items) for name, items in sorted(buckets.items())},
@@ -167,6 +178,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--thresholds")
     parser.add_argument("--every", type=int, default=1, help="sample every Nth frame")
     parser.add_argument("--per-bucket", type=int, default=4, help="stills to keep per yaw bucket")
+    parser.add_argument("--min-gap", type=int, default=8,
+                        help="minimum frame separation between stills kept from one bucket")
     parser.add_argument("--mirror", action="store_true",
                         help="flip every frame back: the clip was shot from a mirrored reference")
     parser.add_argument("--sheet")
