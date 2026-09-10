@@ -1,0 +1,28 @@
+{
+  "session": "IDENTITY-20260910-lia-raw-variation-set",
+  "updated_at": "2026-09-10T12:40:08+09:00",
+  "results": [
+    {
+      "shot": "rv-04-neutral-studio-plate",
+      "status": "needs_review",
+      "run_id": "run-20260910-122248-f4e5c138",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-raw-variation-set\\runs\\run-20260910-122248-f4e5c138",
+      "minutes": 8.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-raw-variation-set\\outputs\\krea2-edit\\run-20260910-122248-f4e5c138.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "rv-01-hair-tied-back",
+      "status": "needs_review",
+      "run_id": "run-20260910-123128-8c35f027",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-raw-variation-set\\runs\\run-20260910-123128-8c35f027",
+      "minutes": 8.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-raw-variation-set\\outputs\\krea2-edit\\run-20260910-123128-8c35f027.jpg"
+      ],
+      "error": null
+    }
+  ]
+}

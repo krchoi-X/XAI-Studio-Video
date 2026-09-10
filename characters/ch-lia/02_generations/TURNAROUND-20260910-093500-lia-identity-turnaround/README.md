@@ -40,12 +40,15 @@ time; the worker holds a GPU lock.
 25.3 s per denoising step at 20 steps, about 11 minutes per clip including model load and VAE decode. See
 `batch-result.json` for the wall-clock time of every shot.
 
-**`video_length` is ignored by this model.** 61 and 121 both produced 107 frames at 24 fps - a 4.46 second
-clip - and the step time did not change between them either. WanGP's own default prompt for
-`minimax_h3_ref2va_pruned` describes "one five-second shot", so the length appears to be fixed by the model
-rather than by the request. Two consequences: a longer rotation cannot be bought with more frames, so
-`turn-04-half-turn` has to complete 180 degrees inside the same 4.46 seconds and will rotate faster than the
-others; and the frame budget per angle is fixed, which is what `--every` in the harvest is trading against.
+**`video_length` is not honoured literally.** Requesting 61 and requesting 121 both produced 107 frames at
+24 fps - a 4.46 second clip - at the same step time, so within that range the number does nothing. Requesting
+181 produced 175 frames and took 17 minutes instead of 11, so the setting is not ignored either; it appears to
+snap to a small set of lengths this model supports. Plan in clips, not in frames: ask for a long clip only
+when the motion genuinely needs one, because the extra length is paid for in wall clock.
+
+The practical consequence is that a rotation has to fit the clip. `turn-04-half-turn` covers 180 degrees in
+175 frames and therefore turns roughly twice as fast as the profile shots, which is visible in the harvest:
+its faces are smaller and less sharp, but every bucket including the back of the head is populated.
 
 ## What happens to the frames
 

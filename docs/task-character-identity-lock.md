@@ -143,10 +143,12 @@ eports\lia-identity-candidates\compare-engine-baseline.jpg`.
 **NAG made it worse and is dropped.** Pushing away from "generic idealized AI beauty" also pushed away from the
 master, which shares those traits. A far narrower negative might work, but the wide one is counterproductive.
 
-**RAW costs 2.89 min per step, 59 min per image on this laptop.** My earlier 20-minute estimate was wrong: the
-undistilled model is heavy and 8 GB forces constant offloading. A twelve-image set would be about twelve hours
-locally. This is now a second, independent reason to rent a GPU: on a 32 GB card RAW runs without offloading, so
-both the identity set *and* the LoRA training become practical there. The pod is no longer only a training story.
+~~**RAW costs 2.89 min per step, 59 min per image on this laptop.**~~ **Retracted on 2026-09-10.** That
+figure was measured while Ollama held a resident 25B model in roughly 4 GB of the 8 GB card, forcing the
+diffusion model to offload continuously. With the card clear the identical run is 23 s/step and 7m40s per
+image - 7.5x faster, reproduced immediately. A twelve-image set is about 90 minutes, not twelve hours, and
+this is no longer a reason to rent a GPU. LoRA training still is: that is a VRAM capacity limit rather than a
+contention one. See the Phase 2 execution log below.
 
 Correction: the batch record first showed `rw-00-rebuild-same` as failed. That was my waiter giving up at 45
 minutes, not the run; it completed normally at 58.8 minutes and the record has been fixed.
@@ -315,7 +317,7 @@ Settled, and not worth re-measuring:
 - **Neither engine can rotate a face.** 45° lands at 0.54–0.58 on both. That is missing information, not bad
   reproduction, so a bigger model does not fix it.
 - NAG at 1.5 with a wide negative prompt made identity *worse*. Dropped.
-- RAW costs 60–90 min per image on this 8 GB laptop. A 12-image RAW set is a 12-hour night.
+- ~~RAW costs 60–90 min per image on this 8 GB laptop.~~ Retracted 2026-09-10: that was GPU contention with Ollama, not the model. Clear the card and it is about 8 minutes.
 
 Left open, and the reason this is a new phase rather than a resume:
 
@@ -599,3 +601,160 @@ Phase 1 read imports #1-#11 as one more-defined adult face. Measured, they are n
 The operator named #2 and #4 together as close to what they imagined, which is a statement about the impression,
 not about the face. Only #4 is Lia for measurement purposes, and the prototype is built from it alone plus the
 one image that measures as it.
+
+## Step 3-5 — the turnaround, measured (2026-09-10)
+
+Session `TURNAROUND-20260910-093500-lia-identity-turnaround`, engine `minimax_h3_ref2va_pruned` at 576x768,
+20 steps, guidance 1.0, flow shift 12, euler. Every clip resolved its reference automatically from
+`reference_defaults.identity` unless it names its own. About 11 minutes per clip, 18 for a 181-frame one.
+Harvest settings are identical across clips: every 2nd frame, 5 stills per yaw bucket, minimum 10 frames
+apart. Report: `D:\AI_Studio\reports\lia-identity-phase2\`.
+
+### The video does what neither still engine could
+
+The rotation itself is not the problem and never was. `turn-04` and `turn-11` carry one face continuously
+from frontal through three-quarter and full profile to the back of the head; `turn-05` sweeps the whole pitch
+axis from looking at the floor to looking above the camera. Wardrobe, hair and lighting hold throughout.
+Phase 1's two engines could not produce any of it.
+
+Framing was the first real fault and it was cheap to fix. `turn-01` was written as a mid shot and returned a
+face about 160 px across at 285 sharpness - unusable as a reference or as a training image. Reframed as a
+tight close-up, the same engine returns 400-580 px at 900-1300 sharpness with pores and freckles intact.
+
+### Rotation direction is not controllable, but it is obtainable
+
+`turn-02` asked for a turn to her left and `turn-03` asked for a turn to her right. Both turned to her left:
+the yaw proxy is negative through both, and the filmstrips agree. Mirroring the reference and flipping the
+frames back on the way out (`--mirror`) does work - `turn-10` reads +0.07 to +1.02, the other side of the
+face. Seed, not wording, decides how far the head turns: `turn-02` stopped at -0.49 while `turn-06`, same
+prompt, reached -0.89.
+
+### Identity is where it fails, and the ceiling is about 0.75
+
+Every clip is judged on its frontal frames against the frontal prototype, because a profile scored against a
+frontal reference is a measurement error rather than a result. Median ArcFace over each clip's frontal stills:
+
+| clip | recipe | ArcFace median | SFace median |
+|---|---|---|---|
+| `turn-09-structured-dual-ref` | structured prompt + face crop as second reference | **0.856** | 0.794 |
+| `look-07-expression-range` | prose, one reference, **no rotation at all** | 0.809 | 0.745 |
+| `turn-10-mirrored-other-side` | structured, one mirrored reference | 0.765 | 0.735 |
+| `turn-08-structured-profile-left` | structured prompt, one reference | 0.756 | 0.626 |
+| `turn-11-dualref-half-turn` | structured + two references, 180 degrees in 175 frames | 0.751 | 0.704 |
+| `turn-04-half-turn` | prose, one reference, 180 degrees | 0.750 | 0.714 |
+| `turn-02-profile-left` | prose, one reference | 0.746 | 0.654 |
+| `turn-12-dualref-mirrored` | structured + two mirrored references | 0.739 | 0.644 |
+| `turn-06-profile-left-seed-b` | prose, one reference, other seed | 0.738 | 0.712 |
+| `turn-03-profile-right` | prose, one reference | 0.688 | 0.627 |
+| `turn-05-pitch-down-up` | prose, one reference, pitch only | 0.685 | 0.654 |
+
+Read the band, not the ordering. Ten of the eleven clips sit between 0.69 and 0.77 - the drift band, where the
+image is neither this person nor another one. Changing the seed, the direction, the speed and the axis moves
+the number by less than 0.09. **The round-trip identity loss is a property of this engine, not of the
+request.**
+
+Two things do move it:
+
+1. **Not rotating.** `look-07` changes only expression and gaze and reaches 0.809. Rotation is what costs the
+   identity, which is consistent with Phase 1's finding on the still engines: reconstruction is survivable,
+   novel-view synthesis is not.
+2. **A second reference.** `turn-09` repeats `turn-02`'s rotation and seed in the model's own structured
+   prompt format with the master face crop added as `<Picture 2>`, and reaches 0.856 median / 0.889 best -
+   the first frames in this project to cross the calibrated same-person line on either recogniser. Side by
+   side the difference is the one the operator has been describing: the single-reference clips have the
+   rounder face and the larger rounder eyes of the beauty prior, and this one keeps the slim outline and the
+   elongated eyes. Comparison strip: `compare-frontal.jpg`.
+
+The two levers separate cleanly. Format alone (`turn-08`) buys 0.752 to 0.756 median and a much better
+respected framing; the second reference is what buys the identity.
+
+**But it does not reproduce on demand.** `turn-11` and `turn-12` use the same two references and fall back to
+0.751 and 0.739. They differ from `turn-09` in ways that plausibly matter - `turn-11` turns 180 degrees in the
+same time and is visibly blurrier (sharpness 592-948 against 1215), `turn-12` runs from mirrored references -
+so the recipe may be narrower than "add a second reference" rather than unreliable. `turn-13` repeats
+`turn-09` exactly with a different seed and is the control that decides it.
+
+### SFace and ArcFace disagree systematically, and the disagreement is informative
+
+SFace runs 0.05-0.13 below ArcFace on the same frames and collapses far harder off-axis: at a true profile it
+reaches 0.043 and even -0.10, where ArcFace still reads 0.31-0.59. `turn-09`'s best frames are `disagree`
+rather than `same` for exactly this reason - ArcFace 0.889 against its 0.84 line, SFace 0.800 against its
+0.83. Treat ArcFace as the primary measure off-axis and SFace as the corroborating one near frontal; where
+they split, the frame is the operator's call, which is what the tool already does.
+
+### Off-axis thresholds, derived from within-clip pairs
+
+Frames of one clip are the same person by construction. Restricted to pairs where both frames sit in the same
+bucket, the floors are:
+
+| bucket | SFace floor | ArcFace floor | status |
+|---|---|---|---|
+| frontal | 0.83 | 0.84 | from the cross-character calibration |
+| three_quarter | 0.83 | 0.84 | from the cross-character calibration |
+| deep_three_quarter | 0.14 | 0.48 | from within-clip pairs, provisional |
+| profile | 0.33 | 0.29 | from within-clip pairs, provisional |
+
+Mixed-bucket pairs are excluded deliberately: a frontal-to-profile pair of the same person in the same clip
+falls to 0.07, so letting those set the profile line would produce a threshold that accepts anything. The
+corollary is the decision rule this phase adopts: **a clip is admitted on its frontal frames, and its
+off-axis frames inherit that admission through temporal continuity.** Nothing off-axis is ever scored against
+the frontal prototype as if that number meant something.
+
+Pitch behaves the same way. The deepest chin-down frame of `turn-05` scores 0.098/0.153 against the
+prototype, which is different-person territory, on a frame that is the same person by construction.
+
+## Step 6 — the Krea2 RAW still path, and a cost correction that changes the plan
+
+### RAW is not slow. The GPU was busy.
+
+Phase 1 measured `krea2_raw_edit` at 2.89 minutes per step, 58.8 minutes for one 768x1024 image at 20 steps,
+and concluded that a twelve-image RAW set was a twelve-hour night. That number was the main reason to rent a
+GPU, and it is wrong.
+
+Today, same model file, same 20 steps, same resolution, same machine: **23 seconds per step, 7 minutes 40
+seconds for the image**, reproduced immediately on the next one at 8 minutes 18 seconds. That is a 7.5x
+speedup, and the only material change is that Ollama's resident 25B model was unloaded from VRAM this
+morning. Phase 1's RAW timings were taken while a local LLM held roughly 4 GB of an 8 GB card, forcing the
+diffusion model to offload continuously.
+
+Consequences:
+
+* A twelve-image RAW set costs about **90 minutes**, not twelve hours.
+* The "RAW is impractical on this laptop" line in this document is retracted.
+* The rented-GPU case for *inference* rests on nothing now. LoRA **training** is unaffected - that is a VRAM
+  capacity limit, not a contention one, and 8 GB still cannot train.
+* Any timing measured on this machine while Hermes is loaded should be treated as unreliable.
+  `tools/identity_batch.py` unloads Ollama before every shot for exactly this reason.
+
+### The still path did not produce Lia today
+
+Six RAW renders, all scored against the prototype:
+
+| shot | what was asked | references | SFace | ArcFace | verdict |
+|---|---|---|---|---|---|
+| `rw-00` (Phase 1) | change nothing | master only | 0.901 | 0.919 | same |
+| `rv-01-hair-tied-back` | hair only, room kept | master + face crop | 0.709 | 0.737 | drift |
+| `rv-04-neutral-studio-plate` | studio backdrop | master + face crop | 0.660 | 0.590 | drift |
+| `up-01-three-quarter` | pose from a video frame, identity from the master | frame + master | 0.478 | 0.397 | off-axis |
+| `up-03-frontal` | re-render an admitted frontal frame at still quality | frame + face crop | 0.586 | 0.427 | drift |
+| `up-02-profile` | pose from a video frame, identity from the face crop | frame + face crop | 0.123 | 0.262 | off-axis |
+
+Two separate failures.
+
+**The two-stage idea does not work.** The plan was video for geometry, RAW for texture. Neither form of it
+survives contact. Handing RAW a video frame as the pose and the master as the identity produces a sharp,
+well-lit portrait of a different woman (`up-01`, `up-02`). Handing it a frame that has *already* been admitted
+as Lia - `turn-13`'s best frontal at ArcFace 0.874 - and asking only for photographic quality returns 0.427
+(`up-03`). The edit does not restore texture onto an existing face; it re-synthesises the face and loses more
+than the video did. **A frame that passes should be kept as it is, not sent through this engine.**
+
+**The variation set also drifted**, and by an amount that tracks how much of the reference was changed: hair
+only with the room kept costs less (0.737) than moving her to a studio backdrop (0.590). Phase 1 saw the same
+ordering on the turbo path, where `ax-06-neutral-studio` was among its worst. The master's own room and light
+appear to be part of what holds the face, so asking for a neutral backdrop is not the free, identity-clarifying
+move it looks like.
+
+Every RAW shot today used two references, where Phase 1's 0.919 baseline used one. `rv-05` (two references,
+nothing changed) and `rv-06` (one reference, studio backdrop) fill in that 2x2. Note the honest limit of it:
+`rw-00`'s prompt is in the "Edit the provided reference image / Requested change:" form and the `rv-*` prompts
+are prose, so that axis carries the prompt style along with the background change and cannot separate them.

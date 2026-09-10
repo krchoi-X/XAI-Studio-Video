@@ -1,0 +1,25 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_raw_edit",
+  "base_model_type": "krea2_raw_edit",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "D:\\AI_Studio\\reports\\lia-identity-phase2\\harvest\\turn-06-profile-left-seed-b\\run-20260910-102615-00711b1c-three_quarter-01-f00006.png",
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+  ],
+  "remove_background_images_ref": 0,
+  "num_inference_steps": 20,
+  "guidance_scale": 2,
+  "negative_prompt": "generic idealized AI beauty face, symmetrical perfect features, enlarged round eyes, slimmed pointed jaw, airbrushed poreless skin, beauty filter, glamour retouching, doll-like face, different person",
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "seed": 911001,
+  "prompt": "A photographic head-and-shoulders portrait against a plain unlit mid-grey studio backdrop, in soft even frontal light. Picture 1 fixes the pose and nothing else: reproduce exactly that head and shoulder angle, that three-quarter turn away from the camera, that chin height and that gaze direction. Picture 2 is the authority for who she is: the same slim slightly elongated oval face with a soft jawline, the same slightly elongated almond eyes that are never rounded or enlarged, the same small refined nose, the same mouth, the same fresh pale skin with visible pores, fine texture and faint freckles, the same long dark hair with wispy bangs, and the same soft blue-grey loose tee. Same person, same age, same bone structure. Render her at full photographic quality with sharp natural skin detail, as a still photograph rather than a video frame. Calm neutral expression, lips lightly closed.\n",
+  "output_filename": "run-20260910-120527-e5ad2609"
+}

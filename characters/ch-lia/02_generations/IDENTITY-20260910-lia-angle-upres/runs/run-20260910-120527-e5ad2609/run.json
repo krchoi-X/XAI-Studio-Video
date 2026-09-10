@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260910-120527-e5ad2609",
+  "project_id": "IDENTITY-20260910-lia-angle-upres",
+  "prompt_id": "up-01-three-quarter",
+  "status": "needs_review",
+  "created_at": "2026-09-10T12:05:27+09:00",
+  "updated_at": "2026-09-10T12:14:14+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-34640",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\up-01-three-quarter.txt",
+    "sha256": "c66ace991e4506b695c2ce99002ce020c85f1fa296e76f41d70d02d900aa0334",
+    "normalized_sha256": "fb9f4cd7870b5caab662f2ef4274fe628b0582676a6f8dd52e428920e89881af",
+    "byte_count": 896
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\up-01-three-quarter.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_raw_edit",
+      "base_model_type": "krea2_raw_edit",
+      "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "video_prompt_type": "KI",
+      "image_refs": [
+        "D:\\AI_Studio\\reports\\lia-identity-phase2\\harvest\\turn-06-profile-left-seed-b\\run-20260910-102615-00711b1c-three_quarter-01-f00006.png",
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+      ],
+      "remove_background_images_ref": 0,
+      "num_inference_steps": 20,
+      "guidance_scale": 2,
+      "negative_prompt": "generic idealized AI beauty face, symmetrical perfect features, enlarged round eyes, slimmed pointed jaw, airbrushed poreless skin, beauty filter, glamour retouching, doll-like face, different person",
+      "batch_size": 1,
+      "repeat_generation": 1,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "seed": 911001
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-angle-upres\\outputs\\krea2-edit\\run-20260910-120527-e5ad2609.jpg",
+      "sha256": "7d4686c2c6b85d374672f98f4c1cf87af824df4f64b1e3724dec3657e99530b2",
+      "byte_count": 167075,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-10T12:14:14+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 33772,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-120527-e5ad2609",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-120527-e5ad2609\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IDENTITY-20260910-lia-angle-upres\\outputs\\krea2-edit",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-120527-e5ad2609\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres\\runs\\run-20260910-120527-e5ad2609\\worker.stderr.log"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260910-103715-6d942ac1",
+  "project_id": "TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "prompt_id": "look-07-expression-range",
+  "status": "needs_review",
+  "created_at": "2026-09-10T10:37:15+09:00",
+  "updated_at": "2026-09-10T10:48:17+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-37096",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\look-07-expression-range.txt",
+    "sha256": "3258bb2ec17b678dd5fa41aa07792d61f007089d8c90e8ffa58da787d8db86d1",
+    "normalized_sha256": "c38884734a5daad78336b1d0a432081fa1886fb981420da46416cce28a2e4c05",
+    "byte_count": 1090
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\look-07-expression-range.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [],
+      "resolution": "576x768",
+      "video_length": 121,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "seed": 77167
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-103715-6d942ac1.mp4",
+      "sha256": "97ba3c691ced2eaaf10900c59a3dc53c4dab325cc468917c97e0b6249b18f5a1",
+      "byte_count": 3358663,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "c38884734a5daad78336b1d0a432081fa1886fb981420da46416cce28a2e4c05",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-10T10:48:17+09:00"
+    }
+  ],
+  "error": null,
+  "reference_inputs": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "sha256": "e2df345058cd5d29644f804b39612919ad773debe9388e6bb6cfaa5d64ad0502",
+      "byte_count": 2195395,
+      "character_id": "ch-lia",
+      "basis": "character-default",
+      "source": "Candidate #4 from D:/AI_Studio/reports/lia-identity-candidates, named by the operator on 2026-09-07 and used as the master for the IDENTITY-20260907-211003-lia-master-lock measurements. This is a runtime default, not an approval state."
+    }
+  ],
+  "local_worker": {
+    "pid": 18408,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-103715-6d942ac1",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-103715-6d942ac1\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-103715-6d942ac1\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-103715-6d942ac1\\worker.stderr.log"
+  }
+}

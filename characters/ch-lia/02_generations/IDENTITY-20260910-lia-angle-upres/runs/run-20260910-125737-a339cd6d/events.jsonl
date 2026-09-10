@@ -1,0 +1,4 @@
+{"at":"2026-09-10T12:57:37+09:00","state":"queued","prompt_sha256":"7fa86a3bbf5b57bf06e474bb0fa03d76a58b27b2405864b6ce654d6e81432450","target":"local","requested_by":"claude","executor":"local-wangp-worker"}
+{"at":"2026-09-10T12:57:37+09:00","state":"starting","local_worker_pid":4060}
+{"at":"2026-09-10T12:57:42+09:00","state":"running","provider_job_id":"local-pid-7172"}
+{"at":"2026-09-10T12:58:43+09:00","state":"running","progress":"inference 1/20","preview":{"image":"<PIL.Image.Image image mode=RGB size=163x200 at 0x141E2D7DF90>","phase":"inference","status":"Denoising","progress":23,"current_step":1,"total_steps":20}}

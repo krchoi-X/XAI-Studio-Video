@@ -7,7 +7,7 @@
   "resolution": "768x1024",
   "video_prompt_type": "KI",
   "image_refs": [
-    "D:\\AI_Studio\\reports\\lia-identity-phase2\\harvest\\turn-03-profile-right\\run-20260910-094713-9f8982a6-profile-01-f00100.png",
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
     "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
   ],
   "remove_background_images_ref": 0,
@@ -19,5 +19,5 @@
   "activated_loras": [],
   "loras_multipliers": "",
   "image_quality": "jpeg_95",
-  "seed": 911002
+  "seed": 907301
 }

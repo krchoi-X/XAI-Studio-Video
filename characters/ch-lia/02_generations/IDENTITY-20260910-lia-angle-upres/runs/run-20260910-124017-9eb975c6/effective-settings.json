@@ -1,0 +1,25 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_raw_edit",
+  "base_model_type": "krea2_raw_edit",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "D:\\AI_Studio\\reports\\lia-identity-phase2\\harvest\\turn-13-dualref-seed-b\\run-20260910-115326-5413e3f8-frontal-01-f00010.png",
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+  ],
+  "remove_background_images_ref": 0,
+  "num_inference_steps": 20,
+  "guidance_scale": 2,
+  "negative_prompt": "generic idealized AI beauty face, symmetrical perfect features, enlarged round eyes, slimmed pointed jaw, airbrushed poreless skin, beauty filter, glamour retouching, doll-like face, different person",
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "seed": 912003,
+  "prompt": "Render the same photograph Picture 1 shows, at full still-photograph quality: sharp natural skin detail, real pores and fine hair strands, no video softness, no motion blur, no upscaling artefacts. Plain unlit mid-grey studio backdrop, soft even frontal light, calm neutral expression with lips lightly closed. Keep her exactly as she is in the reference images: the same slim slightly elongated oval face with a soft jawline, the same slightly elongated almond eyes that are never rounded or enlarged, the same small refined nose, the same mouth, the same fresh pale skin with visible pores, fine texture and faint freckles, the same long dark hair with wispy bangs, and the same soft blue-grey loose tee. Same person, same age, same bone structure, same head angle and gaze as Picture 1.\n",
+  "output_filename": "run-20260910-124017-9eb975c6"
+}
