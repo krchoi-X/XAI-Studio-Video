@@ -1,0 +1,383 @@
+001-ch-lia-frontal-right-0.04-turn-27-keep-room-seed-i-f00030.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+002-ch-lia-frontal-right-0.05-turn-19-dualref-keep-room-seed-b-f00004.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+003-ch-lia-frontal-right-0.08-turn-18-dualref-keep-room-f00014.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+004-ch-lia-frontal-right-0.03-turn-19-dualref-keep-room-seed-b-f00014.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+005-ch-lia-frontal-right-0.07-turn-32-keep-room-mirrored-b-f00006.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+006-ch-lia-frontal-right-0.06-turn-27-keep-room-seed-i-f00004.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+007-ch-lia-frontal-right-0.07-turn-18-dualref-keep-room-f00000.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+008-ch-lia-frontal-right-0.05-turn-23-keep-room-seed-e-f00012.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+009-ch-lia-frontal-right-0.06-turn-24-keep-room-seed-f-f00000.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+010-ch-lia-frontal-right-0.06-turn-28-keep-room-seed-j-f00006.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+011-ch-lia-frontal-right-0.06-turn-28-keep-room-seed-j-f00016.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+012-ch-lia-frontal-right-0.07-turn-31-keep-room-mirrored-a-f00000.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+013-ch-lia-frontal-right-0.09-turn-24-keep-room-seed-f-f00012.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+014-ch-lia-frontal-right-0.06-turn-31-keep-room-mirrored-a-f00010.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+015-ch-lia-frontal-right-0.08-turn-31-keep-room-mirrored-a-f00022.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+016-ch-lia-frontal-right-0.05-turn-23-keep-room-seed-e-f00002.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+017-ch-lia-frontal-right-0.04-turn-26-keep-room-seed-h-f00008.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+018-ch-lia-frontal-right-0.08-turn-18-dualref-keep-room-f00024.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+019-ch-lia-frontal-right-0.06-turn-27-keep-room-seed-i-f00020.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+020-ch-lia-frontal-right-0.11-turn-32-keep-room-mirrored-b-f00016.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+021-ch-lia-frontal-right-0.03-turn-23-keep-room-seed-e-f00022.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+022-ch-lia-frontal-right-0.09-turn-29-keep-room-ponytail-f00018.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, body proportions and distinctive accessories. Their long dark hair is gathered back into a low ponytail at the nape of the neck, with the wispy bangs left as they are. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera and the gathered ponytail are new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their gathered dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+023-ch-lia-frontal-right-0.03-turn-29-keep-room-ponytail-f00004.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, body proportions and distinctive accessories. Their long dark hair is gathered back into a low ponytail at the nape of the neck, with the wispy bangs left as they are. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera and the gathered ponytail are new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their gathered dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+024-ch-lia-frontal-right-0.02-turn-30-keep-room-knit-f00006.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, body proportions and distinctive accessories. Instead of the loose blue-grey tee they wear a soft cream ribbed knit sweater with a plain round neckline. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera and the cream knit sweater are new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+025-ch-lia-frontal-right-0.09-turn-13-dualref-seed-b-f00000.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile against a plain grey backdrop during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take against a plain unlit mid-grey backdrop. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with nothing else in shot. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft even frontal light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+026-ch-lia-frontal-right-0.03-turn-13-dualref-seed-b-f00010.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile against a plain grey backdrop during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take against a plain unlit mid-grey backdrop. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with nothing else in shot. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft even frontal light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+027-ch-lia-frontal-left-0.01-turn-13-dualref-seed-b-f00022.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile against a plain grey backdrop during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take against a plain unlit mid-grey backdrop. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with nothing else in shot. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft even frontal light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+028-ch-lia-frontal-right-0.08-turn-29-keep-room-ponytail-f00028.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, body proportions and distinctive accessories. Their long dark hair is gathered back into a low ponytail at the nape of the neck, with the wispy bangs left as they are. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera and the gathered ponytail are new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their gathered dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+029-ch-lia-frontal-left-0.02-turn-27-keep-room-seed-i-f00040.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+030-ch-lia-frontal-right-0.03-turn-28-keep-room-seed-j-f00026.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+031-ch-lia-frontal-left-0.03-turn-26-keep-room-seed-h-f00018.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
+
+032-ch-lia-frontal-left-0.12-turn-13-dualref-seed-b-f00032.png
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile against a plain grey backdrop during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take against a plain unlit mid-grey backdrop. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with nothing else in shot. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft even frontal light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.

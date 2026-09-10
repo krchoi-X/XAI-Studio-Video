@@ -1,0 +1,738 @@
+[
+  {
+    "file": "001-ch-lia-frontal-right-0.04-turn-27-keep-room-seed-i-f00030.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\001-ch-lia-frontal-right-0.04-turn-27-keep-room-seed-i-f00030.png",
+    "sha256": "d70c78ec1ed3bbf86967ab49a21b44543fec759b31846e64dd766c878ba60828",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #1] yaw +0.038 (right) · in-bucket SFace 0.960 / ArcFace 0.975 · vs frontal master SFace 0.896 / ArcFace 0.938 · sharpness 1143 · clip turn-27-keep-room-seed-i",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\001-ch-lia-frontal-right-0.04-turn-27-keep-room-seed-i-f00030.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "002-ch-lia-frontal-right-0.05-turn-19-dualref-keep-room-seed-b-f00004.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\002-ch-lia-frontal-right-0.05-turn-19-dualref-keep-room-seed-b-f00004.png",
+    "sha256": "2acd98e0a4ef2ef84b3768bc56d0ec4185319b692078ef1c1daad2b7979aa466",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #2] yaw +0.051 (right) · in-bucket SFace 0.964 / ArcFace 0.971 · vs frontal master SFace 0.870 / ArcFace 0.915 · sharpness 1097 · clip turn-19-dualref-keep-room-seed-b",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\002-ch-lia-frontal-right-0.05-turn-19-dualref-keep-room-seed-b-f00004.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "003-ch-lia-frontal-right-0.08-turn-18-dualref-keep-room-f00014.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\003-ch-lia-frontal-right-0.08-turn-18-dualref-keep-room-f00014.png",
+    "sha256": "eed4e70be3863d1ddca38f525d41070f4023a31ae55339cfca34674ce79941c6",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #3] yaw +0.083 (right) · in-bucket SFace 0.960 / ArcFace 0.969 · vs frontal master SFace 0.868 / ArcFace 0.925 · sharpness 1129 · clip turn-18-dualref-keep-room",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\003-ch-lia-frontal-right-0.08-turn-18-dualref-keep-room-f00014.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "004-ch-lia-frontal-right-0.03-turn-19-dualref-keep-room-seed-b-f00014.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\004-ch-lia-frontal-right-0.03-turn-19-dualref-keep-room-seed-b-f00014.png",
+    "sha256": "9dbcbc3aa57a6a1e4c84d49317eb8aed15ac2c19d2e62112268039fcabfcad79",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #4] yaw +0.027 (right) · in-bucket SFace 0.961 / ArcFace 0.967 · vs frontal master SFace 0.890 / ArcFace 0.925 · sharpness 1146 · clip turn-19-dualref-keep-room-seed-b",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\004-ch-lia-frontal-right-0.03-turn-19-dualref-keep-room-seed-b-f00014.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "005-ch-lia-frontal-right-0.07-turn-32-keep-room-mirrored-b-f00006.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\005-ch-lia-frontal-right-0.07-turn-32-keep-room-mirrored-b-f00006.png",
+    "sha256": "1aec1c7eef19fd14f5b43910a6227ffb1a8d19512181f3d65e4881ffad483bea",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-04-mirrored.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop-mirrored.png"
+    ],
+    "user_request": "[정면 #5] yaw +0.069 (right) · in-bucket SFace 0.959 / ArcFace 0.966 · vs frontal master SFace 0.883 / ArcFace 0.932 · sharpness 1017 · clip turn-32-keep-room-mirrored-b",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\005-ch-lia-frontal-right-0.07-turn-32-keep-room-mirrored-b-f00006.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "006-ch-lia-frontal-right-0.06-turn-27-keep-room-seed-i-f00004.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\006-ch-lia-frontal-right-0.06-turn-27-keep-room-seed-i-f00004.png",
+    "sha256": "0802752f3785407167d66ed3ef69b97580191d3b4eb4eeb68925fc546cf2709d",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #6] yaw +0.064 (right) · in-bucket SFace 0.963 / ArcFace 0.962 · vs frontal master SFace 0.907 / ArcFace 0.940 · sharpness 1118 · clip turn-27-keep-room-seed-i",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\006-ch-lia-frontal-right-0.06-turn-27-keep-room-seed-i-f00004.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "007-ch-lia-frontal-right-0.07-turn-18-dualref-keep-room-f00000.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\007-ch-lia-frontal-right-0.07-turn-18-dualref-keep-room-f00000.png",
+    "sha256": "8298205e1a99c9adac2d83a095c8231cd03ed234a7005642f80fe3f2c2e32dee",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #7] yaw +0.068 (right) · in-bucket SFace 0.959 / ArcFace 0.962 · vs frontal master SFace 0.894 / ArcFace 0.923 · sharpness 1029 · clip turn-18-dualref-keep-room",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\007-ch-lia-frontal-right-0.07-turn-18-dualref-keep-room-f00000.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "008-ch-lia-frontal-right-0.05-turn-23-keep-room-seed-e-f00012.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\008-ch-lia-frontal-right-0.05-turn-23-keep-room-seed-e-f00012.png",
+    "sha256": "c6217f8aa03a3bc8c2c3250ebc1973f115088331e2498a3da7c5e0db42877d15",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #8] yaw +0.047 (right) · in-bucket SFace 0.959 / ArcFace 0.962 · vs frontal master SFace 0.899 / ArcFace 0.941 · sharpness 1164 · clip turn-23-keep-room-seed-e",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\008-ch-lia-frontal-right-0.05-turn-23-keep-room-seed-e-f00012.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "009-ch-lia-frontal-right-0.06-turn-24-keep-room-seed-f-f00000.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\009-ch-lia-frontal-right-0.06-turn-24-keep-room-seed-f-f00000.png",
+    "sha256": "584f83572d73b6153f8927c1ce97b320667b05c7a83bd524d4494eeb303b9ec6",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #9] yaw +0.064 (right) · in-bucket SFace 0.965 / ArcFace 0.953 · vs frontal master SFace 0.900 / ArcFace 0.917 · sharpness 964 · clip turn-24-keep-room-seed-f",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\009-ch-lia-frontal-right-0.06-turn-24-keep-room-seed-f-f00000.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "010-ch-lia-frontal-right-0.06-turn-28-keep-room-seed-j-f00006.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\010-ch-lia-frontal-right-0.06-turn-28-keep-room-seed-j-f00006.png",
+    "sha256": "66f00d65b6c9924186cf6fe699756205423903a0a8e0ae18ed62491b94593ec5",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #10] yaw +0.063 (right) · in-bucket SFace 0.945 / ArcFace 0.971 · vs frontal master SFace 0.874 / ArcFace 0.931 · sharpness 1111 · clip turn-28-keep-room-seed-j",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\010-ch-lia-frontal-right-0.06-turn-28-keep-room-seed-j-f00006.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "011-ch-lia-frontal-right-0.06-turn-28-keep-room-seed-j-f00016.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\011-ch-lia-frontal-right-0.06-turn-28-keep-room-seed-j-f00016.png",
+    "sha256": "b807ce6fc66e228649da51c2ab957d92cf3a0f7d18501a94ffb146ca68b925a5",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #11] yaw +0.057 (right) · in-bucket SFace 0.960 / ArcFace 0.956 · vs frontal master SFace 0.894 / ArcFace 0.921 · sharpness 1110 · clip turn-28-keep-room-seed-j",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\011-ch-lia-frontal-right-0.06-turn-28-keep-room-seed-j-f00016.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "012-ch-lia-frontal-right-0.07-turn-31-keep-room-mirrored-a-f00000.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\012-ch-lia-frontal-right-0.07-turn-31-keep-room-mirrored-a-f00000.png",
+    "sha256": "8fb823b1727537469db2152e11adcbefa4106cbd9b5c926aff9cee80d9c43207",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-04-mirrored.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop-mirrored.png"
+    ],
+    "user_request": "[정면 #12] yaw +0.066 (right) · in-bucket SFace 0.958 / ArcFace 0.956 · vs frontal master SFace 0.892 / ArcFace 0.924 · sharpness 1052 · clip turn-31-keep-room-mirrored-a",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\012-ch-lia-frontal-right-0.07-turn-31-keep-room-mirrored-a-f00000.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "013-ch-lia-frontal-right-0.09-turn-24-keep-room-seed-f-f00012.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\013-ch-lia-frontal-right-0.09-turn-24-keep-room-seed-f-f00012.png",
+    "sha256": "dd4fe7214cedc9f55307920f1ddc573c1eb5589c8afd7132ede51241757ffa36",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #13] yaw +0.087 (right) · in-bucket SFace 0.953 / ArcFace 0.959 · vs frontal master SFace 0.863 / ArcFace 0.921 · sharpness 972 · clip turn-24-keep-room-seed-f",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\013-ch-lia-frontal-right-0.09-turn-24-keep-room-seed-f-f00012.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "014-ch-lia-frontal-right-0.06-turn-31-keep-room-mirrored-a-f00010.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\014-ch-lia-frontal-right-0.06-turn-31-keep-room-mirrored-a-f00010.png",
+    "sha256": "3c0ac173c8408449e7ba30e0ed8d2e201d2bc8fbdd22ad4403b410849a3ba0d1",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-04-mirrored.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop-mirrored.png"
+    ],
+    "user_request": "[정면 #14] yaw +0.056 (right) · in-bucket SFace 0.952 / ArcFace 0.956 · vs frontal master SFace 0.851 / ArcFace 0.940 · sharpness 1142 · clip turn-31-keep-room-mirrored-a",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\014-ch-lia-frontal-right-0.06-turn-31-keep-room-mirrored-a-f00010.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "015-ch-lia-frontal-right-0.08-turn-31-keep-room-mirrored-a-f00022.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\015-ch-lia-frontal-right-0.08-turn-31-keep-room-mirrored-a-f00022.png",
+    "sha256": "e985bb0bf4a93f888c2e694dcd05c8fb3182c7ced02aee3ce870627bcad54d3a",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-04-mirrored.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop-mirrored.png"
+    ],
+    "user_request": "[정면 #15] yaw +0.082 (right) · in-bucket SFace 0.948 / ArcFace 0.957 · vs frontal master SFace 0.865 / ArcFace 0.922 · sharpness 1130 · clip turn-31-keep-room-mirrored-a",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\015-ch-lia-frontal-right-0.08-turn-31-keep-room-mirrored-a-f00022.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "016-ch-lia-frontal-right-0.05-turn-23-keep-room-seed-e-f00002.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\016-ch-lia-frontal-right-0.05-turn-23-keep-room-seed-e-f00002.png",
+    "sha256": "5bc39367ed85129fffa28792556bb1754c5c4bac5a69df394af834fa3d8f5b68",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #16] yaw +0.053 (right) · in-bucket SFace 0.938 / ArcFace 0.967 · vs frontal master SFace 0.849 / ArcFace 0.935 · sharpness 1146 · clip turn-23-keep-room-seed-e",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\016-ch-lia-frontal-right-0.05-turn-23-keep-room-seed-e-f00002.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "017-ch-lia-frontal-right-0.04-turn-26-keep-room-seed-h-f00008.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\017-ch-lia-frontal-right-0.04-turn-26-keep-room-seed-h-f00008.png",
+    "sha256": "ca5868aae0b026d39d5ae634cd9e86d22fd4c2db6b6329ac8c003f88fcaadc10",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #17] yaw +0.042 (right) · in-bucket SFace 0.943 / ArcFace 0.959 · vs frontal master SFace 0.864 / ArcFace 0.912 · sharpness 1193 · clip turn-26-keep-room-seed-h",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\017-ch-lia-frontal-right-0.04-turn-26-keep-room-seed-h-f00008.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "018-ch-lia-frontal-right-0.08-turn-18-dualref-keep-room-f00024.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\018-ch-lia-frontal-right-0.08-turn-18-dualref-keep-room-f00024.png",
+    "sha256": "a1f3d502866b6ab475a9b0ff4579611f944b9d49f14c6cf760ebcbccfb3b4f33",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #18] yaw +0.085 (right) · in-bucket SFace 0.936 / ArcFace 0.958 · vs frontal master SFace 0.842 / ArcFace 0.915 · sharpness 1127 · clip turn-18-dualref-keep-room",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\018-ch-lia-frontal-right-0.08-turn-18-dualref-keep-room-f00024.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "019-ch-lia-frontal-right-0.06-turn-27-keep-room-seed-i-f00020.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\019-ch-lia-frontal-right-0.06-turn-27-keep-room-seed-i-f00020.png",
+    "sha256": "5e6a80566c23b51e99bd9a93d946277ac898f8ce357cfe265505789eb85672c6",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #19] yaw +0.059 (right) · in-bucket SFace 0.935 / ArcFace 0.957 · vs frontal master SFace 0.844 / ArcFace 0.922 · sharpness 1069 · clip turn-27-keep-room-seed-i",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\019-ch-lia-frontal-right-0.06-turn-27-keep-room-seed-i-f00020.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "020-ch-lia-frontal-right-0.11-turn-32-keep-room-mirrored-b-f00016.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\020-ch-lia-frontal-right-0.11-turn-32-keep-room-mirrored-b-f00016.png",
+    "sha256": "d70de904262239bf51bf2f1c76ad9464242b30a7bf8b521dc13141949a8578d3",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-04-mirrored.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop-mirrored.png"
+    ],
+    "user_request": "[정면 #20] yaw +0.113 (right) · in-bucket SFace 0.939 / ArcFace 0.951 · vs frontal master SFace 0.872 / ArcFace 0.915 · sharpness 1032 · clip turn-32-keep-room-mirrored-b",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\020-ch-lia-frontal-right-0.11-turn-32-keep-room-mirrored-b-f00016.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "021-ch-lia-frontal-right-0.03-turn-23-keep-room-seed-e-f00022.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\021-ch-lia-frontal-right-0.03-turn-23-keep-room-seed-e-f00022.png",
+    "sha256": "ca7441cc946cba4d2c2d76c411278738f00c3cbdf2fdb09b4f90648a695de61e",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #21] yaw +0.027 (right) · in-bucket SFace 0.942 / ArcFace 0.944 · vs frontal master SFace 0.871 / ArcFace 0.903 · sharpness 1012 · clip turn-23-keep-room-seed-e",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\021-ch-lia-frontal-right-0.03-turn-23-keep-room-seed-e-f00022.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "022-ch-lia-frontal-right-0.09-turn-29-keep-room-ponytail-f00018.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\022-ch-lia-frontal-right-0.09-turn-29-keep-room-ponytail-f00018.png",
+    "sha256": "d227f46aa1ec7fa6f6708482f2a984896298baa13b90e8ce249bb4f9971a0053",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, body proportions and distinctive accessories. Their long dark hair is gathered back into a low ponytail at the nape of the neck, with the wispy bangs left as they are. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera and the gathered ponytail are new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their gathered dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #22] yaw +0.087 (right) · in-bucket SFace 0.931 / ArcFace 0.930 · vs frontal master SFace 0.876 / ArcFace 0.891 · sharpness 1817 · clip turn-29-keep-room-ponytail",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\022-ch-lia-frontal-right-0.09-turn-29-keep-room-ponytail-f00018.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "023-ch-lia-frontal-right-0.03-turn-29-keep-room-ponytail-f00004.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\023-ch-lia-frontal-right-0.03-turn-29-keep-room-ponytail-f00004.png",
+    "sha256": "8e6d547cefc13df408d9fcf9092c7b6dc26903a762d536afb1040eb6498e8595",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, body proportions and distinctive accessories. Their long dark hair is gathered back into a low ponytail at the nape of the neck, with the wispy bangs left as they are. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera and the gathered ponytail are new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their gathered dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #23] yaw +0.026 (right) · in-bucket SFace 0.912 / ArcFace 0.942 · vs frontal master SFace 0.881 / ArcFace 0.895 · sharpness 1900 · clip turn-29-keep-room-ponytail",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\023-ch-lia-frontal-right-0.03-turn-29-keep-room-ponytail-f00004.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "024-ch-lia-frontal-right-0.02-turn-30-keep-room-knit-f00006.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\024-ch-lia-frontal-right-0.02-turn-30-keep-room-knit-f00006.png",
+    "sha256": "5cec19090d9b00440117ba01bb42c49cfe1a2840479e2880773dc3b8a4bc5034",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, body proportions and distinctive accessories. Instead of the loose blue-grey tee they wear a soft cream ribbed knit sweater with a plain round neckline. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera and the cream knit sweater are new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #24] yaw +0.025 (right) · in-bucket SFace 0.909 / ArcFace 0.935 · vs frontal master SFace 0.902 / ArcFace 0.930 · sharpness 1138 · clip turn-30-keep-room-knit",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\024-ch-lia-frontal-right-0.02-turn-30-keep-room-knit-f00006.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "025-ch-lia-frontal-right-0.09-turn-13-dualref-seed-b-f00000.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\025-ch-lia-frontal-right-0.09-turn-13-dualref-seed-b-f00000.png",
+    "sha256": "4020deb88ff66ac32d59d3b8251e273aea9af58087e39c11de85f0b84f4c3272",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile against a plain grey backdrop during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take against a plain unlit mid-grey backdrop. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with nothing else in shot. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft even frontal light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #25] yaw +0.087 (right) · in-bucket SFace 0.874 / ArcFace 0.924 · vs frontal master SFace 0.814 / ArcFace 0.868 · sharpness 1115 · clip turn-13-dualref-seed-b",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\025-ch-lia-frontal-right-0.09-turn-13-dualref-seed-b-f00000.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "026-ch-lia-frontal-right-0.03-turn-13-dualref-seed-b-f00010.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\026-ch-lia-frontal-right-0.03-turn-13-dualref-seed-b-f00010.png",
+    "sha256": "cbde794f48ff20a5f4a8a9e919ebb513a3ea2b166fce13cf9c0c8b4ebe389bd5",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile against a plain grey backdrop during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take against a plain unlit mid-grey backdrop. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with nothing else in shot. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft even frontal light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #26] yaw +0.032 (right) · in-bucket SFace 0.869 / ArcFace 0.923 · vs frontal master SFace 0.802 / ArcFace 0.874 · sharpness 1140 · clip turn-13-dualref-seed-b",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\026-ch-lia-frontal-right-0.03-turn-13-dualref-seed-b-f00010.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "027-ch-lia-frontal-left-0.01-turn-13-dualref-seed-b-f00022.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\027-ch-lia-frontal-left-0.01-turn-13-dualref-seed-b-f00022.png",
+    "sha256": "2bdeeba8af90c5e8610a0e231beb5551edaa2e148204cfb9cab3f54c5a20d637",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile against a plain grey backdrop during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take against a plain unlit mid-grey backdrop. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with nothing else in shot. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft even frontal light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #27] yaw -0.007 (left) · in-bucket SFace 0.865 / ArcFace 0.918 · vs frontal master SFace 0.836 / ArcFace 0.874 · sharpness 1094 · clip turn-13-dualref-seed-b",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\027-ch-lia-frontal-left-0.01-turn-13-dualref-seed-b-f00022.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "028-ch-lia-frontal-right-0.08-turn-29-keep-room-ponytail-f00028.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\028-ch-lia-frontal-right-0.08-turn-29-keep-room-ponytail-f00028.png",
+    "sha256": "a3123c9b0aaf108ed25354947ee6f041669ffa6a91fc0737003bf67f8a8a63ef",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, body proportions and distinctive accessories. Their long dark hair is gathered back into a low ponytail at the nape of the neck, with the wispy bangs left as they are. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera and the gathered ponytail are new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their gathered dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #28] yaw +0.078 (right) · in-bucket SFace 0.878 / ArcFace 0.881 · vs frontal master SFace 0.774 / ArcFace 0.822 · sharpness 1541 · clip turn-29-keep-room-ponytail",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\028-ch-lia-frontal-right-0.08-turn-29-keep-room-ponytail-f00028.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "029-ch-lia-frontal-left-0.02-turn-27-keep-room-seed-i-f00040.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\029-ch-lia-frontal-left-0.02-turn-27-keep-room-seed-i-f00040.png",
+    "sha256": "279cbf5ee764b645bc718553a460d20ac20d32dc88452eb11bc93dcd9f2769eb",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #29] yaw -0.017 (left) · in-bucket SFace 0.858 / ArcFace 0.898 · vs frontal master SFace 0.803 / ArcFace 0.872 · sharpness 958 · clip turn-27-keep-room-seed-i",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\029-ch-lia-frontal-left-0.02-turn-27-keep-room-seed-i-f00040.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "030-ch-lia-frontal-right-0.03-turn-28-keep-room-seed-j-f00026.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\030-ch-lia-frontal-right-0.03-turn-28-keep-room-seed-j-f00026.png",
+    "sha256": "e8713b5c659765107fc30b4f8e348f6260ca3650cf25325527377858ea9a8c53",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #30] yaw +0.031 (right) · in-bucket SFace 0.834 / ArcFace 0.869 · vs frontal master SFace 0.775 / ArcFace 0.819 · sharpness 697 · clip turn-28-keep-room-seed-j",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\030-ch-lia-frontal-right-0.03-turn-28-keep-room-seed-j-f00026.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "031-ch-lia-frontal-left-0.03-turn-26-keep-room-seed-h-f00018.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\031-ch-lia-frontal-left-0.03-turn-26-keep-room-seed-h-f00018.png",
+    "sha256": "d009770b8b2fb3c23625e190c51d75a88f80055380ca07854f56c43337fe2b2c",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile in her own room, with the same light and the same background as the reference during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take in the same quiet seaside room as <Picture 1>, with its window light and its shelves left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #31] yaw -0.031 (left) · in-bucket SFace 0.772 / ArcFace 0.858 · vs frontal master SFace 0.687 / ArcFace 0.790 · sharpness 640 · clip turn-26-keep-room-seed-h",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\031-ch-lia-frontal-left-0.03-turn-26-keep-room-seed-h-f00018.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  },
+  {
+    "file": "032-ch-lia-frontal-left-0.12-turn-13-dualref-seed-b-f00032.png",
+    "original_path": "C:\\Users\\krcho\\AppData\\Local\\Temp\\claude\\D--codex-XAI-studio\\54a2116e-c54f-4e46-a0da-73e2e24c1fce\\scratchpad\\gallery-import\\frontal\\032-ch-lia-frontal-left-0.12-turn-13-dualref-seed-b-f00032.png",
+    "sha256": "3fb281a95a2953a5fd7cf0741ff0420a04981029725990bc2eaa965597bbfaf5",
+    "engine": "minimax-h3",
+    "provider": "WanGP",
+    "model": "minimax_h3_ref2va_pruned",
+    "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile against a plain grey backdrop during one continuous five-second shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.\ndetailed_description:\nThe target video is a five-second single take against a plain unlit mid-grey backdrop. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with nothing else in shot. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft even frontal light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.",
+    "references": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+    ],
+    "user_request": "[정면 #32] yaw -0.119 (left) · in-bucket SFace 0.738 / ArcFace 0.810 · vs frontal master SFace 0.653 / ArcFace 0.767 · sharpness 997 · clip turn-13-dualref-seed-b",
+    "created_at": "2026-09-10T20:40:00+09:00",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-frontal\\outputs\\minimax-h3\\032-ch-lia-frontal-left-0.12-turn-13-dualref-seed-b-f00032.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 608,
+      "height": 736,
+      "container": "png"
+    }
+  }
+]

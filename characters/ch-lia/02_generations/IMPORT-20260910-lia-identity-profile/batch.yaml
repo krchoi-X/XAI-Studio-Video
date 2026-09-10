@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "IMPORT-20260910-lia-identity-profile",
+    "character_id": "ch-lia",
+    "title": "Lia 정체성 세트 2026-09-10 · 측면 (점수 높은 순)",
+    "status": "completed",
+    "visibility": "standard",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\IMPORT-20260910-lia-identity-profile\\outputs",
+    "prompt_file": "prompt.txt"
+  },
+  "jobs": [
+    {
+      "backend": "wangp",
+      "provider": "WanGP",
+      "model": "minimax_h3_ref2va_pruned",
+      "count": 46,
+      "output_dir": "outputs/minimax-h3",
+      "status": "completed"
+    }
+  ],
+  "review": {
+    "initial_state": "needs_review"
+  },
+  "import": {
+    "tool": "external_media_import",
+    "prompt_strategy": "provenance"
+  }
+}
