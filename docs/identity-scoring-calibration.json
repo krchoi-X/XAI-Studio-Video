@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-10T09:40:00+09:00",
+  "created_by": "claude",
+  "method": "Pairwise cosine over 24 existing images with 2 recognisers (OpenCV SFace, ArcFace w600k_r50) on the same SFace-aligned 112x112 crop. The positive set is within-character pairs among the reference-bound ch-jun and ch-rio close-up sets, where portraits 02-05 were generated from portrait 01 as the reference and accepted as that character. The negative set is every cross-character pair among ch-lia, ch-jun and ch-rio. No operator labelling was available; these are the strongest same/different labels the repository already carries.",
+  "distributions": {
+    "positive_same_character": {
+      "n": 20,
+      "sface": {"min": 0.831, "median": 0.881, "max": 0.976},
+      "arcface": {"min": 0.838, "median": 0.902, "max": 0.964}
+    },
+    "negative_different_character": {
+      "n": 165,
+      "sface": {"min": 0.042, "median": 0.244, "max": 0.551},
+      "arcface": {"min": -0.019, "median": 0.154, "max": 0.533}
+    }
+  },
+  "separation": "The two distributions do not overlap and nothing lands between 0.551 and 0.831. OpenCV's documented 0.363 same-identity line for SFace sits inside the negative distribution here and must not be used on this material.",
+  "bands": {
+    "same": "at or above the positive floor - identity held to the standard reference-bound generation already demonstrates",
+    "drift": "between the negative ceiling and the positive floor - not a different person by the recogniser, not the same one either; this is where the beauty-prior collapse lives and where the operator's eye rejects the image",
+    "different": "at or below the negative ceiling - a different person"
+  },
+  "thresholds": {
+    "frontal": {"sface": 0.83, "arcface": 0.84},
+    "three_quarter": {"sface": 0.83, "arcface": 0.84}
+  },
+  "uncalibrated_buckets": {
+    "deep_three_quarter": "No same-identity pair at this yaw exists yet. A recogniser trained on real photographs loses accuracy off-axis, so the frontal line would reject correct frames. Calibrate from within-clip pairs of a turnaround, which are the same person by construction.",
+    "profile": "Same reason. ax-03 and ax-04 in the Phase 1 batch scored 0.449-0.499 against the master, which cannot be separated from genuine drift without an off-axis positive distribution."
+  },
+  "drift_band_ceiling": 0.551,
+  "positive_floor": 0.831,
+  "limits": "SFace and ArcFace are trained on real photographs; every image here is synthetic and most came from one model family, which can inflate both distributions. The positive set is 20 pairs from 2 characters. Treat the thresholds as an operating point that separates this material, not as a general face-verification result."
+}

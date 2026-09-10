@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-lia",
+  "title": "Lia identity turnaround — angles the still engine cannot invent",
+  "user_request_verbatim": "Lia로 하자. ollama나 hermes는 모두 죽여도 돼. frame-harvest 도구가 뭔지 모르겠는데, 필요하면 설치하거나 구현해. 그리고 나서 Lia의 내가 좋아하던 이미지를 이용해서 동영상을 만들든 어떤 방법으로든 다양한 모습을 만들고 네 기준에 맞춰서 스코어링을 해서 보여줘.",
+  "source_idea": "A front photograph does not contain the profile. A video carries one identity continuously through the intermediate angles, so the frames are the product; harvest and score them.",
+  "status": "prepared",
+  "created_at": "2026-09-10T09:22:42+09:00",
+  "updated_at": "2026-09-10T09:22:42+09:00"
+}

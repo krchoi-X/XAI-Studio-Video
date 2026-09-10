@@ -63,6 +63,13 @@
     }
   },
   "approved_references": [],
+  "reference_defaults": {
+    "identity": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+      "sha256": "e2df345058cd5d29644f804b39612919ad773debe9388e6bb6cfaa5d64ad0502",
+      "source": "Candidate #4 from D:/AI_Studio/reports/lia-identity-candidates, named by the operator on 2026-09-07 and used as the master for the IDENTITY-20260907-211003-lia-master-lock measurements. This is a runtime default, not an approval state."
+    }
+  },
   "prompt_sources": [
     "XAI-Studio-Private/XAI-Studio-Video/docs/characters/lia-character-dna-v1.3.md",
     "XAI-Studio-Private/XAI-Studio-Video/docs/characters/lia-prompt-pack-v1.1.md",
