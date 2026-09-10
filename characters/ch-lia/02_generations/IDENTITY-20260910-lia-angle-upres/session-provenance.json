@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "IDENTITY-20260910-lia-angle-upres",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\IDENTITY-20260910-lia-angle-upres",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "krea2_raw_edit",
+  "character_id": "ch-lia",
+  "title": "Lia harvested angles re-rendered at still quality",
+  "user_request_verbatim": "동영상을 만들든 어떤 방법으로든 다양한 모습을 만들고 네 기준에 맞춰서 스코어링을 해서 보여줘.",
+  "source_idea": "The turnaround supplies geometry the still engine cannot invent, but only at 576x768 with a face about 160 px across. Feed the accepted frame back into krea2_raw_edit with the master as the second reference: video for the angle, RAW for the identity and the texture.",
+  "status": "prepared",
+  "created_at": "2026-09-10T09:40:31+09:00",
+  "updated_at": "2026-09-10T09:40:31+09:00"
+}

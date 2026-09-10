@@ -104,27 +104,37 @@ def report(args: argparse.Namespace) -> dict[str, Any]:
         for name, value in pair_scores(a, b).items():
             across.setdefault(a["yaw_bucket"], {}).setdefault(name, []).append(value)
 
-    # The proposed off-axis line is the floor of the within-clip distribution for pairs that reach that bucket:
-    # the worst score two frames of one person actually produced at that angle.
+    # The proposed off-axis line comes only from pairs where BOTH frames sit in the same bucket - the worst
+    # score two frames of one person produced while both were at that angle. Mixed-bucket pairs are excluded
+    # deliberately: frontal-to-profile pairs of the same person fall to 0.07, so letting them set the profile
+    # threshold would produce a line that accepts anything. The corollary is that a profile can only ever be
+    # scored against a profile reference, never against the frontal prototype.
     proposed = {}
     for key, recognisers in within.items():
-        buckets = key.split("+")
-        target = max(buckets, key=bucket_key)
-        if target in calibration["thresholds"] or target == "undetected":
+        if "+" in key or key in calibration["thresholds"] or key == "undetected":
             continue
-        floors = {name: round(min(values), 2) for name, values in recognisers.items()}
-        current = proposed.setdefault(target, {})
-        for name, value in floors.items():
-            current[name] = min(current.get(name, value), value)
+        proposed[key] = {name: round(min(values), 2) for name, values in recognisers.items()}
 
+    # Clip admission. A profile cannot be judged against a frontal prototype, but a clip is one continuous
+    # take, so its profile frames are the same person as its own frontal frames whatever the angle costs the
+    # recogniser. The decision therefore runs through the frontal bucket: admit the clip on its frontal frames,
+    # and the rest of the clip inherits. `continuity` is the weakest same-bucket pair inside the clip - if the
+    # face changed mid-take that is where it shows.
     per_shot = {}
     for shot in sorted({frame["shot"] for frame in frames}):
         members = [frame for frame in frames if frame["shot"] == shot]
+        frontal = [frame for frame in members if frame["yaw_bucket"] == "frontal"]
+        continuity = [value for a, b in combinations(members, 2) if a["yaw_bucket"] == b["yaw_bucket"]
+                      for value in pair_scores(a, b).values()]
+        admission = max((frame["scores"] for frame in frontal),
+                        key=lambda s: s.get("arcface") or 0, default={})
         per_shot[shot] = {
             "frames": len(members),
             "buckets": sorted({frame["yaw_bucket"] for frame in members}, key=bucket_key),
-            "best_against_prototype": max(
-                ((frame["scores"].get("arcface") or 0), frame["stem"]) for frame in members),
+            "admission_scores": admission,
+            "admission_verdict": identity_score.classify(
+                admission, calibration["thresholds"].get("frontal", {}), calibration["drift_band_ceiling"]),
+            "weakest_same_bucket_pair": round(min(continuity), 4) if continuity else None,
             "face_pixels_median": round(statistics.median(
                 [frame["face_pixels"][0] for frame in members if frame["face_pixels"]]), 1),
         }

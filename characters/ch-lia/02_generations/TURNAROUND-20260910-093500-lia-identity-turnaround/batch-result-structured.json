@@ -1,0 +1,39 @@
+{
+  "session": "TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "updated_at": "2026-09-10T11:23:34+09:00",
+  "results": [
+    {
+      "shot": "turn-08-structured-profile-left",
+      "status": "needs_review",
+      "run_id": "run-20260910-104853-12ef01f0",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-104853-12ef01f0",
+      "minutes": 11.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-104853-12ef01f0.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "turn-09-structured-dual-ref",
+      "status": "needs_review",
+      "run_id": "run-20260910-110013-be504d8f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-110013-be504d8f",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-110013-be504d8f.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "turn-10-mirrored-other-side",
+      "status": "needs_review",
+      "run_id": "run-20260910-111214-07c5648b",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-111214-07c5648b",
+      "minutes": 11.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-111214-07c5648b.mp4"
+      ],
+      "error": null
+    }
+  ]
+}
