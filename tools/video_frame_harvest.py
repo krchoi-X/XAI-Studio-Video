@@ -85,11 +85,20 @@ def harvest(args: argparse.Namespace) -> dict[str, Any]:
     try:
         frames = extract(video, scratch, args.every, args.mirror)
         measured = []
+        blinks = 0
         for index, frame in enumerate(frames):
             record = identity_score.measure(frame)
             aligned = record.pop("aligned", None)
             embeddings = record.pop("embeddings")
             if not record["detected"]:
+                continue
+            # A blink is not a candidate, but only where the measure is trustworthy. Past a three-quarter turn
+            # one eye leaves the aligned box and the number stops meaning anything: frames the operator chose
+            # score as low as 0.179 there. On frontal and three-quarter, real blinks measured 0.25-0.29 and
+            # open eyes 0.43-0.50, and the operator's lowest choice was 0.321 - so the cut sits under all of them.
+            if (record["yaw_bucket"] in {"frontal", "three_quarter"}
+                    and (record["eye_aperture"] or 0) < args.min_eye_aperture):
+                blinks += 1
                 continue
             record["frame_index"] = index * args.every
             record["scores"] = {name: round(identity_score.cosine(reference[name], vector), 4)
@@ -155,7 +164,8 @@ def harvest(args: argparse.Namespace) -> dict[str, Any]:
             "schema_version": 1, "created_at": identity_score.now(), "video": str(video), "media": media,
             "sampling": {"every": args.every, "mirrored": args.mirror, "extracted": len(frames),
                          "with_face": len(measured), "kept_per_bucket": args.per_bucket,
-                         "min_gap": args.min_gap},
+                         "min_gap": args.min_gap, "min_eye_aperture": args.min_eye_aperture,
+                         "dropped_for_closed_eyes": blinks},
             "prototype": {"path": str(Path(args.prototype).resolve()), "label": prototype.get("label")},
             "calibration": calibration,
             "bucket_counts": {name: len(items) for name, items in sorted(buckets.items())},
@@ -165,7 +175,8 @@ def harvest(args: argparse.Namespace) -> dict[str, Any]:
         if args.sheet:
             identity_score.draw_sheet(Path(args.sheet), args.title or f"{video.stem} harvest", tiles, "yaw")
         return {"out_dir": str(out_dir), "extracted": len(frames), "with_face": len(measured),
-                "kept": len(kept), "buckets": report["bucket_counts"], "sheet": args.sheet}
+                "dropped_for_closed_eyes": blinks, "kept": len(kept),
+                "buckets": report["bucket_counts"], "sheet": args.sheet}
     finally:
         shutil.rmtree(scratch, ignore_errors=True)
 
@@ -178,6 +189,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--thresholds")
     parser.add_argument("--every", type=int, default=1, help="sample every Nth frame")
     parser.add_argument("--per-bucket", type=int, default=4, help="stills to keep per yaw bucket")
+    parser.add_argument("--min-eye-aperture", type=float, default=0.30,
+                        help="drop frontal/three-quarter frames whose eyes are shut; 0 disables")
     parser.add_argument("--min-gap", type=int, default=8,
                         help="minimum frame separation between stills kept from one bucket")
     parser.add_argument("--mirror", action="store_true",

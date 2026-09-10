@@ -123,6 +123,41 @@ def pitch_proxy(face) -> float:
     return float(np.dot(np.asarray(nose, dtype=float) - eye_mid, axis / length) / length)
 
 
+# Where the aligned 112x112 crop puts the eyes. Fixed by the alignment, so a box around each is reliable.
+ALIGNED_EYES = ((38.3, 51.7), (73.5, 51.5))
+
+
+def eye_aperture(aligned) -> float:
+    """How far the eyes are open: the tallest run of iris-dark pixels in a box that excludes the eyebrow.
+
+    Validated as a *closed-eye detector*, and only that. On a clip containing blinks it ranks the shut and
+    half-lidded frames at the bottom (0.32-0.36) and the open ones at the top (0.46-0.50) with no mistakes.
+    What it cannot do is rank among open eyes - it saturates - and it carries no information about which frame
+    reads most like the character to a person: tested against 23 operator-chosen frames it scored AUC 0.50,
+    which is chance. Use it to drop blinks, never to choose a favourite. It is also unreliable at a profile,
+    where one eye leaves the crop.
+    """
+    grey = cv2.cvtColor(aligned, cv2.COLOR_BGR2GRAY).astype(float)
+    scores = []
+    for x, y in ALIGNED_EYES:
+        box = grey[int(y) - 6:int(y) + 8, int(x) - 9:int(x) + 9]
+        if box.size == 0:
+            continue
+        spread = box.max() - box.min()
+        if spread < 20:  # a flat box carries no lid/iris boundary; a relative cut there marks everything dark
+            continue
+        dark = box <= box.min() + 0.40 * spread
+        runs = []
+        for column in dark.T:
+            longest = current = 0
+            for value in column:
+                current = current + 1 if value else 0
+                longest = max(longest, current)
+            runs.append(longest)
+        scores.append(sorted(runs)[-3] / box.shape[0])  # third tallest column, so one stray lash cannot set it
+    return round(float(np.mean(scores)), 4) if scores else 0.0
+
+
 def yaw_bucket(proxy: float | None) -> str:
     if proxy is None:
         return "undetected"
@@ -159,6 +194,7 @@ def measure(path: Path) -> dict[str, Any]:
         "yaw_proxy": None,
         "yaw_bucket": "undetected",
         "pitch_proxy": None,
+        "eye_aperture": None,
         "face_pixels": None,
         "detector_score": None,
         "sharpness": None,
@@ -172,6 +208,7 @@ def measure(path: Path) -> dict[str, Any]:
         "yaw_proxy": round(proxy, 4),
         "yaw_bucket": yaw_bucket(proxy),
         "pitch_proxy": round(pitch_proxy(face), 4),
+        "eye_aperture": eye_aperture(aligned),
         "face_pixels": [round(float(face[2]), 1), round(float(face[3]), 1)],
         "detector_score": round(float(face[14]), 4),
         "sharpness": round(sharpness(aligned), 2),

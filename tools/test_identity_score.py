@@ -88,6 +88,26 @@ class LoadCalibrationTest(unittest.TestCase):
         self.assertLess(loaded["drift_band_ceiling"], min(loaded["thresholds"]["frontal"].values()))
 
 
+class EyeApertureTest(unittest.TestCase):
+    """The measure only has to get the direction right: a shut eye must score below an open one."""
+
+    @staticmethod
+    def face(height: int) -> "object":
+        import numpy as np
+        canvas = np.full((112, 112, 3), 200, dtype=np.uint8)
+        for x, y in identity_score.ALIGNED_EYES:
+            canvas[int(y) - height // 2:int(y) + height // 2 + 1, int(x) - 6:int(x) + 7] = 30
+        return canvas
+
+    def test_open_scores_above_shut(self):
+        self.assertGreater(identity_score.eye_aperture(self.face(8)),
+                           identity_score.eye_aperture(self.face(1)))
+
+    def test_a_featureless_crop_does_not_crash(self):
+        import numpy as np
+        self.assertIsInstance(identity_score.eye_aperture(np.zeros((112, 112, 3), dtype=np.uint8)), float)
+
+
 class CosineTest(unittest.TestCase):
     def test_identical_unit_vectors(self):
         self.assertAlmostEqual(identity_score.cosine([1.0, 0.0], [1.0, 0.0]), 1.0)
