@@ -20,21 +20,32 @@ Each clip changes exactly one thing and pins the rest to the reference, the same
 Phase 1 still batch used. Every prompt states the framing as head-and-shoulders: at 576x768 a full-body turn
 leaves a face roughly 100 px across, which is too small to serve as a reference or as a training image.
 
-| id | frames | axis under test |
-|---|---|---|
-| `turn-01-calibration` | 61 | cost calibration and face size: front to three-quarter only |
-| `turn-02-profile-left` | 121 | front through three-quarter to a full profile, turning to her left |
-| `turn-03-profile-right` | 121 | the same turn to her right, so both profiles exist and can be compared |
-| `turn-04-half-turn` | 181 | a full half circle, front to the back of the head |
-| `look-05-expression-range` | 121 | frontal throughout; expression and gaze only, no rotation |
+| id | axis under test |
+|---|---|
+| `turn-01-calibration` | cost calibration and face size. Framed as a mid shot; the face came out ~160 px, too small to use, so every later shot was reframed as a tight close-up and reached ~500 px |
+| `turn-02-profile-left` | front through three-quarter towards a profile, turning to her left |
+| `turn-03-profile-right` | the same turn to her right, so both profiles exist and can be compared |
+| `turn-04-half-turn` | a full half circle, front to the back of the head |
+| `turn-05-pitch-down-up` | the other rotation axis: chin down to the floor, then up past level |
+| `turn-06-profile-left-seed-b` | `turn-02` again from a different seed. If the two profiles disagree the geometry is being invented per clip rather than read out of the reference |
+| `look-07-expression-range` | frontal throughout; expression and gaze only, no rotation |
+| `turn-08-structured-profile-left` | `turn-02`'s rotation and seed, written in the structured `subject_definitions` / `retention_analysis` format WanGP ships as this model's own default prompt. Tests the prompt format alone |
+| `turn-09-structured-dual-ref` | `turn-08` plus the master face crop as a second reference. Tests the second reference alone |
 
 Engine `minimax_h3_ref2va_pruned` at 576x768, 20 steps, guidance 1.0, flow shift 12, euler. One clip at a
 time; the worker holds a GPU lock.
 
-## Measured cost
+## Measured cost, and a setting that does nothing
 
-`turn-01-calibration`, 61 frames: 25.3 s per denoising step, 20 steps. See `batch-result.json` for the
-wall-clock time of every shot, which includes model load and VAE decode.
+25.3 s per denoising step at 20 steps, about 11 minutes per clip including model load and VAE decode. See
+`batch-result.json` for the wall-clock time of every shot.
+
+**`video_length` is ignored by this model.** 61 and 121 both produced 107 frames at 24 fps - a 4.46 second
+clip - and the step time did not change between them either. WanGP's own default prompt for
+`minimax_h3_ref2va_pruned` describes "one five-second shot", so the length appears to be fixed by the model
+rather than by the request. Two consequences: a longer rotation cannot be bought with more frames, so
+`turn-04-half-turn` has to complete 180 degrees inside the same 4.46 seconds and will rotate faster than the
+others; and the frame budget per angle is fixed, which is what `--every` in the harvest is trading against.
 
 ## What happens to the frames
 

@@ -51,12 +51,21 @@ def probe(video: Path) -> dict[str, Any]:
             "fps": round(fps, 3), "duration": float(stream["duration"]) if stream.get("duration") else None}
 
 
-def extract(video: Path, target: Path, every: int) -> list[Path]:
-    """PNG, not JPEG: these frames become identity references and may be re-encoded several more times."""
+def extract(video: Path, target: Path, every: int, mirror: bool) -> list[Path]:
+    """PNG, not JPEG: these frames become identity references and may be re-encoded several more times.
+
+    `mirror` un-mirrors a clip that was shot from a mirrored reference. This model rotates the same way
+    whatever the prompt asks for, so the only way to obtain the other side of a face is to mirror the
+    reference, let it turn its usual way, and flip the frames back. Faces are asymmetric, so the flip back is
+    not cosmetic: an unflipped frame is a mirror-image person, and both recognisers will say so.
+    """
     target.mkdir(parents=True, exist_ok=True)
+    filters = ([f"select=not(mod(n\\,{every}))"] if every > 1 else []) + (["hflip"] if mirror else [])
     command = [tool("ffmpeg", FFMPEG_FALLBACK), "-v", "error", "-y", "-i", str(video)]
+    if filters:
+        command += ["-vf", ",".join(filters)]
     if every > 1:
-        command += ["-vf", f"select=not(mod(n\\,{every}))", "-vsync", "0", "-frame_pts", "1"]
+        command += ["-vsync", "0", "-frame_pts", "1"]
     command += [str(target / "frame-%05d.png")]
     subprocess.run(command, check=True, capture_output=True)
     return sorted(target.glob("frame-*.png"))
@@ -74,7 +83,7 @@ def harvest(args: argparse.Namespace) -> dict[str, Any]:
 
     scratch = Path(tempfile.mkdtemp(prefix="frame-harvest-"))
     try:
-        frames = extract(video, scratch, args.every)
+        frames = extract(video, scratch, args.every, args.mirror)
         measured = []
         for index, frame in enumerate(frames):
             record = identity_score.measure(frame)
@@ -134,8 +143,8 @@ def harvest(args: argparse.Namespace) -> dict[str, Any]:
 
         report = {
             "schema_version": 1, "created_at": identity_score.now(), "video": str(video), "media": media,
-            "sampling": {"every": args.every, "extracted": len(frames), "with_face": len(measured),
-                         "kept_per_bucket": args.per_bucket},
+            "sampling": {"every": args.every, "mirrored": args.mirror, "extracted": len(frames),
+                         "with_face": len(measured), "kept_per_bucket": args.per_bucket},
             "prototype": {"path": str(Path(args.prototype).resolve()), "label": prototype.get("label")},
             "calibration": calibration,
             "bucket_counts": {name: len(items) for name, items in sorted(buckets.items())},
@@ -158,6 +167,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--thresholds")
     parser.add_argument("--every", type=int, default=1, help="sample every Nth frame")
     parser.add_argument("--per-bucket", type=int, default=4, help="stills to keep per yaw bucket")
+    parser.add_argument("--mirror", action="store_true",
+                        help="flip every frame back: the clip was shot from a mirrored reference")
     parser.add_argument("--sheet")
     parser.add_argument("--title")
     return parser

@@ -1,0 +1,10 @@
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions, clothing, and distinctive accessories.
+summary:
+[reference generation] <Subject 1> turns slowly from facing the camera to a full side profile against a plain grey backdrop during one continuous five-second shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only the angle of the head and shoulders relative to the camera is new.
+detailed_description:
+The target video is a five-second single take against a plain unlit mid-grey backdrop. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with nothing else in shot. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn their head and shoulders slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing all the way to a full side profile, ending with the nose, lips and chin drawn cleanly against the backdrop. The chin stays level and the gaze follows the direction of the turn. The camera does not move, zoom or cut, and the soft even frontal light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech, no change of expression and no camera movement.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
