@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-06T10:52:52+00:00",
+  "updated_at": "2026-09-11T11:26:18+00:00",
   "characters": [
     {
       "id": "ch-han-seorin",
@@ -19,6 +19,15 @@
       "version": 2,
       "stable_dna_sha256": "1604b32ac42cb127af438fa3f73cdd9c3fe7f5d9a2c04066364fa165290883f7",
       "path": "characters/ch-harim/character.json"
+    },
+    {
+      "id": "ch-jun",
+      "name": "준",
+      "romanized_name": "Jun",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "1d0cf5d387784052a9bd37fe9ee0fd885528d89c5f001b0a6d2c186f4ab29f1a",
+      "path": "characters/ch-jun/character.json"
     },
     {
       "id": "ch-jung-haewon",
@@ -43,8 +52,8 @@
       "name": "Lia",
       "romanized_name": "Lia",
       "status": "candidate",
-      "version": 2,
-      "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+      "version": 3,
+      "stable_dna_sha256": "420c615ac2852edf5a354768c81d541be911ff36c801db6d80a57df78e5f0d76",
       "path": "characters/ch-lia/character.json"
     },
     {
@@ -73,6 +82,15 @@
       "version": 1,
       "stable_dna_sha256": "2e63858e48f97bd2f1602972fd647efa01cb783523e9afe0d5067561174099db",
       "path": "characters/ch-oh-jian/character.json"
+    },
+    {
+      "id": "ch-rio",
+      "name": "리오",
+      "romanized_name": "Rio",
+      "status": "candidate",
+      "version": 1,
+      "stable_dna_sha256": "19c354bdc004ca0644c8b0683532d2d47fdeb7b15d683090fc948b87f614986f",
+      "path": "characters/ch-rio/character.json"
     },
     {
       "id": "ch-yuna",

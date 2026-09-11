@@ -4,7 +4,7 @@
   "name": "Lia",
   "romanized_name": "Lia",
   "status": "candidate",
-  "version": 2,
+  "version": 3,
   "stable_dna": {
     "adult_age_range": "young adult",
     "visual_background": "East-Asian-looking woman with a globally neutral original identity and no resemblance to a specific real person",
@@ -13,8 +13,10 @@
       "eyes": "large, soft, slightly elongated dark-brown eyes that never read wide-set, with relaxed eyelids and a calm coordinated gaze",
       "eyebrows": "natural softly defined dark eyebrows with slightly narrow brow-to-brow and glabella spacing",
       "nose": "small refined nose with soft, balanced and believable proportions, not a celebrity-specific likeness",
+      "nose_profile": "seen from the side, the bridge runs straight or very slightly concave from the brow to the tip, with no raised hump and no thickening over the upper bridge; the tip is small and neither upturned nor drooping",
       "lips": "soft rose-beige lips, gently closed, with delicate natural volume, understated realistic texture and a natural satin finish",
-      "jaw": "gently narrow, softly tapered and balanced lower face, never an exaggerated sharp V-line"
+      "jaw": "gently narrow, softly tapered and balanced lower face, never an exaggerated sharp V-line",
+      "chin_profile": "seen from the side, the chin is soft and does not project: it stays behind the lower lip and inside a gentle line drawn from the nose tip to the chin, never jutting forward"
     },
     "body": {
       "height_impression": "tall-looking with a natural slender silhouette, long legs and a relatively compact torso",
@@ -80,13 +82,13 @@
   "video_test_associations": [],
   "provenance": {
     "created_at": "2026-09-02T01:00:00+00:00",
-    "updated_at": "2026-09-02T12:01:01+00:00",
+    "updated_at": "2026-09-11T11:25:01+00:00",
     "created_by": "codex-private-repository-migration",
     "sources": [
       "krchoi-X/XAI-Studio-Private Lia character documents",
       "lia-character-dna-v1.3 and lia-prompt-pack-v1.1 superseding earlier Lia drafts"
     ],
-    "change_reason": "Synchronize canonical Lia identity with user-approved private docs: lia-character-dna-v1.3 and lia-prompt-pack-v1.1",
-    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061"
+    "change_reason": "Added nose_profile and chin_profile. Every previous face attribute describes the face from the front, so nothing in this record has ever specified the bridge line or the chin projection - the two things that only exist in profile. The model was therefore free to choose them, and it did: the operator rejects the results as an aquiline bridge or a jutting chin, and said so on 2026-09-11 after reviewing the first profile set. The wording is positive-first because the guidance-0 edit path this project uses ignores negative prompts entirely. The frontal nose and jaw entries are unchanged and remain correct; these two extend them rather than replace them. Requested by the operator, drafted by claude.",
+    "stable_dna_sha256": "420c615ac2852edf5a354768c81d541be911ff36c801db6d80a57df78e5f0d76"
   }
 }

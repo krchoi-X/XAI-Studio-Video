@@ -146,7 +146,10 @@ def render_base_prompt(record: dict[str, Any], exclude_fields: set[str] | None =
     hair = "" if "hair" in exclude_fields else f"Hair: {dna['hair']}. "
     return (
         f"An adult {dna['visual_background']} character named {record.get('romanized_name') or record['name']}. "
-        f"Face: {f['shape']}; {f['eyes']}; {f['eyebrows']}; {f['nose']}; {f['lips']}; {f['jaw']}. "
+        # Every face attribute the record carries, in the order it is stored. Naming six of them here meant a
+        # new one could be promoted into the DNA, validate, and then never reach a single prompt - which is
+        # what happened to ch-lia's nose_profile and chin_profile on 2026-09-11.
+        f"Face: {'; '.join(str(value) for key, value in f.items() if key not in exclude_fields)}. "
         f"{hair}Skin: {dna['skin']}. "
         f"Body: {b['height_impression']}; {b['limb_proportions']}; shoulders {b['shoulders']}; "
         f"torso {b['torso']}; bust {b['bust']}; waist {b['waist']}; pelvis and hips {b['pelvis_hips']}; "

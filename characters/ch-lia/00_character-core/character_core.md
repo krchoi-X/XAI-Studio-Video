@@ -1,9 +1,9 @@
 # Lia — Character Core
 
 - ID: `ch-lia`
-- version: `2`
+- version: `3`
 - status: `candidate`
-- Stable DNA SHA-256: `bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061`
+- Stable DNA SHA-256: `420c615ac2852edf5a354768c81d541be911ff36c801db6d80a57df78e5f0d76`
 
 ## Stable identity
 
