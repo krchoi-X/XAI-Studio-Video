@@ -1,0 +1,97 @@
+{
+  "session": "TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "updated_at": "2026-09-11T01:24:44+09:00",
+  "results": [
+    {
+      "shot": "night-room-mid-tee",
+      "status": "needs_review",
+      "run_id": "run-20260910-232007-04191eee",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-232007-04191eee",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-232007-04191eee.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-room-mid-knit",
+      "status": "needs_review",
+      "run_id": "run-20260910-233207-a67e16f0",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-233207-a67e16f0",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-233207-a67e16f0.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-room-mid-shirt",
+      "status": "needs_review",
+      "run_id": "run-20260910-234348-3d9bfef7",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-234348-3d9bfef7",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-234348-3d9bfef7.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-studio-mid-tee",
+      "status": "needs_review",
+      "run_id": "run-20260910-235548-dc45301c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-235548-dc45301c",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-235548-dc45301c.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-studio-mid-knit",
+      "status": "needs_review",
+      "run_id": "run-20260911-000809-3e94f0dd",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-000809-3e94f0dd",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-000809-3e94f0dd.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-studio-mid-shirt",
+      "status": "timed_out",
+      "run_id": "run-20260911-002029-3613a6b8",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-002029-3613a6b8",
+      "minutes": 63.2,
+      "artifacts": [],
+      "error": null
+    },
+    {
+      "shot": "night-room-full-tee",
+      "status": "failed",
+      "run_id": "run-20260911-012343-97524020",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-012343-97524020",
+      "minutes": 0.4,
+      "artifacts": [],
+      "error": "RuntimeError: another XAI local WanGP worker already holds the GPU lock"
+    },
+    {
+      "shot": "night-room-full-knit",
+      "status": "failed",
+      "run_id": "run-20260911-012404-953a0462",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-012404-953a0462",
+      "minutes": 0.3,
+      "artifacts": [],
+      "error": "RuntimeError: another XAI local WanGP worker already holds the GPU lock"
+    },
+    {
+      "shot": "night-room-full-shirt",
+      "status": "failed",
+      "run_id": "run-20260911-012424-b08fde37",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-012424-b08fde37",
+      "minutes": 0.3,
+      "artifacts": [],
+      "error": "RuntimeError: another XAI local WanGP worker already holds the GPU lock"
+    }
+  ]
+}

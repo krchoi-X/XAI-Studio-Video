@@ -3,9 +3,9 @@
   "run_id": "run-20260910-164318-0aa46c12",
   "project_id": "TURNAROUND-20260910-093500-lia-identity-turnaround",
   "prompt_id": "turn-27-keep-room-seed-i",
-  "status": "running",
+  "status": "needs_review",
   "created_at": "2026-09-10T16:43:18+09:00",
-  "updated_at": "2026-09-10T16:43:27+09:00",
+  "updated_at": "2026-09-10T16:55:12+09:00",
   "target": "local",
   "renderer": "WanGP",
   "requested_by": "claude",
@@ -44,7 +44,18 @@
       "seed": 223606
     }
   },
-  "artifacts": [],
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-164318-0aa46c12.mp4",
+      "sha256": "8c98b35408ecd299a8c984af05b6700770fdeefd8aafd58acd5299986ae7b3f9",
+      "byte_count": 4548899,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "de31b8ba7862f2ffc03120082593ed8bb588797e60f0f49960328bbf1aa2f133",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-10T16:55:12+09:00"
+    }
+  ],
   "error": null,
   "local_worker": {
     "pid": 45708,

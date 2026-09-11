@@ -1,0 +1,257 @@
+{
+  "session": "TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "updated_at": "2026-09-11T14:03:48+09:00",
+  "results": [
+    {
+      "shot": "night2-eyes-wide",
+      "status": "needs_review",
+      "run_id": "run-20260911-071919-e200fe2d",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-071919-e200fe2d",
+      "minutes": 12.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-071919-e200fe2d.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-eyes-soft",
+      "status": "needs_review",
+      "run_id": "run-20260911-073159-058489f9",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-073159-058489f9",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-073159-058489f9.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-eyes-up",
+      "status": "needs_review",
+      "run_id": "run-20260911-074340-a2fd00e1",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-074340-a2fd00e1",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-074340-a2fd00e1.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-eyes-blinkfree",
+      "status": "needs_review",
+      "run_id": "run-20260911-075520-996c4508",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-075520-996c4508",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-075520-996c4508.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-room-mid-cardigan",
+      "status": "needs_review",
+      "run_id": "run-20260911-080700-1f22ac0b",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-080700-1f22ac0b",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-080700-1f22ac0b.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-room-mid-dress",
+      "status": "needs_review",
+      "run_id": "run-20260911-081841-d2c7dc99",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-081841-d2c7dc99",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-081841-d2c7dc99.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-room-mid-stripe",
+      "status": "needs_review",
+      "run_id": "run-20260911-083021-fb02cee5",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-083021-fb02cee5",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-083021-fb02cee5.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-room-mid-sweatshirt",
+      "status": "needs_review",
+      "run_id": "run-20260911-084201-3b88abf9",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-084201-3b88abf9",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-084201-3b88abf9.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-room-mid-blouse",
+      "status": "needs_review",
+      "run_id": "run-20260911-085342-b129697c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-085342-b129697c",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-085342-b129697c.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-room-mid-trench",
+      "status": "needs_review",
+      "run_id": "run-20260911-090522-906b333f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-090522-906b333f",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-090522-906b333f.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-room-full-tee",
+      "status": "needs_review",
+      "run_id": "run-20260911-091702-7f29b9b0",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-091702-7f29b9b0",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-091702-7f29b9b0.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-room-full-knit",
+      "status": "timed_out",
+      "run_id": "run-20260911-093503-d1779473",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-093503-d1779473",
+      "minutes": 92.3,
+      "artifacts": [],
+      "error": null
+    },
+    {
+      "shot": "night-room-full-shirt",
+      "status": "needs_review",
+      "run_id": "run-20260911-110723-ebf1d8d3",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-110723-ebf1d8d3",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-110723-ebf1d8d3.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-room-full-dress",
+      "status": "needs_review",
+      "run_id": "run-20260911-112523-882b7916",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-112523-882b7916",
+      "minutes": 18.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-112523-882b7916.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-room-full-trench",
+      "status": "needs_review",
+      "run_id": "run-20260911-114404-e41c5d60",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-114404-e41c5d60",
+      "minutes": 18.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-114404-e41c5d60.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-room-full-sweatshirt",
+      "status": "needs_review",
+      "run_id": "run-20260911-120224-0ebb329a",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-120224-0ebb329a",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-120224-0ebb329a.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-studio-full-tee",
+      "status": "needs_review",
+      "run_id": "run-20260911-122025-c60888d0",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-122025-c60888d0",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-122025-c60888d0.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-studio-full-knit",
+      "status": "needs_review",
+      "run_id": "run-20260911-123825-e7c06a42",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-123825-e7c06a42",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-123825-e7c06a42.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-studio-full-shirt",
+      "status": "needs_review",
+      "run_id": "run-20260911-125626-192e9962",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-125626-192e9962",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-125626-192e9962.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-studio-mid-cardigan",
+      "status": "needs_review",
+      "run_id": "run-20260911-131426-ca56f62f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-131426-ca56f62f",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-131426-ca56f62f.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-studio-mid-dress",
+      "status": "needs_review",
+      "run_id": "run-20260911-132647-29a10a83",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-132647-29a10a83",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-132647-29a10a83.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night2-studio-mid-trench",
+      "status": "needs_review",
+      "run_id": "run-20260911-133907-01eada9c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-133907-01eada9c",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-133907-01eada9c.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "night-studio-mid-shirt",
+      "status": "needs_review",
+      "run_id": "run-20260911-135127-0574c3fa",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260911-135127-0574c3fa",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-135127-0574c3fa.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

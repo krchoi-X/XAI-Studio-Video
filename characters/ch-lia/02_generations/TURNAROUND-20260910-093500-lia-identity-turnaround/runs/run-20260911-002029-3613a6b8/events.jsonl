@@ -1,0 +1,8 @@
+{"at":"2026-09-11T00:20:29+09:00","state":"queued","prompt_sha256":"995a2670da2ba3cf840b376619c047729bf62685dba3389772e4c53171352d85","target":"local","requested_by":"claude","executor":"local-wangp-worker"}
+{"at":"2026-09-11T00:20:29+09:00","state":"starting","local_worker_pid":45232}
+{"at":"2026-09-11T00:20:39+09:00","state":"running","provider_job_id":"local-pid-25784"}
+{"at":"2026-09-11T00:22:50+09:00","state":"running","progress":"inference 1/20","preview":{"image":"<PIL.Image.Image image mode=RGB size=660x200 at 0x1CB3EA8F410>","phase":"inference","status":"Denoising","progress":23,"current_step":1,"total_steps":20}}
+{"at":"2026-09-11T01:23:54+09:00","state":"running","progress":"inference 2/20","preview":{"image":"<PIL.Image.Image image mode=RGB size=660x200 at 0x1CB3EC27290>","phase":"inference","status":"Denoising","progress":26,"current_step":2,"total_steps":20}}
+{"at":"2026-09-11T01:24:22+09:00","state":"running","progress":"inference 3/20","preview":{"image":"<PIL.Image.Image image mode=RGB size=660x200 at 0x1CB411A8D90>","phase":"inference","status":"Denoising","progress":29,"current_step":3,"total_steps":20}}
+{"at":"2026-09-11T01:24:49+09:00","state":"running","progress":"inference 4/20","preview":{"image":"<PIL.Image.Image image mode=RGB size=660x200 at 0x1CB3EC4CBD0>","phase":"inference","status":"Denoising","progress":33,"current_step":4,"total_steps":20}}
+{"at":"2026-09-11T01:25:17+09:00","state":"running","progress":"inference 5/20","preview":{"image":"<PIL.Image.Image image mode=RGB size=660x200 at 0x1CB3EBE0590>","phase":"inference","status":"Denoising","progress":36,"current_step":5,"total_steps":20}}

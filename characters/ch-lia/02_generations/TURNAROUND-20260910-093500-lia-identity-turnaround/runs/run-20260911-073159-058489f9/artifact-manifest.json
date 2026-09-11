@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260911-073159-058489f9",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260911-073159-058489f9.mp4",
+      "sha256": "27f665e9f85cd90707822fd0e6e7b461891646068be41d6bf403031beac9abfc",
+      "byte_count": 4064248,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "af9d4d3880bd8ca6fa4aa35f346d907449ed1a1b5f86189a1920f066bf7decca",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-11T07:43:24+09:00"
+    }
+  ]
+}

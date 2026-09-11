@@ -1,0 +1,3 @@
+{"at":"2026-09-11T01:24:04+09:00","state":"queued","prompt_sha256":"28935c5fefe16a46ae1f0ccc6629ab24a21e58f321e12e0cffbca4a10397784a","target":"local","requested_by":"claude","executor":"local-wangp-worker"}
+{"at":"2026-09-11T01:24:04+09:00","state":"starting","local_worker_pid":50744}
+{"at":"2026-09-11T01:24:05+09:00","state":"failed","message":"RuntimeError: another XAI local WanGP worker already holds the GPU lock"}

@@ -1,0 +1,28 @@
+{
+  "session": "TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "updated_at": "2026-09-10T17:55:05+09:00",
+  "results": [
+    {
+      "shot": "turn-31-keep-room-mirrored-a",
+      "status": "needs_review",
+      "run_id": "run-20260910-173145-777c3dd6",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-173145-777c3dd6",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-173145-777c3dd6.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "turn-32-keep-room-mirrored-b",
+      "status": "needs_review",
+      "run_id": "run-20260910-174325-60a6abfb",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-174325-60a6abfb",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-174325-60a6abfb.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

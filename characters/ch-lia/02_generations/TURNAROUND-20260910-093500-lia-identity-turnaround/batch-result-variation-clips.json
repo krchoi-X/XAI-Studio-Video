@@ -1,0 +1,28 @@
+{
+  "session": "TURNAROUND-20260910-093500-lia-identity-turnaround",
+  "updated_at": "2026-09-10T17:31:15+09:00",
+  "results": [
+    {
+      "shot": "turn-29-keep-room-ponytail",
+      "status": "needs_review",
+      "run_id": "run-20260910-170734-694cfb6d",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-170734-694cfb6d",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-170734-694cfb6d.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "turn-30-keep-room-knit",
+      "status": "needs_review",
+      "run_id": "run-20260910-171935-22164612",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\runs\\run-20260910-171935-22164612",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\TURNAROUND-20260910-093500-lia-identity-turnaround\\outputs\\minimax-h3\\run-20260910-171935-22164612.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

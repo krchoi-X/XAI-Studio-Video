@@ -1,0 +1,26 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png",
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\derived\\lia-master-facecrop.png"
+  ],
+  "resolution": "576x768",
+  "video_length": 121,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "seed": 314173,
+  "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes. They are wearing a light sand-coloured cotton trench coat open over a plain white tee, with indigo jeans.\nsummary:\n[reference generation] <Subject 1> turns slowly through a half circle against a plain seamless mid-grey photographic studio backdrop with no props and no furniture during one continuous shot, seen waist-up.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture and hair remain recognizable and unchanged; only the angle of the body relative to the camera, the framing and the clothing are new.\ndetailed_description:\nThe target video is a single continuous take against a plain seamless mid-grey photographic studio backdrop with no props and no furniture. [Shot 1] A locked-off waist-up shot holds <Subject 1> from the top of the head to just below the waist, their face clearly readable in the frame, with the setting soft behind them. They begin facing the camera with a calm neutral expression and their lips lightly closed. Across the whole shot they turn slowly and continuously to their own left in one smooth unbroken motion, passing through a three-quarter view and continuing to a full side profile and on towards the back, keeping their chin level and their posture upright. Their eyes stay open, level and relaxed for the whole shot: they do not squint, do not narrow their eyes and do not half-close their lids at any point. The camera does not move, zoom or cut, and the light does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their softly rounded cheeks, their lips, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech and no change of expression.\noverall_soundscape: A quiet neutral room tone and nothing else.\nnon_diegetic_music: None.\n",
+  "output_filename": "run-20260911-133907-01eada9c"
+}

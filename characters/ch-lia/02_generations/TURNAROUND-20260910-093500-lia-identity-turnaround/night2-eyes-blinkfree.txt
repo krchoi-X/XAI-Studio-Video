@@ -1,0 +1,10 @@
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone, hairstyle, body proportions and distinctive accessories. <Picture 2> is the authority for the shape of their face and eyes. They are wearing the same soft blue-grey loose tee as the reference.
+summary:
+[reference generation] <Subject 1> faces the camera in a tight close-up in the same quiet seaside room as <Picture 1>, with its window light and its furnishings left exactly as they are and moves through a range of eye states during one continuous shot.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture, hair and clothing remain recognizable and unchanged; only how widely the eyes are open is new.
+detailed_description:
+The target video is a single continuous take in the same quiet seaside room as <Picture 1>, with its window light and its furnishings left exactly as they are. [Shot 1] A tight locked-off close-up holds <Subject 1>'s head and the top of their shoulders, their face filling most of the frame, cropped just below the collarbone, with the room softly out of focus behind them. They face the camera squarely for the whole shot and never turn their head away from it, holding a calm expression with their lips lightly closed. Across the shot they hold a steady calm gaze straight at the camera without blinking, with the eyes comfortably open and the iris fully visible. Nothing else changes. They never squint, never narrow their eyes and never half-close their lids. The camera does not move, zoom or cut, and the soft daylight from the window does not change. Their slim slightly elongated oval face, their slightly elongated almond eyes, their small refined nose, their softly rounded cheeks, their lips, their pale skin with its visible pores and fine texture, their long dark hair and their wispy bangs remain stable and physically coherent from the first frame to the last. There is no speech.
+overall_soundscape: A quiet neutral room tone and nothing else.
+non_diegetic_music: None.
