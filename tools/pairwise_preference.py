@@ -69,50 +69,76 @@ PAGE = """<!doctype html>
 <div class="reasons" id="reasons"></div>
 <div class="bar">
   <span id="count"></span>
-  <span><button onclick="skip()">건너뛰기</button> <button onclick="save()">답변 저장</button></span>
+  <span><button id="skip">건너뛰기</button> <button id="save">답변 저장</button></span>
 </div>
 <script>
+// Every handler is attached here, never written into an attribute. The first build put the reason text
+// inside an inline handler attribute; the quotes JSON.stringify produced closed the attribute early, so the
+// handler never ran and the page silently refused to advance.
 const PAIRS = {pairs};
 const REASONS = {reasons};
 const KEY = {storage};
 let answers = JSON.parse(localStorage.getItem(KEY) || "[]");
 let i = answers.length, pending = null;
 
+const stage = document.getElementById("stage");
+const box = document.getElementById("reasons");
+const count = document.getElementById("count");
+
 function render() {{
-  const stage = document.getElementById("stage"), box = document.getElementById("reasons");
-  box.className = "reasons"; box.innerHTML = ""; pending = null;
-  document.getElementById("count").textContent = `${{Math.min(i + 1, PAIRS.length)}} / ${{PAIRS.length}}`;
+  box.className = "reasons"; box.textContent = ""; pending = null;
+  count.textContent = `${{Math.min(i + 1, PAIRS.length)}} / ${{PAIRS.length}}`;
+  stage.textContent = "";
   if (i >= PAIRS.length) {{
     stage.innerHTML = '<div class="done"><h1>끝났습니다</h1><p>저장 버튼을 눌러주세요.</p></div>';
     return;
   }}
-  const p = PAIRS[i];
-  stage.innerHTML = '<div class="pair">' + [p.a, p.b].map((f, n) =>
-    `<figure id="fig${{n}}" onclick="choose(${{n}})"><img src="images/${{f.file}}" alt="">` +
-    `<figcaption>${{p.bucket}} · yaw ${{f.yaw.toFixed(2)}}</figcaption></figure>`).join("") + "</div>";
+  const pair = PAIRS[i];
+  const grid = document.createElement("div");
+  grid.className = "pair";
+  [pair.a, pair.b].forEach((frame, n) => {{
+    const figure = document.createElement("figure");
+    const image = document.createElement("img");
+    image.src = "images/" + frame.file;
+    const caption = document.createElement("figcaption");
+    caption.textContent = `${{pair.bucket}} · yaw ${{frame.yaw.toFixed(2)}}`;
+    figure.append(image, caption);
+    figure.addEventListener("click", () => choose(n, figure, grid));
+    grid.append(figure);
+  }});
+  stage.append(grid);
 }}
-function choose(n) {{
+
+function choose(n, figure, grid) {{
   pending = n === 0 ? "a" : "b";
-  document.getElementById("fig" + n).classList.add("picked");
-  document.getElementById("fig" + (1 - n)).classList.remove("picked");
-  const box = document.getElementById("reasons");
+  Array.from(grid.children).forEach(child => child.classList.remove("picked"));
+  figure.classList.add("picked");
   box.className = "reasons on";
-  box.innerHTML = "<b>무엇이 결정적이었나요?</b>" +
-    REASONS.map(r => `<button onclick="reason(${{JSON.stringify(r)}})">${{r}}</button>`).join("");
+  box.textContent = "";
+  const label = document.createElement("b");
+  label.textContent = "무엇이 결정적이었나요?";
+  box.append(label);
+  REASONS.forEach(reason => {{
+    const button = document.createElement("button");
+    button.textContent = reason;
+    button.addEventListener("click", () => {{ if (pending) record(pending, reason); }});
+    box.append(button);
+  }});
 }}
+
 function record(choice, why) {{
   answers.push({{pair: PAIRS[i].id, bucket: PAIRS[i].bucket, a: PAIRS[i].a.file, b: PAIRS[i].b.file,
                 choice: choice, reason: why || null}});
   localStorage.setItem(KEY, JSON.stringify(answers));
   i += 1; render();
 }}
-function reason(r) {{ if (pending) record(pending, r); }}
-function skip() {{ record("skip", null); }}
-function save() {{
+
+document.getElementById("skip").addEventListener("click", () => record("skip", null));
+document.getElementById("save").addEventListener("click", () => {{
   const blob = new Blob([JSON.stringify(answers, null, 1)], {{type: "application/json"}});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob); a.download = {filename}; a.click();
-}}
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob); link.download = {filename}; link.click();
+}});
 render();
 </script>
 """
@@ -186,6 +212,8 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                        reasons=json.dumps(REASONS, ensure_ascii=False),
                        storage=json.dumps(f"pref-{manifest['character_id']}-{args.round}"),
                        filename=json.dumps(f"preference-{manifest['character_id']}-{args.round}.json"))
+    if "onclick=" in page:
+        raise ValueError("inline handlers are not allowed: data in an onclick attribute breaks on quotes")
     (out_dir / "index.html").write_text(page, encoding="utf-8")
     (out_dir / "pairs.json").write_text(json.dumps(
         {"character_id": manifest["character_id"], "round": args.round, "source_set": str(source),
