@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260912-151131-12fb9e74",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa-angle-test\\outputs\\minimax-h3\\run-20260912-151131-12fb9e74.mp4",
+      "sha256": "eab3c8a6d7c1be56cb3b44830d40886ac1a66b6b07a4088f8ee4e8feac09e69d",
+      "byte_count": 2963724,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "93089e12c47bd6f9e7197b1c67fd857f0594337d7d26b163c35504384831cb87",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-12T15:23:17+09:00"
+    }
+  ]
+}

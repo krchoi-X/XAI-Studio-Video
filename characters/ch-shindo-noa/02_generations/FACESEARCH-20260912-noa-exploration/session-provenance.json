@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "FACESEARCH-20260912-noa-exploration",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-exploration",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "krea2_raw",
+  "character_id": "ch-shindo-noa",
+  "title": "Shindo Noa face search, operator's own exploration prompt",
+  "user_request_verbatim": "어제까지의 삽질을 바탕으로 새로운 캐릭터를 만든거야. 노아가 잘 되면 그 방식을 이용해서 다른 캐릭터들을 수정할 수 있겠지만 그건 노아가 잘 될 때의 이야기야. 즉 노아를 이용해서 시작해줘",
+  "source_idea": "The operator rewrote the DNA overnight with what the Lia work established: an off-prior eye anchor (visible sclera, short brow-to-eye distance), a dedicated profile field, an explicit forbidden_drift list and explicit flexible_variables. This runs their own Loose Krea exploration prompt verbatim, with no negative prompt, because a broad negative list is what made the previous grid plain rather than distinctive.",
+  "status": "prepared",
+  "created_at": "2026-09-12T08:10:41+09:00",
+  "updated_at": "2026-09-12T08:10:41+09:00"
+}

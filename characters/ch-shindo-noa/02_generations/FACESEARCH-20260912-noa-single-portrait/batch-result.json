@@ -1,0 +1,270 @@
+{
+  "session": "FACESEARCH-20260912-noa-single-portrait",
+  "updated_at": "2026-09-12T11:19:19+09:00",
+  "results": [
+    {
+      "shot": "noa-01",
+      "status": "needs_review",
+      "run_id": "run-20260912-094530-c5ff1efb",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-094530-c5ff1efb",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-094530-c5ff1efb.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-02",
+      "status": "needs_review",
+      "run_id": "run-20260912-094931-2f7e47d9",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-094931-2f7e47d9",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-094931-2f7e47d9.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-03",
+      "status": "needs_review",
+      "run_id": "run-20260912-095331-d003405e",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-095331-d003405e",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-095331-d003405e.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-04",
+      "status": "needs_review",
+      "run_id": "run-20260912-095732-87dcc881",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-095732-87dcc881",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-095732-87dcc881.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-05",
+      "status": "needs_review",
+      "run_id": "run-20260912-100132-ed5e9740",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-100132-ed5e9740",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-100132-ed5e9740.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-06",
+      "status": "needs_review",
+      "run_id": "run-20260912-100512-a67eae78",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-100512-a67eae78",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-100512-a67eae78.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-07",
+      "status": "needs_review",
+      "run_id": "run-20260912-100913-31430ba2",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-100913-31430ba2",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-100913-31430ba2.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-08",
+      "status": "needs_review",
+      "run_id": "run-20260912-101253-e7845c47",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-101253-e7845c47",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-101253-e7845c47.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-09",
+      "status": "needs_review",
+      "run_id": "run-20260912-101633-9163cf4a",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-101633-9163cf4a",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-101633-9163cf4a.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-10",
+      "status": "needs_review",
+      "run_id": "run-20260912-102034-11f451aa",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-102034-11f451aa",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-102034-11f451aa.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-11",
+      "status": "needs_review",
+      "run_id": "run-20260912-102434-b2dd9d5b",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-102434-b2dd9d5b",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-102434-b2dd9d5b.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-12",
+      "status": "needs_review",
+      "run_id": "run-20260912-102834-e13f4495",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-102834-e13f4495",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-102834-e13f4495.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-13",
+      "status": "needs_review",
+      "run_id": "run-20260912-103215-2564892a",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-103215-2564892a",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-103215-2564892a.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-14",
+      "status": "needs_review",
+      "run_id": "run-20260912-103615-843d6886",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-103615-843d6886",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-103615-843d6886.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-15",
+      "status": "needs_review",
+      "run_id": "run-20260912-104015-b12ac938",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-104015-b12ac938",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-104015-b12ac938.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-16",
+      "status": "needs_review",
+      "run_id": "run-20260912-104416-a31c2769",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-104416-a31c2769",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-104416-a31c2769.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-17",
+      "status": "needs_review",
+      "run_id": "run-20260912-104816-22c1a7d6",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-104816-22c1a7d6",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-104816-22c1a7d6.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-18",
+      "status": "needs_review",
+      "run_id": "run-20260912-105216-7c2598a9",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-105216-7c2598a9",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-105216-7c2598a9.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-19",
+      "status": "needs_review",
+      "run_id": "run-20260912-105617-a42d7548",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-105617-a42d7548",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-105617-a42d7548.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-20",
+      "status": "needs_review",
+      "run_id": "run-20260912-105957-d7def2ac",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-105957-d7def2ac",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-105957-d7def2ac.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-21",
+      "status": "needs_review",
+      "run_id": "run-20260912-110337-66639184",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-110337-66639184",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-110337-66639184.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-22",
+      "status": "needs_review",
+      "run_id": "run-20260912-110738-dc0226f7",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-110738-dc0226f7",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-110738-dc0226f7.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-23",
+      "status": "needs_review",
+      "run_id": "run-20260912-111118-4e1fa62a",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-111118-4e1fa62a",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-111118-4e1fa62a.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "noa-24",
+      "status": "needs_review",
+      "run_id": "run-20260912-111518-fffbe752",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait\\runs\\run-20260912-111518-fffbe752",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-111518-fffbe752.jpg"
+      ],
+      "error": null
+    }
+  ]
+}

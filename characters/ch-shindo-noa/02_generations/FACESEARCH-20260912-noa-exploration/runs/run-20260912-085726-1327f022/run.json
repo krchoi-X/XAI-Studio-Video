@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260912-085726-1327f022",
+  "project_id": "FACESEARCH-20260912-noa-exploration",
+  "prompt_id": "noa-13",
+  "status": "needs_review",
+  "created_at": "2026-09-12T08:57:26+09:00",
+  "updated_at": "2026-09-12T09:01:18+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-51772",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-exploration\\noa-13.txt",
+    "sha256": "ddbf7d9e30804bc07af3a2c76ae1aa1e4085fca3e59a4eea57e3d33168c3d92d",
+    "normalized_sha256": "273ee8ce80895a1c942d6bb9434feb047ee46e4de70cde537cfe5421c4cf38ad",
+    "byte_count": 930
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-exploration\\noa-13.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_raw",
+      "base_model_type": "krea2_raw",
+      "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 20,
+      "guidance_scale": 3.5,
+      "negative_prompt": "",
+      "batch_size": 1,
+      "repeat_generation": 1,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "seed": 95129
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-exploration\\outputs\\krea2\\run-20260912-085726-1327f022.jpg",
+      "sha256": "66f85931286208ca5b4dfedea88662d3c3dccbcc54cb49555f523f9a68532dec",
+      "byte_count": 177836,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-12T09:01:18+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 21960,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-exploration\\runs\\run-20260912-085726-1327f022",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-exploration\\runs\\run-20260912-085726-1327f022\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-exploration\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-exploration\\runs\\run-20260912-085726-1327f022\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-exploration\\runs\\run-20260912-085726-1327f022\\worker.stderr.log"
+  }
+}

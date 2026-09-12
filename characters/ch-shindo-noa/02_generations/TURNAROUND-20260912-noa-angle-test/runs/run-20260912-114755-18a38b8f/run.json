@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260912-114755-18a38b8f",
+  "project_id": "TURNAROUND-20260912-noa-angle-test",
+  "prompt_id": "angle-noa-12",
+  "status": "needs_review",
+  "created_at": "2026-09-12T11:47:55+09:00",
+  "updated_at": "2026-09-12T11:59:28+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-13676",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\angle-noa-12.txt",
+    "sha256": "64621bd2de0ab626c3474ca954f9c4989d907887405972b524c0aedb5a497ac2",
+    "normalized_sha256": "93089e12c47bd6f9e7197b1c67fd857f0594337d7d26b163c35504384831cb87",
+    "byte_count": 2201
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\angle-noa-12.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-12-portrait.jpg",
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-12-facecrop.png"
+      ],
+      "resolution": "576x768",
+      "video_length": 121,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "seed": 271828
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa-angle-test\\outputs\\minimax-h3\\run-20260912-114755-18a38b8f.mp4",
+      "sha256": "b63ab092dedc65b0bbaff9de920d449e0bc16e292e32d0f64772fac73aefa249",
+      "byte_count": 2931796,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "93089e12c47bd6f9e7197b1c67fd857f0594337d7d26b163c35504384831cb87",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-12T11:59:28+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 44776,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\runs\\run-20260912-114755-18a38b8f",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\runs\\run-20260912-114755-18a38b8f\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa-angle-test\\outputs\\minimax-h3",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\runs\\run-20260912-114755-18a38b8f\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\runs\\run-20260912-114755-18a38b8f\\worker.stderr.log"
+  }
+}

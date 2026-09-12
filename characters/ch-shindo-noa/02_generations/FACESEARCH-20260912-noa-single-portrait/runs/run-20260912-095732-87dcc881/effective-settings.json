@@ -1,0 +1,19 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_raw",
+  "base_model_type": "krea2_raw",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 20,
+  "guidance_scale": 3.5,
+  "negative_prompt": "collage, contact sheet, grid of photos, multiple panels, split frame, photo montage",
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "seed": 23858,
+  "prompt": "A single photorealistic portrait photograph of one person in one frame, head and shoulders, filling the frame. Not a collage, not a contact sheet, not a grid, not multiple panels.\n\nShindo Noa, an original 26-year-old Japanese woman with a lean youthful face, almost no cheek baby fat, subtle smooth cheekbones, large horizontally elongated almond eyes with noticeable visible sclera, dark straight brows, a straight refined nose, and a softly rounded non-protruding chin. She has black hair, a long neck, and a quiet resilient self-reliant presence. She looks young but not sheltered.\n\nPreserve her core facial identity, but allow natural variation in hairstyle, outfit, makeup, expression, lighting, and urban/everyday setting. She may appear with a bob or tied-back hair, with bare or vivid red lips, in workwear, casual clothing, or homewear.\n\nCritical identity constraints: no dorsal hump, no aquiline or hooked nose, no protruding or shovel chin, no underbite impression, no heavy jaw, no aged facial hollowness, no round doll-like eyes, no tiny pinched nose, and no generic influencer-glamour drift.\n",
+  "output_filename": "run-20260912-095732-87dcc881"
+}

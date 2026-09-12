@@ -1,0 +1,17 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_raw",
+  "base_model_type": "krea2_raw",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 20,
+  "guidance_scale": 3.5,
+  "negative_prompt": "collage, contact sheet, grid of photos, multiple panels, split frame, photo montage",
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "seed": 39696
+}

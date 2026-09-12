@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260912-100132-ed5e9740",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FACESEARCH-20260912-noa-single-portrait\\outputs\\krea2\\run-20260912-100132-ed5e9740.jpg",
+      "sha256": "705053f29811e4a0708cd51918179b86d78f450e69f26e0f2a88457f2decc073",
+      "byte_count": 106627,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-12T10:05:06+09:00"
+    }
+  ]
+}

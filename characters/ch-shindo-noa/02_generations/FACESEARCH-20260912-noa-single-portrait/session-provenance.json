@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "FACESEARCH-20260912-noa-single-portrait",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FACESEARCH-20260912-noa-single-portrait",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "krea2_raw",
+  "character_id": "ch-shindo-noa",
+  "title": "Shindo Noa face search, single portrait per image",
+  "user_request_verbatim": "노아를 이용해서 시작해줘",
+  "source_idea": "Same operator exploration prompt and same seeds as FACESEARCH-20260912-noa-exploration, which returned 24 collages instead of 24 portraits: the sentence listing hair, lip and wardrobe options reads as a request for a sheet of variations. One framing instruction is prepended and a collage negative added; the operator's own wording is otherwise untouched.",
+  "status": "prepared",
+  "created_at": "2026-09-12T09:45:30+09:00",
+  "updated_at": "2026-09-12T09:45:30+09:00"
+}

@@ -1,0 +1,61 @@
+{
+  "session": "TURNAROUND-20260912-noa-angle-test",
+  "updated_at": "2026-09-12T12:22:56+09:00",
+  "results": [
+    {
+      "shot": "angle-noa-01",
+      "status": "needs_review",
+      "run_id": "run-20260912-112434-93736be0",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\runs\\run-20260912-112434-93736be0",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa-angle-test\\outputs\\minimax-h3\\run-20260912-112434-93736be0.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "angle-noa-09",
+      "status": "needs_review",
+      "run_id": "run-20260912-113615-8e0bfdac",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\runs\\run-20260912-113615-8e0bfdac",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa-angle-test\\outputs\\minimax-h3\\run-20260912-113615-8e0bfdac.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "angle-noa-12",
+      "status": "needs_review",
+      "run_id": "run-20260912-114755-18a38b8f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\runs\\run-20260912-114755-18a38b8f",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa-angle-test\\outputs\\minimax-h3\\run-20260912-114755-18a38b8f.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "angle-noa-17",
+      "status": "needs_review",
+      "run_id": "run-20260912-115936-4f58df44",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\runs\\run-20260912-115936-4f58df44",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa-angle-test\\outputs\\minimax-h3\\run-20260912-115936-4f58df44.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "angle-noa-21",
+      "status": "needs_review",
+      "run_id": "run-20260912-121116-6c12ba7e",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa-angle-test\\runs\\run-20260912-121116-6c12ba7e",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa-angle-test\\outputs\\minimax-h3\\run-20260912-121116-6c12ba7e.mp4"
+      ],
+      "error": null
+    }
+  ]
+}
