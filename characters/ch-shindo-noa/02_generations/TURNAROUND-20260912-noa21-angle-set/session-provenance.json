@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "TURNAROUND-20260912-noa21-angle-set",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa-21 angle set, both directions with headroom",
+  "user_request_verbatim": "난 21이 제일 맘에 들어. 21로 하자",
+  "source_idea": "noa-21 was chosen by the operator, not by the score, which ranked it fourth. Its measured weakness is real and specific: one seed in three collapsed to 0.579, and the direct direction rotated shallowly while the mirrored pass reached a full profile in one take. So the set is shot with headroom in both directions and only admitted clips are kept.",
+  "status": "prepared",
+  "created_at": "2026-09-12T18:35:54+09:00",
+  "updated_at": "2026-09-12T18:35:54+09:00"
+}

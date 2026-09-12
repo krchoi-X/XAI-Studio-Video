@@ -1,0 +1,138 @@
+{
+  "session": "TURNAROUND-20260912-noa21-angle-set",
+  "updated_at": "2026-09-12T21:01:00+09:00",
+  "results": [
+    {
+      "shot": "set-L1",
+      "status": "needs_review",
+      "run_id": "run-20260912-183555-d6a41a76",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-183555-d6a41a76",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-183555-d6a41a76.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-R1",
+      "status": "needs_review",
+      "run_id": "run-20260912-184735-a0703bb4",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-184735-a0703bb4",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-184735-a0703bb4.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-L2",
+      "status": "needs_review",
+      "run_id": "run-20260912-185916-095b4055",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-185916-095b4055",
+      "minutes": 11.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-185916-095b4055.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-R2",
+      "status": "needs_review",
+      "run_id": "run-20260912-191056-2e69c6a2",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-191056-2e69c6a2",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-191056-2e69c6a2.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-L3",
+      "status": "needs_review",
+      "run_id": "run-20260912-192257-eb3f774c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-192257-eb3f774c",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-192257-eb3f774c.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-R3",
+      "status": "needs_review",
+      "run_id": "run-20260912-193457-c3000f4b",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-193457-c3000f4b",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-193457-c3000f4b.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-L4",
+      "status": "needs_review",
+      "run_id": "run-20260912-194718-d3bbe8f3",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-194718-d3bbe8f3",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-194718-d3bbe8f3.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-R4",
+      "status": "needs_review",
+      "run_id": "run-20260912-195918-5d93e5d0",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-195918-5d93e5d0",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-195918-5d93e5d0.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-L5",
+      "status": "needs_review",
+      "run_id": "run-20260912-201138-1265f7ac",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-201138-1265f7ac",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-201138-1265f7ac.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-R5",
+      "status": "needs_review",
+      "run_id": "run-20260912-202359-5df32e2a",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-202359-5df32e2a",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-202359-5df32e2a.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-L6",
+      "status": "needs_review",
+      "run_id": "run-20260912-203619-017f7fdd",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-203619-017f7fdd",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-203619-017f7fdd.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "set-R6",
+      "status": "needs_review",
+      "run_id": "run-20260912-204840-01a9140c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-204840-01a9140c",
+      "minutes": 12.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-204840-01a9140c.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

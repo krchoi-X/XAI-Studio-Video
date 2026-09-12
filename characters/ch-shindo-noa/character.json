@@ -67,6 +67,14 @@
     "overly cute idol styling"
   ],
   "approved_references": [],
+  "reference_defaults": {
+    "identity": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg",
+      "sha256": "0f26bbd203f8aa0e578a78e83ced98ff01879ee53fef5c50eb260c279684588f",
+      "face_crop": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop.png",
+      "source": "Candidate noa-21 from FACESEARCH-20260912-noa-single-portrait, chosen by the operator on 2026-09-12 from 17 single portraits. The face crop is the second reference the turnaround recipe uses. This is a runtime default, not an approval state."
+    }
+  },
   "prompt_sources": [
     "XAI-Studio-Video/characters/ch-shindo-noa/01_prompts/base_appearance.txt",
     "XAI-Studio-Video/characters/ch-shindo-noa/01_prompts/consistency_rotation_test.md"

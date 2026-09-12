@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260912-204840-01a9140c",
+  "project_id": "TURNAROUND-20260912-noa21-angle-set",
+  "prompt_id": "set-R6",
+  "status": "needs_review",
+  "created_at": "2026-09-12T20:48:40+09:00",
+  "updated_at": "2026-09-12T21:00:42+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-27164",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\set-R6.txt",
+    "sha256": "64621bd2de0ab626c3474ca954f9c4989d907887405972b524c0aedb5a497ac2",
+    "normalized_sha256": "93089e12c47bd6f9e7197b1c67fd857f0594337d7d26b163c35504384831cb87",
+    "byte_count": 2201
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\set-R6.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait-mirrored.jpg",
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop-mirrored.png"
+      ],
+      "resolution": "576x768",
+      "video_length": 121,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "seed": 331662
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3\\run-20260912-204840-01a9140c.mp4",
+      "sha256": "fecf38ccf4dd355eade55f47e00400a3b545bebba08acaf90adf5623d1357839",
+      "byte_count": 3111339,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "93089e12c47bd6f9e7197b1c67fd857f0594337d7d26b163c35504384831cb87",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-12T21:00:42+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 13916,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-204840-01a9140c",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-204840-01a9140c\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\TURNAROUND-20260912-noa21-angle-set\\outputs\\minimax-h3",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-204840-01a9140c\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\TURNAROUND-20260912-noa21-angle-set\\runs\\run-20260912-204840-01a9140c\\worker.stderr.log"
+  }
+}
