@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "QUALITY-20260911-krea2-render-settings",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\QUALITY-20260911-krea2-render-settings",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "krea2_raw_edit",
+  "character_id": "ch-lia",
+  "title": "Krea2 render settings: resolution, codec and VAE upscale",
+  "user_request_verbatim": "krea.ai 나 flux 사이트에서는 아주 멋진 이미지가 나오지만 내 피시에 설치된 krea2는 좀 완성도가 떨어지는 느낌이야. 튜닝이 덜된건가? 아니면 업스케일이 안되어서? 뭘까?",
+  "source_idea": "The local install has been running below WanGP's own krea2 defaults: 768x1024 against a declared default of 1024x1024 and <=2k support, lossy jpeg_95 output, and an installed VAE 2x upsampler that is wired into the krea2 handler and has never been switched on. Hold the prompt, reference and seed fixed and vary only those.",
+  "status": "prepared",
+  "created_at": "2026-09-11T20:55:13+09:00",
+  "updated_at": "2026-09-11T20:55:13+09:00"
+}

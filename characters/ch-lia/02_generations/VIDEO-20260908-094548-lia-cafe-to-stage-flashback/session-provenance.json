@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "session_id": "VIDEO-20260908-094548-lia-cafe-to-stage-flashback",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback",
+  "requested_by": "grok",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-lia",
+  "title": "Lia flashback: cafe sip → stage solo (cut-feel test)",
+  "user_request_verbatim": "카페에서 커피를 마시다가 상상하듯이 컷이 바뀌고, 아이돌 화장을 화려하게 하고, 방송국 무대에서 솔로 댄스가수 공연. 3번 무대 스틸로 테스트. 얼굴이 달라도 컷 이어짐 느낌 확인.",
+  "status": "completed",
+  "created_at": "2026-09-08T09:45:48+09:00",
+  "updated_at": "2026-09-08T10:08:19+09:00"
+}

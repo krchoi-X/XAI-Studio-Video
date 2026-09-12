@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "project_id": "VIDEO-20260907-181254-lia-sundress-shift-cat",
+  "prompt_id": "beat-D-home-cat",
+  "run_id": "run-20260907-205125-b80fed95",
+  "character_id": "ch-lia",
+  "character_dna_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "requested_by": "grok",
+  "requesting_agent": "grok",
+  "source_idea": "Sundress to Shift to Cat (~10s stitch) beat D HOME play with cat",
+  "user_request_ref": "handoff.json:user_request_verbatim",
+  "inputs": {
+    "runtime_prompt_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-D-home-cat.txt",
+    "runtime_prompt_sha256": "46641056f91104629bdc0dae462421f2b712128ba0f376bb333986d046b8ceef",
+    "runtime_prompt_text": "subject_definitions:\n<Subject 1> is the adult woman in <Picture 1>. HARD LOCK face identity to Picture 1: slim slightly elongated oval face, soft dark-brown eyes, translucent pale natural skin with fine pores, soft rose-beige lips, long near-black loose hair with bangs, tall slender silhouette, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep the home casual top and bottom from <Picture 1>. Do not replace her face or turn her into a different person. <Subject 2> is the cream tabby cat in <Picture 1> (provisional appearance, not canon).\n\nsummary:\n[reference generation] One continuous ~3.5-second medium-motion home beat. <Subject 1> sits on a small veranda in casual home clothes, playing with a cream tabby cat and yarn, quiet closed-mouth faint smile.\n\nretention_analysis:\n<Subject 1>: fully_preserved identity and home wardrobe from <Picture 1>. <Subject 2>: preserve cream tabby look from <Picture 1>. Only play motion and yarn interaction may change.\n\ndetailed_description:\nMotion budget MEDBUM for play interaction, LOW for face. Photorealistic small seaside-house veranda / doorway home interior soft daylight.\n[Shot 1] <Subject 1> sits in casual home clothes with loose hair, interacting gently with a cream tabby cat and yarn (petting, dangling yarn, or soft play). Quiet closed-mouth faint smile toward the cat then briefly toward camera. Right-wrist bracelets visible when the wrist is in frame. Cat only in this beat. Gentle handheld breathing; no crash zooms. No cut. No beauty filter. No speech. Stay fully clothed.\n\noverall_soundscape:\nSoft home ambience, light yarn rustle, quiet cat sound. No speech. No music.\n\nnon_diegetic_music:\nNone.\n",
+    "settings_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-D-home-cat.settings.json",
+    "effective_settings_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-205125-b80fed95\\effective-settings.json",
+    "reference_images": [
+      {
+        "role": "home_cat_identity",
+        "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-180834-lia-fully-clothed-adult-woman-at\\outputs\\krea2\\run-20260907-180834-2a6549b3.jpg",
+        "sha256": "7a8135ed863dcbaa6b364a3df30b978cd29ffa2b9512a5e1d1eebc429612317b",
+        "byte_count": 194825
+      }
+    ],
+    "model_type": "minimax_h3_ref2va_pruned",
+    "video_prompt_type": "KI",
+    "resolution": "576x768",
+    "video_length": 73,
+    "num_inference_steps": 20,
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "profile": 1,
+    "vram_safety": 0.8
+  },
+  "outputs": {
+    "output_dir": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat",
+    "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-205125-b80fed95",
+    "status": "needs_review",
+    "artifact_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-205125-b80fed95.mp4",
+    "artifact_sha256": "6a600df44384eac981226981edbd5785079bd638c47414e2c196a8b009c4dbda",
+    "artifact_byte_count": 3797445,
+    "started_at": "2026-09-07T20:51:25+09:00",
+    "finished_at": "2026-09-07T22:05:05+09:00",
+    "approx_render_minutes": 71
+  },
+  "written_at": "2026-09-07T22:06:48+09:00",
+  "finished_at": "2026-09-07T22:05:05+09:00"
+}

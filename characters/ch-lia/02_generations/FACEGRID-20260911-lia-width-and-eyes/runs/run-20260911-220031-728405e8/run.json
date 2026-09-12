@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260911-220031-728405e8",
+  "project_id": "FACEGRID-20260911-lia-width-and-eyes",
+  "prompt_id": "w1-narrow-e2-mid-s1",
+  "status": "needs_review",
+  "created_at": "2026-09-11T22:00:31+09:00",
+  "updated_at": "2026-09-11T22:04:05+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-21564",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\w1-narrow-e2-mid-s1.txt",
+    "sha256": "84411d699075d9e9218aefd5fca731a6ec8e6900ad63e83325ae7ce0b48a6d84",
+    "normalized_sha256": "395b33cfa068a63d0babd8ecfccd8a2f88ed452c2a1cb2ee5ad2af0e66626300",
+    "byte_count": 1480
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\w1-narrow-e2-mid-s1.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_raw",
+      "base_model_type": "krea2_raw",
+      "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "num_inference_steps": 20,
+      "guidance_scale": 3.5,
+      "negative_prompt": "generic idealized AI beauty face, symmetrical perfect features, airbrushed poreless skin, beauty filter, glamour retouching, doll-like face",
+      "batch_size": 1,
+      "repeat_generation": 1,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "seed": 161810
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-220031-728405e8.jpg",
+      "sha256": "84b23e0d2f54a505e6428149aead10f174c02b488bf41fc4da687c37afec8c67",
+      "byte_count": 209600,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-11T22:04:05+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 46448,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-220031-728405e8",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-220031-728405e8\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-220031-728405e8\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-220031-728405e8\\worker.stderr.log"
+  }
+}

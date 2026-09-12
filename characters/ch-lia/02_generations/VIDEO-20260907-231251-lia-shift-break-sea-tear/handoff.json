@@ -1,0 +1,97 @@
+{
+  "project_id": "VIDEO-20260907-231251-lia-shift-break-sea-tear",
+  "status": "needs_review",
+  "target_renderer": "local-wangp",
+  "model": "minimax_h3_ref2va_pruned",
+  "created_at": "2026-09-07T23:12:51+09:00",
+  "source_idea": "Continuous ~10s store-break to sea-tear teaser (one clip, timed prompt)",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear",
+  "runs_root": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\runs",
+  "output_dir": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-231251-lia-shift-break-sea-tear",
+  "readme": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\README.md",
+  "references": {
+    "work_uniform": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175243-8e09c94a_1.jpg",
+      "sha256": "2376ce1d1661b7afe9e28f70012e581ead9b871ae741e647ceb2fa804fd147e7",
+      "note": "Requested SCENE-20260907-175243-lia-convenience-store-part-time-uniform missing; used validated clothed still. 173926 nude-rejected."
+    }
+  },
+  "prompts": [
+    {
+      "prompt_id": "teaser-shift-break-sea-tear",
+      "title": "Lia teaser: shift break / sea tear",
+      "prompt_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\teaser-shift-break-sea-tear.txt",
+      "settings_file": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\teaser-shift-break-sea-tear.settings.json",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175243-8e09c94a_1.jpg"
+      ],
+      "video_length": 243,
+      "continuous_sequence": true
+    }
+  ],
+  "updated_at": "2026-09-08T01:17:29+09:00",
+  "character": {
+    "id": "ch-lia",
+    "version": 2,
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+    "character_json": "D:\\codex\\XAI-studio\\characters\\ch-lia\\character.json"
+  },
+  "active_run": null,
+  "results": [
+    {
+      "prompt_id": "teaser-shift-break-sea-tear",
+      "run_id": "run-20260907-231507-69334b41",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\runs\\run-20260907-231507-69334b41",
+      "status": "needs_review",
+      "artifact": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\run-20260907-231507-69334b41.mp4",
+      "artifact_sha256": "ae0641e932ebce8c6307c38815be2ee8da6872c1f13cf4976d47d3d886325c09",
+      "approx_render_minutes": 122,
+      "started_at": "2026-09-07T23:15:07+09:00",
+      "finished_at": "2026-09-08T01:17:29+09:00",
+      "lineage": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\runs\\run-20260907-231507-69334b41\\lineage.json",
+      "error": null,
+      "requested_by": "grok",
+      "requesting_agent": "grok",
+      "byte_count": 8684886,
+      "video_length": 243,
+      "continuous_sequence": true
+    }
+  ],
+  "orchestrator": "grok",
+  "requested_by": "grok",
+  "requesting_agent": "grok",
+  "user_request_verbatim": "스토리에 맞게 컷 구성을 해야지. 편의점에서 일하다가 잠시 쉬면서 고개를 들고 호흡을 가다듬는데 얼굴이 클로즈업되고 바다에서 바닷바람을 쐬면서 눈감고 있는 얼굴이 되는거야. 눈에서 눈물이 한방울 나오지. 이러면 뮤직비디오나 이어지는 쇼츠 드라마의 티저처럼 보이잖아. 뭔가 아주 무난한 일상에서 시작해서 사건이 벌어지는 것을 내포한 동영상을 생각한거야",
+  "cuts_locked": [
+    {
+      "span": "0.0-2.8s",
+      "lens": "35mm MS",
+      "action": "convenience-store uniform, working then hands pause"
+    },
+    {
+      "span": "2.8-5.2s",
+      "lens": "50mm->CU",
+      "action": "lifts head, steadies breath, face close-up"
+    },
+    {
+      "span": "5.2-6.0s",
+      "lens": "ECU match",
+      "action": "eyes closing bridges space (SAME face)"
+    },
+    {
+      "span": "6.0-10.0s",
+      "lens": "50mm ECU beach",
+      "action": "sea breeze, eyes closed, ONE tear falls"
+    }
+  ],
+  "technical": {
+    "model": "minimax_h3_ref2va_pruned",
+    "video_prompt_type": "KI",
+    "resolution": "576x768",
+    "video_length": 243,
+    "steps": 20,
+    "profile": 1,
+    "vram_safety": 0.8,
+    "one_continuous_clip": true
+  },
+  "sequence_finished_at": "2026-09-08T01:17:29+09:00"
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260911-211042-3f45f0cc",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\QUALITY-20260911-krea2-render-settings\\outputs\\krea2-edit\\run-20260911-211042-3f45f0cc.jpg",
+      "sha256": "940eed6759fdedadbb180af6d45b66588e7cc7952a0673a9a52a33222421ffab",
+      "byte_count": 1483828,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-11T21:19:09+09:00"
+    }
+  ]
+}

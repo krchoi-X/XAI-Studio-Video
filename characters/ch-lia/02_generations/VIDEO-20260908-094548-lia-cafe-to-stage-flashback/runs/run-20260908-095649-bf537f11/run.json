@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260908-095649-bf537f11",
+  "project_id": "VIDEO-20260908-094548-lia-cafe-to-stage-flashback",
+  "prompt_id": "flash-b-stage-solo",
+  "status": "needs_review",
+  "created_at": "2026-09-08T09:56:49+09:00",
+  "updated_at": "2026-09-08T10:07:57+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-39504",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback\\flash-b-stage-solo.txt",
+    "sha256": "de24731029c46191b86cfcf1c4c259b9d600933690ca1aacaa4dc737804fa522",
+    "normalized_sha256": "70c2aa865b5da45cbd72fa1cdea00f73d35815f176089d18d548de9bc9eface9",
+    "byte_count": 973
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback\\flash-b-stage-solo.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "resolution": "576x768",
+      "video_length": 97,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "seed": -1,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\outputs\\krea2\\run-20260908-083329-24b32211.jpg"
+      ],
+      "_xai": {
+        "kind": "lia_flashback_test",
+        "character_id": "ch-lia",
+        "episode": "flash-b-stage-solo",
+        "prompt_mode": "FG",
+        "expected_queue_items": 1,
+        "requested_seconds": 4,
+        "frame_grid": "97 frames @24fps ~4.0s",
+        "motion_budget": "MEDIUM",
+        "identity_priority": "P0-test-cut",
+        "reference_paths": [
+          "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\outputs\\krea2\\run-20260908-083329-24b32211.jpg"
+        ]
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback\\run-20260908-095649-bf537f11.mp4",
+      "sha256": "dacdff6c82e2c081b4152c8cd1e3683d32b151bdd9f15d67f0845a1b47a8d46d",
+      "byte_count": 4958578,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "a3437c3e4a9739122d7fac4ce3e0c6e4b8f3fcbf8958bd6ff36e5ee9e7c04390",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-08T10:07:57+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 10116,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback\\runs\\run-20260908-095649-bf537f11",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback\\runs\\run-20260908-095649-bf537f11\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "grok"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback\\runs\\run-20260908-095649-bf537f11\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback\\runs\\run-20260908-095649-bf537f11\\worker.stderr.log"
+  }
+}

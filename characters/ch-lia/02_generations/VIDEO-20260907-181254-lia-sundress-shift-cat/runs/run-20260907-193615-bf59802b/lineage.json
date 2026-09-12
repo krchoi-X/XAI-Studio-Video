@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "project_id": "VIDEO-20260907-181254-lia-sundress-shift-cat",
+  "prompt_id": "beat-B-store-uniform",
+  "run_id": "run-20260907-193615-bf59802b",
+  "character_id": "ch-lia",
+  "character_dna_version": 2,
+  "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+  "requested_by": "grok",
+  "requesting_agent": "grok",
+  "source_idea": "Sundress to Shift to Cat (~10s stitch) beat B WORK store uniform",
+  "user_request_ref": "handoff.json:user_request_verbatim",
+  "inputs": {
+    "runtime_prompt_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-B-store-uniform.txt",
+    "runtime_prompt_sha256": "3948afba4f15b08ab39935f522af1f638cee0b26bdb70ceef0f53fb12c3b8712",
+    "runtime_prompt_text": "subject_definitions:\n<Subject 1> is the adult woman in <Picture 1>. HARD LOCK face identity to Picture 1: slim slightly elongated oval face, soft dark-brown eyes, translucent pale natural skin with fine pores, soft rose-beige lips, bangs with ponytail, tall slender silhouette, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep the convenience-store part-time uniform and ponytail from <Picture 1>. Do not replace her face or turn her into a different person.\n\nsummary:\n[reference generation] One continuous ~3.5-second medium-motion convenience-store work beat. <Subject 1> works the register/shelves in uniform with ponytail, quiet closed-mouth faint smile.\n\nretention_analysis:\n<Subject 1>: fully_preserved identity and store-uniform wardrobe from <Picture 1>. Only work hand/body motion and glance timing may change.\n\ndetailed_description:\nMotion budget MEDIUM for work actions, LOW for face. Photorealistic convenience-store interior, bright fluorescent light.\n[Shot 1] <Subject 1> stands behind the checkout counter in uniform and ponytail, handling a simple register or shelf restock motion with natural arm movement. Head mostly toward the counter/work, then a brief glance toward camera with a quiet closed-mouth faint smile. Right-wrist bracelets visible when the wrist enters frame. Gentle handheld breathing; no crash zooms. No cut. No beauty filter. No speech. No second person as focus. No cat. Stay fully clothed in uniform.\n\noverall_soundscape:\nQuiet store ambience, soft register beep or shelf rustle. No speech. No music.\n\nnon_diegetic_music:\nNone.\n",
+    "settings_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\beat-B-store-uniform.settings.json",
+    "effective_settings_path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-193615-bf59802b\\effective-settings.json",
+    "reference_images": [
+      {
+        "role": "work_uniform_identity",
+        "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175243-8e09c94a_1.jpg",
+        "sha256": "2376ce1d1661b7afe9e28f70012e581ead9b871ae741e647ceb2fa804fd147e7",
+        "byte_count": 221878
+      }
+    ],
+    "model_type": "minimax_h3_ref2va_pruned",
+    "video_prompt_type": "KI",
+    "resolution": "576x768",
+    "video_length": 73,
+    "num_inference_steps": 20,
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "profile": 1,
+    "vram_safety": 0.8
+  },
+  "outputs": {
+    "output_dir": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat",
+    "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-193615-bf59802b",
+    "status": "needs_review",
+    "artifact_path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-193615-bf59802b.mp4",
+    "artifact_sha256": "596dc12fb6191ca93bf99d88d3c31fbe823e9e05e3c0e7c26fadaeb88ce0b0a2",
+    "artifact_byte_count": 3918395,
+    "started_at": "2026-09-07T19:36:15+09:00",
+    "finished_at": "2026-09-07T20:49:50+09:00",
+    "approx_render_minutes": 71
+  },
+  "written_at": "2026-09-07T20:50:28+09:00",
+  "finished_at": "2026-09-07T20:49:50+09:00"
+}

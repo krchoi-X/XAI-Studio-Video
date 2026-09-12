@@ -1,0 +1,10 @@
+Edit the provided reference image.
+Requested change: turn this same woman into a broadcast-stage solo dance singer still while keeping her exact face.
+Explicit operations:
+- wardrobe [moderate]: change only clothing into a glamorous sequined stage outfit with sheer panels; handheld mic OK
+- facial_feature [subtle]: add translucent sparkling idol makeup (gloss lids, under-eye glitter) without changing bone structure, eye shape, moles, or identity
+- background [moderate]: dark broadcast stage with spotlights
+- lighting [moderate]: dramatic stage spotlights fitting a live TV performance
+Preserve exactly: identity, unmentioned face geometry, slightly elongated eyes (do not round them), cheek/jaw moles, wispy bangs hairline identity, body proportions, three thin red-blue wrist bracelets if wrist visible.
+Do not invent, add, remove, or alter any unrequested visual detail.
+Keep her the same adult person as the reference portrait.

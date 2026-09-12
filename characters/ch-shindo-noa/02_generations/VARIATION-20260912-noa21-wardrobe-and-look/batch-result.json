@@ -1,0 +1,17 @@
+{
+  "session": "VARIATION-20260912-noa21-wardrobe-and-look",
+  "updated_at": "2026-09-12T22:03:31+09:00",
+  "results": [
+    {
+      "shot": "fill-L1",
+      "status": "needs_review",
+      "run_id": "run-20260912-215131-a970927e",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-215131-a970927e",
+      "minutes": 12.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3\\run-20260912-215131-a970927e.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

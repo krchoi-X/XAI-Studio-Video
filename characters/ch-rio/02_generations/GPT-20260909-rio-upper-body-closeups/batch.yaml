@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "GPT-20260909-rio-upper-body-closeups",
+    "character_id": "ch-rio",
+    "title": "리오 · ChatGPT 상반신 클로즈업 5장",
+    "status": "completed",
+    "visibility": "standard",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-rio\\generations\\GPT-20260909-rio-upper-body-closeups\\outputs",
+    "prompt_file": "prompt.txt"
+  },
+  "jobs": [
+    {
+      "backend": "openai",
+      "provider": "OpenAI",
+      "model": "ChatGPT built-in image generation",
+      "count": 5,
+      "output_dir": "outputs/gpt",
+      "status": "completed"
+    }
+  ],
+  "review": {
+    "initial_state": "needs_review"
+  },
+  "import": {
+    "tool": "external_media_import",
+    "prompt_strategy": "provenance"
+  }
+}

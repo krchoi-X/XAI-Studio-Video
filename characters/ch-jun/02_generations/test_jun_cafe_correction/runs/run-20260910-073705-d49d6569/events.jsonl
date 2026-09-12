@@ -1,0 +1,6 @@
+{"at":"2026-09-10T07:37:05+09:00","state":"queued","prompt_sha256":"689717f2f1a3230d77ce8d869cc205abb06cd595feaadcafbfda79b616242ebe","target":"local","requested_by":"hermes","executor":"local-wangp-worker"}
+{"at":"2026-09-10T07:37:05+09:00","state":"starting","local_worker_pid":28752}
+{"at":"2026-09-10T07:37:34+09:00","state":"running","provider_job_id":"local-pid-46396"}
+{"at":"2026-09-10T07:38:06+09:00","state":"error","data":{"message":"You must provide at least one Reference Image","task_index":1,"task_id":1,"stage":"validation"}}
+{"at":"2026-09-10T07:38:06+09:00","state":"completed","data":{"success":false,"generated_files":[],"errors":[{"message":"You must provide at least one Reference Image","task_index":1,"task_id":1,"stage":"validation"}],"total_tasks":1,"successful_tasks":0,"failed_tasks":1,"artifacts":[]}}
+{"at":"2026-09-10T07:38:06+09:00","state":"failed","message":"You must provide at least one Reference Image"}

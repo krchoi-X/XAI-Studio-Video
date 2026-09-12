@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260910-073705-d49d6569",
+  "project_id": "jun-cafe-correction",
+  "prompt_id": "shot-01_correction",
+  "status": "failed",
+  "created_at": "2026-09-10T07:37:05+09:00",
+  "updated_at": "2026-09-10T07:38:06+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "hermes",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-46396",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jun\\02_generations\\test_jun_cafe_correction\\shot-01_correction.txt",
+    "sha256": "689717f2f1a3230d77ce8d869cc205abb06cd595feaadcafbfda79b616242ebe",
+    "normalized_sha256": "f30b3e0f66fcbf3abf8efe73e8cd244a3ecc081b81eda9a391ddf43fcd30f3c6",
+    "byte_count": 1025
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-jun\\02_generations\\test_jun_cafe_correction\\shot-01_correction.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "resolution": "576x768",
+      "video_length": 97,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "video_prompt_type": "KI",
+      "image_refs": []
+    }
+  },
+  "artifacts": [],
+  "error": {
+    "message": "You must provide at least one Reference Image",
+    "last_progress": null,
+    "recorded_at": "2026-09-10T07:38:06+09:00"
+  },
+  "local_worker": {
+    "pid": 28752,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-jun\\02_generations\\test_jun_cafe_correction\\runs\\run-20260910-073705-d49d6569",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-jun\\02_generations\\test_jun_cafe_correction\\runs\\run-20260910-073705-d49d6569\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-jun\\videos\\TEST_test_jun_cafe_correction",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "hermes"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-jun\\02_generations\\test_jun_cafe_correction\\runs\\run-20260910-073705-d49d6569\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-jun\\02_generations\\test_jun_cafe_correction\\runs\\run-20260910-073705-d49d6569\\worker.stderr.log"
+  }
+}

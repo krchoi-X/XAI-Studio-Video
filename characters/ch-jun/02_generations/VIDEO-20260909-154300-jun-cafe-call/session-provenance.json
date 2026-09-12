@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "session_id": "VIDEO-20260909-154300-jun-cafe-call",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-jun\\02_generations\\VIDEO-20260909-154300-jun-cafe-call",
+  "requested_by": "hermes",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-jun",
+  "title": "Jun cafe call",
+  "user_request_verbatim": "Jun cafe call scene generation",
+  "status": "running",
+  "created_at": "2026-09-09T18:18:09+09:00",
+  "updated_at": "2026-09-09T23:01:03+09:00"
+}

@@ -1,0 +1,40 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 243,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "seed": -1,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175243-8e09c94a_1.jpg"
+  ],
+  "_xai": {
+    "kind": "lia_shift_break_sea_tear",
+    "character_id": "ch-lia",
+    "character_dna_version": 2,
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+    "episode": "teaser-shift-break-sea-tear",
+    "title": "Lia teaser: shift break / sea tear",
+    "beat_span": "0-10s",
+    "motion_budget": "LOW-MEDIUM",
+    "identity_priority": "P0",
+    "requested_seconds": 10.125,
+    "frame_grid": "17*14+5 @24fps -> 243 frames (~10.125 s)",
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "continuous_sequence": true,
+    "reference_paths": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175243-8e09c94a_1.jpg"
+    ],
+    "identity_note": "User path SCENE-20260907-175243-lia-convenience-store-part-time-uniform missing; used validated clothed work-uniform still from SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing (173926 was nude-rejected)."
+  },
+  "prompt": "subject_definitions:\n<Subject 1> is the adult woman in <Picture 1>. HARD LOCK face identity to Picture 1 across the entire clip: slim slightly elongated oval face, soft dark-brown eyes, translucent pale natural skin with fine pores, soft rose-beige lips, bangs with ponytail, tall slender silhouette, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep the convenience-store part-time uniform and ponytail from <Picture 1> for the store portion. After the extreme close-up, wardrobe is mostly out of frame so the beach environment can change while the SAME face continues. Do not replace her face or turn her into a different person at any time.\n\nsummary:\n[reference generation] One continuous ~10-second music-video / shorts-drama teaser. Ordinary convenience-store shift break dissolves into a sea-breeze close-up with one tear — implying something is coming. No dialogue. No hard cut between people; face identity stays locked.\n\nretention_analysis:\n<Subject 1>: fully_preserved face identity from <Picture 1> for the full 10s. Store wardrobe + ponytail retained through the mid-shot and close-up. After ECU bridge, wardrobe mostly exits frame; only the identical face, closed eyes, and one tear remain the focus on the beach.\n\ndetailed_description:\nONE CONTINUOUS SEQUENCE (timed prompt — not separate shorts). Photorealistic. Motion budget LOW–MEDIUM. Gentle handheld breathing; no crash zooms. No beauty filter. No speech. No second person. No theatrical sobbing.\n[0.0–2.8s | 35mm MS] Convenience-store interior, bright fluorescent light. <Subject 1> in part-time uniform and ponytail works the register/shelves with quiet natural hand motion, then her hands pause mid-task. Right-wrist bracelets visible when the wrist enters frame. Ambient store hum.\n[2.8–5.2s | 50mm → CU] She lifts her head, steadies her breath, face moves into close-up. Faint understated emotion — tired, composing herself — not theatrical crying. Same fluorescent store light. Same face.\n[5.2–6.0s | ECU match cut / bridge] Extreme close-up of the SAME eyes closing; the store soft-bridges into open air. Face identity must not change. Wardrobe mostly leaves frame.\n[6.0–10.0s | 50mm ECU beach] Soft daylight, sea breeze on bangs/ponytail strands. Eyes stay closed. ONE single tear forms and falls down her cheek. Waves and wind only. Teaser tone: ordinary life implying an event about to begin.\n\noverall_soundscape:\nAmbient convenience-store hum and soft register/shelf room tone crossfade into distant sea waves and light wind. No speech. No music bed required beyond diegetic ambience.\n\nnon_diegetic_music:\nNone (teaser ambient only).",
+  "output_filename": "run-20260907-231507-69334b41"
+}

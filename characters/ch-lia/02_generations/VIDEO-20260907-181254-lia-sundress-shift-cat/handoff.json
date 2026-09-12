@@ -1,6 +1,6 @@
 {
   "project_id": "VIDEO-20260907-181254-lia-sundress-shift-cat",
-  "status": "running",
+  "status": "needs_review",
   "target_renderer": "local-wangp",
   "model": "minimax_h3_ref2va_pruned",
   "created_at": "2026-09-07T18:20:44.592944+09:00",
@@ -59,19 +59,14 @@
       ]
     }
   ],
-  "updated_at": "2026-09-07T19:36:24+09:00",
+  "updated_at": "2026-09-07T22:06:48+09:00",
   "character": {
     "id": "ch-lia",
     "version": 2,
     "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
     "character_json": "D:\\\\codex\\\\XAI-studio\\\\characters\\\\ch-lia\\\\character.json"
   },
-  "active_run": {
-    "prompt_id": "beat-B-store-uniform",
-    "run_id": "run-20260907-193615-bf59802b",
-    "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-193615-bf59802b",
-    "requested_by": "grok"
-  },
+  "active_run": null,
   "results": [
     {
       "prompt_id": "beat-A-beach-sundress",
@@ -87,6 +82,36 @@
       "error": null,
       "requested_by": "grok",
       "requesting_agent": "grok"
+    },
+    {
+      "prompt_id": "beat-B-store-uniform",
+      "run_id": "run-20260907-193615-bf59802b",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-193615-bf59802b",
+      "status": "needs_review",
+      "artifact": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-193615-bf59802b.mp4",
+      "artifact_sha256": "596dc12fb6191ca93bf99d88d3c31fbe823e9e05e3c0e7c26fadaeb88ce0b0a2",
+      "approx_render_minutes": 71,
+      "started_at": "2026-09-07T19:36:15+09:00",
+      "finished_at": "2026-09-07T20:49:50+09:00",
+      "lineage": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-193615-bf59802b\\lineage.json",
+      "error": null,
+      "requested_by": "grok",
+      "requesting_agent": "grok"
+    },
+    {
+      "prompt_id": "beat-D-home-cat",
+      "run_id": "run-20260907-205125-b80fed95",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-205125-b80fed95",
+      "status": "needs_review",
+      "artifact": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-205125-b80fed95.mp4",
+      "artifact_sha256": "6a600df44384eac981226981edbd5785079bd638c47414e2c196a8b009c4dbda",
+      "approx_render_minutes": 71,
+      "started_at": "2026-09-07T20:51:25+09:00",
+      "finished_at": "2026-09-07T22:05:05+09:00",
+      "lineage": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-205125-b80fed95\\lineage.json",
+      "error": null,
+      "requested_by": "grok",
+      "requesting_agent": "grok"
     }
   ],
   "stitch": {
@@ -95,9 +120,17 @@
       "beat-B-store-uniform",
       "beat-D-home-cat"
     ],
+    "clip_paths": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-182114-c1387088.mp4",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-193615-bf59802b.mp4",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-205125-b80fed95.mp4"
+    ],
     "target": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\lia-sundress-shift-cat-10s.mp4",
-    "method": "ffmpeg concat demuxer",
-    "status": "pending"
+    "method": "ffmpeg concat demuxer stream-copy",
+    "status": "completed",
+    "duration_sec": 13.406006,
+    "sha256": "5bc194d370eb11ce98f07e4024fefc02a4410badc4bec4a0dc95ed0ac7e59c40",
+    "finished_at": "2026-09-07T22:06:48+09:00"
   },
   "orchestrator": "grok",
   "requested_by": "grok",
@@ -112,5 +145,6 @@
       "home_cat": "SCENE-20260907-180834-lia-fully-clothed-adult-woman-at",
       "work_rejected_nude_attempt": "SCENE-20260907-173926-lia-convenience-store-part-time-uniform"
     }
-  }
+  },
+  "sequence_finished_at": "2026-09-07T22:06:48+09:00"
 }

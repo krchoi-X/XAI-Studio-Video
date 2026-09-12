@@ -1,0 +1,34 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 97,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "seed": -1,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "image_refs": [
+    "C:\\Users\\krcho\\Desktop\\lia-cafe-pick\\ChatGPT-08_19_10.png"
+  ],
+  "_xai": {
+    "kind": "lia_flashback_test",
+    "character_id": "ch-lia",
+    "episode": "flash-a-cafe-sip-imagine",
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "requested_seconds": 4,
+    "frame_grid": "97 frames @24fps ~4.0s",
+    "motion_budget": "MEDIUM",
+    "identity_priority": "P0-test-cut",
+    "reference_paths": [
+      "C:\\Users\\krcho\\Desktop\\lia-cafe-pick\\ChatGPT-08_19_10.png"
+    ]
+  },
+  "prompt": "Picture 1 is identity and look for this beat only: natural Lia at a quiet cafe, same face as the reference portrait, beige casual top, wispy bangs, three thin red-blue bracelets if wrist visible.\n\n[0.0-1.5s] 35mm medium close-up, cafe table, soft window daylight. She holds a ceramic coffee cup with both hands, takes one small sip.\n[1.5-3.0s] Cup lowers a little. Eyes lift past camera, breath steadies, soft unfocused gaze as if imagining.\n[3.0-4.0s] Hold the gaze; micro blink; ambient cafe murmur and cup clink only. No dialogue.\n\nWEIGHT: seated torso stable, only hands/cup and slight head lift move.\nTEXTURE: porcelain cup edge, steam hint, natural skin pores.\nLIGHT: soft daylight from window left, one warm bounce.\nSOUND: quiet cafe room tone, soft cup ceramic, one breath.\nFRAME: open on cup-to-face, close on eyes looking through the room — imagination cue before the cut.\nKeep adult identity continuous. Prompt enhancer off.\n",
+  "output_filename": "run-20260908-094548-fb10cb20"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE-20260908-082919-lia-stage-idol-from-081910",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260908-082919-lia-stage-idol-from-081910",
+  "requested_by": "grok",
+  "engine": "WanGP",
+  "model": "krea2_turbo_edit",
+  "character_id": "ch-lia",
+  "title": "Lia stage idol from ChatGPT 08_19_10",
+  "user_request_verbatim": "그 이미지의 얼굴을 기준으로 만들어봐. 무대위 장면을 위해서 다른 이미지 만들어. 무대 의상에 투명하고 화려한 아이돌 화장이지만 이 얼굴이 유지되어야 해.",
+  "status": "completed",
+  "created_at": "2026-09-08T08:29:19+09:00",
+  "updated_at": "2026-09-08T08:36:49+09:00"
+}

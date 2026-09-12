@@ -1,0 +1,14 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "resolution": "576x768",
+  "video_length": 97,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-jun\\generations\\GPT-20260909-jun-upper-body-closeups\\outputs\\gpt\\jun-closeup-01.png"
+  ],
+  "prompt": "[SCENE: Cafe Interior, Afternoon]\n[CHARACTER: Jun (ch-jun) - 25-27yo East Asian man, tall/lean, dark layered hair, charcoal tailoring, thin metal glasses]\n[ACTION: A side profile medium shot. Jun is typing on a laptop. A phone vibrates next to it. He pauses, picks up the phone, and answers with a very serious, focused expression. After a brief, low-voiced response, he hangs up. He sighs slightly, picks up a coffee cup, takes a thoughtful sip while looking away into the distance, lost in thought.]\n[MOTION: LOW. Subtle typing animation $\\rightarrow$ slight head tilt to phone $\\rightarrow$ serious facial expression during call $\\rightarrow$ slow sip of coffee $\\rightarrow$ subtle gaze shift out of window. Natural breathing and micro-expressions.]\n[LIGHTING: Cinematic, soft afternoon sunlight through a cafe window, creating a gentle highlight on Jun's profile and realistic skin texture. Moody shadows on the darker side of his face.]\n[CAMERA: Static medium shot, shallow depth of field, blurry cafe background.]",
+  "output_filename": "run-20260910-082601-ba97a5f1"
+}

@@ -151,6 +151,10 @@ def render_base_prompt(record: dict[str, Any], exclude_fields: set[str] | None =
         # what happened to ch-lia's nose_profile and chin_profile on 2026-09-11.
         f"Face: {'; '.join(str(value) for key, value in f.items() if key not in exclude_fields)}. "
         f"{hair}Skin: {dna['skin']}. "
+        # distinctive_marks is the field that exists to pin identity, and it reached no prompt at all: five
+        # characters carried one and none of them appeared in a single generated line.
+        + (f"Distinctive: {'; '.join(dna['distinctive_marks'])}. "
+           if dna.get("distinctive_marks") and "distinctive_marks" not in exclude_fields else "") +
         f"Body: {b['height_impression']}; {b['limb_proportions']}; shoulders {b['shoulders']}; "
         f"torso {b['torso']}; bust {b['bust']}; waist {b['waist']}; pelvis and hips {b['pelvis_hips']}; "
         f"lower body {b['lower_body']}; body hair {b['body_hair']}. "

@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260907-231507-69334b41",
+  "project_id": "VIDEO-20260907-231251-lia-shift-break-sea-tear",
+  "prompt_id": "teaser-shift-break-sea-tear",
+  "status": "needs_review",
+  "created_at": "2026-09-07T23:15:07+09:00",
+  "updated_at": "2026-09-08T01:17:29+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-39500",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\teaser-shift-break-sea-tear.txt",
+    "sha256": "cd10f1ab28e211052f87e78f388b1fe0bdd01feb71c38894a16838a09bc89166",
+    "normalized_sha256": "cd10f1ab28e211052f87e78f388b1fe0bdd01feb71c38894a16838a09bc89166",
+    "byte_count": 2676
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\teaser-shift-break-sea-tear.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "resolution": "576x768",
+      "video_length": 243,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "seed": -1,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175243-8e09c94a_1.jpg"
+      ],
+      "_xai": {
+        "kind": "lia_shift_break_sea_tear",
+        "character_id": "ch-lia",
+        "character_dna_version": 2,
+        "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061",
+        "episode": "teaser-shift-break-sea-tear",
+        "title": "Lia teaser: shift break / sea tear",
+        "beat_span": "0-10s",
+        "motion_budget": "LOW-MEDIUM",
+        "identity_priority": "P0",
+        "requested_seconds": 10.125,
+        "frame_grid": "17*14+5 @24fps -> 243 frames (~10.125 s)",
+        "prompt_mode": "FG",
+        "expected_queue_items": 1,
+        "continuous_sequence": true,
+        "reference_paths": [
+          "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing\\outputs\\krea2\\run-20260907-175243-8e09c94a_1.jpg"
+        ],
+        "identity_note": "User path SCENE-20260907-175243-lia-convenience-store-part-time-uniform missing; used validated clothed work-uniform still from SCENE-20260907-175243-lia-fully-clothed-adult-woman-wearing (173926 was nude-rejected)."
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\run-20260907-231507-69334b41.mp4",
+      "sha256": "ae0641e932ebce8c6307c38815be2ee8da6872c1f13cf4976d47d3d886325c09",
+      "byte_count": 8684886,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "42fe9bed290173b611c2d87acf4de44ed7af680794a21b3d37f9c852ee3cc8b0",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-08T01:17:29+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 17560,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\runs\\run-20260907-231507-69334b41",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\runs\\run-20260907-231507-69334b41\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-231251-lia-shift-break-sea-tear",
+      "--profile",
+      "1",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "grok"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\runs\\run-20260907-231507-69334b41\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear\\runs\\run-20260907-231507-69334b41\\worker.stderr.log"
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "session": "FACEGRID-20260911-lia-width-and-eyes",
+  "updated_at": "2026-09-11T23:02:56+09:00",
+  "results": [
+    {
+      "shot": "w1-narrow-e1-long-s1",
+      "status": "needs_review",
+      "run_id": "run-20260911-215251-e1f0e89f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-215251-e1f0e89f",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-215251-e1f0e89f.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w1-narrow-e1-long-s2",
+      "status": "needs_review",
+      "run_id": "run-20260911-215631-b137f00a",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-215631-b137f00a",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-215631-b137f00a.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w1-narrow-e2-mid-s1",
+      "status": "needs_review",
+      "run_id": "run-20260911-220031-728405e8",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-220031-728405e8",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-220031-728405e8.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w1-narrow-e2-mid-s2",
+      "status": "needs_review",
+      "run_id": "run-20260911-220412-863f078f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-220412-863f078f",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-220412-863f078f.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w1-narrow-e3-round-s1",
+      "status": "needs_review",
+      "run_id": "run-20260911-220752-c085de08",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-220752-c085de08",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-220752-c085de08.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w1-narrow-e3-round-s2",
+      "status": "needs_review",
+      "run_id": "run-20260911-221152-798e4457",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-221152-798e4457",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-221152-798e4457.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w2-mid-e1-long-s1",
+      "status": "needs_review",
+      "run_id": "run-20260911-221552-2a1ae4c7",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-221552-2a1ae4c7",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-221552-2a1ae4c7.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w2-mid-e1-long-s2",
+      "status": "needs_review",
+      "run_id": "run-20260911-221953-f37e32ca",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-221953-f37e32ca",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-221953-f37e32ca.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w2-mid-e2-mid-s1",
+      "status": "needs_review",
+      "run_id": "run-20260911-222353-68ce4c34",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-222353-68ce4c34",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-222353-68ce4c34.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w2-mid-e2-mid-s2",
+      "status": "needs_review",
+      "run_id": "run-20260911-222733-c0b02f40",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-222733-c0b02f40",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-222733-c0b02f40.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w2-mid-e3-round-s1",
+      "status": "needs_review",
+      "run_id": "run-20260911-223114-2addca75",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-223114-2addca75",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-223114-2addca75.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w2-mid-e3-round-s2",
+      "status": "needs_review",
+      "run_id": "run-20260911-223514-e7a35a1f",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-223514-e7a35a1f",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-223514-e7a35a1f.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w3-wide-e1-long-s1",
+      "status": "needs_review",
+      "run_id": "run-20260911-223914-4c0be145",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-223914-4c0be145",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-223914-4c0be145.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w3-wide-e1-long-s2",
+      "status": "needs_review",
+      "run_id": "run-20260911-224314-ff094241",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-224314-ff094241",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-224314-ff094241.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w3-wide-e2-mid-s1",
+      "status": "needs_review",
+      "run_id": "run-20260911-224715-bf35d893",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-224715-bf35d893",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-224715-bf35d893.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w3-wide-e2-mid-s2",
+      "status": "needs_review",
+      "run_id": "run-20260911-225115-87d8e59c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-225115-87d8e59c",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-225115-87d8e59c.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w3-wide-e3-round-s1",
+      "status": "needs_review",
+      "run_id": "run-20260911-225515-da839144",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-225515-da839144",
+      "minutes": 4.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-225515-da839144.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "w3-wide-e3-round-s2",
+      "status": "needs_review",
+      "run_id": "run-20260911-225916-df144978",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes\\runs\\run-20260911-225916-df144978",
+      "minutes": 3.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-225916-df144978.jpg"
+      ],
+      "error": null
+    }
+  ]
+}

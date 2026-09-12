@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "GPT-20260909-jun-upper-body-closeups",
+    "character_id": "ch-jun",
+    "title": "준 · ChatGPT 상반신 클로즈업 5장",
+    "status": "completed",
+    "visibility": "standard",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-jun\\generations\\GPT-20260909-jun-upper-body-closeups\\outputs",
+    "prompt_file": "prompt.txt"
+  },
+  "jobs": [
+    {
+      "backend": "openai",
+      "provider": "OpenAI",
+      "model": "ChatGPT built-in image generation",
+      "count": 5,
+      "output_dir": "outputs/gpt",
+      "status": "completed"
+    }
+  ],
+  "review": {
+    "initial_state": "needs_review"
+  },
+  "import": {
+    "tool": "external_media_import",
+    "prompt_strategy": "provenance"
+  }
+}

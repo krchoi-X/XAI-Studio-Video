@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "session_id": "VIDEO-20260907-231251-lia-shift-break-sea-tear",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-231251-lia-shift-break-sea-tear",
+  "requested_by": "grok",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-lia",
+  "title": "Lia teaser: shift break / sea tear",
+  "user_request_verbatim": "스토리에 맞게 컷 구성을 해야지. 편의점에서 일하다가 잠시 쉬면서 고개를 들고 호흡을 가다듬는데 얼굴이 클로즈업되고 바다에서 바닷바람을 쐬면서 눈감고 있는 얼굴이 되는거야. 눈에서 눈물이 한방울 나오지. 이러면 뮤직비디오나 이어지는 쇼츠 드라마의 티저처럼 보이잖아. 뭔가 아주 무난한 일상에서 시작해서 사건이 벌어지는 것을 내포한 동영상을 생각한거야",
+  "status": "completed",
+  "created_at": "2026-09-07T23:14:27+09:00",
+  "updated_at": "2026-09-08T01:17:29+09:00"
+}

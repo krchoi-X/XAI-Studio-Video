@@ -49,5 +49,15 @@ Hard cuts between wardrobe states (no dissolve).
 | Episode | Run | Result | Notes |
 | --- | --- | --- | --- |
 | A | `run-20260907-182114-c1387088` | needs_review (~71 min) | beach ref; requesting_agent=grok |
-| B | pending | pending | work still |
-| D | pending | pending | home+cat still |
+| B | `run-20260907-193615-bf59802b` | needs_review (~71 min) | work still; requested_by=grok |
+| D | `run-20260907-205125-b80fed95` | needs_review (~71 min) | home+cat still; requested_by=grok |
+
+## Stitch result
+
+- Order: A -> B -> D (hard cuts)
+- Method: ffmpeg concat demuxer stream-copy
+- Output: `D:\AI_Studio\library\characters\ch-lia\videos\VIDEO-20260907-181254-lia-sundress-shift-cat\lia-sundress-shift-cat-10s.mp4`
+- Duration: 13.406s
+- sha256: `5bc194d370eb11ce98f07e4024fefc02a4410badc4bec4a0dc95ed0ac7e59c40`
+- Finished: 2026-09-07T22:06:48+09:00
+

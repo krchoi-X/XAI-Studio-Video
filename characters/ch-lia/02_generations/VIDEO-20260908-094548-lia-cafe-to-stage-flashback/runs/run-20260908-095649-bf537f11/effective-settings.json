@@ -1,0 +1,34 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 97,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "seed": -1,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\outputs\\krea2\\run-20260908-083329-24b32211.jpg"
+  ],
+  "_xai": {
+    "kind": "lia_flashback_test",
+    "character_id": "ch-lia",
+    "episode": "flash-b-stage-solo",
+    "prompt_mode": "FG",
+    "expected_queue_items": 1,
+    "requested_seconds": 4,
+    "frame_grid": "97 frames @24fps ~4.0s",
+    "motion_budget": "MEDIUM",
+    "identity_priority": "P0-test-cut",
+    "reference_paths": [
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\outputs\\krea2\\run-20260908-083329-24b32211.jpg"
+    ]
+  },
+  "prompt": "Picture 1 is identity and stage look for this beat only: the stage-idol still (sequins, mic, glamorous translucent idol makeup, dark stage lights).\n\n[0.0-1.2s] 50mm chest-up on broadcast stage, hard cut in from nowhere. Spotlights, mic near mouth, first soft hip sway.\n[1.2-2.8s] ONE primary move: body marks a short solo-dance phrase while she sings into the mic (mouth moves with the beat, no readable lyrics).\n[2.8-4.0s] Settle into a held performance pose, eyes bright to camera, sequins catch light. Stage PA thump + crowd hush bed.\n\nWEIGHT: one dance phrase then settle; feet planted, no teleport.\nTEXTURE: sequin sparkle, sheer mesh, mic grille, sweat-light skin sheen that still shows pores.\nLIGHT: cold stage spot + purple rim; do not over-gaffer.\nSOUND: diegetic stage thump, mic proximity, one breath between phrases.\nFRAME: open mid-performance, close on face+mic after the phrase lands.\nAdult performer. No celebrity likeness. Prompt enhancer off.\n",
+  "output_filename": "run-20260908-095649-bf537f11"
+}

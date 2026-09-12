@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260908-094548-fb10cb20",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260908-094548-lia-cafe-to-stage-flashback\\run-20260908-094548-fb10cb20.mp4",
+      "sha256": "7725c71fb468a4af6def3932ad9625a341da4e3b6fa49936525c58eb48e6bc9c",
+      "byte_count": 4252004,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "e83ab6c304ec23d789b4fabde4df55ebe6ba44651a5aa3404339af7630f59806",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-08T09:56:30+09:00"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+subject_definitions:
+<Subject 1> is the adult woman in <Picture 1>. HARD LOCK face identity to Picture 1 across the entire clip: slim slightly elongated oval face, soft dark-brown eyes, translucent pale natural skin with fine pores, soft rose-beige lips, bangs with ponytail, tall slender silhouette, and exactly three thin red-and-blue knotted bracelets on her right wrist when visible. Keep the convenience-store part-time uniform and ponytail from <Picture 1> for the store portion. After the extreme close-up, wardrobe is mostly out of frame so the beach environment can change while the SAME face continues. Do not replace her face or turn her into a different person at any time.
+
+summary:
+[reference generation] One continuous ~10-second music-video / shorts-drama teaser. Ordinary convenience-store shift break dissolves into a sea-breeze close-up with one tear — implying something is coming. No dialogue. No hard cut between people; face identity stays locked.
+
+retention_analysis:
+<Subject 1>: fully_preserved face identity from <Picture 1> for the full 10s. Store wardrobe + ponytail retained through the mid-shot and close-up. After ECU bridge, wardrobe mostly exits frame; only the identical face, closed eyes, and one tear remain the focus on the beach.
+
+detailed_description:
+ONE CONTINUOUS SEQUENCE (timed prompt — not separate shorts). Photorealistic. Motion budget LOW–MEDIUM. Gentle handheld breathing; no crash zooms. No beauty filter. No speech. No second person. No theatrical sobbing.
+[0.0–2.8s | 35mm MS] Convenience-store interior, bright fluorescent light. <Subject 1> in part-time uniform and ponytail works the register/shelves with quiet natural hand motion, then her hands pause mid-task. Right-wrist bracelets visible when the wrist enters frame. Ambient store hum.
+[2.8–5.2s | 50mm → CU] She lifts her head, steadies her breath, face moves into close-up. Faint understated emotion — tired, composing herself — not theatrical crying. Same fluorescent store light. Same face.
+[5.2–6.0s | ECU match cut / bridge] Extreme close-up of the SAME eyes closing; the store soft-bridges into open air. Face identity must not change. Wardrobe mostly leaves frame.
+[6.0–10.0s | 50mm ECU beach] Soft daylight, sea breeze on bangs/ponytail strands. Eyes stay closed. ONE single tear forms and falls down her cheek. Waves and wind only. Teaser tone: ordinary life implying an event about to begin.
+
+overall_soundscape:
+Ambient convenience-store hum and soft register/shelf room tone crossfade into distant sea waves and light wind. No speech. No music bed required beyond diegetic ambience.
+
+non_diegetic_music:
+None (teaser ambient only).

@@ -1,0 +1,39 @@
+{
+  "session": "QUALITY-20260911-krea2-render-settings",
+  "updated_at": "2026-09-11T21:19:22+09:00",
+  "results": [
+    {
+      "shot": "q-a-current",
+      "status": "needs_review",
+      "run_id": "run-20260911-205522-0e8d1795",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\QUALITY-20260911-krea2-render-settings\\runs\\run-20260911-205522-0e8d1795",
+      "minutes": 6.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\QUALITY-20260911-krea2-render-settings\\outputs\\krea2-edit\\run-20260911-205522-0e8d1795.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "q-b-1280-png",
+      "status": "needs_review",
+      "run_id": "run-20260911-210202-d8ff55d0",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\QUALITY-20260911-krea2-render-settings\\runs\\run-20260911-210202-d8ff55d0",
+      "minutes": 8.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\QUALITY-20260911-krea2-render-settings\\outputs\\krea2-edit\\run-20260911-210202-d8ff55d0.jpg"
+      ],
+      "error": null
+    },
+    {
+      "shot": "q-c-1280-png-vae2x",
+      "status": "needs_review",
+      "run_id": "run-20260911-211042-3f45f0cc",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\QUALITY-20260911-krea2-render-settings\\runs\\run-20260911-211042-3f45f0cc",
+      "minutes": 8.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\QUALITY-20260911-krea2-render-settings\\outputs\\krea2-edit\\run-20260911-211042-3f45f0cc.jpg"
+      ],
+      "error": null
+    }
+  ]
+}

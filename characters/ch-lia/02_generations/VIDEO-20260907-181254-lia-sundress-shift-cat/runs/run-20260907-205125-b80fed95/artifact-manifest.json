@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260907-205125-b80fed95",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-205125-b80fed95.mp4",
+      "sha256": "6a600df44384eac981226981edbd5785079bd638c47414e2c196a8b009c4dbda",
+      "byte_count": 3797445,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "17957264cb91fc58095e05adf2a72b9809c43b630de6ad6f6833dd54f88791b6",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-07T22:05:05+09:00"
+    }
+  ]
+}

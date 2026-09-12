@@ -1,0 +1,12 @@
+Picture 1 is identity and look for this beat only: natural Lia at a quiet cafe, same face as the reference portrait, beige casual top, wispy bangs, three thin red-blue bracelets if wrist visible.
+
+[0.0-1.5s] 35mm medium close-up, cafe table, soft window daylight. She holds a ceramic coffee cup with both hands, takes one small sip.
+[1.5-3.0s] Cup lowers a little. Eyes lift past camera, breath steadies, soft unfocused gaze as if imagining.
+[3.0-4.0s] Hold the gaze; micro blink; ambient cafe murmur and cup clink only. No dialogue.
+
+WEIGHT: seated torso stable, only hands/cup and slight head lift move.
+TEXTURE: porcelain cup edge, steam hint, natural skin pores.
+LIGHT: soft daylight from window left, one warm bounce.
+SOUND: quiet cafe room tone, soft cup ceramic, one breath.
+FRAME: open on cup-to-face, close on eyes looking through the room — imagination cue before the cut.
+Keep adult identity continuous. Prompt enhancer off.

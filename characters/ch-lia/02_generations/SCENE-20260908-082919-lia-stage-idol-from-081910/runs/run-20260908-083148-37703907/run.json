@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260908-083148-37703907",
+  "project_id": "SCENE-20260908-082919-lia-stage-idol-from-081910",
+  "prompt_id": "stage-idol-2",
+  "status": "needs_review",
+  "created_at": "2026-09-08T08:31:48+09:00",
+  "updated_at": "2026-09-08T08:33:25+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-37840",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\prompt.txt",
+    "sha256": "d222b3e4fda1039aa708fdaf239ea712b54298217342339082c5a106fb25ae41",
+    "normalized_sha256": "c93f46a75633f99e568fb357056df9c279f038418876e7c3fd01250223f83a25",
+    "byte_count": 947
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\krea2.settings.json",
+    "value": {
+      "settings_version": 2.73,
+      "model_type": "krea2_turbo_edit",
+      "base_model_type": "krea2_turbo_edit",
+      "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Turbo_quanto_bf16_int8.safetensors",
+      "image_mode": 1,
+      "resolution": "768x1024",
+      "video_prompt_type": "KI",
+      "image_refs": [
+        "C:\\Users\\krcho\\Desktop\\lia-cafe-pick\\ChatGPT-08_19_10.png"
+      ],
+      "remove_background_images_ref": 0,
+      "num_inference_steps": 8,
+      "guidance_scale": 0,
+      "batch_size": 1,
+      "repeat_generation": 1,
+      "seed": -1,
+      "activated_loras": [],
+      "loras_multipliers": "",
+      "image_quality": "jpeg_95",
+      "_xai": {
+        "kind": "reference_transformation",
+        "character_id": "ch-lia",
+        "reference_asset_ids": [
+          "lia-chatgpt-081910"
+        ],
+        "operator_request": "stage idol from 08_19_10 face",
+        "requested_by": "grok"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\outputs\\krea2\\run-20260908-083148-37703907.jpg",
+      "sha256": "8a5aef52f0a2c7784f41ed73cb39dd1643f71eb43e115166d5adc094d91efb99",
+      "byte_count": 201847,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-08T08:33:25+09:00"
+    }
+  ],
+  "error": null,
+  "reference_inputs": [
+    {
+      "asset_id": "lia-chatgpt-081910",
+      "path": "C:\\Users\\krcho\\Desktop\\lia-cafe-pick\\ChatGPT-08_19_10.png",
+      "sha256": "18fbad81180789565d152c17ee1e9869de23aa5b804121d879bca926339d9d09",
+      "byte_count": 2340857
+    }
+  ],
+  "variation": {
+    "kind": "reference_transformation",
+    "character_id": "ch-lia",
+    "reference_asset_ids": [
+      "lia-chatgpt-081910"
+    ],
+    "operator_request": "stage idol from 08_19_10 face",
+    "requested_by": "grok"
+  },
+  "local_worker": {
+    "pid": 37344,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\runs\\run-20260908-083148-37703907",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\runs\\run-20260908-083148-37703907\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\outputs\\krea2",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "grok"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\runs\\run-20260908-083148-37703907\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260908-082919-lia-stage-idol-from-081910\\runs\\run-20260908-083148-37703907\\worker.stderr.log"
+  }
+}

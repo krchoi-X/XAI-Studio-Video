@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "FACEGRID-20260911-lia-width-and-eyes",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\FACEGRID-20260911-lia-width-and-eyes",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "krea2_raw",
+  "character_id": "ch-lia",
+  "title": "Face search grid: cheekbone width x eye shape",
+  "user_request_verbatim": "분산이 너무 커지지 않게 하는 방법은 없어? / 내가 선택해야하는 갯수가 너무 많으면 안된단 말야",
+  "source_idea": "Two axes the operator named concretely - the face is too narrow, the eyes are too narrow - varied in three explicit steps each with everything else pinned, so each result is a named variation rather than one of hundreds of unrelated faces. No reference image: this searches for a new face rather than editing master #4.",
+  "status": "prepared",
+  "created_at": "2026-09-11T21:52:41+09:00",
+  "updated_at": "2026-09-11T21:52:41+09:00"
+}

@@ -1,0 +1,32 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_turbo_edit",
+  "base_model_type": "krea2_turbo_edit",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Turbo_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "C:\\Users\\krcho\\Desktop\\lia-cafe-pick\\ChatGPT-08_19_10.png"
+  ],
+  "remove_background_images_ref": 0,
+  "num_inference_steps": 8,
+  "guidance_scale": 0,
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "seed": -1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "_xai": {
+    "kind": "reference_transformation",
+    "character_id": "ch-lia",
+    "reference_asset_ids": [
+      "lia-chatgpt-081910"
+    ],
+    "operator_request": "stage idol from 08_19_10 face",
+    "requested_by": "grok"
+  },
+  "prompt": "Edit the provided reference image.\nRequested change: turn this same woman into a broadcast-stage solo dance singer still while keeping her exact face.\nExplicit operations:\n- wardrobe [moderate]: change only clothing into a glamorous sequined stage outfit with sheer panels; handheld mic OK\n- facial_feature [subtle]: add translucent sparkling idol makeup (gloss lids, under-eye glitter) without changing bone structure, eye shape, moles, or identity\n- background [moderate]: dark broadcast stage with spotlights\n- lighting [moderate]: dramatic stage spotlights fitting a live TV performance\nPreserve exactly: identity, unmentioned face geometry, slightly elongated eyes (do not round them), cheek/jaw moles, wispy bangs hairline identity, body proportions, three thin red-blue wrist bracelets if wrist visible.\nDo not invent, add, remove, or alter any unrequested visual detail.\nKeep her the same adult person as the reference portrait.\n",
+  "output_filename": "run-20260908-083148-37703907"
+}

@@ -1,0 +1,6 @@
+{"at":"2026-09-09T18:18:09+09:00","state":"queued","prompt_sha256":"689717f2f1a3230d77ce8d869cc205abb06cd595feaadcafbfda79b616242ebe","target":"local","requested_by":"hermes","executor":"local-wangp-worker"}
+{"at":"2026-09-09T18:18:09+09:00","state":"starting","local_worker_pid":1932}
+{"at":"2026-09-09T18:18:15+09:00","state":"running","provider_job_id":"local-pid-14520"}
+{"at":"2026-09-09T18:18:37+09:00","state":"error","data":{"message":"not enough values to unpack (expected 2, got 1)","task_index":null,"task_id":null,"stage":"runtime"}}
+{"at":"2026-09-09T18:18:37+09:00","state":"completed","data":{"success":false,"generated_files":[],"errors":[{"message":"not enough values to unpack (expected 2, got 1)","task_index":null,"task_id":null,"stage":"runtime"}],"total_tasks":1,"successful_tasks":0,"failed_tasks":0,"artifacts":[]}}
+{"at":"2026-09-09T18:18:37+09:00","state":"failed","message":"not enough values to unpack (expected 2, got 1)"}

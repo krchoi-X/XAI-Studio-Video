@@ -1,0 +1,104 @@
+[
+  {
+    "file": "rio-closeup-01.png",
+    "original_path": "C:\\Users\\krcho\\.codex\\generated_images\\01a083ec-88a3-7d12-a6bd-b1aea9c23d3c\\exec-32713af8-fc9e-4ddb-93d8-07fd3f7c1332.png",
+    "sha256": "b883fb66de0b6b69e1f2915f844ba79d566bf1407c31d6360a9462dfc9ee0330",
+    "engine": "gpt",
+    "provider": "OpenAI",
+    "model": "ChatGPT built-in image generation",
+    "prompt": "Photorealistic natural portrait of Rio, an original adult East Asian man aged 21–23. Moderate height (175–178 cm), compact athletic build with functional muscle, moderate shoulders, not bulky or extreme V-taper. Youthful soft oval facial structure, short-to-moderate face length, smooth natural jawline, calm warm eyes with neutral-to-gentle outer corners, natural nose and lips. Short dark lightly textured practical hair with natural fringe. Realistic skin texture and small asymmetries. Exactly one small understated earring on one ear only, visible when framing allows; no flashy jewelry. Friendly approachable everyday presence with restrained hidden intensity, never a thug, fighter stereotype, bodybuilder or stylized idol. Portrait orientation, upper-body close-up from mid-chest to above entire hair, eye-level portrait lens, natural anatomy, one person only, no text or watermark. Scene: Front-facing, gentle friendly resting expression and slight smile, plain off-white T-shirt, soft daylight and plain light gray studio backdrop.",
+    "user_request": "스튜디오에 캐릭터 등록을 해주고, 둘다 Chatgpt 너의 이미지 모델을 이용해서 상반신 클로즈업 5장씩 만들어서 웹앱에서 볼 수 있게 해줘",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-rio\\generations\\GPT-20260909-rio-upper-body-closeups\\outputs\\gpt\\rio-closeup-01.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 1024,
+      "height": 1536,
+      "container": "png"
+    }
+  },
+  {
+    "file": "rio-closeup-02.png",
+    "original_path": "C:\\Users\\krcho\\.codex\\generated_images\\01a083ec-88a3-7d12-a6bd-b1aea9c23d3c\\exec-c2ef901a-132b-4074-b828-075cb784a267.png",
+    "sha256": "fe1e8b1994c707b468ccc59f6fb57e35aaee9dbc9ddf6fe00a4535888ec7820e",
+    "engine": "gpt",
+    "provider": "OpenAI",
+    "model": "ChatGPT built-in image generation",
+    "prompt": "Photorealistic natural portrait of Rio, an original adult East Asian man aged 21–23. Moderate height (175–178 cm), compact athletic build with functional muscle, moderate shoulders, not bulky or extreme V-taper. Youthful soft oval facial structure, short-to-moderate face length, smooth natural jawline, calm warm eyes with neutral-to-gentle outer corners, natural nose and lips. Short dark lightly textured practical hair with natural fringe. Realistic skin texture and small asymmetries. Exactly one small understated earring on one ear only, visible when framing allows; no flashy jewelry. Friendly approachable everyday presence with restrained hidden intensity, never a thug, fighter stereotype, bodybuilder or stylized idol. Portrait orientation, upper-body close-up from mid-chest to above entire hair, eye-level portrait lens, natural anatomy, one person only, no text or watermark. Reference image: preserve this same Rio face, facial structure, eyes, hair silhouette, earring shape and ear side. Change only pose, wardrobe, expression and lighting as specified. Scene: Gentle three-quarter angle, relaxed quietly amused expression, simple gray hoodie, soft window light, neutral blurred backdrop.",
+    "references": [
+      "C:/Users/krcho/.codex/generated_images/01a083ec-88a3-7d12-a6bd-b1aea9c23d3c/exec-32713af8-fc9e-4ddb-93d8-07fd3f7c1332.png"
+    ],
+    "user_request": "스튜디오에 캐릭터 등록을 해주고, 둘다 Chatgpt 너의 이미지 모델을 이용해서 상반신 클로즈업 5장씩 만들어서 웹앱에서 볼 수 있게 해줘",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-rio\\generations\\GPT-20260909-rio-upper-body-closeups\\outputs\\gpt\\rio-closeup-02.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 1024,
+      "height": 1536,
+      "container": "png"
+    }
+  },
+  {
+    "file": "rio-closeup-03.png",
+    "original_path": "C:\\Users\\krcho\\.codex\\generated_images\\01a083ec-88a3-7d12-a6bd-b1aea9c23d3c\\exec-fe53331a-cc01-4133-bc69-6dc8481c406c.png",
+    "sha256": "ed76f48cdd50cb123a999acb97ece2b2716cc409481f61478c192df91e985834",
+    "engine": "gpt",
+    "provider": "OpenAI",
+    "model": "ChatGPT built-in image generation",
+    "prompt": "Photorealistic natural portrait of Rio, an original adult East Asian man aged 21–23. Moderate height (175–178 cm), compact athletic build with functional muscle, moderate shoulders, not bulky or extreme V-taper. Youthful soft oval facial structure, short-to-moderate face length, smooth natural jawline, calm warm eyes with neutral-to-gentle outer corners, natural nose and lips. Short dark lightly textured practical hair with natural fringe. Realistic skin texture and small asymmetries. Exactly one small understated earring on one ear only, visible when framing allows; no flashy jewelry. Friendly approachable everyday presence with restrained hidden intensity, never a thug, fighter stereotype, bodybuilder or stylized idol. Portrait orientation, upper-body close-up from mid-chest to above entire hair, eye-level portrait lens, natural anatomy, one person only, no text or watermark. Reference image: preserve this same Rio face, facial structure, eyes, hair silhouette, earring shape and ear side. Change only pose, wardrobe, expression and lighting as specified. Scene: Front-facing, curious open warm gaze, navy plain performance T-shirt, natural lightly disordered short hair, soft daylight, neutral studio backdrop.",
+    "references": [
+      "C:/Users/krcho/.codex/generated_images/01a083ec-88a3-7d12-a6bd-b1aea9c23d3c/exec-32713af8-fc9e-4ddb-93d8-07fd3f7c1332.png"
+    ],
+    "user_request": "스튜디오에 캐릭터 등록을 해주고, 둘다 Chatgpt 너의 이미지 모델을 이용해서 상반신 클로즈업 5장씩 만들어서 웹앱에서 볼 수 있게 해줘",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-rio\\generations\\GPT-20260909-rio-upper-body-closeups\\outputs\\gpt\\rio-closeup-03.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 1024,
+      "height": 1536,
+      "container": "png"
+    }
+  },
+  {
+    "file": "rio-closeup-04.png",
+    "original_path": "C:\\Users\\krcho\\.codex\\generated_images\\01a083ec-88a3-7d12-a6bd-b1aea9c23d3c\\exec-4a8702b7-3439-488a-9f67-e9380a4b8a41.png",
+    "sha256": "c44ce229f4db3b7a210aa55a39c092bf66bfa99e40129380c9914f1e479525cd",
+    "engine": "gpt",
+    "provider": "OpenAI",
+    "model": "ChatGPT built-in image generation",
+    "prompt": "Photorealistic natural portrait of Rio, an original adult East Asian man aged 21–23. Moderate height (175–178 cm), compact athletic build with functional muscle, moderate shoulders, not bulky or extreme V-taper. Youthful soft oval facial structure, short-to-moderate face length, smooth natural jawline, calm warm eyes with neutral-to-gentle outer corners, natural nose and lips. Short dark lightly textured practical hair with natural fringe. Realistic skin texture and small asymmetries. Exactly one small understated earring on one ear only, visible when framing allows; no flashy jewelry. Friendly approachable everyday presence with restrained hidden intensity, never a thug, fighter stereotype, bodybuilder or stylized idol. Portrait orientation, upper-body close-up from mid-chest to above entire hair, eye-level portrait lens, natural anatomy, one person only, no text or watermark. Reference image: preserve this same Rio face, facial structure, eyes, hair silhouette, earring shape and ear side. Change only pose, wardrobe, expression and lighting as specified. Scene: Gentle three-quarter angle, serious quiet focused gaze with still mouth and neutral expression, same soft facial bone structure, plain dark T-shirt, restrained directional studio light, neutral backdrop.",
+    "references": [
+      "C:/Users/krcho/.codex/generated_images/01a083ec-88a3-7d12-a6bd-b1aea9c23d3c/exec-32713af8-fc9e-4ddb-93d8-07fd3f7c1332.png"
+    ],
+    "user_request": "스튜디오에 캐릭터 등록을 해주고, 둘다 Chatgpt 너의 이미지 모델을 이용해서 상반신 클로즈업 5장씩 만들어서 웹앱에서 볼 수 있게 해줘",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-rio\\generations\\GPT-20260909-rio-upper-body-closeups\\outputs\\gpt\\rio-closeup-04.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 1024,
+      "height": 1536,
+      "container": "png"
+    }
+  },
+  {
+    "file": "rio-closeup-05.png",
+    "original_path": "C:\\Users\\krcho\\.codex\\generated_images\\01a083ec-88a3-7d12-a6bd-b1aea9c23d3c\\exec-53ae514d-e619-4a4c-802b-5767516cef38.png",
+    "sha256": "ec5a27a367184fda6854ca19a5b6d3775b13673a9471a9ba15a8fdae875071c7",
+    "engine": "gpt",
+    "provider": "OpenAI",
+    "model": "ChatGPT built-in image generation",
+    "prompt": "Photorealistic natural portrait of Rio, an original adult East Asian man aged 21–23. Moderate height (175–178 cm), compact athletic build with functional muscle, moderate shoulders, not bulky or extreme V-taper. Youthful soft oval facial structure, short-to-moderate face length, smooth natural jawline, calm warm eyes with neutral-to-gentle outer corners, natural nose and lips. Short dark lightly textured practical hair with natural fringe. Realistic skin texture and small asymmetries. Exactly one small understated earring on one ear only, visible when framing allows; no flashy jewelry. Friendly approachable everyday presence with restrained hidden intensity, never a thug, fighter stereotype, bodybuilder or stylized idol. Portrait orientation, upper-body close-up from mid-chest to above entire hair, eye-level portrait lens, natural anatomy, one person only, no text or watermark. Reference image: preserve this same Rio face, facial structure, eyes, hair silhouette, earring shape and ear side. Change only pose, wardrobe, expression and lighting as specified. Scene: Front-facing with a natural friendly smile, casual light gray sweatshirt, soft natural window light, uncluttered neutral background.",
+    "references": [
+      "C:/Users/krcho/.codex/generated_images/01a083ec-88a3-7d12-a6bd-b1aea9c23d3c/exec-32713af8-fc9e-4ddb-93d8-07fd3f7c1332.png"
+    ],
+    "user_request": "스튜디오에 캐릭터 등록을 해주고, 둘다 Chatgpt 너의 이미지 모델을 이용해서 상반신 클로즈업 5장씩 만들어서 웹앱에서 볼 수 있게 해줘",
+    "dest_path": "D:\\AI_Studio\\library\\characters\\ch-rio\\generations\\GPT-20260909-rio-upper-body-closeups\\outputs\\gpt\\rio-closeup-05.png",
+    "media": {
+      "kind": "image",
+      "mime": "image/png",
+      "width": 1024,
+      "height": 1536,
+      "container": "png"
+    }
+  }
+]

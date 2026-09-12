@@ -1,0 +1,24 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_raw_edit",
+  "base_model_type": "krea2_raw_edit",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "960x1280",
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 10_31_54.png"
+  ],
+  "remove_background_images_ref": 0,
+  "num_inference_steps": 20,
+  "guidance_scale": 2,
+  "negative_prompt": "generic idealized AI beauty face, symmetrical perfect features, enlarged round eyes, slimmed pointed jaw, airbrushed poreless skin, beauty filter, glamour retouching, doll-like face, different person",
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "png",
+  "seed": 907301,
+  "prompt": "Edit the provided reference image.\nRequested change: Reproduce the reference image as it is, with no change at all.\nExplicit operations:\n- framing [subtle]: no change\nChange nothing else. Preserve exactly: identity, face geometry, eye shape, eye spacing, nose shape, lip shape, jaw width, skin texture, hairstyle, hair length, expression, wardrobe, background, lighting, camera, framing, body proportions.\nHer eye shape must not move: slightly elongated almond eyes, not round; same upper lid curve, same outer corner angle, same lid crease.\nCopy this specific person's face from the reference rather than drawing an attractive face: keep her exact eye spacing, exact eyelid shape, exact nose width and length, exact lip thickness, exact jaw width and the small natural irregularities of her face.\nImpression to keep: slim slightly elongated oval face, gently tapered lower face with no sharp V-line, faint quiet closed-lip smile, calm unguarded gaze, fresh translucent pale skin with visible fine pores, long near-black hair with soft full lived-in bangs, limpid and unaffected rather than styled.\nThis must read as the same individual as the reference image, recognisable at a glance.\n",
+  "output_filename": "run-20260911-210202-d8ff55d0"
+}

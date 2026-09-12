@@ -1,7 +1,7 @@
 {
   "project_id": "VIDEO-20260907-181254-lia-sundress-shift-cat",
-  "updated_at": "2026-09-07T19:36:24+09:00",
-  "sequence_status": "running",
+  "updated_at": "2026-09-07T22:06:48+09:00",
+  "sequence_status": "finished",
   "jobs": [
     {
       "prompt_id": "beat-A-beach-sundress",
@@ -17,19 +17,27 @@
     },
     {
       "prompt_id": "beat-B-store-uniform",
-      "status": "running",
+      "status": "needs_review",
       "run_id": "run-20260907-193615-bf59802b",
       "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-193615-bf59802b",
-      "artifacts": [],
-      "error": null
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-193615-bf59802b.mp4"
+      ],
+      "error": null,
+      "finished_at": "2026-09-07T20:49:50+09:00",
+      "duration_approx": "~71 min"
     },
     {
       "prompt_id": "beat-D-home-cat",
-      "status": "pending",
-      "run_id": null,
-      "run_dir": null,
-      "artifacts": [],
-      "error": null
+      "status": "needs_review",
+      "run_id": "run-20260907-205125-b80fed95",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\VIDEO-20260907-181254-lia-sundress-shift-cat\\runs\\run-20260907-205125-b80fed95",
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-lia\\videos\\VIDEO-20260907-181254-lia-sundress-shift-cat\\run-20260907-205125-b80fed95.mp4"
+      ],
+      "error": null,
+      "finished_at": "2026-09-07T22:05:05+09:00",
+      "duration_approx": "~71 min"
     }
   ]
 }

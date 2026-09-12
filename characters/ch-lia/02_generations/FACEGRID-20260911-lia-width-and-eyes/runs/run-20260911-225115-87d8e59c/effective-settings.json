@@ -1,0 +1,19 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_raw",
+  "base_model_type": "krea2_raw",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "num_inference_steps": 20,
+  "guidance_scale": 3.5,
+  "negative_prompt": "generic idealized AI beauty face, symmetrical perfect features, airbrushed poreless skin, beauty filter, glamour retouching, doll-like face",
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "seed": 272037,
+  "prompt": "A photographic head-and-shoulders portrait of a young adult East-Asian-looking woman, an original character with a globally neutral identity and no resemblance to any specific real person. She faces the camera, cropped just below the collarbone, against a plain soft light-grey background in even, soft daylight.\n\nHer face: an oval face with noticeably wide cheekbones and a fuller lower face; eyes of balanced shape, neither elongated nor round, dark brown, with relaxed eyelids and a calm coordinated gaze; natural softly defined dark eyebrows; a nose that is not a celebrity-specific likeness - seen from the side its bridge would run straight or very slightly concave with no raised hump; soft rose-beige lips, gently closed, with a natural satin finish; a chin that does not project forward past the lower lip.\n\nHer expression is a faint, quiet, unposed natural smile, never exaggerated or influencer-like.\n\nHer hair: long near-black hair with soft natural texture and soft full bangs across the forehead, lived-in rather than salon-perfect, with natural root volume, grouped strands, baby hairs and subtle flyaways.\n\nHer skin: very clear, fresh, translucent-looking pale skin with subtle inner luminosity, realistic fine pores, soft natural texture, faint natural blood tone and gentle cheek colour, minimal everyday base makeup; never waxy, porcelain-like, glossy or beauty-filter smoothed.\n\nNatural photographic colour, sharp focus on the face, real skin detail, vertical framing.\n",
+  "output_filename": "run-20260911-225115-87d8e59c"
+}

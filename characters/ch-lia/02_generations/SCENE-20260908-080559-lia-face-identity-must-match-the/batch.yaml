@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "session": {
+    "id": "SCENE-20260908-080559-lia-face-identity-must-match-the",
+    "character_id": "ch-lia",
+    "character_name": "Lia",
+    "romanized_name": "Lia",
+    "title": "그 이미지의 얼굴을 기준으로 만들어봐. 무대위 장면을 위해서 다른 이미지 만들어. 무대 의상에 투명하고 화려한 아이돌 화장이지만 이 얼굴이 유지되어야 해. Face identity MUST match the ChatGPT Lia portrait dated 2026-09-04 08_19_10 (same bone structure, eyes, cheek mole, wispy bangs). Absolute face ref: D:\\AI_Studio\\library\\characters\\ch-lia\\imports\\inbox\\GPT\\ChatGPT Image 2026년 9월 4일 오후 08_19_10.png. Scene: broadcast stage solo dance singer performance still; glamorous translucent sparkling idol makeup with glossy lids and skin that still shows pores; sequined stage outfit with sheer panels and handheld mic; dramatic stage spotlights; chest-up to three-quarter body; keep the three thin red-blue wrist bracelets if wrist visible; adult woman; no real celebrity likeness.",
+    "status": "completed",
+    "created_by": "grok",
+    "visibility": "restricted",
+    "asset_root": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\SCENE-20260908-080559-lia-face-identity-must-match-the\\outputs",
+    "created_at": "2026-09-07T23:05:59+00:00",
+    "prompt_file": "prompt.txt",
+    "scene_spec_file": "scene_spec.json",
+    "scene_delta_file": "scene-delta.json",
+    "prompt_trace_file": "prompt-trace.json",
+    "prompt_strategy": "strict_translation",
+    "stable_dna_sha256": "bd4d3767ef3ee0094e3de67cf2f6b7be30f17351029bf2847ef7580f77c63061"
+  },
+  "jobs": [
+    {
+      "backend": "local-wangp",
+      "model": "krea2_turbo_moody_krea",
+      "count": 4,
+      "seed": 908080560,
+      "resolution": "768x1024",
+      "steps": 8,
+      "settings_file": "krea2.settings.json",
+      "output_dir": "outputs/krea2",
+      "status": "completed",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-lia\\02_generations\\SCENE-20260908-080559-lia-face-identity-must-match-the\\runs\\run-20260908-080559-7b7970ee"
+    }
+  ],
+  "review": {
+    "surface": "personal-prompt-studio",
+    "initial_state": "needs_review"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260911-224314-ff094241",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lia\\generations\\FACEGRID-20260911-lia-width-and-eyes\\outputs\\krea2\\run-20260911-224314-ff094241.jpg",
+      "sha256": "3c7fa1489a6d3eb02a33d2ad932cd836a579ff954faaf0cae43500721714a192",
+      "byte_count": 212049,
+      "metadata_present": false,
+      "embedded_prompt_sha256": null,
+      "prompt_exact_match": false,
+      "prompt_normalized_match": false,
+      "verified_at": "2026-09-11T22:46:55+09:00"
+    }
+  ]
+}
