@@ -1,0 +1,17 @@
+{
+  "session": "SHORT-20260913-noa21-self-introduction",
+  "updated_at": "2026-09-13T17:21:33+09:00",
+  "results": [
+    {
+      "shot": "intro-5b-help",
+      "status": "needs_review",
+      "run_id": "run-20260913-170353-768e37ec",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-170353-768e37ec",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SHORT-20260913-noa21-self-introduction\\outputs\\minimax-h3\\run-20260913-170353-768e37ec.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

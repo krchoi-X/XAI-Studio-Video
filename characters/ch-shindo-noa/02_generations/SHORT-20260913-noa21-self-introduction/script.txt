@@ -1,0 +1,6 @@
+intro-1-name: My name is Noa. Shindo Noa. I live alone, near the river.
+intro-2-work: I build shop windows for a beauty brand. People slow down. That is the job.
+intro-3-history: I started on the sales floor. I studied at night for four years.
+intro-4-things: I do not own much. What I keep, I keep for a long time.
+intro-5-help: I am not good at asking for help. I am working on that.
+intro-6-close: That is me. Thank you for stopping.

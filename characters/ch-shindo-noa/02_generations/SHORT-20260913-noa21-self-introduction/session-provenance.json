@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "SHORT-20260913-noa21-self-introduction",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa self-introduction short - six speaking shots with generated audio",
+  "user_request_verbatim": "오늘 밤에는 이제 자기 소개 하는 쇼츠를 만들 수 있으면 좋겠어. 다하고 나서 내가 안돌아왔는데 GPU가 놀고 있으면 자기를 소개하는 쇼츠 기획을 하고 만들어봐. 아직 그렇게 하기에 무리면 필요한걸 준비하고 있으면 되고",
+  "source_idea": "minimax_h3_ref2va_pruned is Reference-to-Video-AND-Audio; its own model definition carries a worked example of a lip-synced spoken line written as 'saying clearly (S1) <d>[English] ...</d>' plus overall_soundscape and non_diegetic_music fields. Every clip rendered for this character so far has carried a real AAC track measuring -85 dB, because every prompt asked for a quiet room tone and nothing else. Six shots, one line each, about 7.5 s per shot at 181 frames and 24 fps, for roughly a 45 s short. Language is English on the operator's instruction and is also the only variant the model definition demonstrates. All content is from the character record's scene_defaults - job, night study, the Kawasaki flat, few possessions, slow to ask for help - and the three wardrobes are its own wardrobe_direction. Shot 1 renders and is inspected alone before the other five are queued, because lip sync and voice are unverified on this build.",
+  "status": "prepared",
+  "created_at": "2026-09-13T12:07:23+09:00",
+  "updated_at": "2026-09-13T12:07:23+09:00"
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260913-151303-6d6c4045",
+  "project_id": "SHORT-20260913-noa21-self-introduction",
+  "prompt_id": "intro-1-name",
+  "status": "needs_review",
+  "created_at": "2026-09-13T15:13:03+09:00",
+  "updated_at": "2026-09-13T15:30:33+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-24332",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\intro-1-name.txt",
+    "sha256": "6bee426793f02b9568de614e646c0a61a7860a48bd55d36e0a07455ccb6c83c4",
+    "normalized_sha256": "73be940220f69e46e6c664e0561753ced258f47cde95d01833680fbd629f905a",
+    "byte_count": 2444
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\intro-1-name.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg",
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop.png"
+      ],
+      "resolution": "576x768",
+      "video_length": 181,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "seed": 917339
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SHORT-20260913-noa21-self-introduction\\outputs\\minimax-h3\\run-20260913-151303-6d6c4045.mp4",
+      "sha256": "25ee63fd6990fc70921ea01db628c81555c5ed8127ea61e70ed33a0c68c8b761",
+      "byte_count": 5487273,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "73be940220f69e46e6c664e0561753ced258f47cde95d01833680fbd629f905a",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-13T15:30:33+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 50884,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-151303-6d6c4045",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-151303-6d6c4045\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SHORT-20260913-noa21-self-introduction\\outputs\\minimax-h3",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-151303-6d6c4045\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-151303-6d6c4045\\worker.stderr.log"
+  }
+}

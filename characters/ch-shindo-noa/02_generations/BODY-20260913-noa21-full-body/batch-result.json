@@ -1,0 +1,127 @@
+{
+  "session": "BODY-20260913-noa21-full-body",
+  "updated_at": "2026-09-13T15:12:41+09:00",
+  "results": [
+    {
+      "shot": "body-full-1",
+      "status": "needs_review",
+      "run_id": "run-20260913-115737-0efbb69e",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-115737-0efbb69e",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-115737-0efbb69e.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "body-full-2",
+      "status": "needs_review",
+      "run_id": "run-20260913-121517-07c7609a",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-121517-07c7609a",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-121517-07c7609a.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "body-knee-up",
+      "status": "needs_review",
+      "run_id": "run-20260913-123317-92d5a697",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-123317-92d5a697",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-123317-92d5a697.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "body-tee-jeans",
+      "status": "needs_review",
+      "run_id": "run-20260913-125118-be0156a9",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-125118-be0156a9",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-125118-be0156a9.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "body-blazer",
+      "status": "needs_review",
+      "run_id": "run-20260913-130858-3d392bb4",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-130858-3d392bb4",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-130858-3d392bb4.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "gaze-L1",
+      "status": "needs_review",
+      "run_id": "run-20260913-132639-92f9b5b4",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-132639-92f9b5b4",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-132639-92f9b5b4.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "gaze-L2",
+      "status": "needs_review",
+      "run_id": "run-20260913-134419-4891a18c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-134419-4891a18c",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-134419-4891a18c.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "gaze-L3",
+      "status": "needs_review",
+      "run_id": "run-20260913-140159-af9d678b",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-140159-af9d678b",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-140159-af9d678b.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "gaze-R1",
+      "status": "needs_review",
+      "run_id": "run-20260913-141940-f0ac7fab",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-141940-f0ac7fab",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-141940-f0ac7fab.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "gaze-R2",
+      "status": "needs_review",
+      "run_id": "run-20260913-143720-7beceb47",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-143720-7beceb47",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-143720-7beceb47.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "gaze-R3",
+      "status": "needs_review",
+      "run_id": "run-20260913-145501-6b6448b1",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body\\runs\\run-20260913-145501-6b6448b1",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\BODY-20260913-noa21-full-body\\outputs\\minimax-h3\\run-20260913-145501-6b6448b1.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260913-151303-6d6c4045",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SHORT-20260913-noa21-self-introduction\\outputs\\minimax-h3\\run-20260913-151303-6d6c4045.mp4",
+      "sha256": "25ee63fd6990fc70921ea01db628c81555c5ed8127ea61e70ed33a0c68c8b761",
+      "byte_count": 5487273,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "73be940220f69e46e6c664e0561753ced258f47cde95d01833680fbd629f905a",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-13T15:30:33+09:00"
+    }
+  ]
+}

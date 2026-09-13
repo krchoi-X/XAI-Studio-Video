@@ -1,0 +1,61 @@
+{
+  "session": "SHORT-20260913-noa21-self-introduction",
+  "updated_at": "2026-09-13T17:01:28+09:00",
+  "results": [
+    {
+      "shot": "intro-2-work",
+      "status": "needs_review",
+      "run_id": "run-20260913-153207-4fbe299b",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-153207-4fbe299b",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SHORT-20260913-noa21-self-introduction\\outputs\\minimax-h3\\run-20260913-153207-4fbe299b.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "intro-3-history",
+      "status": "needs_review",
+      "run_id": "run-20260913-154947-00413085",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-154947-00413085",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SHORT-20260913-noa21-self-introduction\\outputs\\minimax-h3\\run-20260913-154947-00413085.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "intro-4-things",
+      "status": "needs_review",
+      "run_id": "run-20260913-160747-9be405c7",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-160747-9be405c7",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SHORT-20260913-noa21-self-introduction\\outputs\\minimax-h3\\run-20260913-160747-9be405c7.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "intro-5-help",
+      "status": "needs_review",
+      "run_id": "run-20260913-162548-dad74bfd",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-162548-dad74bfd",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SHORT-20260913-noa21-self-introduction\\outputs\\minimax-h3\\run-20260913-162548-dad74bfd.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "intro-6-close",
+      "status": "needs_review",
+      "run_id": "run-20260913-164348-cd027f0e",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\SHORT-20260913-noa21-self-introduction\\runs\\run-20260913-164348-cd027f0e",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SHORT-20260913-noa21-self-introduction\\outputs\\minimax-h3\\run-20260913-164348-cd027f0e.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

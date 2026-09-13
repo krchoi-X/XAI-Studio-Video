@@ -1,0 +1,26 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg",
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop.png"
+  ],
+  "resolution": "576x768",
+  "video_length": 181,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "seed": 1100629,
+  "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone and hairstyle. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> speaks one short line to camera in a small plain flat, during one continuous shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture and hair remain recognizable and unchanged; only the location, the lighting, their clothing and their action are new.\ndetailed_description:\nThe target video is a single continuous take in a small, plain, well-kept one-room flat with pale walls, a single window with soft daylight, very few possessions and a few good older objects kept carefully. [Shot 1] A steady medium close-up holds her seated upright at a small table, the plain wall behind her. She wears a soft oversized pale-grey cotton T-shirt and loose dark lounge trousers. She stands or sits very upright with her weight even on both feet; she never shifts her weight onto one hip and never crosses her legs. Her expression is calm and quietly observant, restrained rather than blank, and her gaze stays level on the camera lens. Her hands rest still on the table, one resting on an old worn notebook. She looks at the camera and says clearly (S1) <d>[English] I do not own much. What I keep, I keep for a long time.</d> Her mouth moves in exact synchronization with the words and her expression stays composed throughout; she does not smile broadly, perform warmth or gesture theatrically. Her large horizontally elongated almond eyes with visible sclera around the irises, her short brow-to-eye distance, her dark fairly straight brows, her lean youthful midface, her straight narrow nose with no dorsal hump, her softly rounded chin that does not jut forward, her skin texture and her black hair all remain exactly as they are in <Picture 1> and <Picture 2>, stable and physically coherent from the first frame to the last. There is no other speech.\noverall_soundscape: A quiet room: faint distant traffic, a very soft paper contact, and the synchronized spoken line.\nnon_diegetic_music: A sparse, quiet piano figure held far under the voice, unresolved and unsentimental, at low level so the spoken line stays clearly in front.\n",
+  "output_filename": "run-20260913-160747-9be405c7"
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "BODY-20260913-noa21-full-body",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\BODY-20260913-noa21-full-body",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa-21 full body, and the gaze-corrected angle reruns",
+  "user_request_verbatim": "전신 먼저 하자. 내가 1시간 이내로 나갈거라서 1시간내로 안끝나면 다음 작업도 해야해. 전신 몸매에 대한 의견은 전에 적어준거 있을거야",
+  "source_idea": "Five body clips render ch-shindo-noa v2's body block verbatim as prose - height, bust, waist, hips, legs, whole-body skin - plus scene_defaults.posture, which specifies an even two-footed stance and no cocked hip. They are judged by eye on the body: the face lands near 100px at full length, far under anything the recogniser can read, so they are deliberately not identity evidence and do not enter the identity set. Six gaze-* clips then repeat the angle recipe with one line changed. The operator noticed the existing set's off-axis frames have the eyes swinging sideways and upward; that came from the prompt line 'the gaze follows the direction of the turn', which was my instruction rather than a model behaviour. They double as further attempts at a native left profile, which this reference reaches about once in fourteen clips.",
+  "status": "prepared",
+  "created_at": "2026-09-13T11:57:29+09:00",
+  "updated_at": "2026-09-13T11:57:29+09:00"
+}
