@@ -5,7 +5,8 @@
 
 Each shot is `<session>/<shot>.txt` plus `<session>/<shot>.settings.json`, the pair `local_wangp.py submit`
 already expects. The batch submits one, waits for it to reach a terminal state, then submits the next: the
-worker holds a GPU lock, so overlapping submissions fail rather than queue.
+worker holds a GPU lock. A submission made while another worker holds it fails immediately,
+so the batch waits for the lock (see `wait_for_lock`) rather than spending the shot.
 
 Before every shot it asks Ollama to unload. On an 8 GB card a resident local LLM costs several gigabytes,
 and the Krea2 RAW path already offloads constantly at that size - two large models on one laptop GPU is the
@@ -69,6 +70,45 @@ def submit(session: Path, shot: str, output_dir: Path, requested_by: str) -> dic
          "--output-dir", str(output_dir), "--requested-by", requested_by],
         capture_output=True, text=True, encoding="utf-8", errors="replace", check=True)
     return json.loads(result.stdout)
+
+
+LOCK_MESSAGE = "already holds the GPU lock"
+
+
+def wait_for_lock(session: Path, shot: str, output_dir: Path, requested_by: str,
+                  wait_minutes: int) -> dict[str, Any]:
+    """Submit, and if another worker holds the GPU lock, wait for it instead of burning the shot.
+
+    Submitting against a held lock fails instantly. A batch queued behind a render that is still running
+    therefore does not wait its turn - it fails every shot in a couple of minutes and the night is gone.
+    That happened on 2026-09-13: twenty vlog shots were queued while a single clip was still rendering and
+    all twenty failed inside six minutes.
+    """
+    deadline = time.time() + wait_minutes * 60
+    announced = False
+    while True:
+        try:
+            return submit(session, shot, output_dir, requested_by)
+        except subprocess.CalledProcessError as error:
+            if LOCK_MESSAGE not in (error.stderr or "") or time.time() > deadline:
+                raise
+            if not announced:
+                log(f"{shot}: another worker holds the GPU lock - waiting up to {wait_minutes} min")
+                announced = True
+            time.sleep(60)
+
+
+def held_by_another(record: dict[str, Any]) -> bool:
+    """True when a run failed only because another worker held the GPU lock.
+
+    `submit` spawns a detached worker and returns before that worker touches the GPU, so this failure never
+    reaches the caller as a non-zero exit - it is written into the run record a second later. Checking the
+    submit call alone is not enough, which is how twenty shots were spent in six minutes on 2026-09-13.
+    """
+    if record.get("status") not in {"failed", "interrupted"}:
+        return False
+    text = json.dumps(record, ensure_ascii=False)
+    return LOCK_MESSAGE in text
 
 
 def stop_worker(pid: int | None) -> str:
@@ -135,6 +175,10 @@ def main() -> int:
     parser.add_argument("--timeout-minutes", type=int, default=180)
     parser.add_argument("--stall-minutes", type=int, default=12,
                         help="give up on a shot whose worker has written nothing for this long")
+    parser.add_argument("--lock-wait-minutes", type=int, default=90,
+                        help="how long to wait for another worker to release the GPU lock before failing "
+                             "the shot; a batch queued behind a running render would otherwise fail every "
+                             "shot within minutes")
     parser.add_argument("--result", help="where to write the batch record (default <session>/batch-result.json)")
     args = parser.parse_args()
 
@@ -148,7 +192,8 @@ def main() -> int:
         log(f"{shot}: {unload_ollama()}")
         started = time.time()
         try:
-            submitted = submit(session, shot, output_dir, args.requested_by)
+            submitted = wait_for_lock(session, shot, output_dir, args.requested_by,
+                                      args.lock_wait_minutes)
         except subprocess.CalledProcessError as error:
             log(f"{shot}: submit refused - {(error.stderr or '').strip().splitlines()[-1:]}")
             results.append({"shot": shot, "status": "failed", "error": (error.stderr or "").strip()[-2000:]})
@@ -156,6 +201,15 @@ def main() -> int:
         run_dir = Path(submitted["run_dir"])
         log(f"{shot}: {submitted['run_id']} pid {submitted['worker_pid']}")
         record = wait(run_dir, args.timeout_minutes, args.stall_minutes, submitted.get('worker_pid'))
+        lock_deadline = started + args.lock_wait_minutes * 60
+        while held_by_another(record) and time.time() < lock_deadline:
+            log(f"{shot}: the worker lost the GPU lock race - retrying in 60 s")
+            time.sleep(60)
+            submitted = wait_for_lock(session, shot, output_dir, args.requested_by,
+                                      args.lock_wait_minutes)
+            run_dir = Path(submitted["run_dir"])
+            record = wait(run_dir, args.timeout_minutes, args.stall_minutes,
+                          submitted.get("worker_pid"))
         minutes = round((time.time() - started) / 60, 1)
         artifacts = [item.get("path") for item in record.get("artifacts", []) if item.get("path")]
         log(f"{shot}: {record.get('status')} in {minutes} min -> {artifacts}")
