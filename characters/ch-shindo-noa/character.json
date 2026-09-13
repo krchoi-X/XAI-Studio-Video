@@ -4,7 +4,7 @@
   "name": "신도 노아",
   "romanized_name": "Shindo Noa",
   "status": "candidate",
-  "version": 2,
+  "version": 3,
   "stable_dna": {
     "adult_age_range": "26-year-old adult woman",
     "visual_background": "Japanese woman with an original identity; inspired by broad editorial traits rather than resemblance to any specific real person",
@@ -40,7 +40,7 @@
       "quiet resilient self-reliant presence; young but not sheltered"
     ],
     "distinctive_marks": [
-      "a noticeably large mole on the abdomen beside the navel, always in the same place; visible only when the midriff is bare"
+      "a single small mole on the abdomen beside the navel, always in the same place; only a few millimetres across, much smaller than the navel, easy to miss at a glance and clearly visible only in a close view; never enlarged, never repeated and never a prominent feature"
     ]
   },
   "scene_defaults": {
@@ -92,12 +92,12 @@
   "video_test_associations": [],
   "provenance": {
     "created_at": "2026-09-11T13:30:00+00:00",
-    "updated_at": "2026-09-12T13:09:04+00:00",
+    "updated_at": "2026-09-13T13:40:32+00:00",
     "created_by": "ChatGPT GitHub connector",
     "sources": [
       "user-directed Noa character design session on 2026-09-11"
     ],
-    "change_reason": "Filled the body and marks the record was missing, from the operator's own description on 2026-09-12: slender but never thin, a fuller well-shaped bust for an East Asian frame, slim waist, well-developed hips, slim legs carried with correct alignment, and the same supple well-hydrated skin over the whole body as on the face. Added a large mole beside the navel as the distinctive mark - placed on the torso rather than the face because a facial mole is what image models exaggerate and multiply, while this one is only visible in midriff-baring wardrobe and is a strong anchor in exactly those shots. Added scene_defaults.posture: she stands very upright with her weight even on both feet, never on one hip, and never sits with her legs crossed. height_impression is deliberately untouched at 171-173 cm; the operator briefly gave 165 and corrected it as a confusion with another character. Requested by the operator, drafted by claude.",
-    "stable_dna_sha256": "161a5aea608bf10a3d653aef165f9d780ab161a06d319d57430f76fe094b1432"
+    "change_reason": "The mole rendered at roughly the size of the navel in FIGURE-20260913-noa21-swimwear, the first clips with a bare midriff. The operator's requirement is a mark visible only on close inspection, about a tenth of that area. 'noticeably large' was the cause: it is an instruction to make the mole prominent, which is the opposite of the intent. Replaced with an explicit size bound (a few millimetres, smaller than the navel) plus the never-enlarged/never-repeated guard the operator had already asked for after seeing image models multiply facial moles.",
+    "stable_dna_sha256": "2c87bc3f17c4165b2f9f49b90c03d92718c1ff2000acbfa11ba287a99920feb0"
   }
 }

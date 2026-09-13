@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "FIGURE-20260913-noa21-swimwear",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FIGURE-20260913-noa21-swimwear",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa-21 figure reference in swimwear, to settle the body DNA",
+  "user_request_verbatim": "몸매는 수영복이나 속옷 차림으로 봐야할 것 같아. ... noa의 dna를 지금으로 확정짓고, 이미지 세트도 만들어두자.",
+  "source_idea": "The five clothed body clips could not answer two attributes of the record: a bust 'fuller and well-shaped for her slender build' and hips that 'give a clear hip line' do not read through a loose tee or a blazer. These are neutral figure references of the costume-fitting kind - plain studio, even light, the record's own posture, a slow half turn. The body sentences are reordered so bust and hips come before 'slender', which the model acts on readily and which appeared to be overriding them. figure-twopiece is also the first test of distinctive_marks: the record's mole beside the navel is specified as visible only when the midriff is bare, and no clip so far has had a bare midriff.",
+  "status": "prepared",
+  "created_at": "2026-09-13T19:45:38+09:00",
+  "updated_at": "2026-09-13T19:45:38+09:00"
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260913-203920-76fbb185",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FIGURE-20260913-noa21-swimwear\\outputs\\minimax-h3\\run-20260913-203920-76fbb185.mp4",
+      "sha256": "40b0c49650c37670828f0172d2ec99fb1e23edd957429b28393d88cc34e0e99c",
+      "byte_count": 4432120,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "f108ead3e3cb8aed4ff608f05a0fd9e72bb89a1f909c3cf06c38967d5d8f4dad",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-13T20:56:56+09:00"
+    }
+  ]
+}

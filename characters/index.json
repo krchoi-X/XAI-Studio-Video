@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-12T13:09:56+00:00",
+  "updated_at": "2026-09-13T13:40:32+00:00",
   "characters": [
     {
       "id": "ch-han-seorin",
@@ -97,8 +97,8 @@
       "name": "신도 노아",
       "romanized_name": "Shindo Noa",
       "status": "candidate",
-      "version": 2,
-      "stable_dna_sha256": "161a5aea608bf10a3d653aef165f9d780ab161a06d319d57430f76fe094b1432",
+      "version": 3,
+      "stable_dna_sha256": "2c87bc3f17c4165b2f9f49b90c03d92718c1ff2000acbfa11ba287a99920feb0",
       "path": "characters/ch-shindo-noa/character.json"
     },
     {

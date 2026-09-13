@@ -1,0 +1,50 @@
+{
+  "session": "FIGURE-20260913-noa21-swimwear",
+  "updated_at": "2026-09-13T20:57:00+09:00",
+  "results": [
+    {
+      "shot": "figure-swim-1",
+      "status": "needs_review",
+      "run_id": "run-20260913-194539-b9497aab",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FIGURE-20260913-noa21-swimwear\\runs\\run-20260913-194539-b9497aab",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FIGURE-20260913-noa21-swimwear\\outputs\\minimax-h3\\run-20260913-194539-b9497aab.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "figure-swim-2",
+      "status": "needs_review",
+      "run_id": "run-20260913-200319-937128fb",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FIGURE-20260913-noa21-swimwear\\runs\\run-20260913-200319-937128fb",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FIGURE-20260913-noa21-swimwear\\outputs\\minimax-h3\\run-20260913-200319-937128fb.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "figure-twopiece",
+      "status": "needs_review",
+      "run_id": "run-20260913-202120-4a1e6af5",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FIGURE-20260913-noa21-swimwear\\runs\\run-20260913-202120-4a1e6af5",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FIGURE-20260913-noa21-swimwear\\outputs\\minimax-h3\\run-20260913-202120-4a1e6af5.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "figure-activewear",
+      "status": "needs_review",
+      "run_id": "run-20260913-203920-76fbb185",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FIGURE-20260913-noa21-swimwear\\runs\\run-20260913-203920-76fbb185",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FIGURE-20260913-noa21-swimwear\\outputs\\minimax-h3\\run-20260913-203920-76fbb185.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

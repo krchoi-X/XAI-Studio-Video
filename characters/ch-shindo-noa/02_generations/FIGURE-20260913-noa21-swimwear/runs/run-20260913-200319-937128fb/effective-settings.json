@@ -1,0 +1,26 @@
+{
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "audio_prompt_type": "",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg",
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop.png"
+  ],
+  "resolution": "576x768",
+  "video_length": 181,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "image_refs_relative_size": 125,
+  "remove_background_images_ref": 0,
+  "seed": 1408273,
+  "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone and hairstyle. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] <Subject 1> stands at full height in a plain studio in a plain black one-piece swimsuit and turns slowly through a half circle so their whole figure is seen from the front, the side and the back, during one continuous shot.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture and hair remain recognizable and unchanged; their clothing and the studio around them are new.\ndetailed_description:\nThe target video is a single continuous take in a plain photographic studio with a smooth light warm-grey seamless backdrop and even soft daylight falling from the front and slightly above, with no hard shadows. This is a neutral figure reference of the kind used for a costume fitting: the framing, the light and her bearing are matter-of-fact and never glamorous, suggestive or posed for effect. [Shot 1] A locked-off full-length camera holds <Subject 1> from the crown of their head to below their feet, standing in the centre of the frame with clear space above her head and below her feet, so her entire figure is inside the frame at all times. She wears a plain matte black one-piece swimsuit with a simple scoop neckline and ordinary straps, with no pattern, no cut-outs and no decoration, and bare feet. She stands very upright with her weight even on both feet, her shoulders level and her arms relaxed at her sides; she never shifts her weight onto one hip, never stands with a cocked hip and never crosses her legs. Her bust is fuller and well shaped for her slender build, a little larger than average for her frame, with natural shape and weight, never exaggerated or surgically perfect. Her hips are well developed so that they balance the bust and give a clear hip line, in natural proportion rather than editorial-glamour shaping. Her waist is slim and natural with no exaggerated shaping. She is tall and lean, about 171 to 173 centimetres, with long natural adult limbs, a long elegant neck, straight relaxed shoulders and a slender healthy torso. Her legs are slim, slender but never thin or skeletal, carried with correct upright alignment, with knees and ankles naturally aligned. Her skin is supple, soft and well hydrated with realistic texture over her whole body, never plastic or airbrushed. Across the whole shot she turns slowly and continuously through a half circle in one smooth unbroken motion, so the camera sees her whole figure first from the front, then from the side, then from behind. Her head stays level, her expression stays calm, composed and quietly observant, and her gaze stays straight ahead along the direction her face is pointing. Her face, her hair, her body proportions and her clothing remain stable and physically coherent from the first frame to the last. There is no speech.\noverall_soundscape: A quiet neutral studio room tone and nothing else.\nnon_diegetic_music: None.\n",
+  "output_filename": "run-20260913-200319-937128fb"
+}

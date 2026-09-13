@@ -1,9 +1,9 @@
 # 신도 노아 — Character Core
 
 - ID: `ch-shindo-noa`
-- version: `2`
+- version: `3`
 - status: `candidate`
-- Stable DNA SHA-256: `161a5aea608bf10a3d653aef165f9d780ab161a06d319d57430f76fe094b1432`
+- Stable DNA SHA-256: `2c87bc3f17c4165b2f9f49b90c03d92718c1ff2000acbfa11ba287a99920feb0`
 
 ## Stable identity
 
@@ -38,7 +38,7 @@
 
 ## Distinctive marks
 
-- a noticeably large mole on the abdomen beside the navel, always in the same place; visible only when the midriff is bare
+- a single small mole on the abdomen beside the navel, always in the same place; only a few millimetres across, much smaller than the navel, easy to miss at a glance and clearly visible only in a close view; never enlarged, never repeated and never a prominent feature
 
 ## Scene defaults (mutable)
 
