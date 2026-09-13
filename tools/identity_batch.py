@@ -35,6 +35,30 @@ TERMINAL = {"succeeded", "needs_review", "failed", "cancelled", "interrupted", "
 OLLAMA_UNLOAD = "http://127.0.0.1:11434/api/generate"
 
 
+def keep_awake() -> str:
+    """Ask Windows not to sleep while the batch runs, for the life of this process only.
+
+    On 2026-09-13 an overnight batch of twenty shots lost about seven hours: the laptop entered Modern
+    Standby at 00:53 and did not leave until 07:56 (System log, Kernel-Power 506/507). One shot was
+    throttled to 62 minutes against a 45 minute deadline and the next was frozen mid-render for 406. Neither
+    is a fault in the stall detection - there was nothing running to detect.
+
+    This is a process-scoped request, not a change to the machine's power settings: it is dropped the moment
+    this process exits, and it does not survive a lid close or a manual sleep. A batch that must survive
+    those needs the operator to change the power plan themselves.
+    """
+    if os.name != "nt":
+        return "not Windows; no sleep request made"
+    import ctypes
+    # ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_AWAYMODE_REQUIRED
+    if ctypes.windll.kernel32.SetThreadExecutionState(0x80000000 | 0x00000001 | 0x00000040):
+        return "sleep suppressed for the life of this batch"
+    # Away mode is refused on some machines; the plain system request is enough on those.
+    if ctypes.windll.kernel32.SetThreadExecutionState(0x80000000 | 0x00000001):
+        return "sleep suppressed (away mode refused)"
+    return "WARNING: could not suppress sleep; an unattended batch may be interrupted"
+
+
 def now() -> str:
     return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
 
@@ -186,6 +210,8 @@ def main() -> int:
     output_dir = Path(args.output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     result_path = Path(args.result) if args.result else session / "batch-result.json"
+
+    log(keep_awake())
 
     results = []
     for shot in args.shots:
