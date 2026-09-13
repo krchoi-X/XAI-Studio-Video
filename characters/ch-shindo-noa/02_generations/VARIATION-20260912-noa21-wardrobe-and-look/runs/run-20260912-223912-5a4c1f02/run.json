@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260912-223912-5a4c1f02",
+  "project_id": "VARIATION-20260912-noa21-wardrobe-and-look",
+  "prompt_id": "wear-blazer-R",
+  "status": "needs_review",
+  "created_at": "2026-09-12T22:39:12+09:00",
+  "updated_at": "2026-09-12T22:51:00+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-36040",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\wear-blazer-R.txt",
+    "sha256": "138ae9005943d7d5f80c789bcee0a2f52f3be96c1172a25333df8a973760d95c",
+    "normalized_sha256": "b39a943d9006da6786afc9fde7c0e7cec20b6401da9836325568f0de94c5519a",
+    "byte_count": 2319
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\wear-blazer-R.settings.json",
+    "value": {
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "audio_prompt_type": "",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait-mirrored.jpg",
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop-mirrored.png"
+      ],
+      "resolution": "576x768",
+      "video_length": 121,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "image_refs_relative_size": 125,
+      "remove_background_images_ref": 0,
+      "seed": 519803
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3\\run-20260912-223912-5a4c1f02.mp4",
+      "sha256": "659a626b8ff5447bbcc59277ce496373c82d776c949f92c0bd2e6d43e6350baf",
+      "byte_count": 3140248,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "b39a943d9006da6786afc9fde7c0e7cec20b6401da9836325568f0de94c5519a",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-12T22:51:00+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 43128,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-223912-5a4c1f02",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-223912-5a4c1f02\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-223912-5a4c1f02\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-223912-5a4c1f02\\worker.stderr.log"
+  }
+}

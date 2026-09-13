@@ -122,3 +122,29 @@ rather than leaving it holding the GPU lock, and treats a blocked status read as
   harvested frames as well as reports, which is a placement worth reconsidering during the storage transition.
 - `D:\AI_Studio\inbox\operator-picks\` — created by Claude Code as a drop folder for operator-supplied images.
   It is not part of any existing convention and should probably be folded into the importer inbox.
+- `D:\AI_Studio\library\characters\ch-shindo-noa\imports\derived\identity-set-20260913\` — 344 frames
+  from 26 admitted clips, superseding the 2026-09-12 Noa set. **Some of its members are horizontal flips**
+  (see below); the manifest marks each one and carries the caveat text.
+
+## 2026-09-13 addition — mirrored members in an identity set
+
+`identity_set_builder.py` gained `--balance-by-flip BUCKET...` and `--max-flips`, plus a `MAX_YAW = 1.15`
+filter that drops frames turned past a readable profile (measured: a clean profile peaks at 1.02, while a
+back-of-head frame in a half-circle clip measured 1.17 with the far eye already hidden).
+
+It exists because `ch-shindo-noa`'s chosen reference portrait will almost never turn left. Fourteen
+unmirrored left-turn clips produced exactly one frame in the left-profile bucket, and the clip that
+succeeded (`set-L6`) differs from one that failed (`set-L1`) **only in its seed** — so the lever is seed
+count, not prompt wording, reference yaw, or clip length, each of which was tested and recorded in
+`characters/ch-shindo-noa/02_generations/VARIATION-20260912-noa21-wardrobe-and-look/README.md`.
+
+Two things matter for Stage 2 and for anything downstream that reads these sets:
+
+- A mirrored member carries `mirrored: true`, `mirrored_from`, and `source_side`, and the manifest carries
+  `mirrored_frames` explaining the constraint. **A consumer that treats all members as independently
+  generated views will be wrong**; a flip is not new evidence about the face.
+- Flipping is only valid while the character record has no left/right asymmetric feature. `ch-shindo-noa`
+  passes today: no asymmetric facial trait, hair styling explicitly flexible, and its one
+  `distinctive_marks` entry is a mole beside the navel that no head-and-shoulders frame shows. If a future
+  DNA edit adds an asymmetric facial mark, every mirrored member of every existing set becomes invalid and
+  must be rebuilt. That is a real coupling between `character.json` and these derived sets.

@@ -1,0 +1,39 @@
+{
+  "session": "VARIATION-20260912-noa21-wardrobe-and-look",
+  "updated_at": "2026-09-13T10:02:17+09:00",
+  "results": [
+    {
+      "shot": "left-half-1",
+      "status": "needs_review",
+      "run_id": "run-20260913-090836-093e2944",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260913-090836-093e2944",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3\\run-20260913-090836-093e2944.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "left-half-2",
+      "status": "needs_review",
+      "run_id": "run-20260913-092637-7afac51d",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260913-092637-7afac51d",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3\\run-20260913-092637-7afac51d.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "left-half-3",
+      "status": "needs_review",
+      "run_id": "run-20260913-094417-80bf1ce9",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260913-094417-80bf1ce9",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3\\run-20260913-094417-80bf1ce9.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260913-094417-80bf1ce9",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3\\run-20260913-094417-80bf1ce9.mp4",
+      "sha256": "dbc32350d27131552340954b4ede6155306f4e90cb7ff6afeff1943e5461430f",
+      "byte_count": 5667247,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "4019669e6647aa744b4dd9961f9f20f472c3a37c11ef346c498ff86d896f1cc5",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-13T10:01:58+09:00"
+    }
+  ]
+}

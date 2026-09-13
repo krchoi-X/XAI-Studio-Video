@@ -1,24 +1,24 @@
 {
   "schema_version": 1,
-  "run_id": "run-20260912-220331-c0c2e5ed",
+  "run_id": "run-20260912-221512-be43a7a6",
   "project_id": "VARIATION-20260912-noa21-wardrobe-and-look",
-  "prompt_id": "fill-L2",
+  "prompt_id": "fill-L3",
   "status": "needs_review",
-  "created_at": "2026-09-12T22:03:31+09:00",
-  "updated_at": "2026-09-12T22:15:10+09:00",
+  "created_at": "2026-09-12T22:15:12+09:00",
+  "updated_at": "2026-09-12T22:26:54+09:00",
   "target": "local",
   "renderer": "WanGP",
   "requested_by": "claude",
   "executor": "local-wangp-worker",
-  "provider_job_id": "local-pid-47864",
+  "provider_job_id": "local-pid-44720",
   "prompt": {
-    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\fill-L2.txt",
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\fill-L3.txt",
     "sha256": "64621bd2de0ab626c3474ca954f9c4989d907887405972b524c0aedb5a497ac2",
     "normalized_sha256": "93089e12c47bd6f9e7197b1c67fd857f0594337d7d26b163c35504384831cb87",
     "byte_count": 2201
   },
   "settings": {
-    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\fill-L2.settings.json",
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\fill-L3.settings.json",
     "value": {
       "model_type": "minimax_h3_ref2va_pruned",
       "video_prompt_type": "KI",
@@ -41,34 +41,34 @@
       "image_mode": 0,
       "image_refs_relative_size": 125,
       "remove_background_images_ref": 0,
-      "seed": 449489
+      "seed": 472135
     }
   },
   "artifacts": [
     {
-      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3\\run-20260912-220331-c0c2e5ed.mp4",
-      "sha256": "f8ba8e5eb43e26e90c45a80783bbc1333ed3e1ccd9c66f800a829965b5c72ec0",
-      "byte_count": 2850528,
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3\\run-20260912-221512-be43a7a6.mp4",
+      "sha256": "824163111f644d3d4c13d2552c542c78a069625d5fc58118c801f835f74d0740",
+      "byte_count": 2765715,
       "metadata_present": true,
       "embedded_prompt_sha256": "93089e12c47bd6f9e7197b1c67fd857f0594337d7d26b163c35504384831cb87",
       "prompt_exact_match": false,
       "prompt_normalized_match": true,
-      "verified_at": "2026-09-12T22:15:10+09:00"
+      "verified_at": "2026-09-12T22:26:54+09:00"
     }
   ],
   "error": null,
   "local_worker": {
-    "pid": 33928,
+    "pid": 50284,
     "command": [
       "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
       "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
       "worker",
       "--run-dir",
-      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-220331-c0c2e5ed",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-221512-be43a7a6",
       "--wangp-root",
       "D:\\AI\\WanGP",
       "--settings-file",
-      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-220331-c0c2e5ed\\effective-settings.json",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-221512-be43a7a6\\effective-settings.json",
       "--output-dir",
       "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VARIATION-20260912-noa21-wardrobe-and-look\\outputs\\minimax-h3",
       "--profile",
@@ -78,7 +78,7 @@
       "--requested-by",
       "claude"
     ],
-    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-220331-c0c2e5ed\\worker.stdout.log",
-    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-220331-c0c2e5ed\\worker.stderr.log"
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-221512-be43a7a6\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VARIATION-20260912-noa21-wardrobe-and-look\\runs\\run-20260912-221512-be43a7a6\\worker.stderr.log"
   }
 }

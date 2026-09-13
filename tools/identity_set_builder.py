@@ -25,6 +25,11 @@ import identity_score
 
 ACCEPTABLE = {"same", "disagree"}
 
+# A full side profile measures ~1.0 on the yaw proxy; past this the landmarks are not on a
+# readable face. Measured: a clean profile peaks at 1.02, while a frame turned on past profile
+# toward the back of the head measured 1.17 with the far eye and mouth already hidden.
+MAX_YAW = 1.15
+
 
 def build(args: argparse.Namespace) -> dict[str, Any]:
     report = json.loads(Path(args.report).read_text(encoding="utf-8"))
@@ -43,11 +48,21 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         stale.unlink()
 
     members = []
+    dropped = []
     for frame in report["frames"]:
         if frame["shot"] not in admitted:
             continue
         source = Path(frame["path"])
         if not source.is_file():
+            continue
+        # A full side profile measures about 1.0 on this proxy, so anything past MAX_YAW is the detector
+        # placing landmarks on a head that is turned too far to read - a back-of-head frame in a clip that
+        # rotates past profile, or an outright landmark failure. Both are useless as identity references and
+        # would otherwise be counted as coverage of the side they are nominally on.
+        if abs(frame["yaw_proxy"] or 0) > MAX_YAW:
+            dropped.append({"shot": frame["shot"], "yaw_proxy": frame["yaw_proxy"],
+                            "face_pixels": frame["face_pixels"], "path": str(source),
+                            "reason": f"|yaw_proxy| > {MAX_YAW}: turned past profile or landmark failure"})
             continue
         side = "right" if (frame["yaw_proxy"] or 0) > 0 else "left"
         name = (f"{args.character}-{frame['yaw_bucket']}-{side}-{abs(frame['yaw_proxy']):.2f}"
@@ -74,8 +89,16 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                       for name in sorted(admitted)},
         },
         "prototype": report["prototype"], "calibration": report["calibration"],
+        "dropped_frames": dropped,
         "members": sorted(members, key=lambda member: member["yaw_proxy"] or 0),
     }
+    identity_score.write_json(out_dir / "identity-set.json", manifest)
+
+    flipped = balance_by_flip(args, out_dir, members)
+    members.extend(flipped)
+    if flipped:
+        manifest["mirrored_frames"] = MIRROR_NOTE
+    manifest["members"] = sorted(members, key=lambda member: member["yaw_proxy"] or 0)
     identity_score.write_json(out_dir / "identity-set.json", manifest)
 
     coverage: dict[str, int] = {}
@@ -85,7 +108,49 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     if args.sheet:
         draw(Path(args.sheet), out_dir, manifest, args.title or f"{args.character} identity set")
     return {"out_dir": str(out_dir), "clips": sorted(admitted), "frames": len(members),
+            "dropped_frames": len(dropped),
             "coverage": dict(sorted(coverage.items())), "sheet": args.sheet}
+
+
+MIRROR_NOTE = (
+    "Some members are horizontal flips of frames from the opposite side, not separately generated views. "
+    "They are marked `mirrored: true` and name the frame they came from. This is a legitimate substitute "
+    "only while the character record carries no left/right asymmetric feature: check `distinctive_marks` "
+    "and hair parting before relying on a mirrored frame, and never mirror a frame that shows an asymmetric "
+    "mark. Mirroring also flips real facial asymmetry, so a mirrored frame is a usable reference for pose "
+    "and structure but is not evidence about this character's own asymmetry."
+)
+
+
+def balance_by_flip(args: argparse.Namespace, out_dir: Path,
+                    members: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Fill a one-sided bucket with horizontal flips of the other side's best frames.
+
+    Only the buckets named on the command line are touched, and only up to parity - this never produces more
+    mirrored frames than there are real ones on the full side, and never exceeds --max-flips per bucket.
+    """
+    if not args.balance_by_flip:
+        return []
+    import cv2
+    import numpy as np
+
+    added: list[dict[str, Any]] = []
+    for bucket in args.balance_by_flip:
+        sides = {"left": [m for m in members if m["yaw_bucket"] == bucket and m["side"] == "left"],
+                 "right": [m for m in members if m["yaw_bucket"] == bucket and m["side"] == "right"]}
+        thin, full = sorted(sides, key=lambda side: len(sides[side]))
+        want = min(len(sides[full]) - len(sides[thin]), args.max_flips)
+        if want <= 0:
+            continue
+        best = sorted(sides[full], key=lambda m: (-(m["scores_vs_frontal_prototype"].get("arcface") or 0),
+                                                  -(m["face_pixels"][0])))[:want]
+        for source in best:
+            image = cv2.imdecode(np.fromfile(str(out_dir / source["file"]), dtype=np.uint8), cv2.IMREAD_COLOR)
+            name = f"{args.character}-{bucket}-{thin}-{abs(source['yaw_proxy']):.2f}-mirrored-{source['clip']}.png"
+            cv2.imencode(".png", cv2.flip(image, 1))[1].tofile(str(out_dir / name))
+            added.append(dict(source, file=name, side=thin, yaw_proxy=-source["yaw_proxy"], mirrored=True,
+                              mirrored_from=source["file"], source_side=full))
+    return added
 
 
 def draw(sheet_path: Path, out_dir: Path, manifest: dict[str, Any], title: str) -> None:
@@ -109,8 +174,9 @@ def draw(sheet_path: Path, out_dir: Path, manifest: dict[str, Any], title: str) 
         sheet.paste(Image.fromarray(cv2.cvtColor(cv2.resize(image, (width, height)), cv2.COLOR_BGR2RGB)), (x, y))
         canvas.text((x + 2, y + height + 3), f"{member['yaw_bucket'][:12]} {member['yaw_proxy']:+.2f}",
                     fill="#ffd166", font=font)
-        canvas.text((x + 2, y + height + 15), f"{member['clip'][:18]}  sharp {member['sharpness']:.0f}",
-                    fill="#8b949e", font=font)
+        canvas.text((x + 2, y + height + 15),
+                    ("MIRRORED " if member.get("mirrored") else "") + f"{member['clip'][:18]}",
+                    fill="#f08080" if member.get("mirrored") else "#8b949e", font=font)
     sheet_path.parent.mkdir(parents=True, exist_ok=True)
     sheet.save(sheet_path, quality=91)
 
@@ -126,6 +192,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--include-disagree", action="store_true",
                         help="also take clips where the two recognisers split on the frontal frame")
     parser.add_argument("--only", nargs="+", help="restrict to these clip names")
+    parser.add_argument("--balance-by-flip", nargs="+", metavar="BUCKET", default=[],
+                        help="fill these buckets' thin side with horizontal flips of the other "
+                             "side; members are marked `mirrored`. Read MIRROR_NOTE first.")
+    parser.add_argument("--max-flips", type=int, default=12,
+                        help="cap on mirrored frames added per bucket (default 12)")
     return parser
 
 
