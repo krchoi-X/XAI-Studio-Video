@@ -46,3 +46,14 @@ never-enlarged/never-repeated guard; `figure-twopiece-b` re-renders at the same 
 only variable.
 
 A mirrored frame must never be used where the midriff is bare: the mark sits on one side and a flip moves it.
+
+## Result of the v3 wording, 2026-09-13
+
+`figure-twopiece-b` at the same seed. The mole is roughly a third the width of the v2 one — near the tenth
+of the area the operator asked for — still in the same position through the turn and still visible on a
+close look. `D:\AI_Studio\reports\noa\figure\mole-before-after.jpg` is the comparison.
+
+An attempt to put a number on it failed and is recorded so it is not repeated: thresholding the abdomen for
+a dark blob returns 23 vs 44 px² median across five frames, which contradicts the obvious visual difference
+because the detector keeps latching onto the swimsuit edge and the navel shadow rather than the mole. The
+comparison stands on the images, not on that figure.

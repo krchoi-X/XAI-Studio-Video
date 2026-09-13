@@ -1,0 +1,17 @@
+{
+  "session": "FIGURE-20260913-noa21-swimwear",
+  "updated_at": "2026-09-13T22:58:28+09:00",
+  "results": [
+    {
+      "shot": "figure-twopiece-b",
+      "status": "needs_review",
+      "run_id": "run-20260913-224048-047f023e",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\FIGURE-20260913-noa21-swimwear\\runs\\run-20260913-224048-047f023e",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\FIGURE-20260913-noa21-swimwear\\outputs\\minimax-h3\\run-20260913-224048-047f023e.mp4"
+      ],
+      "error": null
+    }
+  ]
+}
