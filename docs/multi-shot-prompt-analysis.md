@@ -128,11 +128,13 @@ and the whole grid was rejected by the operator. Narrow, mechanical negatives do
 
 ## 3. What does not transfer as-is
 
-**The 30-second single generation.** H3 here produces 175 frames at 24 fps — 7.29 s — from
-`video_length: 181`. `sliding_window_size` is 362, and the `17k+5` frame grid recorded in
-`docs/toyxyz-h3-prompter-review.md` gives 362 = 17·21 + 5, so **362 may be reachable and would be ~15 s**.
-Untested. Even so, 30 s in one generation is likely out of reach and a six-shot/30 s structure has to
-become two or three generations.
+**The 30-second single generation.** Twenty and thirty seconds are **possible** on this machine — the
+operator has done it — but a 30-second render took **six to eight hours**. So this is a cost limit, not a
+capability limit, and the right place for it is a rented GPU rather than an 8 GiB laptop. Current practice
+stays at `video_length: 181`, which yields 175 frames at 24 fps (7.29 s) and renders in about 18 minutes.
+
+The consequence for structure: a six-shot 30-second piece has to become several generations here, and the
+question of how to join them is the whole problem — see §4.
 
 **`@Image1` syntax.** H3 uses `<Picture N>` with `subject_definitions`. The *content* of the ACTIVE
 REFERENCES block transfers; the syntax does not.
@@ -192,8 +194,10 @@ Two rules that come out of this analysis and are not in the source prompt, becau
 
 ## 5. What to test first, in order
 
-1. **`video_length: 362`** — one render. If it yields ~15 s, a six-shot structure fits in two generations
-   instead of five, and the FL2VA chain depth problem mostly disappears.
+1. **Dual-reference Ref2VA** — `<Picture 1>` the identity portrait, `<Picture 2>` the previous render's
+   final frame, so every render is an anchor *and* a continuation. This is the one idea that would make the
+   chain-depth result irrelevant, and it is untested. Longer renders would also solve it but cost six to
+   eight hours for thirty seconds, which belongs on rented hardware.
 2. **The Foley disclaimer sentence** — costs nothing, and closes a bug we hit twice.
 3. **LOCATION MAP + cut-on-action** — one render against a matched control, on the vlog we already have,
    so "억지로 붙인 것 같아" gets a before/after rather than an opinion.
