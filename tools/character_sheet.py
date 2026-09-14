@@ -324,7 +324,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--character", required=True)
-    parser.add_argument("--record", help="character.json (default: characters/<id>/character.json)")
+    parser.add_argument("--record", help="explicit historical character record (default: configured authority)")
     parser.add_argument("--identity-set", required=True, help="directory holding identity-set.json")
     parser.add_argument("--portrait", help="reference portrait, for the palette")
     parser.add_argument("--body-video", action="append", help="body clip; repeatable")
@@ -336,7 +336,8 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> int:
     args = build_parser().parse_args()
     if not args.record:
-        args.record = str(Path("characters") / args.character / "character.json")
+        import character_manager as cm
+        args.record = str(cm.character_record_path(args.character))
     print(json.dumps(build(args), ensure_ascii=False, indent=2))
     return 0
 

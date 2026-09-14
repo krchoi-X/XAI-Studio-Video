@@ -1,0 +1,25 @@
+{
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 181,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "remove_background_images_ref": 0,
+  "model_type": "minimax_h3_fl2va_pruned",
+  "video_prompt_type": "",
+  "image_prompt_type": "S",
+  "seed": 4358459,
+  "image_start": [
+    "D:\\AI_Studio\\reports\\noa\\mart\\chain-frames\\r4-home-last.png"
+  ],
+  "prompt": "integrated_multimodal_description: A handheld vlog filmed by the subject herself, cut into three shots, continuing directly from the first frame: the same woman with the same face, low ponytail and soft grey tee, cooking at the small stove of her one-room flat at night. The video is cut into three shots. [Shot 1] This shot runs about two and a half seconds. The camera looks down past her shoulder at what her hands are doing, her hands and the objects filling most of the frame, her face visible at the top edge of the shot. The pot on the stove climbs and boils over, white foam running down the side and hissing on the ring. [Shot 2] This shot runs about two and a half seconds. The camera holds her from the top of her head to her waist, her upper body filling most of the frame, the background soft behind her. She reaches fast and lifts the lid off, pulls her hand back from the steam, turns the dial down, and lets out one short flustered breath that is almost a laugh at herself. [Shot 3] This shot runs about two and a half seconds. The camera holds her head and the top of her shoulders, cropped just below the collarbone, her face filling most of the frame, everything behind her soft and out of focus. She lifts a spoonful to her mouth and tastes it. A beat with her eyes down. Then a real, warm, unguarded smile spreads across her face, the kind she does not show other people. She says clearly (S1) <d>[English] Oh. That is actually good.</d> Her mouth moves in exact synchronization with the words.\noverall_soundscape: A small kitchen at night: water boiling over, a hiss on the ring, a lid set down hard, an extractor fan, a spoon, and the synchronized spoken line.\nnon_diegetic_music: A slow sparse acoustic figure at low level, well under any voice.\n",
+  "output_filename": "run-20260914-203137-0189031c"
+}

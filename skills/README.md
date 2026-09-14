@@ -1,5 +1,7 @@
 # Specialized Skill Router
 
+The three specialized definitions resolve through `python tools/shared_resources.py --skill <name>` when shared authority is active. Read the returned source and its adjacent references. Project reference copies are retained legacy snapshots; edit the shared source. Runtime tools, schemas and application contracts remain dependencies in this checkout.
+
 Use the root `SKILL.md` for the general XAI-Studio-Video production framework. Load specialized skills only when the task requires them.
 
 ## Available skills

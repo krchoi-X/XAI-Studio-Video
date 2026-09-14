@@ -168,3 +168,74 @@ the DNA and should not be.
    stays short and avoids anything that reads as a line.
 4. **Voice.** English is unchanged from the version the operator called too American; the Japanese line in
    R2 is the only sample of the alternative and it worked, transcribing back as Japanese.
+
+---
+
+# Results, 2026-09-14 evening
+
+## Verified: multi-shot works
+
+R1 produced three shots and two clean cuts from one 7.3 s render. Frame difference measured 73 and 80 at
+the cut points against 24-46 within shots — the boundary is unambiguous. The crops matched the table (CU,
+MS, CU), the ponytail was tied inside Shot 2 so the transition never sat on a cut, and the line transcribed
+word for word with no leaked direction.
+
+**7.3 s of render now buys three cuts instead of one.** Five renders is 15 cuts in 36 s, at 2.4 s each.
+
+## Verified, and bad: the FL2VA chain holds one step and then fails
+
+Measured at the largest frontal face in each render, so framing is not the confound this time:
+
+| depth | render | yaw | pitch | face | ArcFace |
+|---|---|---|---|---|---|
+| 0 | `r1-leaving` (Ref2VA anchor) | −0.04 | +0.59 | 369 px | **0.735** |
+| 1 | `r2-bento` | +0.24 | +0.59 | 287 px | **0.776** |
+| 2 | `r3-wanted` | +0.01 | +0.59 | 222 px | **0.324** |
+| 3 | `r4-home` | −0.28 | +0.47 | 182 px | **0.017** |
+| 4 | `r5-cooking` | **+0.04** | **+0.62** | **488 px** | **0.066** |
+
+Depth 4 is frontal, at the same pitch as the anchor, with a *larger* face, and scores 0.066 against a
+different-person ceiling of 0.551. Pitch was checked specifically because the chosen frames looked
+downward-tilted; it is not the cause. **This is a different person by depth 2.**
+
+v1 looked fine because it only ever reached depth 1. One step is genuinely strong — 0.735 → 0.776, it went
+*up*. Two is a cliff.
+
+**Consequence: FL2VA is a one-step tool, not a chain.** Any sequence needs a fresh identity anchor at least
+every second render.
+
+## Two corrections from the operator, and where they landed
+
+**1. Plan the key states and build an anchor image for each.** Correct, and it follows directly from the
+drift result. Attempted: `krea2_raw_edit` from the `noa-21` portrait to make the home-kitchen anchor.
+
+- First attempt, 576x768, whole upper body: face 102-138 px, **0.559/0.549** — on the different-person
+  boundary.
+- Second, 768x1024, tighter: face 138-194 px, **0.563/0.616** — `drift`.
+
+The scene is excellent and the person is not quite right. The 0.919 recorded for `krea2_raw_edit` was
+portrait-to-portrait; asking it to also build a new room, new light and a different makeup state is a much
+larger transformation and it does not hold there. **Unresolved.**
+
+**Better idea, untried:** the `VLOG-20260913` d-series already has her at home in a grey tee with good
+identity (`d1-washed` measured 0.791-0.799 at 264-269 px). A frame out of that is free and identity-true.
+Generating a new anchor may be the wrong move when a real one already exists.
+
+**2. The camera was in the same place in every shot.** Correct and it was my error, and worse, a
+self-inflicted one: the rule "every render needs a close-up so identity stays measurable" was a measurement
+convenience and it was driving the directing. An arm's-length selfie reads on a street; at a stove it puts
+a camera in the air in front of someone cooking with both hands.
+
+The crop vocabulary now has placed cameras — `FIXED_WIDE`, `FIXED_SIDE`, `DOORWAY` — and two framings with
+**no face in them at all**, `POT` and `HANDS`. `r4b-home` is written with zero shots containing her face
+and `r5b-cooking` with one. Written, not rendered.
+
+## Still open
+
+- The home anchor. Try a real frame from `VLOG-20260913` before generating another.
+- **A systematic cost that has now appeared three times: asking for worn or absent makeup lowers identity.**
+  `r1-leaving` with "makeup worn down" scored 0.735 where clean turnaround clips score 0.90-0.95, and both
+  anchor attempts specified a bare face. The reference portrait has clean makeup and vivid red lipstick.
+  This has never been tested deliberately and should be — it decides whether "부시시한 모습" is cheap or
+  expensive.
+- Voice is unchanged and still the operator's open complaint.

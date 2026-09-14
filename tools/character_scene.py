@@ -247,7 +247,7 @@ def write_json(path: Path, data: Any) -> None:
 
 
 def prepare(character_id: str, request: str, model: str, count: int, engines: list[str], strategy: str = "strict_translation", immutable: dict[str, str] | None = None, supplied_scene_spec: dict[str, Any] | None = None, actor: str = "codex") -> Path:
-    character_path = cm.CHARACTERS / character_id / "character.json"
+    character_path = cm.character_record_path(character_id)
     if not character_path.is_file():
         raise cm.CharacterError(f"unknown character: {character_id}")
     character = cm.load(character_path)
@@ -264,7 +264,7 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     created = datetime.now()
     title = delta["title"] if delta else request
     session_id = f"SCENE-{created.strftime('%Y%m%d-%H%M%S')}-{character_id[3:]}-{slug_text(title)}"
-    root = cm.CHARACTERS / character_id / "02_generations" / session_id
+    root = cm.character_session_root(character_id) / "02_generations" / session_id
     asset_root = ASSET_LIBRARY / "characters" / character_id / "generations" / session_id / "outputs"
     merged_prompt = identity_merge_prompt(character, request, immutable, scene_spec)
     enriched_prompt = compile_prompt(character, delta, request, immutable, scene_spec) if delta else merged_prompt

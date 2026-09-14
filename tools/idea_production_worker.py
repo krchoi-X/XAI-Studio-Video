@@ -40,7 +40,12 @@ def validate(schema_path: Path, document: dict[str, Any]) -> None:
 
 
 def build_prompt(repo_root: Path, request: dict[str, Any], resolved: dict[str, Any]) -> str:
-    skill = (repo_root / "skills" / "idea-to-production" / "SKILL.md").read_text(encoding="utf-8")
+    import character_manager as cm
+    shared = cm.shared_resource_catalog()
+    skill_path = cm.shared_skill_path("idea-to-production") if shared else repo_root / "skills" / "idea-to-production" / "SKILL.md"
+    skill = skill_path.read_text(encoding="utf-8")
+    if "shared-resource-adapter: 1" in skill:
+        raise ValueError("shared skill adapter requires an active authority")
     output_schema = (repo_root / "schemas" / "storyboard-candidates-v1.schema.json").read_text(encoding="utf-8")
     return f"""Follow the IDEA-TO-PRODUCTION skill below. Return one JSON object only.
 Do not claim to render anything. This step ends at storyboard candidates.

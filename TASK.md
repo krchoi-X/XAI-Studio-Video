@@ -1,5 +1,7 @@
 # Current task — Automatic character reference resolution for WanGP video
 
+2026-09-14 active storage scope: [shared authority task](docs/shared-authority-TASK.md), Codex / Astra. The completed reference-resolution task below remains historical context.
+
 Active editor: Codex
 Status: COMPLETE — default reference resolution committed; Hermes operating rule clarified
 Date: 2026-09-10

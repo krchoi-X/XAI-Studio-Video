@@ -2,6 +2,8 @@
 
 ## Repository role
 
+When the configured shared-resource catalog is active, use `tools/shared_resources.py` and the maintained Character Manager resolver for current character records and reusable skills. Project character files and copied skill references are legacy snapshots. Shared authoring uses promote/refresh with existing approval guards; session output paths remain separate. Read the applicable shared source before using an installed or project skill adapter.
+
 This repository is the implementation workspace for the user's AI video prompt/storyboard/workflow project.
 
 The broader research and decision history lives separately in the private repository `krchoi-X/personal-ai-knowledge`. A Codex or Claude Code session attached to this repository may not have that repository or the original ChatGPT conversation in context.

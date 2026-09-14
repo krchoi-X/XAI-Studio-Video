@@ -35,14 +35,14 @@ def discovery_prompt(character_id: str, direction: str) -> str:
 
 
 def prepare(character_id: str, direction: str, count: int, engines: list[str], actor: str = "codex") -> Path:
-    character_path = cm.CHARACTERS / character_id / "character.json"
+    character_path = cm.character_record_path(character_id)
     if not character_path.is_file():
         raise cm.CharacterError(f"unknown character: {character_id}")
     character = cm.load(character_path)
     prompt = discovery_prompt(character_id, direction)
     created = datetime.now()
     session_id = f"FACE-{created.strftime('%Y%m%d-%H%M%S')}-{character_id[3:]}-{direction.lower()}"
-    root = character_path.parent / "02_generations" / session_id
+    root = cm.character_session_root(character_id) / "02_generations" / session_id
     asset_root = scene.ASSET_LIBRARY / "characters" / character_id / "generations" / session_id / "outputs"
     prompt_text = prompt + "\n"
     prompt_hash = hashlib.sha256(prompt_text.encode("utf-8")).hexdigest()

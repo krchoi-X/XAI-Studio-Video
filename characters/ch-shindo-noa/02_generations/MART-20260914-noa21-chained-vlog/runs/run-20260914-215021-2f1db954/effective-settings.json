@@ -1,0 +1,24 @@
+{
+  "settings_version": 2.73,
+  "model_type": "krea2_raw_edit",
+  "base_model_type": "krea2_raw_edit",
+  "model_filename": "D:\\AI\\WanGP\\ckpts\\Krea2Raw_quanto_bf16_int8.safetensors",
+  "image_mode": 1,
+  "resolution": "768x1024",
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg"
+  ],
+  "remove_background_images_ref": 0,
+  "num_inference_steps": 20,
+  "guidance_scale": 2,
+  "negative_prompt": "different person, changed face shape, changed eye shape, beauty filter, airbrushed poreless skin",
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "image_quality": "jpeg_95",
+  "seed": 4602683,
+  "prompt": "A photograph of the woman in the reference image, unchanged in face, eyes, nose, chin, skin and hair colour, standing in the small plain kitchen of a one-room flat at night. She wears a soft plain grey cotton tee, loose and well worn, and her black hair is pulled back in a plain low ponytail. She has just come home: no makeup left, her face bare and a little tired. She stands at a narrow counter beside a small stove, her body turned three-quarters toward the camera, hands resting on the counter edge. Warm overhead kitchen light, pale walls, a window dark with night behind her, a few good older objects on the shelf and very little else. Natural photographic colour, real skin texture, sharp focus, vertical framing, framed from the top of her head to just below her chest, her face large in the frame, the kitchen visible but soft behind her.\n",
+  "output_filename": "run-20260914-215021-2f1db954"
+}

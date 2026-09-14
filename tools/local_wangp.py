@@ -15,7 +15,6 @@ DEFAULT_WANGP_ROOT = Path(r"D:\AI\WanGP")
 DEFAULT_EXECUTOR = "local-wangp-worker"  # what runs the job; distinct from requested_by, renderer, and model_type
 KREA2_EDIT_MODELS = {"krea2_raw_edit", "krea2_turbo_edit"}
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
-CHARACTERS = Path(__file__).resolve().parents[1] / "characters"
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -93,7 +92,8 @@ def resolve_character_default_reference(settings: dict[str, Any], session_dir: P
     character_id = _session_character_id(session_dir)
     if not character_id:
         raise ValueError("Ref2VA requires image_refs; no character_id is recorded for this session")
-    character_path = CHARACTERS / character_id / "character.json"
+    import character_manager as cm
+    character_path = cm.character_record_path(character_id)
     try:
         character = json.loads(character_path.read_text(encoding="utf-8"))
     except FileNotFoundError as exc:

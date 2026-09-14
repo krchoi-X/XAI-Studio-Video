@@ -17,6 +17,96 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 CHARACTERS = ROOT / "characters"
+def _confined_resource(root: Path, value: str) -> Path:
+    candidate = (root / value).resolve()
+    if not candidate.is_relative_to(root.resolve()):
+        raise CharacterError("shared resource escapes its authority")
+    return candidate
+
+
+def shared_resource_catalog() -> tuple[Path, dict] | None:
+    """Resolve the existing workspace contract without caching mutable pointers."""
+    locator = Path(os.environ.get("XAI_WORKSPACE_FILE", "D:/AI_Studio/workspace.yaml"))
+    if not locator.is_file():
+        if "XAI_WORKSPACE_FILE" in os.environ:
+            raise CharacterError("explicit workspace locator is missing")
+        return None
+    import yaml
+    try:
+        workspace = yaml.safe_load(locator.read_text(encoding="utf-8")) or {}
+        private = (locator.parent / workspace["private_repo"]).resolve()
+        catalog_path = private / "control" / "shared-resources.json"
+        if not catalog_path.is_file():
+            policy_path = private / "control" / "characters.yaml"
+            policy = yaml.safe_load(policy_path.read_text(encoding="utf-8")) if policy_path.is_file() else {}
+            if policy.get("mode") == "shared":
+                raise CharacterError("active shared resource catalog is missing")
+            return None
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        if catalog.get("version") != 1:
+            raise CharacterError("unsupported shared resource catalog version")
+        if catalog.get("status") in {"pending-root-activation", "inactive"}:
+            return None
+        if catalog.get("status") != "active":
+            raise CharacterError("invalid shared resource activation status")
+        return private, catalog
+    except (OSError, KeyError, TypeError, ValueError, AttributeError, yaml.YAMLError) as exc:
+        raise CharacterError(f"invalid shared character authority: {exc}") from exc
+
+
+def shared_authority_root() -> Path | None:
+    resource = shared_resource_catalog()
+    if resource is None:
+        return None
+    private, catalog = resource
+    try:
+        root = _confined_resource(private, catalog["characters"]["authority_root"])
+    except (KeyError, TypeError) as exc:
+        raise CharacterError("invalid shared character authority root") from exc
+    if not root.is_dir():
+        raise CharacterError("active shared character authority is missing")
+    return root
+
+
+def shared_skill_path(name: str) -> Path:
+    if not re.fullmatch(r"[a-z][a-z0-9-]*", name):
+        raise CharacterError("invalid skill name")
+    resource = shared_resource_catalog()
+    if resource is None:
+        path = ROOT / "skills" / name / "SKILL.md"
+        if path.is_file() and "shared-resource-adapter: 1" in path.read_text(encoding="utf-8"):
+            raise CharacterError("shared skill adapter requires an active authority")
+    else:
+        private, catalog = resource
+        try:
+            if name not in catalog["skills"]["definitions"]:
+                raise CharacterError("skill is absent from shared catalog")
+            base = _confined_resource(private, catalog["skills"]["source_root"])
+            path = _confined_resource(base, name + "/SKILL.md")
+        except (KeyError, TypeError) as exc:
+            raise CharacterError("invalid shared skill catalog") from exc
+    if not path.is_file():
+        raise CharacterError("skill source is missing")
+    return path
+
+
+def character_record_path(character_id: str) -> Path:
+    if not ID_RE.fullmatch(character_id):
+        raise CharacterError("invalid character identifier")
+    authority = shared_authority_root()
+    root = authority if authority is not None else CHARACTERS
+    path = _confined_resource(root, character_id + "/character.json")
+    if authority is not None and not path.is_file():
+        raise CharacterError(f"active shared character record is missing: {character_id}")
+    return path
+
+
+def character_session_root(character_id: str) -> Path:
+    if not ID_RE.fullmatch(character_id):
+        raise CharacterError("invalid character identifier")
+    return _confined_resource(CHARACTERS, character_id)
+
+
 DRAFTS = CHARACTERS / ".drafts"
 INDEX = CHARACTERS / "index.json"
 DEFAULT_MODEL = "meromero26b-a4b-hermes:latest"
@@ -164,16 +254,48 @@ def render_base_prompt(record: dict[str, Any], exclude_fields: set[str] | None =
 
 def rebuild_index() -> list[dict[str, Any]]:
     items = []
-    if CHARACTERS.exists():
-        for path in sorted(CHARACTERS.glob("ch-*/character.json")):
+    authority = shared_authority_root()
+    root = authority if authority is not None else CHARACTERS
+    if root.exists():
+        for path in sorted(root.glob("ch-*/character.json")):
             record = load(path)
             items.append({
                 "id": record["id"], "name": record["name"], "romanized_name": record.get("romanized_name", ""),
                 "status": record["status"], "version": record["version"],
-                "stable_dna_sha256": stable_hash(record), "path": path.relative_to(ROOT).as_posix(),
+                "stable_dna_sha256": stable_hash(record),
+                "record_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                "path": path.relative_to(root if authority else ROOT).as_posix(),
+                "reference_defaults": record.get("reference_defaults", {}),
+                "approved_references": record.get("approved_references", []),
             })
-    atomic_write(INDEX, json.dumps({"schema_version": 1, "updated_at": now(), "characters": items}, ensure_ascii=False, indent=2) + "\n")
+    index_path = root / "index.json" if authority is not None else INDEX
+    atomic_write(index_path, json.dumps({"schema_version": 1, "updated_at": now(), "characters": items}, ensure_ascii=False, indent=2) + "\n")
     return items
+
+
+def preserve_prior(target: Path) -> None:
+    """Retain exact record and derived text before shared authoring replaces them."""
+    if not target.is_file():
+        return
+    digest = hashlib.sha256(target.read_bytes()).hexdigest()
+    history = target.parent / "history" / digest
+    for relative in ("character.json", "00_character-core/character_core.md", "01_prompts/base_appearance.txt"):
+        source = target.parent / relative
+        if not source.is_file():
+            continue
+        saved = history / relative
+        data = source.read_bytes()
+        if saved.exists():
+            if saved.read_bytes() != data:
+                # A refresh can change derived text while preserving record bytes.
+                saved = history / "derived-variants" / hashlib.sha256(data).hexdigest() / relative
+        saved.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            with saved.open("xb") as handle:
+                handle.write(data)
+        except FileExistsError:
+            if saved.read_bytes() != data:
+                raise CharacterError("prior history conflicts with saved bytes")
 
 
 def ollama_draft(request: str, model: str) -> dict[str, Any]:
@@ -222,14 +344,17 @@ def promote(path: Path, allow_stable_change: bool, reason: str) -> Path:
     errors = validate(record)
     if errors:
         raise CharacterError("validation failed:\n- " + "\n- ".join(errors))
-    target_dir = CHARACTERS / record["id"]
+    authority = shared_authority_root()
+    target_dir = _confined_resource(authority if authority is not None else CHARACTERS, record["id"])
     target = target_dir / "character.json"
     if target.exists():
         current = load(target)
-        if stable_hash(current) != stable_hash(record) and not allow_stable_change:
+        if stable_hash(current) != stable_hash(record) and not (allow_stable_change and reason.strip()):
             raise CharacterError("Stable DNA drift blocked. Re-run with --allow-stable-change and --reason.")
         record["version"] = current["version"] + 1
         record["provenance"]["created_at"] = current["provenance"]["created_at"]
+        if authority is not None:
+            preserve_prior(target)
     record["status"] = "candidate" if record["status"] == "draft" else record["status"]
     record["provenance"]["updated_at"] = now()
     record["provenance"]["stable_dna_sha256"] = stable_hash(record)
@@ -243,7 +368,8 @@ def promote(path: Path, allow_stable_change: bool, reason: str) -> Path:
 
 
 def cmd_validate(character: str | None) -> int:
-    paths = [CHARACTERS / character / "character.json"] if character else sorted(CHARACTERS.glob("ch-*/character.json"))
+    root = shared_authority_root() or CHARACTERS
+    paths = [character_record_path(character)] if character else sorted(root.glob("ch-*/character.json"))
     failures = 0
     for path in paths:
         if not path.exists():
@@ -264,13 +390,15 @@ def cmd_validate(character: str | None) -> int:
 
 
 def refresh(character: str) -> Path:
-    target = CHARACTERS / character / "character.json"
+    target = character_record_path(character)
     if not target.is_file():
         raise CharacterError(f"unknown character: {character}")
     record = load(target)
     errors = validate(record)
     if errors:
         raise CharacterError("validation failed:\n- " + "\n- ".join(errors))
+    if shared_authority_root() is not None:
+        preserve_prior(target)
     record["provenance"]["stable_dna_sha256"] = stable_hash(record)
     atomic_write(target, json.dumps(record, ensure_ascii=False, indent=2) + "\n")
     atomic_write(target.parent / "00_character-core" / "character_core.md", render_core(record))

@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 import local_wangp
+import character_manager as cm
 
 
 class LocalWanGPTests(unittest.TestCase):
@@ -76,13 +77,13 @@ class LocalWanGPTests(unittest.TestCase):
             }}}), encoding="utf-8")
             session = characters / "ch-jun" / "02_generations" / "VIDEO-test"
             session.mkdir(parents=True)
-            original = local_wangp.CHARACTERS
-            local_wangp.CHARACTERS = characters
+            original = cm.CHARACTERS
+            cm.CHARACTERS = characters
             try:
                 settings = {"model_type": "minimax_h3_ref2va_pruned", "image_refs": []}
                 records = local_wangp.resolve_character_default_reference(settings, session)
             finally:
-                local_wangp.CHARACTERS = original
+                cm.CHARACTERS = original
             self.assertEqual(settings["image_refs"], [str(image.resolve())])
             self.assertEqual(records[0]["basis"], "character-default")
             self.assertEqual(records[0]["character_id"], "ch-jun")
@@ -98,15 +99,15 @@ class LocalWanGPTests(unittest.TestCase):
             session = characters / "ch-none" / "02_generations" / "VIDEO-test"
             session.mkdir(parents=True)
             (characters / "ch-none" / "character.json").write_text("{}", encoding="utf-8")
-            original = local_wangp.CHARACTERS
-            local_wangp.CHARACTERS = characters
+            original = cm.CHARACTERS
+            cm.CHARACTERS = characters
             try:
                 with self.assertRaisesRegex(ValueError, "no reference_defaults.identity"):
                     local_wangp.resolve_character_default_reference(
                         {"model_type": "minimax_h3_ref2va_pruned", "image_refs": []}, session,
                     )
             finally:
-                local_wangp.CHARACTERS = original
+                cm.CHARACTERS = original
 
 
 if __name__ == "__main__":

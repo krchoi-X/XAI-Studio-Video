@@ -118,7 +118,8 @@ def markdown(record: dict[str, Any]) -> str:
 def process(job_dir: Path, repo_root: Path, model: str) -> None:
     status_path = job_dir / "status.json"
     snapshot = json.loads((job_dir / "snapshot.json").read_text(encoding="utf-8"))
-    character_path = repo_root / "characters" / snapshot["character_id"] / "character.json"
+    import character_manager as cm
+    character_path = cm.character_record_path(snapshot["character_id"])
     character = json.loads(character_path.read_text(encoding="utf-8"))
     atomic_json(status_path, {"status": "running", "updated_at": now(), "model": model})
     try:

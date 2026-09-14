@@ -49,7 +49,7 @@ def validate_plan(plan: dict[str, Any]) -> dict[str, Any]:
         prompt = str(raw.get("prompt", "")).strip()
         engines = list(dict.fromkeys(raw.get("engines") or ["z-image", "krea2"]))
         count = int(raw.get("count", 2))
-        if not (cm.CHARACTERS / character_id / "character.json").is_file():
+        if not cm.character_record_path(character_id).is_file():
             raise cm.CharacterError(f"item {position}: unknown character {character_id!r}")
         if len(prompt) < 3:
             raise cm.CharacterError(f"item {position}: prompt is too short")
