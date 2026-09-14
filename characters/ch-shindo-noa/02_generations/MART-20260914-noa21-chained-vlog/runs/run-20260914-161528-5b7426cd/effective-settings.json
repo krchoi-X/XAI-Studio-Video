@@ -1,0 +1,26 @@
+{
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 181,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "remove_background_images_ref": 0,
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg",
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop.png"
+  ],
+  "image_refs_relative_size": 125,
+  "seed": 3606151,
+  "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone and hairstyle. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] She is buying dinner on the way home after work.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their face and hair remain recognizable and unchanged; the location, the lighting, their clothing and their action are new.\ndetailed_description:\nThe target video is a single continuous handheld take in the small plain kitchen of a one-room flat at night, warm overhead light. [Shot 1] A handheld camera holds her from the top of her head to her waist, standing at a narrow counter beside a small stove. She wears the white top with the blazer gone and a low ponytail. A pot on the stove climbs and boils over, white foam running down the side and hissing on the ring. She reaches fast and lifts the lid off, pulls her hand back from the steam, turns the dial down, and lets out one short flustered breath that is almost a laugh at herself. She does not speak. It is a small ordinary mistake and she is not upset by it. Her large horizontally elongated almond eyes with visible sclera around the irises, her short brow-to-eye distance, her dark fairly straight brows, her lean youthful midface and her straight narrow nose with no dorsal hump are exactly as in <Picture 1> and <Picture 2>.\noverall_soundscape: A small kitchen at night: water boiling over, a hiss on the ring, a lid set down hard, an extractor fan.\nnon_diegetic_music: None.\n",
+  "output_filename": "run-20260914-161528-5b7426cd"
+}

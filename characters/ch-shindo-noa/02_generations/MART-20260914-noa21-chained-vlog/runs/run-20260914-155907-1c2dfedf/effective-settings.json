@@ -1,0 +1,25 @@
+{
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 181,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "remove_background_images_ref": 0,
+  "model_type": "minimax_h3_fl2va_pruned",
+  "video_prompt_type": "",
+  "image_prompt_type": "S",
+  "seed": 3545099,
+  "image_start": [
+    "D:\\AI_Studio\\reports\\noa\\mart\\chain-frames\\m3-unusual-last.png"
+  ],
+  "prompt": "integrated_multimodal_description: [Shot 1] A five-second handheld take inside the same supermarket, the same woman as the first frame with the same face, ponytail, clothing and the same red plastic basket, the basket now visibly fuller and heavier. She shifts it to her other hand, looks down into it, and says clearly (S1) <d>[English] That is more than I planned.</d> Her mouth moves in exact synchronization with the words, and she does not look sorry about it.\noverall_soundscape: A quiet supermarket: low refrigeration hum, a basket handle, faint announcements, and the synchronized spoken line.\nnon_diegetic_music: A slow, sparse acoustic figure at low level, well under any voice.\n",
+  "output_filename": "run-20260914-155907-1c2dfedf"
+}

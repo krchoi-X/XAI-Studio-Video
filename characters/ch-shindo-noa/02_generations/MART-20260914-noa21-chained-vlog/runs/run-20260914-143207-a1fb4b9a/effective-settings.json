@@ -1,0 +1,26 @@
+{
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 181,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "remove_background_images_ref": 0,
+  "model_type": "minimax_h3_ref2va_pruned",
+  "video_prompt_type": "KI",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg",
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop.png"
+  ],
+  "image_refs_relative_size": 125,
+  "seed": 3361913,
+  "prompt": "subject_definitions:\n<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone and hairstyle. <Picture 2> is the authority for the shape of their face and eyes.\nsummary:\n[reference generation] She is buying dinner on the way home after work.\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - their face and hair remain recognizable and unchanged; the location, the lighting, their clothing and their action are new.\ndetailed_description:\nThe target video is a single continuous handheld take outside a small Japanese supermarket after dark, the window light falling on her. [Shot 1] A handheld camera held at arm's length holds her head and shoulders, cropped just below the collarbone, her face filling most of the frame. She wears an unbuttoned black blazer over a white top, the blazer creased from the day. Her hair is down and slightly untidy, a few strands stuck to her cheek, her makeup worn down and a little shine on her forehead; she looks tired rather than composed. She pushes the loose hair off her face with the back of her wrist, breathes out, and says clearly (S1) <d>[English] I am tired. I do not want to cook tonight.</d> Her mouth moves in exact synchronization with the words. Then she looks past the camera at the shop door and her expression settles into something more decided. Her large horizontally elongated almond eyes with visible sclera around the irises, her short brow-to-eye distance, her dark fairly straight brows, her lean youthful midface and her straight narrow nose with no dorsal hump are exactly as in <Picture 1> and <Picture 2>.\noverall_soundscape: A street outside a shop after dark: distant traffic, a shop door chime far off, and the synchronized spoken line.\nnon_diegetic_music: A slow, sparse acoustic figure at low level, well under any voice.\n",
+  "output_filename": "run-20260914-143207-a1fb4b9a"
+}

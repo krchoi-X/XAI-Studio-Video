@@ -1,0 +1,25 @@
+{
+  "audio_prompt_type": "",
+  "resolution": "576x768",
+  "video_length": 181,
+  "sliding_window_size": 362,
+  "sliding_window_overlap": 18,
+  "num_inference_steps": 20,
+  "guidance_scale": 1.0,
+  "flow_shift": 12.0,
+  "sample_solver": "euler",
+  "skip_steps_start_step_perc": 25,
+  "skip_steps_multiplier": 0.08,
+  "denoising_strength": 1.0,
+  "image_mode": 0,
+  "remove_background_images_ref": 0,
+  "model_type": "minimax_h3_fl2va_pruned",
+  "video_prompt_type": "",
+  "image_prompt_type": "S",
+  "seed": 3422971,
+  "image_start": [
+    "D:\\AI_Studio\\reports\\noa\\mart\\chain-frames\\m1-tired-last.png"
+  ],
+  "prompt": "integrated_multimodal_description: [Shot 1] A five-second handheld take continuing directly from the first frame, the same woman in the same place, light and clothing. She gathers her loose hair back with both hands, twists a black hair tie around it twice and pulls it into a plain low ponytail, then tugs it once to tighten it and drops her hands. Her face relaxes slightly, the way a small ordinary task settles someone. She does not speak. Her face, skin and clothing stay exactly as they are in the first frame.\noverall_soundscape: A street outside a shop after dark: distant traffic, cloth and hair, a small elastic snap.\nnon_diegetic_music: A slow, sparse acoustic figure at low level, well under any voice.\n",
+  "output_filename": "run-20260914-152545-91390f7c"
+}

@@ -1,0 +1,3 @@
+integrated_multimodal_description: [Shot 1] A five-second handheld take inside the same supermarket, the same woman as the first frame with the same face, ponytail, clothing and the same red plastic basket, the basket now visibly fuller and heavier. She shifts it to her other hand, looks down into it, and says clearly (S1) <d>[English] That is more than I planned.</d> Her mouth moves in exact synchronization with the words, and she does not look sorry about it.
+overall_soundscape: A quiet supermarket: low refrigeration hum, a basket handle, faint announcements, and the synchronized spoken line.
+non_diegetic_music: A slow, sparse acoustic figure at low level, well under any voice.

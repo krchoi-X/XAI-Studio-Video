@@ -1,0 +1,10 @@
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone and hairstyle. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] She is buying dinner on the way home after work.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their face and hair remain recognizable and unchanged; the location, the lighting, their clothing and their action are new.
+detailed_description:
+The target video is a single continuous handheld take in the small plain kitchen of a one-room flat at night, warm overhead light. [Shot 1] A handheld camera holds her from the top of her head to her waist, standing at a narrow counter beside a small stove. She wears the white top with the blazer gone and a low ponytail. A pot on the stove climbs and boils over, white foam running down the side and hissing on the ring. She reaches fast and lifts the lid off, pulls her hand back from the steam, turns the dial down, and lets out one short flustered breath that is almost a laugh at herself. She does not speak. It is a small ordinary mistake and she is not upset by it. Her large horizontally elongated almond eyes with visible sclera around the irises, her short brow-to-eye distance, her dark fairly straight brows, her lean youthful midface and her straight narrow nose with no dorsal hump are exactly as in <Picture 1> and <Picture 2>.
+overall_soundscape: A small kitchen at night: water boiling over, a hiss on the ring, a lid set down hard, an extractor fan.
+non_diegetic_music: None.

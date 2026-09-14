@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260914-145009-479b50fe",
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\MART-20260914-noa21-chained-vlog\\outputs\\minimax-h3\\run-20260914-145009-479b50fe.mp4",
+      "sha256": "e34c5ec2e979da368a9a3b298ac1e9be2540db0f4381f0b1151e60cd59806336",
+      "byte_count": 4719961,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "07a2d315b974b9b5bac050408f2b2da0a84bc94ce84a1205d992a9362c3e1026",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-14T15:06:44+09:00"
+    }
+  ]
+}

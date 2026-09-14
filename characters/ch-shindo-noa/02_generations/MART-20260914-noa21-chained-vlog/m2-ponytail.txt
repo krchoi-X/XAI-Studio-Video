@@ -1,0 +1,3 @@
+integrated_multimodal_description: [Shot 1] A five-second handheld take continuing directly from the first frame, the same woman in the same place, light and clothing. She gathers her loose hair back with both hands, twists a black hair tie around it twice and pulls it into a plain low ponytail, then tugs it once to tighten it and drops her hands. Her face relaxes slightly, the way a small ordinary task settles someone. She does not speak. Her face, skin and clothing stay exactly as they are in the first frame.
+overall_soundscape: A street outside a shop after dark: distant traffic, cloth and hair, a small elastic snap.
+non_diegetic_music: A slow, sparse acoustic figure at low level, well under any voice.

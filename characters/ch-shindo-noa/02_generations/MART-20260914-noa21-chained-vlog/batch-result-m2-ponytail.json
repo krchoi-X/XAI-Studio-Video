@@ -1,0 +1,17 @@
+{
+  "session": "MART-20260914-noa21-chained-vlog",
+  "updated_at": "2026-09-14T15:42:25+09:00",
+  "results": [
+    {
+      "shot": "m2-ponytail",
+      "status": "needs_review",
+      "run_id": "run-20260914-152545-91390f7c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\MART-20260914-noa21-chained-vlog\\runs\\run-20260914-152545-91390f7c",
+      "minutes": 16.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\MART-20260914-noa21-chained-vlog\\outputs\\minimax-h3\\run-20260914-152545-91390f7c.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

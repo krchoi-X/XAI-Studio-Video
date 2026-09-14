@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "MART-20260914-noa21-chained-vlog",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\MART-20260914-noa21-chained-vlog",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "minimax_h3_fl2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa supermarket vlog, rebuilt as an FL2VA chain",
+  "user_request_verbatim": "컷 전환이 매끄럽지 않아. 억지로 붙인 것 같아. 그리고 너무 평이해. 말도 그렇고 행동도 그렇고. 부시시한 모습도 있어야 해. 장바구니가 자꾸 바뀌고 머리모양도 바뀌고 있어. 바꾸려면 포니테일 묶는 장면을 하나 넣으면 좋잖아. 너무 dna에 있는걸 다 넣으려다보니까 평균으로 회귀하는 것 같아.",
+  "source_idea": "minimax_h3_fl2va_pruned is First/Last-Frame-to-Video-and-Audio and was installed and unused: each shot after an anchor starts on the previous shot's final frame, so the basket, the hair and the light continue as pixels rather than as prose. The ninety-word identity anchor block is dropped from every shot but the first - it was competing with fifteen words of behaviour in all twenty vlog shots and produced a neutral average. The hair change is motivated on screen, which was the operator's own suggestion. One Japanese line rides along to test <d>[Japanese] without costing its own experiment. The writing carries a bad evening, an unusual purchase, a pot boiling over and one real smile; none of that belongs in the DNA, which stays the restrained baseline.",
+  "status": "prepared",
+  "created_at": "2026-09-14T14:32:07+09:00",
+  "updated_at": "2026-09-14T14:32:07+09:00"
+}

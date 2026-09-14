@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260914-150804-6bab13ce",
+  "project_id": "MART-20260914-noa21-chained-vlog",
+  "prompt_id": "m1-tired",
+  "status": "needs_review",
+  "created_at": "2026-09-14T15:08:04+09:00",
+  "updated_at": "2026-09-14T15:25:30+09:00",
+  "target": "local",
+  "renderer": "WanGP",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "provider_job_id": "local-pid-52712",
+  "prompt": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\MART-20260914-noa21-chained-vlog\\m1-tired.txt",
+    "sha256": "63b70bfef5d79f26c5a8b85ff9d291aa8f9fbfca57e03f44c6665f2af8bdf59b",
+    "normalized_sha256": "c9b7860334adeb47ab4aa3d0b0353073b6cbffb5e60f991c393ae2223ad62dfe",
+    "byte_count": 1910
+  },
+  "settings": {
+    "path": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\MART-20260914-noa21-chained-vlog\\m1-tired.settings.json",
+    "value": {
+      "audio_prompt_type": "",
+      "resolution": "576x768",
+      "video_length": 181,
+      "sliding_window_size": 362,
+      "sliding_window_overlap": 18,
+      "num_inference_steps": 20,
+      "guidance_scale": 1.0,
+      "flow_shift": 12.0,
+      "sample_solver": "euler",
+      "skip_steps_start_step_perc": 25,
+      "skip_steps_multiplier": 0.08,
+      "denoising_strength": 1.0,
+      "image_mode": 0,
+      "remove_background_images_ref": 0,
+      "model_type": "minimax_h3_ref2va_pruned",
+      "video_prompt_type": "KI",
+      "image_refs": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg",
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop.png"
+      ],
+      "image_refs_relative_size": 125,
+      "seed": 3361913
+    }
+  },
+  "artifacts": [
+    {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\MART-20260914-noa21-chained-vlog\\outputs\\minimax-h3\\run-20260914-150804-6bab13ce.mp4",
+      "sha256": "1f72ffabaa94408bea9fa68ea6efb7db529f1783ed87fb850f9e206afb750aad",
+      "byte_count": 6600927,
+      "metadata_present": true,
+      "embedded_prompt_sha256": "c9b7860334adeb47ab4aa3d0b0353073b6cbffb5e60f991c393ae2223ad62dfe",
+      "prompt_exact_match": false,
+      "prompt_normalized_match": true,
+      "verified_at": "2026-09-14T15:25:30+09:00"
+    }
+  ],
+  "error": null,
+  "local_worker": {
+    "pid": 51364,
+    "command": [
+      "D:\\AI\\WanGP\\env_uv\\Scripts\\python.exe",
+      "D:\\codex\\XAI-studio\\tools\\local_wangp.py",
+      "worker",
+      "--run-dir",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\MART-20260914-noa21-chained-vlog\\runs\\run-20260914-150804-6bab13ce",
+      "--wangp-root",
+      "D:\\AI\\WanGP",
+      "--settings-file",
+      "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\MART-20260914-noa21-chained-vlog\\runs\\run-20260914-150804-6bab13ce\\effective-settings.json",
+      "--output-dir",
+      "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\MART-20260914-noa21-chained-vlog\\outputs\\minimax-h3",
+      "--profile",
+      "4",
+      "--vram-safety",
+      "0.8",
+      "--requested-by",
+      "claude"
+    ],
+    "stdout": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\MART-20260914-noa21-chained-vlog\\runs\\run-20260914-150804-6bab13ce\\worker.stdout.log",
+    "stderr": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\MART-20260914-noa21-chained-vlog\\runs\\run-20260914-150804-6bab13ce\\worker.stderr.log"
+  }
+}

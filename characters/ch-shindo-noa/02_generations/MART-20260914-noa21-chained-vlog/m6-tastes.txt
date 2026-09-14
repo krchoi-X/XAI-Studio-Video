@@ -1,0 +1,3 @@
+integrated_multimodal_description: [Shot 1] A five-second handheld take in the same kitchen as the first frame, the same woman with the same face, ponytail and clothing. She lifts a spoonful to her mouth, tastes it, pauses for a beat with her eyes still down - and then a real, warm, unguarded smile spreads across her face, the kind she does not show other people. She says clearly (S1) <d>[English] Oh. That is actually good.</d> Her mouth moves in exact synchronization with the words and the smile stays.
+overall_soundscape: A small kitchen at night: a spoon, a pot settling, an extractor fan, and the synchronized spoken line.
+non_diegetic_music: A slow, sparse acoustic figure at low level, well under any voice.

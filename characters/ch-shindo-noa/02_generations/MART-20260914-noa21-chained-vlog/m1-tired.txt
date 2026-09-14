@@ -1,0 +1,10 @@
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone and hairstyle. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] She is buying dinner on the way home after work.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their face and hair remain recognizable and unchanged; the location, the lighting, their clothing and their action are new.
+detailed_description:
+The target video is a single continuous handheld take outside a small Japanese supermarket after dark, the window light falling on her. [Shot 1] A handheld camera held at arm's length holds her head and shoulders, cropped just below the collarbone, her face filling most of the frame. She wears an unbuttoned black blazer over a white top, the blazer creased from the day. Her hair is down and slightly untidy, a few strands stuck to her cheek, her makeup worn down and a little shine on her forehead; she looks tired rather than composed. She pushes the loose hair off her face with the back of her wrist, breathes out, and says clearly (S1) <d>[English] I am tired. I do not want to cook tonight.</d> Her mouth moves in exact synchronization with the words. Then she looks past the camera at the shop door and her expression settles into something more decided. Her large horizontally elongated almond eyes with visible sclera around the irises, her short brow-to-eye distance, her dark fairly straight brows, her lean youthful midface and her straight narrow nose with no dorsal hump are exactly as in <Picture 1> and <Picture 2>.
+overall_soundscape: A street outside a shop after dark: distant traffic, a shop door chime far off, and the synchronized spoken line.
+non_diegetic_music: A slow, sparse acoustic figure at low level, well under any voice.
