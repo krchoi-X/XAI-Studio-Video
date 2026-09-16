@@ -33,8 +33,10 @@ The user should provide story intent and taste decisions, not professional cinem
 7. `docs/director-memory/failures.md`
 8. `docs/director-memory/capabilities.md`
 9. `docs/director-memory/candidate-template.md`
-10. existing `skills/idea-to-production/` shared-resource adapter and its actual shared source
-11. current architecture/artifact contracts relevant to storyboard and production routing
+10. `docs/director-memory/prompt-compiler-principles.md`
+11. `docs/director-memory/cinematic-technique-library.md`
+12. existing `skills/idea-to-production/` shared-resource adapter and its actual shared source
+13. current architecture/artifact contracts relevant to storyboard and production routing
 
 Do not duplicate or fork project policy already owned by shared resources.
 
@@ -50,6 +52,8 @@ Visual Language Translator
 Director Core / Skill Router
         ↓
 Selected directing + production skills
+        ↓
+Technique need detection / selective technique retrieval
         ↓
 2 storyboard candidates
         ↓
@@ -72,7 +76,7 @@ Result review
 Director Memory update
 ```
 
-This is a **logical architecture**, not a demand to create eleven new services/classes.
+This is a **logical architecture**, not a demand to create twelve new services/classes.
 
 Prefer the smallest implementation that fits existing project boundaries.
 
@@ -127,11 +131,12 @@ Its job is to:
 3. identify relevant prior failures/preferences;
 4. inspect currently available production capabilities;
 5. select only the skills/references needed for this episode/candidate;
-6. generate candidates from those selected skill sets.
+6. identify whether a cinematic technique is actually needed and, if so, retrieve only a small technique subset;
+7. generate candidates from those selected skill/technique sets.
 
 This is intentionally a **router + specialist skill** design.
 
-The always-loaded Director Core should remain small. Large guides and example libraries belong in selectively retrieved skills/references.
+The always-loaded Director Core should remain small. Large guides, example libraries, and cinematic-technique catalogues belong in selectively retrieved skills/references.
 
 Do **not** average all available references into every prompt. Prefer one coherent visual grammar over combining many individually good ideas.
 
@@ -176,6 +181,54 @@ do_not_copy:
 
 The first implementation does not need a complex registry service. A small manifest/YAML/Markdown metadata convention is enough if it works with existing shared-resource mechanisms.
 
+### Cinematic technique routing
+
+Use `docs/director-memory/cinematic-technique-library.md` as the current project interpretation of external cinematic-technique references such as Melies.
+
+Do not treat the technique catalogue as an always-loaded skill or as a checklist that every episode must satisfy.
+
+The desired behavior is:
+
+```text
+scene intent
+→ detect visual/narrative problem
+→ choose relevant technique category
+→ retrieve a few candidate techniques
+→ select only techniques that serve the scene
+→ check renderer feasibility
+→ compile into storyboard/prompt
+```
+
+Default short-form guidance:
+
+- one coherent base visual grammar;
+- one or two accent techniques;
+- zero or one distinctive transition when justified;
+- variety should accumulate across episodes, not through technique overload inside one episode.
+
+A technique should carry at least:
+
+```yaml
+technique_id: rack_focus
+category: focus_optics
+narrative_function:
+  - redirect viewer attention inside one shot
+when_to_use:
+  - two stable depth planes matter to the scene
+when_not_to_use:
+  - renderer cannot maintain the focus relationship reliably
+renderer_risk:
+  h3: unknown_until_tested
+fallback:
+  - cut to closer framing
+```
+
+Keep `directing_fit` and `renderer_feasibility` conceptually separate. A technique that is valid filmmaking may still be unreliable in a particular generative renderer.
+
+Do not ban a directing technique globally because one model failed to execute it. Record renderer risk and fallback instead.
+
+For the first implementation, do **not** scrape/index the entire Melies catalogue or build a vector service. Start with roughly 30–50 hand-curated, high-value entries relevant to current vlog/short production and expand only from real production needs.
+
 ### Selective retrieval policy
 
 Default behavior:
@@ -183,6 +236,7 @@ Default behavior:
 - load Director Core every time;
 - retrieve only the most relevant 2–4 pattern/skill references;
 - retrieve only 1–3 concrete examples when useful;
+- retrieve only a small number of cinematic-technique entries when a technique need is detected;
 - retrieve relevant renderer capability notes only for the selected production route;
 - retrieve relevant failure entries, not the full failure archive.
 
@@ -192,7 +246,7 @@ Reference-library size may grow over time, but **per-episode prompt context shou
 
 Candidate A and Candidate B should not merely paraphrase one another.
 
-When practical, route them through different skill subsets.
+When practical, route them through different skill subsets and, where justified, different technique subsets.
 
 Example:
 
@@ -203,6 +257,9 @@ skills:
 - environment-first opening
 - long-take continuity
 - restrained action blocking
+techniques:
+- frame-within-frame
+- match on action
 
 Candidate B
 mode: rhythmic / object-led
@@ -210,6 +267,9 @@ skills:
 - object-first opening
 - interaction-state handling
 - multi-cut transition grammar
+techniques:
+- rack focus
+- selective whip pan
 ```
 
 This preserves shared lessons while avoiding style collapse.
@@ -254,7 +314,11 @@ risk_level: low
 selected_skills:
   - environment_first_opening
   - long_take_continuity
+selected_techniques:
+  - frame_within_frame
 ```
+
+Technique metadata can remain optional until a real technique is selected. Do not inflate every shot schema with filmmaking vocabulary just because the library exists.
 
 Add fields only when real production requires them.
 
@@ -288,7 +352,8 @@ Difference must be structural, not cosmetic. Useful differences include:
 - object-first vs environment-first;
 - close-to-wide vs wide-to-intimate;
 - observer camera vs placed self-recording camera;
-- restrained rhythm vs stronger graphic editing.
+- restrained rhythm vs stronger graphic editing;
+- restrained technique set vs one justified distinctive technique.
 
 When multiple LLMs are used, allow independent exploration before showing them each other's fresh candidates.
 
@@ -320,7 +385,9 @@ Before renderer execution, add lightweight deterministic or LLM-assisted checks 
 - unsupported/unreliable camera behavior for the selected renderer;
 - unavailable references/tools required by the proposed production route;
 - accidental loading of irrelevant/contradictory skills;
-- candidates using effectively the same skill subset without deliberate reason.
+- candidates using effectively the same skill subset without deliberate reason;
+- technique overload or multiple techniques serving no clear narrative function;
+- selected technique has high renderer risk but no fallback.
 
 These should surface warnings. Do not turn all warnings into hard blocks.
 
@@ -335,11 +402,12 @@ Suggested acceptance flow:
 2. Resolve canonical character context.
 3. Run Director Core to identify directing mode(s), relevant failures, and required capabilities.
 4. Route/select a small skill subset for Candidate A and a distinct subset for Candidate B where appropriate.
-5. Ask one configured LLM to return two storyboard candidates in structured form.
-6. Validate the six-field shot schema and selected-skill metadata.
-7. Export human-readable Markdown/JSON.
-8. Compile the selected candidate into one scene-grid storyboard prompt.
-9. Stop before automatic video rendering if integration would expand scope materially.
+5. If needed, retrieve a small cinematic-technique subset by narrative function and renderer feasibility.
+6. Ask one configured LLM to return two storyboard candidates in structured form.
+7. Validate the six-field shot schema and selected-skill/technique metadata.
+8. Export human-readable Markdown/JSON.
+9. Compile the selected candidate into one scene-grid storyboard prompt.
+10. Stop before automatic video rendering if integration would expand scope materially.
 ```
 
 Success is **not** "fully automatic film production".
@@ -357,7 +425,8 @@ After at least one real user selection/revision loop:
 - write back selected/rejected lessons to Director Memory through an approval-aware path;
 - support a storyboard scene-grid image artifact;
 - optionally allow a second independent LLM to generate an alternate candidate set;
-- improve routing metadata only from observed misroutes or missing skill coverage.
+- improve routing metadata only from observed misroutes or missing skill coverage;
+- accumulate renderer-specific technique reliability only from actual tests/results.
 
 Do not build these preemptively if the first milestone already reveals a better boundary.
 
@@ -379,12 +448,15 @@ Do not build these preemptively if the first milestone already reveals a better 
 - hard-code one "correct" vlog opening;
 - require every episode to use the same storyboard template visually;
 - load all directing guides/examples into every episode prompt;
+- load the entire cinematic-technique catalogue into every candidate;
 - merge many references into an averaged default style;
+- maximize technique count as a quality metric;
 - create a new parallel gallery/artifact store;
 - fork renderer integration unnecessarily;
 - force commercial-film-level metadata;
 - add vector DB / workflow engine / event platform solely for this feature;
-- vendor external projects such as Hypit, MoneyPrinterTurbo, or Buzz just because their architecture was studied;
+- scrape/index hundreds of external techniques before a real production need exists;
+- vendor external projects such as Hypit, MoneyPrinterTurbo, Buzz, or Melies content just because their architecture/reference material was studied;
 - make speculative capability entries authoritative without runtime verification.
 
 ## Reference insights to preserve
@@ -423,6 +495,20 @@ A useful pattern observed in strong prompts is:
 
 This does **not** mean every episode should copy the same camera language.
 
+### From cinematic-technique study
+
+A large technique catalogue is valuable as vocabulary, but loading or using many techniques at once is not the goal.
+
+The system should select techniques based on:
+
+- narrative function;
+- visual problem being solved;
+- coherence with the chosen directing mode;
+- renderer feasibility;
+- fallback availability.
+
+Variety should emerge across episodes and characters, while each individual episode remains visually coherent.
+
 ### From production constraints
 
 The directing plan should be upstream of renderer syntax. WanGP/H3 should execute an approved visual plan rather than invent shot structure from an underspecified paragraph.
@@ -449,10 +535,12 @@ The task can close when all are true:
 
 - one documented schema exists for storyboard candidates and shots;
 - one lightweight skill-routing convention/manifest exists;
+- one small technique-routing convention/manifest exists or reuses the same routing mechanism;
 - one command/function/path can produce two structured candidates from an episode brief using a configured LLM;
 - each candidate records which skills/references were selected;
+- selected techniques, if any, record narrative purpose and renderer risk/fallback;
 - relevant Director Memory/capability context is injected without copying the entire repository into the prompt;
-- only a bounded, relevant skill/reference subset is loaded per candidate;
+- only a bounded, relevant skill/reference/technique subset is loaded per candidate;
 - output validates deterministically;
 - selected candidate can be exported/compiled into a scene-grid storyboard prompt artifact;
 - no existing character/gallery/renderer contract is broken;
