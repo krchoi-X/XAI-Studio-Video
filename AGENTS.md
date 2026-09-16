@@ -12,6 +12,8 @@ The broader research and decision history lives separately in the private reposi
 
 These instructions apply equally to Codex, Claude Code, Grok Bot, Hermes, and any LLM running inside those hosts. The host/executor and its selected LLM are different identities. Agent-specific entrypoints only route here; they must not maintain independent project policy.
 
+Before character or media production, production review, or reusable skill maintenance, read `D:/codex/XAI-Studio-Private/control/agents/production-roles.md`. Follow its mandatory rules and the section for the actual host.
+
 Read `AGENTS.md`, the applicable `TASK.md`, and inspect Git status/diff before implementation. Use `docs/current-priorities.md` when choosing work; a direct current user objective overrides stale task/priority notes. Code and tests establish what exists, while the user's objective establishes what should change.
 
 Read additional documents only for the work involved:

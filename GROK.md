@@ -2,6 +2,8 @@
 
 Explicitly load [AGENTS.md](AGENTS.md), [shared agent workflow](docs/shared-agent-workflow.md), and the applicable scoped TASK. This filename is a bootstrap pointer; automatic loading depends on the host configuration.
 
+For XAI work, also read `D:/codex/XAI-Studio-Private/control/generated/grok.md` and `D:/codex/XAI-Studio-Private/control/agents/production-roles.md`; follow the mandatory rules and Grok responsibilities before production or skill maintenance.
+
 ## Production recording rules
 
 Every render you produce must record who asked for it. Do this with the repository tools; do not invent a new file
