@@ -47,6 +47,10 @@ Episode idea / scenario
         ↓
 Visual Language Translator
         ↓
+Director Core / Skill Router
+        ↓
+Selected directing + production skills
+        ↓
 2 storyboard candidates
         ↓
 Director Memory + Capability check
@@ -112,6 +116,106 @@ Owns scenario → visual-directing interpretation:
 
 It should normally produce a small search space rather than one deterministic answer.
 
+### Director Core / Skill Router
+
+The Director/Planning AI should **not** load every directing guide, prompt example, or renderer note for every episode.
+
+Its job is to:
+
+1. interpret the episode's visual and emotional needs;
+2. choose one or two coherent directing modes/grammars;
+3. identify relevant prior failures/preferences;
+4. inspect currently available production capabilities;
+5. select only the skills/references needed for this episode/candidate;
+6. generate candidates from those selected skill sets.
+
+This is intentionally a **router + specialist skill** design.
+
+The always-loaded Director Core should remain small. Large guides and example libraries belong in selectively retrieved skills/references.
+
+Do **not** average all available references into every prompt. Prefer one coherent visual grammar over combining many individually good ideas.
+
+Suggested directing modes include, but are not limited to:
+
+- observational;
+- intimate;
+- rhythmic;
+- object-led;
+- environment-led;
+- graphic;
+- restrained cinematic;
+- self-recorded / placed-camera vlog.
+
+These are routing aids, not fixed genres.
+
+### Skill metadata contract
+
+Each directing or production skill/reference should eventually expose lightweight routing metadata such as:
+
+```yaml
+skill_id: object_first_opening
+when_to_use:
+  - episode has a meaningful object or prop that can carry the opening beat
+when_not_to_use:
+  - object has no narrative/visual importance
+inputs:
+  - episode brief
+  - continuity unit
+outputs:
+  - opening beat options
+conflicts:
+  - character_first_only
+what_to_extract:
+  - reveal logic
+  - object-to-character transition
+  - continuity requirements
+do_not_copy:
+  - literal shot order from reference examples
+  - reference-specific wardrobe/location/style
+```
+
+The first implementation does not need a complex registry service. A small manifest/YAML/Markdown metadata convention is enough if it works with existing shared-resource mechanisms.
+
+### Selective retrieval policy
+
+Default behavior:
+
+- load Director Core every time;
+- retrieve only the most relevant 2–4 pattern/skill references;
+- retrieve only 1–3 concrete examples when useful;
+- retrieve relevant renderer capability notes only for the selected production route;
+- retrieve relevant failure entries, not the full failure archive.
+
+Reference-library size may grow over time, but **per-episode prompt context should stay intentionally small**.
+
+### Candidate diversity through skill selection
+
+Candidate A and Candidate B should not merely paraphrase one another.
+
+When practical, route them through different skill subsets.
+
+Example:
+
+```text
+Candidate A
+mode: observational
+skills:
+- environment-first opening
+- long-take continuity
+- restrained action blocking
+
+Candidate B
+mode: rhythmic / object-led
+skills:
+- object-first opening
+- interaction-state handling
+- multi-cut transition grammar
+```
+
+This preserves shared lessons while avoiding style collapse.
+
+When multiple LLMs are used, keep their fresh candidate generation independent before cross-comparison.
+
 ### Storyboard Prompt Compiler
 
 Owns chosen text storyboard → image-model-ready storyboard representation.
@@ -147,6 +251,9 @@ candidate_id: A
 construction: long_take   # long_take | multi_cut | hybrid
 creative_intent: observational and natural
 risk_level: low
+selected_skills:
+  - environment_first_opening
+  - long_take_continuity
 ```
 
 Add fields only when real production requires them.
@@ -211,7 +318,9 @@ Before renderer execution, add lightweight deterministic or LLM-assisted checks 
 - redundant visual information;
 - too many sequential actions inside one generated clip;
 - unsupported/unreliable camera behavior for the selected renderer;
-- unavailable references/tools required by the proposed production route.
+- unavailable references/tools required by the proposed production route;
+- accidental loading of irrelevant/contradictory skills;
+- candidates using effectively the same skill subset without deliberate reason.
 
 These should surface warnings. Do not turn all warnings into hard blocks.
 
@@ -224,12 +333,13 @@ Suggested acceptance flow:
 ```text
 1. Input one episode brief + character ID.
 2. Resolve canonical character context.
-3. Load relevant Director Memory and current capabilities.
-4. Ask one configured LLM to return two storyboard candidates in structured form.
-5. Validate the six-field shot schema.
-6. Export human-readable Markdown/JSON.
-7. Compile the selected candidate into one scene-grid storyboard prompt.
-8. Stop before automatic video rendering if integration would expand scope materially.
+3. Run Director Core to identify directing mode(s), relevant failures, and required capabilities.
+4. Route/select a small skill subset for Candidate A and a distinct subset for Candidate B where appropriate.
+5. Ask one configured LLM to return two storyboard candidates in structured form.
+6. Validate the six-field shot schema and selected-skill metadata.
+7. Export human-readable Markdown/JSON.
+8. Compile the selected candidate into one scene-grid storyboard prompt.
+9. Stop before automatic video rendering if integration would expand scope materially.
 ```
 
 Success is **not** "fully automatic film production".
@@ -246,7 +356,8 @@ After at least one real user selection/revision loop:
 - preserve generation/artifact provenance;
 - write back selected/rejected lessons to Director Memory through an approval-aware path;
 - support a storyboard scene-grid image artifact;
-- optionally allow a second independent LLM to generate an alternate candidate set.
+- optionally allow a second independent LLM to generate an alternate candidate set;
+- improve routing metadata only from observed misroutes or missing skill coverage.
 
 Do not build these preemptively if the first milestone already reveals a better boundary.
 
@@ -267,6 +378,8 @@ Do not build these preemptively if the first milestone already reveals a better 
 - replace Character DNA with Director Memory;
 - hard-code one "correct" vlog opening;
 - require every episode to use the same storyboard template visually;
+- load all directing guides/examples into every episode prompt;
+- merge many references into an averaged default style;
 - create a new parallel gallery/artifact store;
 - fork renderer integration unnecessarily;
 - force commercial-film-level metadata;
@@ -295,6 +408,21 @@ The user is not expected to perform the professional directing work manually. AI
 
 A vague request such as "make Noa's vlog" often leads different LLMs toward the same generic face-filling selfie opening. Iterative corrections improve the current chat, but those lessons disappear when switching models/sessions. The new pipeline must make those lessons durable while preserving creative variation.
 
+### From prompt/reference study
+
+Good examples should be decomposed into:
+
+- transferable principle;
+- example-specific stylistic choice.
+
+Only the transferable principle should be promoted into core/directing memory. Example-specific choices should remain optional references.
+
+A useful pattern observed in strong prompts is:
+
+> keep global continuity strong while allowing shot grammar to vary.
+
+This does **not** mean every episode should copy the same camera language.
+
 ### From production constraints
 
 The directing plan should be upstream of renderer syntax. WanGP/H3 should execute an approved visual plan rather than invent shot structure from an underspecified paragraph.
@@ -320,12 +448,15 @@ Do not begin with a new orchestration platform.
 The task can close when all are true:
 
 - one documented schema exists for storyboard candidates and shots;
+- one lightweight skill-routing convention/manifest exists;
 - one command/function/path can produce two structured candidates from an episode brief using a configured LLM;
+- each candidate records which skills/references were selected;
 - relevant Director Memory/capability context is injected without copying the entire repository into the prompt;
+- only a bounded, relevant skill/reference subset is loaded per candidate;
 - output validates deterministically;
 - selected candidate can be exported/compiled into a scene-grid storyboard prompt artifact;
 - no existing character/gallery/renderer contract is broken;
-- tests cover schema validation and at least one fixture;
+- tests cover schema validation, routing metadata, and at least one fixture showing distinct candidate skill subsets;
 - docs explain how Claude/Grok/Hermes/Codex can consume the same durable output;
 - implementation remains scoped and does not resume paused repository cleanup.
 
