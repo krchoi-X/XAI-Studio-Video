@@ -57,6 +57,8 @@ Do not move temporary events, one-off gags, camera choices, shot orders, or edit
 - `capabilities.md` — current production capabilities and constraints. Keep factual and date-sensitive.
 - `approved-storyboards.md` — selected storyboard examples and why the user approved them.
 - `candidate-template.md` — required output structure for storyboard proposals.
+- `visual-language-pipeline.md` — lightweight scenario → visual language → storyboard grid → production pipeline. This is intentionally below commercial-film complexity and assumes AI fills most directing expertise.
+- `codex-pipeline-handoff.md` — scoped implementation handoff for a future Codex session. It defines boundaries, first milestone, acceptance criteria, and explicit non-goals so pipeline work does not restart broad repository cleanup.
 
 ## Required use by an AI director
 
@@ -72,6 +74,8 @@ Before proposing a character-driven vlog or short:
 8. State whether each proposal is primarily `long_take`, `multi_cut`, or `hybrid`.
 9. Include a production route for each candidate: still generation needs, reference needs, motion/control needs, and likely renderer path.
 10. Do not render or execute until the selection/approval contract for the active workflow allows it.
+
+For pipeline-level work, also read `visual-language-pipeline.md`. A future Codex implementation session should begin with `codex-pipeline-handoff.md` and the repository's normal task/authority documents rather than reconstructing the design from chat history.
 
 ## Independence rule
 
