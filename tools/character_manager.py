@@ -107,6 +107,76 @@ def character_session_root(character_id: str) -> Path:
     return _confined_resource(CHARACTERS, character_id)
 
 
+def shared_creation_library() -> Path | None:
+    resource = shared_resource_catalog()
+    if resource is None:
+        return None
+    _, catalog = resource
+    config = catalog.get("creation_records", {})
+    if not isinstance(config, dict):
+        raise CharacterError("invalid shared creation-record configuration")
+    if config.get("status") in {None, "project-owned-pending-transition"}:
+        return None
+    if config.get("status") != "shared-new-sessions" or config.get("version") != 1 or config.get("layout") != "character-generations-v1":
+        raise CharacterError("invalid shared creation-record configuration")
+    value = config.get("library_root")
+    if not isinstance(value, str) or not Path(value).is_absolute():
+        raise CharacterError("shared creation Library must be an absolute root")
+    root = Path(value).resolve()
+    if not root.is_dir() or root.is_relative_to(ROOT.resolve()):
+        raise CharacterError("shared creation Library is missing or inside the runtime project")
+    return root
+
+
+def generation_session_path(character_id: str, session_id: str, library_root: Path | None = None, runtime_characters: Path | None = None) -> Path:
+    if not ID_RE.fullmatch(character_id) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", session_id):
+        raise CharacterError("invalid character or session identifier")
+    library = shared_creation_library()
+    if library is not None:
+        if library_root is not None and library_root.resolve() != library:
+            raise CharacterError("explicit Library conflicts with shared creation authority")
+        return _confined_resource(library, f"characters/{character_id}/generations/{session_id}")
+    return _confined_resource(runtime_characters if runtime_characters is not None else CHARACTERS, f"{character_id}/02_generations/{session_id}")
+
+
+def reserve_generation_session(character_id: str, session_id: str, library_root: Path | None = None, runtime_characters: Path | None = None) -> Path:
+    path = generation_session_path(character_id, session_id, library_root, runtime_characters)
+    if shared_creation_library() is not None:
+        legacy = (runtime_characters if runtime_characters is not None else CHARACTERS) / character_id / "02_generations" / session_id
+        if legacy.exists():
+            raise CharacterError("session identifier already exists in legacy records")
+        try:
+            path.mkdir(parents=True, exist_ok=False)
+        except FileExistsError as exc:
+            raise CharacterError("shared session already exists; resume its recorded path") from exc
+    return path
+
+
+def validate_generation_session(path: Path) -> Path:
+    import yaml
+    root = path.resolve()
+    legacy = root.is_relative_to(CHARACTERS.resolve()) and root.parent.name == "02_generations" and root.parent.parent.parent == CHARACTERS.resolve()
+    library = shared_creation_library()
+    shared = library is not None and root.is_relative_to(library) and root.parent.name == "generations" and root.parent.parent.parent == library / "characters"
+    if not (legacy or shared):
+        raise CharacterError("session-dir is outside configured character session roots")
+    if shared:
+        for relative in ("batch.yaml", "prompt.txt", "outputs"):
+            _confined_resource(root, relative)
+    if not (root / "batch.yaml").is_file() or not (root / "prompt.txt").is_file():
+        raise CharacterError("session-dir is missing batch.yaml or prompt.txt")
+    batch = yaml.safe_load((root / "batch.yaml").read_text(encoding="utf-8")) or {}
+    session = batch.get("session") or {}
+    identifier = session.get("character_id") or batch.get("character_id")
+    if shared and identifier != root.parent.parent.name:
+        raise CharacterError("session character does not match its directory")
+    if shared and session.get("id") != root.name:
+        raise CharacterError("session identifier does not match its directory")
+    if shared and Path(str(session.get("asset_root") or root / "outputs")).resolve() != root / "outputs":
+        raise CharacterError("shared session output root conflicts with its directory")
+    return root
+
+
 DRAFTS = CHARACTERS / ".drafts"
 INDEX = CHARACTERS / "index.json"
 DEFAULT_MODEL = "meromero26b-a4b-hermes:latest"

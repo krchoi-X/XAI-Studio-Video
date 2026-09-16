@@ -37,6 +37,7 @@ from typing import Any
 import numpy as np
 
 import identity_score
+from character_sets import reserve_destination, write_set_context, publish_manifest, _relative_member
 
 SPLIT_EVERY = 8  # every eighth selected frame is held out for validation
 
@@ -103,16 +104,21 @@ def caption(member: dict[str, Any], args: argparse.Namespace) -> str:
 
 def build(args: argparse.Namespace) -> dict[str, Any]:
     set_dir = Path(args.identity_set)
-    manifest = json.loads((set_dir / "identity-set.json").read_text(encoding="utf-8"))
+    source_manifest = set_dir / "identity-set.json"
+    source_bytes = source_manifest.read_bytes()
+    manifest = json.loads(source_bytes)
+    if manifest.get("character_id") != args.character:
+        raise ValueError("identity set character does not match requested dataset character")
     for member in manifest["members"]:
-        member["_path"] = str(set_dir / member["file"])
+        member_path = _relative_member(set_dir.resolve(), member["file"])
+        member["_path"] = str(member_path)
 
+    # Reserve before recognizer work.  Incomplete datasets intentionally remain
+    # without dataset.json and are not discoverable as completed sets.
+    out = reserve_destination("lora", args.character, args.out)
     taken, dropped = select(manifest, args)
-    out = Path(args.out)
     for split in ("train", "val"):
         (out / split).mkdir(parents=True, exist_ok=True)
-        for stale in (out / split).glob("*"):
-            stale.unlink()
 
     records = []
     for index, member in enumerate(sorted(taken, key=lambda m: m["yaw_proxy"] or 0)):
@@ -162,7 +168,13 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "coverage": dict(sorted(coverage.items())),
         "members": records,
     }
-    identity_score.write_json(out / "dataset.json", snapshot)
+    output_files = [out / record["file"] for record in records]
+    output_files.extend((out / record["file"]).with_suffix(".txt") for record in records)
+    write_set_context(
+        out, character_id=args.character, producer=Path(__file__), arguments=vars(args),
+        source_manifest=source_manifest, source_bytes=source_bytes, output_files=output_files,
+    )
+    publish_manifest(out / "dataset.json", snapshot)
     return {"out": str(out), "selected": len(records), "dropped": dropped,
             "coverage": dict(sorted(coverage.items())), "split": snapshot["split"]}
 
@@ -173,7 +185,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--character", required=True)
     parser.add_argument("--trigger", required=True,
                         help="a token no tokenizer already knows, e.g. sxnoa")
-    parser.add_argument("--out", required=True)
+    parser.add_argument("--out", help="new immutable dataset directory; optional with active shared Library")
     parser.add_argument("--actor", default="claude")
     parser.add_argument("--min-face", type=float, default=200.0)
     parser.add_argument("--per-bucket", type=int, default=10)

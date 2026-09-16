@@ -137,10 +137,12 @@ def run(args: argparse.Namespace) -> int:
         update_status(job_dir, "blocked_dependency", progress="Krea2 편집 모델 구성요소가 필요함", error="Missing: " + ", ".join(missing))
         return 2
 
-    session_dir = repo_root / "characters" / request["character_id"] / "02_generations" / request["session_slug"]
+    import character_manager as cm
+    session_dir = cm.reserve_generation_session(request["character_id"], request["session_slug"], Path(args.library_root), repo_root / "characters")
     output_dir = Path(args.library_root).resolve() / "characters" / request["character_id"] / "generations" / request["session_slug"] / "outputs" / "krea2"
     runs_root = session_dir / "runs"
-    session_dir.mkdir(parents=True, exist_ok=False)
+    if cm.shared_creation_library() is None:
+        session_dir.mkdir(parents=True, exist_ok=False)
     output_dir.mkdir(parents=True, exist_ok=True)
     prompt_path = session_dir / "prompt.txt"
     settings_path = session_dir / "krea2.settings.json"
@@ -173,6 +175,10 @@ def run(args: argparse.Namespace) -> int:
         "engines": {"krea2": {"backend": "local-wangp", "model": "krea2_turbo_edit", "count": request["count"], "reference_asset_id": request["reference_asset_id"]}},
         "jobs": [],
     }
+    from creation_records import snapshot_inputs
+    if cm.shared_creation_library() is not None:
+        snapshot_inputs(session_dir, cm.load(cm.character_record_path(request["character_id"])), Path(__file__), identity_role="context_only")
+        write_json(session_dir / "request.json", request)
     (session_dir / "batch.yaml").write_text(json.dumps(batch, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     update_status(job_dir, "running", progress="Krea2 레퍼런스 변형 실행 중", session_dir=str(session_dir))
 

@@ -42,7 +42,7 @@ def prepare(character_id: str, direction: str, count: int, engines: list[str], a
     prompt = discovery_prompt(character_id, direction)
     created = datetime.now()
     session_id = f"FACE-{created.strftime('%Y%m%d-%H%M%S')}-{character_id[3:]}-{direction.lower()}"
-    root = cm.character_session_root(character_id) / "02_generations" / session_id
+    root = cm.reserve_generation_session(character_id, session_id, scene.ASSET_LIBRARY)
     asset_root = scene.ASSET_LIBRARY / "characters" / character_id / "generations" / session_id / "outputs"
     prompt_text = prompt + "\n"
     prompt_hash = hashlib.sha256(prompt_text.encode("utf-8")).hexdigest()
@@ -65,6 +65,8 @@ def prepare(character_id: str, direction: str, count: int, engines: list[str], a
         settings.update({"batch_size": count, "repeat_generation": 1, "seed": seed_base + offset})
         scene.write_json(root / template_name, settings)
         jobs.append({"backend": "local-wangp", "model": model_name, "count": count, "seed": settings["seed"], "resolution": settings["resolution"], "steps": settings["num_inference_steps"], "settings_file": template_name, "output_dir": f"outputs/{engine}", "status": "prepared"})
+    from creation_records import snapshot_inputs
+    snapshot_inputs(root, character, Path(__file__), identity_role="context_only", workflow=WORKFLOW)
     scene.write_json(root / "batch.yaml", {
         "schema_version": 1,
         "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": f"{direction} face discovery", "phase": "face-discovery", "direction": direction, "status": "prepared", "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "metadata_file": "metadata.json", "created_by": actor, "stable_dna_sha256": cm.stable_hash(character)},

@@ -4,6 +4,8 @@ Accepted user direction: 2026-09-07. All agents use the same existing artifact h
 
 ## Roots and identities
 
+2026-09-14 shared-authority update: when the catalog enables shared new sessions, maintained character scene/face/reference-variation producers store requests, prompts, settings, inputs and `runs/` at `<configured-library>/characters/<id>/generations/<session>/`, next to `outputs/`. Current DNA and reusable skills resolve through the shared authority. The project-relative rows below remain legacy/resume locations. Always use the session path returned by the producer; do not reconstruct a project path or copy old sessions. `creation-context.json` and `inputs/` preserve historical input bytes and distinguish identity inputs from context-only DNA. Existing session IDs, original paths and human review states stay unchanged.
+
 Resolve the checkout from actual Git/files, not an old app working directory. Current operator defaults are below; another host must verify or explicitly configure equivalent roots. Existing manifests remain authoritative for already registered assets.
 
 | Purpose | Current location / rule |

@@ -42,9 +42,21 @@ def describe() -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--skill", help="return one current shared skill source path")
+    parser.add_argument("--sets", metavar="CHARACTER_ID", help="list complete shared identity and LoRA sets")
+    parser.add_argument("--record-archives", metavar="CHARACTER_ID", help="list historical record archives")
+    parser.add_argument("--record-bundles", action="store_true", help="list historical standalone/report bundles")
     args = parser.parse_args()
     if args.skill:
         print(cm.shared_skill_path(args.skill))
+    elif args.sets:
+        from character_sets import describe_sets
+        print(json.dumps(describe_sets(args.sets), ensure_ascii=False, indent=2))
+    elif args.record_archives:
+        from record_archives import describe_archives
+        print(json.dumps(describe_archives(args.record_archives), ensure_ascii=False, indent=2))
+    elif args.record_bundles:
+        from artifact_bundles import describe_bundles
+        print(json.dumps(describe_bundles(), ensure_ascii=False, indent=2))
     else:
         print(json.dumps(describe(), ensure_ascii=False, indent=2))
     return 0

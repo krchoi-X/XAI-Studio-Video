@@ -264,7 +264,7 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     created = datetime.now()
     title = delta["title"] if delta else request
     session_id = f"SCENE-{created.strftime('%Y%m%d-%H%M%S')}-{character_id[3:]}-{slug_text(title)}"
-    root = cm.character_session_root(character_id) / "02_generations" / session_id
+    root = cm.reserve_generation_session(character_id, session_id, ASSET_LIBRARY)
     asset_root = ASSET_LIBRARY / "characters" / character_id / "generations" / session_id / "outputs"
     merged_prompt = identity_merge_prompt(character, request, immutable, scene_spec)
     enriched_prompt = compile_prompt(character, delta, request, immutable, scene_spec) if delta else merged_prompt
@@ -318,6 +318,8 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
         "review": {"surface": "personal-prompt-studio", "initial_state": "needs_review"},
     }
     # JSON is valid YAML and keeps this tool dependency-free.
+    from creation_records import snapshot_inputs
+    snapshot_inputs(root, character, Path(__file__))
     write_json(root / "batch.yaml", batch)
     return root
 
@@ -406,11 +408,7 @@ def main() -> int:
     args = parser.parse_args()
     try:
         if args.command == "produce" and args.session_dir:
-            root = args.session_dir.resolve()
-            if not root.is_relative_to(cm.CHARACTERS.resolve()) or root.parent.name != "02_generations":
-                raise cm.CharacterError("session-dir must be a character 02_generations session")
-            if not (root / "batch.yaml").is_file() or not (root / "prompt.txt").is_file():
-                raise cm.CharacterError("session-dir is missing batch.yaml or prompt.txt")
+            root = cm.validate_generation_session(args.session_dir)
         else:
             if not args.character or not args.request:
                 raise cm.CharacterError("--character and --request are required unless --session-dir is provided")

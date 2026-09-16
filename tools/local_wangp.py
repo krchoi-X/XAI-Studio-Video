@@ -74,9 +74,19 @@ def _session_character_id(session_dir: Path) -> str | None:
             provenance = None
         if isinstance(provenance, dict) and str(provenance.get("character_id") or "").strip():
             return str(provenance["character_id"]).strip()
-    # Established layout: characters/<character-id>/02_generations/<session>/runs.
+    # Preserve the historical directory fallback for already-existing sessions.
     if session_dir.parent.name == "02_generations" and session_dir.parent.parent.name.startswith("ch-"):
         return session_dir.parent.parent.name
+    # Shared sessions carry the explicit character ID in the existing batch contract.
+    batch_path = session_dir / "batch.yaml"
+    if session_dir.parent.name == "generations" and batch_path.is_file():
+        import character_manager as cm
+        cm.validate_generation_session(session_dir)
+        import yaml
+        batch = yaml.safe_load(batch_path.read_text(encoding="utf-8")) or {}
+        identifier = (batch.get("session") or {}).get("character_id") or batch.get("character_id")
+        if identifier:
+            return str(identifier)
     return None
 
 

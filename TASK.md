@@ -1,5 +1,9 @@
 # Current task — Automatic character reference resolution for WanGP video
 
+2026-09-15 current storage continuation: [immutable shared character sets](docs/character-sets-TASK.md), runtime editor Terra / integration Astra. Preserve all interruption-period production and prior staged patches.
+
+2026-09-14 current storage continuation: [creation-record task](docs/creation-record-TASK.md), Codex / Astra.
+
 2026-09-14 active storage scope: [shared authority task](docs/shared-authority-TASK.md), Codex / Astra. The completed reference-resolution task below remains historical context.
 
 Active editor: Codex

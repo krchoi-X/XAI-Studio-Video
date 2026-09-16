@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import Any
 
 import identity_score
+from character_sets import reserve_destination, write_set_context, publish_manifest
 
 ACCEPTABLE = {"same", "disagree"}
 
@@ -32,9 +33,12 @@ MAX_YAW = 1.15
 
 
 def build(args: argparse.Namespace) -> dict[str, Any]:
-    report = json.loads(Path(args.report).read_text(encoding="utf-8"))
-    out_dir = Path(args.out_dir).resolve()
-    out_dir.mkdir(parents=True, exist_ok=True)
+    # Reservation is deliberately first: a failed run leaves its incomplete folder
+    # for inspection and can never erase a prior immutable set.
+    out_dir = reserve_destination("identity", args.character, args.out_dir)
+    report_path = Path(args.report)
+    report_bytes = report_path.read_bytes()
+    report = json.loads(report_bytes)
 
     verdicts = {name: shot["admission_verdict"] for name, shot in report["shots"].items()}
     admitted = {name for name, verdict in verdicts.items()
@@ -44,17 +48,15 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     if not admitted:
         raise ValueError("no clip was admitted; nothing to assemble")
 
-    for stale in out_dir.glob("*.png"):
-        stale.unlink()
-
     members = []
     dropped = []
+    output_names: set[str] = set()
     for frame in report["frames"]:
         if frame["shot"] not in admitted:
             continue
         source = Path(frame["path"])
         if not source.is_file():
-            continue
+            raise FileNotFoundError(f"admitted identity frame is missing: {source}")
         # A full side profile measures about 1.0 on this proxy, so anything past MAX_YAW is the detector
         # placing landmarks on a head that is turned too far to read - a back-of-head frame in a clip that
         # rotates past profile, or an outright landmark failure. Both are useless as identity references and
@@ -67,6 +69,12 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         side = "right" if (frame["yaw_proxy"] or 0) > 0 else "left"
         name = (f"{args.character}-{frame['yaw_bucket']}-{side}-{abs(frame['yaw_proxy']):.2f}"
                 f"-{frame['shot']}-{source.stem[-6:]}.png")
+        if Path(name).name != name or ".." in Path(name).parts:
+            raise ValueError(f"unsafe identity member name from report: {name}")
+        folded = name.casefold()
+        if folded in output_names:
+            raise ValueError(f"duplicate immutable identity member name: {name}")
+        output_names.add(folded)
         shutil.copyfile(source, out_dir / name)
         members.append({"file": name, "clip": frame["shot"], "yaw_bucket": frame["yaw_bucket"],
                         "yaw_proxy": frame["yaw_proxy"], "side": side, "sharpness": frame["sharpness"],
@@ -92,21 +100,26 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "dropped_frames": dropped,
         "members": sorted(members, key=lambda member: member["yaw_proxy"] or 0),
     }
-    identity_score.write_json(out_dir / "identity-set.json", manifest)
-
     flipped = balance_by_flip(args, out_dir, members)
     members.extend(flipped)
     if flipped:
         manifest["mirrored_frames"] = MIRROR_NOTE
     manifest["members"] = sorted(members, key=lambda member: member["yaw_proxy"] or 0)
-    identity_score.write_json(out_dir / "identity-set.json", manifest)
+    if args.sheet:
+        if Path(args.sheet).exists():
+            raise FileExistsError(f"immutable contact sheet already exists: {args.sheet}")
+        draw(Path(args.sheet), out_dir, manifest, args.title or f"{args.character} identity set")
+    write_set_context(
+        out_dir, character_id=args.character, producer=Path(__file__), arguments=vars(args),
+        source_manifest=report_path, source_bytes=report_bytes,
+        output_files=[out_dir / member["file"] for member in members],
+    )
+    publish_manifest(out_dir / "identity-set.json", manifest)
 
     coverage: dict[str, int] = {}
     for member in members:
         coverage[f"{member['yaw_bucket']} {member['side']}"] = coverage.get(
             f"{member['yaw_bucket']} {member['side']}", 0) + 1
-    if args.sheet:
-        draw(Path(args.sheet), out_dir, manifest, args.title or f"{args.character} identity set")
     return {"out_dir": str(out_dir), "clips": sorted(admitted), "frames": len(members),
             "dropped_frames": len(dropped),
             "coverage": dict(sorted(coverage.items())), "sheet": args.sheet}
@@ -145,8 +158,12 @@ def balance_by_flip(args: argparse.Namespace, out_dir: Path,
         best = sorted(sides[full], key=lambda m: (-(m["scores_vs_frontal_prototype"].get("arcface") or 0),
                                                   -(m["face_pixels"][0])))[:want]
         for source in best:
-            image = cv2.imdecode(np.fromfile(str(out_dir / source["file"]), dtype=np.uint8), cv2.IMREAD_COLOR)
             name = f"{args.character}-{bucket}-{thin}-{abs(source['yaw_proxy']):.2f}-mirrored-{source['clip']}.png"
+            if Path(name).name != name or ".." in Path(name).parts:
+                raise ValueError(f"unsafe mirrored member name: {name}")
+            if (out_dir / name).exists():
+                raise FileExistsError(f"duplicate immutable mirrored member: {name}")
+            image = cv2.imdecode(np.fromfile(str(out_dir / source["file"]), dtype=np.uint8), cv2.IMREAD_COLOR)
             cv2.imencode(".png", cv2.flip(image, 1))[1].tofile(str(out_dir / name))
             added.append(dict(source, file=name, side=thin, yaw_proxy=-source["yaw_proxy"], mirrored=True,
                               mirrored_from=source["file"], source_side=full))
@@ -184,7 +201,7 @@ def draw(sheet_path: Path, out_dir: Path, manifest: dict[str, Any], title: str) 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--report", required=True, help="turnaround-report.json")
-    parser.add_argument("--out-dir", required=True)
+    parser.add_argument("--out-dir", help="new immutable set directory; optional with active shared Library")
     parser.add_argument("--character", required=True)
     parser.add_argument("--actor", default="claude")
     parser.add_argument("--sheet")
