@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/director-routing-v1.schema.json",
+  "title": "XAI Studio Director Routing v1",
+  "type": "object",
+  "required": ["schema_version", "request_id", "manifest", "candidate_routes", "warnings"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "request_id": {"type": "string", "pattern": "^req_[A-Za-z0-9_-]+$"},
+    "manifest": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"const": "docs/director-memory/skill-router.json"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "candidate_routes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["candidate_index", "candidate_key", "storyboard_id", "mode", "lane", "creative_intent", "selected_skills", "source_refs", "rationale"],
+        "properties": {
+          "candidate_index": {"type": "integer", "minimum": 0, "maximum": 2},
+          "candidate_key": {"enum": ["A", "B", "C"]},
+          "storyboard_id": {"type": ["string", "null"], "pattern": "^sb_[A-Za-z0-9_-]+$"},
+          "mode": {"type": "string", "minLength": 1},
+          "lane": {"enum": ["safe", "balanced", "exploratory"]},
+          "creative_intent": {"type": "string", "minLength": 1},
+          "selected_skills": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "source_refs": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 4,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "rationale": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "warnings": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  },
+  "additionalProperties": false
+}

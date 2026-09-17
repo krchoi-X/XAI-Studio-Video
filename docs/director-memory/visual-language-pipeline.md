@@ -40,7 +40,9 @@ Result review
 Director Memory update
 ```
 
-The intermediate layers exist to preserve directing intent across different LLMs and different chat sessions.
+The intermediate layers first help the user and AI discover the intended visual experience, then preserve the approved intent across different LLMs, engines and chat sessions.
+
+The storyboard is not only a production plan. When the user cannot fully verbalize an idea, it is a low-cost visual question: the user can point to what feels right or wrong before expensive production begins. See `intent-alignment-method.md`.
 
 ## User role vs AI role
 
@@ -111,16 +113,16 @@ It should answer internally:
 
 The translator should not output a single universal answer. It should define a small creative search space.
 
-## Stage 3 — Two storyboard candidates
+## Stage 3 — Visual storyboard hypotheses
 
-Default output: **two meaningfully different candidates**.
+Use the smallest useful set of visual hypotheses. One strong draft is enough when the intended construction is already clear; use two meaningfully different candidates when a visible comparison will expose an unresolved choice. An active production contract may require a specific candidate count, but differences must still be structural rather than cosmetic.
 
 Recommended bias:
 
 - Candidate A: production-safe / continuity-first.
 - Candidate B: visually distinctive / more exploratory.
 
-The candidates should differ in directing logic, not merely wording.
+When there are multiple candidates, they should differ in directing logic, not merely wording.
 
 Useful axes include:
 

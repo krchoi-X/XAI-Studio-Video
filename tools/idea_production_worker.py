@@ -14,6 +14,11 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
+try:
+    from tools.director_skill_router import finalize_routing, route_request
+except ModuleNotFoundError:  # Direct execution from tools/.
+    from director_skill_router import finalize_routing, route_request
+
 OLLAMA_CHAT = "http://127.0.0.1:11434/api/chat"
 DEFAULT_MODEL = "meromero26b-a4b-hermes:latest"
 
@@ -39,8 +44,16 @@ def validate(schema_path: Path, document: dict[str, Any]) -> None:
         raise ValueError(f"schema validation failed: {detail}")
 
 
-def build_prompt(repo_root: Path, request: dict[str, Any], resolved: dict[str, Any]) -> str:
-    import character_manager as cm
+def build_prompt(
+    repo_root: Path,
+    request: dict[str, Any],
+    resolved: dict[str, Any],
+    director_context: dict[str, Any],
+) -> str:
+    try:
+        from tools import character_manager as cm
+    except ModuleNotFoundError:  # Direct execution from tools/.
+        import character_manager as cm
     shared = cm.shared_resource_catalog()
     skill_path = cm.shared_skill_path("idea-to-production") if shared else repo_root / "skills" / "idea-to-production" / "SKILL.md"
     skill = skill_path.read_text(encoding="utf-8")
@@ -51,9 +64,16 @@ def build_prompt(repo_root: Path, request: dict[str, Any], resolved: dict[str, A
 Do not claim to render anything. This step ends at storyboard candidates.
 Use only the supplied resolved reference summaries. Asset IDs remain opaque.
 The output must validate against the supplied closed JSON Schema.
+Follow the DIRECTOR CORE and the routed candidate contexts below.
+Candidate outputs must appear in A/B/C route order. Use only each candidate's selected skills;
+do not blend in unselected Director Memory. The routing decision is persisted separately, so do
+not add routing fields to the closed storyboard schema.
 
 SKILL:
 {skill}
+
+DIRECTOR CORE AND SELECTED CANDIDATE SKILLS:
+{json.dumps(director_context, ensure_ascii=False)}
 
 OUTPUT JSON SCHEMA:
 {output_schema}
@@ -98,6 +118,7 @@ def process(job_dir: Path, repo_root: Path, model: str) -> None:
     resolved = json.loads(resolved_path.read_text(encoding="utf-8"))
     input_schema = repo_root / "schemas" / "idea-production-request-v1.schema.json"
     output_schema = repo_root / "schemas" / "storyboard-candidates-v1.schema.json"
+    routing_schema = repo_root / "schemas" / "director-routing-v1.schema.json"
     validate(input_schema, request)
     atomic_json(status_path, {"status": "running", "updated_at": now(), "model": model})
     try:
@@ -106,14 +127,22 @@ def process(job_dir: Path, repo_root: Path, model: str) -> None:
         if missing:
             result = structured_failure(request["request_id"], "reference_not_found", "One or more approved references could not be resolved.")
         else:
-            result = generate(build_prompt(repo_root, request, resolved), model)
+            routing, director_context = route_request(repo_root, request)
+            validate(routing_schema, routing)
+            atomic_json(job_dir / "director-routing.json", routing)
+            result = generate(build_prompt(repo_root, request, resolved, director_context), model)
         validate(output_schema, result)
         if result["request_id"] != request["request_id"]:
             raise ValueError("output request_id does not match the durable request")
+        if result["status"] == "needs_user_choice":
+            routing = finalize_routing(routing, result["storyboards"])
+            validate(routing_schema, routing)
+            atomic_json(job_dir / "director-routing.json", routing)
         atomic_json(job_dir / "storyboards.json", result)
         atomic_json(status_path, {
             "status": result["status"], "updated_at": now(), "model": model,
             "storyboard_count": len(result["storyboards"]),
+            "director_routing": "director-routing.json" if (job_dir / "director-routing.json").exists() else None,
             "error": result["errors"][0]["message"] if result["errors"] else None,
         })
     except Exception as exc:

@@ -109,12 +109,12 @@ Compare at least:
 
 ## Default proposal strategy
 
-Unless the episode clearly calls for another split, propose:
+When a visible comparison will help the user discover an unresolved intent, propose:
 
 - **Candidate A — continuity-first / production-safe**
 - **Candidate B — visually distinctive / exploratory**
 
-A third candidate is justified only when it represents a genuinely different construction family.
+When the visual intent is already sufficiently clear, one strong storyboard draft is enough outside an active contract that requires a candidate count. A third candidate is justified only when it represents a genuinely different construction family.
 
 ## Human review questions encoded as checks
 

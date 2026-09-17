@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "director_core": [
+    "Preserve and strengthen the user's intended story, feeling and viewer experience.",
+    "Use storyboard candidates as visual hypotheses when the intent is not fully verbalized.",
+    "Prefer one coherent directing grammar per candidate instead of averaging every available reference.",
+    "Keep global identity, space, causality and emotional continuity strong while allowing shot grammar to vary.",
+    "Choose production routes from capabilities verified for the active executor and engine."
+  ],
+  "selection": {
+    "min_skills_per_candidate": 2,
+    "max_skills_per_candidate": 4,
+    "max_references_per_candidate": 4
+  },
+  "modes": [
+    {
+      "mode_id": "observational",
+      "lane": "safe",
+      "priority": 10,
+      "signals": ["quiet", "natural", "daily", "morning", "room", "walk", "조용", "자연", "일상", "아침", "방", "걷"],
+      "creative_intent": "Observe natural behavior while keeping the place and action readable.",
+      "skill_ids": ["environment_first_opening", "purposeful_action", "long_take_continuity"]
+    },
+    {
+      "mode_id": "placed_camera_vlog",
+      "lane": "safe",
+      "priority": 20,
+      "signals": ["vlog", "introduction", "camera", "record", "self", "브이로그", "소개", "카메라", "촬영", "자기소개"],
+      "creative_intent": "Make the recording setup and body language part of the story.",
+      "skill_ids": ["placed_camera_opening", "purposeful_action", "continuity_handoff"]
+    },
+    {
+      "mode_id": "intimate",
+      "lane": "balanced",
+      "priority": 30,
+      "signals": ["emotion", "face", "hesitate", "sad", "awkward", "감정", "표정", "망설", "슬픔", "어색"],
+      "creative_intent": "Move closer only when expression and emotional change carry the scene.",
+      "skill_ids": ["character_first_intimacy", "emotional_hold", "continuity_handoff"]
+    },
+    {
+      "mode_id": "object_led_rhythmic",
+      "lane": "exploratory",
+      "priority": 40,
+      "signals": ["object", "coffee", "phone", "bag", "camera", "food", "물건", "커피", "휴대폰", "가방", "음식", "소품"],
+      "creative_intent": "Use a meaningful object and purposeful cuts to reveal the character and situation.",
+      "skill_ids": ["object_first_opening", "multi_cut_rhythm", "continuity_handoff"]
+    },
+    {
+      "mode_id": "environment_led",
+      "lane": "exploratory",
+      "priority": 50,
+      "signals": ["weather", "window", "sea", "garden", "city", "place", "날씨", "창문", "바다", "정원", "도시", "장소"],
+      "creative_intent": "Let the environment establish mood and story information before the character takes focus.",
+      "skill_ids": ["environment_first_opening", "wide_to_intimate", "continuity_handoff"]
+    },
+    {
+      "mode_id": "graphic_rhythmic",
+      "lane": "exploratory",
+      "priority": 60,
+      "signals": ["fast", "rhythm", "montage", "energy", "music", "빠른", "리듬", "몽타주", "에너지", "음악"],
+      "creative_intent": "Create a clear visual rhythm with purposeful scale changes and cuts.",
+      "skill_ids": ["action_first_opening", "multi_cut_rhythm", "continuity_handoff"]
+    }
+  ],
+  "skills": [
+    {
+      "skill_id": "environment_first_opening",
+      "when_to_use": ["Place, weather or spatial context materially shapes the episode."],
+      "when_not_to_use": ["The environment has no narrative or emotional role."],
+      "source": "docs/director-memory/opening-patterns.md#space-first",
+      "what_to_extract": ["environment-to-character reveal", "spatial anchor", "entry logic"],
+      "do_not_copy": ["a reference episode's literal room, weather or shot order"],
+      "guidance": "Establish a meaningful place before or while revealing the character; make the environment causally relevant."
+    },
+    {
+      "skill_id": "placed_camera_opening",
+      "when_to_use": ["A self-recorded scene should show deliberate camera placement and body language."],
+      "when_not_to_use": ["Urgency or intimacy specifically requires a handheld camera."],
+      "source": "docs/director-memory/opening-patterns.md#direct-address-fixed-camera",
+      "what_to_extract": ["camera support", "subject scale", "settling action"],
+      "do_not_copy": ["the same shelf, room or entrance action every time"],
+      "guidance": "Make camera support explicit and let the character enter, check or settle into the recorded frame."
+    },
+    {
+      "skill_id": "character_first_intimacy",
+      "when_to_use": ["Expression or immediate personal presence is the intended hook."],
+      "when_not_to_use": ["A close view would hide story-critical space or body language."],
+      "source": "docs/director-memory/opening-patterns.md#character-first",
+      "what_to_extract": ["intentional subject scale", "expression change", "reveal timing"],
+      "do_not_copy": ["generic face-filling selfie composition"],
+      "guidance": "Use closeness deliberately and reveal enough context for the expression to have meaning."
+    },
+    {
+      "skill_id": "object_first_opening",
+      "when_to_use": ["A prop summarizes the episode, creates curiosity or causes the next action."],
+      "when_not_to_use": ["The object is decorative and has no relationship to what follows."],
+      "source": "docs/director-memory/opening-patterns.md#object-first",
+      "what_to_extract": ["object-to-character transition", "causal reveal", "prop continuity"],
+      "do_not_copy": ["example-specific props"],
+      "guidance": "Open on a meaningful object, then connect it causally to the character and episode."
+    },
+    {
+      "skill_id": "action_first_opening",
+      "when_to_use": ["Purposeful behavior can reveal character faster than exposition."],
+      "when_not_to_use": ["Added motion would be empty fidgeting."],
+      "source": "docs/director-memory/opening-patterns.md#action-first",
+      "what_to_extract": ["readable action", "entry state", "payoff"],
+      "do_not_copy": ["random movement added only for activity"],
+      "guidance": "Begin with one purposeful action whose change or result advances the scene."
+    },
+    {
+      "skill_id": "purposeful_action",
+      "when_to_use": ["Dialogue or observation needs physical behavior that reveals character or space."],
+      "when_not_to_use": ["The action competes with the intended emotional hold."],
+      "source": "docs/director-memory/principles.md#4-action-before-dialogue-is-often-stronger-but-not-mandatory",
+      "what_to_extract": ["action purpose", "start state", "end state"],
+      "do_not_copy": ["irrelevant fidgeting"],
+      "guidance": "Give the character one meaningful action before or during speech, with a readable start and result."
+    },
+    {
+      "skill_id": "long_take_continuity",
+      "when_to_use": ["Spatial continuity, observation or natural performance is the main appeal."],
+      "when_not_to_use": ["The clip would require too many unrelated sequential actions."],
+      "source": "docs/director-memory/principles.md#3-distinguish-long-take-multi-cut-and-hybrid",
+      "what_to_extract": ["continuous performance path", "spatial anchors", "internal beat changes"],
+      "do_not_copy": ["a fixed duration or camera move"],
+      "guidance": "Keep one feasible action path continuous and ensure something meaningful changes inside the frame."
+    },
+    {
+      "skill_id": "multi_cut_rhythm",
+      "when_to_use": ["Controlled reveals, compression or object details benefit from separate shots."],
+      "when_not_to_use": ["Cuts would fragment an emotionally continuous performance."],
+      "source": "docs/director-memory/principles.md#3-distinguish-long-take-multi-cut-and-hybrid",
+      "what_to_extract": ["reason for each cut", "scale progression", "retry boundary"],
+      "do_not_copy": ["generic montage coverage"],
+      "guidance": "Use cuts only when each changes information, emphasis or rhythm; preserve state across intended continuity."
+    },
+    {
+      "skill_id": "wide_to_intimate",
+      "when_to_use": ["The viewer should understand place before moving emotionally closer."],
+      "when_not_to_use": ["The scene requires immediate intimate urgency."],
+      "source": "docs/director-memory/opening-patterns.md#wide-to-intimate",
+      "what_to_extract": ["scale progression", "spatial context", "emotional approach"],
+      "do_not_copy": ["a fixed number of shots"],
+      "guidance": "Establish spatial context, then approach the character as emotional information becomes important."
+    },
+    {
+      "skill_id": "emotional_hold",
+      "when_to_use": ["A subtle emotional change must remain visible long enough to register."],
+      "when_not_to_use": ["The beat has no internal change or narrative importance."],
+      "source": "docs/storyboard-directing.md#7-long-holds-slow-motion-and-visual-pauses",
+      "what_to_extract": ["reason to hold", "allowed subtle change", "exit cue"],
+      "do_not_copy": ["melodramatic expression or arbitrary slow motion"],
+      "guidance": "Hold attention on a subtle change, state what can move, and define how the beat exits."
+    },
+    {
+      "skill_id": "continuity_handoff",
+      "when_to_use": ["Separate shots or clips must feel like one coherent event."],
+      "when_not_to_use": ["Discontinuity is deliberately used for montage, comedy or time compression."],
+      "source": "docs/director-memory/failures.md#fail-003-shot-sequence-loses-state-between-cuts",
+      "what_to_extract": ["input state", "output state", "prop hand", "position and facing"],
+      "do_not_copy": ["irrelevant state details"],
+      "guidance": "Declare the state entering and leaving each dependent shot, including position, orientation, props and environment changes."
+    }
+  ]
+}
