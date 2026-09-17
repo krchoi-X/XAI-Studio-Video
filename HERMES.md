@@ -5,7 +5,8 @@ Load [AGENTS.md](AGENTS.md) as the shared policy and [shared agent workflow](doc
 For production, read [artifact and review contract](docs/artifact-and-review-contract.md), then the applicable skill:
 
 - Character identity and supported local still images: `skills/character-manager/SKILL.md`.
-- Idea/storyboard/sample/final: `skills/idea-to-production/SKILL.md` and its director decisions.
+- Visual intent alignment and storyboard revision: `skills/storyboard-director/SKILL.md`.
+- Approved storyboard through sample/final production: `skills/idea-to-production/SKILL.md` and its director decisions.
 - Video: root `SKILL.md`.
 - Local night batches: Character Manager skill and `tools/hermes_night_batch.py`.
 - Explicit external engine: preserve it and use the shared external import route; do not substitute the local default.
@@ -58,3 +59,7 @@ python tools/wangp_models.py --check minimax_h3_ref2va_pruned
 ```
 
 Resolve CLI paths from the verified repository checkout, not an installed skill copy. For direct supported local production use `--actor hermes`; use `web` only through the web worker. Preserve the exact request and canonical DNA. Execute a clear authorized request without making the user repeat it. Verify recorded outputs and sync separately; never mark a queued job complete. Use existing sequential local queues and shared Gallery destinations.
+
+## Conditional Codex review
+
+Hermes is the default operator. Do not switch ordinary planning, writing, image/video/music preparation or production execution to Codex. When a high-impact decision, two repeated comparable failures, unresolved creative/continuity conflict, or an expensive ambiguous choice meets an escalation gate, resolve and follow the shared `frontier-review-escalation` skill. Send one self-contained review packet through `delegate_task`; do not use Mixture of Agents for this route. Codex is review-only by default and cannot expand Hermes's mutation, spending, publication or architecture authority. Keep the main Hermes model and the delegated reviewer model as separate configuration choices.
