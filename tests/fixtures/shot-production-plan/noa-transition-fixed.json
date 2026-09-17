@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "plan_id": "plan_noa_first_live_transition_fix",
+  "storyboard_id": "sb_noa_first_live",
+  "status": "needs_review",
+  "shots": [
+    {
+      "shot_id": "shot_noa_cute_chain",
+      "purpose": "Turn Noa's reluctant cheek pose into a cat-paw gesture without resetting her hands, then motivate the framing change.",
+      "reason_for_existence": "Keep the cute performance physically continuous and create an intentional exit into the wide reveal.",
+      "take_mode": "virtual_oner",
+      "duration_intent": {"kind": "extended_hold", "estimated_seconds": 9.0},
+      "camera": {
+        "framing": "fixed medium close-up",
+        "support": "placed phone camera",
+        "movement": "locked until the palm fully occludes the lens",
+        "axis": "front-facing eye-level axis"
+      },
+      "entry_state": {
+        "body_pose": "seated upright with shoulders relaxed",
+        "left_hand": "left index fingertip touching left cheek",
+        "right_hand": "right index fingertip touching right cheek",
+        "gaze": "both eyes toward the lens",
+        "screen_position": "centered medium close-up",
+        "props": {},
+        "wardrobe": "ivory cardigan, black ribbon, charcoal skirt and black tights",
+        "environment": "same warm off-white streaming room, chair and plant",
+        "camera_relation": "seated close to the fixed phone camera"
+      },
+      "beats": [
+        {
+          "beat_id": "beat_cheek_hold",
+          "action": "Hold both fingertips on the cheeks for one embarrassed beat.",
+          "state_change": "No spatial change; the expression softens slightly.",
+          "attention": "Her reluctant cute expression.",
+          "keyframe_ids": ["kf_cheek_start"]
+        },
+        {
+          "beat_id": "beat_fingers_fold",
+          "action": "Without lowering either hand, curl the extended fingers into small loose cat paws beside the cheeks.",
+          "state_change": "Cheek-pointing hands become cat paws in place.",
+          "attention": "The continuous hand transformation.",
+          "keyframe_ids": ["kf_paw_ready"]
+        },
+        {
+          "beat_id": "beat_paw_gesture",
+          "action": "Perform one small synchronized inward paw motion and settle.",
+          "state_change": "Both paws return beside the cheeks after one gesture.",
+          "attention": "A restrained tsundere performance, not idol-like exaggeration.",
+          "keyframe_ids": []
+        },
+        {
+          "beat_id": "beat_lens_cover",
+          "action": "Extend the right palm toward the lens until it fully covers the frame while the left paw stays near the cheek.",
+          "state_change": "The image becomes fully occluded by the right palm.",
+          "attention": "A motivated transition rather than a decorative title card.",
+          "keyframe_ids": ["kf_full_occlusion"]
+        }
+      ],
+      "exit_state": {
+        "body_pose": "still seated behind the fully extended right arm",
+        "left_hand": "left hand held as a loose paw beside the cheek",
+        "right_hand": "right palm fully covering the lens",
+        "gaze": "toward the covered lens",
+        "screen_position": "frame fully occluded",
+        "props": {},
+        "wardrobe": "ivory cardigan, black ribbon, charcoal skirt and black tights",
+        "environment": "same warm off-white streaming room, chair and plant",
+        "camera_relation": "right palm in contact distance with the fixed phone lens"
+      },
+      "keyframes": [
+        {
+          "keyframe_id": "kf_cheek_start",
+          "beat_id": "beat_cheek_hold",
+          "role": "start",
+          "description": "Both index fingertips remain on the cheeks at the start of the shot."
+        },
+        {
+          "keyframe_id": "kf_paw_ready",
+          "beat_id": "beat_fingers_fold",
+          "role": "internal",
+          "description": "Both hands have changed into loose cat paws without dropping below frame."
+        },
+        {
+          "keyframe_id": "kf_full_occlusion",
+          "beat_id": "beat_lens_cover",
+          "role": "end",
+          "description": "The right palm fills and fully occludes the frame."
+        }
+      ],
+      "render_chunks": [
+        {
+          "chunk_id": "chunk_cute_chain_01",
+          "beat_ids": ["beat_cheek_hold", "beat_fingers_fold"],
+          "route": "h3_ref2va",
+          "references": [
+            {"role": "identity_master", "asset": "asset:noa-identity"},
+            {"role": "start_keyframe", "asset": "asset:kf-cheek-start"}
+          ],
+          "creates_edit_cut": false
+        },
+        {
+          "chunk_id": "chunk_cute_chain_02",
+          "beat_ids": ["beat_paw_gesture", "beat_lens_cover"],
+          "route": "h3_ref2va",
+          "references": [
+            {"role": "identity_master", "asset": "asset:noa-identity"},
+            {"role": "previous_chunk_last_frame", "asset": null}
+          ],
+          "creates_edit_cut": false
+        }
+      ],
+      "transition_to_next": {
+        "next_shot_id": "shot_noa_dance_reveal",
+        "relationship": "intentional_discontinuity",
+        "mode": "occlusion",
+        "carry_fields": ["wardrobe", "environment"],
+        "allowed_changes": ["body_pose", "left_hand", "right_hand", "gaze", "screen_position", "camera_relation"]
+      },
+      "video_feasibility": "medium"
+    },
+    {
+      "shot_id": "shot_noa_dance_reveal",
+      "purpose": "Reveal Noa at full-body scale and let her settle into the dance-challenge ready pose.",
+      "reason_for_existence": "The occluded edit makes the necessary camera-distance and body-position change intentional.",
+      "take_mode": "continuous_take",
+      "duration_intent": {"kind": "normal", "estimated_seconds": 5.0},
+      "camera": {
+        "framing": "fixed full-body shot",
+        "support": "placed phone camera",
+        "movement": "locked",
+        "axis": "same front-facing eye-level axis"
+      },
+      "entry_state": {
+        "body_pose": "standing several steps back with weight centered",
+        "left_hand": "left hand relaxed near shoulder",
+        "right_hand": "right hand open in a small presentation pose",
+        "gaze": "both eyes toward the lens",
+        "screen_position": "centered full body",
+        "props": {},
+        "wardrobe": "ivory cardigan, black ribbon, charcoal skirt and black tights",
+        "environment": "same warm off-white streaming room, chair and plant",
+        "camera_relation": "standing several steps from the fixed phone camera"
+      },
+      "beats": [
+        {
+          "beat_id": "beat_dance_ready",
+          "action": "Give one restrained presentation motion, then settle into a simple dance-ready stance.",
+          "state_change": "Presentation pose becomes a stable dance starting pose.",
+          "attention": "The full-body reveal and poised finish.",
+          "keyframe_ids": ["kf_dance_start", "kf_dance_end"]
+        }
+      ],
+      "exit_state": {
+        "body_pose": "standing in a stable dance-challenge ready stance",
+        "left_hand": "left hand in the approved dance starting position",
+        "right_hand": "right hand in the approved dance starting position",
+        "gaze": "both eyes toward the lens",
+        "screen_position": "centered full body",
+        "props": {},
+        "wardrobe": "ivory cardigan, black ribbon, charcoal skirt and black tights",
+        "environment": "same warm off-white streaming room, chair and plant",
+        "camera_relation": "standing several steps from the fixed phone camera"
+      },
+      "keyframes": [
+        {
+          "keyframe_id": "kf_dance_start",
+          "beat_id": "beat_dance_ready",
+          "role": "start",
+          "description": "Noa is already framed full body after the deliberate occluded edit."
+        },
+        {
+          "keyframe_id": "kf_dance_end",
+          "beat_id": "beat_dance_ready",
+          "role": "end",
+          "description": "Noa finishes in a stable dance-challenge starting pose."
+        }
+      ],
+      "render_chunks": [
+        {
+          "chunk_id": "chunk_dance_reveal_01",
+          "beat_ids": ["beat_dance_ready"],
+          "route": "h3_ref2va",
+          "references": [
+            {"role": "identity_master", "asset": "asset:noa-identity"},
+            {"role": "blocking_reference", "asset": "asset:noa-wide-master"}
+          ],
+          "creates_edit_cut": false
+        }
+      ],
+      "transition_to_next": {
+        "next_shot_id": null,
+        "relationship": "final",
+        "mode": "none",
+        "carry_fields": [],
+        "allowed_changes": []
+      },
+      "video_feasibility": "easy"
+    }
+  ],
+  "warnings": [
+    "The occlusion route is a deliberate edit; it preserves story continuity but not literal body-position continuity across the hidden cut."
+  ]
+}

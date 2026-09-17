@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/shot-production-plan-v1.schema.json",
+  "title": "XAI Studio Shot Production Plan v1",
+  "type": "object",
+  "required": ["schema_version", "plan_id", "storyboard_id", "status", "shots", "warnings"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "plan_id": {"type": "string", "pattern": "^plan_[A-Za-z0-9_-]+$"},
+    "storyboard_id": {"type": "string", "pattern": "^sb_[A-Za-z0-9_-]+$"},
+    "status": {"enum": ["draft", "needs_review", "approved"]},
+    "shots": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/shot"}},
+    "warnings": {"type": "array", "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "state": {
+      "type": "object",
+      "required": ["body_pose", "left_hand", "right_hand", "gaze", "screen_position", "props", "wardrobe", "environment", "camera_relation"],
+      "properties": {
+        "body_pose": {"type": "string", "minLength": 1},
+        "left_hand": {"type": "string", "minLength": 1},
+        "right_hand": {"type": "string", "minLength": 1},
+        "gaze": {"type": "string", "minLength": 1},
+        "screen_position": {"type": "string", "minLength": 1},
+        "props": {"type": "object", "additionalProperties": {"type": "string"}},
+        "wardrobe": {"type": "string", "minLength": 1},
+        "environment": {"type": "string", "minLength": 1},
+        "camera_relation": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "camera": {
+      "type": "object",
+      "required": ["framing", "support", "movement", "axis"],
+      "properties": {
+        "framing": {"type": "string", "minLength": 1},
+        "support": {"type": "string", "minLength": 1},
+        "movement": {"type": "string", "minLength": 1},
+        "axis": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "duration_intent": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": {"enum": ["brief", "normal", "extended_hold", "exact"]},
+        "estimated_seconds": {"type": ["number", "null"], "exclusiveMinimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "beat": {
+      "type": "object",
+      "required": ["beat_id", "action", "state_change", "attention", "keyframe_ids"],
+      "properties": {
+        "beat_id": {"type": "string", "pattern": "^beat_[A-Za-z0-9_-]+$"},
+        "action": {"type": "string", "minLength": 1},
+        "state_change": {"type": "string", "minLength": 1},
+        "attention": {"type": "string", "minLength": 1},
+        "keyframe_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^kf_[A-Za-z0-9_-]+$"}}
+      },
+      "additionalProperties": false
+    },
+    "keyframe": {
+      "type": "object",
+      "required": ["keyframe_id", "beat_id", "role", "description"],
+      "properties": {
+        "keyframe_id": {"type": "string", "pattern": "^kf_[A-Za-z0-9_-]+$"},
+        "beat_id": {"type": "string", "pattern": "^beat_[A-Za-z0-9_-]+$"},
+        "role": {"enum": ["start", "internal", "end"]},
+        "description": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "reference": {
+      "type": "object",
+      "required": ["role", "asset"],
+      "properties": {
+        "role": {"enum": ["identity_master", "start_keyframe", "end_keyframe", "previous_chunk_last_frame", "previous_shot_last_frame", "blocking_reference"]},
+        "asset": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "render_chunk": {
+      "type": "object",
+      "required": ["chunk_id", "beat_ids", "route", "references", "creates_edit_cut"],
+      "properties": {
+        "chunk_id": {"type": "string", "pattern": "^chunk_[A-Za-z0-9_-]+$"},
+        "beat_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^beat_[A-Za-z0-9_-]+$"}},
+        "route": {"enum": ["h3_ref2va", "h3_fl2va", "renderer_extension", "external"]},
+        "references": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/reference"}},
+        "creates_edit_cut": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "transition": {
+      "type": "object",
+      "required": ["next_shot_id", "relationship", "mode", "carry_fields", "allowed_changes"],
+      "properties": {
+        "next_shot_id": {"type": ["string", "null"], "pattern": "^shot_[A-Za-z0-9_-]+$"},
+        "relationship": {"enum": ["dependent", "independent", "intentional_discontinuity", "final"]},
+        "mode": {"enum": ["none", "match_on_action", "occlusion", "hard_cut", "time_jump", "cutaway"]},
+        "carry_fields": {"type": "array", "uniqueItems": true, "items": {"enum": ["body_pose", "left_hand", "right_hand", "gaze", "screen_position", "props", "wardrobe", "environment", "camera_relation"]}},
+        "allowed_changes": {"type": "array", "uniqueItems": true, "items": {"enum": ["body_pose", "left_hand", "right_hand", "gaze", "screen_position", "props", "wardrobe", "environment", "camera_relation"]}}
+      },
+      "additionalProperties": false
+    },
+    "shot": {
+      "type": "object",
+      "required": ["shot_id", "purpose", "reason_for_existence", "take_mode", "duration_intent", "camera", "entry_state", "beats", "exit_state", "keyframes", "render_chunks", "transition_to_next", "video_feasibility"],
+      "properties": {
+        "shot_id": {"type": "string", "pattern": "^shot_[A-Za-z0-9_-]+$"},
+        "purpose": {"type": "string", "minLength": 1},
+        "reason_for_existence": {"type": "string", "minLength": 1},
+        "take_mode": {"enum": ["continuous_take", "virtual_oner"]},
+        "duration_intent": {"$ref": "#/$defs/duration_intent"},
+        "camera": {"$ref": "#/$defs/camera"},
+        "entry_state": {"$ref": "#/$defs/state"},
+        "beats": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/beat"}},
+        "exit_state": {"$ref": "#/$defs/state"},
+        "keyframes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/keyframe"}},
+        "render_chunks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/render_chunk"}},
+        "transition_to_next": {"$ref": "#/$defs/transition"},
+        "video_feasibility": {"enum": ["easy", "medium", "risky"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
