@@ -18,7 +18,7 @@ Use `storyboard-director` alone when the user only wants story, beat, pacing, or
 
 Path: `skills/storyboard-director/SKILL.md`
 
-Use when a rough story or scene idea must become a director-style Storyboard Spec before expensive image/video generation.
+Use when a rough or incompletely expressed idea must be aligned visually with the user and become an approved director-style Storyboard Spec before expensive image/video generation.
 
 It owns:
 
@@ -30,6 +30,7 @@ It owns:
 - emotional pacing
 - annotated panel/shot planning
 - rough storyboard rendering prompt creation
+- visual intent comparison without requiring film terminology from the user
 - iterative revision with the user
 - medium-neutral Storyboard Spec maintenance
 - handoff to video, graphic-novel/comic, or illustration workflows
@@ -47,8 +48,8 @@ Do not load this skill for a simple single-shot prompt that does not need story,
 ```text
 rough story / scene idea
 → storyboard-director
-→ Storyboard Spec Draft 0
-→ user revision
+→ one or two low-cost visual hypotheses when useful
+→ Storyboard Spec Draft 0 + user visual revision
 → Approved Storyboard Spec
         ├─ video flow → root XAI-Studio-Video → model adapter
         ├─ graphic-novel/comic flow → panel/layout adapter → image renderer
