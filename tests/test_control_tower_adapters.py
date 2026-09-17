@@ -250,6 +250,27 @@ class WangpAdapterTests(unittest.TestCase):
         make_run(session, "run-l", "failed", [])
         self.assertEqual([j.job_id for j in self.adapter().discover(now=self.now)], ["wangp:run-l"])
 
+    def test_scan_skips_historical_records(self):
+        current = make_session(self.root, "ch-test", "SCENE-current", "current", "hermes")
+        make_run(current, "run-current", "needs_review", [])
+        archived_root = self.root / "historical-records" / "20260915"
+        archived = make_session(archived_root, "ch-test", "SCENE-old", "old", "hermes")
+        make_run(archived, "run-old", "needs_review", [])
+        self.assertEqual([j.job_id for j in self.adapter().discover(now=self.now)], ["wangp:run-current"])
+
+    def test_duplicate_run_id_prefers_first_scan_root(self):
+        library = self.root / "library"
+        legacy = self.root / "legacy"
+        current = make_session(library, "ch-test", "SCENE-current", "Library record", "hermes")
+        make_run(current, "run-shared", "needs_review", [])
+        old = make_session(legacy, "ch-test", "SCENE-old", "Legacy record", "hermes")
+        make_run(old, "run-shared", "failed", [])
+        jobs = WangpRunAdapter([library, legacy], pid_alive=lambda pid: True).discover(now=self.now)
+        self.assertEqual(len(jobs), 1)
+        self.assertEqual(jobs[0].job_id, "wangp:run-shared")
+        self.assertIn("Library record", jobs[0].title)
+        self.assertEqual(jobs[0].status, "needs_review")
+
 
 class NightBatchAndWebTests(unittest.TestCase):
     def setUp(self):

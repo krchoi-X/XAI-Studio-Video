@@ -8,8 +8,11 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 DEFAULT_DB_PATH = Path(r"D:\AI_Studio\control-tower\control_tower.sqlite3")
 # Producers choose their own --runs-root, so scan every place runs actually land: character sessions,
-# the repository-root `runs/` Hermes uses for non-character projects, and the character-lab experiments.
-DEFAULT_SCAN_ROOTS = [REPO_ROOT / "characters", REPO_ROOT / "runs", REPO_ROOT / "examples"]
+# the shared character Library, the repository-root `runs/` Hermes uses for non-character projects, and
+# the character-lab experiments.  The shared Library comes first so its current record wins when a migrated
+# run also remains in the legacy repository tree.
+DEFAULT_CHARACTER_LIBRARY_ROOT = Path(r"D:\AI_Studio\library\characters")
+DEFAULT_SCAN_ROOTS = [DEFAULT_CHARACTER_LIBRARY_ROOT, REPO_ROOT / "characters", REPO_ROOT / "runs", REPO_ROOT / "examples"]
 DEFAULT_NIGHT_BATCH_ROOT = Path(r"D:\AI_Studio\workspace\hermes-night-batches")
 DEFAULT_WEB_JOB_ROOTS = [
     Path.home() / "PersonalPromptStudio" / "workspace" / "generation-jobs",

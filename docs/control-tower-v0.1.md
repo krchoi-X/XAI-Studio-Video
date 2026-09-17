@@ -22,9 +22,13 @@ sse-starlette, psutil, PyYAML, httpx):
 python -X utf8 -m control_tower
 ```
 
-Defaults: bind `0.0.0.0:8790`, SQLite at `D:\AI_Studio\control-tower\control_tower.sqlite3`, scan root
-`D:\codex\XAI-studio\characters`, night batches at `D:\AI_Studio\workspace\hermes-night-batches`, Gallery web jobs at
+Defaults: bind `0.0.0.0:8790`, SQLite at `D:\AI_Studio\control-tower\control_tower.sqlite3`, WanGP scan roots
+`D:\AI_Studio\library\characters` (current shared records), `D:\codex\XAI-studio\characters`, `runs`, and `examples` (legacy/fallback),
+night batches at `D:\AI_Studio\workspace\hermes-night-batches`, Gallery web jobs at
 `D:\codex\personal-prompt-studio\personal-prompt-studio\data\workspace\generation-jobs`.
+
+When the same `run_id` exists in the shared Library and a legacy tree, the shared Library record wins. Archived
+`historical-records` trees are not scanned, so storage migrations do not duplicate Recent Results.
 
 ### Autostart (registered 2026-09-07)
 

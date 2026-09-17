@@ -43,6 +43,7 @@ def default_pid_alive(pid: int | None) -> bool:
 
 # Files that make a directory a real production session rather than just the parent of a runs/ folder.
 SESSION_MARKERS = ("batch.yaml", "session-provenance.json", "prompt-trace.json", "handoff.json", "sequence-status.json")
+SKIP_SCAN_DIRS = {"outputs", "historical-records", ".git", "__pycache__", "node_modules"}
 
 
 class SessionContext:
@@ -62,7 +63,7 @@ class SessionContext:
         self.kind = "unknown"
         self.visibility = None
         parent = session_dir.parent
-        if parent.name == "02_generations" and parent.parent.name.startswith("ch-"):
+        if parent.name in {"02_generations", "generations"} and parent.parent.name.startswith("ch-"):
             self.character_id = parent.parent.name
         prefix = session_dir.name.split("-", 1)[0].upper()
         if prefix in {"SCENE", "FACE", "VARIATION", "VIDEO", "NIGHT"}:
@@ -169,7 +170,7 @@ class WangpRunAdapter:
                     dirnames[:] = []
                     continue
                 # never descend into media output trees or VCS metadata
-                dirnames[:] = [d for d in dirnames if d not in {"outputs", ".git", "__pycache__", "node_modules"}]
+                dirnames[:] = [d for d in dirnames if d not in SKIP_SCAN_DIRS]
         return found
 
     def session_context(self, session_dir: Path) -> SessionContext:
@@ -187,6 +188,7 @@ class WangpRunAdapter:
         now = now or utc_now()
         jobs: list[Job] = []
         seen: set[str] = set()
+        seen_job_ids: set[str] = set()
         for run_dir in self.run_dirs():
             key = str(run_dir)
             seen.add(key)
@@ -195,12 +197,15 @@ class WangpRunAdapter:
             stamp = (_mtime(run_path), _mtime(events_path), _size(events_path))
             cached = self._run_cache.get(key)
             if cached and cached[0] == stamp and cached[1].is_terminal:
-                jobs.append(cached[1])
-                continue
-            job = self.parse_run(run_dir, now)
+                job = cached[1]
+            else:
+                job = self.parse_run(run_dir, now)
             if job is None:
                 continue
             self._run_cache[key] = (stamp, job)
+            if job.job_id in seen_job_ids:
+                continue
+            seen_job_ids.add(job.job_id)
             jobs.append(job)
         for key in list(self._run_cache):
             if key not in seen:
