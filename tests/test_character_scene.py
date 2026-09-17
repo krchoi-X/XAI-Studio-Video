@@ -3,6 +3,7 @@ import sys
 import unittest
 import json
 import tempfile
+import hashlib
 from pathlib import Path
 
 
@@ -185,6 +186,44 @@ class CharacterScenePromptTests(unittest.TestCase):
 
     def test_actor_choices_include_grok_and_claude(self):
         self.assertEqual(("codex", "hermes", "web", "grok", "claude", "user"), scene.ACTORS)
+
+    def test_character_default_identity_reference_is_hash_bound(self):
+        with tempfile.TemporaryDirectory() as directory:
+            reference = Path(directory) / "identity.png"
+            reference.write_bytes(b"identity reference bytes")
+            character = {**self.character, "reference_defaults": {"identity": {
+                "path": str(reference), "state": "user-selected", "source": "operator chose this face",
+            }}}
+            resolved = scene.resolve_identity_reference(character, "character-default")
+            self.assertEqual("identity", resolved["role"])
+            self.assertEqual("character-default", resolved["basis"])
+            self.assertEqual(hashlib.sha256(reference.read_bytes()).hexdigest(), resolved["sha256"])
+            self.assertEqual("user-selected", resolved["state"])
+
+    def test_identity_reference_requires_a_real_supported_image(self):
+        with tempfile.TemporaryDirectory() as directory:
+            unsupported = Path(directory) / "identity.txt"
+            unsupported.write_text("not an image", encoding="utf-8")
+            with self.assertRaisesRegex(scene.cm.CharacterError, "unsupported identity reference"):
+                scene.resolve_identity_reference(self.character, str(unsupported))
+            with self.assertRaisesRegex(scene.cm.CharacterError, "no reference_defaults.identity"):
+                scene.resolve_identity_reference(self.character, "character-default")
+
+    def test_identity_reference_compiles_krea2_edit_settings_without_fallback(self):
+        reference = {
+            "path": r"D:\library\reika.png", "sha256": "abc123", "byte_count": 42,
+            "asset_id": "asset-reika", "role": "identity", "basis": "character-default",
+        }
+        settings = scene.apply_identity_reference(
+            {"model_type": "krea2_turbo_moody_krea", "NAG_scale": 1, "seed": 7},
+            reference, "ch-mizuki-reika", "new scene", "grok",
+        )
+        self.assertEqual("krea2_turbo_edit", settings["model_type"])
+        self.assertEqual([reference["path"]], settings["image_refs"])
+        self.assertEqual(["abc123"], settings["_xai"]["reference_sha256s"])
+        self.assertEqual(["asset-reika"], settings["_xai"]["reference_asset_ids"])
+        self.assertFalse(settings["_xai"]["allow_text_fallback"])
+        self.assertNotIn("NAG_scale", settings)
 
     def test_existing_session_submit_skips_completed_engines(self):
         with tempfile.TemporaryDirectory() as directory:

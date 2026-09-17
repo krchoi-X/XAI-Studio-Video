@@ -42,6 +42,12 @@ def validate_reference_settings(settings: dict[str, Any]) -> list[dict[str, Any]
     if not 1 <= len(refs) <= 2:
         raise ValueError("Krea2 reference variation requires one or two reference images")
     asset_ids = provenance.get("reference_asset_ids") or []
+    expected_hashes = provenance.get("reference_sha256s") or []
+    expected_sizes = provenance.get("reference_byte_counts") or []
+    if expected_hashes and len(expected_hashes) != len(refs):
+        raise ValueError("reference hash count does not match image_refs")
+    if expected_sizes and len(expected_sizes) != len(refs):
+        raise ValueError("reference byte-count does not match image_refs")
     records = []
     for index, value in enumerate(refs):
         path = Path(str(value)).resolve()
@@ -49,11 +55,19 @@ def validate_reference_settings(settings: dict[str, Any]) -> list[dict[str, Any]
             raise ValueError(f"reference image not found: {path}")
         if path.suffix.lower() not in IMAGE_SUFFIXES:
             raise ValueError(f"unsupported reference image: {path}")
+        actual_hash = wangp_recorder.sha256_file(path)
+        actual_size = path.stat().st_size
+        if expected_hashes and str(expected_hashes[index]) != actual_hash:
+            raise ValueError(f"reference image changed after preparation: {path}")
+        if expected_sizes and int(expected_sizes[index]) != actual_size:
+            raise ValueError(f"reference image size changed after preparation: {path}")
         records.append({
             "asset_id": str(asset_ids[index]) if index < len(asset_ids) else None,
             "path": str(path),
-            "sha256": wangp_recorder.sha256_file(path),
-            "byte_count": path.stat().st_size,
+            "sha256": actual_hash,
+            "byte_count": actual_size,
+            "role": provenance.get("reference_role"),
+            "basis": "explicit-reference",
         })
     return records
 

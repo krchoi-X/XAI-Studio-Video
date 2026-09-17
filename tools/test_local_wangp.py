@@ -64,6 +64,26 @@ class LocalWanGPTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "not found"):
             local_wangp.validate_reference_settings(settings)
 
+    def test_prepared_reference_hash_must_still_match(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            image = Path(directory) / "identity.png"
+            image.write_bytes(b"original identity")
+            settings = {
+                "model_type": "krea2_turbo_edit",
+                "image_refs": [str(image)],
+                "_xai": {
+                    "kind": "reference_transformation",
+                    "reference_role": "identity",
+                    "reference_sha256s": [local_wangp.wangp_recorder.sha256_file(image)],
+                    "reference_byte_counts": [image.stat().st_size],
+                },
+            }
+            records = local_wangp.validate_reference_settings(settings)
+            self.assertEqual("identity", records[0]["role"])
+            image.write_bytes(b"changed identity")
+            with self.assertRaisesRegex(ValueError, "changed after preparation"):
+                local_wangp.validate_reference_settings(settings)
+
     def test_ref2va_uses_the_durable_character_default_reference(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -78,12 +98,15 @@ class LocalWanGPTests(unittest.TestCase):
             session = characters / "ch-jun" / "02_generations" / "VIDEO-test"
             session.mkdir(parents=True)
             original = cm.CHARACTERS
+            original_shared_authority_root = cm.shared_authority_root
             cm.CHARACTERS = characters
+            cm.shared_authority_root = lambda: None
             try:
                 settings = {"model_type": "minimax_h3_ref2va_pruned", "image_refs": []}
                 records = local_wangp.resolve_character_default_reference(settings, session)
             finally:
                 cm.CHARACTERS = original
+                cm.shared_authority_root = original_shared_authority_root
             self.assertEqual(settings["image_refs"], [str(image.resolve())])
             self.assertEqual(records[0]["basis"], "character-default")
             self.assertEqual(records[0]["character_id"], "ch-jun")
@@ -100,7 +123,9 @@ class LocalWanGPTests(unittest.TestCase):
             session.mkdir(parents=True)
             (characters / "ch-none" / "character.json").write_text("{}", encoding="utf-8")
             original = cm.CHARACTERS
+            original_shared_authority_root = cm.shared_authority_root
             cm.CHARACTERS = characters
+            cm.shared_authority_root = lambda: None
             try:
                 with self.assertRaisesRegex(ValueError, "no reference_defaults.identity"):
                     local_wangp.resolve_character_default_reference(
@@ -108,6 +133,7 @@ class LocalWanGPTests(unittest.TestCase):
                     )
             finally:
                 cm.CHARACTERS = original
+                cm.shared_authority_root = original_shared_authority_root
 
 
 if __name__ == "__main__":

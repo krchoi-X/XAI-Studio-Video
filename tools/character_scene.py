@@ -28,6 +28,9 @@ ENGINES = {
     "z-image": ("z-image.settings.json", "z_image"),
     "krea2": ("krea2.settings.json", "krea2_turbo_moody_krea"),
 }
+IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
+KREA2_IDENTITY_EDIT_MODEL = "krea2_turbo_edit"
+KREA2_IDENTITY_EDIT_CHECKPOINT = Path(r"D:\AI\WanGP\ckpts\Krea2Turbo_quanto_bf16_int8.safetensors")
 
 HAIR_VARIATIONS = {
     "긴 생머리 센터 파트": "long straight hair with a clearly defined center part, worn fully down",
@@ -246,11 +249,100 @@ def write_json(path: Path, data: Any) -> None:
     cm.atomic_write(path, json.dumps(data, ensure_ascii=False, indent=2) + "\n")
 
 
-def prepare(character_id: str, request: str, model: str, count: int, engines: list[str], strategy: str = "strict_translation", immutable: dict[str, str] | None = None, supplied_scene_spec: dict[str, Any] | None = None, actor: str = "codex") -> Path:
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def resolve_identity_reference(character: dict[str, Any], selection: str | None,
+                               asset_id: str | None = None) -> dict[str, Any] | None:
+    """Resolve one explicit identity reference without guessing from the filesystem."""
+    selected = str(selection or "").strip()
+    if not selected:
+        if asset_id:
+            raise cm.CharacterError("--reference-asset-id requires --identity-reference")
+        return None
+    basis = "explicit-path"
+    source = None
+    state = None
+    recorded_asset_id = str(asset_id).strip() if asset_id else None
+    if selected == "character-default":
+        defaults = character.get("reference_defaults")
+        identity = defaults.get("identity") if isinstance(defaults, dict) else None
+        if not isinstance(identity, dict) or not str(identity.get("path") or "").strip():
+            raise cm.CharacterError(
+                f"{character['id']} has no reference_defaults.identity; an explicit image path is required"
+            )
+        selected = str(identity["path"]).strip()
+        basis = "character-default"
+        source = identity.get("source")
+        state = identity.get("state")
+        recorded_asset_id = recorded_asset_id or identity.get("asset_id")
+    path = Path(selected).resolve()
+    if not path.is_file():
+        raise cm.CharacterError(f"identity reference image not found: {path}")
+    if path.suffix.lower() not in IMAGE_SUFFIXES:
+        raise cm.CharacterError(f"unsupported identity reference image: {path}")
+    return {
+        "role": "identity",
+        "basis": basis,
+        "asset_id": str(recorded_asset_id) if recorded_asset_id else None,
+        "path": str(path),
+        "sha256": sha256_file(path),
+        "byte_count": path.stat().st_size,
+        "source": source,
+        "state": state,
+    }
+
+
+def apply_identity_reference(settings: dict[str, Any], reference: dict[str, Any],
+                             character_id: str, request: str, actor: str) -> dict[str, Any]:
+    """Compile a text-to-image Krea2 job into a hash-bound Identity Edit job."""
+    result = dict(settings)
+    for key in ("NAG_scale", "NAG_tau", "NAG_alpha", "type"):
+        result.pop(key, None)
+    result.update({
+        "model_type": KREA2_IDENTITY_EDIT_MODEL,
+        "base_model_type": KREA2_IDENTITY_EDIT_MODEL,
+        "model_filename": str(KREA2_IDENTITY_EDIT_CHECKPOINT),
+        "image_mode": 1,
+        "video_prompt_type": "KI",
+        "image_refs": [reference["path"]],
+        "remove_background_images_ref": 0,
+        "num_inference_steps": 8,
+        "guidance_scale": 0,
+        "activated_loras": [],
+        "loras_multipliers": "",
+        "_xai": {
+            "kind": "reference_transformation",
+            "schema_version": 2,
+            "character_id": character_id,
+            "reference_role": "identity",
+            "reference_asset_ids": [reference["asset_id"]] if reference.get("asset_id") else [],
+            "reference_sha256s": [reference["sha256"]],
+            "reference_byte_counts": [reference["byte_count"]],
+            "operator_request": request,
+            "requested_by": actor,
+            "allow_text_fallback": False,
+        },
+    })
+    return result
+
+
+def prepare(character_id: str, request: str, model: str, count: int, engines: list[str], strategy: str = "strict_translation", immutable: dict[str, str] | None = None, supplied_scene_spec: dict[str, Any] | None = None, actor: str = "codex", identity_reference: str | None = None, reference_asset_id: str | None = None) -> Path:
     character_path = cm.character_record_path(character_id)
     if not character_path.is_file():
         raise cm.CharacterError(f"unknown character: {character_id}")
     character = cm.load(character_path)
+    unknown_engines = [engine for engine in engines if engine not in ENGINES]
+    if unknown_engines:
+        raise cm.CharacterError("unsupported engine: " + ", ".join(unknown_engines))
+    reference = resolve_identity_reference(character, identity_reference, reference_asset_id)
+    if reference and engines != ["krea2"]:
+        raise cm.CharacterError("identity-reference generation requires --engines krea2; no text-only fallback is allowed")
     immutable = immutable or {}
     operating_mode = normalize_strategy(strategy)
     scene_spec = build_scene_spec(request, immutable, supplied_scene_spec)
@@ -269,6 +361,13 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     merged_prompt = identity_merge_prompt(character, request, immutable, scene_spec)
     enriched_prompt = compile_prompt(character, delta, request, immutable, scene_spec) if delta else merged_prompt
     prompt = request if operating_mode == "exact" else enriched_prompt
+    if reference and operating_mode != "exact":
+        prompt = (
+            "IDENTITY REFERENCE LOCK — The provided identity-reference image is authoritative for this "
+            "character's exact facial identity. Preserve its individual eye shape and spacing, nose, lips, "
+            "jaw and facial proportions. Change only the scene variables requested below; do not substitute "
+            "a generic face.\n\n" + prompt
+        )
     runtime_prompt = prompt + "\n"
     prompt_hash = hashlib.sha256(runtime_prompt.encode("utf-8")).hexdigest()
     cm.atomic_write(root / "request.txt", request.rstrip() + "\n")
@@ -283,6 +382,7 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
         "source_request": request, "runtime_prompt_sha256": prompt_hash, "scene_delta": delta,
         "prompt_strategy": operating_mode, "immutable_constraints": immutable, "scene_spec": scene_spec,
         "suppressed_stable_dna_fields": suppressed_dna_fields,
+        "reference_inputs": [reference] if reference else [],
     })
     trace = {
         "schema_version": 3, "precedence": ["explicit_user_constraints", "immutable_scene_fields", "stable_character_dna", "bounded_identity_variables", "scene_requirements", "style_enrichment", "optional_creative_detail"],
@@ -295,6 +395,7 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
         "after_scene_style_expansion": enriched_prompt if operating_mode == "creative_expansion" else None,
         "final_prompt_sent_to_hermes": None,
         "final_prompt_sent_to_image_engine": prompt,
+        "reference_inputs": [reference] if reference else [],
         "invoked_by": actor, "hermes_agent_used": actor == "hermes", "local_llm_used": operating_mode == "creative_expansion", "created_at": stamp(),
     }
     write_json(root / "prompt-trace.json", trace)
@@ -302,18 +403,19 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     jobs = []
     seed_base = int(created.strftime("%m%d%H%M%S"))
     for offset, engine in enumerate(engines, 1):
-        if engine not in ENGINES:
-            raise cm.CharacterError(f"unsupported engine: {engine}")
         template_name, model_name = ENGINES[engine]
         settings = json.loads((TEMPLATES / template_name).read_text(encoding="utf-8"))
         settings["batch_size"] = count
         settings["repeat_generation"] = 1
         settings["seed"] = seed_base + offset
+        if reference:
+            settings = apply_identity_reference(settings, reference, character_id, request, actor)
+            model_name = KREA2_IDENTITY_EDIT_MODEL
         write_json(root / template_name, settings)
-        jobs.append({"backend": "local-wangp", "model": model_name, "count": count, "seed": settings["seed"], "resolution": settings["resolution"], "steps": settings["num_inference_steps"], "settings_file": template_name, "output_dir": f"outputs/{engine}", "status": "prepared"})
+        jobs.append({"backend": "local-wangp", "model": model_name, "count": count, "seed": settings["seed"], "resolution": settings["resolution"], "steps": settings["num_inference_steps"], "settings_file": template_name, "output_dir": f"outputs/{engine}", "status": "prepared", "reference_inputs": [reference] if reference else []})
     batch = {
         "schema_version": 1,
-        "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": title, "status": "prepared", "created_by": actor, "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "scene_spec_file": "scene_spec.json", "scene_delta_file": "scene-delta.json", "prompt_trace_file": "prompt-trace.json", "prompt_strategy": operating_mode, "stable_dna_sha256": cm.stable_hash(character)},
+        "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": title, "status": "prepared", "created_by": actor, "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "scene_spec_file": "scene_spec.json", "scene_delta_file": "scene-delta.json", "prompt_trace_file": "prompt-trace.json", "prompt_strategy": operating_mode, "stable_dna_sha256": cm.stable_hash(character), "reference_inputs": [reference] if reference else []},
         "jobs": jobs,
         "review": {"surface": "personal-prompt-studio", "initial_state": "needs_review"},
     }
@@ -393,6 +495,8 @@ def main() -> int:
     draft.add_argument("--strategy", choices=tuple(STRATEGY_ALIASES), default="strict_translation")
     draft.add_argument("--constraints-json", default="{}")
     draft.add_argument("--scene-spec-json", default="{}")
+    draft.add_argument("--identity-reference", help="character-default or an explicit local image path; requires --engines krea2")
+    draft.add_argument("--reference-asset-id", help="optional durable Gallery/adapter asset ID for the identity reference")
     draft.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
     produce = sub.add_parser("produce")
     produce.add_argument("--character")
@@ -404,10 +508,14 @@ def main() -> int:
     produce.add_argument("--strategy", choices=tuple(STRATEGY_ALIASES), default="strict_translation")
     produce.add_argument("--constraints-json", default="{}")
     produce.add_argument("--scene-spec-json", default="{}")
+    produce.add_argument("--identity-reference", help="character-default or an explicit local image path; requires --engines krea2")
+    produce.add_argument("--reference-asset-id", help="optional durable Gallery/adapter asset ID for the identity reference")
     produce.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
     args = parser.parse_args()
     try:
         if args.command == "produce" and args.session_dir:
+            if args.identity_reference or args.reference_asset_id:
+                raise cm.CharacterError("reference options belong to preparation; reuse the existing session settings unchanged")
             root = cm.validate_generation_session(args.session_dir)
         else:
             if not args.character or not args.request:
@@ -421,7 +529,7 @@ def main() -> int:
             scene_spec = json.loads(args.scene_spec_json)
             if not isinstance(scene_spec, dict):
                 raise cm.CharacterError("scene-spec-json must be an object")
-            root = prepare(args.character, args.request, args.model, args.count, engines, args.strategy, {str(key): str(value) for key, value in immutable.items()}, {str(key): value for key, value in scene_spec.items()}, args.actor)
+            root = prepare(args.character, args.request, args.model, args.count, engines, args.strategy, {str(key): str(value) for key, value in immutable.items()}, {str(key): value for key, value in scene_spec.items()}, args.actor, args.identity_reference, args.reference_asset_id)
         result: dict[str, Any] = {"session_dir": str(root), "status": "prepared"}
         if args.command == "produce":
             result.update({"status": "completed", "runs": submit(root, wait=True)})
