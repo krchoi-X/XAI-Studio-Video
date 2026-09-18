@@ -60,6 +60,13 @@ Ordered stop-before-start, per the plan document:
   and `persistent_storage_gb` (billed continuously). Warns on the storage-with-no-compute case
   and on non-running compute. A failing endpoint lands in `notes` rather than aborting the audit.
   9 tests pass; no network call and no billable call in the suite.
+- 2026-09-18: first real `--execute` run returned `HTTP 403: error code: 1010` on all three
+  RunPod endpoints -- a Cloudflare client-signature block, not auth (a bad key returns 401).
+  Fixed by sending an explicit `User-Agent` (`XAI_HTTP_USER_AGENT` overrides). The same run
+  exposed a real defect: every probe failed, yet totals read all-zero with no warning, which
+  looks like "nothing is billing". The audit now sets `complete: false`, prepends an INCOMPLETE
+  warning and exits 1. Per `docs/render-broker.md`, an unreachable provider must never be
+  represented as success.
 - User reported real evidence for the plan's §2 challenge: after several unused weeks, storage
   was charged while compute was not. Volume cleanup therefore moves ahead of the rest of Phase 1.
 - Inventoried existing assets. `provision.py` is create-only: it can start billable compute and

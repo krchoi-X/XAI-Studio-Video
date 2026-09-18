@@ -17,6 +17,10 @@ RUNPOD_API = "https://rest.runpod.io/v1"
 # uses v2; the create path still targets v1 and must be migrated before that date.
 RUNPOD_API_V2 = "https://api.runpod.io/v2"
 VAST_API = "https://console.vast.ai/api/v0"
+# Both providers sit behind Cloudflare, which rejects the default urllib
+# client signature with HTTP 403 "error code: 1010". Send an explicit
+# User-Agent so an audit cannot be mistaken for an empty account.
+USER_AGENT = os.environ.get("XAI_HTTP_USER_AGENT", "").strip() or "xai-studio-gpu-worker/0.1"
 
 
 class ConfigError(ValueError):
@@ -131,6 +135,8 @@ def request_json(method: str, url: str, api_key: str, payload: dict[str, Any] | 
     request = urllib.request.Request(url, data=data, method=method)
     request.add_header("Authorization", f"Bearer {api_key}")
     request.add_header("Content-Type", "application/json")
+    request.add_header("Accept", "application/json")
+    request.add_header("User-Agent", USER_AGENT)
     try:
         with urllib.request.urlopen(request, timeout=45) as response:
             return json.loads(response.read().decode("utf-8"))
@@ -285,6 +291,14 @@ def active_report(providers: list[str], days: int) -> dict[str, Any]:
             "A stopped resource can still bill for its disk; destroy rather than stop."
         )
 
+    if notes:
+        warnings.insert(
+            0,
+            f"INCOMPLETE: {len(notes)} provider query(ies) failed. The totals below are "
+            "NOT a clean bill of health -- billable resources may exist but be unreported. "
+            "See notes.",
+        )
+    report["complete"] = not notes
     report["totals"] = {
         "running_compute": len(running),
         "stopped_compute": len(stopped),
@@ -326,8 +340,9 @@ def main(argv: list[str] | None = None) -> int:
                                  f"{RUNPOD_API_V2}/billing/network-volumes", f"{VAST_API}/instances/",
                                  f"{VAST_API}/volumes/"]})
             return 0
-        print_json(active_report(providers, args.billing_days))
-        return 0
+        report = active_report(providers, args.billing_days)
+        print_json(report)
+        return 0 if report["complete"] else 1
     config = load_config(args.config)
     if args.command == "validate":
         print_json({"valid": True, "environment_version": config["environment_version"]})

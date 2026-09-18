@@ -74,7 +74,16 @@ It reports every pod, instance and volume with its hourly rate, plus totals:
   still bill for its disk.
 
 A failing endpoint is recorded in `notes` instead of aborting, so one broken
-provider API cannot hide a billable resource reported by the other.
+provider API cannot hide a billable resource reported by the other. When any query
+fails, `complete` is `false`, the first warning says the totals are not a clean bill
+of health, and the command exits `1`. **All-zero totals are only trustworthy when
+`complete` is `true`.**
+
+Both providers sit behind Cloudflare, which rejects the default urllib client
+signature with `HTTP 403: error code: 1010`. That is a client-signature block, not an
+auth failure -- a bad key returns `401`. The CLI therefore sends an explicit
+`User-Agent`; override it with `XAI_HTTP_USER_AGENT` if a provider ever blocks the
+default one.
 
 ## 3. Validate without spending money
 

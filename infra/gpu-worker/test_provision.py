@@ -157,6 +157,30 @@ class ActiveAuditTests(unittest.TestCase):
         self.assertTrue(any("api.runpod.io/v2/pods" in url for url in report["_calls"]))
         self.assertFalse(any("billing" in url for url in report["_calls"]))
 
+    def test_failed_probe_makes_the_report_incomplete(self) -> None:
+        report = self.audit(
+            {
+                "/pods": RuntimeError("provider returned HTTP 403: error code: 1010"),
+                "/network-volumes": RuntimeError("provider returned HTTP 403: error code: 1010"),
+                "/instances/": {"instances": []},
+                "/volumes/": {"volumes": []},
+            }
+        )
+        self.assertFalse(report["complete"])
+        self.assertTrue(report["warnings"][0].startswith("INCOMPLETE:"))
+
+    def test_successful_audit_is_marked_complete(self) -> None:
+        report = self.audit(
+            {
+                "/pods": {"pods": []},
+                "/network-volumes": {"networkVolumes": []},
+                "/instances/": {"instances": []},
+                "/volumes/": {"volumes": []},
+            }
+        )
+        self.assertTrue(report["complete"])
+        self.assertEqual(report["warnings"], [])
+
     def test_billing_window_is_requested_when_days_given(self) -> None:
         report = self.audit(
             {
@@ -172,6 +196,37 @@ class ActiveAuditTests(unittest.TestCase):
         self.assertEqual(len(billing_calls), 1)
         self.assertIn("bucketSize=day", billing_calls[0])
         self.assertIn("startTime=", billing_calls[0])
+
+
+class RequestHeaderTests(unittest.TestCase):
+    def test_explicit_user_agent_avoids_cloudflare_signature_block(self) -> None:
+        captured = {}
+
+        class FakeResponse:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *args):
+                return False
+
+            def read(self):
+                return b"{}"
+
+        def fake_urlopen(request, timeout=None):
+            captured["headers"] = dict(request.header_items())
+            return FakeResponse()
+
+        original = provision.urllib.request.urlopen
+        provision.urllib.request.urlopen = fake_urlopen
+        try:
+            provision.request_json("GET", "https://example.invalid/x", "key")
+        finally:
+            provision.urllib.request.urlopen = original
+
+        headers = {k.lower(): v for k, v in captured["headers"].items()}
+        self.assertEqual(headers["User-agent".lower()], provision.USER_AGENT)
+        self.assertNotIn("python-urllib", headers["User-agent".lower()].lower())
+        self.assertEqual(headers["Authorization".lower()], "Bearer key")
 
 
 if __name__ == "__main__":
