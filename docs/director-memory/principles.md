@@ -193,3 +193,36 @@ This can be used today without any contract change: write the causing action as 
 the two shots. What the contract cannot yet express is the distinction itself — a declared change
 with an on-screen cause is not the same thing as `intentional_discontinuity`, which only means
 "do not check this join". Recorded for the schema owner.
+
+## 14. Removing a dependency beats enforcing a constraint
+
+When a shot keeps failing a constraint, ask first whether the shot needs to carry that constraint
+at all.
+
+The Noa morning vlog opened on Noa in bed with the garden visible through the bedroom window. That
+one framing choice made the indoor shot responsible for agreeing with every outdoor shot about
+what the yard looks like — its wall, what is beyond it, which flower is wilting and where. The
+first render put a neighbour's house, a block wall and power lines outside that window, which broke
+the episode's premise.
+
+The obvious response is to write the constraint harder: copy the full location rule into the
+prompt, state what may and may not appear beyond the wall, verify the words are present before
+submitting. That works, and it is still worth doing where the constraint is genuinely needed.
+
+The better response, when it is available, is to delete the dependency. The window became a closed
+sheer curtain glowing with morning light and nothing visible through it. The bedroom now has no
+opinion about the yard at all, so there is nothing to keep consistent, nothing to verify and
+nothing to re-render when the yard changes. The flower is discovered outdoors, where it exists.
+
+Before hardening a constraint, ask:
+
+- does this shot actually need to show the thing it must stay consistent with?
+- can the information arrive later, in a shot where it lives naturally?
+- is the element load-bearing for the story, or is it scenery that happens to be expensive?
+
+An element that appears in two places must agree in two places. An element that appears once cannot
+disagree with anything. Fewer shared facts across cuts is usually worth more than a more precisely
+written shared fact.
+
+This came from the user, who pointed out that putting the garden in the bedroom window only created
+consistency work for no gain.
