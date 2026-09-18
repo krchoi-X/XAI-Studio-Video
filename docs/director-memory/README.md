@@ -58,6 +58,7 @@ Do not move temporary events, one-off gags, camera choices, shot orders, or edit
 - `approved-storyboards.md` — selected storyboard examples and why the user approved them.
 - `candidate-template.md` — required output structure for storyboard proposals.
 - `visual-language-pipeline.md` — lightweight scenario → visual language → storyboard grid → production pipeline. This is intentionally below commercial-film complexity and assumes AI fills most directing expertise.
+- `continuity-as-story-language.md` — continuity as physical + informational + emotional handoff; shot function and shot order as story-language design.
 - `codex-pipeline-handoff.md` — scoped implementation handoff for a future Codex session. It defines boundaries, first milestone, acceptance criteria, and explicit non-goals so pipeline work does not restart broad repository cleanup.
 
 ## Required use by an AI director
