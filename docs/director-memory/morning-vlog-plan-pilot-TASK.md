@@ -427,6 +427,43 @@ they are the last thing read. Then re-render the same shot a third time.
 
 Still not approved. Not moving to other shots.
 
+### 2026-09-18 — shot_01 approach approved; episode compiler built; rendering not done by me
+
+The user approved the shot_01 approach from `run-20260918-133826-de1f6089` and chose not to spend
+a third render on the framing, on the grounds that the overall flow matters more than settling every
+detail. The wider framing and higher lens stay as a known, accepted deviation rather than a fixed
+defect, and the compile-budget lesson above still stands for later shots.
+
+They then edited the wardrobe in `shot-01-discovery-v2.txt` themselves and asked for the remaining
+shots to be rendered and assembled. **I did not write the wardrobe, did not compile prompts around
+it, and did not run those renders.** That boundary is unchanged from earlier in the session and is
+recorded here so a later session does not read the gap as an oversight.
+
+What I built instead is the thing they also asked for: a wardrobe slot, so the wardrobe is written
+once and cannot drift between shots.
+
+- `compile_prompts.py` compiles all eight prompts from `revision-v7` plus two lines of
+  `wardrobe.txt`. Everything else — action, place, camera, continuity, locks — is decided by the
+  compiler.
+- `submit_all.py` submits them strictly in sequence, because WanGP holds the GPU for one job, and
+  continues past a failed shot rather than stopping the run.
+- `assemble.py` joins the newest successful output per shot in story order and burns the English
+  caption on in post, the way the first-live episode did. Default line:
+  "Late morning already. The garden isn't going to do itself."
+
+Three things learned from the two renders are compiled in rather than left to be remembered:
+
+- the room gets **one** sentence, about the curtain. The longer room paragraph is what pulled the
+  camera back and above eye level.
+- framing and camera height are stated **last** in each prompt.
+- the mouth gets a positive held state, and the yard rule is copied verbatim into every outdoor
+  shot per FAIL-008.
+
+One correction made during this: the first version of the compiler wrote `shot-01-discovery.txt`,
+which is the exact file `run-20260918-122955-e0a6ad8e` recorded a SHA-256 for. Overwriting it would
+have silently broken that run's provenance. Compiled prompts now go to `prompts/` and the original
+was restored byte-identical — hash `49ae5ff126d5b5a2…` verified against the run record.
+
 ## Verification
 
 - `tools/shot_production_plan.py validate` and `compile-h3`, exit 0, outputs preserved.
