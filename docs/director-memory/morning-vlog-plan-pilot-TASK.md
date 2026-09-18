@@ -104,6 +104,27 @@ submission path itself still fails closed (the Krea2/Ref2VA route rejects a miss
 before GPU work), so this is a missing pre-render binding gate at the plan layer, not a safety
 hole. Reported for Codex, not fixed here.
 
+### 2026-09-18 — first-live self-review recorded in failure memory
+
+Separate item under the same acting-executor assignment. The user watched the completed
+`ノアちゃん、初配信！` and named five problems. Recorded in `failures.md`, which is the project's
+own failure collection and is deliberately separate from the knowledge repository's
+`video-notes/`, where only external material is kept.
+
+- FAIL-003 amended: the Noa video is a second occurrence, so this is now a pattern, not a
+  candidate. More importantly its listed Alternative C — hide the join with an edit — was tried
+  (0.5 s caption card over the cat-paw to dance join) and the user still read it as wrong. The
+  alternative is now scoped to covers that are motivated in the action.
+- FAIL-005 added: a high camera angle on the dance wide shot made Noa read short and childlike.
+  The plan specifies framing, support and movement but never camera height; an identity reference
+  locks the face and not body proportion under perspective.
+- FAIL-006 added: no performance register. `camera_relation` records framing, not whether the
+  character knows and plays to the camera, so the "awkward but cute, filming herself" tone came
+  through weakly. This is the user's largest complaint and the one with no prior memory entry.
+- Open: Shot A into Shot BC was reported as slightly jumpy; cause not identified, awaiting detail.
+
+Both new entries mark their `Likely cause` as inference; neither was verified against the engine.
+
 ## Verification
 
 - `tools/shot_production_plan.py validate` and `compile-h3`, exit 0, outputs preserved.

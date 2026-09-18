@@ -136,6 +136,25 @@ Alternatives:
 Do not overgeneralize:
 - Discontinuity can be intentional for montage, jump cuts, comedy, memory, or temporal compression. It is a failure only when continuity was intended.
 
+### 2026-09-18 update — second occurrence, and one listed alternative did not work
+
+The completed Noa first-live video reproduced this failure, so it is now a pattern rather than a
+single candidate observation. The user reported two separate bad joins on viewing:
+
+- Shot D (cheek poke) into Shot E (cat paw): the fingertips are on the cheeks at the exit and the
+  hands are already reset below frame at the entry. This is the plain FAIL-003 shape.
+- Shot E into Shot F (dance challenge): the edit hid the join behind a 0.5 s caption card and a
+  camera-scale change. The user still read it as wrong.
+
+The second case matters more than the first. "Reframe the edit so the cut intentionally hides a
+state transition" is listed above as Alternative C, and **it did not work here**. A decorative
+cover over the join is not a physical handoff; the viewer still notices that the body arrived in a
+state nobody performed. Treat that alternative as valid only when the covering element is itself
+motivated in the action (a hand passing the lens, someone crossing frame, a turn into a wall), not
+when it is a title card laid on top of the seam.
+
+Shot A into Shot BC was also reported as slightly jumpy, cause not yet identified.
+
 ---
 
 ## FAIL-004 — Too much freedom delegated to the renderer
@@ -167,3 +186,92 @@ Alternatives:
 
 Do not overgeneralize:
 - Simple or intentionally open-ended shots can still be generated directly when the cost of failure is low.
+
+---
+
+## FAIL-005 — High camera angle changes body proportion and apparent age
+
+Context:
+- Character / episode type: Noa first-live video, dance-challenge shot (Shot F), wide framing.
+- Intended effect: a wide shot that reveals the whole body and the room for the dance.
+
+Observed result:
+- The camera reads as positioned above the subject.
+- Noa briefly appears short and childlike, with proportions that do not match her established
+  adult character.
+- The effect is short but breaks the identity the rest of the video established.
+
+Why rejected:
+- The character's age impression is part of her identity, not a framing preference.
+- A single shot that reads younger makes the cut feel like a different person, which undoes the
+  identity work done by the reference images.
+
+Likely cause (inference, not verified against the engine):
+- The plan specifies framing, support and movement, but not camera **height** relative to the
+  subject, nor the intended head-to-body ratio at that scale.
+- A wide shot with an unspecified height tends toward a slightly high, convenient angle, which
+  foreshortens the body and enlarges the head.
+
+Reusable lesson:
+- For any shot wider than a medium, decide camera height explicitly: below eye level, at eye
+  level, or above, and say what that choice is for.
+- An identity reference locks the face. It does not lock body proportion under perspective.
+  Proportion is a camera decision.
+- Check apparent age on every wide shot of an adult character, not only the close-ups.
+
+Alternatives:
+- Option A: place the camera at or slightly below the subject's eye level for full-body shots.
+- Option B: keep the high angle but compensate with a longer lens and greater distance so the
+  foreshortening is reduced.
+- Option C: if a high angle is dramatically wanted, make it motivated (a shelf-mounted phone, a
+  window) so the viewer reads it as a camera position rather than a proportion error.
+
+Do not overgeneralize:
+- High angles remain valid for vulnerability, comedy, scale contrast, or an explicitly mounted
+  camera position, when the resulting proportion is the intended effect.
+
+---
+
+## FAIL-006 — No performance register, so the vlog tone disappears
+
+Context:
+- Character / episode type: Noa first-live video, a character recording herself for an audience.
+- Intended effect: the awkward-but-endearing feeling of someone filming their own first stream.
+
+Observed result:
+- The individual shots are technically acceptable and continuity was largely preserved.
+- The user still reported that the "trying to make a cute vlog, a bit awkward about it" quality
+  came through weakly.
+- The result reads closer to a character being filmed than a character filming herself.
+
+Why rejected:
+- That tone is the reason the episode exists. Losing it costs more than any single continuity
+  error, because a technically clean video can still miss the point entirely.
+
+Likely cause (inference, not verified against the engine):
+- The plan records `camera_relation` as a framing fact (for example "three-quarter eye-level
+  medium close-up"), not as a relationship. Nothing anywhere states whether the character knows
+  the camera is there, is performing to it, is checking it, or is ignoring it.
+- With that decision unstated, the renderer defaults to a neutral observed subject.
+
+Reusable lesson:
+- Before writing shots, choose the performance register explicitly and keep it fixed for the
+  episode: ignores the camera / aware but not performing / performing to the camera / performing
+  and slightly self-conscious about it.
+- The register is a separate axis from framing, and it is what separates a vlog from footage of a
+  person. External reference material confirms the axis is real and lockable: a found-footage
+  piece succeeds by forbidding every camera-directed behavior, which is the same decision made in
+  the opposite direction.
+- Small self-conscious actions carry this register better than expression adjectives: glancing at
+  the lens to check framing, adjusting the camera, restarting a sentence, a small reaction after a
+  line lands badly.
+
+Alternatives:
+- Option A: give each shot one explicit camera-directed action, however small.
+- Option B: keep one recurring self-conscious beat across the episode as a signature.
+- Option C: open with the character setting up or checking the camera, so the register is
+  established before any performance.
+
+Do not overgeneralize:
+- Registers other than "performing to camera" are correct for drama, observational footage, and
+  any episode where the camera is not diegetic. The failure is leaving the axis unstated.
