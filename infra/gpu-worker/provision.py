@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -139,7 +140,8 @@ def request_json(method: str, url: str, api_key: str, payload: dict[str, Any] | 
     request.add_header("User-Agent", USER_AGENT)
     try:
         with urllib.request.urlopen(request, timeout=45) as response:
-            return json.loads(response.read().decode("utf-8"))
+            body = response.read().decode("utf-8").strip()
+            return json.loads(body) if body else {}
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")
         raise RuntimeError(f"provider returned HTTP {exc.code}: {detail}") from exc
@@ -310,6 +312,147 @@ def active_report(providers: list[str], days: int) -> dict[str, Any]:
     return report
 
 
+ACTIVE_FILE = Path(__file__).resolve().parent / "active-resources.json"
+
+
+def read_active() -> list[dict[str, Any]]:
+    try:
+        rows_ = json.loads(ACTIVE_FILE.read_text(encoding="utf-8"))
+        return rows_ if isinstance(rows_, list) else []
+    except (OSError, json.JSONDecodeError):
+        return []
+
+
+def record_active(pod_id: str, config: dict[str, Any]) -> None:
+    """Crash-safety net: a rented pod is recorded locally the moment it exists,
+    so an orchestrator that dies still leaves a trail to the billable resource."""
+    existing = read_active()
+    existing.append(
+        {
+            "provider": "runpod",
+            "pod_id": pod_id,
+            "environment_version": config.get("environment_version"),
+            "created_at": datetime.now(timezone.utc).isoformat(),
+        }
+    )
+    try:
+        ACTIVE_FILE.write_text(json.dumps(existing, indent=2), encoding="utf-8")
+    except OSError:
+        pass
+
+
+def clear_active(pod_id: str) -> None:
+    if not ACTIVE_FILE.exists():
+        return
+    try:
+        ACTIVE_FILE.write_text(
+            json.dumps([r for r in read_active() if r.get("pod_id") != pod_id], indent=2),
+            encoding="utf-8",
+        )
+    except OSError:
+        pass
+
+
+def pod_endpoints(pod_id: str, ports: dict[str, Any]) -> dict[str, str]:
+    """RunPod publishes each declared HTTP port on its own proxy hostname."""
+    base = f"https://{pod_id}-%s.proxy.runpod.net"
+    return {
+        "health": (base % ports["health"]) + "/healthz",
+        "web": base % ports["web"],
+        "mcp": (base % ports["mcp"]) + "/mcp",
+    }
+
+
+def runpod_pod(pod_id: str, api_key: str) -> dict[str, Any]:
+    payload = request_json("GET", f"{RUNPOD_API_V2}/pods/{pod_id}", api_key, None)
+    pod = payload.get("pod", payload) if isinstance(payload, dict) else {}
+    return {
+        "id": pick(pod, "id", "podId", default=pod_id),
+        "name": pick(pod, "name"),
+        "state": pick(pod, "desiredStatus", "status", "state"),
+        "hourly_cost": float(pick(pod, "costPerHr", "costPerHour", default=0.0) or 0.0),
+        "gpu": pick(pod, "machineType", "gpuTypeId", "gpu"),
+    }
+
+
+def health_ready(url: str) -> bool:
+    try:
+        with urllib.request.urlopen(
+            urllib.request.Request(url, headers={"User-Agent": USER_AGENT}), timeout=10
+        ) as response:
+            if response.status != 200:
+                return False
+            body = response.read().decode("utf-8", errors="replace")
+    except (urllib.error.URLError, OSError, ValueError):
+        return False
+    try:
+        return str(json.loads(body).get("status", "")).lower() in {"ready", "running", "ok", "started"}
+    except json.JSONDecodeError:
+        return False
+
+
+def wait_ready(pod_id: str, config: dict[str, Any], api_key: str, timeout: int, poll: int = 10) -> dict[str, Any]:
+    """Provider RUNNING is not renderer readiness. Both are polled, and the
+    distinction is reported so a timeout says which stage never completed."""
+    endpoints = pod_endpoints(pod_id, config["ports"])
+    deadline = time.monotonic() + timeout
+    last: dict[str, Any] = {}
+    running_seen = False
+    while True:
+        try:
+            last = runpod_pod(pod_id, api_key)
+        except RuntimeError as exc:
+            last = {"id": pod_id, "state": f"query failed: {exc}"}
+        if is_running(last.get("state")):
+            running_seen = True
+            if health_ready(endpoints["health"]):
+                return {"ready": True, "pod": last, "endpoints": endpoints}
+        if time.monotonic() >= deadline:
+            return {
+                "ready": False,
+                "pod": last,
+                "endpoints": endpoints,
+                "reason": "worker health never reported ready" if running_seen else "pod never reached RUNNING",
+            }
+        time.sleep(poll)
+
+
+def runpod_terminate(pod_id: str, api_key: str) -> dict[str, Any]:
+    """Delete, then re-read. An unverified teardown is not a teardown."""
+    request_json("DELETE", f"{RUNPOD_API}/pods/{pod_id}", api_key, None)
+    time.sleep(3)
+    try:
+        remaining = runpod_pod(pod_id, api_key)
+    except RuntimeError:
+        clear_active(pod_id)
+        return {"pod_id": pod_id, "terminated": True, "verified": True}
+    state = str(remaining.get("state") or "").upper()
+    gone = not state or state in {"TERMINATED", "DELETED", "EXITED"}
+    if gone:
+        clear_active(pod_id)
+    return {"pod_id": pod_id, "terminated": gone, "verified": gone, "remaining": remaining}
+
+
+def orphan_check(api_key: str) -> dict[str, Any]:
+    """Reconcile the local record against the provider. Anything the provider
+    still bills for, or that we never recorded, is reported."""
+    recorded = read_active()
+    notes: list[str] = []
+    live = runpod_active(api_key, 0, notes)
+    live_ids = {str(p["id"]) for p in live["pods"] if p.get("id")}
+    recorded_ids = {str(r.get("pod_id")) for r in recorded if r.get("pod_id")}
+    still_billing = [p for p in live["pods"] if str(p.get("id")) in recorded_ids]
+    unrecorded = [p for p in live["pods"] if str(p.get("id")) not in recorded_ids]
+    stale = [r for r in recorded if str(r.get("pod_id")) not in live_ids]
+    return {
+        "complete": not notes,
+        "still_billing_from_our_records": still_billing,
+        "billing_but_never_recorded": unrecorded,
+        "recorded_but_already_gone": stale,
+        "notes": notes,
+    }
+
+
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description="Dry-run-first RunPod/Vast WanGP provisioner")
     sub = result.add_subparsers(dest="command", required=True)
@@ -327,6 +470,21 @@ def parser() -> argparse.ArgumentParser:
     active.add_argument("--provider", choices=["runpod", "vast", "all"], default="all")
     active.add_argument("--billing-days", type=int, default=30)
     active.add_argument("--execute", action="store_true")
+    status = sub.add_parser("runpod-status", help="one pod, normalized, with its proxy endpoints")
+    status.add_argument("--config", required=True)
+    status.add_argument("--pod-id", required=True)
+    status.add_argument("--execute", action="store_true")
+    ready = sub.add_parser("wait-ready", help="poll until the worker answers, not merely until the pod runs")
+    ready.add_argument("--config", required=True)
+    ready.add_argument("--pod-id", required=True)
+    ready.add_argument("--timeout-seconds", type=int, default=900)
+    ready.add_argument("--teardown-on-timeout", action="store_true")
+    ready.add_argument("--execute", action="store_true")
+    kill = sub.add_parser("runpod-terminate", help="terminate and verify the resource is gone")
+    kill.add_argument("--pod-id", required=True)
+    kill.add_argument("--execute", action="store_true")
+    orphan = sub.add_parser("orphan-check", help="reconcile local records against what the provider still bills")
+    orphan.add_argument("--execute", action="store_true")
     return result
 
 
@@ -343,7 +501,46 @@ def main(argv: list[str] | None = None) -> int:
         report = active_report(providers, args.billing_days)
         print_json(report)
         return 0 if report["complete"] else 1
+    if args.command == "runpod-terminate":
+        if not args.execute:
+            print_json({"dry_run": True, "method": "DELETE",
+                        "url": f"{RUNPOD_API}/pods/{args.pod_id}",
+                        "then": "re-read the pod and assert it is gone"})
+            return 0
+        outcome = runpod_terminate(args.pod_id, require_key("RUNPOD_API_KEY"))
+        print_json(outcome)
+        return 0 if outcome["verified"] else 1
+    if args.command == "orphan-check":
+        if not args.execute:
+            print_json({"dry_run": True, "reads": [str(ACTIVE_FILE), f"{RUNPOD_API_V2}/pods"]})
+            return 0
+        report = orphan_check(require_key("RUNPOD_API_KEY"))
+        print_json(report)
+        leaking = report["still_billing_from_our_records"] or report["billing_but_never_recorded"]
+        return 0 if (report["complete"] and not leaking) else 1
     config = load_config(args.config)
+    if args.command == "runpod-status":
+        if not args.execute:
+            print_json({"dry_run": True, "method": "GET",
+                        "url": f"{RUNPOD_API_V2}/pods/{args.pod_id}",
+                        "endpoints": pod_endpoints(args.pod_id, config["ports"])})
+            return 0
+        key = require_key("RUNPOD_API_KEY")
+        print_json({"pod": runpod_pod(args.pod_id, key),
+                    "endpoints": pod_endpoints(args.pod_id, config["ports"])})
+        return 0
+    if args.command == "wait-ready":
+        if not args.execute:
+            print_json({"dry_run": True, "polls": pod_endpoints(args.pod_id, config["ports"])["health"],
+                        "timeout_seconds": args.timeout_seconds,
+                        "teardown_on_timeout": bool(args.teardown_on_timeout)})
+            return 0
+        key = require_key("RUNPOD_API_KEY")
+        outcome = wait_ready(args.pod_id, config, key, args.timeout_seconds)
+        if not outcome["ready"] and args.teardown_on_timeout:
+            outcome["teardown"] = runpod_terminate(args.pod_id, key)
+        print_json(outcome)
+        return 0 if outcome["ready"] else 1
     if args.command == "validate":
         print_json({"valid": True, "environment_version": config["environment_version"]})
         return 0

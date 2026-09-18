@@ -2,7 +2,7 @@
 
 Owner / Active editor: Claude
 Integration owner: Codex
-Status: PHASE 1 STARTED — `list-active` account audit implemented
+Status: PHASE 1 COMPLETE — audit and teardown lifecycle implemented
 Started: 2026-09-18
 Authority: direct user objective (automate RunPod/Vast pod lifecycle with cost control).
 This overrides the parked "RunPod 5090 practice" line in `docs/current-priorities.md`
@@ -53,6 +53,19 @@ Ordered stop-before-start, per the plan document:
 5. **Cost log:** `cost-log.jsonl`; revisit the volume-size decision after ~5 real sessions.
 
 ## Progress
+
+- 2026-09-18: Phase 1 finished. Added `runpod-status`, `wait-ready`, `runpod-terminate` and
+  `orphan-check`. Terminate re-reads the pod and reports `verified: false` (exit 1) unless the
+  resource is actually gone. `wait-ready` separates "pod never reached RUNNING" from "worker
+  health never answered", so a timeout names the stage that failed, and can tear down on timeout.
+  `orphan-check` reconciles `active-resources.json` against the provider and exits non-zero when
+  anything is still billing. 18 tests pass; no network or billable call in the suite.
+- 2026-09-18: storage design settled without new accounts. `characters/` is 18MB of pure text and
+  the repository clones into a pod in ~2s, so inputs need no object store. Weights come from
+  HuggingFace. Only gallery-selected output goes to Drive. Drive is not on the automatic bulk
+  transfer path: a synthetic benchmark got the token revoked and drew a Cloud ToS warning
+  (project since restored, test data deleted and verified empty). See
+  `docs/pod-google-drive-setup.md`.
 
 - 2026-09-18: implemented `provision.py list-active`, the first Phase 1 command. Read-only,
   dry-run by default, needs no config file (so it works before the worker image exists).

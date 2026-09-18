@@ -229,5 +229,88 @@ class RequestHeaderTests(unittest.TestCase):
         self.assertEqual(headers["Authorization".lower()], "Bearer key")
 
 
+class LifecycleTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.original_file = provision.ACTIVE_FILE
+        provision.ACTIVE_FILE = Path(self.tmp.name) / "active-resources.json"
+        self.addCleanup(lambda: setattr(provision, "ACTIVE_FILE", self.original_file))
+        os.environ["RUNPOD_API_KEY"] = "test-key"
+
+    def patch_request(self, handler) -> None:
+        original = provision.request_json
+        provision.request_json = handler
+        self.addCleanup(lambda: setattr(provision, "request_json", original))
+
+    def test_terminate_is_unverified_while_the_pod_still_reports_running(self) -> None:
+        def handler(method, url, api_key, payload=None):
+            if method == "DELETE":
+                return {}
+            return {"pod": {"id": "p1", "desiredStatus": "RUNNING", "costPerHr": 0.9}}
+
+        self.patch_request(handler)
+        provision.time.sleep = lambda _s: None
+        outcome = provision.runpod_terminate("p1", "k")
+        self.assertFalse(outcome["verified"])
+        self.assertFalse(outcome["terminated"])
+
+    def test_terminate_is_verified_when_the_pod_is_gone(self) -> None:
+        def handler(method, url, api_key, payload=None):
+            if method == "DELETE":
+                return {}
+            raise RuntimeError("provider returned HTTP 404: not found")
+
+        self.patch_request(handler)
+        provision.time.sleep = lambda _s: None
+        provision.record_active("p1", {"environment_version": "v1"})
+        outcome = provision.runpod_terminate("p1", "k")
+        self.assertTrue(outcome["verified"])
+        self.assertEqual(provision.read_active(), [])
+
+    def test_wait_ready_distinguishes_never_running_from_never_healthy(self) -> None:
+        config = sample_config()
+        provision.time.sleep = lambda _s: None
+        self.patch_request(lambda *a, **k: {"pod": {"id": "p1", "desiredStatus": "PENDING"}})
+        provision.health_ready = lambda _url: False
+        outcome = provision.wait_ready("p1", config, "k", timeout=0)
+        self.assertFalse(outcome["ready"])
+        self.assertIn("never reached RUNNING", outcome["reason"])
+
+        self.patch_request(lambda *a, **k: {"pod": {"id": "p1", "desiredStatus": "RUNNING"}})
+        outcome = provision.wait_ready("p1", config, "k", timeout=0)
+        self.assertIn("health never reported ready", outcome["reason"])
+
+    def test_wait_ready_succeeds_once_the_worker_answers(self) -> None:
+        provision.time.sleep = lambda _s: None
+        self.patch_request(lambda *a, **k: {"pod": {"id": "p1", "desiredStatus": "RUNNING"}})
+        provision.health_ready = lambda _url: True
+        outcome = provision.wait_ready("p1", sample_config(), "k", timeout=0)
+        self.assertTrue(outcome["ready"])
+        self.assertIn("proxy.runpod.net", outcome["endpoints"]["health"])
+
+    def test_orphan_check_flags_a_pod_nobody_recorded(self) -> None:
+        def handler(method, url, api_key, payload=None):
+            if "/pods" in url:
+                return {"pods": [{"id": "ghost", "desiredStatus": "RUNNING", "costPerHr": 1.2}]}
+            return {"networkVolumes": []}
+
+        self.patch_request(handler)
+        report = provision.orphan_check("k")
+        self.assertEqual(len(report["billing_but_never_recorded"]), 1)
+        self.assertEqual(report["still_billing_from_our_records"], [])
+
+    def test_orphan_check_reports_a_recorded_pod_that_is_gone(self) -> None:
+        provision.record_active("old", {"environment_version": "v1"})
+
+        def handler(method, url, api_key, payload=None):
+            return {"pods": []} if "/pods" in url else {"networkVolumes": []}
+
+        self.patch_request(handler)
+        report = provision.orphan_check("k")
+        self.assertEqual(len(report["recorded_but_already_gone"]), 1)
+        self.assertTrue(report["complete"])
+
+
 if __name__ == "__main__":
     unittest.main()
