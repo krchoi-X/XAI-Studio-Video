@@ -158,3 +158,38 @@ Reuse the first two; vary the third.
 AI directors propose. The user selects, rejects, combines, or revises.
 
 When the user explains why a candidate was liked or disliked, record the reason because that reason is more reusable than the binary selection itself.
+
+## 13. Prefer a motivated change over a forced match or a hidden seam
+
+When a state differs across a cut, there are three routes, not two.
+
+1. **Match it.** Declare the cut dependent and carry the state. Correct when the state is easy to
+   hold — screen position, facing, wardrobe, which hand holds a prop.
+2. **Hide it.** Cover the seam with an edit. This is the weakest route and it fails outright when
+   the cover is decorative. A caption card laid over the join does not supply a cause, and the
+   viewer still reads a body that arrived in a state nobody performed. Only use a cover that is
+   itself motivated in the action: a hand passing the lens, someone crossing frame, a turn into a
+   wall.
+3. **Motivate it.** Let the state change, and put a visible cause on screen. She reaches over and
+   switches on the light. She pulls the curtain. She sits down. She resets her position and
+   restarts. The difference stops being an error and becomes a beat.
+
+Route 3 is usually the cheapest and reads the most natural, and it is under-used because the
+default instinct is to fight for a match. Some states are genuinely hard to hold across separately
+generated clips — exposure and colour temperature, hair, small posture, hand micro-position. For
+those, trying to match is the expensive path and hiding is the fragile one.
+
+The requirement is that the cause is **visible or immediately inferable on screen**. A cause that
+exists only in the plan is not a motivated change; it is an unexplained jump with a comment
+attached.
+
+Origin: the Noa first-live join from Shot A to Shot BC read as a small jump because the body
+shifted slightly and the image became a little brighter at the same time. Neither difference is
+large. Together they tell the viewer that something was reset between the two clips. The practical
+fix is not tighter exposure matching but letting Noa turn on a light, so the brightness change has
+a reason and the small body shift rides along with it.
+
+This can be used today without any contract change: write the causing action as a beat in one of
+the two shots. What the contract cannot yet express is the distinction itself — a declared change
+with an on-screen cause is not the same thing as `intentional_discontinuity`, which only means
+"do not check this join". Recorded for the schema owner.

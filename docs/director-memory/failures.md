@@ -153,7 +153,11 @@ state nobody performed. Treat that alternative as valid only when the covering e
 motivated in the action (a hand passing the lens, someone crossing frame, a turn into a wall), not
 when it is a title card laid on top of the seam.
 
-Shot A into Shot BC was also reported as slightly jumpy, cause not yet identified.
+Shot A into Shot BC was also reported as slightly jumpy. Cause identified on review: the body
+shifts slightly and the image becomes a little brighter at the same time. Neither difference is
+large alone; together they read as a reset. The prescribed fix is not tighter exposure matching
+but a motivated change — let Noa switch on a light, so the brightness has a visible cause and the
+small posture shift rides along with it. See principle 13.
 
 ---
 
