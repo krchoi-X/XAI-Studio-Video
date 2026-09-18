@@ -38,6 +38,8 @@ class Config:
     host_interval: float = 2.0
     job_interval: float = 5.0
     process_interval: float = 3.0
+    # Tailscale may not be serving yet when this starts at logon or wake, so the probe repeats.
+    gallery_tailnet_interval: float = 60.0
     untracked_gpu_util_threshold: float = 25.0
     recent_limit: int = 12
     history_days: int = 30

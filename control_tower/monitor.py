@@ -65,13 +65,11 @@ class MonitorService:
         self._manual_cache: tuple[float, dict[str, Any]] = (0.0, {})
         self._job_signature: dict[str, str] = {}
         self._last_prune = 0.0
-        # Resolved once: asking the Tailscale CLI on every snapshot would be wasteful, and the serve
-        # configuration does not change while the service runs.
-        self.gallery_tailnet_url = config.gallery_tailnet_url or detect_served_url(config.gallery_port)
-        if self.gallery_tailnet_url:
-            log.info("gallery reachable from the tailnet at %s", self.gallery_tailnet_url)
-        else:
-            log.info("no tailnet URL found for the gallery; the dashboard will link %s", config.gallery_url)
+        # An explicit setting pins the URL; otherwise the Tailscale CLI is asked, and asked again,
+        # because this service starts at logon and on wake and can easily beat `tailscale serve` to it.
+        self._gallery_tailnet_pinned = bool(config.gallery_tailnet_url)
+        self.gallery_tailnet_url = config.gallery_tailnet_url
+        self._last_tailnet = 0.0
         # Seed the timing-recorded set with terminal jobs already persisted so restarts don't double count.
         for row in self.db.list_jobs(limit=5000):
             if row.get("status") in COMPLETED_STATUSES:
@@ -121,12 +119,38 @@ class MonitorService:
             full = self._sample_jobs() or full
             self._last_jobs = now
             changed = True
+        if force or now - self._last_tailnet >= self.config.gallery_tailnet_interval:
+            changed = self._sample_gallery_tailnet_url() or changed
+            self._last_tailnet = now
         if changed:
             with self._cond:
                 self.version += 1
                 if full:
                     self.full_version += 1
                 self._cond.notify_all()
+
+    def _sample_gallery_tailnet_url(self) -> bool:
+        """Ask again which tailnet URL publishes the Gallery. True when the answer changed.
+
+        The dashboard is opened from the tablet, which cannot reach this PC's loopback, so losing
+        this answer silently downgrades the Open Gallery link to an address that does not work
+        there. A single probe at construction was enough to lose it: the service is registered to
+        start at logon and on power resume, and `tailscale serve` is not necessarily up yet. A
+        probe that returns nothing never clears a URL already found -- a momentary CLI failure
+        should not undo a working link.
+        """
+        if self._gallery_tailnet_pinned:
+            return False
+        found = detect_served_url(self.config.gallery_port)
+        if found is None or found == self.gallery_tailnet_url:
+            if found is None and self.gallery_tailnet_url is None:
+                log.debug("no tailnet URL for the gallery yet; the dashboard links %s", self.config.gallery_url)
+            return False
+        previous = self.gallery_tailnet_url
+        self.gallery_tailnet_url = found
+        log.info("gallery reachable from the tailnet at %s%s", found,
+                 f" (was {previous})" if previous else "")
+        return True
 
     def _sample_host(self) -> None:
         sample = self.gpu.sample()

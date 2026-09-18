@@ -5,12 +5,17 @@ import json
 import os
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
 
 RUNPOD_API = "https://rest.runpod.io/v1"
+# REST v1 is deprecated and retires 2026-11-15. Read-only account auditing already
+# uses v2; the create path still targets v1 and must be migrated before that date.
+RUNPOD_API_V2 = "https://api.runpod.io/v2"
 VAST_API = "https://console.vast.ai/api/v0"
 
 
@@ -145,6 +150,152 @@ def require_key(name: str) -> str:
     return value
 
 
+def pick(record: Any, *names: str, default: Any = None) -> Any:
+    """Read the first present field, tolerating provider field-name drift."""
+    if not isinstance(record, dict):
+        return default
+    for name in names:
+        if record.get(name) is not None:
+            return record[name]
+    return default
+
+
+def rows(payload: Any, key: str) -> list[dict[str, Any]]:
+    if isinstance(payload, dict):
+        value = payload.get(key)
+        if isinstance(value, list):
+            return [row for row in value if isinstance(row, dict)]
+        return []
+    if isinstance(payload, list):
+        return [row for row in payload if isinstance(row, dict)]
+    return []
+
+
+def probe(label: str, url: str, api_key: str, notes: list[str]) -> Any:
+    """GET one endpoint. A failure is recorded, never raised, so one broken
+    endpoint cannot hide a billable resource reported by another."""
+    try:
+        return request_json("GET", url, api_key, None)
+    except (RuntimeError, OSError, json.JSONDecodeError) as exc:
+        notes.append(f"{label}: {exc}")
+        return None
+
+
+def runpod_active(api_key: str, days: int, notes: list[str]) -> dict[str, Any]:
+    pods = [
+        {
+            "id": pick(pod, "id", "podId"),
+            "name": pick(pod, "name"),
+            "state": pick(pod, "desiredStatus", "status", "state"),
+            "hourly_cost": float(pick(pod, "costPerHr", "costPerHour", default=0.0) or 0.0),
+            "gpu": pick(pod, "machineType", "gpuTypeId", "gpu"),
+            "network_volume_id": pick(pod, "networkVolumeId"),
+        }
+        for pod in rows(probe("runpod pods", f"{RUNPOD_API_V2}/pods", api_key, notes), "pods")
+    ]
+    volumes = [
+        {
+            "id": pick(volume, "id", "networkVolumeId"),
+            "name": pick(volume, "name"),
+            "size_gb": int(pick(volume, "size", "sizeInGb", default=0) or 0),
+            "data_center": pick(volume, "dataCenterId", "dataCenter"),
+        }
+        for volume in rows(
+            probe("runpod network volumes", f"{RUNPOD_API_V2}/network-volumes", api_key, notes),
+            "networkVolumes",
+        )
+    ]
+    billing = None
+    if days > 0:
+        end = datetime.now(timezone.utc)
+        query = urllib.parse.urlencode(
+            {
+                "startTime": (end - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "endTime": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "bucketSize": "day",
+            }
+        )
+        billing = probe(
+            "runpod volume billing",
+            f"{RUNPOD_API_V2}/billing/network-volumes?{query}",
+            api_key,
+            notes,
+        )
+    return {"pods": pods, "network_volumes": volumes, "volume_billing": billing}
+
+
+def vast_active(api_key: str, notes: list[str]) -> dict[str, Any]:
+    instances = [
+        {
+            "id": pick(instance, "id"),
+            "label": pick(instance, "label"),
+            "state": pick(instance, "actual_status", "cur_state", "intended_status"),
+            "hourly_cost": float(pick(instance, "dph_total", default=0.0) or 0.0),
+            "gpu": pick(instance, "gpu_name"),
+        }
+        for instance in rows(probe("vast instances", f"{VAST_API}/instances/", api_key, notes), "instances")
+    ]
+    volumes = [
+        {
+            "id": pick(volume, "id"),
+            "label": pick(volume, "label", "name"),
+            "size_gb": int(pick(volume, "disk_space", "size", default=0) or 0),
+        }
+        for volume in rows(probe("vast volumes", f"{VAST_API}/volumes/", api_key, notes), "volumes")
+    ]
+    return {"instances": instances, "volumes": volumes}
+
+
+RUNNING_STATES = {"RUNNING", "RUN", "RUNNING_POD", "ACTIVE"}
+
+
+def is_running(state: Any) -> bool:
+    return str(state or "").strip().upper() in RUNNING_STATES
+
+
+def active_report(providers: list[str], days: int) -> dict[str, Any]:
+    notes: list[str] = []
+    report: dict[str, Any] = {"checked_at": datetime.now(timezone.utc).isoformat()}
+    compute: list[dict[str, Any]] = []
+    storage: list[dict[str, Any]] = []
+
+    if "runpod" in providers:
+        section = runpod_active(require_key("RUNPOD_API_KEY"), days, notes)
+        report["runpod"] = section
+        compute.extend(section["pods"])
+        storage.extend(section["network_volumes"])
+    if "vast" in providers:
+        section = vast_active(require_key("VAST_API_KEY"), notes)
+        report["vast"] = section
+        compute.extend(section["instances"])
+        storage.extend(section["volumes"])
+
+    running = [item for item in compute if is_running(item["state"])]
+    stopped = [item for item in compute if not is_running(item["state"])]
+    storage_gb = sum(int(item.get("size_gb") or 0) for item in storage)
+    warnings: list[str] = []
+    if storage_gb and not compute:
+        warnings.append(
+            f"{storage_gb} GB of persistent storage is billing with no compute attached. "
+            "Storage bills continuously; pods bill only while running."
+        )
+    if stopped:
+        warnings.append(
+            f"{len(stopped)} non-running compute resource(s) still exist. "
+            "A stopped resource can still bill for its disk; destroy rather than stop."
+        )
+
+    report["totals"] = {
+        "running_compute": len(running),
+        "stopped_compute": len(stopped),
+        "hourly_burn": round(sum(item["hourly_cost"] for item in running), 4),
+        "persistent_storage_gb": storage_gb,
+    }
+    report["warnings"] = warnings
+    report["notes"] = notes
+    return report
+
+
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description="Dry-run-first RunPod/Vast WanGP provisioner")
     sub = result.add_subparsers(dest="command", required=True)
@@ -158,11 +309,25 @@ def parser() -> argparse.ArgumentParser:
     create.add_argument("--offer-id", required=True, type=int)
     create.add_argument("--offer-price", required=True, type=float)
     create.add_argument("--execute", action="store_true")
+    active = sub.add_parser("list-active", help="audit billable pods, instances and volumes; no config needed")
+    active.add_argument("--provider", choices=["runpod", "vast", "all"], default="all")
+    active.add_argument("--billing-days", type=int, default=30)
+    active.add_argument("--execute", action="store_true")
     return result
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
+    if args.command == "list-active":
+        providers = ["runpod", "vast"] if args.provider == "all" else [args.provider]
+        if not args.execute:
+            print_json({"dry_run": True, "method": "GET", "providers": providers,
+                        "urls": [f"{RUNPOD_API_V2}/pods", f"{RUNPOD_API_V2}/network-volumes",
+                                 f"{RUNPOD_API_V2}/billing/network-volumes", f"{VAST_API}/instances/",
+                                 f"{VAST_API}/volumes/"]})
+            return 0
+        print_json(active_report(providers, args.billing_days))
+        return 0
     config = load_config(args.config)
     if args.command == "validate":
         print_json({"valid": True, "environment_version": config["environment_version"]})

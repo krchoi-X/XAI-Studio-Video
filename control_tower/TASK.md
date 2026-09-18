@@ -1,3 +1,49 @@
+# Scoped Task — Open Gallery link loses the tailnet address
+
+Owner / Active editor: Claude Code (reported by the user: "gallery link이 127.0.0.1로 바뀐 것 같아")
+Status: COMPLETE — fixed and verified 2026-09-18
+
+## Why
+
+The dashboard is opened from the tablet, which cannot reach this PC's loopback, so the Open Gallery
+link has to be the tailnet URL. `MonitorService.__init__` probed `tailscale serve status` exactly
+once and cached the answer, with a comment saying the serve configuration does not change while the
+service runs. That is true; what is not true is that it is already there when the probe runs. The
+service is registered to start at logon and on power resume, so it can easily beat `tailscale serve`,
+and a single miss downgrades the link to `http://127.0.0.1:8787/` until someone restarts it.
+
+Observed: `/api/overview` reported `gallery_tailnet_url: null` while `tailscale serve status`
+published 8787 at `https://artxorn.tailf10079.ts.net/`, and the parser resolved it correctly when
+run by hand. The detection was never wrong — it was only asked at the wrong moment.
+
+## Delivered
+
+- `Config.gallery_tailnet_interval` (60s) and `MonitorService._sample_gallery_tailnet_url()`, called
+  from `tick()`. `XAI_CT_GALLERY_TAILNET_URL` still pins the value and skips probing entirely.
+- A probe that returns nothing never clears a URL already found: a momentary CLI failure must not
+  undo a working link.
+
+## Verified
+
+- `tests/test_control_tower_tailnet.py`: 4 tests — serve-status parsing per port, retry after a
+  startup miss, never clearing a good URL, and the pin short-circuit. Two fail when the guard is
+  inverted, so they are load-bearing.
+- Adjacent Control Tower suites: 49 passed. `test_control_tower_processes.py::test_live_scan_smoke`
+  fails under `py -3` because psutil is absent there; the service itself runs on the hermes venv,
+  which has it. Environment gap, not a regression.
+- Live after restart: `/api/overview` reports
+  `gallery_tailnet_url: https://artxorn.tailf10079.ts.net/`, the dashboard on loopback renders the
+  local URL as it should, and the same selection applied to the tablet hostname yields the tailnet
+  URL. The rendered tablet link was not confirmed from here; the in-app browser blocks that origin.
+
+## Known, not fixed
+
+`control_tower/start.ps1` prints `Tailnet: http://100.122.180.40:8790/`. That address answers
+"Client sent an HTTP request to an HTTPS server" — `tailscale serve` publishes the dashboard at
+`https://artxorn.tailf10079.ts.net:8790/`. Cosmetic and outside this fix's scope.
+
+---
+
 # Scoped Task — Checked-in WanGP model_type reference (v0.1.7)
 
 Owner / Active editor: Claude Code (assigned by the user: "every agent should be able to reference it from the repo")
