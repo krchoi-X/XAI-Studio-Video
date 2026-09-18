@@ -30,6 +30,8 @@ Report what the contract catches and what it misses, as evidence for the later C
   `revision-v1` convention)
 - `.../revision-v3/**` (scope extended 2026-09-18 on the user's instruction: apply the three
   writing rules from the first-live review to a new revision, documents only, no render)
+- `.../revision-v4/**` (scope extended 2026-09-18: the user changed the sleepwear and the ending;
+  documents only, no render)
 - this task record
 
 ## Constraints / Must Preserve
@@ -162,6 +164,40 @@ the top schema request for Codex.
 
 Open decision for the user: the register is an episode-level choice. Flipping it back to an
 observational camera reverts most of v3.
+
+### 2026-09-18 — revision-v4, story change from the user
+
+The user changed two things: the sleepwear is a loose oversized top and panties instead of the
+pale blue pajamas, and the episode now ends with Noa hurrying into her room and opening the
+wardrobe, where a suit, a blouse, a skirt, a t-shirt and jeans hang on the rail. No reference is
+to be made for it.
+
+Assumption recorded: "레퍼런스는 없는걸로" is read as *no work-attire blocking reference*, since the
+episode no longer shows her wearing work clothes. `identity_master` is kept on every chunk. Say so
+if the intent was to run with no identity reference at all.
+
+What the change did, beyond what was asked:
+
+- **It removed the plan's only unsolvable join.** v3's last cut was pajamas to work attire with no
+  visible cause, and it needed a work-attire `blocking_reference` that did not exist. The episode
+  now stops at the open wardrobe, so she is never seen dressed for work, the clothes appear only
+  on hangers, and no chunk carries anything but `identity_master`. The compiled plan confirms it.
+- **It produced the bookend the window-cleaner note describes.** shot_08 puts the phone back on
+  the bedside shelf where shot_01 started, so the camera returns to its opening position. I said
+  earlier that a return loop did not fit candidate C; with this ending it does, and it arrived
+  from the story rather than from a structural decision.
+- **It forced a framing decision.** shot_03 and shot_05 were low cameras angled up. At 0.15 m and
+  with this wardrobe, an up-angle is a different shot from a close-up of the flower and her hands,
+  so both are now level and framed on the plant and the tool.
+
+shot_07 was rewritten from a walk to the door into a snatch-and-run that carries the phone back
+indoors, which is what lets shot_08 use the opening camera position. Shot count 7 to 8, 32.5 s to
+37.0 s. `validate` ok with 0 errors; `compile-h3` ok with 8 shots.
+
+Unreconciled: `project.md` still records the pale blue pajamas as a shared invariant of candidate
+C and still records the stage as `needs_user_choice`. It has not been edited, because it defines
+the three candidates rather than this plan. Reconcile before this plan is treated as the candidate
+definition.
 
 ## Verification
 
