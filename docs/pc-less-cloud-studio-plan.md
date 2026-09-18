@@ -8,6 +8,28 @@ Supersedes the compute-only framing in [cloud GPU automation plan](cloud-gpu-aut
 which assumed the workstation stays on as the control plane. Related: [render broker](render-broker.md),
 [Control Tower v0.1](control-tower-v0.1.md).
 
+## 0. Blocking prerequisite — the data is not off the PC yet
+
+[Repository and backup policy](repository-backup-policy.md) is explicit that Git does **not**
+hold the things this plan depends on:
+
+| Data | Policy says | Consequence when the PC is off |
+|---|---|---|
+| `personal-prompt-studio/data` — review database, favorites, comments, work queues | "Never Git; separate data backup required" | Gallery has no state to serve |
+| `D:\AI_Studio\library` — generated images and video | "Never ordinary Git; separate media backup required" | there is nothing to review |
+| `D:\AI_Studio\workspace` — night batches, job dirs | separate backup required | no run history |
+
+Source code is safe: `krchoi-X/XAI-Studio-Private` holds committed snapshots of both
+`XAI-Studio-Video/` and `XAI-Studio/`, and the policy's restore order rebuilds from it. The
+media library and the review database are the gap.
+
+**Therefore the first step of this plan is not a pod. It is a one-time migration of the library
+and the review database into Google Drive, performed while the workstation can still be switched
+on.** Until that exists, a pod has nothing to restore and the phone has nothing to review.
+
+This is also the project's own safety rule — "Never treat Git-ignored data as backed up" — and it
+is irreversible if that disk fails first.
+
 ## 1. The new premise
 
 The RTX 4070 workstation is **off**. It is not a tier in the system, not a fallback, and
@@ -20,7 +42,7 @@ Everything the workstation used to provide must come from somewhere else:
 | Git checkout of this repo and the Studio repo | remote GitHub |
 | `D:\AI_Studio\library` media, Gallery SQLite | Google Drive |
 | WanGP + weights | pod, fetched per session |
-| Studio / Gallery web app (`personal-prompt-studio`, **separate repository**) | pod |
+| Studio / Gallery web app (the tablet web Gallery on port 8787) | pod |
 | Control Tower dashboard (port 8790) | pod |
 | Tailscale node the tablet connected to | pod, joined as an ephemeral node |
 | The thing that could call the RunPod API | **nothing yet — see §2** |
@@ -43,10 +65,23 @@ Candidates for the launcher:
 | Cloudflare Worker / Vercel function | ~0 | yes | another surface to build and secure |
 | Tiny always-on VPS | ~$4–5/mo | yes | reintroduces the forgotten-resource failure |
 
-**Strong recommendation: GitHub Actions is the launcher.** [principle] It is free, it already
-holds the repository this project treats as durable shared state, its secret store is the right
-place for the RunPod, Drive and Tailscale credentials, and `workflow_dispatch` is reachable from
-a phone. No new always-on component is introduced.
+An agent host — a Claude Code cloud session, or Grok Bot — is also a launcher, and a more
+convenient one: the user already talks to it from the phone, so there is no workflow form to
+fill in and the agent can diagnose a failed boot instead of only reporting it. Two conditions
+apply before it can work, both one-time environment configuration:
+
+- the RunPod key must be an **environment-level variable**, because a session's own environment
+  does not persist between sessions;
+- the environment's **network policy must allow `api.runpod.io`**. It is blocked by default —
+  a session in this environment reached that wall while researching this plan.
+
+An agent session is not always-on, though, so it cannot be the safety net.
+
+**Recommendation: do not couple the launcher to one host.** Keep launching as a small script in
+this repository that takes a session manifest. A Claude or Grok session runs it from the phone,
+a GitHub Action runs it on a schedule, and the user can run it by hand. Then put only the
+*unattended* duties — the daily orphan sweep — on the most boring scheduler available, which is
+an Actions cron. Convenience on top, dull reliability underneath.
 
 ## 3. Target architecture
 
@@ -102,6 +137,13 @@ Supply an **ephemeral, tagged, pre-authorized** Tailscale auth key as a pod secr
 appears as a tailnet node, the phone and tablet already trust that tailnet, nothing is exposed
 publicly, and an ephemeral node is removed automatically when the pod dies.
 
+Approving each pod interactively from the phone (`tailscale up`, click the printed URL) also
+works and needs no stored secret, but the GPU bills for every minute the pod waits for that
+click, and it makes an unattended night batch impossible. Generate a reusable ephemeral tagged
+key **once** instead: the approval still happens exactly once, at key creation, and every later
+session joins with no interaction. Keep interactive `tailscale up` only as the fallback for the
+first manual test.
+
 This also preserves existing work: `control_tower/tailscale.py` already discovers the tailnet
 origin serving a local port, so the dashboard's URL handling needs no redesign. Only the
 hard-coded Windows paths change, and Control Tower already accepts `--scan-root`,
@@ -129,6 +171,11 @@ Pod (disposable)
 uploaded at session end**, not mounted from Drive. A network-mounted SQLite file risks lock
 corruption. This makes concurrent sessions unsafe, so the run record must hold a session lock
 and the launcher must refuse a second session while one is live.
+
+**Sync during the session, not only at the end.** Uploading to Drive just before teardown is
+correct but insufficient: an unexpected pod loss — host failure, crash, provider reclaim — leaves
+nothing uploaded at all. Sync new media incrementally every few minutes so a crash costs minutes
+rather than the whole session, and keep the verified final export as the teardown gate.
 
 **Irreplaceable assets** — self-trained LoRAs, curated reference sets — live in Drive and in
 Git, never only in a pod or on a provider volume.
@@ -163,7 +210,8 @@ to be inside the pod, plus a cheap external sweep:
 
 ## 9. Open decisions
 
-1. Which repositories the pod clones, and whether Studio's data directory comes from Drive or is rebuilt.
+1. Whether the pod clones `XAI-Studio-Private` (which carries both source snapshots) or the public
+   repository plus a Studio source bundle. The private repo is the simpler single source.
 2. Whether weights come from upstream or a Drive cache — measure both before deciding.
 3. How the pod's tailnet URL reaches the phone: a run-record commit, a push notification, or a fixed
    tailnet hostname per session tag.
@@ -176,6 +224,7 @@ to be inside the pod, plus a cheap external sweep:
 Deliberately smallest-first, and teardown before launch:
 
 ```text
+0. ONE-TIME, PC MUST BE ON: migrate the media library and review database to Drive
 1. pod-side self-terminate supervisor (idle + max runtime + verified export)
 2. Actions workflow: teardown + daily orphan sweep, using list-active
 3. Actions workflow: launch, with secrets and a session lock
