@@ -32,6 +32,8 @@ Report what the contract catches and what it misses, as evidence for the later C
   writing rules from the first-live review to a new revision, documents only, no render)
 - `.../revision-v4/**` (scope extended 2026-09-18: the user changed the sleepwear and the ending;
   documents only, no render)
+- `.../revision-v5/**` (scope extended 2026-09-18: the three open decisions closed; documents
+  only, no render)
 - this task record
 
 ## Constraints / Must Preserve
@@ -258,6 +260,30 @@ inspecting it alone. Recorded for Codex; not worked around.
 Remaining before a render is now a short list of user decisions, not missing data: whether the
 sleepwear applies outdoors, whether `shot_03`/`shot_05` stay level, and whether to accept the two
 `risky` shots or take their recorded fallbacks.
+
+### 2026-09-18 — revision-v5, all three decisions closed
+
+The user closed the three open decisions: sleepwear stays outdoors, the low angles come back, and
+the risky shots go as authored. `revision-v5` applies them; v4 is untouched. `validate` ok with
+0 errors, `compile-h3` ok with 8 shots, still 37.0 s.
+
+- **Low angles reverted.** `shot_03` is back to about 0.15 m looking slightly up at the flower and
+  her hands and `shot_05` to stem height, exactly as v3 wrote them. The v4 level framing was my own
+  caution rather than a user decision, and it is recorded that way in the warnings so a later
+  session does not read it as an approved directing choice.
+- **Risky shots as authored.** `shot_05` and `shot_07` are attempted as written because they carry
+  the episode's energy. The fallbacks stay recorded and are taken only after an actual failed
+  render, never pre-emptively.
+- **A location rule was added that nobody asked for, and it is the important part of v5.** The user
+  said the setting is her own yard, which is what makes the sleepwear plausible outdoors. That
+  premise only holds if no street, sidewalk, neighbouring window or passer-by ever appears, and a
+  renderer given "front garden" will cheerfully supply a public sidewalk. So every outdoor
+  `environment` now states an enclosed, walled or hedged yard with nobody else in frame, and
+  `shot_01` describes the same yard through the bedroom window. A generated frame containing a
+  street or a passer-by is a failed render, not a detail to accept.
+
+Nothing is now blocking a render on the plan side. What remains is the render itself, which this
+task does not do.
 
 ## Verification
 
