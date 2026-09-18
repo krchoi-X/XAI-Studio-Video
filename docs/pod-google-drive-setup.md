@@ -134,14 +134,52 @@ rclone check /workspace/outputs gdrive:xai/outputs/<session-id>
 `rclone check` compares hashes on both sides. Teardown must gate on a clean check, not on a copy
 command's exit status alone — the project's export-verified teardown rule applies here.
 
-## Measuring Drive against the hub
+## Drive throughput is a load-bearing assumption, not a tuning detail
 
-With the own client ID in place, this is the comparison that decides where weights live:
+If Drive is slow the architecture does not merely get slower, it stops working as designed:
+continuous output sync cannot keep up with generation, so a short idle timeout is no longer safe;
+and the verified final export runs while the GPU is still billing. **Measure before building the
+worker image, not after.**
+
+Upload is the critical path, not download — output leaves the pod and teardown gates on it — and
+Drive upload is typically slower than download.
+
+The dangerous case is **many small files**. Per-file API overhead dominates, so 200 PNGs can be
+far slower than one 5 GB video, and image batches are the common output here. Measure all four:
 
 ```bash
-time rclone copy gdrive:xai/models/<large-file> /workspace/ \
-  --transfers 8 --drive-chunk-size 256M
-HF_HUB_ENABLE_HF_TRANSFER=1 time hf download <repo> <comparable-file> --local-dir /workspace/
+# upload, one large file  (video session teardown time)
+time rclone copy /workspace/big.mp4 gdrive:xai/bench/ --drive-chunk-size 256M
+
+# upload, many small files  (THE risky case)
+time rclone copy /workspace/batch-200-png gdrive:xai/bench/batch --transfers 16 --checkers 32
+
+# download, one large file  (weight delivery)
+time rclone copy gdrive:xai/bench/big.mp4 /tmp/ --transfers 8 --drive-chunk-size 256M
+
+# download, many small files  (character sheets, references)
+time rclone copy gdrive:xai/bench/batch /tmp/batch --transfers 16 --fast-list
+
+# hub comparison for public weights
+HF_HUB_ENABLE_HF_TRANSFER=1 time hf download <repo> <comparable-file> --local-dir /tmp/
 ```
 
-Record both MB/s figures in the cloud plan's open-measurements section.
+All of it with the own client ID from Step 0; the shared default measures rclone's rate limit.
+None of it needs a GPU — run it on the cheap CPU pod that also inspects the old network volume
+before it is deleted.
+
+### If Drive is too slow
+
+The design survives; the transport changes.
+
+1. **Archive small files before upload.** One tar per batch removes the per-file API overhead.
+   The Gallery reads from the pod's local disk anyway, so Drive only needs the bundle. This alone
+   likely fixes the worst case.
+2. **Use S3-compatible object storage for the hot path.** Cloudflare R2 has no egress fee and
+   costs roughly $1.5/month for 100 GB. `docs/render-broker.md` already anticipates "one
+   provider-neutral S3-compatible interface", so this is a route the project reserved, not a new
+   dependency.
+3. **Split the roles**: object storage for in-session transfer, Drive for the durable archive.
+
+Record the measured MB/s figures in the cloud plan's open-measurements section. They decide what
+the worker image is built to talk to.
