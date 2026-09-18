@@ -226,6 +226,39 @@ Two observations recorded with it:
 
 Not planned. The open question is whether it belongs in this episode or a second one.
 
+### 2026-09-18 — episode split, and the reference binding turned out to be a no-op
+
+The user decided the continuation is a separate episode, on the ground that one episode should not
+absorb everything at once. That matches the postmortem: the first-live video was 22.8 s across
+5 shots, this episode is already 37.0 s across 8 with two `risky` shots, and adding three more
+would let a single failure block the whole thing. Episode 2 opens on the same bedside camera
+position episode 1 ends on.
+
+I then went to bind the eight `identity_master` references and found there is nothing to bind.
+Written up in `revision-v4/render-readiness.md`.
+
+- Noa already has an explicit `reference_defaults.identity` in the shared character record: the
+  `noa-21-portrait.jpg` the operator picked on 2026-09-12, with a recorded SHA-256. Verified on
+  disk today, 99,277 bytes, hash matches exactly. It remains a runtime default, not an approved
+  identity set.
+- Because that record exists, the Ref2VA submission path resolves the reference by itself. An
+  ordinary Noa run keeps `image_refs` empty.
+- `tools/shot_production_plan.py` never reads `references[].asset`. It is not resolved, validated
+  or passed anywhere, so writing a value there is annotation only.
+- `asset` expects an opaque asset ID, and the identity portrait has none. The Gallery registers
+  four assets for `ch-shindo-noa` — the imported video and three storyboard boards — and the
+  portrait is a Library file, not a registered asset. Inventing an ID is forbidden, so the fields
+  stay `null`.
+
+This sharpens Finding 2 rather than closing it. The plan layer and the submission layer reach the
+same reference by two mechanisms that never meet: opaque asset IDs in the plan, path plus SHA-256
+at submission. That is why a validated, compiled plan still cannot be called render-ready by
+inspecting it alone. Recorded for Codex; not worked around.
+
+Remaining before a render is now a short list of user decisions, not missing data: whether the
+sleepwear applies outdoors, whether `shot_03`/`shot_05` stay level, and whether to accept the two
+`risky` shots or take their recorded fallbacks.
+
 ## Verification
 
 - `tools/shot_production_plan.py validate` and `compile-h3`, exit 0, outputs preserved.
