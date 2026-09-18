@@ -386,6 +386,47 @@ the mouth given a positive held state, and the drooping flower named as an objec
 the same shot. Do not proceed to other shots until the yard reads correctly, because every outdoor
 shot inherits it.
 
+### 2026-09-18 — second render: two fixes confirmed, two regressions I caused
+
+`run-20260918-133826-de1f6089`, `needs_review`. Same container as before: 576x768, 107 frames,
+4.458333 s. Artifact sha256 `65c5ebee2e93cd8e…`. Reviewed at 0.2, 1.3, 2.5, 3.6 and 4.3 s.
+
+**Fixed.**
+
+- **The window.** Closed white sheer curtain, glowing evenly, nothing visible through it. No
+  neighbour's house, no block wall, no power lines. The bedroom now has no opinion about the yard.
+  The phone stand is even visible on the bedside shelf, which sells the register for free.
+- **The mouth stays closed**, including at the 2.5 s push-up — the exact beat that opened it in
+  first-live Shot D and in the previous run. FAIL-007's positive held state appears to work. One
+  observation on one engine, so this is a candidate result and not yet a verified rule; a third
+  clean run makes it a pattern.
+
+**Regressions, both caused by my own fix.**
+
+- **Framing widened.** The prompt asks for a three-quarter medium close-up and the result is a
+  medium-wide of the whole room. I added a paragraph describing the walls, bed, pillows and shelf
+  in order to kill the window dependency, and that description pulled the camera back to show what
+  I had described.
+- **Camera height rose.** The prompt says mattress height, level with her head, never above her eye
+  line. The lens is clearly above her, looking down at the bed. The *previous* render, with no room
+  paragraph, honoured the low angle correctly. Same instruction, same wording, different outcome.
+- Consequence: the direct-to-lens glance that read clearly at 1.2 s in the previous run is weak
+  here, because the face is much smaller in frame.
+
+**The lesson is about compile budget, not about wording.** A prompt is a competition for the
+model's attention, not a list of independent facts that each get honoured on their own. Describing
+the room in detail cost the camera specification, even though the camera sentence did not change a
+single word. FAIL-008 said to copy premise-carrying constraints in verbatim; this run shows the
+other half — every sentence added to protect one constraint takes weight from another, so adding
+text has to be paid for somewhere.
+
+**Next operation.** Cut the room paragraph down to the one job it has: the curtain is closed and
+nothing is visible through it. Drop the wall, bed, pillow and shelf description entirely, since
+those arrive for free. Re-state the framing and camera height after the room, not before it, so
+they are the last thing read. Then re-render the same shot a third time.
+
+Still not approved. Not moving to other shots.
+
 ## Verification
 
 - `tools/shot_production_plan.py validate` and `compile-h3`, exit 0, outputs preserved.
