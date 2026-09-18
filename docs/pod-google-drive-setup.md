@@ -41,6 +41,18 @@ pod에는 브라우저도, 콘솔 앞에 앉은 사람도 없다. 그래서 대�
    client ID와 client secret 보관.
 5. **앱 게시** — 동의 화면에서 `앱 게시`(프로덕션으로 푸시)를 누른다.
 
+### 다운로드되는 JSON 파일에 대해
+
+4단계에서 구글이 JSON 파일 하나를 내려준다. 정상이다. 안에 `installed.client_id` 와
+`installed.client_secret` 이 들어 있고, **필요한 것은 그 두 값뿐**이다.
+
+혼동하기 쉬운 점:
+
+- 이것은 **서비스 계정 키가 아니다** (그건 경로 C 전용이고 개인 계정에는 쓰지 않는다);
+- 이것은 **아직 토큰이 아니다.** 1단계 인증을 거쳐야 refresh token이 생긴다.
+
+JSON 파일과 이후 생성되는 `rclone.conf` 는 둘 다 자격증명이다. Git에 넣지 않는다.
+
 ### 5번을 빠뜨리면 매주 끊긴다
 
 동의 화면이 **"테스트" 상태로 남아 있으면 외부 앱의 refresh token이 7일 후 만료된다.** 그러면
@@ -71,7 +83,21 @@ rclone config
 # Use web browser to automatically authenticate? y
 ```
 
-브라우저에서 승인하면 끝. 2단계로.
+```
+# Storage> 는 "drive" 입력하면 찾아준다
+# scope> 1 (full access)
+# service_account_file> 엔터로 비워둠
+# Configure this as a Shared Drive? n
+```
+
+브라우저에서 승인한 뒤 확인한다:
+
+```bash
+rclone about gdrive:        # 용량이 보이면 성공
+rclone config show gdrive   # client_id / client_secret / token 세 줄이 최종 산출물
+```
+
+`token = {...}` 한 줄이 refresh token을 담은 실제 결과물이다. 2단계로.
 
 ### 경로 B — 폰만 있을 때
 
