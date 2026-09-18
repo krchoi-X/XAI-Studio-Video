@@ -34,6 +34,10 @@ Report what the contract catches and what it misses, as evidence for the later C
   documents only, no render)
 - `.../revision-v5/**` (scope extended 2026-09-18: the three open decisions closed; documents
   only, no render)
+- `.../revision-v6/**` and one WanGP render (scope extended 2026-09-18: the user authorised
+  rendering. This is the first GPU work under this task and it supersedes the earlier "no render
+  submission" constraint for one representative shot only, under the first-live rule of stopping
+  for review before any batch.)
 - this task record
 
 ## Constraints / Must Preserve
@@ -284,6 +288,56 @@ the risky shots go as authored. `revision-v5` applies them; v4 is untouched. `va
 
 Nothing is now blocking a render on the plan side. What remains is the render itself, which this
 task does not do.
+
+### 2026-09-18 — revision-v6: three defects found by preparing to render
+
+Compiling an actual prompt surfaced three continuity defects that eight passes of reading had not.
+All three came from the register change in v3, and none of them is the kind of thing the validator
+can see.
+
+1. **Two phones.** `shot_01` had Noa holding a phone in bed while the camera was also a phone on
+   the bedside shelf. The camera *is* her phone, so she cannot be holding it. Her hand is now
+   empty and the shelf phone is the one recording. This was a v2 leftover — she was scrolling in
+   bed before the register existed.
+2. **A fence post that never existed.** `shot_07` took the phone off a fence post no earlier shot
+   mentions; `shot_06` leaves it on the garden ledge. Now she grabs it from the ledge.
+3. **One shelf at two heights.** `shot_08` put the camera back on the bedside shelf at 1.1 m while
+   `shot_01` has that same shelf at 0.5 m. A shelf cannot be both, and 0.5 m on a standing adult
+   is a strong up-angle. `shot_08` now uses the dresser facing the wardrobe at 1.1 m, and the
+   bookend claim is downgraded: the episode returns to the same bedroom, not to an identical lens
+   position. My earlier note that the camera returns exactly where it started was wrong.
+
+Lesson worth keeping: the diegetic register makes the camera a physical object in the story, so
+every camera decision becomes a continuity fact that can contradict another one. That is a real
+cost of the register, and it is invisible to a schema that treats `camera` as shot-local
+description. Writing one real prompt found all three in minutes.
+
+`validate` ok with 0 errors, `compile-h3` ok with 8 shots, still 37.0 s.
+
+### 2026-09-18 — first render submitted
+
+The user authorised a render. One shot only, per the first-live rule of stopping for review before
+any batch and per the postmortem's work-boundary lesson.
+
+Environment checked first: no Ollama model resident (`/api/ps` empty, GPU at 0 MiB of 8188),
+`local_wangp.py doctor` all green, `minimax_h3_ref2va_pruned` confirmed with `wangp_models.py`.
+
+- Session `VLOG-20260918-122930-noa21-morning-garden-c` registered in the shared Library under
+  `ch-shindo-noa`, `requested_by: user`, executor `local-wangp-worker`, status `running`.
+- `shot-01-discovery` submitted as run `run-20260918-122955-e0a6ad8e`.
+- Settings are the configuration that actually worked in the first-live production —
+  576x768, 20 steps, guidance 1.0, flow_shift 12.0, euler, `KI`, seed -1 — with one deliberate
+  change: `video_length` 73 instead of 121, because the shot is 3.0 s and a shorter clip has less
+  room to drift.
+- `image_refs` was left empty on purpose and the Ref2VA path resolved the character default by
+  itself, recording path, SHA-256, byte count and `basis: character-default` in `reference_inputs`.
+  Note for future readers: `run.json` keeps the *authored* settings, so its `image_refs` stays
+  empty; `effective-settings.json` holds what was actually submitted. I misread that as a failed
+  resolution at first.
+
+Shot 1 was chosen as the representative because it is the cheapest shot in the plan, it tests the
+two newest decisions — the performance register and the sleepwear — plus identity, and its output
+frame can serve as the continuity master for later shots the way the first-live masters did.
 
 ## Verification
 
