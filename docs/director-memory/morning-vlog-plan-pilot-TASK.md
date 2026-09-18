@@ -2,7 +2,7 @@
 
 - Date: 2026-09-18
 - Active editor: Claude
-- Status: ACTIVE
+- Status: ACTIVE — candidate C selected 2026-09-18
 - Supersedes nothing; this is the scoped execution of the `Next` recorded in
   [remote-pipeline-review-TASK.md](remote-pipeline-review-TASK.md),
   [director-router-TASK.md](director-router-TASK.md) and
@@ -198,6 +198,33 @@ Unreconciled: `project.md` still records the pale blue pajamas as a shared invar
 C and still records the stage as `needs_user_choice`. It has not been edited, because it defines
 the three candidates rather than this plan. Reconcile before this plan is treated as the candidate
 definition.
+
+### 2026-09-18 — candidate C selected; continuation sketched
+
+The user selected **candidate C**. The review gate in `project.md` is closed and the stage is now
+`candidate_selected`. The pajamas/underwear conflict flagged in the v4 note is reconciled there:
+the loose top and panties are recorded as C's sleepwear, and the pajamas stay as the recorded
+invariant of A and B, which were never developed past their boards. The performance register and
+the no-work-attire ending are written into the decision record so a later session does not have to
+reconstruct them from this task file.
+
+The user also sketched a following segment: she dresses in a hurry and leaves, is flustered enough
+to leave the phone behind so the camera keeps recording an empty room, comes back in for it, and
+then films a vlog out on the street.
+
+Two observations recorded with it:
+
+- The joke only exists because the register is diegetic. The camera is the phone, so forgetting
+  the phone is simultaneously a character mistake and a camera event. An observational camera
+  cannot tell that joke at all. This is the first concrete payoff of the register decision, which
+  until now had only removed things from the plan.
+- Its first beat can continue from `shot_08` on the same bedside shelf with the camera untouched,
+  which would be this plan's **first genuinely `dependent` transition**. Every join so far is a
+  discontinuity with an on-screen cause, which is why the continuity validator has never fired on
+  a real join. This segment is the natural place for that to change, and it would be the first
+  real test of the rules rather than a probe on a scratch copy.
+
+Not planned. The open question is whether it belongs in this episode or a second one.
 
 ## Verification
 
