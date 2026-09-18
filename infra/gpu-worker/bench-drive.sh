@@ -7,10 +7,26 @@
 # Needs no GPU. Run it on the cheap CPU pod that also inspects the old network
 # volume before deleting it.
 #
-#   export RCLONE_CONFIG_GDRIVE_TYPE=drive
-#   export RCLONE_CONFIG_GDRIVE_CLIENT_ID=...
-#   export RCLONE_CONFIG_GDRIVE_CLIENT_SECRET=...
-#   export RCLONE_CONFIG_GDRIVE_TOKEN='{"access_token":...}'
+# Credential, either way:
+#
+#   a) by hand -- paste the whole remote. Run `rclone config show gdrive` on the
+#      machine where you authorised, then in the pod:
+#
+#        mkdir -p ~/.config/rclone
+#        cat > ~/.config/rclone/rclone.conf <<'EOF'
+#        [gdrive]
+#        type = drive
+#        client_id = ...
+#        client_secret = ...
+#        scope = drive
+#        token = {"access_token":...}
+#        EOF
+#
+#      Easier than exports: the token is JSON and quoting it is error-prone.
+#
+#   b) automated -- the launcher injects RCLONE_CONFIG_GDRIVE_TYPE,
+#      _CLIENT_ID, _CLIENT_SECRET and _TOKEN as pod environment variables.
+#
 #   ./bench-drive.sh [remote:path]
 #
 # Upload is the critical path, and many small files is the dangerous shape:
