@@ -303,7 +303,18 @@ Tier B profile.
 
 ## 8. Open measurements (blocking §2's conclusion, not §5's start)
 
-Unverified and required before the volume-size decision is final:
+**Measured 2026-09-18:** the existing RunPod network volume bills **~$1.6/day (~$48/month)**,
+charged continuously through a month in which it was not used at all. That is far above the
+$14/month the §2 example assumed, and it implies a several-hundred-GB volume — i.e. a cache of
+re-downloadable public weights. It is the empirical confirmation of §2.
+
+The [PC-less cloud studio plan](pc-less-cloud-studio-plan.md) removes the need for a provider
+volume in every branch: weights, inputs and outputs all live in Google Drive, which is already
+paid for. The volume is therefore to be deleted, not resized. A RunPod volume has no paused
+state — deletion is the only thing that stops the charge — and it cannot be deleted while a pod
+is attached, so pods terminate first.
+
+Still unverified:
 
 - current RunPod network-volume $/GB/month and its minimum billable granularity;
 - current Vast volume pricing and stopped-instance storage charge;
