@@ -28,6 +28,8 @@ Report what the contract catches and what it misses, as evidence for the later C
 - `D:/AI_Studio/outputs/video-prompts/projects/noa-morning-garden-vlog-20260917/revision-v2/**`
   (validation and compile evidence files only, alongside the existing `draft-v0` and
   `revision-v1` convention)
+- `.../revision-v3/**` (scope extended 2026-09-18 on the user's instruction: apply the three
+  writing rules from the first-live review to a new revision, documents only, no render)
 - this task record
 
 ## Constraints / Must Preserve
@@ -124,6 +126,42 @@ own failure collection and is deliberately separate from the knowledge repositor
 - Open: Shot A into Shot BC was reported as slightly jumpy; cause not identified, awaiting detail.
 
 Both new entries mark their `Likely cause` as inference; neither was verified against the engine.
+
+### 2026-09-18 — revision-v3 applies the review findings, no schema change
+
+The user asked to apply the writing rules that came out of the first-live self-review.
+`shot-production-plan-v1` is a closed schema, so every change went into existing fields.
+`revision-v2/shot-production-plan.json` is unchanged (sha256 begins `e373b32ebd8a384a`).
+
+- **Performance register (FAIL-006).** Declared at episode level and written into every state's
+  `camera_relation`: Noa sets up, carries and repositions the phone herself and knows it is
+  recording. This forced the camera supports to become things she can physically do, so v2's
+  gimbal, shoulder mount and macro lens are gone — they implied a crew, which is what made the
+  first-live footage read as a character being filmed rather than filming herself.
+- **Camera height (FAIL-005).** Stated on all seven shots in `camera.axis`. `shot_07` is
+  explicitly at or below eye level with distance, because the first-live dance wide read high and
+  made Noa look short and childlike.
+- **Motivated change (principle 13).** Five joins gained an on-screen cause as a beat: the door
+  opening explains the brightness rise, setting the phone on the step explains the low camera,
+  picking up the can and shears explains tools that previously appeared between cuts, and passing
+  the shears between hands explains a swap that previously just happened. The sixth join, pajamas
+  to work attire, has no visible cause and still needs the work-attire `blocking_reference`.
+- `shot_04` exit and `shot_05` entry now describe the right hand in the same words
+  (`holding the pruning shears`), with the momentary detail moved into beats. That is the writing
+  rule the earlier probe implied: states carry invariants, beats carry progression.
+
+Result: `validate` ok, 0 errors; `compile-h3` ok, 7 shots; 32.5 s estimated, up from 27.0 s
+because four beats were added.
+
+**v3 still has zero `dependent` transitions, and that is now defensible rather than evasive.** A
+self-filmed vlog cuts between camera setups she physically moves, so no join carries character
+state forward. The important part is that the validator cannot tell v2 from v3 — both are
+`intentional_discontinuity` everywhere and both return ok. Finding 1 therefore stands and is
+sharper: the contract has no way to express "declared change with an on-screen cause". That is now
+the top schema request for Codex.
+
+Open decision for the user: the register is an episode-level choice. Flipping it back to an
+observational camera reverts most of v3.
 
 ## Verification
 
