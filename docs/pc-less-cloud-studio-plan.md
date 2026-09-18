@@ -8,28 +8,6 @@ Supersedes the compute-only framing in [cloud GPU automation plan](cloud-gpu-aut
 which assumed the workstation stays on as the control plane. Related: [render broker](render-broker.md),
 [Control Tower v0.1](control-tower-v0.1.md).
 
-## 0. Blocking prerequisite — the data is not off the PC yet
-
-[Repository and backup policy](repository-backup-policy.md) is explicit that Git does **not**
-hold the things this plan depends on:
-
-| Data | Policy says | Consequence when the PC is off |
-|---|---|---|
-| `personal-prompt-studio/data` — review database, favorites, comments, work queues | "Never Git; separate data backup required" | Gallery has no state to serve |
-| `D:\AI_Studio\library` — generated images and video | "Never ordinary Git; separate media backup required" | there is nothing to review |
-| `D:\AI_Studio\workspace` — night batches, job dirs | separate backup required | no run history |
-
-Source code is safe: `krchoi-X/XAI-Studio-Private` holds committed snapshots of both
-`XAI-Studio-Video/` and `XAI-Studio/`, and the policy's restore order rebuilds from it. The
-media library and the review database are the gap.
-
-**Therefore the first step of this plan is not a pod. It is a one-time migration of the library
-and the review database into Google Drive, performed while the workstation can still be switched
-on.** Until that exists, a pod has nothing to restore and the phone has nothing to review.
-
-This is also the project's own safety rule — "Never treat Git-ignored data as backed up" — and it
-is irreversible if that disk fails first.
-
 ## 1. The new premise
 
 The RTX 4070 workstation is **off**. It is not a tier in the system, not a fallback, and
@@ -39,13 +17,26 @@ Everything the workstation used to provide must come from somewhere else:
 
 | Was on the PC | Must now come from |
 |---|---|
-| Git checkout of this repo and the Studio repo | remote GitHub |
-| `D:\AI_Studio\library` media, Gallery SQLite | Google Drive |
+| Git checkout of this repo and the Studio source | remote GitHub / the private snapshot repo |
+| Character sheets, references — session **inputs** | Google Drive, already backed up by a separate batch |
 | WanGP + weights | pod, fetched per session |
-| Studio / Gallery web app (the tablet web Gallery on port 8787) | pod |
+| Studio / Gallery web app (port 8787) | pod, **starting empty** |
 | Control Tower dashboard (port 8790) | pod |
 | Tailscale node the tablet connected to | pod, joined as an ephemeral node |
-| The thing that could call the RunPod API | **nothing yet — see §2** |
+| The thing that could call the RunPod API | see §2 |
+
+**The pod does not restore the workstation's library.** Material produced before this session is
+reviewed directly in Drive; it never needs to enter a pod. The Gallery in the pod exists to show
+**what this session just generated**, so the user can judge and select while it runs. State flows
+one way in each direction:
+
+```text
+Drive --(inputs: character sheets, references)--> pod
+pod   --(outputs: this session's media + records)--> Drive
+```
+
+There is no bidirectional state sync, no database to migrate, no cross-session lock, and nothing
+on the powered-off workstation is on the critical path.
 
 ## 2. The structural problem: nothing is left to start the pod
 
@@ -104,25 +95,90 @@ The rule in `render-broker.md` — keep the control plane outside disposable GPU
 preserved and in fact strengthened. The control plane simply moves from a single powered-on PC
 to GitHub plus Drive, neither of which can be left running by accident.
 
-## 4. Phone/tablet session flow
+## 4. Session flow
+
+The user's flow, with the parts that need a decision filled in:
 
 ```text
-1. phone opens the GitHub Actions workflow and runs it
-      inputs: model profile, GPU tier, max runtime, idle timeout
-2. Action calls RunPod, creates the pod, records the pod id in the run record
-3. pod boots:
-      clone this repo + the Studio repo at pinned refs
-      join the tailnet with an ephemeral, tagged auth key
-      restore library/database snapshot from Drive
-      fetch only the requested weight profile
-      start WanGP, Studio and Control Tower
-4. pod publishes its tailnet URL (commit to the run record / push notification)
-5. phone opens that URL and works exactly as it did against the PC
-6. session ends by explicit stop, idle timeout, or max runtime:
-      upload new media to Drive, push records to GitHub,
-      verify both, then the pod terminates itself
-7. Actions cron sweeps daily for anything still alive
+1. command          user states the job from the phone
+                    a launcher (agent session, Action, or by hand) runs the repo's
+                    launch script with a session manifest and creates the pod
+
+2. environment      pod boots the pinned image (WanGP runtime already inside)
+                    fetches only the weight profile this command needs
+
+3. inputs + UI      mounts Drive, pulls character sheets and references
+                    starts the Gallery web service with an EMPTY library
+                    starts Control Tower
+
+4. network          joins the tailnet as an ephemeral tagged node
+
+5. execute          the command runs, driven either from outside (agent session)
+                    or by an LLM inside the pod -- see 4.2
+
+6. review           user watches results appear in the Gallery from the phone,
+                    selects and judges while the session is still live
+                    new media syncs to Drive continuously, not only at the end
+
+7. teardown         final export verified, then the pod terminates itself
 ```
+
+Steps 2-4 run **in parallel**, not in sequence. Tailscale and the Gallery are up in well under
+two minutes; weights keep downloading in the background. The user can be looking at the
+dashboard long before the video model is resident. Serialising these would mean paying 5090
+rates to watch a progress bar.
+
+### 4.1 Boot time is the real cost problem
+
+Nothing in this flow is expensive except waiting. A rough budget, all of it billed at GPU rate:
+
+```text
+image pull          runtime image, tens of GB, per machine unless cached
+weight profile      video models are large; the dominant term
+LLM weights         only if an in-pod LLM is used -- see 4.2
+Drive inputs        character sheets and references; negligible
+services up         seconds
+```
+
+This is what a network volume actually solves — and it is the honest counter-argument to
+deleting it. The month of wasted storage was caused by a **forgotten** volume, not by a wrong
+idea. With an automated launcher, an in-pod idle timeout and a daily sweep, forgetting is much
+less likely, so a small volume holding only the active weight profile may become defensible
+again.
+
+Do not re-add it on that reasoning alone. Measure first: record image-pull and weight-download
+seconds for the first few real sessions, then decide with numbers. Until then, parallel boot and
+per-command weight selection are free and should be done regardless.
+
+### 4.2 An in-pod LLM competes with the renderer for VRAM
+
+**[Premise re-examination]** "Install an LLM too" reads as a small step, but on one GPU it is not.
+A 5090 has 32 GB and a video model will want most of it. An 8B model co-resident costs roughly a
+third of that; anything larger does not fit alongside generation at all. Loading both means
+either smaller batches, lower resolution, or swapping weights in and out between every step.
+
+Three options, and they are genuinely different systems:
+
+| Where the driving LLM runs | VRAM cost | Works unattended | Notes |
+|---|---|---|---|
+| Outside the pod (agent session, or an API call from the pod) | none | yes, while the session lives | default; costs tokens, not VRAM |
+| In the pod, on CPU/RAM | none on GPU | yes | slow, fine for prompt compilation and metadata |
+| In the pod, on the GPU | large | yes | only worth it if the LLM work is heavy and generation is not concurrent |
+
+**Recommendation: keep the driving LLM outside the pod by default.** The pod is rented for its
+GPU; spending that GPU on token generation is the expensive way to do the cheap part. Add a
+CPU-hosted small model in the pod only if the session must keep deciding things with nobody
+connected.
+
+### 4.3 Continuous sync is what makes automatic teardown safe
+
+Uploading at teardown only is fragile, and it also makes aggressive timeouts frightening — nobody
+wants a 20-minute idle timeout if losing the session means losing the work. Sync new media to
+Drive continuously and both problems disappear together: a crash costs minutes, and the idle
+timeout becomes safe to set short. The verified final export stays as the teardown gate.
+
+Outputs must use the existing importer and Gallery contracts (`batch.yaml`, provenance records,
+`POST /api/sync`) so the Drive tree matches every other route, per `AGENTS.md`.
 
 ## 5. Access and authentication
 
