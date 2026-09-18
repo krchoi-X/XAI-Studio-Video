@@ -2,7 +2,7 @@
 
 Owner / Active editor: Claude
 Integration owner: Codex
-Status: PLAN RECORDED — awaiting user approval before implementation
+Status: PHASE 1 STARTED — `list-active` account audit implemented
 Started: 2026-09-18
 Authority: direct user objective (automate RunPod/Vast pod lifecycle with cost control).
 This overrides the parked "RunPod 5090 practice" line in `docs/current-priorities.md`
@@ -54,6 +54,14 @@ Ordered stop-before-start, per the plan document:
 
 ## Progress
 
+- 2026-09-18: implemented `provision.py list-active`, the first Phase 1 command. Read-only,
+  dry-run by default, needs no config file (so it works before the worker image exists).
+  Reports pods/instances/volumes with hourly rate, plus `hourly_burn` (running compute only)
+  and `persistent_storage_gb` (billed continuously). Warns on the storage-with-no-compute case
+  and on non-running compute. A failing endpoint lands in `notes` rather than aborting the audit.
+  9 tests pass; no network call and no billable call in the suite.
+- User reported real evidence for the plan's §2 challenge: after several unused weeks, storage
+  was charged while compute was not. Volume cleanup therefore moves ahead of the rest of Phase 1.
 - Inventoried existing assets. `provision.py` is create-only: it can start billable compute and
   cannot stop it from code. That asymmetry is the first thing to fix.
 - No model manifest exists anywhere, although both runbooks require one.
@@ -77,12 +85,23 @@ fixtures; no network and no billable call in the suite.
 
 ## Next
 
-Awaiting user approval on the phase order. Phase 0 is a user action (image build/push) and
+Run `list-active --execute` against the real account, confirm the reported volume size, data
+center and 30-day billing match the RunPod console, and correct any null field accessor. Then
+copy Tier A assets off the volume and shrink or delete it. Remaining Phase 1 commands
+(`*-status`, `wait-ready`, terminate/destroy, `orphan-check`) follow.
+
+Earlier note on phase order: Phase 0 is a user action (image build/push) and
 blocks any real provider call, but Phases 1 and 2 are implementable and testable now against
 recorded fixtures without it.
 
 ## Blockers / uncertainties
 
+- **RunPod REST v1 (`rest.runpod.io/v1`) is deprecated and retires 2026-11-15.** `runpod-create`
+  still targets it. The audit path already uses v2 (`api.runpod.io/v2`). Migrating the create
+  path is dated work, not optional cleanup, and must land before that date.
+- Field names in the v2 audit responses were not verified against a live account; `pick()`
+  tolerates several spellings, but the first real `--execute` run should be checked against the
+  RunPod console and the accessors corrected if anything reads as null.
 - Worker image is unpublished; the image tag is still the `YOUR_ACCOUNT` placeholder.
 - Current provider pricing, real 5090 hourly rate in the volume's data center, measured
   download throughput, and active-profile byte size are all unmeasured. The breakeven

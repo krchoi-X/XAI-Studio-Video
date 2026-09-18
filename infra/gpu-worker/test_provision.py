@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -61,6 +62,116 @@ class ProvisionTests(unittest.TestCase):
         self.assertEqual(payload["image"], config["image"])
         self.assertEqual(payload["volume_info"]["mount_path"], "/workspace")
         self.assertIn("-p 8080:8080", payload["env"])
+
+
+class ActiveAuditTests(unittest.TestCase):
+    def audit(self, responses: dict, days: int = 0) -> dict:
+        calls: list[str] = []
+
+        def fake_request(method, url, api_key, payload=None):
+            calls.append(url)
+            for fragment, value in responses.items():
+                if fragment in url:
+                    if isinstance(value, Exception):
+                        raise value
+                    return value
+            raise RuntimeError("provider returned HTTP 404: not found")
+
+        original = provision.request_json
+        provision.request_json = fake_request
+        os.environ["RUNPOD_API_KEY"] = "test-runpod"
+        os.environ["VAST_API_KEY"] = "test-vast"
+        try:
+            report = provision.active_report(["runpod", "vast"], days)
+        finally:
+            provision.request_json = original
+        report["_calls"] = calls
+        return report
+
+    def test_storage_only_account_is_flagged(self) -> None:
+        report = self.audit(
+            {
+                "/pods": {"pods": []},
+                "/network-volumes": {
+                    "networkVolumes": [
+                        {"id": "vol1", "name": "wangp", "size": 200, "dataCenterId": "EU-RO-1"}
+                    ]
+                },
+                "/instances/": {"instances": []},
+                "/volumes/": {"volumes": []},
+            }
+        )
+        self.assertEqual(report["totals"]["persistent_storage_gb"], 200)
+        self.assertEqual(report["totals"]["hourly_burn"], 0)
+        self.assertEqual(report["totals"]["running_compute"], 0)
+        self.assertTrue(any("billing with no compute" in w for w in report["warnings"]))
+
+    def test_only_running_compute_counts_toward_burn(self) -> None:
+        report = self.audit(
+            {
+                "/pods": {
+                    "pods": [
+                        {"id": "a", "desiredStatus": "RUNNING", "costPerHr": 0.89},
+                        {"id": "b", "desiredStatus": "EXITED", "costPerHr": 0.89},
+                    ]
+                },
+                "/network-volumes": {"networkVolumes": []},
+                "/instances/": {"instances": []},
+                "/volumes/": {"volumes": []},
+            }
+        )
+        self.assertEqual(report["totals"]["running_compute"], 1)
+        self.assertEqual(report["totals"]["stopped_compute"], 1)
+        self.assertEqual(report["totals"]["hourly_burn"], 0.89)
+        self.assertTrue(any("non-running compute" in w for w in report["warnings"]))
+
+    def test_one_failing_endpoint_does_not_hide_the_others(self) -> None:
+        report = self.audit(
+            {
+                "/pods": RuntimeError("provider returned HTTP 500: upstream"),
+                "/network-volumes": {
+                    "networkVolumes": [{"id": "vol1", "size": 50, "dataCenterId": "EU-RO-1"}]
+                },
+                "/instances/": {
+                    "instances": [
+                        {"id": 7, "actual_status": "running", "dph_total": 0.4, "gpu_name": "RTX 5090"}
+                    ]
+                },
+                "/volumes/": {"volumes": []},
+            }
+        )
+        self.assertEqual(report["totals"]["persistent_storage_gb"], 50)
+        self.assertEqual(report["totals"]["hourly_burn"], 0.4)
+        self.assertTrue(any("runpod pods" in note for note in report["notes"]))
+
+    def test_audit_uses_v2_and_skips_billing_when_days_is_zero(self) -> None:
+        report = self.audit(
+            {
+                "/pods": {"pods": []},
+                "/network-volumes": {"networkVolumes": []},
+                "/instances/": {"instances": []},
+                "/volumes/": {"volumes": []},
+            }
+        )
+        self.assertTrue(all("rest.runpod.io" not in url for url in report["_calls"]))
+        self.assertTrue(any("api.runpod.io/v2/pods" in url for url in report["_calls"]))
+        self.assertFalse(any("billing" in url for url in report["_calls"]))
+
+    def test_billing_window_is_requested_when_days_given(self) -> None:
+        report = self.audit(
+            {
+                "/pods": {"pods": []},
+                "/network-volumes": {"networkVolumes": []},
+                "/billing/network-volumes": {"records": []},
+                "/instances/": {"instances": []},
+                "/volumes/": {"volumes": []},
+            },
+            days=30,
+        )
+        billing_calls = [url for url in report["_calls"] if "billing" in url]
+        self.assertEqual(len(billing_calls), 1)
+        self.assertIn("bucketSize=day", billing_calls[0])
+        self.assertIn("startTime=", billing_calls[0])
 
 
 if __name__ == "__main__":

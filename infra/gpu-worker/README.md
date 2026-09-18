@@ -53,6 +53,29 @@ $env:RUNPOD_API_KEY = '...'
 $env:VAST_API_KEY = '...'
 ```
 
+## 2b. Audit what is already billing
+
+`list-active` needs no config file and creates nothing. Use it before and after
+every session, and whenever an unexpected charge appears.
+
+```powershell
+python infra/gpu-worker/provision.py list-active                      # dry run: prints the URLs only
+python infra/gpu-worker/provision.py list-active --execute            # both providers
+python infra/gpu-worker/provision.py list-active --provider runpod --billing-days 30 --execute
+```
+
+It reports every pod, instance and volume with its hourly rate, plus totals:
+
+- `hourly_burn` counts running compute only;
+- `persistent_storage_gb` is billed continuously whether or not anything runs;
+- a storage total with no compute raises an explicit warning, because that is the
+  silent-drain case;
+- a non-running compute resource also raises one, because a stopped resource can
+  still bill for its disk.
+
+A failing endpoint is recorded in `notes` instead of aborting, so one broken
+provider API cannot hide a billable resource reported by the other.
+
 ## 3. Validate without spending money
 
 ```powershell
@@ -123,6 +146,7 @@ Hermes and the Render Broker own submission and durable records.
 
 Official provider contracts used by the CLI:
 
-- RunPod: `POST https://rest.runpod.io/v1/pods`
+- RunPod audit (v2): `GET https://api.runpod.io/v2/pods`, `/network-volumes`, `/billing/network-volumes`
+- RunPod create (v1, **deprecated — retires 2026-11-15**): `POST https://rest.runpod.io/v1/pods`
 - Vast search: `POST https://console.vast.ai/api/v0/bundles/`
 - Vast create: `PUT https://console.vast.ai/api/v0/asks/{offer_id}/`
