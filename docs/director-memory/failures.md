@@ -279,3 +279,85 @@ Alternatives:
 Do not overgeneralize:
 - Registers other than "performing to camera" are correct for drama, observational footage, and
   any episode where the camera is not diegetic. The failure is leaving the axis unstated.
+
+---
+
+## FAIL-007 — Closed-mouth instruction is not honoured
+
+Context:
+- Character / episode type: Noa, `minimax_h3_ref2va_pruned`, short single-take character shots.
+- Intended effect: a silent shot with no dialogue and no lip-sync, stated as "closed mouth, no
+  dialogue and no lip-sync" in the prompt.
+
+Observed result:
+- The mouth opens anyway, in a way that reads as speaking or about to speak.
+- First-live Shot D, 2026-09-16: mouth opens despite the closed-mouth instruction.
+- Morning-vlog shot_01, 2026-09-18: mouth clearly open around the 2.3 s mark while she pushes
+  herself upright.
+
+Why rejected:
+- A silent beat that looks like speech implies dialogue that does not exist, and the edit then has
+  to either add a line nobody wrote or cut around the frames.
+
+Likely cause (inference, not verified):
+- The instruction is a negative state. The model is given nothing to do with the mouth instead.
+- Both occurrences happen during effortful movement, where a parted mouth is a natural motion
+  prior.
+
+Reusable lesson:
+- This is now a **pattern**, not a single observation: two comparable failures on the same engine.
+- Do not rely on "closed mouth" alone. Give the mouth a positive state to hold, for example lips
+  pressed together, or a small closed-mouth exhale through the nose.
+- Prefer placing silent beats where the body is still. During a push-up, a turn or a reach, expect
+  the mouth to open.
+
+Alternatives:
+- Option A: write the mouth as a positive held state rather than a prohibition.
+- Option B: plan the silent beat on a static pose and put the effort on an adjacent beat.
+- Option C: accept the open mouth and design the edit so a line or a breath belongs there.
+
+Do not overgeneralize:
+- This is recorded for `minimax_h3_ref2va_pruned`. Other engines are untested.
+
+---
+
+## FAIL-008 — A plan constraint that does not survive the prompt compile is not a constraint
+
+Context:
+- Character / episode type: Noa morning vlog, shot_01, first render from the `revision-v6` plan.
+- Intended effect: her own enclosed yard, because the episode's sleepwear premise only works if
+  the yard is not overlooked. The plan states it on every outdoor shot: walled or hedged on all
+  sides, no street, sidewalk, neighbouring window or passer-by in any frame.
+
+Observed result:
+- The bedroom window shows a neighbouring house with visible windows, a concrete block wall and
+  overhead power lines: an ordinary overlooked suburban view.
+- The plan was not wrong. The compiled prompt only said "her own walled garden". The rest of the
+  rule was dropped during compilation.
+
+Why rejected:
+- The constraint carried the premise of the whole episode, and it was the one thing most likely to
+  be filled in with a generic prior if left unsaid.
+
+Likely cause:
+- Compiling a structured plan into a prompt is lossy by nature, and there is nothing that
+  distinguishes a constraint that may be summarised from one that must be copied.
+
+Reusable lesson:
+- Mark premise-carrying constraints and copy them into every prompt that could violate them, at
+  full length, even when it feels repetitive.
+- A useful test before rendering: for each hard constraint in the plan, find the words in the
+  compiled prompt that enforce it. If you cannot point at them, the renderer will not honour it.
+- A generic prior fills every gap. "Walled garden" does not exclude the neighbour's window,
+  because the model has seen ten thousand walled gardens overlooked by houses.
+
+Alternatives:
+- Option A: keep a per-episode list of hard constraints and append it verbatim to every prompt.
+- Option B: state the constraint as a visible positive: what should be seen beyond the wall, for
+  example only sky and treetops.
+- Option C: validate deterministically that each hard constraint's keywords appear in the compiled
+  prompt before submission.
+
+Do not overgeneralize:
+- Not every plan field belongs in every prompt. Signal density still matters. This applies to the
+  small set of constraints that carry the premise.

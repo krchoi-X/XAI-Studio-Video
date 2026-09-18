@@ -339,6 +339,53 @@ Shot 1 was chosen as the representative because it is the cheapest shot in the p
 two newest decisions — the performance register and the sleepwear — plus identity, and its output
 frame can serve as the continuity master for later shots the way the first-live masters did.
 
+### 2026-09-18 — first render result, reviewed
+
+`run-20260918-122955-e0a6ad8e` reached `needs_review`. Artifact
+`outputs/run-20260918-122955-e0a6ad8e.mp4`, sha256 `faf36938db6a00d4…`, h264, 576x768, 24 fps,
+107 frames, 4.458333 s, 4,080,223 bytes. Reviewed by extracting frames at 0.1, 1.2, 2.3, 3.4 and
+4.3 s. Not approved.
+
+**What worked.**
+
+- The beat order came out exactly as authored: waking with eyes closed, a look into the lens,
+  pushing upright, then the gaze going past the camera toward the window.
+- **The performance register rendered.** At about 1.2 s she looks directly into the lens, awake and
+  slightly caught out. FAIL-006 was recorded two days ago as a missing axis with no evidence that
+  stating it would change anything; this is the first evidence that it does. It is one shot on one
+  engine, so it is a candidate result, not a verified rule.
+- Identity holds across every sampled frame. Wardrobe is the loose oversized top with the duvet
+  across her, as specified and no more revealing than specified. The camera is fixed and low at
+  mattress height with no pan, zoom or drift, one continuous take. Hands are anatomically clean,
+  one person, no text or watermark.
+
+**What failed.**
+
+- **The location rule did not survive the compile, and that is my error, not the model's.** The
+  window shows a neighbour's house with visible windows, a block wall and power lines. The plan
+  states the enclosed-yard rule on every outdoor shot; the prompt I wrote only said "her own walled
+  garden". This is the exact failure the rule was written to prevent, and it matters because the
+  sleepwear premise depends on the yard not being overlooked. Recorded as FAIL-008.
+- **The mouth opens despite "closed mouth, no dialogue and no lip-sync".** Same as first-live
+  Shot D. Two comparable failures on the same engine makes this a pattern rather than a candidate.
+  Recorded as FAIL-007 with the positive-state workaround.
+- **The flower is wrong.** The plan's inciting object is one pink flower drooping in the bed; the
+  render shows healthy roses high on a bush. Cosmetic here because it is background, but shot_03 is
+  built entirely on that flower, so it has to be specified as an object with a state, not as
+  ambient scenery.
+- **`video_length` had no effect.** I set 73 frames expecting 3.04 s. The output is 107 frames and
+  4.458333 s — the same duration as the first-live run, which requested 121. Two different values,
+  identical output length, so the parameter is not controlling duration in this configuration. My
+  one deliberate deviation from the proven settings did nothing. Do not plan shot durations around
+  it until someone establishes what actually controls length.
+- `prompt_exact_match` and `prompt_normalized_match` are both false. WanGP reformats the embedded
+  prompt; this was already observed in first-live. The run stays reviewable rather than approved.
+
+**Next operation.** Recompile shot_01's prompt with the full enclosed-yard rule copied in verbatim,
+the mouth given a positive held state, and the drooping flower named as an object, then re-render
+the same shot. Do not proceed to other shots until the yard reads correctly, because every outdoor
+shot inherits it.
+
 ## Verification
 
 - `tools/shot_production_plan.py validate` and `compile-h3`, exit 0, outputs preserved.
