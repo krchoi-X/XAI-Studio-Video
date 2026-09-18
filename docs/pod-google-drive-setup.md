@@ -103,7 +103,21 @@ pod의 드라이브 연결이 일주일마다 실패하고, 무인 운용이 불
 
 ### 경로 A — 브라우저 있는 PC를 쓸 수 있을 때 (제일 간단)
 
-그 PC에서 rclone 설치 후:
+rclone은 **단일 실행파일**이다. 설치 프로그램도 의존성도 없으니 시스템에 무언가를 얹는 부담을
+가질 필요가 없다. 윈도우 PowerShell 기준:
+
+```powershell
+cd ~\Downloads
+Invoke-WebRequest https://downloads.rclone.org/rclone-current-windows-amd64.zip -OutFile rclone.zip
+Expand-Archive rclone.zip -DestinationPath .
+cd rclone-*-windows-amd64
+.\rclone.exe config
+```
+
+`winget install Rclone.Rclone` 도 동일하게 동작한다. 작업이 끝나면 받은 폴더는 지워도 되고,
+생성된 설정은 `C:\Users\<사용자>\AppData\Roaming\rclone\rclone.conf` 에 따로 남는다.
+
+대화형 프롬프트에는 이렇게 답한다:
 
 ```bash
 rclone config
