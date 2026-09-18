@@ -146,29 +146,62 @@ idea. With an automated launcher, an in-pod idle timeout and a daily sweep, forg
 less likely, so a small volume holding only the active weight profile may become defensible
 again.
 
-Do not re-add it on that reasoning alone. Measure first: record image-pull and weight-download
-seconds for the first few real sessions, then decide with numbers. Until then, parallel boot and
-per-command weight selection are free and should be done regardless.
+Do not re-add it on that reasoning alone — and 4.2b likely removes the need entirely, since a
+Drive-hosted weight cache costs nothing extra. Measure image-pull and weight-download seconds on
+the first real sessions. Parallel boot and per-command weight selection are free and should be
+done regardless.
 
-### 4.2 An in-pod LLM competes with the renderer for VRAM
+### 4.2 The in-pod LLM time-shares the GPU
 
-**[Premise re-examination]** "Install an LLM too" reads as a small step, but on one GPU it is not.
-A 5090 has 32 GB and a video model will want most of it. An 8B model co-resident costs roughly a
-third of that; anything larger does not fit alongside generation at all. Loading both means
-either smaller batches, lower resolution, or swapping weights in and out between every step.
+An LLM in the pod is fine. It does not need to be co-resident with the renderer — it loads,
+answers, and unloads, leaving the full 32 GB to generation:
 
-Three options, and they are genuinely different systems:
+```text
+load LLM -> interpret the command, compile prompts -> unload
+         -> WanGP generates with the whole GPU
+         -> reload only if results need evaluating -> unload
+```
 
-| Where the driving LLM runs | VRAM cost | Works unattended | Notes |
-|---|---|---|---|
-| Outside the pod (agent session, or an API call from the pod) | none | yes, while the session lives | default; costs tokens, not VRAM |
-| In the pod, on CPU/RAM | none on GPU | yes | slow, fine for prompt compilation and metadata |
-| In the pod, on the GPU | large | yes | only worth it if the LLM work is heavy and generation is not concurrent |
+With Ollama this is `OLLAMA_KEEP_ALIVE=0`, or `"keep_alive": 0` per request; the default holds a
+model in VRAM for five minutes, which is what would otherwise collide with generation. A
+llama.cpp server can simply be started and stopped. Reload cost is small — an 8B Q4 model is
+about 5 GB and comes back from local NVMe in seconds.
 
-**Recommendation: keep the driving LLM outside the pod by default.** The pod is rented for its
-GPU; spending that GPU on token generation is the expensive way to do the cheap part. Add a
-CPU-hosted small model in the pod only if the session must keep deciding things with nobody
-connected.
+The one rule: do not run LLM inference **during** a generation batch. Serialise them and there is
+no contention.
+
+### 4.2b Model delivery: Drive as the cache
+
+Keeping the LLM and the image/video weights in Google Drive and copying them into each pod is the
+preferred direction, and it removes the paid-volume question rather than answering it. Drive is
+already paid for, so a weight cache there costs nothing extra.
+
+What only Drive can give:
+
+- pinned versions, immune to an upstream file being re-uploaded or withdrawn;
+- files that are not on a public hub at all — custom quantisations, merges, LoRAs;
+- one location for weights, character sheets and results.
+
+Two practical constraints, neither a blocker at this session frequency:
+
+- **Auth**: a pod cannot complete an interactive OAuth flow, so use a service account or a
+  pre-generated rclone token supplied as a secret.
+- **Quotas**: Drive caps uploads at 750 GB/day, and repeatedly pulling one large file many times
+  in a day can trip a per-file download quota.
+
+Whether Drive beats fetching public weights from the hub is an open measurement, not a judgement
+call. One cheap pod settles it:
+
+```bash
+time rclone copy gdrive:models/<large-file> /workspace/ --transfers 8 --drive-chunk-size 256M
+HF_HUB_ENABLE_HF_TRANSFER=1 time hf download <repo> <comparable-file> --local-dir /workspace/
+```
+
+- Drive comparable or faster -> keep everything in Drive; simpler, pinned, free.
+- Hub clearly faster -> public weights from the hub, custom and irreplaceable files from Drive.
+
+Either outcome means **no paid provider volume**, which supersedes the "measure before re-adding
+a volume" note in 4.1.
 
 ### 4.3 Continuous sync is what makes automatic teardown safe
 
