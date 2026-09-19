@@ -181,6 +181,71 @@ DRAFTS = CHARACTERS / ".drafts"
 INDEX = CHARACTERS / "index.json"
 DEFAULT_MODEL = "meromero26b-a4b-hermes:latest"
 OLLAMA_CHAT = "http://127.0.0.1:11434/api/chat"
+
+# Hermes already routes local models: its gateway fronts the llama.cpp server on an
+# ephemeral port and keeps Ollama registered as one more provider behind the same address.
+# Every tool here has been going straight to Ollama instead, which is why a second model
+# ends up resident beside the one Hermes is already serving on an 8 GB card. These are read
+# from the environment so no key is ever committed; with neither set, nothing changes and
+# the call goes to Ollama exactly as before.
+HERMES_BASE_URL_ENV = "XAI_HERMES_BASE_URL"
+HERMES_API_KEY_ENV = "XAI_HERMES_API_KEY"
+HERMES_MODEL_ENV = "XAI_HERMES_MODEL"
+
+
+def hermes_chat_config() -> tuple[str, str, str | None] | None:
+    """The Hermes gateway to use, or None to stay on Ollama.
+
+    Both the address and a key are required. A half-configured gateway silently falling
+    back would be worse than not being configured at all: the model that answered would
+    depend on which variable somebody remembered to set.
+    """
+    base_url = (os.environ.get(HERMES_BASE_URL_ENV) or "").strip().rstrip("/")
+    api_key = (os.environ.get(HERMES_API_KEY_ENV) or "").strip()
+    if not base_url or not api_key:
+        return None
+    return base_url, api_key, (os.environ.get(HERMES_MODEL_ENV) or "").strip() or None
+
+
+def active_chat_route() -> str:
+    """Which router a `chat_json` call would reach right now. For traces and diagnostics."""
+    return "hermes" if hermes_chat_config() else "ollama"
+
+
+def chat_json(prompt: str, model: str, *, temperature: float = 0.25, timeout: float = 600.0) -> Any:
+    """One local-model call that must answer with JSON, through whichever router is configured.
+
+    Both routers are asked for JSON explicitly rather than by instruction: Ollama through
+    `format`, an OpenAI-compatible gateway through `response_format`. The caller gets the
+    parsed document and never sees which one answered.
+    """
+    hermes = hermes_chat_config()
+    if hermes is not None:
+        base_url, api_key, override = hermes
+        payload = json.dumps({
+            "model": override or model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": temperature,
+            "response_format": {"type": "json_object"},
+            "stream": False,
+        }).encode("utf-8")
+        request = urllib.request.Request(
+            base_url + "/chat/completions", data=payload,
+            headers={"Content-Type": "application/json", "Authorization": "Bearer " + api_key},
+        )
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            result = json.load(response)
+        return json.loads(result["choices"][0]["message"]["content"])
+    payload = json.dumps({
+        "model": model, "stream": False, "format": "json",
+        "messages": [{"role": "user", "content": prompt}],
+        "options": {"temperature": temperature},
+    }).encode("utf-8")
+    request = urllib.request.Request(OLLAMA_CHAT, data=payload, headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        result = json.load(response)
+    return json.loads(result["message"]["content"])
+
 ID_RE = re.compile(r"^ch-[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 FACE_FIELDS = ("shape", "eyes", "eyebrows", "nose", "lips", "jaw")
@@ -377,11 +442,7 @@ Required structure:
 "stable_dna":{{"adult_age_range":"...","visual_background":"...","face":{{"shape":"...","eyes":"...","eyebrows":"...","nose":"...","lips":"...","jaw":"..."}},"body":{{"height_impression":"...","limb_proportions":"...","shoulders":"...","torso":"...","bust":"...","waist":"...","pelvis_hips":"...","lower_body":"...","body_hair":"..."}},"hair":"...","skin":"...","distinctive_marks":[],"recognition_anchors":[]}},
 "scene_defaults":{{"expression":"...","makeup":"...","gaze":"..."}},"approved_references":[],"prompt_sources":[],"lora_associations":[],"video_test_associations":[],"provenance":{{"created_at":"","updated_at":"","created_by":"hermes-local-llm","sources":[]}}}}
 User request: {request}"""
-    payload = json.dumps({"model": model, "stream": False, "format": "json", "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.2}}).encode()
-    req = urllib.request.Request(OLLAMA_CHAT, data=payload, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=300) as response:
-        result = json.load(response)
-    record = json.loads(result["message"]["content"])
+    record = chat_json(prompt, model, temperature=0.2, timeout=600)
     stamp = now()
     record.setdefault("provenance", {})
     record["provenance"].update({"created_at": stamp, "updated_at": stamp, "created_by": "hermes-local-llm"})

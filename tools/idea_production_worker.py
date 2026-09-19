@@ -6,11 +6,17 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import sys
 import tempfile
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+# These run as scripts, where `tools` is the script directory, and are also imported as
+# `tools.<name>` by the tests, where it is not on the path at all.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import character_manager as cm  # noqa: E402
 
 from jsonschema import Draft202012Validator
 
@@ -19,7 +25,6 @@ try:
 except ModuleNotFoundError:  # Direct execution from tools/.
     from director_skill_router import finalize_routing, route_request
 
-OLLAMA_CHAT = "http://127.0.0.1:11434/api/chat"
 DEFAULT_MODEL = "meromero26b-a4b-hermes:latest"
 
 
@@ -87,17 +92,7 @@ APPROVED ADAPTER RESOLUTION:
 
 
 def generate(prompt: str, model: str) -> dict[str, Any]:
-    payload = json.dumps({
-        "model": model,
-        "stream": False,
-        "format": "json",
-        "messages": [{"role": "user", "content": prompt}],
-        "options": {"temperature": 0.25},
-    }).encode("utf-8")
-    request = urllib.request.Request(OLLAMA_CHAT, data=payload, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(request, timeout=600) as response:
-        result = json.load(response)
-    return json.loads(result["message"]["content"])
+    return cm.chat_json(prompt, model, temperature=0.25, timeout=600)
 
 
 def structured_failure(request_id: str, code: str, message: str) -> dict[str, Any]:

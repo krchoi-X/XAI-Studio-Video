@@ -7,13 +7,18 @@ import argparse
 import hashlib
 import json
 import os
+import sys
 import tempfile
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-OLLAMA_CHAT = "http://127.0.0.1:11434/api/chat"
+# These run as scripts, where `tools` is the script directory, and are also imported as
+# `tools.<name>` by the tests, where it is not on the path at all.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import character_manager as cm  # noqa: E402
+
 DEFAULT_MODEL = "meromero26b-a4b-hermes:latest"
 
 
@@ -60,11 +65,7 @@ CURRENT CHARACTER:
 
 FROZEN TABLET REVIEW SNAPSHOT:
 {json.dumps(snapshot, ensure_ascii=False)}"""
-    payload = json.dumps({"model": model, "stream": False, "format": "json", "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.15}}).encode("utf-8")
-    request = urllib.request.Request(OLLAMA_CHAT, data=payload, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(request, timeout=600) as response:
-        result = json.load(response)
-    proposal = json.loads(result["message"]["content"])
+    proposal = cm.chat_json(prompt, model, temperature=0.15, timeout=600)
     required = {"summary", "stable_dna_changes", "scene_preferences", "model_findings", "rejected_as_dna", "conflicts", "questions", "validation_plan"}
     missing = sorted(required - proposal.keys())
     if missing:
