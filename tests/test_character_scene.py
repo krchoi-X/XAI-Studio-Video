@@ -241,3 +241,112 @@ class CharacterScenePromptTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CraftExpansionTests(unittest.TestCase):
+    """Craft enrichment must be unable to restage the scene it decorates."""
+
+    def setUp(self):
+        self.character = {
+            "id": "ch-test", "name": "Test", "version": 1,
+            "stable_dna": {
+                "adult_age_range": "adult", "visual_background": "Korean adult",
+                "face": {key: "defined" for key in scene.cm.FACE_FIELDS},
+                "body": {key: "natural" for key in scene.cm.BODY_FIELDS},
+                "hair": "dark hair", "skin": "realistic", "distinctive_marks": [], "recognition_anchors": [],
+            },
+            "bounded_identity": {"hair_states": {"A": "high ponytail near the crown"}},
+        }
+        self.craft = {
+            "camera": "waist-up, slight high angle", "lens": "50mm, shallow depth of field",
+            "lighting": "late afternoon window light", "styling": "muted film grade",
+            "negative_constraints": "no lens flare, no motion blur",
+        }
+
+    def test_the_meaning_half_is_the_strict_prompt_character_for_character(self):
+        request = "크림색 니트를 입고 창가에 기대 앉은 상반신"
+        immutable = {"coverage": "user-specified"}
+        strict = scene.identity_merge_prompt(self.character, request, immutable)
+        craft = scene.compile_craft_prompt(self.character, self.craft, request, immutable)
+        self.assertTrue(craft.startswith(strict))
+
+    def test_only_photography_is_appended(self):
+        prompt = scene.compile_craft_prompt(self.character, self.craft, "창가에 앉은 상반신", {})
+        appended = prompt[len(scene.identity_merge_prompt(self.character, "창가에 앉은 상반신", {})):]
+        self.assertIn("waist-up, slight high angle", appended)
+        self.assertIn("late afternoon window light", appended)
+        for meaning in ("Outfit:", "Pose:", "Action:", "Location:", "Expression:"):
+            self.assertNotIn(meaning, appended)
+
+    def test_the_mode_is_a_recognised_strategy(self):
+        self.assertEqual(scene.normalize_strategy("craft_expansion"), "craft_expansion")
+
+    def test_scene_spec_validation_accepts_the_mode(self):
+        spec = {"schema_version": 1, "character": "ch-test", "character_version": 1, "mode": "craft_expansion"}
+        self.assertEqual(scene.validate_scene_spec(self.character, spec)["status"], "passed")
+
+    def test_a_locked_craft_field_survives_the_model(self):
+        captured = {}
+
+        def fake_urlopen(request, timeout=0):
+            captured["body"] = json.loads(request.data.decode())
+            return _Response({"message": {"content": json.dumps({
+                "camera": "model framing", "lens": "model lens",
+                "lighting": "model lighting", "styling": "model styling",
+                "negative_constraints": "model negatives",
+            })}})
+
+        original = scene.urllib.request.urlopen
+        scene.urllib.request.urlopen = fake_urlopen
+        try:
+            craft = scene.local_craft_delta(
+                "창가에 앉은 상반신", self.character, "test-model", {},
+                {"lighting": "정오의 직사광"},
+            )
+        finally:
+            scene.urllib.request.urlopen = original
+        self.assertEqual(craft["lighting"], "정오의 직사광")
+        self.assertEqual(craft["camera"], "model framing")
+
+    def test_the_model_is_never_asked_for_a_meaning_field(self):
+        def fake_urlopen(request, timeout=0):
+            body = json.loads(request.data.decode())
+            asked = body["messages"][0]["content"]
+            for field in scene.MEANING_FIELDS:
+                assert f"string fields: " not in asked or field not in asked.split("string fields: ")[1].split("\n")[0], field
+            return _Response({"message": {"content": json.dumps({
+                "camera": "c", "lens": "l", "lighting": "li", "styling": "s", "negative_constraints": "n",
+            })}})
+
+        original = scene.urllib.request.urlopen
+        scene.urllib.request.urlopen = fake_urlopen
+        try:
+            scene.local_craft_delta("장면", self.character, "test-model", {}, {})
+        finally:
+            scene.urllib.request.urlopen = original
+
+    def test_a_short_model_answer_is_refused_rather_than_padded(self):
+        def fake_urlopen(request, timeout=0):
+            return _Response({"message": {"content": json.dumps({"camera": "c", "lens": "l"})}})
+
+        original = scene.urllib.request.urlopen
+        scene.urllib.request.urlopen = fake_urlopen
+        try:
+            with self.assertRaises(scene.cm.CharacterError):
+                scene.local_craft_delta("장면", self.character, "test-model", {}, {})
+        finally:
+            scene.urllib.request.urlopen = original
+
+
+class _Response:
+    def __init__(self, payload):
+        self._payload = payload
+
+    def read(self):
+        return json.dumps(self._payload).encode()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_):
+        return False

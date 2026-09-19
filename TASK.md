@@ -1,5 +1,7 @@
 # Current task — Automatic character reference resolution for WanGP video
 
+2026-09-19 active scope: [prompt strategy task](docs/prompt-strategy-TASK.md), Claude Code. Adds a craft-only strategy and a pre-render interpretation preview; does not change existing strategies.
+
 2026-09-15 current storage continuation: [immutable shared character sets](docs/character-sets-TASK.md), runtime editor Terra / integration Astra. Preserve all interruption-period production and prior staged patches.
 
 2026-09-14 current storage continuation: [creation-record task](docs/creation-record-TASK.md), Codex / Astra.

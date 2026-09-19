@@ -49,8 +49,15 @@ STRATEGY_ALIASES = {
     "strict_translation": "strict_translation",
     "enriched": "creative_expansion",
     "creative_expansion": "creative_expansion",
+    "craft_expansion": "craft_expansion",
     "exact": "exact",
 }
+# What the request already decided, and what it usually leaves unsaid. `craft_expansion`
+# asks the local model for the second list only, so enrichment cannot restage the scene.
+MEANING_FIELDS = ("pose", "expression", "outfit", "location", "action")
+CRAFT_FIELDS = ("camera", "lens", "lighting", "styling")
+# Modes that consult the local model at all; the rest compile from templates only.
+LLM_MODES = {"creative_expansion", "craft_expansion"}
 
 
 def stamp() -> str:
@@ -138,7 +145,7 @@ def validate_scene_spec(character: dict[str, Any], scene_spec: dict[str, Any]) -
         errors.append("scene_spec.character does not match the selected character")
     if scene_spec.get("character_version") != character["version"]:
         errors.append("scene_spec.character_version does not match current Character DNA")
-    if scene_spec.get("mode") not in {"strict_translation", "creative_expansion", "exact"}:
+    if scene_spec.get("mode") not in {"strict_translation", "creative_expansion", "craft_expansion", "exact"}:
         errors.append("scene_spec.mode is invalid")
     if scene_spec.get("coverage", "user-specified") not in {"user-specified", "none", "clothed"}:
         errors.append("scene_spec.coverage is invalid")
@@ -186,6 +193,64 @@ User scene request: {request}"""
     if scene_spec.get("scene_style"):
         result["styling"] = str(scene_spec["scene_style"])
     return result
+
+
+def local_craft_delta(request: str, character: dict[str, Any], model: str, immutable: dict[str, str], scene_spec: dict[str, str]) -> dict[str, str]:
+    """Ask the local model how to shoot the scene, never what the scene is.
+
+    `local_scene_delta` asks for eleven fields and then has the Scene Spec take five of
+    them back. Here the five are never requested: a model that is not asked for wardrobe
+    cannot return wardrobe, so there is nothing to undo and nothing to leak through a
+    field the operator left unlocked.
+    """
+    dna = json.dumps(character["stable_dna"], ensure_ascii=False)
+    fields = ", ".join(CRAFT_FIELDS) + ", negative_constraints"
+    prompt = f"""You choose how to photograph a scene that is already decided.
+Return JSON only with exactly these string fields: {fields}.
+The user's scene is fixed. Do not restate it, extend it, or describe what the subject wears, does, where they are, how they are posed, or what their expression is - those are decided and are not yours to set.
+Describe only the photography: framing and shot scale, lens and perspective, light, and finishing style. Keep them consistent with the scene as written.
+negative_constraints lists what the camera must avoid, never what the subject must avoid doing.
+Immutable constraints: {json.dumps(immutable, ensure_ascii=False)}
+Scene Spec fields are authoritative: {json.dumps(scene_spec, ensure_ascii=False)}
+Character ID: {character['id']}
+Stable DNA: {dna}
+User scene request: {request}"""
+    payload = json.dumps({"model": model, "stream": False, "format": "json", "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.25}}).encode()
+    req = urllib.request.Request(cm.OLLAMA_CHAT, data=payload, headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=300) as response:
+        result = json.load(response)
+    delta = json.loads(result["message"]["content"])
+    required = CRAFT_FIELDS + ("negative_constraints",)
+    missing = [key for key in required if not str(delta.get(key, "")).strip()]
+    if missing:
+        raise cm.CharacterError("craft delta missing: " + ", ".join(missing))
+    craft = {key: str(delta[key]).strip() for key in required}
+    # A locked craft field is the operator's, exactly as it is for a meaning field.
+    for key in CRAFT_FIELDS:
+        if scene_spec.get(key):
+            craft[key] = str(scene_spec[key])
+    if scene_spec.get("scene_style"):
+        craft["styling"] = str(scene_spec["scene_style"])
+    return craft
+
+
+def compile_craft_prompt(character: dict[str, Any], craft: dict[str, str], request: str, immutable: dict[str, str], scene_spec: dict[str, str] | None = None) -> str:
+    """The strict prompt, unchanged, with photography appended.
+
+    Built from `identity_merge_prompt` rather than beside it so the half that carries
+    meaning is the same text `strict_translation` sends. That equality is asserted in the
+    tests: it is what makes "craft cannot change the scene" checkable.
+    """
+    base = identity_merge_prompt(character, request, immutable, scene_spec)
+    return base + f"""
+
+PRIORITY 3 - PHOTOGRAPHY ONLY. These describe the shot, never the scene. If any line here implies a change to wardrobe, pose, action, expression or location, ignore that line and keep the scene above:
+Camera and framing: {craft['camera']}
+Lens and perspective: {craft['lens']}
+Lighting: {craft['lighting']}
+Finishing style: {craft['styling']}
+
+Avoid: {craft['negative_constraints']}"""
 
 
 def identity_merge_prompt(character: dict[str, Any], request: str, immutable: dict[str, str], scene_spec: dict[str, str] | None = None) -> str:
@@ -353,6 +418,7 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
         raise cm.CharacterError("Scene Spec validation failed:\n- " + "\n- ".join(validation["errors"]))
     suppressed_dna_fields = sorted(set(scene_spec) & set(character["stable_dna"]))
     delta = local_scene_delta(request, character, model, immutable, scene_spec) if operating_mode == "creative_expansion" else None
+    craft = local_craft_delta(request, character, model, immutable, scene_spec) if operating_mode == "craft_expansion" else None
     created = datetime.now()
     title = delta["title"] if delta else request
     session_id = f"SCENE-{created.strftime('%Y%m%d-%H%M%S')}-{character_id[3:]}-{slug_text(title)}"
@@ -360,6 +426,8 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     asset_root = ASSET_LIBRARY / "characters" / character_id / "generations" / session_id / "outputs"
     merged_prompt = identity_merge_prompt(character, request, immutable, scene_spec)
     enriched_prompt = compile_prompt(character, delta, request, immutable, scene_spec) if delta else merged_prompt
+    if craft:
+        enriched_prompt = compile_craft_prompt(character, craft, request, immutable, scene_spec)
     prompt = request if operating_mode == "exact" else enriched_prompt
     if reference and operating_mode != "exact":
         prompt = (
@@ -378,8 +446,8 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     write_json(root / "scene-delta.json", {
         "schema_version": 1, "session_id": session_id, "character_id": character_id,
         "character_version": character["version"], "stable_dna_sha256": cm.stable_hash(character),
-        "created_at": stamp(), "created_by": actor, "local_model": model if operating_mode == "creative_expansion" else None,
-        "source_request": request, "runtime_prompt_sha256": prompt_hash, "scene_delta": delta,
+        "created_at": stamp(), "created_by": actor, "local_model": model if operating_mode in LLM_MODES else None,
+        "source_request": request, "runtime_prompt_sha256": prompt_hash, "scene_delta": delta, "craft_delta": craft,
         "prompt_strategy": operating_mode, "immutable_constraints": immutable, "scene_spec": scene_spec,
         "suppressed_stable_dna_fields": suppressed_dna_fields,
         "reference_inputs": [reference] if reference else [],
@@ -391,12 +459,13 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
         "structured_scene_spec": scene_spec,
         "after_character_dna_merge": merged_prompt,
         "after_constraint_validation": validation,
-        "after_scene_enrichment": enriched_prompt if operating_mode == "creative_expansion" else None,
-        "after_scene_style_expansion": enriched_prompt if operating_mode == "creative_expansion" else None,
+        "after_scene_enrichment": enriched_prompt if operating_mode in LLM_MODES else None,
+        "after_scene_style_expansion": enriched_prompt if operating_mode in LLM_MODES else None,
+        "craft_delta": craft,
         "final_prompt_sent_to_hermes": None,
         "final_prompt_sent_to_image_engine": prompt,
         "reference_inputs": [reference] if reference else [],
-        "invoked_by": actor, "hermes_agent_used": actor == "hermes", "local_llm_used": operating_mode == "creative_expansion", "created_at": stamp(),
+        "invoked_by": actor, "hermes_agent_used": actor == "hermes", "local_llm_used": operating_mode in LLM_MODES, "created_at": stamp(),
     }
     write_json(root / "prompt-trace.json", trace)
     write_json(root / "trace.json", trace)
