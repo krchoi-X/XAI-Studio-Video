@@ -71,6 +71,40 @@ as `scene_spec` on submit, which the existing overwrite makes binding.
 - Diagnosed against the running code: the overwrite loop, the three-field Scene Spec, and
   `exact` dropping both DNA and the identity reference.
 
+## Progress (continued)
+
+- C landed: `craft_expansion` compiles the strict prompt and appends photography only.
+- B1 landed: `interpret()` compiles without reserving a session, exposed as a background
+  draft job so reading a compilation is not a wait held open over HTTP.
+- Local-model calls now go through one router, `cm.chat_json`, instead of five copies of the
+  Ollama endpoint. The gateway key is discovered from the running server's command line,
+  because Hermes issues a new one every launch and stores it nowhere.
+
+## Measured, 2026-09-19
+
+Routing through the Hermes gateway works and was verified live. The model behind it does not
+fit this machine:
+
+| Model | Shape | Observed |
+|---|---|---|
+| `Huihui-Qwen3.8-27B-abliterated` via gateway | dense 27B, FFN weights on CPU (`spilled: true`) | 30 output tokens in 36.2s, about 0.8 tok/s; a craft draft hit the 840s timeout |
+| `meromero26b-a4b` via Ollama | MoE, roughly 4B active | craft drafts completed at 286s and, on a later run, 70s |
+
+Qwen3.8 has no mid-size MoE: the released 27B is dense, and `Qwen3.8-35B-A3B` has only been
+seen in a modelscope/ms-swift commit, unannounced. `Qwen3.6-35B-A3B` is released and is the
+nearest A3B-class candidate; whether an abliterated GGUF of it exists is unchecked.
+
+Decision: stay on meromero for now. `STUDIO_HERMES_BASE_URL` is commented out in
+`backend/.env`; uncommenting that one line re-enables the gateway, and discovery handles the
+key. Nothing else needs changing.
+
 ## Next
 
-Implement C in `tools/character_scene.py`.
+1. B2 — the interpretation preview UI: a field table with per-field locks that sends the
+   locked `scene_field` keys back as `scene_spec` on submit.
+2. When an A3B-class model is serving on the router, re-enable the gateway and re-measure.
+   Only then does unifying on one resident model actually save anything.
+3. Still open from before this task: `character_scene.py` never unloads the local model
+   before submitting to WanGP. `identity_batch.py` does, and its own comment calls that the
+   difference between a slow render and a failed one. Which model needs unloading depends on
+   which router is live, so this belongs with the switch.
