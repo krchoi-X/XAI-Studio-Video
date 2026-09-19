@@ -48,6 +48,11 @@ def main() -> int:
             "--actor", "web",
             "--constraints-json", json.dumps(request.get("immutable_constraints") or {}, ensure_ascii=False),
             "--scene-spec-json", json.dumps(request.get("scene_spec") or {}, ensure_ascii=False)]
+        # The resolver never guesses a reference off the filesystem, so a request that wants
+        # the character's own face has to say so. Without this the tab generated from text
+        # alone and no identity image ever reached the engine.
+        if request.get("use_identity_reference"):
+            command += ["--identity-reference", "character-default"]
     status(job_dir, "running", progress="프롬프트를 정리하고 로컬 생성기를 시작하는 중")
     try:
         completed = subprocess.run(command, cwd=args.repo_root, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=7500)
