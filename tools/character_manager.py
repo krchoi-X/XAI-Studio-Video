@@ -198,15 +198,33 @@ HERMES_MODEL_ENV = "XAI_HERMES_MODEL"
 _DISCOVERED_KEY: dict[str, str] = {}
 
 
-def discover_gateway_key(base_url: str) -> str | None:
-    """Read the gateway's key off the running server's own command line.
+HERMES_SERVER_DESCRIPTOR = Path.home() / "AppData/Local/hermes/runtimes/llamacpp/server.json"
 
-    Hermes starts its llama.cpp router with `--api-key` and stores that key nowhere: not
-    in config.yaml, not in auth.json, not in state.db. It is new on every launch. Copying
-    it into a file by hand would therefore be a chore that silently expires, so the key is
-    found the same way anyone would find it, by asking the process that is serving the
-    port. Best effort: on any failure the caller simply has no gateway.
+
+def _key_from_descriptor(base_url: str) -> str | None:
+    """Hermes records the router it started, address and key together, when it starts it."""
+    try:
+        record = json.loads(HERMES_SERVER_DESCRIPTOR.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if str(record.get("base_url", "")).rstrip("/") != base_url.rstrip("/"):
+        return None
+    return str(record.get("api_key") or "") or None
+
+
+def discover_gateway_key(base_url: str) -> str | None:
+    """Find the gateway's key without anyone having to copy it.
+
+    Hermes issues its llama.cpp router a new `--api-key` on every launch, so a key pinned
+    in a file goes stale the next time it restarts. It does write the pair down, in
+    `runtimes/llamacpp/server.json`, which is read first because it is cheap and exact.
+    Failing that the key is read off the running process's own command line, which still
+    works if that file is missing, stale or belongs to a server that has since died.
+    Best effort throughout: on any failure the caller simply has no gateway.
     """
+    from_file = _key_from_descriptor(base_url)
+    if from_file:
+        return from_file
     port = base_url.rsplit(":", 1)[-1].split("/")[0]
     if not port.isdigit():
         return None
