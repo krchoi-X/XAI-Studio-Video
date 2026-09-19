@@ -28,15 +28,16 @@ The user should provide story intent and taste decisions, not professional cinem
 2. applicable root/scoped `TASK.md`
 3. `docs/director-memory/README.md`
 4. `docs/director-memory/visual-language-pipeline.md`
-5. `docs/director-memory/principles.md`
-6. `docs/director-memory/opening-patterns.md`
-7. `docs/director-memory/failures.md`
-8. `docs/director-memory/capabilities.md`
-9. `docs/director-memory/candidate-template.md`
-10. `docs/director-memory/prompt-compiler-principles.md`
-11. `docs/director-memory/cinematic-technique-library.md`
-12. existing `skills/idea-to-production/` shared-resource adapter and its actual shared source
-13. current architecture/artifact contracts relevant to storyboard and production routing
+5. `docs/director-memory/continuity-as-story-language.md`
+6. `docs/director-memory/principles.md`
+7. `docs/director-memory/opening-patterns.md`
+8. `docs/director-memory/failures.md`
+9. `docs/director-memory/capabilities.md`
+10. `docs/director-memory/candidate-template.md`
+11. `docs/director-memory/prompt-compiler-principles.md`
+12. `docs/director-memory/cinematic-technique-library.md`
+13. existing `skills/idea-to-production/` shared-resource adapter and its actual shared source
+14. current architecture/artifact contracts relevant to storyboard and production routing
 
 Do not duplicate or fork project policy already owned by shared resources.
 
@@ -108,15 +109,30 @@ A failure lesson is not automatically a universal ban.
 
 ### Visual Language Translator
 
-Owns scenario → visual-directing interpretation:
+Owns scenario → visual-directing interpretation.
 
+Before choosing camera technique, it should determine:
+
+- scene / continuity-unit goal;
+- narrative beat sequence;
+- information release order;
+- emotional progression;
+- shot functions;
+- physical continuity requirements;
 - reveal order;
 - visual focus;
 - action vs dialogue;
 - camera role/viewpoint;
 - `long_take` / `multi_cut` / `hybrid` choice;
-- continuity needs;
 - feasible creative alternatives.
+
+Treat continuity as three related layers when relevant:
+
+- physical continuity;
+- informational continuity;
+- emotional continuity.
+
+The planner should not produce a sequence of individually attractive but narratively disconnected shots.
 
 It should normally produce a small search space rather than one deterministic answer.
 
@@ -292,17 +308,23 @@ Do not let renderer-specific prompts become the canonical storyboard representat
 
 Do not start with a large cinematic schema.
 
-A shot/beat only needs these six required fields initially:
+A shot/beat should remain lightweight, but add one explicit narrative field:
 
 ```yaml
 shot_id: S01
+shot_function: establish space and self-recording setup
 framing: medium_wide
 camera: fixed shelf-mounted observer angle
 action: character enters frame and checks framing
-continuity_anchor: room layout + wardrobe + action camera position
+continuity_anchor:
+  physical: room layout + wardrobe + action camera position
+  informational: establishes who is filming and from where
+  emotional: casual preparation before speaking
 duration_s: 3.0
 production_route: canonical still -> H3/WanGP I2V
 ```
+
+The continuity subfields may collapse back to a single compact note for trivial shots. Do not force professional-film metadata where it adds no value.
 
 Candidate-level metadata should include at least:
 
@@ -378,6 +400,9 @@ Before renderer execution, add lightweight deterministic or LLM-assisted checks 
 - implausible spatial jumps;
 - important prop disappearance or hand switching;
 - unreadable action handoff between adjacent beats;
+- adjacent cuts that do not preserve or intentionally transform informational continuity;
+- reaction/reveal ordering that creates unintended emotional meaning;
+- shots with no clear function beyond looking visually attractive;
 - accidental repetition of identical shot scale;
 - generic opening fallback when no such style was deliberately selected;
 - redundant visual information;

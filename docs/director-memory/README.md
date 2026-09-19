@@ -60,6 +60,7 @@ Do not move temporary events, one-off gags, camera choices, shot orders, or edit
 - `intent-alignment-method.md` — use rough visual boards to discover and approve an incompletely expressed user intent, then compile it for the selected engine.
 - `skill-router.json` — lightweight Director Core metadata used to select a bounded, coherent skill subset for each candidate.
 - `visual-language-pipeline.md` — lightweight scenario → visual language → storyboard grid → production pipeline. This is intentionally below commercial-film complexity and assumes AI fills most directing expertise.
+- `continuity-as-story-language.md` — continuity as physical + informational + emotional handoff; shot function and shot order as story-language design.
 - `codex-pipeline-handoff.md` — scoped implementation handoff for a future Codex session. It defines boundaries, first milestone, acceptance criteria, and explicit non-goals so pipeline work does not restart broad repository cleanup.
 
 ## Required use by an AI director

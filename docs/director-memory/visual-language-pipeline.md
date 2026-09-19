@@ -100,6 +100,14 @@ The episode brief should preserve only story intent, character state, relevant l
 
 This layer converts narrative meaning into visual choices before shot prompts are written.
 
+Before choosing camera technique, it should first establish the scene's **dramatic goal, information flow, emotional progression, and shot functions**. Shot order controls information release, so individually attractive shots are not enough if their relationship is unclear.
+
+Use three continuity layers when relevant:
+
+- **Physical continuity** — position, hand/prop/contact state, wardrobe, layout, lighting/state.
+- **Informational continuity** — what the audience knows, what is withheld, eyeline/reveal relationships, questions passed to the next cut.
+- **Emotional continuity** — what feeling the current shot creates and what emotional state it hands to the next cut.
+
 It should answer internally:
 
 - What is the scene trying to make the viewer notice or feel?
@@ -154,14 +162,17 @@ Example:
 
 ## Stage 5 — Lightweight shot representation
 
-Keep each shot/beat compact. Default required fields:
+Keep each shot/beat compact. Add **shot function** as the clearest expression of why the shot exists; do not choose a "cool" angle before deciding what information/emotion the shot must deliver.
 
-1. **Framing** — close / medium / knee-up / full / wide, etc.
-2. **Camera** — position/support/viewpoint and only necessary movement.
-3. **Action** — one readable action beat.
-4. **Continuity anchor** — position, prop, wardrobe, environment, or state that must persist.
-5. **Duration** — approximate beat length.
-6. **Production route** — still/reference/control needs and expected renderer path.
+Default required fields:
+
+1. **Shot function** — establish / question / reveal / reaction / decision / payoff / transition, etc.
+2. **Framing** — close / medium / knee-up / full / wide, etc.
+3. **Camera** — position/support/viewpoint and only necessary movement.
+4. **Action** — one readable action beat.
+5. **Continuity anchor** — physical state plus, when relevant, informational/emotional handoff to adjacent shots.
+6. **Duration** — approximate beat length.
+7. **Production route** — still/reference/control needs and expected renderer path.
 
 Optional fields may be added only when they solve a real production need.
 
@@ -327,3 +338,8 @@ Default limits:
 - no new automation layer merely because a reference project contains one.
 
 If the user can choose between two good visual plans and another agent can execute the selected plan without reconstructing intent from chat history, the pipeline is doing its job.
+
+
+## Continuity as story language
+
+See `continuity-as-story-language.md` for the detailed rationale. The key rule is that continuity is not only spatial/physical stability. The sequence must also preserve or intentionally transform **what the audience knows** and **what the audience feels**. A storyboard should therefore be evaluated as a chain of shot functions and handoffs, not as a gallery of individually strong frames.
