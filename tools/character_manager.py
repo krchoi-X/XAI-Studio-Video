@@ -280,6 +280,40 @@ def active_chat_route() -> str:
     return "hermes" if hermes_chat_config() else "ollama"
 
 
+OLLAMA_PS = "http://127.0.0.1:11434/api/ps"
+OLLAMA_GENERATE = "http://127.0.0.1:11434/api/generate"
+
+
+def free_local_model_vram() -> str:
+    """Ask any resident local model to leave VRAM. Best effort; returns what happened.
+
+    On an 8 GB card a language model and an image model do not fit together, and a render
+    that has to offload constantly is the difference between slow and failed. Both local
+    runtimes release their weights on their own once idle, but "idle" is measured in
+    minutes and a render usually starts seconds after the prompt was compiled, while the
+    model that compiled it is still warm.
+
+    Only Ollama is asked. Hermes runs its llama.cpp models as workers under a router that
+    unloads them itself, and the router exposes no unload route to call; what is left
+    resident there is the supervisor, which holds nothing.
+    """
+    try:
+        with urllib.request.urlopen(OLLAMA_PS, timeout=10) as response:
+            loaded = json.loads(response.read()).get("models", [])
+    except (urllib.error.URLError, OSError, ValueError):
+        return "ollama not reachable"
+    if not loaded:
+        return "nothing loaded"
+    for model in loaded:
+        payload = json.dumps({"model": model["name"], "keep_alive": 0}).encode()
+        request = urllib.request.Request(OLLAMA_GENERATE, data=payload, headers={"Content-Type": "application/json"})
+        try:
+            urllib.request.urlopen(request, timeout=60).read()
+        except (urllib.error.URLError, OSError):
+            pass
+    return "unloaded " + ", ".join(str(model["name"]) for model in loaded)
+
+
 def _gateway_chat(config: tuple[str, str, str | None], prompt: str, model: str,
                   temperature: float, timeout: float) -> Any:
     base_url, api_key, override = config

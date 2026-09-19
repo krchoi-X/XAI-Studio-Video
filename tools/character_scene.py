@@ -580,6 +580,9 @@ def session_requester(root: Path, batch: dict[str, Any]) -> str | None:
 
 
 def submit(root: Path, wait: bool) -> list[dict[str, Any]]:
+    # The prompt was compiled seconds ago and the model that compiled it is still warm,
+    # holding several gigabytes of an 8 GB card the image model is about to want.
+    print(f"vram: {cm.free_local_model_vram()}", file=sys.stderr)
     batch = yaml.safe_load((root / "batch.yaml").read_text(encoding="utf-8"))
     asset_root = Path(batch["session"]["asset_root"]).resolve() if batch["session"].get("asset_root") else root / "outputs"
     requester = session_requester(root, batch)

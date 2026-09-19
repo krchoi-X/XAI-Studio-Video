@@ -155,8 +155,56 @@ class LocalModelRouterTests(unittest.TestCase):
             self.assertNotIn("11434", source, name)
             self.assertIn("chat_json(", source, name)
         manager = (TOOLS / "character_manager.py").read_text(encoding="utf-8")
-        self.assertEqual(manager.count("11434"), 1, "only the router's own fallback")
+        endpoints = {"OLLAMA_CHAT", "OLLAMA_PS", "OLLAMA_GENERATE"}
+        named = {line.split("=")[0].strip() for line in manager.splitlines() if "11434" in line}
+        self.assertEqual(named, endpoints, "the router owns every Ollama address")
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FreeVramTests(unittest.TestCase):
+    """A render starts seconds after the compile, while the model that compiled is warm."""
+
+    def setUp(self):
+        self._urlopen = cm.urllib.request.urlopen
+
+    def tearDown(self):
+        cm.urllib.request.urlopen = self._urlopen
+
+    def test_every_resident_model_is_asked_to_leave(self):
+        asked = []
+
+        def fake(request, timeout=0):
+            # The listing is fetched by URL; the unloads are posted as Request objects.
+            if isinstance(request, str):
+                return _Response({"models": [{"name": "meromero26b"}, {"name": "other"}]})
+            asked.append(json.loads(request.data.decode()))
+            return _Response({})
+
+        cm.urllib.request.urlopen = fake
+        message = cm.free_local_model_vram()
+        self.assertEqual([item["model"] for item in asked], ["meromero26b", "other"])
+        self.assertTrue(all(item["keep_alive"] == 0 for item in asked))
+        self.assertIn("meromero26b", message)
+
+    def test_an_empty_card_is_reported_rather_than_poked(self):
+        def fake(request, timeout=0):
+            self.assertEqual(request, cm.OLLAMA_PS)
+            return _Response({"models": []})
+
+        cm.urllib.request.urlopen = fake
+        self.assertEqual(cm.free_local_model_vram(), "nothing loaded")
+
+    def test_no_ollama_is_not_an_error(self):
+        def fake(request, timeout=0):
+            raise OSError("connection refused")
+
+        cm.urllib.request.urlopen = fake
+        self.assertEqual(cm.free_local_model_vram(), "ollama not reachable")
+
+    def test_the_render_path_frees_vram_before_it_submits(self):
+        source = (TOOLS / "character_scene.py").read_text(encoding="utf-8")
+        submit = source[source.index("def submit("):]
+        self.assertLess(submit.index("free_local_model_vram"), submit.index("batch.yaml"))

@@ -31,8 +31,10 @@ from pathlib import Path
 from typing import Any
 
 TOOLS = Path(__file__).resolve().parent
+
+sys.path.insert(0, str(TOOLS))
+import character_manager as cm  # noqa: E402
 TERMINAL = {"succeeded", "needs_review", "failed", "cancelled", "interrupted", "timed_out"}
-OLLAMA_UNLOAD = "http://127.0.0.1:11434/api/generate"
 
 
 def keep_awake() -> str:
@@ -68,20 +70,8 @@ def log(message: str) -> None:
 
 
 def unload_ollama() -> str:
-    """Best effort: ask every loaded model to leave VRAM, then confirm."""
-    try:
-        with urllib.request.urlopen("http://127.0.0.1:11434/api/ps", timeout=10) as response:
-            loaded = json.loads(response.read()).get("models", [])
-    except (urllib.error.URLError, OSError, ValueError):
-        return "ollama not reachable"
-    for model in loaded:
-        payload = json.dumps({"model": model["name"], "keep_alive": 0}).encode()
-        request = urllib.request.Request(OLLAMA_UNLOAD, data=payload, headers={"Content-Type": "application/json"})
-        try:
-            urllib.request.urlopen(request, timeout=60).read()
-        except (urllib.error.URLError, OSError):
-            pass
-    return f"unloaded {len(loaded)} model(s)" if loaded else "nothing loaded"
+    """Kept as the name this module has always used; the work lives with the router now."""
+    return cm.free_local_model_vram()
 
 
 def submit(session: Path, shot: str, output_dir: Path, requested_by: str) -> dict[str, Any]:
