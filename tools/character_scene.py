@@ -58,6 +58,14 @@ MEANING_FIELDS = ("pose", "expression", "outfit", "location", "action")
 CRAFT_FIELDS = ("camera", "lens", "lighting", "styling")
 # Modes that consult the local model at all; the rest compile from templates only.
 LLM_MODES = {"creative_expansion", "craft_expansion"}
+# A delta field and the Scene Spec key that overrides it are not always the same word.
+# Only the values here are accepted by `validate_scene_spec`, so a caller that locks a
+# field has to send the key on the right, not the label it saw.
+DELTA_TO_SCENE_FIELD = {
+    "pose": "pose", "expression": "expression", "camera": "camera", "lens": "lens",
+    "lighting": "lighting", "location": "location", "negative_constraints": "negative_constraints",
+    "outfit": "wardrobe", "action": "activity", "styling": "scene_style",
+}
 
 
 def stamp() -> str:
@@ -226,11 +234,10 @@ User scene request: {request}"""
         raise cm.CharacterError("craft delta missing: " + ", ".join(missing))
     craft = {key: str(delta[key]).strip() for key in required}
     # A locked craft field is the operator's, exactly as it is for a meaning field.
-    for key in CRAFT_FIELDS:
-        if scene_spec.get(key):
-            craft[key] = str(scene_spec[key])
-    if scene_spec.get("scene_style"):
-        craft["styling"] = str(scene_spec["scene_style"])
+    for key in CRAFT_FIELDS + ("negative_constraints",):
+        locked = scene_spec.get(DELTA_TO_SCENE_FIELD[key])
+        if locked:
+            craft[key] = str(locked)
     return craft
 
 
@@ -397,6 +404,72 @@ def apply_identity_reference(settings: dict[str, Any], reference: dict[str, Any]
     return result
 
 
+def interpret(character_id: str, request: str, model: str, strategy: str = "strict_translation",
+              immutable: dict[str, str] | None = None, supplied_scene_spec: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Compile one request and stop, so it can be read before anything is spent.
+
+    Reserves no session, writes no file, and starts no GPU work. `prepare` does the same
+    compilation and then commits to it; keeping the two in one function would mean a
+    preview that reserves a session directory every time somebody looks.
+
+    The returned `fields` are what the local model contributed, each carrying the Scene
+    Spec key that overrides it. Send those keys back in `scene_spec` to make a field
+    binding: the compiler already restores Scene Spec values after the model answers, so a
+    locked field is not a request, it is the value that will be used.
+    """
+    immutable = immutable or {}
+    character_path = cm.character_record_path(character_id)
+    if not character_path.is_file():
+        raise cm.CharacterError(f"unknown character: {character_id}")
+    character = cm.load(character_path)
+    operating_mode = normalize_strategy(strategy)
+    scene_spec = build_scene_spec(request, immutable, supplied_scene_spec)
+    scene_spec.update({"schema_version": 1, "character": character_id, "character_version": character["version"], "mode": operating_mode})
+    resolve_hair_state(character, scene_spec)
+    validation = validate_scene_spec(character, scene_spec)
+    if validation["errors"]:
+        raise cm.CharacterError("Scene Spec validation failed:\n- " + "\n- ".join(validation["errors"]))
+    delta = local_scene_delta(request, character, model, immutable, scene_spec) if operating_mode == "creative_expansion" else None
+    craft = local_craft_delta(request, character, model, immutable, scene_spec) if operating_mode == "craft_expansion" else None
+    merged_prompt = identity_merge_prompt(character, request, immutable, scene_spec)
+    if delta:
+        prompt = compile_prompt(character, delta, request, immutable, scene_spec)
+    elif craft:
+        prompt = compile_craft_prompt(character, craft, request, immutable, scene_spec)
+    else:
+        prompt = merged_prompt
+    if operating_mode == "exact":
+        prompt = request
+    produced = craft or delta or {}
+    fields = [
+        {
+            "key": key,
+            "value": value,
+            "scene_field": DELTA_TO_SCENE_FIELD[key],
+            # `locked` is what the operator already fixed, by a Scene Spec entry or an
+            # immutable constraint; the model's wording for it was overwritten above.
+            "locked": bool(scene_spec.get(DELTA_TO_SCENE_FIELD[key])),
+        }
+        for key, value in produced.items()
+        if key in DELTA_TO_SCENE_FIELD
+    ]
+    return {
+        "schema_version": 1,
+        "character_id": character_id,
+        "character_version": character["version"],
+        "stable_dna_sha256": cm.stable_hash(character),
+        "strategy": operating_mode,
+        "request": request,
+        "scene_spec": {key: value for key, value in scene_spec.items() if key in SCENE_FIELDS},
+        "validation": validation,
+        "suppressed_stable_dna_fields": sorted(set(scene_spec) & set(character["stable_dna"])),
+        "fields": fields,
+        "prompt": prompt,
+        "local_llm_used": operating_mode in LLM_MODES,
+        "local_model": model if operating_mode in LLM_MODES else None,
+    }
+
+
 def prepare(character_id: str, request: str, model: str, count: int, engines: list[str], strategy: str = "strict_translation", immutable: dict[str, str] | None = None, supplied_scene_spec: dict[str, Any] | None = None, actor: str = "codex", identity_reference: str | None = None, reference_asset_id: str | None = None) -> Path:
     character_path = cm.character_record_path(character_id)
     if not character_path.is_file():
@@ -553,6 +626,11 @@ def submit(root: Path, wait: bool) -> list[dict[str, Any]]:
 
 
 def main() -> int:
+    # Compiled prompts carry em dashes and Korean; a Windows console defaults to cp949 and
+    # would fail the whole command on the print, after the model has already been paid for.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     draft = sub.add_parser("prepare")
@@ -567,6 +645,13 @@ def main() -> int:
     draft.add_argument("--identity-reference", help="character-default or an explicit local image path; requires --engines krea2")
     draft.add_argument("--reference-asset-id", help="optional durable Gallery/adapter asset ID for the identity reference")
     draft.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
+    read = sub.add_parser("interpret", help="compile a request and print it without reserving a session or touching the GPU")
+    read.add_argument("--character", required=True)
+    read.add_argument("--request", required=True)
+    read.add_argument("--model", default=cm.DEFAULT_MODEL)
+    read.add_argument("--strategy", choices=tuple(STRATEGY_ALIASES), default="strict_translation")
+    read.add_argument("--constraints-json", default="{}")
+    read.add_argument("--scene-spec-json", default="{}")
     produce = sub.add_parser("produce")
     produce.add_argument("--character")
     produce.add_argument("--request")
@@ -582,6 +667,17 @@ def main() -> int:
     produce.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
     args = parser.parse_args()
     try:
+        if args.command == "interpret":
+            immutable = json.loads(args.constraints_json)
+            scene_spec = json.loads(args.scene_spec_json)
+            if not isinstance(immutable, dict) or not isinstance(scene_spec, dict):
+                raise cm.CharacterError("constraints-json and scene-spec-json must be objects")
+            print(json.dumps(interpret(
+                args.character, args.request, args.model, args.strategy,
+                {str(key): str(value) for key, value in immutable.items()},
+                {str(key): value for key, value in scene_spec.items()},
+            ), ensure_ascii=False, indent=2))
+            return 0
         if args.command == "produce" and args.session_dir:
             if args.identity_reference or args.reference_asset_id:
                 raise cm.CharacterError("reference options belong to preparation; reuse the existing session settings unchanged")

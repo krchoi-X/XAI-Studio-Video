@@ -350,3 +350,94 @@ class _Response:
 
     def __exit__(self, *_):
         return False
+
+
+class InterpretTests(unittest.TestCase):
+    """Reading the compilation must cost nothing but the compilation."""
+
+    def setUp(self):
+        self.character = {
+            "id": "ch-test", "name": "Test", "version": 1,
+            "stable_dna": {
+                "adult_age_range": "adult", "visual_background": "Korean adult",
+                "face": {key: "defined" for key in scene.cm.FACE_FIELDS},
+                "body": {key: "natural" for key in scene.cm.BODY_FIELDS},
+                "hair": "dark hair", "skin": "realistic", "distinctive_marks": [], "recognition_anchors": [],
+            },
+            "bounded_identity": {"hair_states": {"A": "high ponytail near the crown"}},
+        }
+        self._record_path = scene.cm.character_record_path
+        self._load = scene.cm.load
+        self._reserve = scene.cm.reserve_generation_session
+        scene.cm.character_record_path = lambda character_id: _AlwaysAFile()
+        scene.cm.load = lambda path: self.character
+        scene.cm.reserve_generation_session = self._forbidden
+
+    def tearDown(self):
+        scene.cm.character_record_path = self._record_path
+        scene.cm.load = self._load
+        scene.cm.reserve_generation_session = self._reserve
+
+    @staticmethod
+    def _forbidden(*_args, **_kwargs):
+        raise AssertionError("interpret must not reserve a generation session")
+
+    def test_a_template_mode_compiles_without_a_model_or_a_session(self):
+        result = scene.interpret("ch-test", "\ucc3d\uac00\uc5d0 \uc549\uc740 \uc0c1\ubc18\uc2e0", "test-model", "strict_translation")
+        self.assertFalse(result["local_llm_used"])
+        self.assertIsNone(result["local_model"])
+        self.assertEqual(result["fields"], [])
+        self.assertIn("STABLE CHARACTER IDENTITY", result["prompt"])
+
+    def test_exact_returns_the_request_itself(self):
+        result = scene.interpret("ch-test", "\uadf8\ub300\ub85c \ubcf4\ub0bc \ubb38\uc7a5", "test-model", "exact")
+        self.assertEqual(result["prompt"], "\uadf8\ub300\ub85c \ubcf4\ub0bc \ubb38\uc7a5")
+
+    def test_craft_fields_come_back_with_the_key_that_locks_them(self):
+        original = scene.urllib.request.urlopen
+        scene.urllib.request.urlopen = _craft_response
+        try:
+            result = scene.interpret("ch-test", "\ucc3d\uac00\uc5d0 \uc549\uc740 \uc0c1\ubc18\uc2e0", "test-model", "craft_expansion")
+        finally:
+            scene.urllib.request.urlopen = original
+        keys = {item["key"]: item for item in result["fields"]}
+        self.assertEqual(keys["styling"]["scene_field"], "scene_style")
+        self.assertEqual(keys["camera"]["scene_field"], "camera")
+        self.assertTrue(result["local_llm_used"])
+        self.assertFalse(any(item["locked"] for item in result["fields"]))
+
+    def test_a_locked_field_reports_itself_locked_and_keeps_the_operator_value(self):
+        original = scene.urllib.request.urlopen
+        scene.urllib.request.urlopen = _craft_response
+        try:
+            result = scene.interpret(
+                "ch-test", "\ucc3d\uac00\uc5d0 \uc549\uc740 \uc0c1\ubc18\uc2e0", "test-model", "craft_expansion",
+                supplied_scene_spec={"scene_style": "\uc0c1\uc5c5 \uad11\uace0 \ub9c8\uac10"},
+            )
+        finally:
+            scene.urllib.request.urlopen = original
+        styling = next(item for item in result["fields"] if item["key"] == "styling")
+        self.assertTrue(styling["locked"])
+        self.assertEqual(styling["value"], "\uc0c1\uc5c5 \uad11\uace0 \ub9c8\uac10")
+        self.assertIn("\uc0c1\uc5c5 \uad11\uace0 \ub9c8\uac10", result["prompt"])
+
+    def test_every_offered_scene_field_is_one_the_validator_accepts(self):
+        for delta_key, scene_field in scene.DELTA_TO_SCENE_FIELD.items():
+            self.assertIn(scene_field, scene.SCENE_FIELDS, delta_key)
+
+    def test_an_invalid_lock_is_refused_rather_than_silently_dropped(self):
+        with self.assertRaises(scene.cm.CharacterError):
+            scene.interpret("ch-test", "\uc7a5\uba74", "test-model", "strict_translation",
+                            supplied_scene_spec={"face": "different face"})
+
+
+def _craft_response(request, timeout=0):
+    return _Response({"message": {"content": json.dumps({
+        "camera": "model framing", "lens": "model lens", "lighting": "model lighting",
+        "styling": "model styling", "negative_constraints": "model negatives",
+    })}})
+
+
+class _AlwaysAFile:
+    def is_file(self):
+        return True
