@@ -58,6 +58,11 @@ MEANING_FIELDS = ("pose", "expression", "outfit", "location", "action")
 CRAFT_FIELDS = ("camera", "lens", "lighting", "styling")
 # Modes that consult the local model at all; the rest compile from templates only.
 LLM_MODES = {"creative_expansion", "craft_expansion"}
+# This box is an 8GB laptop 4070 that also holds the image model, so a scene or craft answer
+# has been measured between two and five minutes and has timed out at five. The worker that
+# calls this allows 900s; stay inside that so the inner call is the one that reports a
+# timeout, with the name of the step that ran long.
+OLLAMA_TIMEOUT_SECONDS = 840
 # A delta field and the Scene Spec key that overrides it are not always the same word.
 # Only the values here are accepted by `validate_scene_spec`, so a caller that locks a
 # field has to send the key on the right, not the label it saw.
@@ -178,7 +183,7 @@ Stable DNA: {dna}
 User scene request: {request}"""
     payload = json.dumps({"model": model, "stream": False, "format": "json", "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.25}}).encode()
     req = urllib.request.Request(cm.OLLAMA_CHAT, data=payload, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=300) as response:
+    with urllib.request.urlopen(req, timeout=OLLAMA_TIMEOUT_SECONDS) as response:
         result = json.load(response)
     delta = json.loads(result["message"]["content"])
     required = ("title", "pose", "expression", "outfit", "camera", "lens", "lighting", "location", "action", "styling", "negative_constraints")
@@ -225,7 +230,7 @@ Stable DNA: {dna}
 User scene request: {request}"""
     payload = json.dumps({"model": model, "stream": False, "format": "json", "messages": [{"role": "user", "content": prompt}], "options": {"temperature": 0.25}}).encode()
     req = urllib.request.Request(cm.OLLAMA_CHAT, data=payload, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=300) as response:
+    with urllib.request.urlopen(req, timeout=OLLAMA_TIMEOUT_SECONDS) as response:
         result = json.load(response)
     delta = json.loads(result["message"]["content"])
     required = CRAFT_FIELDS + ("negative_constraints",)
