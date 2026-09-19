@@ -98,13 +98,44 @@ Decision: stay on meromero for now. `STUDIO_HERMES_BASE_URL` is commented out in
 `backend/.env`; uncommenting that one line re-enables the gateway, and discovery handles the
 key. Nothing else needs changing.
 
+## GPU residency, measured 2026-09-19
+
+The premise this started from was wrong twice, so the corrected version:
+
+- There is no image model resident alongside the language model. What shared the card were
+  **two 27B-class language models**: Hermes' llama.cpp worker and Ollama's, because the
+  Studio was bypassing Hermes' router and opening its own.
+- Both runtimes **already release their weights when idle**. An idle card reads
+  **205 MiB of 8188** with the Hermes router still running; its supervisor holds nothing and
+  its model workers had exited on their own.
+- So permanent residency was never the problem. The problem is the window after a compile:
+  the model that wrote the prompt is still warm when the render starts seconds later.
+
+That is what `identity_batch.py` has always guarded and the Studio path never did, and it is
+now fixed at `character_scene.submit`.
+
+### Turning Hermes' local runtime off — investigated, not done
+
+The switches exist and were found:
+
+| Switch | Where | Effect |
+|---|---|---|
+| `local_runtime.enabled` | `hermes/config.yaml:609` | stops the local llama.cpp runtime entirely |
+| default model / provider | `hermes model` (interactive only, no flags) | points Hermes somewhere other than llamacpp |
+| `--sleep-idle-seconds`, `--no-models-autoload` | llama-server flags | Hermes passes its own args explicitly and there is no env override, so these are out of reach without changing how Hermes launches the server |
+
+Not done, deliberately. `hermes status` shows every cloud API key unset; the only
+authenticated providers are copilot (a gh token) and openai-codex. Turning the local runtime
+off would send this project's character and production work to GitHub or OpenAI, which is
+not a trade for a few gigabytes, and the abliterated local model was clearly chosen against
+exactly that. The operator chose option A: leave Hermes alone and free the card at the
+moment it matters.
+
 ## Next
 
 1. B2 — the interpretation preview UI: a field table with per-field locks that sends the
-   locked `scene_field` keys back as `scene_spec` on submit.
+   locked `scene_field` keys back as `scene_spec` on submit. The backend for it is done.
 2. When an A3B-class model is serving on the router, re-enable the gateway and re-measure.
-   Only then does unifying on one resident model actually save anything.
-3. Still open from before this task: `character_scene.py` never unloads the local model
-   before submitting to WanGP. `identity_batch.py` does, and its own comment calls that the
-   difference between a slow render and a failed one. Which model needs unloading depends on
-   which router is live, so this belongs with the switch.
+   `Qwen3.6-35B-A3B` is the nearest released candidate; whether an abliterated GGUF exists
+   is still unchecked.
+3. Nothing else is outstanding from this task. The unload gap is closed.
