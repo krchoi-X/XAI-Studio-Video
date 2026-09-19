@@ -1,7 +1,7 @@
 # Scoped Task — Keep the operator's wording and still get the craft
 
 Active editor: Claude Code (assigned by the user, 2026-09-19: "C랑 B랑 해줘")
-Status: IN PROGRESS
+Status: COMPLETE
 Repos: `XAI-studio` (scene compiler) and `personal-prompt-studio` (Studio API and UI)
 
 ## Why
@@ -131,11 +131,28 @@ not a trade for a few gigabytes, and the abliterated local model was clearly cho
 exactly that. The operator chose option A: leave Hermes alone and free the card at the
 moment it matters.
 
+## B2 delivered
+
+The preview shows what a request compiled into before anything renders, each field labelled
+in Korean with a lock. A locked field goes back as a Scene Spec entry, which the compiler
+restores after the model answers, so it is the value that gets used rather than a request.
+Editing a field locks it: changing a value you did not mean to keep makes no sense.
+
+Verified end to end against the running studio. `craft_expansion` returned five fields;
+locking `조명` and rewriting it sent `scene_spec {"lighting": "정오의 직사광, 그림자 강하게"}`,
+and the next draft returned that value untouched while the model rewrote everything else
+around it — styling became high-contrast grading and the negatives became "avoid soft-box
+lighting, avoid diffused shadows". That is the behaviour the task set out to get: the
+operator's wording kept, the craft still filled in.
+
 ## Next
 
-1. B2 — the interpretation preview UI: a field table with per-field locks that sends the
-   locked `scene_field` keys back as `scene_spec` on submit. The backend for it is done.
-2. When an A3B-class model is serving on the router, re-enable the gateway and re-measure.
-   `Qwen3.6-35B-A3B` is the nearest released candidate; whether an abliterated GGUF exists
-   is still unchecked.
-3. Nothing else is outstanding from this task. The unload gap is closed.
+Nothing outstanding in this task. Two things it touched are parked elsewhere:
+
+1. When an A3B-class model serves on the Hermes router, uncomment `STUDIO_HERMES_BASE_URL`
+   in `backend/.env` and re-measure. `Qwen3.6-35B-A3B` is the nearest released candidate;
+   whether an abliterated GGUF exists is unchecked.
+2. `build_scene_spec()` still populates only `coverage`, `wardrobe` and `hair_state` from a
+   request, plus a six-phrase hair lookup. The preview now covers that gap by hand, which is
+   the right place for it, but a request that names a wardrobe in prose still does not pin it
+   until somebody locks the field.
