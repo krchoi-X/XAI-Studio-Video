@@ -10,6 +10,8 @@ import os
 import re
 import sys
 import tempfile
+import subprocess
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -193,16 +195,64 @@ HERMES_API_KEY_ENV = "XAI_HERMES_API_KEY"
 HERMES_MODEL_ENV = "XAI_HERMES_MODEL"
 
 
-def hermes_chat_config() -> tuple[str, str, str | None] | None:
+_DISCOVERED_KEY: dict[str, str] = {}
+
+
+def discover_gateway_key(base_url: str) -> str | None:
+    """Read the gateway's key off the running server's own command line.
+
+    Hermes starts its llama.cpp router with `--api-key` and stores that key nowhere: not
+    in config.yaml, not in auth.json, not in state.db. It is new on every launch. Copying
+    it into a file by hand would therefore be a chore that silently expires, so the key is
+    found the same way anyone would find it, by asking the process that is serving the
+    port. Best effort: on any failure the caller simply has no gateway.
+    """
+    port = base_url.rsplit(":", 1)[-1].split("/")[0]
+    if not port.isdigit():
+        return None
+    query = (
+        "Get-CimInstance Win32_Process -Filter \"Name='llama-server.exe'\" | "
+        "Select-Object -ExpandProperty CommandLine"
+    )
+    try:
+        completed = subprocess.run(
+            ["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", query],
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+            timeout=20, check=False,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    for line in (completed.stdout or "").splitlines():
+        if f"--port {port}" not in line or "--api-key" not in line:
+            continue
+        parts = line.split()
+        index = parts.index("--api-key")
+        if index + 1 < len(parts):
+            return parts[index + 1]
+    return None
+
+
+def hermes_chat_config(*, rediscover: bool = False) -> tuple[str, str, str | None] | None:
     """The Hermes gateway to use, or None to stay on Ollama.
 
-    Both the address and a key are required. A half-configured gateway silently falling
-    back would be worse than not being configured at all: the model that answered would
-    depend on which variable somebody remembered to set.
+    An address is required; the key is optional here because it can be discovered. What is
+    never done is guessing the address: without one there is no gateway, and a call that
+    quietly went somewhere else would make the answering model depend on which variable
+    somebody remembered to set.
     """
     base_url = (os.environ.get(HERMES_BASE_URL_ENV) or "").strip().rstrip("/")
+    if not base_url:
+        return None
     api_key = (os.environ.get(HERMES_API_KEY_ENV) or "").strip()
-    if not base_url or not api_key:
+    if rediscover or not api_key:
+        found = _DISCOVERED_KEY.get(base_url) if not rediscover else None
+        if found is None:
+            found = discover_gateway_key(base_url)
+            if found:
+                _DISCOVERED_KEY[base_url] = found
+        api_key = found or api_key
+    if not api_key:
         return None
     return base_url, api_key, (os.environ.get(HERMES_MODEL_ENV) or "").strip() or None
 
@@ -210,6 +260,25 @@ def hermes_chat_config() -> tuple[str, str, str | None] | None:
 def active_chat_route() -> str:
     """Which router a `chat_json` call would reach right now. For traces and diagnostics."""
     return "hermes" if hermes_chat_config() else "ollama"
+
+
+def _gateway_chat(config: tuple[str, str, str | None], prompt: str, model: str,
+                  temperature: float, timeout: float) -> Any:
+    base_url, api_key, override = config
+    payload = json.dumps({
+        "model": override or model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": temperature,
+        "response_format": {"type": "json_object"},
+        "stream": False,
+    }).encode("utf-8")
+    request = urllib.request.Request(
+        base_url + "/chat/completions", data=payload,
+        headers={"Content-Type": "application/json", "Authorization": "Bearer " + api_key},
+    )
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        result = json.load(response)
+    return json.loads(result["choices"][0]["message"]["content"])
 
 
 def chat_json(prompt: str, model: str, *, temperature: float = 0.25, timeout: float = 600.0) -> Any:
@@ -221,21 +290,16 @@ def chat_json(prompt: str, model: str, *, temperature: float = 0.25, timeout: fl
     """
     hermes = hermes_chat_config()
     if hermes is not None:
-        base_url, api_key, override = hermes
-        payload = json.dumps({
-            "model": override or model,
-            "messages": [{"role": "user", "content": prompt}],
-            "temperature": temperature,
-            "response_format": {"type": "json_object"},
-            "stream": False,
-        }).encode("utf-8")
-        request = urllib.request.Request(
-            base_url + "/chat/completions", data=payload,
-            headers={"Content-Type": "application/json", "Authorization": "Bearer " + api_key},
-        )
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            result = json.load(response)
-        return json.loads(result["choices"][0]["message"]["content"])
+        try:
+            return _gateway_chat(hermes, prompt, model, temperature, timeout)
+        except urllib.error.HTTPError as error:
+            if error.code != 401:
+                raise
+            # The router was restarted and issued itself a new key. Find it and try once more.
+            refreshed = hermes_chat_config(rediscover=True)
+            if refreshed is None or refreshed[1] == hermes[1]:
+                raise
+            return _gateway_chat(refreshed, prompt, model, temperature, timeout)
     payload = json.dumps({
         "model": model, "stream": False, "format": "json",
         "messages": [{"role": "user", "content": prompt}],

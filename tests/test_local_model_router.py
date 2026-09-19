@@ -31,11 +31,16 @@ class LocalModelRouterTests(unittest.TestCase):
     def setUp(self):
         self.sent = {}
         self._urlopen = cm.urllib.request.urlopen
+        self._discover = cm.discover_gateway_key
+        cm.discover_gateway_key = lambda base_url: None
+        cm._DISCOVERED_KEY.clear()
         for name in (cm.HERMES_BASE_URL_ENV, cm.HERMES_API_KEY_ENV, cm.HERMES_MODEL_ENV):
             cm.os.environ.pop(name, None)
 
     def tearDown(self):
         cm.urllib.request.urlopen = self._urlopen
+        cm.discover_gateway_key = self._discover
+        cm._DISCOVERED_KEY.clear()
         for name in (cm.HERMES_BASE_URL_ENV, cm.HERMES_API_KEY_ENV, cm.HERMES_MODEL_ENV):
             cm.os.environ.pop(name, None)
 
@@ -87,10 +92,49 @@ class LocalModelRouterTests(unittest.TestCase):
         self.assertEqual(self.sent["body"]["model"], "Huihui-Qwen3.8-27B-abliterated-UD-DW-Q4_K_M")
 
     # ------------------------------------------------------------ half-config
-    def test_an_address_without_a_key_is_not_a_gateway(self):
+    def test_an_address_alone_is_enough_because_the_key_can_be_found(self):
         cm.os.environ[cm.HERMES_BASE_URL_ENV] = "http://127.0.0.1:18434/v1"
+        cm._DISCOVERED_KEY.clear()
+        cm.discover_gateway_key = lambda base_url: "found-key"
+        self.assertEqual(cm.hermes_chat_config()[1], "found-key")
+
+    def test_an_address_with_nothing_serving_it_is_not_a_gateway(self):
+        cm.os.environ[cm.HERMES_BASE_URL_ENV] = "http://127.0.0.1:18434/v1"
+        cm._DISCOVERED_KEY.clear()
+        cm.discover_gateway_key = lambda base_url: None
         self.assertIsNone(cm.hermes_chat_config())
         self.assertEqual(cm.active_chat_route(), "ollama")
+
+    def test_a_restarted_router_is_followed_rather_than_failing_the_call(self):
+        """Hermes issues a new key on every launch and stores it nowhere."""
+        cm.os.environ[cm.HERMES_BASE_URL_ENV] = "http://127.0.0.1:18434/v1"
+        cm.os.environ[cm.HERMES_API_KEY_ENV] = "stale-key"
+        cm._DISCOVERED_KEY.clear()
+        cm.discover_gateway_key = lambda base_url: "fresh-key"
+        seen = []
+
+        def fake(request, timeout=0):
+            seen.append(request.headers["Authorization"])
+            if seen[-1].endswith("stale-key"):
+                raise cm.urllib.error.HTTPError(request.full_url, 401, "Invalid API Key", {}, None)
+            return _Response({"choices": [{"message": {"content": json.dumps({"ok": True})}}]})
+
+        cm.urllib.request.urlopen = fake
+        self.assertEqual(cm.chat_json("compile", "m"), {"ok": True})
+        self.assertEqual(seen, ["Bearer stale-key", "Bearer fresh-key"])
+
+    def test_a_key_that_is_simply_wrong_is_not_retried_forever(self):
+        cm.os.environ[cm.HERMES_BASE_URL_ENV] = "http://127.0.0.1:18434/v1"
+        cm.os.environ[cm.HERMES_API_KEY_ENV] = "stale-key"
+        cm._DISCOVERED_KEY.clear()
+        cm.discover_gateway_key = lambda base_url: "stale-key"
+
+        def fake(request, timeout=0):
+            raise cm.urllib.error.HTTPError(request.full_url, 401, "Invalid API Key", {}, None)
+
+        cm.urllib.request.urlopen = fake
+        with self.assertRaises(cm.urllib.error.HTTPError):
+            cm.chat_json("compile", "m")
 
     def test_a_key_without_an_address_is_not_a_gateway(self):
         cm.os.environ[cm.HERMES_API_KEY_ENV] = "test-key"
