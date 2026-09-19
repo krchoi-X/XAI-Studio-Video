@@ -365,10 +365,27 @@ def chat_json(prompt: str, model: str, *, temperature: float = 0.25, timeout: fl
 ID_RE = re.compile(r"^ch-[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 FACE_FIELDS = ("shape", "eyes", "eyebrows", "nose", "lips", "jaw")
+# Two body shapes are in use. The anatomical one names each region separately, and its
+# wording is mostly pushback against an image model's defaults - "bust: not a defining
+# identity trait", "waist: without exaggerated glamour shaping" - so each slot is a place to
+# say no to a specific drift. The compact one describes the build as a whole. Records written
+# either way are accepted; nothing here rewrites one into the other, because collapsing nine
+# refusals into one sentence is a judgement about how a character should look, not a format
+# conversion.
 BODY_FIELDS = (
     "height_impression", "limb_proportions", "shoulders", "torso", "bust",
     "waist", "pelvis_hips", "lower_body", "body_hair",
 )
+BODY_FIELDS_COMPACT = ("overall", "proportions", "shoulders")
+
+
+def body_shape(body: dict[str, Any]) -> str:
+    """Which body schema a record is written in: `anatomical`, `compact`, or `unknown`."""
+    if all(str(body.get(key, "")).strip() for key in BODY_FIELDS):
+        return "anatomical"
+    if all(str(body.get(key, "")).strip() for key in BODY_FIELDS_COMPACT):
+        return "compact"
+    return "unknown"
 
 
 class CharacterError(ValueError):
@@ -403,16 +420,39 @@ def validate(record: dict[str, Any]) -> list[str]:
     if not isinstance(record["version"], int) or record["version"] < 1:
         errors.append("version must be a positive integer")
     dna = record.get("stable_dna", {})
-    for key in ("adult_age_range", "visual_background", "face", "body", "hair", "skin", "distinctive_marks"):
+    for key in ("adult_age_range", "visual_background", "face", "body", "hair", "skin"):
         if key not in dna:
             errors.append(f"stable_dna missing: {key}")
     for key in FACE_FIELDS:
         if not str(dna.get("face", {}).get(key, "")).strip():
             errors.append(f"stable_dna.face missing: {key}")
-    for key in BODY_FIELDS:
-        if not str(dna.get("body", {}).get(key, "")).strip():
-            errors.append(f"stable_dna.body missing: {key}")
+    shape = body_shape(dna.get("body", {}) or {})
+    if shape == "unknown":
+        missing_anatomical = [key for key in BODY_FIELDS if not str(dna.get("body", {}).get(key, "")).strip()]
+        missing_compact = [key for key in BODY_FIELDS_COMPACT if not str(dna.get("body", {}).get(key, "")).strip()]
+        errors.append(
+            "stable_dna.body matches no known shape; anatomical is missing "
+            + ", ".join(missing_anatomical) + "; compact is missing " + ", ".join(missing_compact)
+        )
+    # `distinctive_marks` is what pins identity across generations, and it reached no prompt
+    # at all until 2026-09-11. It stays required where it has always been required, and is a
+    # warning rather than an error on a compact record, which has no field for it yet.
+    if shape == "anatomical" and "distinctive_marks" not in dna:
+        errors.append("stable_dna missing: distinctive_marks")
     return errors
+
+
+def warnings_for(record: dict[str, Any]) -> list[str]:
+    """Things worth saying about a valid record, which do not make it invalid."""
+    dna = record.get("stable_dna", {}) or {}
+    notes: list[str] = []
+    if not dna.get("distinctive_marks"):
+        notes.append("no distinctive_marks: nothing pins this identity across generations")
+    if not dna.get("recognition_anchors"):
+        notes.append("no recognition_anchors")
+    if body_shape(dna.get("body", {}) or {}) == "compact":
+        notes.append("compact body shape: the per-region wording that resists drift is absent")
+    return notes
 
 
 def load(path: Path) -> dict[str, Any]:
@@ -425,6 +465,21 @@ def atomic_write(path: Path, text: str) -> None:
         handle.write(text)
         temp = Path(handle.name)
     os.replace(temp, path)
+
+
+BODY_LABELS = {
+    "height_impression": "height impression", "limb_proportions": "limb proportions",
+    "pelvis_hips": "pelvis / hips", "lower_body": "lower body", "body_hair": "body hair",
+}
+
+
+def body_lines(body: dict[str, Any]) -> str:
+    """One markdown line per body field, in the order the record stores them."""
+    order = BODY_FIELDS if body_shape(body) == "anatomical" else tuple(body)
+    return "\n".join(
+        f"- {BODY_LABELS.get(key, key.replace('_', ' '))}: {body[key]}"
+        for key in order if str(body.get(key, "")).strip()
+    )
 
 
 def render_core(record: dict[str, Any]) -> str:
@@ -452,15 +507,7 @@ def render_core(record: dict[str, Any]) -> str:
 - jaw: {face['jaw']}
 - hair: {dna['hair']}
 - skin: {dna['skin']}
-- height impression: {body['height_impression']}
-- limb proportions: {body['limb_proportions']}
-- shoulders: {body['shoulders']}
-- torso: {body['torso']}
-- bust: {body['bust']}
-- waist: {body['waist']}
-- pelvis / hips: {body['pelvis_hips']}
-- lower body: {body['lower_body']}
-- body hair: {body['body_hair']}
+{body_lines(body)}
 
 ## Recognition anchors
 
@@ -476,6 +523,28 @@ def render_core(record: dict[str, Any]) -> str:
 
 Scene-specific pose, expression, outfit, camera, lens, lighting, location, and action belong in a Scene Delta. They must not be added to Stable DNA.
 """
+
+
+def body_sentence(body: dict[str, Any]) -> str:
+    """The Body clause of a prompt, for either schema.
+
+    An anatomical record renders exactly as it always has, phrasing included, so the twelve
+    characters written that way keep sending the identical prompt and their renders do not
+    quietly shift. Anything else is rendered from whatever fields it carries, which also
+    means a field added later reaches the prompt instead of validating and then vanishing -
+    the failure that cost ch-lia its nose_profile and chin_profile.
+    """
+    if body_shape(body) == "anatomical":
+        return (
+            f"{body['height_impression']}; {body['limb_proportions']}; shoulders {body['shoulders']}; "
+            f"torso {body['torso']}; bust {body['bust']}; waist {body['waist']}; "
+            f"pelvis and hips {body['pelvis_hips']}; lower body {body['lower_body']}; "
+            f"body hair {body['body_hair']}"
+        )
+    return "; ".join(
+        f"{BODY_LABELS.get(key, key.replace('_', ' '))} {value}"
+        for key, value in body.items() if str(value).strip()
+    )
 
 
 def render_base_prompt(record: dict[str, Any], exclude_fields: set[str] | None = None) -> str:
@@ -496,9 +565,7 @@ def render_base_prompt(record: dict[str, Any], exclude_fields: set[str] | None =
         # characters carried one and none of them appeared in a single generated line.
         + (f"Distinctive: {'; '.join(dna['distinctive_marks'])}. "
            if dna.get("distinctive_marks") and "distinctive_marks" not in exclude_fields else "") +
-        f"Body: {b['height_impression']}; {b['limb_proportions']}; shoulders {b['shoulders']}; "
-        f"torso {b['torso']}; bust {b['bust']}; waist {b['waist']}; pelvis and hips {b['pelvis_hips']}; "
-        f"lower body {b['lower_body']}; body hair {b['body_hair']}. "
+        f"Body: {body_sentence(b)}. "
         "Preserve one coherent adult identity and anatomically consistent body. Keep pose, expression, outfit, camera, lens, lighting, location, and action as scene variables."
     )
 

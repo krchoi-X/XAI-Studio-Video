@@ -53,9 +53,12 @@ class CharacterManagerTests(unittest.TestCase):
         self.assertNotEqual(before, cm.stable_hash(item))
 
     def test_missing_body_field_is_rejected(self):
+        """A body that is now neither shape is refused, and says which field it lost."""
         item = record()
         del item["stable_dna"]["body"]["pelvis_hips"]
-        self.assertIn("stable_dna.body missing: pelvis_hips", cm.validate(item))
+        errors = cm.validate(item)
+        self.assertTrue(errors)
+        self.assertIn("pelvis_hips", " ".join(errors))
 
     def test_promotion_rejects_source_outside_drafts(self):
         with tempfile.TemporaryDirectory() as directory:
