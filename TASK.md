@@ -1,5 +1,7 @@
 # Current task — Automatic character reference resolution for WanGP video
 
+2026-09-26 reference review, Claude Code: cross-review of Grok's ref-video cards and Muse's reference-state analyses, with evidence kept separate from opinion. See [review task](docs/reference-review/2026-09-26-grok-muse/TASK.md). Docs and Grok card cleanup only; no pipeline change.
+
 2026-09-19 Mira and the DNA schema, Claude Code: the remote added `ch-mira` in a different Stable DNA body shape. Merged into `XAI-Studio-Private` and widened the reader to accept both shapes without converting any record or changing any hash. See [DNA schema compatibility](docs/dna-schema-compatibility.md); the full schema decision is still open and is listed there.
 
 2026-09-19 active scope: [prompt strategy task](docs/prompt-strategy-TASK.md), Claude Code. Adds a craft-only strategy and a pre-render interpretation preview; does not change existing strategies.
