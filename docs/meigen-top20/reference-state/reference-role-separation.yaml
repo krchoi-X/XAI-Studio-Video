@@ -1,0 +1,35 @@
+# Reference State: Reference Role Separation
+# Source: MeiGen Top20 synthesis (2026-09-26) — pattern rank #5, reinforced 5/20 (+contrast 1)
+# Status: existing pattern, reinforced — NOT a new rule
+
+pattern:
+  name: Reference Role Separation
+  frequency: "5/20"
+  evidence_grade: reinforced
+  positive_cases: [C03, C10, C14, C17, C20]
+  contrast_case: C19  # role bleed — 패턴의 경계를 보여주는 음성 증거
+
+definition: "레퍼런스 이미지의 역할을 identity-only 등으로 분리 선언"
+
+forms:
+  - case: C03
+    form: "@image1 = identity-only, 단일 authority"
+  - case: C14
+    form: "인덱스 그룹별 역할 분리 — 캐릭터/환경/보이스 3종 (@image1-5, @audio1-2). 가장 명시적"
+  - case: C17
+    form: "'use the reference image as the exact protagonist' — identity-only"
+  - case: C20
+    form: "컨테이너 역할 유지 — 스토리보드 패널이 콘텐츠로 붕괴하지 않음 (C19와 대비되는 양성 증거)"
+
+contrast:
+  case: C19
+  phenomenon: "role bleed — 캐릭터 디자인 시트(@image1)가 가이드를 넘어 풀프레임 컷어웨이 콘텐츠로 삽입"
+  lesson: "레퍼런스의 역할을 선언하지 않으면 모델이 콘텐츠로 승격시킬 수 있음 (inference)"
+
+template: |
+  @image1 = <identity-only | character guide | environment | ...>
+  (역할을 명시하고, 콘텐츠 승격을 금지)
+
+caveats:
+  - "C19의 @image2 할당은 PART 1 단일 이미지 기술과 모호했음 — 인덱스-역할 매핑은 1:1로 명시할 것"
+  - "인기를 품질의 증거로 간주하지 않음"
