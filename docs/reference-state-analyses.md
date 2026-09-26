@@ -4,28 +4,23 @@
 > 작성: 2026-09-24, 최종 정리: 2026-09-25. 분석: Somni (Muse).
 > 원문 규칙: **Visible evidence first. Unsupported inference stays out of the production spec.**
 
-> ⚠️ **정정 요약 (Claude, 2026-09-26)** — Grok 레퍼런스 카드와 교차 검증하면서 파일 실측으로 확인한 사항이다. Somni의 원문은 수정하지 않았고, 해당 항목에 `⚠️ 정정` 주석만 붙였다.
-> 근거와 재현 방법: `docs/reference-review/2026-09-26-grok-muse/evidence.md` (E1~E6).
-> - #26: 파일은 1920×1080 가로 (9:16이 아님) — E5
-> - #34: 게시물 캐러셀의 영상2(10.11s)는 분석되지 않음 — E1
-> - #37: 엠블럼은 원형이 아니라 "S"자 / 농구 컷은 3.71–4.54s에 존재 / 뒤쪽 두 컷은 ±0.06s로 프롬프트 시각을 지킴 — E2~E4
-> - #40: 거울벽은 프레임에서 확인되지 않음 (2초 간격 샘플 기준) — E6
-
 ## 증거 기반 표기
 
-총 40건. 증거의 출처는 항목별로 밝힌다: 프롬프트에서 읽은 것은
+총 45건. 증거의 출처는 항목별로 밝힌다: 프롬프트에서 읽은 것은
 `prompt-derived`, 영상 설명·작성자 댓글에서 읽은 것은 `author-described`,
 실제 영상 프레임에서 본 것은 `frame-derived`, 내가 추론한 것은 `inference`.
 추론은 프로덕션 스펙에 넣지 않는다 — 각 항목의 "관찰 vs 추론" 섹션에만 둔다.
 
 - 프레임 분석 항목: 18·19·21·22·23·24·25·26·30·31·32·33·34·35·36(임베드
-  스크린샷)·37·38(임베드 스크린샷)·39(직접 다운로드)·40(직접 다운로드).
+  스크린샷)·37·38(임베드 스크린샷)·39(직접 다운로드)·40(직접 다운로드)·
+  41(임베드 스크린샷)·42(직접 다운로드)·43(직접 다운로드)·44(직접
+  다운로드)·45(직접 다운로드).
   24번은 실패 사례.
 - 기사 기반: 20·29. 프롬프트 표본(영상 미확인): 27·28.
 - 39번(@AIwithzayn)은 프롬프트가 X 로그인 월 뒤에 있어 frame-derived로만
   기록. 프롬프트 확보 시 보강 예정.
 - 양식 변천: 1–9번은 구 양식(Subject state / Composition / Camera evidence…),
-  10–40번은 신 양식(기본 정보 / 관찰 / 관찰 vs 추론 / Control Levels /
+  10–45번은 신 양식(기본 정보 / 관찰 / 관찰 vs 추론 / Control Levels /
   기여 패턴). 원문은 그대로 두고, 양식 차이만 여기서 명시한다.
 
 ## 패턴 → 프레임워크 매핑
@@ -2043,7 +2038,6 @@ reference_state:
 **기본 정보**
 - 출처: X @pyona_ai (인증), 게시 2026-09-23 01:55 (약 2일 전)
 - 생성: Seedance 2.5, 30초, 9:16 세로, 24fps, X "Made with AI" 라벨
-  > ⚠️ 정정 (Claude, 2026-09-26): 같은 게시물의 파일(Grok `videos/PAT-20260925-cafeteria-soda-1v2-ladder.mp4`)은 **1920×1080 16:9**, 30.93s다. 9:16은 프롬프트 값으로 보인다. evidence E5.
 - 프롬프트 전문 공개 (**중국어**), 조회 3,079
 - 증거 기반: prompt-derived + **frame-derived** (9프레임 추출 분석)
 - 댓글: "Prompt in chinese would be more accurate for seedance" —
@@ -2792,7 +2786,6 @@ reference_state:
 - 출처: Threads @jeong_do_ryeong, 게시 2026-09-25 01:39 KST
 - 포스트 본문: "드럼을 치라고 시켜봤다"
 - 댓글에 프롬프트 전문 공개 (영어, 3-Phase 구조)
-  > ⚠️ 정정 (Claude, 2026-09-26): 게시물 확인 결과 캐러셀은 10.215s + 10.111s (둘 다 1280×720)이고, 이 항목은 영상1만 분석했다. 참고로 Grok 카드 `practice-drumcam-lt`가 분석한 3.34s 9:16 직캠은 "관련 스레드"에 있는 다른 사용자(@drum_minjeong)의 영상이다. 이 항목의 분석 대상이 맞다. evidence E1.
 - 캐러셀 2개 영상 (각 10초, 24fps, 1280×720). 영상1 직접 다운로드 성공 —
   이번엔 CDN 서명이 살아 있었음
 - 증거 기반: prompt-derived (전문) + author-described (캡션) +
@@ -3068,12 +3061,10 @@ reference_state:
 - 3s: 스프린터가 스타팅 블록에서 폭발 (프롬프트상 2.3–4.0s는 농구
   구간인데 육상 렌더) — 전체 타임라인이 뒤로 밀림. 농구 버즈아이
   세그먼트는 6프레임 중 미포착 (압축·생략 추정, 샘플링 한계로 미확인)
-  > ⚠️ 정정 (Claude, 2026-09-26): 농구 버즈아이 컷은 **3.71–4.54s에 존재**한다 (scene detect). 실측 컷 시각: 2.667 / 3.708 / 4.542 / 5.542 / 7.958s (프롬프트 0.4 / 2.3 / 4.0 / 5.6 / 8.0). evidence E3·E4.
 - 5s: 축구 킥 + 블루 라이트 트레일 — 종목 구간 성립
 - 6.8s: 선수 얼굴 클로즈업, 땀방울·림라이트, **렌즈 정면 응시** —
   "eyes lock forward"가 카메라 직시로 렌더. 방송 오프닝 장르 관습
   (#21 계열)
-  > ⚠️ 정정 (Claude, 2026-09-26): 아래 9s 항목의 "원형 엠블럼"은 파일상 **금속성 "S"자 엠블럼**이다 (원형은 프롬프트 지정값). evidence E2.
 - 9s: 라이트 트레일이 수렴한 원형 엠블럼, 시안→화이트 그라데이션 —
   기하학적 동일성 유지, 파이널 락 성립
 - 라이트 트레일은 전 종목 구간에 등장 후 엠블럼으로 수렴 — "로고
@@ -3089,7 +3080,6 @@ reference_state:
   후방 드리프트, 농구 구간 미포착
 - 미확인: 농구 세그먼트의 실제 렌더 여부 (프레임 샘플링 사이 구간),
   오디오 (스틸 불가)
-  > ⚠️ 정정 (Claude, 2026-09-26): 아래 추론은 실측과 부분적으로 맞지 않는다. 스팅어는 +2.27s 늘어났고 중간 세 종목은 약 1s씩 압축됐다. 하지만 **얼굴·로고 컷은 −0.06 / −0.04s로 프롬프트 시각을 지켰다**. "순서만 유지"보다는 "앞은 늘어나고 끝은 지켜짐(1건)"이 실측에 가깝다. evidence E4.
 - 추론: 모델이 6비트를 절대 시간대로 지키지 않고 순서를 유지한 채
   압축·이동 — #31의 "비트표 절대 시간 불신"과 동일 현상
 
@@ -3369,7 +3359,6 @@ reference_state:
   플랭크 중 카메라 응시(3.7s), 크런치(6.2s), 손 매크로(8.7s),
   누워서 웃음(11.2s), 얼굴 위 셀카 마무리(13.7s)
 - Setting 요소(물병·라커·거울벽·오버헤드 조명)가 전 프레임에서 유지
-  > ⚠️ 정정 (Claude, 2026-09-26): 라커 열·벤치·물병·천장 조명은 확인된다. **거울벽은 2초 간격 콘택트 시트에서 확인되지 않는다** (거울벽은 프롬프트 지정값). evidence E6.
 - 손 매크로 프레임: 손가락 5개 정상 렌더, 손등의 땀방울까지.
   AI 손 실패를 피한 증거. "shallow DOF" 지정도 성립
 
@@ -3408,6 +3397,438 @@ reference_state:
   잘림을 명시), 4 (대사+전달 지정 #5 동계열 — 말줄임표 호흡 표기),
   5 (컷별 오디오 온오프 #38 동계열), 6 (CHASE 크로스 크리에이터 현상 —
   #22와 연결)
+
+---
+
+## 41. Threads @jeong_do_ryeong — 분노 연기 프롬프트 (감정 문법, 10초)
+
+**기본 정보**
+- 출처: Threads @jeong_do_ryeong, 게시 2026-09-26 13:16 KST (공유 링크
+  BAZ0OMGoku → /post/DdvJzIpgLNv)
+- 포스트 본문: "연기 하는 건 또 물리적인 표현과 달라 많은 연구가 필요할
+  것 같습니다 / 연구 중인 프롬프트는 댓글에 있습니다" (author-described)
+- 영상: 10.215초 (라이트박스 슬라이더 aria-valuemax 실측), 단일 샷(컷
+  없음), 오디오 트랙 존재(라이트박스 언뮤트 확인, 내용 미확인). 영상 URL은
+  DOM에서 추출 불가
+- 반응: 458 views, 11 likes, 3 replies, 1 repost, 1 share
+- 증거 기반: prompt-derived (작성자 셀프 댓글 전문) + frame-derived
+  (임베드 스크린샷 4장: 2.59·5.00·7.39·10.215s)
+- 비고: #8·#33–37 동일 작성자. 물리 제어 시리즈에서 감정 연기로 확장.
+  "Dola AI" 워터마크 우하단 번인
+
+**관찰 — 감정 문법 헤더** (prompt-derived)
+- Emotion: anger / Intention: explode / Performance State: manic /
+  Trajectory: Explosive — 4필드 헤더. #33의 Universal Action Grammar에
+  대응하는 감정 문법
+- Trajectory 서술: rising → escalating → explosion → fading
+
+**관찰 — 백분율 페이즈** (prompt-derived + frame-derived)
+- Phase 1 [rising] range 0-25: BUILD_UP / agitated /
+  control_starts_slipping / speech_rate +1 → 2.59s 프레임: 입 살짝 벌림,
+  렌즈 고정, 끓어오르는 긴장 ✓
+- Phase 2 [escalating] range 25-55: ESCALATION / manic / control_lost /
+  pitch_contour +1, rate_change +1 → 5.00s 프레임: 타이트 클로즈업 고함,
+  광기 어린 분노 ✓
+- Phase 3 [explosion] range 55-70: BURST / manic /
+  emotion_overwhelms_control / trigger: key_phrase / loudness +2,
+  vocal_intensity +2 / events: voice_break
+- Phase 4 [fading] range 70-100: DECAY / exhausted /
+  burst_exhausts_energy / loudness -1 → 7.39s·10.215s 프레임: 고개 숙임→
+  무너짐, 얼굴 가림 ✓
+- 페이즈를 절대 초가 아닌 백분율로 지정 — #31(비트표 절대 시간 불신)의
+  해법. 4개 페이즈 경계가 프레임 4장과 맞아떨어짐
+
+**관찰 — Speech Axes** (prompt-derived)
+- 목소리를 5축으로 파라메트릭 제어: speech_rate, pitch_contour,
+  rate_change, loudness, vocal_intensity — 축마다 페이즈별 수정자
+- axisBias: loudness +2, vocal_intensity +2, rate_change +2 — 축 전체에
+  걸리는 마스터 게인
+
+**관찰 — 키 프레이즈 트리거 + 운율 표기** (prompt-derived)
+- trigger: key_phrase — 폭발 페이즈의 트리거를 대사 문구에 바인딩
+- "왜 이러는지 말을 해보라고.. 왜~~~~ 왜~~~~" — 물결표(~~~~)로 발성
+  (울부짖음) 길이를 표기. 말줄임표 호흡 표기(#40 동계열)의 확장
+- WORD_VOLUME_SPIKE / WORD_STRESS: key_phrase에 볼륨 스파이크 + 강세 지정
+
+**관찰 — 발화 수행 구조** (prompt-derived)
+- Onset: delay=1 hesitation=0 breathBefore=false — 1단위 지연 시작,
+  망설임·선행 호흡 없음
+- Phrase roles: opening(rising) → middle(escalating) →
+  emphasis(explosion) → final(fading) — 대사 구조를 페이즈에 매핑
+- Ending: release=0 sustain=0 drop=1 rise=0 — 엔딩 에너지 벡터를 4축으로.
+  최종 프레임의 무너진 자세와 일치
+
+**관찰 — 모듈러 참조** (prompt-derived)
+- "Coupling: ON (existing speech_coupling text applies)" — 외부 공유
+  텍스트 블록을 참조하는 모듈러 프롬프트 구조. XAI-Studio-Video의 마스터
+  스펙 철학과 수렴
+
+**관찰 — 시선** (frame-derived)
+- rising~explosion: 렌즈 정면 응시 — 카메라는 상대역(2인칭 호소의 대상).
+  #40(렌즈=관객)·#12(응시 금지)·#39(렌즈 무관여)와 다른 네 번째 문법:
+  렌즈=씬 파트너
+- fading: 얼굴 가림, 시선 철수 — 감정의 호가 시선의 호: 고정→격렬→철수
+  (#41의 시선 호)
+
+**관찰 vs 추론**
+- 관찰: 백분율 페이즈 4개가 프레임 4장과 일치, 키 프레이즈·엔딩 벡터·축
+  제어 전부 프롬프트 원문, Dola AI 워터마크
+- 미확인: 오디오 내용(트랙 존재만 확인), 빨간 조명의 출처 — 페이즈 4
+  프레임에서 배경이 빨갛게 변하는데 프롬프트에 조명 언급 없음. 모델
+  해석이거나 다른 모듈일 수 있음
+- 추론: 없음
+
+**Production description → Control Levels**
+- Hard Lock: 백분율 페이즈 구간, 4필드 감정 헤더, 축 수정자 수치, 키
+  프레이즈 원문, 엔딩 벡터
+- Soft Guidance: 축 바이어스 값, Onset/Ending 파라미터, 모듈 참조
+  (Coupling)
+- Creative Freedom: 빨간 조명(출처 미확인 — 명시하거나 빼야 함), 표정의
+  미세 디테일
+
+**기여 패턴**: 1 (신규 — 백분율 페이즈: #31 문제의 해법), 2 (신규 —
+  Speech Axes 파라메트릭 음성 제어), 3 (신규 — 키 프레이즈 트리거 +
+  운율 표기), 4 (신규 — 엔딩 벡터 4축), 5 (신규 — 렌즈=씬 파트너 시선
+  문법), 6 (모듈러 참조 — XAI-Studio-Video 수렴), 7 (Dola AI 워터마크 —
+  후보 43에 #41 추가)
+
+---
+
+## 42. X @mehvishs25 — 오버헤드 원테이크 루틴 (Seedance 2.5 on Higgsfield, 15초)
+
+**기본 정보**
+- 출처: X @mehvishs25 (Meem), 게시 2026-09-26 02:38 UTC (11:38 KST)
+- 포스트 본문: "Seedance 2.5 on Higgsfield AI" + 프롬프트 전문
+  (author-described)
+- 영상: 15.125초, 1280x720, 24fps, 363프레임 (직접 다운로드)
+- 반응: 53 likes, 31 replies, 2 reposts, 1473 views
+- 증거 기반: prompt-derived (프롬프트 전문) + frame-derived (6프레임:
+  1·3·5·9·13·14.5s)
+- 비고: Higgsfield = #20 메이킹의 주인공 플랫폼. <image1> 캐릭터
+  레퍼런스 바인딩 (#38 동계열)
+
+**관찰 — 카메라: 절대 오버헤드 락** (prompt-derived + frame-derived)
+- "POV overhead follow in a strict bird's eye view, locked directly
+  above the top of her head at all times, perfectly centered over her
+  body from start to finish, floating smoothly with no shake, tilt,
+  angle drift, or side offset"
+- "passing through ceilings and door frames as one uninterrupted camera
+  event" — 카메라는 건축을 통과. 인물만 물리에 묶이고 카메라는 자유
+  (Phantom camera)
+- 24mm wide, digital clean look
+- 프레임 확인: 1·3·5·9s 전부 정수리 직상방, 인물 중앙 고정 ✓. 9s에서
+  욕실→주방으로 벽을 통과하는 중 ✓
+
+**관찰 — 카메라에 서사적 정체 부여** (prompt-derived)
+- MOOD: "Detached routine turns quietly uncanny, as if an unseen
+  presence is floating above her and waiting for her to notice."
+- 카메라는 단순 시점이 아니라 캐릭터 — 위에서 떠다니며 그녀가
+  알아차리길 기다리는 보이지 않는 존재. 마지막 비트(렌즈 응시)가 그
+  존재를 알아차리는 순간으로 수렴
+
+**관찰 — 비트마다 락 재확인** (prompt-derived)
+- SCENE의 각 비트가 카메라 관계로 시작: "Sits up under the lens" /
+  "Still centered under the lens" / "Under the same overhead lock" /
+  "The lens tracks directly above her" / "Still pinned overhead" /
+  "Stops exactly under the lens"
+- 락을 한 번 선언하고 끝이 아니라 비트마다 재확인하는 문법
+
+**관찰 — 손-소품 배정** (prompt-derived + frame-derived)
+- 오른손=담배 전편 고정: "keeps the cigarette in her right hand" 반복.
+  "Extends that arm away from the running water" — 물을 틀 때 담배 든
+  팔을 멀리 뻗는 소품 보호 동작
+- 왼손=작업: 수도꼭지·세수·유리잔. "Turns on the tap with her left
+  hand. Splashes water onto her face with her left hand."
+- 최종 인벤토리: "Holds the cigarette in her right hand and the glass in
+  her left hand" — 14.5s 프레임에서 확인 ✓ (화면 좌=그녀의 오른손 담배,
+  화면 우=왼손 유리잔)
+
+**관찰 — 소품 연속성 체인** (prompt-derived)
+- 담배+라이터 줍기 → 입에 물기 → 불 붙이기(3s 프레임에서 라이터 불꽃
+  확인 ✓) → 라이터는 매트리스에 떨굼 → 담배는 전편 휴대 → 주방에서
+  유리잔 추가. 라이터는 탈락, 담배는 생존 — 소품별 생애주기
+
+**관찰 — 파이널 비트 7연타** (prompt-derived + frame-derived)
+- "Stops exactly under the lens. Freezes. Looks right. Looks left.
+  Takes a drag from the cigarette. Snaps her head straight up into the
+  lens. Blows smoke toward the camera. Locks eye contact."
+- 13s: 고개 치켜들고 렌즈 응시 ✓ / 14.5s: 카메라를 향해 연기 뿜기, 눈
+  맞춤 고정 ✓
+- 전편 유일의 렌즈 응시를 클라이맥스로 배치 — 응시의 희소성이 공포 문법
+
+**관찰 — 시선** (frame-derived)
+- 1~13s: 렌즈를 단 한 번도 안 봄. 시선은 아래·작업 대상에만
+  (detached). 시선 회피가 "unseen presence"의 존재감을 키움
+- 13s→14.5s: 오른쪽→왼쪽 확인 후 렌즈로 스냅, 연기 뿜으며 눈 맞춤
+  고정. 다섯 번째 시선 문법: 렌즈=unseen presence, 응시=정체 드러남
+  (#41 렌즈=씬 파트너의 변주 — 여긴 적대가 아니라 목격)
+
+**관찰 — COLOR LOGIC 한 줄** (prompt-derived + frame-derived)
+- "COLOR LOGIC: Matrix Green Look" — 네임드 그레이드를 한 줄로 고정.
+  프레임의 그린 네온·블라인드 빛과 일치 ✓
+
+**관찰 — SFX 인벤토리** (prompt-derived)
+- "SFX: lighter flick, inhale, faint city hum, refrigerator buzz, soft
+  bare footsteps, water run." + 파티클("Sodium amber particles, toxic
+  green neon reflect off tile, smoke, bottles, and damp surface")
+
+**관찰 vs 추론**
+- 관찰: 15.1초 원테이크, 오버헤드 락 전편 유지, 손-소품 배정 일치,
+  파이널 7연타 프레임 일치, 그린 룩 일치
+- 미확인: 오디오 내용
+- 추론: 없음
+
+**Production description → Control Levels**
+- Hard Lock: 정수리 직상방 절대 고정·중앙 유지, 오른손 담배·왼손 작업,
+  파이널 7연타 순서, Matrix Green Look
+- Soft Guidance: 24mm wide·digital clean, 방 구조(매트리스→복도→욕실→
+  주방), SFX 목록
+- Creative Freedom: 담배 연기의 모양, 세수의 물튀김 정도, 표정의 미세 변화
+
+**기여 패턴**: 1 (신규 — Camera-as-presence: MOOD로 카메라에 서사 정체
+  부여), 2 (신규 — Phantom camera: 건축 통과), 3 (신규 — 비트마다 락
+  재확인), 4 (신규 — Handedness lock + 소품 보호 동작), 5 (신규 —
+  COLOR LOGIC 한 줄), 6 (신규 — 파이널 비트 7연타: 유일 응시를
+  클라이맥스로), 7 (<image1> 바인딩 #38 동계열)
+
+---
+
+## 43. X @aiwithaayat — 로드트립 우정 필름 (Seedance 2.0, 32초)
+
+**기본 정보**
+- 출처: X @aiwithaayat (Ayat), 게시 2026-09-26 04:21 UTC (13:21 KST)
+- 포스트 본문: "Some moments are never planned..." + "Created on seedance
+  2.0" + 프롬프트 전문 (author-described)
+- 영상: 32.2초, 848x550, 30fps, 966프레임 (직접 다운로드). "30-second"
+  주장과 대략 일치
+- 반응: 137 likes, 50 replies, 7 reposts, 1039 views
+- 증거 기반: prompt-derived (프롬프트 전문, 1385자·단일 문단) +
+  frame-derived (6프레임: 2·6·10·18·26·30s)
+- 비고: 사용자가 "프롬프트는 간단한데 시점 처리가 완벽해"라고 지정한
+  사례. Seedance 2.0 (2.5 아님)
+
+**관찰 — 단순 프롬프트** (prompt-derived)
+- 단일 문단, 샷 번호·타임스탬프·기술 스펙 없음. 카메라 큐가 서술 안에
+  내장: "playful low-angle shot from inside a shopping cart",
+  "intimate close-up moments", "dynamic cinematic shots", "smooth
+  tracking shots"
+- "keeping their faces, hairstyles and outfits consistent throughout
+  the video" — 일관성 지시를 한 줄로. 32초·6셋업에서 두 얼굴 유지됨 ✓
+
+**관찰 — Diegetic camera seat** (frame-derived)
+- 매장: 카메라가 카트 안에 있음 — 전경에 카트의 캔들(아웃포커스), 그
+  너머 두 친구 (6s). "from inside a shopping cart"를 말로만 하지 않고
+  전경 물건으로 증명
+- 차: 뒷좌석 시점의 투샷 — 운전자의 뒷모습 + 조수석이 운전자를 보는
+  구도, 윈드실드 너머 골든아워 (10s)
+- 전망대: 카메라가 풍경의 자리에 — 차는 작게, layered hills와 오렌지
+  하늘이 주인공 (18s)
+- 밤: 손/캔 매크로 (26s) → 스트링 라이트 보케 속 얼굴 클로즈업 (30s)
+- 카메라는 매 장소의 네이티브 자리를 차지 — 항상 참여자, 이방인 아님
+
+**관찰 — 시간대 아크** (prompt-derived + frame-derived)
+- 낮(밝은 매장) → 골든아워(드라이브) → 일몰(전망대) → 밤(스트링
+  라이트). 편집 로직을 컷이 아니라 빛의 진행이 담당
+- 프롬프트의 서술 순서가 그대로 시간대 순서
+
+**관찰 — 시선** (frame-derived)
+- 매장: 친구끼리 상호 응시 + 카메라를 향한 장난스러운 피스사인 (2s) —
+  카메라는 가벼운 확인 대상
+- 차: 조수석이 운전자를 봄, in-world 상호 시선 (10s)
+- 전망대: 풍경을 향한 시선 (18s)
+- 밤: 두 사람이 함께 폰을 봄 — 공동 시선, 이름 붙은 동일 목표점 (30s)
+- 여섯 번째 시선 문법: 카메라는 참여자-관찰자. 지속적인 렌즈 응시 없이도
+  친밀감이 유지됨 (#40의 전편 응시와 대조)
+
+**관찰 vs 추론**
+- 관찰: 6개 셋업 전부 프롬프트 서술과 일치, 두 얼굴 32초 일관, 카트 전경
+  POV·시간대 아크 프레임 확인
+- 미확인: 오디오, 14·22s 프레임 (드라이브 외부 샷으로 추정)
+- 추론: 없음
+
+**Production description → Control Levels**
+- Hard Lock: 두 인물의 얼굴·헤어·의상 일관, 시간대 순서
+  (낮→골든아워→일몰→밤), 카트 내부 시점
+- Soft Guidance: "cinematic lifestyle", "warm, natural and nostalgic",
+  필름 그레인·얕은 심도
+- Creative Freedom: 각 셋업의 구체 구도, 캔들의 배치, 표정 디테일
+
+**기여 패턴**: 1 (신규 — Diegetic camera seat: 매 장소의 네이티브 자리),
+  2 (신규 — Foreground POV proof: 전경 물건으로 시점 증명), 3 (신규 —
+  시간대 아크: 빛의 진행이 편집 로직), 4 (일관성 한 줄 지시의 검증 사례 —
+  32초·6셋업 두 얼굴 유지), 5 (Seedance 2.0 단순 프롬프트 성공 사례)
+
+---
+
+## 44. X @itxsarmadd — WATERBENDING AMBUSH (Seedance 2.5, 10초)
+
+**기본 정보**
+- 출처: X @itxsarmadd (Sarmad Tahir), 게시 2026-09-26 03:55 UTC
+  (12:55 KST)
+- 포스트 본문: "This AI video is absolutely amazing 🔥 Created with
+  Seedance 2.5" + 프롬프트 전문 (author-described)
+- 영상: 10.1초, 1280x720, 30fps, 303프레임 (직접 다운로드). "exactly 10
+  seconds" 주장과 대략 일치
+- 반응: 58 likes, 50 replies, 5 reposts, 788 views
+- 증거 기반: prompt-derived (프롬프트 전문, 3603자) + frame-derived
+  (4프레임: 1·3·5·9s)
+- 비고: 사용자가 "물 마법이 그럴듯해 보여"라고 지정. ARMAN 캐릭터 + 5명의
+  갑옷 적, 정글 사원
+
+**관찰 — 단일 연속 질량** (prompt-derived + frame-derived)
+- "Water remains a single continuous moving mass." — 물은 전편 하나의
+  질량. 순간이동·소멸·재생성 없음
+- "The main water mass whips around him with believable inertia" —
+  관성을 가진 채 휘감김
+- 프레임: 1s 몸을 감는 소용돌이 → 3s 허리 높이 회전 → 5s 측면 타격으로
+  적 날아감 → 9s 다음 적을 향해 가속. 물의 위치가 연속적으로 이어짐 ✓.
+  그럴듯함의 첫 번째 출처
+
+**관찰 — 샤드 생명주기** (prompt-derived + frame-derived)
+- "Several sections split from the moving water, instantly freeze into
+  sharp ice shards, and fire" — 분리→동결→발사의 3단계 상태 전이. 질량
+  보존 (#35·#36 동계열)
+- 1s 프레임에서 물기둥에서 분리된 얼음 파편 확인 ✓
+
+**관찰 — Grounded negatives** (prompt-derived)
+- "No glowing effects, energy beams, neon trails, or anime aura." /
+  "grounded CGI" / "realistic water physics" / "seamless VFX integration,
+  no digital-art appearance"
+- 판타지를 실사 물리로 렌더 — "그럴듯해"의 두 번째 출처
+
+**관찰 — 절대 타임스탬프 비트** (prompt-derived + frame-derived)
+- 0.0–2.5 SURROUNDED / 2.5–5.0 ROTATING PRESSURE / 5.0–7.5 WATER IMPACT /
+  7.5–10.0 COMBO CONTINUES
+- 프레임 매칭: 1s 포위 ✓ / 3s 회전 ✓ / 5s 측면 타격 ✓ / 9s 콤보 지속 ✓
+- #31(절대 시간 불신)·#41(백분율 해법)과 대조 — 10초 단尺에서는 절대
+  타임스탬프도 비트가 맞았음. 관찰로만 기록
+
+**관찰 — END BEFORE IMPACT** (prompt-derived + frame-derived)
+- "END BEFORE IMPACT. SMASH CUT. ACTION INTERRUPTED MID-COMBO. END." /
+  "Final frame preserves active combat momentum for Scene 02."
+- 9s 최종 구간: Arman이 물을 적에게 가속하는 중 — 임팩트 직전 정지 ✓.
+  해결 없는 엔딩, 시리즈 연결용
+
+**관찰 — 적 AI 부정문** (prompt-derived)
+- "Five active enemies remain engaged throughout." / "No enemy stands
+  and watches." — #7·#33의 anti-cheat 동계열
+- "Combat never slows down." / "zero pauses, zero idle moments" /
+  "Every action directly causes the next event." / "Fight begins
+  mid-combat" (in medias res)
+
+**관찰 — 레퍼런스 3분리** (prompt-derived)
+- IMAGE 1 ARMAN (인물) / IMAGE 2 MASTER ENVIRONMENT SHEET (환경) /
+  IMAGE 3 ENEMY REFERENCE (적) — 각각 "preserve exactly". #38 동계열
+
+**관찰 — 카메라가 젖음** (prompt-derived)
+- "occasional water spray crossing lens" — 카메라가 전투 공간 안에 있음.
+  "No floating virtual camera." 리액티브 핸드헬드
+
+**관찰 — 오디오 부정문** (prompt-derived)
+- "SOUND: Raw action only... NO MUSIC." #38 동계열
+
+**관찰 — 시선** (frame-derived)
+- 전투 시선: Arman은 위협을 보고, 적들은 Arman을 봄. 상호 전투 응시.
+  카메라는 응시 대상 아님 — #12 계열 (액션은 렌즈를 보지 않음). 일곱
+  번째 시선 문법: 전투 할당 시선
+
+**관찰 vs 추론**
+- 관찰: 물의 연속성·샤드 생명주기·비트 매칭·END BEFORE IMPACT 전부 프레임
+  일치, grounded 룩 확인
+- 미확인: 오디오, 7s 프레임
+- 추론: 없음
+
+**Production description → Control Levels**
+- Hard Lock: 물=단일 연속 질량, 샤드 3단계 전이, 적 5명 전편 교전, END
+  BEFORE IMPACT, grounded negatives
+- Soft Guidance: 정글 사원 환경, 리액티브 핸드헬드, raw action 사운드
+- Creative Freedom: 물보라의 모양, 적의 갑옷 디테일, 모션 블러 강도
+
+**기여 패턴**: 1 (신규 — 단일 연속 질량: 그럴듯함의 출처), 2 (신규 — 샤드
+  생명주기), 3 (신규 — Grounded negatives), 4 (신규 — END BEFORE IMPACT),
+  5 (신규 — In medias res: mid-combat 시작), 6 (적 AI 부정문 #7·#33
+  동계열), 7 (레퍼런스 3분리 #38 동계열), 8 (절대 타임스탬프가 10초尺에서
+  맞은 사례 — #31·#41과 대조되는 관찰)
+
+
+---
+
+## 45. X @doctorwasif — CHASE 코어데이 짐 브이로그 (Seedance 2.5, 15초)
+
+**기본 정보**
+- 출처: X @doctorwasif (WasifAI), 게시 2026-09-25 13:26 UTC (22:26 KST)
+- 포스트 본문: "made with Seedance 2.5" + 프롬프트 전문
+  (author-described)
+- 영상: 15.08초, 1280x720, 24fps, 362프레임 (직접 다운로드)
+- 반응: 631 likes, 57 reposts, 34 replies, 33364 views — #40(후속편)보다
+  큰 반응
+- 증거 기반: prompt-derived (프롬프트 전문, 2314자) + frame-derived
+  (6프레임: 1.5·4·6.5·9·11.5·13.5s)
+- 비고: #40의 원본(전편). 사용자가 "이것도 좋네"라고 지정
+
+**관찰 — Deliberate imperfection** (prompt-derived + frame-derived)
+- CAMERA: "Hand shake, misaligned framing, delayed focus pulls, clumsy
+  zooms, occasional face cut-off framing, imperfect shots"
+- LOOK: "Soft, slightly blurry tape quality, faint tape noise, bloomed
+  highlights under gym lighting, flickering auto-exposure, muted
+  contrast, realistic skin tones"
+- 불완전함을 스펙으로 명시 — MiniDV 룩의 핵심. #40 동계열
+
+**관찰 — Propped camera grammar** (prompt-derived + frame-derived)
+- "POV of CHASE holding the camera herself, occasionally propping it on
+  the floor or a mat for hands-free core shots"
+- 컷별 카메라 모드: 1 propped / 2 propped / 3 propped / 4 macro insert /
+  5 handheld / 6 arm's-length selfie
+- 셀프 POV 역설의 물리적 해법: 손이 필요하면 카메라를 내려놓는다
+- 13.5s: 암즈렝스 셀피 — 그녀의 팔이 프레임 안에 (카메라를 든 팔).
+  기기는 안 보이지만 든 손은 보임. "Camcorder never appears on
+  screen"(#40)의 완성형
+
+**관찰 — 6컷 스토리보드** (prompt-derived + frame-derived)
+- 15s/6컷, 컷마다 길이·카메라·액션·대사 지정. 6컷 전부 프레임 매칭 ✓
+  (1.5s 한숨 / 4s 플랭크 / 6.5s 크런치 / 9s 손 매크로 / 11.5s 드러눕기 /
+  13.5s 셀피 피날레)
+
+**관찰 — Cut-level audio** (prompt-derived)
+- 컷 4: "No dialogue — ambient gym sound only" — 손 매크로 인서트는 대사
+  없이. #40 동계열
+
+**관찰 — 대사 전달 지정** (prompt-derived)
+- "(strained)" "(breathless)" / "talking through gritted teeth" /
+  "complaining between reps" — #41 Speech Axes의 산문 버전
+
+**관찰 — 톤 가드레일** (prompt-derived)
+- "Playful, self-deprecating gym-vlog tone — genuine strain mixed with
+  humor" / "energy staying light and funny throughout rather than fully
+  exhausted" — 감정 아크의 상한선
+
+**관찰 — 의상 스펙** (prompt-derived + frame-derived)
+- "Modest long-sleeve athletic top... (arms and torso fully covered)...
+  no jewelry" + "loose joggers or fitted leggings" 중 택일 — 렌더는
+  레깅스 선택 ✓
+
+**관찰 — 시선** (frame-derived)
+- 여덟 번째 시선 문법: 셀프 브이로그 — 렌즈 = 그녀 자신의 시청자. 전편
+  렌즈를 보고 말함 (#40과 동일 문법)
+- 유일한 예외는 컷 4 (손 매크로) — 카메라는 노력의 증거를 보고, 대사는
+  없음
+
+**관찰 vs 추론**
+- 관찰: 6컷 전부 프레임 일치, propped/handheld/selfie 카메라 모드 전부
+  확인, imperfection 룩 확인
+- 미확인: 오디오, 대사 립싱크
+- 추론: 없음
+
+**Production description → Control Levels**
+- Hard Lock: CHASE 캐릭터, 6컷 스토리보드, 컷별 카메라 모드, 불완전함
+  스펙, 의상 커버리지
+- Soft Guidance: MiniDV 룩, 톤 가드레일, 대사 전달
+- Creative Freedom: 땀의 정도, 물병 위치, 조명 디테일
+
+**기여 패턴**: 1 (신규 — Deliberate imperfection spec), 2 (신규 — Propped
+  camera grammar: held/propped 두 모드), 3 (신규 — Cut-level audio),
+  4 (#40의 원본 — CHASE 크로스 크리에이터 시리즈의 시작점), 5 (대사 전달
+  지정 — #41 동계열 산문 버전), 6 (톤 가드레일: 감정 아크의 상한선)
 
 ---
 
@@ -3529,4 +3950,70 @@ reference_state:
     44초에 압축. 로케이션 자체가 장르 약속. ★ (39)
 43. **모델/툴 워터마크 번인**: "AI"·"Dola AI"·"Wavespeed SEEDANCE 2.5" 같은
     번인은 프롬프트로 막을 수 없는 레이어. 납품 전 프레임 확인 필요.
-    ★★★ (21·25·32·39)
+    ★★★ (21·25·32·39·41)
+44. **백분율 페이즈**: 페이즈 구간을 절대 초가 아닌 백분율
+    (0-25·25-55·55-70·70-100)로 지정. #31(모델은 절대 시간을 못 지킴)의
+    해법 — #41에서 4개 페이즈 경계가 프레임 4장과 맞아떨어짐. ★ (41)
+45. **Speech Axes**: 목소리를 축 단위로 파라메트릭 제어
+    (speech_rate·pitch_contour·rate_change·loudness·vocal_intensity) +
+    axisBias 마스터 게인. 감정 연기의 "음성 이퀄라이저". ★ (41)
+46. **키 프레이즈 트리거 + 운율 표기**: 폭발 페이즈의 트리거를 키
+    프레이즈에 바인딩하고 "왜~~~~" 같은 물결표로 발성 길이를 표기.
+    WORD_VOLUME_SPIKE / WORD_STRESS로 강세 위치 지정. ★ (41)
+47. **엔딩 벡터**: 엔딩 에너지 방향을 4축으로 지정
+    (release/sustain/drop/rise). "drop=1"은 무너지는 엔딩. ★ (41)
+48. **렌즈=씬 파트너**: 분노의 대상이 렌즈 자체 — 2인칭 호소 장면의 시선
+    문법. 관객(#40)·금지(#12)·무관여(#39) 다음 네 번째. 감정의 호가
+    곧 시선의 호(고정→격렬→철수). ★ (41)
+49. **모듈러 프롬프트 참조 (Coupling)**: "Coupling: ON (existing
+    speech_coupling text applies)" — 공유 텍스트 블록을 참조하는 모듈
+    구조. XAI-Studio-Video 마스터 스펙 철학과 수렴. ★ (41)
+50. **Camera-as-presence**: MOOD 한 줄에 카메라의 서사적 정체 선언 —
+    "unseen presence floating above her, waiting for her to notice".
+    카메라는 시점이 아니라 캐릭터이며, 마지막 비트(렌즈 응시)가 그
+    존재를 알아차리는 순간으로 수렴. ★ (42)
+51. **Phantom camera**: "passing through ceilings and door frames as one
+    uninterrupted camera event" — 카메라는 건축을 통과, 인물만 물리에
+    묶임. ★ (42)
+52. **비트마다 락 재확인**: SCENE의 각 비트를 카메라 관계로 시작
+    ("Still centered under the lens", "Under the same overhead lock",
+    "Still pinned overhead"). 락을 한 번 선언하고 끝내지 않음. ★ (42)
+53. **Handedness lock**: 오른손=담배 전편 고정, 왼손=작업
+    (수도·세수·유리잔). "Extends that arm away from the running water" —
+    소품 보호 동작까지 지정. ★ (42)
+54. **COLOR LOGIC 한 줄**: "COLOR LOGIC: Matrix Green Look" — 네임드
+    그레이드를 한 줄로 고정. ★ (42)
+55. **파이널 비트 7연타**: "Stops exactly under the lens. Freezes. Looks
+    right. Looks left. Takes a drag. Snaps her head straight up into the
+    lens. Blows smoke toward the camera. Locks eye contact." — 전편
+    유일의 렌즈 응시를 클라이맥스로 배치. 응시의 희소성이 공포 문법.
+    ★ (42)
+56. **Diegetic camera seat**: 매 장소에 카메라의 네이티브 자리를 지정 —
+    카트 안·차 뒷좌석·전망대·밤의 매크로. 카메라는 항상 참여자, 이방인
+    아님. ★ (43)
+57. **Foreground POV proof**: "from inside X"는 말로 끝내지 말고 전경
+    물건으로 증명 — 카트 샷에서 캔들을 렌즈와 피사체 사이에. ★ (43)
+58. **시간대 아크**: 낮(매장)→골든아워(드라이브)→일몰(전망대)→밤. 편집
+    로직을 컷이 아니라 빛의 진행으로. 프롬프트 서술 순서 = 시간대 순서.
+    ★ (43)
+59. **단일 연속 질량**: 물(불·모래 등 유체 마법)은 전편 하나의 연속된
+    질량으로. 순간이동·소멸·재생성 금지. "그럴듯함"의 첫 번째 출처.
+    ★ (44)
+60. **샤드 생명주기**: 물에서 분리된 부분이 즉시 얼어 발사체로 —
+    분리→동결→발사 3단계, 질량 보존. ★ (44)
+61. **Grounded negatives**: "No glowing effects, energy beams, neon
+    trails, or anime aura" — 판타지를 실사 물리로 렌더. "그럴듯함"의 두
+    번째 출처. ★ (44)
+62. **END BEFORE IMPACT**: 임팩트 직전에 스매시 컷. 최종 프레임은 다음
+    씬(Scene 02)을 위한 모멘텀 보존. 해결 없는 엔딩. ★ (44)
+63. **In medias res**: "Fight begins mid-combat" — 셋업 없이 전투 중부터
+    시작. 10초 단尺의 필수 장치. ★ (44)
+64. **Deliberate imperfection spec**: "misaligned framing, delayed focus
+    pulls, clumsy zooms, occasional face cut-off framing, imperfect
+    shots" — 불완전함을 스펙으로 명시. MiniDV 룩의 핵심. ★ (45)
+65. **Propped camera grammar**: 셀프 POV의 두 모드 — held와 propped. 컷마다
+    카메라 모드 지정 (바닥/매트에 거치). 손이 필요하면 카메라를 내려놓는다.
+    셀프 POV 역설의 물리적 해법. ★ (45)
+66. **Cut-level audio**: 컷 4 "No dialogue — ambient gym sound only".
+    컷별 오디오 온오프. ★ (45)
+
