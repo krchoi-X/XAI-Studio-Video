@@ -13,7 +13,17 @@ import wangp_recorder
 
 DEFAULT_WANGP_ROOT = Path(r"D:\AI\WanGP")
 DEFAULT_EXECUTOR = "local-wangp-worker"  # what runs the job; distinct from requested_by, renderer, and model_type
-KREA2_EDIT_MODELS = {"krea2_raw_edit", "krea2_turbo_edit"}
+# The only models that may consume a hash-bound reference. Carrying `image_refs` never qualifies a model on its
+# own: each entry names its logical engine, WanGP architecture, how many references it accepts and, where WanGP
+# discards `image_refs` without it, the `video_prompt_type` letter that makes the reference reach the model.
+REFERENCE_MODELS: dict[str, dict[str, Any]] = {
+    "krea2_raw_edit": {"engine": "krea2", "architecture": "krea2_raw_edit", "max_refs": 2},
+    "krea2_turbo_edit": {"engine": "krea2", "architecture": "krea2_turbo_edit", "max_refs": 2},
+    "qwen_image_21_uncensored_q4_k_m": {
+        "engine": "qwen21", "architecture": "qwen_image_21_7B", "max_refs": 1, "video_prompt_type": "I",
+    },
+}
+KREA2_EDIT_MODELS = {name for name, spec in REFERENCE_MODELS.items() if spec["engine"] == "krea2"}
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
 
 
@@ -30,17 +40,47 @@ def load_settings(path: Path, prompt: str, run_id: str) -> dict[str, Any]:
     return settings
 
 
+def reference_model(settings: dict[str, Any]) -> dict[str, Any] | None:
+    """Return the registry entry for a reference-capable model, or None.
+
+    Krea2 edit settings name the edit model as their base, as they always have. A finetune such as the Qwen GGUF
+    names its own `model_type` and may carry its WanGP architecture as `base_model_type`; any other base means the
+    settings describe a different model and are refused.
+    """
+    model_type = str(settings.get("model_type") or "")
+    base_model_type = str(settings.get("base_model_type") or "")
+    selected = base_model_type or model_type
+    spec = REFERENCE_MODELS.get(selected)
+    if spec and spec["architecture"] == selected:
+        return {"model_type": selected, **spec}
+    spec = REFERENCE_MODELS.get(model_type)
+    if spec and base_model_type in {"", model_type, spec["architecture"]}:
+        return {"model_type": model_type, **spec}
+    return None
+
+
 def validate_reference_settings(settings: dict[str, Any]) -> list[dict[str, Any]]:
     provenance = settings.get("_xai")
     if not isinstance(provenance, dict) or provenance.get("kind") not in {"reference_variation", "reference_transformation"}:
         return []
-    model_type = str(settings.get("base_model_type") or settings.get("model_type") or "")
-    if model_type not in KREA2_EDIT_MODELS:
-        raise ValueError("reference variation requires a Krea2 edit architecture; text-to-image fallback is disabled")
+    spec = reference_model(settings)
+    if spec is None:
+        raise ValueError("reference variation requires a registered reference-capable edit model; text-to-image fallback is disabled")
+    expected_engine = provenance.get("engine")
+    if expected_engine and str(expected_engine) != spec["engine"]:
+        raise ValueError(f"reference prepared for {expected_engine} cannot run on {spec['model_type']}")
+    required_letter = spec.get("video_prompt_type")
+    if required_letter and required_letter not in str(settings.get("video_prompt_type") or ""):
+        raise ValueError(
+            f"{spec['model_type']} ignores image_refs unless video_prompt_type contains {required_letter}; "
+            "text-to-image fallback is disabled"
+        )
     raw_refs = settings.get("image_refs")
     refs = raw_refs if isinstance(raw_refs, list) else [raw_refs] if raw_refs else []
-    if not 1 <= len(refs) <= 2:
-        raise ValueError("Krea2 reference variation requires one or two reference images")
+    if not 1 <= len(refs) <= spec["max_refs"]:
+        if spec["engine"] == "krea2":
+            raise ValueError("Krea2 reference variation requires one or two reference images")
+        raise ValueError(f"{spec['engine']} reference input requires between 1 and {spec['max_refs']} reference images")
     asset_ids = provenance.get("reference_asset_ids") or []
     expected_hashes = provenance.get("reference_sha256s") or []
     expected_sizes = provenance.get("reference_byte_counts") or []

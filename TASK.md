@@ -1,5 +1,7 @@
 # Current task — Automatic character reference resolution for WanGP video
 
+2026-09-28 current user objective: integrate the verified local Qwen Image 2.1 uncensored GGUF as an explicitly selectable Character Manager/Studio engine for face-master-bound profile and wardrobe tests. WanGP registration and a text-to-image smoke passed. The user assigned subsequent implementation to Claude Code; see the [integration handoff](docs/qwen-image-2.1-studio-integration-handoff.md), [pilot record](docs/qwen-image-2.1-character-pilot-TASK.md) and [operator runbook](docs/qwen-image-2.1-wangp-pilot.md). Do not make Qwen the default or promote generated identity assets without human review. Active scope: [Qwen integration task](docs/qwen-image-2.1-studio-integration-TASK.md), Claude Code.
+
 2026-09-26 reference review, Claude Code: cross-review of Grok's ref-video cards and Muse's reference-state analyses, with evidence kept separate from opinion. See [review task](docs/reference-review/2026-09-26-grok-muse/TASK.md). Docs and Grok card cleanup only; no pipeline change.
 
 2026-09-19 Mira and the DNA schema, Claude Code: the remote added `ch-mira` in a different Stable DNA body shape. Merged into `XAI-Studio-Private` and widened the reader to accept both shapes without converting any record or changing any hash. See [DNA schema compatibility](docs/dna-schema-compatibility.md); the full schema decision is still open and is listed there.

@@ -1,0 +1,22 @@
+{
+  "model_type": "qwen_image_21_uncensored_q4_k_m",
+  "base_model_type": "qwen_image_21_7B",
+  "image_mode": 1,
+  "resolution": "832x608",
+  "num_inference_steps": 40,
+  "guidance_scale": 4.0,
+  "sample_solver": "default",
+  "negative_prompt": " ",
+  "batch_size": 1,
+  "repeat_generation": 1,
+  "seed": 0,
+  "video_prompt_type": "",
+  "remove_background_images_ref": 0,
+  "prompt_enhancer": "",
+  "activated_loras": [],
+  "loras_multipliers": "",
+  "custom_settings": {
+    "qwen21_kv_cache": "Disabled",
+    "rgba": "Disabled"
+  }
+}

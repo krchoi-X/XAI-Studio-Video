@@ -27,10 +27,15 @@ TEMPLATES = ROOT / "examples" / "character-lab" / "experiments" / "BATCH-002-har
 ENGINES = {
     "z-image": ("z-image.settings.json", "z_image"),
     "krea2": ("krea2.settings.json", "krea2_turbo_moody_krea"),
+    # Logical engine `qwen21`; the template names the exact, replaceable checkpoint as its model_type.
+    "qwen21": ("qwen21.settings.json", "qwen_image_21_uncensored_q4_k_m"),
 }
+# Engines that render one image per WanGP batch and repeat it instead (8 GB conservative setting).
+SINGLE_IMAGE_BATCH_ENGINES = {"qwen21"}
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
 KREA2_IDENTITY_EDIT_MODEL = "krea2_turbo_edit"
 KREA2_IDENTITY_EDIT_CHECKPOINT = Path(r"D:\AI\WanGP\ckpts\Krea2Turbo_quanto_bf16_int8.safetensors")
+QWEN21_MODEL = ENGINES["qwen21"][1]
 
 HAIR_VARIATIONS = {
     "긴 생머리 센터 파트": "long straight hair with a clearly defined center part, worn fully down",
@@ -367,8 +372,24 @@ def resolve_identity_reference(character: dict[str, Any], selection: str | None,
     }
 
 
-def apply_identity_reference(settings: dict[str, Any], reference: dict[str, Any],
-                             character_id: str, request: str, actor: str) -> dict[str, Any]:
+def reference_provenance(reference: dict[str, Any], character_id: str, request: str, actor: str) -> dict[str, Any]:
+    """The engine-independent `_xai` record that binds a job to one hash-verified identity reference."""
+    return {
+        "kind": "reference_transformation",
+        "schema_version": 2,
+        "character_id": character_id,
+        "reference_role": "identity",
+        "reference_asset_ids": [reference["asset_id"]] if reference.get("asset_id") else [],
+        "reference_sha256s": [reference["sha256"]],
+        "reference_byte_counts": [reference["byte_count"]],
+        "operator_request": request,
+        "requested_by": actor,
+        "allow_text_fallback": False,
+    }
+
+
+def apply_krea2_identity_reference(settings: dict[str, Any], reference: dict[str, Any],
+                                   character_id: str, request: str, actor: str) -> dict[str, Any]:
     """Compile a text-to-image Krea2 job into a hash-bound Identity Edit job."""
     result = dict(settings)
     for key in ("NAG_scale", "NAG_tau", "NAG_alpha", "type"):
@@ -385,20 +406,46 @@ def apply_identity_reference(settings: dict[str, Any], reference: dict[str, Any]
         "guidance_scale": 0,
         "activated_loras": [],
         "loras_multipliers": "",
-        "_xai": {
-            "kind": "reference_transformation",
-            "schema_version": 2,
-            "character_id": character_id,
-            "reference_role": "identity",
-            "reference_asset_ids": [reference["asset_id"]] if reference.get("asset_id") else [],
-            "reference_sha256s": [reference["sha256"]],
-            "reference_byte_counts": [reference["byte_count"]],
-            "operator_request": request,
-            "requested_by": actor,
-            "allow_text_fallback": False,
-        },
+        "_xai": reference_provenance(reference, character_id, request, actor),
     })
     return result
+
+
+def apply_qwen21_identity_reference(settings: dict[str, Any], reference: dict[str, Any],
+                                    character_id: str, request: str, actor: str) -> dict[str, Any]:
+    """Bind the Qwen Image 2.1 job to one hash-verified identity reference.
+
+    The same checkpoint edits and generates, so only the reference fields change. WanGP drops `image_refs`
+    unless `video_prompt_type` contains `I`; `I` treats the reference as a person rather than as the canvas.
+    """
+    if settings.get("model_type") != QWEN21_MODEL:
+        raise cm.CharacterError(f"qwen21 identity reference requires model_type {QWEN21_MODEL}")
+    result = dict(settings)
+    provenance = reference_provenance(reference, character_id, request, actor)
+    provenance.update({"engine": "qwen21", "model_type": QWEN21_MODEL})
+    result.update({
+        "image_refs": [reference["path"]],
+        "video_prompt_type": "I",
+        "remove_background_images_ref": 0,
+        "_xai": provenance,
+    })
+    return result
+
+
+# Engines that may bind an identity reference, each with its own compiler. An engine missing here is refused.
+REFERENCE_ENGINES = {
+    "krea2": apply_krea2_identity_reference,
+    "qwen21": apply_qwen21_identity_reference,
+}
+
+
+def apply_identity_reference(settings: dict[str, Any], reference: dict[str, Any],
+                             character_id: str, request: str, actor: str, engine: str = "krea2") -> dict[str, Any]:
+    """Compile a job for `engine` into a hash-bound identity-reference job; unsupported engines fail."""
+    compiler = REFERENCE_ENGINES.get(engine)
+    if compiler is None:
+        raise cm.CharacterError(f"{engine} cannot bind an identity reference; no text-only fallback is allowed")
+    return compiler(settings, reference, character_id, request, actor)
 
 
 def interpret(character_id: str, request: str, model: str, strategy: str = "strict_translation",
@@ -476,8 +523,11 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     if unknown_engines:
         raise cm.CharacterError("unsupported engine: " + ", ".join(unknown_engines))
     reference = resolve_identity_reference(character, identity_reference, reference_asset_id)
-    if reference and engines != ["krea2"]:
-        raise cm.CharacterError("identity-reference generation requires --engines krea2; no text-only fallback is allowed")
+    if reference and (len(engines) != 1 or engines[0] not in REFERENCE_ENGINES):
+        raise cm.CharacterError(
+            "identity-reference generation requires exactly one of --engines "
+            + ", ".join(REFERENCE_ENGINES) + "; no text-only fallback is allowed"
+        )
     immutable = immutable or {}
     operating_mode = normalize_strategy(strategy)
     scene_spec = build_scene_spec(request, immutable, supplied_scene_spec)
@@ -544,14 +594,18 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     for offset, engine in enumerate(engines, 1):
         template_name, model_name = ENGINES[engine]
         settings = json.loads((TEMPLATES / template_name).read_text(encoding="utf-8"))
-        settings["batch_size"] = count
-        settings["repeat_generation"] = 1
+        if engine in SINGLE_IMAGE_BATCH_ENGINES:
+            settings["batch_size"] = 1
+            settings["repeat_generation"] = count
+        else:
+            settings["batch_size"] = count
+            settings["repeat_generation"] = 1
         settings["seed"] = seed_base + offset
         if reference:
-            settings = apply_identity_reference(settings, reference, character_id, request, actor)
-            model_name = KREA2_IDENTITY_EDIT_MODEL
+            settings = apply_identity_reference(settings, reference, character_id, request, actor, engine)
+            model_name = settings["model_type"]
         write_json(root / template_name, settings)
-        jobs.append({"backend": "local-wangp", "model": model_name, "count": count, "seed": settings["seed"], "resolution": settings["resolution"], "steps": settings["num_inference_steps"], "settings_file": template_name, "output_dir": f"outputs/{engine}", "status": "prepared", "reference_inputs": [reference] if reference else []})
+        jobs.append({"backend": "local-wangp", "engine": engine, "model": model_name, "count": count, "seed": settings["seed"], "resolution": settings["resolution"], "steps": settings["num_inference_steps"], "settings_file": template_name, "output_dir": f"outputs/{engine}", "status": "prepared", "reference_inputs": [reference] if reference else []})
     batch = {
         "schema_version": 1,
         "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": title, "status": "prepared", "created_by": actor, "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "scene_spec_file": "scene_spec.json", "scene_delta_file": "scene-delta.json", "prompt_trace_file": "prompt-trace.json", "prompt_strategy": operating_mode, "stable_dna_sha256": cm.stable_hash(character), "reference_inputs": [reference] if reference else []},
@@ -642,7 +696,7 @@ def main() -> int:
     draft.add_argument("--strategy", choices=tuple(STRATEGY_ALIASES), default="strict_translation")
     draft.add_argument("--constraints-json", default="{}")
     draft.add_argument("--scene-spec-json", default="{}")
-    draft.add_argument("--identity-reference", help="character-default or an explicit local image path; requires --engines krea2")
+    draft.add_argument("--identity-reference", help="character-default or an explicit local image path; requires exactly one reference-capable engine (krea2 or qwen21)")
     draft.add_argument("--reference-asset-id", help="optional durable Gallery/adapter asset ID for the identity reference")
     draft.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
     read = sub.add_parser("interpret", help="compile a request and print it without reserving a session or touching the GPU")
@@ -662,7 +716,7 @@ def main() -> int:
     produce.add_argument("--strategy", choices=tuple(STRATEGY_ALIASES), default="strict_translation")
     produce.add_argument("--constraints-json", default="{}")
     produce.add_argument("--scene-spec-json", default="{}")
-    produce.add_argument("--identity-reference", help="character-default or an explicit local image path; requires --engines krea2")
+    produce.add_argument("--identity-reference", help="character-default or an explicit local image path; requires exactly one reference-capable engine (krea2 or qwen21)")
     produce.add_argument("--reference-asset-id", help="optional durable Gallery/adapter asset ID for the identity reference")
     produce.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
     args = parser.parse_args()
