@@ -22,7 +22,9 @@ DEFAULT_QUEUE = Path(r"D:\AI_Studio\workspace\hermes-night-batches")
 SCENE_TOOL = ROOT / "tools" / "character_scene.py"
 MAX_ITEMS = 48
 MAX_GENERATED_IMAGES = 240
-ENGINES = {"z-image", "krea2"}
+ENGINES = {"z-image", "krea2", "qwen21"}
+# Engines that can bind a hash-verified identity reference. A reference-bound item selects exactly one of them.
+REFERENCE_ENGINES = ("krea2", "qwen21")
 GPU_LOCK_BACKOFF_SECONDS = (10, 20, 40)
 SUCCESS_STATES = {"succeeded", "needs_review"}
 GPU_LOCK_MARKERS = ("gpu lock", "already holds the gpu lock")
@@ -66,8 +68,10 @@ def validate_plan(plan: dict[str, Any]) -> dict[str, Any]:
             raise cm.CharacterError(f"item {position}: prompt must be a direct non-empty items[] field")
         if not engines or any(engine not in ENGINES for engine in engines):
             raise cm.CharacterError(f"item {position}: unsupported engines")
-        if identity_reference and engines != ["krea2"]:
-            raise cm.CharacterError(f"item {position}: identity_reference requires engines=['krea2']")
+        if identity_reference and (len(engines) != 1 or engines[0] not in REFERENCE_ENGINES):
+            raise cm.CharacterError(
+                f"item {position}: identity_reference requires exactly one engine from {list(REFERENCE_ENGINES)}"
+            )
         if reference_asset_id and not identity_reference:
             raise cm.CharacterError(f"item {position}: reference_asset_id requires identity_reference")
         if not 1 <= count <= 10:
@@ -174,8 +178,12 @@ def _inside(path: Path, root: Path) -> bool:
         return False
 
 
-def verify_session(session_dir: Path, expected_engines: list[str]) -> dict[str, Any]:
-    """Verify the durable scene/run contract before an item is called complete."""
+def verify_session(session_dir: Path, expected_engines: list[str], reference_bound: bool = False) -> dict[str, Any]:
+    """Verify the durable scene/run contract before an item is called complete.
+
+    A reference-bound item must also show the hash-bound reference in both the settings and the run record,
+    so a job that silently rendered from text alone is never counted as complete.
+    """
     prompt_path = session_dir / "prompt.txt"
     if not prompt_path.is_file() or not prompt_path.read_text(encoding="utf-8").strip():
         raise cm.CharacterError(f"missing or empty prompt: {prompt_path}")
@@ -194,6 +202,8 @@ def verify_session(session_dir: Path, expected_engines: list[str]) -> dict[str, 
         settings = load(settings_path)
         if not str(settings.get("model_type") or "").strip():
             raise cm.CharacterError(f"settings for {engine} have no model_type")
+        if job.get("model") and settings["model_type"] != job["model"]:
+            raise cm.CharacterError(f"{engine} settings model_type {settings['model_type']} differs from prepared {job['model']}")
         if job.get("status") != "completed":
             raise cm.CharacterError(f"{engine} job is {job.get('status')}, not completed")
         run_dir = Path(str(job.get("run_dir") or ""))
@@ -212,6 +222,12 @@ def verify_session(session_dir: Path, expected_engines: list[str]) -> dict[str, 
         if invalid:
             raise cm.CharacterError(f"{engine} artifacts missing or outside output directory: {invalid}")
         references = record.get("reference_inputs") or []
+        if reference_bound:
+            provenance = settings.get("_xai") if isinstance(settings.get("_xai"), dict) else {}
+            if provenance.get("allow_text_fallback") is not False or not settings.get("image_refs"):
+                raise cm.CharacterError(f"{engine} settings are not bound to an identity reference")
+            if not any(isinstance(item, dict) and item.get("sha256") for item in references):
+                raise cm.CharacterError(f"{engine} run recorded no hash-verified reference input")
         verified_runs.append({
             "engine": engine, "run_id": record.get("run_id") or run_dir.name,
             "run_dir": str(run_dir.resolve()), "status": record.get("status"),
@@ -288,7 +304,7 @@ def run(root: Path, sync_url: str, *, run_command: Any = subprocess.run, sleep: 
             result = subprocess.CompletedProcess([], 2, "", f"{type(exc).__name__}: {exc}")
         if result.returncode == 0:
             try:
-                verification = verify_session(session_dir, item["engines"])
+                verification = verify_session(session_dir, item["engines"], bool(item.get("identity_reference")))
             except (cm.CharacterError, OSError, ValueError, json.JSONDecodeError) as exc:
                 item.update({"status": "failed", "error": f"verification failed: {exc}", "completed_at": stamp()}); failed_count += 1
                 write_json(root / "plan.json", plan)

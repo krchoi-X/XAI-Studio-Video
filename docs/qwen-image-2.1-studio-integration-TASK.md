@@ -1,7 +1,7 @@
 # Qwen Image 2.1 Studio integration
 
 Active editor: Claude Code (assigned by direct user decision, 2026-09-28)
-Status: IN PROGRESS — Phase 1 (common CLI adapter and reference contract)
+Status: PHASE 1 + PHASE 3 DONE (deterministic + one live run) — Phase 2 gate and Phases 4-5 pending
 Date: 2026-09-28
 Handoff: [integration handoff](qwen-image-2.1-studio-integration-handoff.md) · [pilot record](qwen-image-2.1-character-pilot-TASK.md) · [operator runbook](qwen-image-2.1-wangp-pilot.md)
 
@@ -47,18 +47,46 @@ Make the installed local Qwen Image 2.1 uncensored GGUF an explicitly selectable
 3. Phase 3 — night-batch validation for `qwen21`.
 4. Phase 4/5 — Studio UI and Transformation Lab (separate checkpoints).
 
-## File scope (Phase 1)
+## File scope (Phases 1 and 3)
 
-`tools/character_scene.py`, `tools/local_wangp.py`, `examples/character-lab/experiments/BATCH-002-harim-white-studio/qwen21.settings.json`, `tests/test_character_scene.py`, `tools/test_local_wangp.py`, this task file, root `TASK.md` pointer.
+XAI-studio: `tools/character_scene.py`, `tools/local_wangp.py`, `tools/hermes_night_batch.py`, `examples/character-lab/experiments/BATCH-002-harim-white-studio/qwen21.settings.json`, `tests/test_qwen21_engine.py` (new), `tests/test_hermes_night_batch.py`, this task file, root `TASK.md` pointer.
+XAI-Studio-Private (uncommitted, layered on Codex's uncommitted Krea2 reference-route edit): `shared-skills/character-manager/SKILL.md` (reference route, compiler engine sentence, night-batch rule), `shared-skills/qwen21-reference-engine-TASK.md`.
+Studio: no changes yet.
 
 ## Progress
 
 - Read AGENTS/TASK/handoff/pilot, governance init (ok), production roles, catalog-resolved Character Manager skill, WanGP qwen/qwen21 handlers and `shared/api.py` settings merge.
 - `python tools/wangp_models.py --check qwen_image_21_uncensored_q4_k_m` → `status: usable`, GGUF weights, 40 steps, guidance 4.
 
+- Phase 1 committed as `d20178d` (contract checkpoint). `ENGINES["qwen21"]`, `REFERENCE_ENGINES` (krea2/qwen21 compilers over common `reference_provenance`), `SINGLE_IMAGE_BATCH_ENGINES`, additive job `engine` key; `local_wangp.REFERENCE_MODELS` + `reference_model()`; `KREA2_EDIT_MODELS` kept as a derived alias.
+- Phase 3: night batch accepts `qwen21`; a reference-bound item needs exactly one of `krea2`/`qwen21`; `verify_session(..., reference_bound)` also checks settings `model_type` equals the prepared job model and that a reference-bound run carries `image_refs`, `allow_text_fallback: false` and a hashed `reference_inputs` record. 48-item/240-image limits and GPU-lock retry unchanged.
+- Canonical Character Manager skill wording updated for `qwen21` (Private, uncommitted).
+
+## Verification
+
+- Interpreter: Studio backend venv `D:/codex/personal-prompt-studio/personal-prompt-studio/backend/.venv/Scripts/python.exe` (pytest 8.4.2) with `PYTHONPATH=tools;tests;<Hermes site-packages for jsonschema>`, CWD `D:/codex/XAI-studio`.
+- Focused: `tests/test_qwen21_engine.py tests/test_character_scene.py tools/test_local_wangp.py tests/test_creation_records.py` → 67 passed; `tests/test_hermes_night_batch.py tests/test_qwen21_engine.py` → 26 passed.
+- Broad selection from `docs/verification.md` (tests, external_media_import/tests, recorder, local_wangp, requester provenance, reference variation worker, gpu-worker provision) → 342 passed, 2 skipped.
+- `python tools/character_manager.py validate` → all OK; `python tools/shared_resources.py --skill character-manager` resolves the Private shared skill; `git diff --check` clean on changed files.
+- Not covered: Studio backend/frontend (Phase 4), reference_variation_worker Qwen adapter (Phase 5).
+
+## Live run (Phase 1 acceptance)
+
+- Session `SCENE-20260928-113627-mizuki-reika-neutral-reconstruction-of-the-same` at `D:/AI_Studio/library/characters/ch-mizuki-reika/generations/…`; prepared with `--engines qwen21 --count 1 --identity-reference character-default --actor claude --strategy strict_translation`, submitted with `produce --session-dir`.
+- Run `run-20260928-113701-b973b2c4`: `requested_by: claude`, `executor: local-wangp-worker`, renderer WanGP, settings `model_type: qwen_image_21_uncensored_q4_k_m`, effective `video_prompt_type: I`, `variation.engine: qwen21`, status `needs_review`. Seed 928113628, 832x608, 40 steps, CFG 4.
+- Reference: Reika `face-09-editorial-1.png` (user-selected default), SHA-256 `ba3411fb8db4ac28aa5ce2807a1ac56e32fb9e47da4c357d4ac13734010a33b7`, 1,990,236 bytes, hash re-verified at submit.
+- Duration: submit 11:37:01, denoising ~5 s/step, completed 11:40:55 (~4 min incl. load). VRAM was idle beforehand (no Ollama model loaded).
+- Output: `outputs/qwen21/run-20260928-113701-b973b2c4.jpg` (SHA-256 `ca23e7ad…99e5`).
+- Studio `POST /api/sync` → imported 1, skipped 1227. Asset `ast_4fa4b9dd5ebb361bf9067ebc`: engine `qwen21`, no decision (unreviewed), favorite false. `asset.model` is null, same as existing Krea2 assets (pre-existing importer behavior, not Qwen-specific).
+- Observation: the reference reached the model (same black blazer, long black hair, grey backdrop). The request asked for head-and-shoulders but the render is full-body on the landscape 832x608 canvas, so the face is too small to judge identity.
+- Inference (untested): the landscape canvas plus the Stable DNA body paragraph pushes full-body framing. Candidate single-variable change for the gate: portrait resolution (e.g. 608x832) at the same pixel count.
+- Human decision: none yet; the image is a candidate only.
+
 ## Next
 
-Implement Phase 1 code and tests.
+1. Phase 2 identity gate needs two decisions from the user: orientation/resolution for the gate (current 832x608 landscape produced full-body framing) and whether to add a `--seed` option so both fixed seeds are identical across the four cases (today seeds derive from the preparation timestamp). Then run 4 cases × 2 seeds with the Reika default and review.
+2. Phase 4 Studio (schemas/main/model.ts) and Phase 5 Transformation Lab remain unstarted.
+3. Commit the Private skill wording after the Codex-owned uncommitted edit underneath it is committed or accepted.
 
 ## Blockers / uncertainties
 

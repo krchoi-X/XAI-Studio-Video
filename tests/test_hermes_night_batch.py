@@ -160,5 +160,53 @@ class HermesNightBatchTests(unittest.TestCase):
         self.assertEqual("krea2_turbo_moody_krea", verified["runs"][0]["model_type"])
         self.assertEqual([], verified["runs"][0]["reference_bases"])
 
+    def test_qwen21_is_a_single_reference_engine_and_keeps_the_budget(self):
+        plan = night.validate_plan({"items": [{
+            "character_id": "ch-test", "prompt": "profile view", "engines": ["qwen21"], "count": 2,
+            "identity_reference": "character-default",
+        }]})
+        self.assertEqual(["qwen21"], plan["items"][0]["engines"])
+        self.assertEqual(2, plan["generated_image_budget"])
+        for engines in (["qwen21", "krea2"], ["z-image", "qwen21"], ["z-image"]):
+            with self.assertRaisesRegex(night.cm.CharacterError, "identity_reference requires"):
+                night.validate_plan({"items": [{"character_id": "ch-test", "prompt": "mixed", "engines": engines,
+                                                "identity_reference": "character-default"}]})
+        self.assertEqual((48, 240), (night.MAX_ITEMS, night.MAX_GENERATED_IMAGES))
+        with self.assertRaisesRegex(night.cm.CharacterError, "budget exceeded"):
+            night.validate_plan({"items": [{"character_id": "ch-test", "prompt": "서로 다른 장면",
+                                            "engines": ["z-image", "krea2", "qwen21"], "count": 10} for _ in range(9)]})
+
+    def _qwen_session(self, reference_inputs, settings_extra):
+        session = Path(self.temp.name) / "qwen-session"
+        output = Path(self.temp.name) / "library" / "outputs" / "qwen21"
+        run_dir = session / "runs" / "run-q"
+        output.mkdir(parents=True); run_dir.mkdir(parents=True)
+        artifact = output / "run-q.jpg"; artifact.write_bytes(b"image")
+        (session / "prompt.txt").write_text("same person, profile\n", encoding="utf-8")
+        (session / "qwen21.settings.json").write_text(json.dumps({
+            "model_type": "qwen_image_21_uncensored_q4_k_m", **settings_extra}), encoding="utf-8")
+        (run_dir / "run.json").write_text(json.dumps({
+            "run_id": "run-q", "status": "needs_review", "artifacts": [{"path": str(artifact)}],
+            "reference_inputs": reference_inputs,
+        }), encoding="utf-8")
+        (session / "batch.yaml").write_text(json.dumps({
+            "session": {"asset_root": str(output.parent)},
+            "jobs": [{"engine": "qwen21", "model": "qwen_image_21_uncensored_q4_k_m", "output_dir": "outputs/qwen21",
+                      "settings_file": "qwen21.settings.json", "count": 1, "status": "completed", "run_dir": str(run_dir)}]
+        }), encoding="utf-8")
+        return session
+
+    def test_verify_qwen21_reference_session_checks_model_and_reference(self):
+        bound = {"image_refs": ["face.png"], "_xai": {"allow_text_fallback": False}}
+        session = self._qwen_session([{"basis": "explicit-reference", "sha256": "abc"}], bound)
+        verified = night.verify_session(session, ["qwen21"], reference_bound=True)
+        self.assertEqual("qwen_image_21_uncensored_q4_k_m", verified["runs"][0]["model_type"])
+        self.assertTrue(verified["runs"][0]["output_dir"].endswith("qwen21"))
+
+    def test_verify_rejects_a_reference_item_that_rendered_from_text(self):
+        session = self._qwen_session([], {})
+        with self.assertRaisesRegex(night.cm.CharacterError, "not bound to an identity reference"):
+            night.verify_session(session, ["qwen21"], reference_bound=True)
+
 
 if __name__ == "__main__": unittest.main()
