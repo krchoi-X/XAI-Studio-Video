@@ -1,7 +1,7 @@
 # Qwen Image 2.1 Studio integration
 
 Active editor: Claude Code (assigned by direct user decision, 2026-09-28)
-Status: PHASE 1, 1b AND 3 DONE (deterministic + two live runs) — Phase 2 gate and Phases 4-5 pending
+Status: PHASES 1-5 IMPLEMENTED AND LIVE-VERIFIED — human review of all Qwen candidates pending; Qwen is not a default
 Date: 2026-09-28
 Handoff: [integration handoff](qwen-image-2.1-studio-integration-handoff.md) · [pilot record](qwen-image-2.1-character-pilot-TASK.md) · [operator runbook](qwen-image-2.1-wangp-pilot.md)
 
@@ -121,9 +121,31 @@ Cross-seed consistency (seed 28 vs seed 29, same engine and case), SF/AF: Qwen r
 - Human decision: pending. No profile or output is promoted; the gate outputs stay unreviewed candidates.
 - Producer finding: preparing the same request with different `--seed` values within one second collided on session ID (refused safely, "shared session already exists"; 5 of 16, retried later). Fixed after the gate by appending the seed to new seeded session IDs.
 
+## Phase 4 — Studio engine selection (Studio commit `b886111`)
+
+- Backend: `ImageEngine` literal adds `qwen21` (max 3 engines); identity image requires exactly one of `IDENTITY_REFERENCE_ENGINES` (krea2, qwen21).
+- Frontend: `Qwen Image 2.1` offered in the existing selector. Found and fixed: `ProductionApp` preselected every offered engine, which would have made Qwen a silent default; now `initialEngines()` selects only `defaultSelectedEngines` (Z-Image + Krea2). Identity reducer keeps a single selected reference engine, falls back to Krea2, and switches Krea2<->Qwen without dropping the identity image.
+- Also fixed 5 pre-existing `tests/test_api.py` failures (same 5 fail on clean HEAD): stub repos lacked `tools/character_manager.py`, so this workstation's live shared authority returned 409. Test-only fix following the suite's existing stub convention.
+- Checks: backend 135 passed; frontend 549 passed then 553 after Phase 5; `npm run build` OK. Studio server restarted via its supervisor (kill uvicorn; supervisor relaunches) and `/api/health` OK.
+- Live: `POST /api/characters/ch-mizuki-reika/generation-jobs` with `engines: ["qwen21"], use_identity_reference: true` → job `gen_69968d2f…` completed through `web_generation_worker` → `character_scene`; session `SCENE-20260928-130646-mizuki-reika-same-person-facing-the-camera`, run `run-20260928-130647-ed514f3e`, `requested_by: web`, hash-bound identity reference, `outputs/qwen21`, auto-synced. Mixed `["qwen21","krea2"]` with identity → 422 live.
+- Observation: that request asked for a soft smile + turtleneck; score SF 0.753 / AF 0.661 (drift, 209 px frontal face), visibly softer face. n=1; expression change is a candidate cause, untested.
+
+## Phase 5 — Transformation Lab (XAI `96b593b`, Studio `7758cd3`)
+
+- `reference_variation_worker.py`: per-engine adapters (settings, dependencies, output dir, labels); `engine_id` absent = Krea2, so old records are unchanged. Qwen adapter: `video_prompt_type: I`, hash-bound `_xai` (passes the `local_wangp` registry gate), 608x832 or 832x608 by source orientation, dependencies read from the WanGP finetune definition. Pose/hand recomposition still `blocked_capability` for both engines.
+- Studio: `ReferenceVariationRequest.engine` (default krea2); request keeps historical `engine`/`preferred_engine` values for Krea2 and adds `engine_id`; plan capability/queue text/summary name the engine; form offers a chip row. Tests: worker 8 passed; Studio API 13 passed; frontend 553 passed.
+- Live: plan preview for Reika face master `ast_25f17f445b5eafadf15e4645` with a wardrobe operation → `identity_edit`, capability `Qwen Image 2.1 (reference)`, binding SHA `ba3411fb…`. Variation `var_123579bd…` completed: session `VARIATION-20260928-041321-cd812c7d`, run `run-20260928-131322-728cddc5`, `requested_by: web`, reference role `source`, `outputs/qwen21`, synced to `ses-variation-20260928-041321-cd812c7d`.
+- Observation: identity SF 0.913 / AF 0.935 (same). Edit compliance partial: the inner top became a white shirt but the black jacket the request also asked to replace was kept.
+
+Sheets: `D:/AI_Studio/reports/ch-mizuki-reika/qwen21-gate-20260928/gate-contact-sheet.jpg`, `studio-paths-sheet.jpg`.
+
 ## Next
 
-1. Phase 2 identity gate with `--seed` (e.g. 20260928 and 20260929) on 608x832, Reika default, four cases. Consider a Scene Spec `camera` close-framing value first, because face size currently limits identity judgement.
+1. Human review in Studio of the gate (16), Studio (1) and Transformation Lab (1) candidates; nothing is promoted automatically.
+2. Open questions worth one-variable tests: expression changes vs identity drift on Qwen; 45-degree drift (AF ~0.76); whether `KI` edits preserve collateral detail better than `I` for Transformation Lab.
+3. Studio multi-reference UI is not built (CLI and night batch support it). Seed is not exposed in Studio.
+4. Commit the Private skill wording once the Codex-owned uncommitted edit beneath it is committed.
+5. Earlier item kept for history: Phase 2 identity gate with `--seed` (e.g. 20260928 and 20260929) on 608x832, Reika default, four cases. Consider a Scene Spec `camera` close-framing value first, because face size currently limits identity judgement.
 2. Phase 4 Studio (schemas/main/model.ts) and Phase 5 Transformation Lab remain unstarted.
 3. Commit the Private skill wording after the Codex-owned uncommitted edit underneath it is committed or accepted.
 
