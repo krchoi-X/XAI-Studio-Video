@@ -139,6 +139,12 @@ Cross-seed consistency (seed 28 vs seed 29, same engine and case), SF/AF: Qwen r
 
 Sheets: `D:/AI_Studio/reports/ch-mizuki-reika/qwen21-gate-20260928/gate-contact-sheet.jpg`, `studio-paths-sheet.jpg`.
 
+## Remaining checks closed (2026-09-28, user asked to proceed)
+
+- Browser UI (built-in browser, `http://127.0.0.1:8787`, desktop and 768x1024 tablet): Production shows `Qwen Image 2.1` under 고급 설정, not preselected ("예상 4장"); turning on 지정된 얼굴 narrows to Krea2; clicking Qwen switches to Qwen and keeps the face image ("예상 2장"); adding Z-Image releases it. Transformation Lab shows the 엔진 chip row (Krea2 default) and the plan's engine line follows the choice live (Krea2 Identity Edit -> Qwen Image 2.1 (reference)). Nothing was submitted from the browser.
+- Genuine Hermes request: Hermes itself (`hermes -z`, local 27B model) wrote `D:/AI_Studio/workspace/hermes-plans/qwen21-check-20260928.json` and ran `hermes_night_batch.py create --no-start` -> `NIGHT-20260928-175511-763302` (`created_by: hermes`). It took Hermes several hours on its local model. Claude waited until Hermes' model left VRAM (7.9 GB -> 0) and then ran the queue's own `run`, so the requester record is truthful and the render did not share the GPU.
+- Qwen night batch live: item completed and passed `verify_session(..., reference_bound=True)`; session `SCENE-20260928-175554-mizuki-reika-same-person-facing-the-camera-s20260930` (seed suffix), run `run-20260928-175555-d3048b4c`, `requested_by: hermes`, executor `local-wangp-worker`, identity reference role recorded, `outputs/qwen21`, post-run sync without error. Score SF 0.828 / AF 0.872, 205 px frontal -> recognisers disagree (SFace just under 0.83); goes to human review.
+
 ## Next
 
 1. Human review in Studio of the gate (16), Studio (1) and Transformation Lab (1) candidates; nothing is promoted automatically.
