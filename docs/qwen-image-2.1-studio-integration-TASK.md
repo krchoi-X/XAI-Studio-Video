@@ -1,7 +1,7 @@
 # Qwen Image 2.1 Studio integration
 
 Active editor: Claude Code (assigned by direct user decision, 2026-09-28)
-Status: PHASE 1 + PHASE 3 DONE (deterministic + one live run) — Phase 2 gate and Phases 4-5 pending
+Status: IN PROGRESS — Phase 1b (portrait, `--seed`, Qwen multi-reference); Phase 1 + 3 done
 Date: 2026-09-28
 Handoff: [integration handoff](qwen-image-2.1-studio-integration-handoff.md) · [pilot record](qwen-image-2.1-character-pilot-TASK.md) · [operator runbook](qwen-image-2.1-wangp-pilot.md)
 
@@ -30,6 +30,16 @@ Make the installed local Qwen Image 2.1 uncensored GGUF an explicitly selectable
 - Qwen custom options are sent as `custom_settings: {"qwen21_kv_cache": "Disabled", "rgba": "Disabled"}`. WanGP reads them only from the `custom_settings` dict (`collect_custom_settings_from_inputs`); the handoff's top-level `qwen21_kv_cache` key would be silently ignored.
 - Qwen jobs render one image per batch (`batch_size: 1`, `repeat_generation: count`) to respect the verified conservative 8 GB setting; Krea2/Z-Image keep `batch_size: count`.
 - `local_wangp.validate_reference_settings()` accepts only models in an explicit `REFERENCE_MODELS` registry (engine, architecture, maximum reference count, required `video_prompt_type` letter). Qwen identity binding allows exactly one reference until a later contract widens it.
+
+## Phase 1b scope (user decision 2026-09-28)
+
+The user chose portrait orientation, a `--seed` option, and Qwen multi-reference support.
+
+- `qwen21.settings.json` resolution becomes `608x832` (same pixel count as the verified 832x608; both are multiples of the 32-pixel VAE block).
+- `--seed N` on `prepare`/`produce`: the first selected engine uses exactly N, the next N+1, and so on. Without it, seeds stay timestamp-derived. Refused with `--session-dir`.
+- Repeatable `--reference ROLE=PATH` (roles: `wardrobe`, `object`, `background`, `style`) for `qwen21` only. It requires `--identity-reference`; the face master is always `<image1>` and extra references follow in the given order as `<image2>`… A `REFERENCE IMAGES` map in the prompt tells the model what to take from each. At most 4 references in total (WanGP allows 10; kept at 4 for the 8 GB card until measured). Each extra reference is hash-bound like the identity reference.
+- Night batch items may carry `additional_references` and `seed`, with the same restrictions.
+- Contract additions: `_xai.reference_roles` (Qwen only), extra entries in `reference_inputs`, optional `session.requested_seed` in `batch.yaml`. Krea2 `_xai` keys and single-reference prompts are unchanged.
 
 ## Contract impact
 

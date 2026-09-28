@@ -20,7 +20,7 @@ REFERENCE_MODELS: dict[str, dict[str, Any]] = {
     "krea2_raw_edit": {"engine": "krea2", "architecture": "krea2_raw_edit", "max_refs": 2},
     "krea2_turbo_edit": {"engine": "krea2", "architecture": "krea2_turbo_edit", "max_refs": 2},
     "qwen_image_21_uncensored_q4_k_m": {
-        "engine": "qwen21", "architecture": "qwen_image_21_7B", "max_refs": 1, "video_prompt_type": "I",
+        "engine": "qwen21", "architecture": "qwen_image_21_7B", "max_refs": 4, "video_prompt_type": "I",
     },
 }
 KREA2_EDIT_MODELS = {name for name, spec in REFERENCE_MODELS.items() if spec["engine"] == "krea2"}
@@ -82,6 +82,7 @@ def validate_reference_settings(settings: dict[str, Any]) -> list[dict[str, Any]
             raise ValueError("Krea2 reference variation requires one or two reference images")
         raise ValueError(f"{spec['engine']} reference input requires between 1 and {spec['max_refs']} reference images")
     asset_ids = provenance.get("reference_asset_ids") or []
+    roles = provenance.get("reference_roles") or []
     expected_hashes = provenance.get("reference_sha256s") or []
     expected_sizes = provenance.get("reference_byte_counts") or []
     if expected_hashes and len(expected_hashes) != len(refs):
@@ -106,7 +107,7 @@ def validate_reference_settings(settings: dict[str, Any]) -> list[dict[str, Any]
             "path": str(path),
             "sha256": actual_hash,
             "byte_count": actual_size,
-            "role": provenance.get("reference_role"),
+            "role": roles[index] if index < len(roles) else provenance.get("reference_role"),
             "basis": "explicit-reference",
         })
     return records

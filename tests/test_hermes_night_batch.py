@@ -209,4 +209,38 @@ class HermesNightBatchTests(unittest.TestCase):
             night.verify_session(session, ["qwen21"], reference_bound=True)
 
 
+
+class HermesNightBatchMultiReferenceTests(unittest.TestCase):
+    setUp = HermesNightBatchTests.setUp
+    tearDown = HermesNightBatchTests.tearDown
+
+    def test_additional_references_and_seed_are_normalized_and_forwarded(self):
+        plan = night.validate_plan({"items": [{
+            "character_id": "ch-test", "prompt": "outfit swap", "engines": ["qwen21"], "count": 1, "seed": 99,
+            "identity_reference": "character-default",
+            "additional_references": ["wardrobe=D:/refs/outfit.jpg", {"role": "object", "path": "D:/refs/bag.png"}],
+        }]})
+        item = plan["items"][0]
+        self.assertEqual(["wardrobe=D:/refs/outfit.jpg", "object=D:/refs/bag.png"], item["additional_references"])
+        root = Path(self.temp.name) / "batch"; root.mkdir()
+        calls = []
+
+        def fake_run(command, **kwargs):
+            calls.append(command)
+            return CompletedProcess(command, 0, json.dumps({"session_dir": str(root / "s")}), "")
+
+        night._prepare_item({**item, "prompt_strategy": "strict_translation"}, root, fake_run)
+        refs = [calls[0][i + 1] for i, value in enumerate(calls[0]) if value == "--reference"]
+        self.assertEqual(item["additional_references"], refs)
+        self.assertEqual("99", calls[0][calls[0].index("--seed") + 1])
+
+    def test_additional_references_require_identity_and_qwen21(self):
+        for extra in ({"engines": ["krea2"], "identity_reference": "character-default"}, {"engines": ["qwen21"]}):
+            with self.assertRaisesRegex(night.cm.CharacterError, "additional_references require"):
+                night.validate_plan({"items": [{"character_id": "ch-test", "prompt": "outfit", "count": 1,
+                                                "additional_references": ["wardrobe=x.jpg"], **extra}]})
+        with self.assertRaisesRegex(night.cm.CharacterError, "seed must be"):
+            night.validate_plan({"items": [{"character_id": "ch-test", "prompt": "outfit", "seed": -2}]})
+
+
 if __name__ == "__main__": unittest.main()

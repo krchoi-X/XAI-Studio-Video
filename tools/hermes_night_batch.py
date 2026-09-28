@@ -25,6 +25,8 @@ MAX_GENERATED_IMAGES = 240
 ENGINES = {"z-image", "krea2", "qwen21"}
 # Engines that can bind a hash-verified identity reference. A reference-bound item selects exactly one of them.
 REFERENCE_ENGINES = ("krea2", "qwen21")
+# Only Qwen takes references after the identity reference; the scene CLI validates roles, files and hashes.
+MULTI_REFERENCE_ENGINES = ("qwen21",)
 GPU_LOCK_BACKOFF_SECONDS = (10, 20, 40)
 SUCCESS_STATES = {"succeeded", "needs_review"}
 GPU_LOCK_MARKERS = ("gpu lock", "already holds the gpu lock")
@@ -61,6 +63,10 @@ def validate_plan(plan: dict[str, Any]) -> dict[str, Any]:
         engines = list(dict.fromkeys(raw.get("engines") or ["z-image", "krea2"]))
         identity_reference = str(raw.get("identity_reference") or "").strip() or None
         reference_asset_id = str(raw.get("reference_asset_id") or "").strip() or None
+        additional_references = _normalize_additional_references(raw.get("additional_references"), position)
+        seed = raw.get("seed")
+        if seed is not None and (isinstance(seed, bool) or not isinstance(seed, int) or seed < 0):
+            raise cm.CharacterError(f"item {position}: seed must be a non-negative integer")
         count = int(raw.get("count", 2))
         if not cm.character_record_path(character_id).is_file():
             raise cm.CharacterError(f"item {position}: unknown character {character_id!r}")
@@ -74,6 +80,10 @@ def validate_plan(plan: dict[str, Any]) -> dict[str, Any]:
             )
         if reference_asset_id and not identity_reference:
             raise cm.CharacterError(f"item {position}: reference_asset_id requires identity_reference")
+        if additional_references and (not identity_reference or engines[0] not in MULTI_REFERENCE_ENGINES):
+            raise cm.CharacterError(
+                f"item {position}: additional_references require identity_reference and engines={list(MULTI_REFERENCE_ENGINES)}"
+            )
         if not 1 <= count <= 10:
             raise cm.CharacterError(f"item {position}: count must be 1-10 per engine")
         generated_images += count * len(engines)
@@ -85,6 +95,8 @@ def validate_plan(plan: dict[str, Any]) -> dict[str, Any]:
             "scene_spec": raw.get("scene_spec") or {},
             "identity_reference": identity_reference,
             "reference_asset_id": reference_asset_id,
+            "additional_references": additional_references,
+            "seed": seed,
             "variation_axes": raw.get("variation_axes") or {}, "status": "queued",
         })
     if generated_images > MAX_GENERATED_IMAGES:
@@ -92,6 +104,25 @@ def validate_plan(plan: dict[str, Any]) -> dict[str, Any]:
     return {"schema_version": 1, "title": str(plan.get("title") or "Hermes night batch"),
             "source_request": str(plan.get("source_request") or ""), "generated_image_budget": generated_images,
             "items": normalized}
+
+
+def _normalize_additional_references(value: Any, position: int) -> list[str]:
+    """Accept `ROLE=PATH` strings or {"role", "path"} objects and keep their order as `ROLE=PATH` strings."""
+    if value in (None, []):
+        return []
+    if not isinstance(value, list):
+        raise cm.CharacterError(f"item {position}: additional_references must be a list")
+    normalized = []
+    for entry in value:
+        if isinstance(entry, dict):
+            role, path = str(entry.get("role") or "").strip(), str(entry.get("path") or "").strip()
+        else:
+            role, _, path = str(entry).partition("=")
+            role, path = role.strip(), path.strip()
+        if not role or not path:
+            raise cm.CharacterError(f"item {position}: each additional reference needs a role and a path")
+        normalized.append(f"{role}={path}")
+    return normalized
 
 
 def active_batch(queue_root: Path) -> Path | None:
@@ -248,6 +279,10 @@ def _prepare_item(item: dict[str, Any], root: Path, run_command: Any) -> Path:
         command += ["--identity-reference", item["identity_reference"]]
     if item.get("reference_asset_id"):
         command += ["--reference-asset-id", item["reference_asset_id"]]
+    for reference in item.get("additional_references") or []:
+        command += ["--reference", reference]
+    if item.get("seed") is not None:
+        command += ["--seed", str(item["seed"])]
     result = run_command(command, cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace")
     (root / f"{item['id']}.prepare.log").write_text(_command_text(result), encoding="utf-8")
     if result.returncode != 0:

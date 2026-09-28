@@ -36,6 +36,17 @@ IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
 KREA2_IDENTITY_EDIT_MODEL = "krea2_turbo_edit"
 KREA2_IDENTITY_EDIT_CHECKPOINT = Path(r"D:\AI\WanGP\ckpts\Krea2Turbo_quanto_bf16_int8.safetensors")
 QWEN21_MODEL = ENGINES["qwen21"][1]
+# Extra references a Qwen job may carry after the face master, and the only thing the model may take from each.
+# WanGP accepts ten Qwen references; four in total is the 8 GB operating limit until it is measured higher.
+ADDITIONAL_REFERENCE_ROLES = {
+    "wardrobe": "use only the clothing and accessories worn in {label}; ignore that image's face, hair, body, pose and background",
+    "object": "include the object or prop shown in {label}; ignore everything else in that image",
+    "background": "use the location and background of {label}; ignore any person in it",
+    "style": "match only the lighting, colour grading and photographic style of {label}; copy none of its content and no face",
+}
+MULTI_REFERENCE_ENGINES = {"qwen21"}
+MAX_QWEN21_REFERENCES = 4
+MAX_SEED = 2**32 - 1
 
 HAIR_VARIATIONS = {
     "긴 생머리 센터 파트": "long straight hair with a clearly defined center part, worn fully down",
@@ -355,15 +366,21 @@ def resolve_identity_reference(character: dict[str, Any], selection: str | None,
         source = identity.get("source")
         state = identity.get("state")
         recorded_asset_id = recorded_asset_id or identity.get("asset_id")
+    return hash_bound_image(selected, "identity", basis, recorded_asset_id, source, state)
+
+
+def hash_bound_image(selected: str, role: str, basis: str, asset_id: str | None = None,
+                     source: str | None = None, state: str | None = None) -> dict[str, Any]:
+    """Hash one explicitly named reference image; a missing or non-image file is refused."""
     path = Path(selected).resolve()
     if not path.is_file():
-        raise cm.CharacterError(f"identity reference image not found: {path}")
+        raise cm.CharacterError(f"{role} reference image not found: {path}")
     if path.suffix.lower() not in IMAGE_SUFFIXES:
-        raise cm.CharacterError(f"unsupported identity reference image: {path}")
+        raise cm.CharacterError(f"unsupported {role} reference image: {path}")
     return {
-        "role": "identity",
+        "role": role,
         "basis": basis,
-        "asset_id": str(recorded_asset_id) if recorded_asset_id else None,
+        "asset_id": str(asset_id) if asset_id else None,
         "path": str(path),
         "sha256": sha256_file(path),
         "byte_count": path.stat().st_size,
@@ -372,16 +389,45 @@ def resolve_identity_reference(character: dict[str, Any], selection: str | None,
     }
 
 
-def reference_provenance(reference: dict[str, Any], character_id: str, request: str, actor: str) -> dict[str, Any]:
-    """The engine-independent `_xai` record that binds a job to one hash-verified identity reference."""
+def resolve_additional_references(values: list[str] | None) -> list[dict[str, Any]]:
+    """Resolve `ROLE=PATH` values, in the order given, into hash-bound reference records."""
+    references = []
+    for value in values or []:
+        role, separator, selected = str(value).partition("=")
+        role, selected = role.strip(), selected.strip()
+        if not separator or not selected:
+            raise cm.CharacterError(f"--reference must be ROLE=PATH, got {value!r}")
+        if role not in ADDITIONAL_REFERENCE_ROLES:
+            raise cm.CharacterError(
+                f"unsupported reference role {role!r}; use one of " + ", ".join(ADDITIONAL_REFERENCE_ROLES)
+            )
+        references.append(hash_bound_image(selected, role, "explicit-path"))
+    return references
+
+
+def reference_map_prompt(extras: list[dict[str, Any]]) -> str:
+    """Name each ordered reference as `<imageN>` so the model knows what to take from which image."""
+    lines = ["REFERENCE IMAGES, in the order supplied:",
+             "- <image1>: identity — the only source of this character's face and identity."]
+    for index, reference in enumerate(extras, 2):
+        label = f"<image{index}>"
+        lines.append(f"- {label}: {reference['role']} — "
+                     + ADDITIONAL_REFERENCE_ROLES[reference["role"]].format(label=label) + ".")
+    return "\n".join(lines)
+
+
+def reference_provenance(references: list[dict[str, Any]], character_id: str, request: str, actor: str) -> dict[str, Any]:
+    """The engine-independent `_xai` record binding a job to hash-verified references; the first is the identity."""
+    identity = references[0]
     return {
         "kind": "reference_transformation",
         "schema_version": 2,
         "character_id": character_id,
         "reference_role": "identity",
-        "reference_asset_ids": [reference["asset_id"]] if reference.get("asset_id") else [],
-        "reference_sha256s": [reference["sha256"]],
-        "reference_byte_counts": [reference["byte_count"]],
+        # Positional with image_refs; only the identity reference can carry an adapter asset ID.
+        "reference_asset_ids": [identity["asset_id"]] if identity.get("asset_id") else [],
+        "reference_sha256s": [item["sha256"] for item in references],
+        "reference_byte_counts": [item["byte_count"] for item in references],
         "operator_request": request,
         "requested_by": actor,
         "allow_text_fallback": False,
@@ -389,8 +435,11 @@ def reference_provenance(reference: dict[str, Any], character_id: str, request: 
 
 
 def apply_krea2_identity_reference(settings: dict[str, Any], reference: dict[str, Any],
-                                   character_id: str, request: str, actor: str) -> dict[str, Any]:
+                                   character_id: str, request: str, actor: str,
+                                   extras: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     """Compile a text-to-image Krea2 job into a hash-bound Identity Edit job."""
+    if extras:
+        raise cm.CharacterError("krea2 Identity Edit takes only the identity reference; additional references require qwen21")
     result = dict(settings)
     for key in ("NAG_scale", "NAG_tau", "NAG_alpha", "type"):
         result.pop(key, None)
@@ -406,25 +455,30 @@ def apply_krea2_identity_reference(settings: dict[str, Any], reference: dict[str
         "guidance_scale": 0,
         "activated_loras": [],
         "loras_multipliers": "",
-        "_xai": reference_provenance(reference, character_id, request, actor),
+        "_xai": reference_provenance([reference], character_id, request, actor),
     })
     return result
 
 
 def apply_qwen21_identity_reference(settings: dict[str, Any], reference: dict[str, Any],
-                                    character_id: str, request: str, actor: str) -> dict[str, Any]:
-    """Bind the Qwen Image 2.1 job to one hash-verified identity reference.
+                                    character_id: str, request: str, actor: str,
+                                    extras: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    """Bind the Qwen Image 2.1 job to the identity reference, followed by any ordered extra references.
 
     The same checkpoint edits and generates, so only the reference fields change. WanGP drops `image_refs`
-    unless `video_prompt_type` contains `I`; `I` treats the reference as a person rather than as the canvas.
+    unless `video_prompt_type` contains `I`; `I` treats the references as people or objects rather than as the canvas.
     """
     if settings.get("model_type") != QWEN21_MODEL:
         raise cm.CharacterError(f"qwen21 identity reference requires model_type {QWEN21_MODEL}")
+    references = [reference, *(extras or [])]
+    if len(references) > MAX_QWEN21_REFERENCES:
+        raise cm.CharacterError(f"qwen21 accepts at most {MAX_QWEN21_REFERENCES} references including the identity reference")
     result = dict(settings)
-    provenance = reference_provenance(reference, character_id, request, actor)
-    provenance.update({"engine": "qwen21", "model_type": QWEN21_MODEL})
+    provenance = reference_provenance(references, character_id, request, actor)
+    provenance.update({"engine": "qwen21", "model_type": QWEN21_MODEL,
+                       "reference_roles": [item["role"] for item in references]})
     result.update({
-        "image_refs": [reference["path"]],
+        "image_refs": [item["path"] for item in references],
         "video_prompt_type": "I",
         "remove_background_images_ref": 0,
         "_xai": provenance,
@@ -440,12 +494,13 @@ REFERENCE_ENGINES = {
 
 
 def apply_identity_reference(settings: dict[str, Any], reference: dict[str, Any],
-                             character_id: str, request: str, actor: str, engine: str = "krea2") -> dict[str, Any]:
+                             character_id: str, request: str, actor: str, engine: str = "krea2",
+                             extras: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     """Compile a job for `engine` into a hash-bound identity-reference job; unsupported engines fail."""
     compiler = REFERENCE_ENGINES.get(engine)
     if compiler is None:
         raise cm.CharacterError(f"{engine} cannot bind an identity reference; no text-only fallback is allowed")
-    return compiler(settings, reference, character_id, request, actor)
+    return compiler(settings, reference, character_id, request, actor, extras)
 
 
 def interpret(character_id: str, request: str, model: str, strategy: str = "strict_translation",
@@ -514,7 +569,7 @@ def interpret(character_id: str, request: str, model: str, strategy: str = "stri
     }
 
 
-def prepare(character_id: str, request: str, model: str, count: int, engines: list[str], strategy: str = "strict_translation", immutable: dict[str, str] | None = None, supplied_scene_spec: dict[str, Any] | None = None, actor: str = "codex", identity_reference: str | None = None, reference_asset_id: str | None = None) -> Path:
+def prepare(character_id: str, request: str, model: str, count: int, engines: list[str], strategy: str = "strict_translation", immutable: dict[str, str] | None = None, supplied_scene_spec: dict[str, Any] | None = None, actor: str = "codex", identity_reference: str | None = None, reference_asset_id: str | None = None, additional_references: list[str] | None = None, seed: int | None = None) -> Path:
     character_path = cm.character_record_path(character_id)
     if not character_path.is_file():
         raise cm.CharacterError(f"unknown character: {character_id}")
@@ -528,6 +583,16 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
             "identity-reference generation requires exactly one of --engines "
             + ", ".join(REFERENCE_ENGINES) + "; no text-only fallback is allowed"
         )
+    extras = resolve_additional_references(additional_references)
+    if extras and not reference:
+        raise cm.CharacterError("--reference requires --identity-reference; the face master is always <image1>")
+    if extras and engines[0] not in MULTI_REFERENCE_ENGINES:
+        raise cm.CharacterError("additional references require --engines " + ", ".join(sorted(MULTI_REFERENCE_ENGINES)))
+    if extras and 1 + len(extras) > MAX_QWEN21_REFERENCES:
+        raise cm.CharacterError(f"at most {MAX_QWEN21_REFERENCES} references in total, including the identity reference")
+    if seed is not None and not 0 <= seed <= MAX_SEED - len(engines):
+        raise cm.CharacterError(f"seed must be between 0 and {MAX_SEED - len(engines)}")
+    references = [reference, *extras] if reference else []
     immutable = immutable or {}
     operating_mode = normalize_strategy(strategy)
     scene_spec = build_scene_spec(request, immutable, supplied_scene_spec)
@@ -554,7 +619,7 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
             "IDENTITY REFERENCE LOCK — The provided identity-reference image is authoritative for this "
             "character's exact facial identity. Preserve its individual eye shape and spacing, nose, lips, "
             "jaw and facial proportions. Change only the scene variables requested below; do not substitute "
-            "a generic face.\n\n" + prompt
+            "a generic face.\n\n" + (reference_map_prompt(extras) + "\n\n" if extras else "") + prompt
         )
     runtime_prompt = prompt + "\n"
     prompt_hash = hashlib.sha256(runtime_prompt.encode("utf-8")).hexdigest()
@@ -570,7 +635,7 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
         "source_request": request, "runtime_prompt_sha256": prompt_hash, "scene_delta": delta, "craft_delta": craft,
         "prompt_strategy": operating_mode, "immutable_constraints": immutable, "scene_spec": scene_spec,
         "suppressed_stable_dna_fields": suppressed_dna_fields,
-        "reference_inputs": [reference] if reference else [],
+        "reference_inputs": references,
     })
     trace = {
         "schema_version": 3, "precedence": ["explicit_user_constraints", "immutable_scene_fields", "stable_character_dna", "bounded_identity_variables", "scene_requirements", "style_enrichment", "optional_creative_detail"],
@@ -584,7 +649,7 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
         "craft_delta": craft,
         "final_prompt_sent_to_hermes": None,
         "final_prompt_sent_to_image_engine": prompt,
-        "reference_inputs": [reference] if reference else [],
+        "reference_inputs": references,
         "invoked_by": actor, "hermes_agent_used": actor == "hermes", "local_llm_used": operating_mode in LLM_MODES, "created_at": stamp(),
     }
     write_json(root / "prompt-trace.json", trace)
@@ -600,18 +665,21 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
         else:
             settings["batch_size"] = count
             settings["repeat_generation"] = 1
-        settings["seed"] = seed_base + offset
+        # An operator seed is used exactly by the first engine; each further engine takes the next value.
+        settings["seed"] = seed + offset - 1 if seed is not None else seed_base + offset
         if reference:
-            settings = apply_identity_reference(settings, reference, character_id, request, actor, engine)
+            settings = apply_identity_reference(settings, reference, character_id, request, actor, engine, extras)
             model_name = settings["model_type"]
         write_json(root / template_name, settings)
-        jobs.append({"backend": "local-wangp", "engine": engine, "model": model_name, "count": count, "seed": settings["seed"], "resolution": settings["resolution"], "steps": settings["num_inference_steps"], "settings_file": template_name, "output_dir": f"outputs/{engine}", "status": "prepared", "reference_inputs": [reference] if reference else []})
+        jobs.append({"backend": "local-wangp", "engine": engine, "model": model_name, "count": count, "seed": settings["seed"], "resolution": settings["resolution"], "steps": settings["num_inference_steps"], "settings_file": template_name, "output_dir": f"outputs/{engine}", "status": "prepared", "reference_inputs": references})
     batch = {
         "schema_version": 1,
-        "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": title, "status": "prepared", "created_by": actor, "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "scene_spec_file": "scene_spec.json", "scene_delta_file": "scene-delta.json", "prompt_trace_file": "prompt-trace.json", "prompt_strategy": operating_mode, "stable_dna_sha256": cm.stable_hash(character), "reference_inputs": [reference] if reference else []},
+        "session": {"id": session_id, "character_id": character_id, "character_name": character["name"], "romanized_name": character.get("romanized_name", ""), "title": title, "status": "prepared", "created_by": actor, "visibility": "restricted", "asset_root": str(asset_root), "created_at": stamp(), "prompt_file": "prompt.txt", "scene_spec_file": "scene_spec.json", "scene_delta_file": "scene-delta.json", "prompt_trace_file": "prompt-trace.json", "prompt_strategy": operating_mode, "stable_dna_sha256": cm.stable_hash(character), "reference_inputs": references},
         "jobs": jobs,
         "review": {"surface": "personal-prompt-studio", "initial_state": "needs_review"},
     }
+    if seed is not None:
+        batch["session"]["requested_seed"] = seed
     # JSON is valid YAML and keeps this tool dependency-free.
     from creation_records import snapshot_inputs
     snapshot_inputs(root, character, Path(__file__))
@@ -698,6 +766,8 @@ def main() -> int:
     draft.add_argument("--scene-spec-json", default="{}")
     draft.add_argument("--identity-reference", help="character-default or an explicit local image path; requires exactly one reference-capable engine (krea2 or qwen21)")
     draft.add_argument("--reference-asset-id", help="optional durable Gallery/adapter asset ID for the identity reference")
+    draft.add_argument("--reference", action="append", metavar="ROLE=PATH", help="additional qwen21 reference after the identity reference, in order (<image2>, <image3>, ...); roles: " + ", ".join(ADDITIONAL_REFERENCE_ROLES))
+    draft.add_argument("--seed", type=int, help="exact seed for the first engine; each further engine uses the next value (default: derived from the preparation time)")
     draft.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
     read = sub.add_parser("interpret", help="compile a request and print it without reserving a session or touching the GPU")
     read.add_argument("--character", required=True)
@@ -718,6 +788,8 @@ def main() -> int:
     produce.add_argument("--scene-spec-json", default="{}")
     produce.add_argument("--identity-reference", help="character-default or an explicit local image path; requires exactly one reference-capable engine (krea2 or qwen21)")
     produce.add_argument("--reference-asset-id", help="optional durable Gallery/adapter asset ID for the identity reference")
+    produce.add_argument("--reference", action="append", metavar="ROLE=PATH", help="additional qwen21 reference after the identity reference, in order (<image2>, <image3>, ...); roles: " + ", ".join(ADDITIONAL_REFERENCE_ROLES))
+    produce.add_argument("--seed", type=int, help="exact seed for the first engine; each further engine uses the next value (default: derived from the preparation time)")
     produce.add_argument("--actor", choices=ACTORS, default="codex", help="who is asking: recorded as invoked_by / created_by and forwarded to the run record as requested_by")
     args = parser.parse_args()
     try:
@@ -733,7 +805,7 @@ def main() -> int:
             ), ensure_ascii=False, indent=2))
             return 0
         if args.command == "produce" and args.session_dir:
-            if args.identity_reference or args.reference_asset_id:
+            if args.identity_reference or args.reference_asset_id or args.reference or args.seed is not None:
                 raise cm.CharacterError("reference options belong to preparation; reuse the existing session settings unchanged")
             root = cm.validate_generation_session(args.session_dir)
         else:
@@ -748,7 +820,7 @@ def main() -> int:
             scene_spec = json.loads(args.scene_spec_json)
             if not isinstance(scene_spec, dict):
                 raise cm.CharacterError("scene-spec-json must be an object")
-            root = prepare(args.character, args.request, args.model, args.count, engines, args.strategy, {str(key): str(value) for key, value in immutable.items()}, {str(key): value for key, value in scene_spec.items()}, args.actor, args.identity_reference, args.reference_asset_id)
+            root = prepare(args.character, args.request, args.model, args.count, engines, args.strategy, {str(key): str(value) for key, value in immutable.items()}, {str(key): value for key, value in scene_spec.items()}, args.actor, args.identity_reference, args.reference_asset_id, args.reference, args.seed)
         result: dict[str, Any] = {"session_dir": str(root), "status": "prepared"}
         if args.command == "produce":
             result.update({"status": "completed", "runs": submit(root, wait=True)})

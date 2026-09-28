@@ -48,7 +48,7 @@ def test_qwen21_template_is_minimal_and_conservative():
     template = json.loads((scene.TEMPLATES / "qwen21.settings.json").read_text(encoding="utf-8"))
     assert template["model_type"] == QWEN_MODEL
     assert template["base_model_type"] == "qwen_image_21_7B"
-    assert (template["resolution"], template["num_inference_steps"], template["guidance_scale"]) == ("832x608", 40, 4.0)
+    assert (template["resolution"], template["num_inference_steps"], template["guidance_scale"]) == ("608x832", 40, 4.0)
     assert template["custom_settings"] == {"qwen21_kv_cache": "Disabled", "rgba": "Disabled"}
     assert template["prompt_enhancer"] == "" and template["video_prompt_type"] == ""
     assert "image_refs" not in template
@@ -148,8 +148,8 @@ def test_local_validator_accepts_registered_qwen_and_refuses_everything_else(tmp
     assert local_wangp.validate_reference_settings(qwen_settings(image, base_model_type=QWEN_MODEL))
     with pytest.raises(ValueError, match="ignores image_refs"):
         local_wangp.validate_reference_settings(qwen_settings(image, video_prompt_type=""))
-    with pytest.raises(ValueError, match="between 1 and 1"):
-        local_wangp.validate_reference_settings(qwen_settings(image, image_refs=[str(image), str(image)]))
+    with pytest.raises(ValueError, match="between 1 and 4"):
+        local_wangp.validate_reference_settings(qwen_settings(image, image_refs=[str(image)] * 5))
     with pytest.raises(ValueError, match="fallback is disabled"):
         local_wangp.validate_reference_settings(qwen_settings(image, base_model_type="qwen_image_20B"))
     with pytest.raises(ValueError, match="fallback is disabled"):
@@ -186,3 +186,74 @@ def test_changed_or_missing_reference_fails_before_the_worker_starts(tmp_path, m
     args.run_id = "run-qwen-2"
     with pytest.raises(ValueError, match="not found"):
         local_wangp.submit(args)
+
+
+# --- Phase 1b: operator seed and Qwen multi-reference -------------------------------------------------------
+
+
+def test_operator_seed_is_exact_for_the_first_engine_and_recorded(creation):
+    session = scene.prepare("ch-synthetic", "seeded scene", cm.DEFAULT_MODEL, 1, ["qwen21"], seed=424242)
+    assert settings_of(session, "qwen21.settings.json")["seed"] == 424242
+    batch = batch_of(session)
+    assert batch["jobs"][0]["seed"] == 424242 and batch["session"]["requested_seed"] == 424242
+    both = scene.prepare("ch-synthetic", "seeded pair", cm.DEFAULT_MODEL, 1, ["z-image", "krea2"], seed=7)
+    assert [job["seed"] for job in batch_of(both)["jobs"]] == [7, 8]
+    unseeded = scene.prepare("ch-synthetic", "unseeded scene", cm.DEFAULT_MODEL, 1, ["qwen21"])
+    assert "requested_seed" not in batch_of(unseeded)["session"]
+    with pytest.raises(cm.CharacterError, match="seed must be between"):
+        scene.prepare("ch-synthetic", "bad seed", cm.DEFAULT_MODEL, 1, ["qwen21"], seed=-1)
+
+
+def test_qwen21_multi_reference_keeps_order_roles_hashes_and_prompt_map(creation):
+    _, face = creation
+    outfit = face.parent / "outfit.jpg"; outfit.write_bytes(b"another person wearing the outfit")
+    prop = face.parent / "prop.png"; prop.write_bytes(b"a red umbrella")
+    session = scene.prepare("ch-synthetic", "put her in <image2>'s outfit holding the umbrella", cm.DEFAULT_MODEL, 1,
+                            ["qwen21"], actor="claude", identity_reference=str(face), reference_asset_id="ast-face",
+                            additional_references=[f"wardrobe={outfit}", f"object={prop}"], seed=11)
+    settings = settings_of(session, "qwen21.settings.json")
+    assert settings["image_refs"] == [str(face.resolve()), str(outfit.resolve()), str(prop.resolve())]
+    assert settings["video_prompt_type"] == "I"
+    xai = settings["_xai"]
+    assert xai["reference_roles"] == ["identity", "wardrobe", "object"]
+    assert xai["reference_sha256s"] == [wangp_recorder.sha256_file(path) for path in (face, outfit, prop)]
+    assert xai["reference_asset_ids"] == ["ast-face"]
+    assert [item["role"] for item in batch_of(session)["session"]["reference_inputs"]] == ["identity", "wardrobe", "object"]
+    prompt = (session / "prompt.txt").read_text(encoding="utf-8")
+    assert "<image1>: identity" in prompt and "<image2>: wardrobe" in prompt and "<image3>: object" in prompt
+    assert prompt.index("REFERENCE IMAGES") < prompt.index("PRIORITY 1")
+    records = local_wangp.validate_reference_settings(settings)
+    assert [(record["role"], record["asset_id"]) for record in records] == [("identity", "ast-face"), ("wardrobe", None), ("object", None)]
+    outfit.write_bytes(b"outfit swapped after preparation")
+    with pytest.raises(ValueError, match="changed after preparation"):
+        local_wangp.validate_reference_settings(settings)
+
+
+def test_single_reference_prompt_has_no_reference_map(creation):
+    _, face = creation
+    session = scene.prepare("ch-synthetic", "profile", cm.DEFAULT_MODEL, 1, ["qwen21"], identity_reference=str(face))
+    assert "REFERENCE IMAGES" not in (session / "prompt.txt").read_text(encoding="utf-8")
+    assert settings_of(session, "qwen21.settings.json")["_xai"]["reference_roles"] == ["identity"]
+
+
+@pytest.mark.parametrize("engines, identity, extras, message", [
+    (["qwen21"], False, ["wardrobe={outfit}"], "requires --identity-reference"),
+    (["krea2"], True, ["wardrobe={outfit}"], "additional references require --engines qwen21"),
+    (["qwen21"], True, ["pose={outfit}"], "unsupported reference role"),
+    (["qwen21"], True, ["{outfit}"], "must be ROLE=PATH"),
+    (["qwen21"], True, ["wardrobe={outfit}"] * 4, "at most 4 references"),
+    (["qwen21"], True, ["wardrobe={missing}"], "wardrobe reference image not found"),
+])
+def test_multi_reference_refusals(creation, engines, identity, extras, message):
+    _, face = creation
+    outfit = face.parent / "outfit.jpg"; outfit.write_bytes(b"outfit")
+    values = [value.format(outfit=outfit, missing=face.parent / "missing.png") for value in extras]
+    with pytest.raises(cm.CharacterError, match=message):
+        scene.prepare("ch-synthetic", "scene", cm.DEFAULT_MODEL, 1, engines,
+                      identity_reference=str(face) if identity else None, additional_references=values)
+
+
+def test_session_dir_resume_refuses_new_seed_or_references(monkeypatch, capsys):
+    monkeypatch.setattr(scene.sys, "argv", ["character_scene.py", "produce", "--session-dir", "x", "--seed", "3"])
+    assert scene.main() == 2
+    assert "belong to preparation" in capsys.readouterr().err

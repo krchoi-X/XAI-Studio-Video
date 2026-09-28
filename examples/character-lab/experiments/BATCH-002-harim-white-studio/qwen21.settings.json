@@ -2,7 +2,7 @@
   "model_type": "qwen_image_21_uncensored_q4_k_m",
   "base_model_type": "qwen_image_21_7B",
   "image_mode": 1,
-  "resolution": "832x608",
+  "resolution": "608x832",
   "num_inference_steps": 40,
   "guidance_scale": 4.0,
   "sample_solver": "default",
