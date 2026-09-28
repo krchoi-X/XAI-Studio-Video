@@ -53,13 +53,14 @@ Hermes가 작성한 계획은 `strict_translation`으로 컴파일한다. 외부
 ### 2차 — 얼굴 마스터 유지 비교
 
 - 6개 장면 × 2개 엔진 × 1장 = **12장**
+- 얼굴 측정용 상반신 장면 2개 × 2개 엔진 × 1장 = **4장**
 - 같은 얼굴 마스터를 해시 고정 입력으로 전달한다.
 - 엔진: Krea2 Identity Edit, Qwen Image 2.1 reference mode
 - Z-Image는 현재 Character Manager에서 얼굴 마스터를 직접 받는 reference engine이 아니므로 이 비교에서 제외한다.
 
 ### 기본 시험 합계
 
-총 **30장**이다. 1차 결과를 먼저 검토하고 명백한 파이프라인 오류가 없을 때 2차를 실행한다. 처음부터 80~100장을 만들지 않는다.
+캐릭터 한 명의 기본 시험은 총 **34장**이다. 1차 결과를 먼저 검토하고 명백한 파이프라인 오류가 없을 때 2차를 실행한다. 처음부터 80~100장을 만들지 않는다.
 
 ### 후속 반복성 시험
 
@@ -156,7 +157,18 @@ T05는 명시적으로 성인인 캐릭터만 사용한다. 일반 의상 시험
 - 같은 얼굴 마스터를 Krea2와 Qwen 모두에 사용한다.
 - 얼굴 마스터의 기존 의상은 테스트 의상보다 우선하지 않는다. 요청문과 HARD wardrobe constraints가 변경 의상이다.
 
-각 장면을 Krea2와 Qwen item으로 따로 만든다. 총 12 items이다.
+각 장면을 Krea2와 Qwen item으로 따로 만든다. T01–T06 12 items와 아래 얼굴 측정용 I01–I02 4 items를 합쳐 총 16 items이다.
+
+### 얼굴 측정용 보정 장면
+
+1차 실제 시험에서는 전신 이미지의 검출 얼굴이 49–96 px에 그쳐 150 px 최소 기준을 만족하지 못했다. 2차 정체성 시험은 전신 장면의 육안 평가만으로 끝내지 않고 아래 두 장면을 추가한다.
+
+| ID | 목적 | HARD constraints | 모델 중립 요청문 |
+|---|---|---|---|
+| I01 | 정면 얼굴 재구성 | `coverage=clothed`; `wardrobe=plain black crew-neck top` | `Head-and-shoulders studio photograph of the same adult woman shown in the provided identity reference image, facing the camera with a neutral expression. Preserve her facial identity, facial proportions, skin features and hair. She wears a plain black crew-neck top. Plain light-grey background, soft even light, no jewelry, text or other person.` |
+| I02 | 45도 얼굴 유지 | `coverage=clothed`; `wardrobe=plain black crew-neck top` | `Head-and-shoulders studio photograph of the same adult woman shown in the provided identity reference image, with her head turned about 45 degrees to her left and both eyes visible. Preserve her facial identity, facial proportions, skin features and hair. She wears a plain black crew-neck top. Plain light-grey background, soft even light, no jewelry, text or other person.` |
+
+I01–I02 결과의 검출 얼굴이 실제로 150 px 이상인지 확인한다. 기준보다 작으면 자동 유사도 결과를 사용하지 않고 측정 불가로 기록한다.
 
 Krea2 예시:
 
@@ -311,10 +323,10 @@ ArcFace/SFace 같은 자동 유사도는 보조 증거다. 정면용 수치를 �
     "sha256": "<HASH_OR_NULL>"
   },
   "phases": ["text-only", "identity-locked"],
-  "scene_ids": ["T01", "T02", "T03", "T04", "T05", "T06"],
+  "scene_ids": ["T01", "T02", "T03", "T04", "T05", "T06", "I01", "I02"],
   "engines": ["z-image", "krea2", "qwen21"],
   "batch_ids": [],
-  "expected_images": 30,
+  "expected_images": 34,
   "actual_images": 0,
   "failures": [],
   "human_review_status": "pending",
@@ -341,7 +353,25 @@ ArcFace/SFace 같은 자동 유사도는 보조 증거다. 정면용 수치를 �
 
 시험 결과만으로 canonical DNA, 얼굴 마스터, 승인 reference 또는 기존 채택 이미지를 바꾸지 않는다.
 
-## 14. 이번 문서가 하지 않는 것
+## 14. 1차 실제 실행 기록 — 2026-09-29
+
+- Batch: `NIGHT-20260929-031004-8c0d6e`
+- 범위: Lee Suan과 Mizuki Reika, 각각 T01–T06 × 3 engines
+- 결과: 36/36 completed, 모든 run은 `needs_review`, identity reference 없음
+- 보고서: `D:\AI_Studio\reports\benchmark-20260929-phase1\README.md`
+- 비교 시트: 같은 폴더의 `ch-mizuki-reika-full.jpg`, `ch-mizuki-reika-faces.jpg`, `ch-lee-suan-full.jpg`, `ch-lee-suan-faces.jpg`
+
+관찰:
+
+- Qwen21은 T06의 약 45도 회전 지시를 두 캐릭터에서 가장 분명히 따랐다. T04 테니스 동작은 Lee Suan에서만 라켓과 동작을 모두 충족해, 모든 캐릭터에 대해 검증된 규칙으로 일반화하지 않는다.
+- Z-Image가 가장 빨랐고, Krea2, Qwen21 순이었다. 기록된 평균은 약 60초, 91초, 174초다.
+- Krea2 Reika T03 한복 결과 한 장이 `coverage=clothed`를 위반했다. 동일 장면의 다른 엔진과 Lee Suan Krea2는 정상이라 단일 candidate failure로 피드백에 기록했다. Krea2 공통 규칙 변경 전 같은 T03을 2–3 seeds로 재현 확인한다.
+- 전신 이미지의 얼굴은 자동 정체성 측정에 너무 작았다. 이 관찰 때문에 2차에 I01–I02 보정 장면을 추가했다.
+- Reika만 사용자 선택 얼굴 마스터가 있다. Lee Suan은 `reference_defaults.identity`가 없으므로 사람이 얼굴 마스터를 선택하기 전에는 2차 identity-locked 시험 대상이 아니다.
+
+이 기록은 사용자의 육안 점수를 대신하지 않는다. 1차의 최종 선호와 2차 진행 결정은 사람 검토 뒤 확정한다.
+
+## 15. 이번 문서가 하지 않는 것
 
 - 지금 즉시 이미지를 생성하지 않는다.
 - 모델을 다운로드·업데이트하지 않는다.
@@ -350,7 +380,7 @@ ArcFace/SFace 같은 자동 유사도는 보조 증거다. 정면용 수치를 �
 - Mira의 일회성 `tmp` runner를 정식 실행기로 채택하지 않는다.
 - Studio UI나 데이터베이스를 변경하지 않는다.
 
-## 15. 관련 자료
+## 16. 관련 자료
 
 - `docs/hermes-wardrobe-library-stills-playbook.md`
 - `docs/wardrobe-library-patterns/`
