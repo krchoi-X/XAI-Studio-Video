@@ -100,6 +100,27 @@ Studio: no changes yet.
 - Inference (untested): the Stable DNA body paragraph (height, long legs) pulls toward full-body framing on both orientations. Test by one variable, e.g. a Scene Spec `camera` value for a close framing, before changing settings.
 - Human decision: none; both live outputs are candidates.
 
+## Phase 2 identity gate results (run by Claude at the user's request, 2026-09-28)
+
+Setup: Reika `character-default` (face-09, SHA `ba3411fb…`), 4 cases x seeds 20260928/20260929 on `qwen21` (608x832, 40 steps, CFG 4) and on the `krea2` Identity Edit baseline (768x1024, 8 steps), all `strict_translation`, actor `claude`, plus one added variable for both engines: Scene Spec `camera` = tight head-and-shoulders close-up. 16/16 renders completed. Runner, manifest, scores and sheet: `D:/AI_Studio/reports/ch-mizuki-reika/qwen21-gate-20260928/` (`run_gate.py`, `gate-manifest.json`, `gate-results.json`, `gate-score.json`, `crossseed-*.json`, `gate-contact-sheet.jpg`). Studio sync imported 16 (all unreviewed).
+
+Measurement: `tools/identity_score.py` (SFace + ArcFace on the same aligned crop) against prototype `prototype-reika-face-09.json`; thresholds from `docs/identity-scoring-calibration.json` (same >= 0.83/0.84, different <= 0.551). All faces 166-328 px, above the 150 px floor.
+
+| case | Qwen21 s28 (SF/AF) | Qwen21 s29 | Krea2 s28 | Krea2 s29 |
+|---|---|---|---|---|
+| reconstruction (frontal) | 0.916/0.892 same | 0.876/0.856 same | 0.739/0.680 drift | 0.744/0.686 drift |
+| clothing only (frontal) | 0.881/0.896 same | 0.901/0.873 same | 0.815/0.731 drift | 0.749/0.716 drift |
+| 45-degree (three-quarter) | 0.839/0.767 drift | 0.801/0.763 drift | 0.665/0.670 drift | 0.628/0.582 drift |
+| 90-degree profile | 0.496/0.454 uncalibrated | 0.477/0.580 uncalibrated | 0.431/0.572 uncalibrated | 0.363/0.517 uncalibrated |
+
+Cross-seed consistency (seed 28 vs seed 29, same engine and case), SF/AF: Qwen reconstruction 0.882/0.835, clothing 0.875/0.857, 45-degree 0.783/0.795, profile 0.796/0.717; Krea2 0.855/0.810, 0.885/0.826, 0.736/0.754, 0.799/0.739.
+
+- Observation: Qwen21 reached the calibrated "same" band on all four frontal images; Krea2 Identity Edit stayed in "drift" on all eight. The clothing edit changed only the garment on Qwen. At 45 degrees Qwen is SFace-borderline and ArcFace-drift (0.76-0.77), still ahead of Krea2. Qwen produced true side profiles (one bucketed deep three-quarter); Krea2 produced deep three-quarter views, not profiles.
+- Limits: profile and deep three-quarter buckets have no calibrated threshold (recognisers lose accuracy off-axis), so those numbers are not a verdict. Recognisers are trained on real photos; n=2 seeds per cell; one character. The Krea2 baseline differs in resolution/steps by design (its standard edit route).
+- Inference: for frontal identity preservation from one face master, Qwen21 is materially better than the current Krea2 Identity Edit route on this character. Angled views remain the weak point for both.
+- Human decision: pending. No profile or output is promoted; the gate outputs stay unreviewed candidates.
+- Producer finding: preparing the same request with different `--seed` values within one second collided on session ID (refused safely, "shared session already exists"; 5 of 16, retried later). Fixed after the gate by appending the seed to new seeded session IDs.
+
 ## Next
 
 1. Phase 2 identity gate with `--seed` (e.g. 20260928 and 20260929) on 608x832, Reika default, four cases. Consider a Scene Spec `camera` close-framing value first, because face size currently limits identity judgement.
