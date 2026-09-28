@@ -3,7 +3,7 @@
 Active editor: Claude Code (assigned by direct user decision, 2026-09-28)
 Status: PHASES 1-5 IMPLEMENTED AND LIVE-VERIFIED — human review of all Qwen candidates pending; Qwen is not a default
 Date: 2026-09-28
-Handoff: [integration handoff](qwen-image-2.1-studio-integration-handoff.md) · [pilot record](qwen-image-2.1-character-pilot-TASK.md) · [operator runbook](qwen-image-2.1-wangp-pilot.md)
+Return handoff to Codex: [Claude → Codex](qwen-image-2.1-claude-to-codex-handoff.md) · Handoff: [integration handoff](qwen-image-2.1-studio-integration-handoff.md) · [pilot record](qwen-image-2.1-character-pilot-TASK.md) · [operator runbook](qwen-image-2.1-wangp-pilot.md)
 
 ## Goal
 
