@@ -1,0 +1,32 @@
+# Reference State: Trailer Montage (고밀도 비트 체인)
+# Source: MeiGen Top20 synthesis (2026-09-26) — pattern rank #2, reinforced 9/20
+# Status: existing pattern, reinforced — NOT a new rule
+
+pattern:
+  name: Trailer Montage
+  frequency: "9/20"
+  evidence_grade: reinforced
+  representative_cases: [C03, C18, C20]
+  cases: [C03, C04, C05, C06, C07, C11, C18, C19, C20]
+
+definition: "1~3초/비트의 밀도로 15초를 완결하는 비트 체인 구조"
+
+structure:
+  beat_density: "1-3 seconds per beat"
+  typical_total: "15 seconds / 5-15 beats"
+  beat_spec: "[timestamp] + action + camera + (SFX)"
+  transition_vocabulary: ["Cut on action", "Match cut", "Smash cut", "Whip pan", "Sound bridge"]
+
+template: |
+  [0:00-0:03] <action>. <camera>. / SFX: <...>
+  [0:03-0:06] <action>. <camera>. / SFX: <...>
+  ... (5-15 beats)
+
+observations:
+  - "C03: 15샷/15초 = 1샷/초 — 밀도가 모델의 drift 누적 시간을 최소화할 수 있음 (inference)"
+  - "C18은 C03의 동형 반복 (5비트×3초 + 비트별 SFX) — 구조의 재사용성 증거"
+  - "타임스탬프는 순서 앵커이지 타이머가 아님 — 절대 시간은 모델 재량 (E-3, B-3의 6건 불일치)"
+
+caveats:
+  - "비트 순서는 지켜지나 길이는 drift (C17 15s→13.5s, C19 15s→17.7s)"
+  - "인기를 품질의 증거로 간주하지 않음"

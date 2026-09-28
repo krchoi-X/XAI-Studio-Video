@@ -1,0 +1,41 @@
+# Reference State: 트리거 문법 trigger-bound effects
+# Source: MeiGen Top20 synthesis (2026-09-26) — pattern rank #4, reinforced 6/20
+# Status: existing pattern (from #1 CUT-as-trigger, #46 CUT ON), extended — NOT a new rule
+# Note: 코퍼스에서 가장 활발히 변주되는 장치
+
+pattern:
+  name: trigger-bound effects
+  frequency: "6/20"
+  evidence_grade: reinforced_and_extended
+  lineage: ["#1 CUT-as-trigger", "#46 CUT ON [action]", "C02 VFX trigger binding"]
+
+variants:
+  - case: C02
+    trigger: "손 움직임"
+    effect: "그래피티 VFX 출현 (동기화 유지 확인)"
+  - case: C05
+    trigger: "선글라스 착용"
+    effect: "정지된 세계 부활 (토글)"
+  - case: C10
+    trigger: "변형 시퀀스 정의"
+    effect: "5비트에 적용"
+  - case: C14
+    trigger: "throws/catches/impacts"
+    effect: "snap pushes (카메라 무브 바인딩)"
+  - case: C17
+    trigger: "손가락 스냅"
+    effect: "freeze/restore 대칭 토글 (D-1 후보)"
+  - case: C19
+    trigger: "휘파람 정지"
+    effect: "액션 개시 (오디오 버전의 트리거 바인딩)"
+
+template: |
+  Every time / When <단일 신체 동작·사건>, <이펙트/상태 전이> <동기화 조건>.
+
+observations:
+  - "트리거 바인딩은 모델에게 '언제 무엇을 할지'를 명확히 줌 — 시간 지정보다 신체 이벤트 기반이라 타이밍 추론 부담이 적을 수 있음 (inference, C02 §12)"
+  - "VFX·카메라·오디오·world-state로 확장 — 장치의 이식성 증거"
+
+caveats:
+  - "D-1 (trigger-bound world-state toggle)은 본 패턴의 world-state 특수형 후보 — 별도 검증 필요"
+  - "인기를 품질의 증거로 간주하지 않음"

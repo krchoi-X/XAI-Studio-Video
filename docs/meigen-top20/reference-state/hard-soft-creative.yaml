@@ -1,0 +1,33 @@
+# Reference State: Hard Lock / Soft Guidance / Creative Freedom
+# Source: MeiGen Top20 synthesis (2026-09-26) — pattern rank #1, reinforced 20/20 unique videos
+# Status: existing pattern (XAI-Studio-Video), reinforced — NOT a new rule
+
+pattern:
+  name: Hard Lock / Soft Guidance / Creative Freedom
+  frequency: "20/20"
+  evidence_grade: reinforced
+  representative_cases: [C03, C10, C14]
+  counter_case: C08  # Hard로 의도한 피사체가 지켜지지 않은 역설적 표본
+
+definition:
+  hard_lock: "반드시 지켜져야 하는 것 — 트리거 바인딩, 비트 순서, identity, 블로킹"
+  soft_guidance: "방향성 — 톤, 무드, 장소 분위기, 카메라 스타일"
+  creative_freedom: "모델 재량 — 표정 디테일, 배경 소품, 군중 구성"
+
+template: |
+  [Hard Lock]
+  - trigger: <단일 신체 동작> → <이펙트/상태 전이>
+  - beats: <비트 수> in order, no rearrangement
+  - identity: <reference or text lock>
+
+  [Soft Guidance]
+  - tone/mood: <...>
+  - location feel: <...>
+
+  [Creative Freedom]
+  - background details, crowd, micro-expressions
+
+caveats:
+  - "Hard Lock의 실효는 지시 대상에 따라 다름 (E-5): 카메라/물리/트리거 지시 > 피사체/장소/의상 서술"
+  - "C08: 피사체를 Hard로 잠그려 했으나 drift — 카메라는 동작"
+  - "인기를 품질의 증거로 간주하지 않음 — 본 패턴은 반복 출현 빈도 기준"

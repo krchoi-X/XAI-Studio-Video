@@ -1,0 +1,32 @@
+# Reference State: Identity-Locked Lifestyle (+제품 앵커 변형)
+# Source: MeiGen Top20 synthesis (2026-09-26) — pattern rank #3, reinforced 8/20
+# Status: existing pattern, reinforced — NOT a new rule
+
+pattern:
+  name: Identity-Locked Lifestyle
+  frequency: "8/20"
+  evidence_grade: reinforced
+  strong_cases: [C01, C06, C09, C12, C20]
+  weak_cases: [C02, C04, C05]  # 텍스트 약형 — 부분 drift
+  product_variant_cases: [C07, C09, C15, C16, C20]
+
+definition: "인물(또는 제품)의 identity를 단일 앵커로 12~15초 유지하는 구조"
+
+lock_methods:
+  - "@image reference binding (strongest: C03, C12, C14, C17)"
+  - "text description lock (weak — drift observed: C02 wardrobe, C13 outfit simplification)"
+  - "product anchor: 단일 제품 15초 유지 (C07, C09, C15, C16, C20)"
+
+template: |
+  identity: <@image1 | text description>
+  wardrobe/product state: <locked description>
+  duration: 12-15s single anchor
+
+observations:
+  - "제품 버전은 '단일 앵커 15초 유지'가 반복 성공 — 광고 아크의 표준형"
+  - "텍스트 약형은 drift에 취약 (C02 주황 후디→회색, C13 풀킷→단순화)"
+  - "C15: 단일 문단 최소 스펙으로도 인물·제품·엔딩 텍스트 유지 — 하한선 데이터"
+
+caveats:
+  - "@image 바인딩이 텍스트 서술보다 강함"
+  - "인기를 품질의 증거로 간주하지 않음"
