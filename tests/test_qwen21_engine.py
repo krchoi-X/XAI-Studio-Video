@@ -257,3 +257,10 @@ def test_session_dir_resume_refuses_new_seed_or_references(monkeypatch, capsys):
     monkeypatch.setattr(scene.sys, "argv", ["character_scene.py", "produce", "--session-dir", "x", "--seed", "3"])
     assert scene.main() == 2
     assert "belong to preparation" in capsys.readouterr().err
+
+
+def test_seed_sweep_of_one_request_gets_distinct_sessions(creation):
+    first = scene.prepare("ch-synthetic", "same request", cm.DEFAULT_MODEL, 1, ["qwen21"], seed=1)
+    second = scene.prepare("ch-synthetic", "same request", cm.DEFAULT_MODEL, 1, ["qwen21"], seed=2)
+    assert first != second and first.name.endswith("-s1") and second.name.endswith("-s2")
+    assert cm.validate_generation_session(second) == second

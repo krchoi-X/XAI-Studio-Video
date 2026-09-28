@@ -607,6 +607,9 @@ def prepare(character_id: str, request: str, model: str, count: int, engines: li
     created = datetime.now()
     title = delta["title"] if delta else request
     session_id = f"SCENE-{created.strftime('%Y%m%d-%H%M%S')}-{character_id[3:]}-{slug_text(title)}"
+    if seed is not None:
+        # Seed sweeps prepare the same request within one second; the seed keeps their sessions distinct.
+        session_id += f"-s{seed}"
     root = cm.reserve_generation_session(character_id, session_id, ASSET_LIBRARY)
     asset_root = ASSET_LIBRARY / "characters" / character_id / "generations" / session_id / "outputs"
     merged_prompt = identity_merge_prompt(character, request, immutable, scene_spec)
