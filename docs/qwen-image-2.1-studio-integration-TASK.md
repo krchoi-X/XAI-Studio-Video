@@ -1,7 +1,7 @@
 # Qwen Image 2.1 Studio integration
 
 Active editor: Claude Code (assigned by direct user decision, 2026-09-28)
-Status: IN PROGRESS — Phase 1b (portrait, `--seed`, Qwen multi-reference); Phase 1 + 3 done
+Status: PHASE 1, 1b AND 3 DONE (deterministic + two live runs) — Phase 2 gate and Phases 4-5 pending
 Date: 2026-09-28
 Handoff: [integration handoff](qwen-image-2.1-studio-integration-handoff.md) · [pilot record](qwen-image-2.1-character-pilot-TASK.md) · [operator runbook](qwen-image-2.1-wangp-pilot.md)
 
@@ -92,9 +92,17 @@ Studio: no changes yet.
 - Inference (untested): the landscape canvas plus the Stable DNA body paragraph pushes full-body framing. Candidate single-variable change for the gate: portrait resolution (e.g. 608x832) at the same pixel count.
 - Human decision: none yet; the image is a candidate only.
 
+## Phase 1b verification (commit `db635db`)
+
+- Tests: focused `test_qwen21_engine`, `test_hermes_night_batch`, `test_character_scene`, `tools/test_local_wangp` → 93 passed. Broad selection from `docs/verification.md` → 354 passed, 2 skipped. `git diff --check` clean.
+- Live run: session `SCENE-20260928-115541-mizuki-reika-upper-body-portrait-of-the`, run `run-20260928-115542-d9427e3b`, `--engines qwen21 --count 1 --identity-reference character-default --reference wardrobe=D:/codex/XAI-studio/_tmp_refs/uniform-175243_1.jpg --seed 20260928 --actor claude`. Effective settings 608x832, seed 20260928, `video_prompt_type: I`, two `image_refs`; run record `reference_inputs` roles identity (SHA `ba3411fb…`) and wardrobe (SHA `2376ce1d…`), `requested_by: claude`. Duration 11:55:42 → 12:01:04 (~5m22s, two references). Output `outputs/qwen21/run-20260928-115542-d9427e3b.jpg` 608x832. Studio sync imported 1; asset `ast_165354f676914f51c16e8548`, engine `qwen21`, no decision, favorite false.
+- Observation: the white logo polo and navy skirt from `<image2>` transferred; the `<image2>` model's face (bangs, rounder face) did not leak; the grey studio from the request replaced the store background; the bracelet was not copied. Framing is about three-quarter body although the request said upper-body.
+- Inference (untested): the Stable DNA body paragraph (height, long legs) pulls toward full-body framing on both orientations. Test by one variable, e.g. a Scene Spec `camera` value for a close framing, before changing settings.
+- Human decision: none; both live outputs are candidates.
+
 ## Next
 
-1. Phase 2 identity gate needs two decisions from the user: orientation/resolution for the gate (current 832x608 landscape produced full-body framing) and whether to add a `--seed` option so both fixed seeds are identical across the four cases (today seeds derive from the preparation timestamp). Then run 4 cases × 2 seeds with the Reika default and review.
+1. Phase 2 identity gate with `--seed` (e.g. 20260928 and 20260929) on 608x832, Reika default, four cases. Consider a Scene Spec `camera` close-framing value first, because face size currently limits identity judgement.
 2. Phase 4 Studio (schemas/main/model.ts) and Phase 5 Transformation Lab remain unstarted.
 3. Commit the Private skill wording after the Codex-owned uncommitted edit underneath it is committed or accepted.
 
