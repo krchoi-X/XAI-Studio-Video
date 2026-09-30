@@ -6,7 +6,7 @@
 
 ## 증거 기반 표기
 
-총 68건. 증거의 출처는 항목별로 밝힌다: 프롬프트에서 읽은 것은
+총 70건. 증거의 출처는 항목별로 밝힌다: 프롬프트에서 읽은 것은
 `prompt-derived`, 영상 설명·작성자 댓글에서 읽은 것은 `author-described`,
 실제 영상 프레임에서 본 것은 `frame-derived`, 내가 추론한 것은 `inference`.
 추론은 프로덕션 스펙에 넣지 않는다 — 각 항목의 "관찰 vs 추론" 섹션에만 둔다.
@@ -6085,6 +6085,19 @@ AI 영상은 원테이크가 아니라 편집용 소재다. 30초 중 4초가
 컷은 어색하고, 컷 없는 상태 전이는 파탄난다.
 ```
 
+```yaml
+knowledge_update:
+  existing_T: [T-37, T-01, T-04]
+  existing_P: [P-30, P-28]
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: DIRECTOR_RECIPE
+  action: scope_existing
+  notes: "#66 파탄 사례의 포지티브 컨트롤. T-37을 하드컷+
+    인과 제시로 확장. 동기 있는 컷은 고전 영화문법이라
+    사례 1건으로도 범용성 높음."
+```
+
 ---
 
 ## 68. X @Soranlan — 데스크탑 녹화풍 3단 전환 (중국어 프롬프트)
@@ -6146,6 +6159,202 @@ AI 영상은 원테이크가 아니라 편집용 소재다. 30초 중 4초가
 단계에서만 일어난다. "无痕转场" — 가림막 와이프는
 변장한 컷이다. 하드컷을 금지해도 법칙은 안 바뀐다:
 상태 전이는 화면 밖에서.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-37, T-10, T-04]
+  existing_P: [P-16]
+  evidence_strength: MEDIUM
+  cross_model_generality: HIGH
+  promotion_target: DIRECTOR_RECIPE
+  action: scope_existing
+  notes: "하드컷 금지 선언 하에서도 상태 전이는 화면 밖에서.
+    와이프=변장한 컷으로 T-37 일반화. S1/S2 음성 규율은
+    P-16 확장. 전환 메커니즘은 3fps 샘플링 사이 구간이라
+    직접 미포착 (inference로 분리)."
+```
+
+---
+
+## 69. X @CharaspowerAI — 심리 호러 트레일러 30초 (불가능성 인벤토리)
+
+**기본 정보**
+- 출처: X @CharaspowerAI (Pierrick Chevallier | IA), 2026-09-30 게시.
+  "AI horror doesn't need monsters to be terrifying. I wanted to test
+  something much harder: 30 seconds of pure psychological tension built
+  with acting, dialogue, reflections and tiny details that feel… wrong."
+  44 likes, 8 replies. 프롬프트 전문은 사용자가 직접 붙여넣음
+- 생성 모델: 미공개 (포스트에 모델명 없음)
+- 영상 실측: 30.2초, 1280x720, ~24fps, 723프레임.
+  vxtwitter API 경유 mp4 직접 다운로드 성공
+- 증거 기반: frame-observed (2fps 60장) + prompt-derived
+
+**프로토콜 판정 (기존 T/P 우선)**
+- T-35 (거울 커버리지): 거울이 나오지만 용법이 다름. #64는
+  커버리지용 "가상 세컨드 카메라", 여기는 불가능의 무대
+  (반사상이 기하학을 어김). → scope_existing (용법 2 추가)
+- T-37 v2: 각 비트가 불가능성을 품고 비트 경계에서 리셋
+  ("The elevator opens. Everything is normal again").
+  불가능한 상태가 비트 밖으로 새지 않음 → strengthen
+- T-01: 대사가 비트를 뒤집는다 ("You already asked me that
+  yesterday") → strengthen
+- P-16 (캐릭터 락): "stable character continuity, realistic
+  reflections" 명시. 거울 프레임에서 아이덴티티 유지
+  (cframe_025) → strengthen
+- 신규 T 조건 검토: "몬스터·고어·VFX 없이 공포"는 기존 T로
+  설명 불가. #25의 "불가능성의 카탈로그"(패턴 8, T 미발급)와
+  독립 수렴 2건째. 별도 제작 문제 해결 + 관찰 근거 +
+  재사용 형태("impossibility inventory") 충족 → new_candidate
+
+**관찰 — 불가능성 6종 (프롬프트 명세)**
+1. 엘리베이터 거울: 반사상이 카메라를 직접 보는데 실제 얼굴은
+   외면. cframe_025에서 거울 디프티크 렌더 확인 (frame-observed).
+   정확한 시선 기하학은 2fps 샘플링상 미확정 — inference로 분리
+2. 유리 표면에 비치는 낯선 사람 형상의 반사 (prompt-derived)
+3. 가족사진에 모르는 사람이 한 명 추가 (prompt-derived)
+4. 잠긴 서랍 안에서 울리는 전화 — 열어보면 안에 없음
+   (prompt-derived)
+5. 대치: "Tell me I'm imagining this." / "You already asked me
+   that yesterday." cframe_045에서 클로즈업 렌더 확인
+6. 파이널: 복도에서 그녀 자신의 목소리 "Don't go back to sleep."
+   욕실 거울에 비친 그녀는 아직 침대에서 자고 있음.
+   cframe_056에서 침실 스테이징 확인. "Hard cut to black"
+
+**관찰 — 연출 문법**
+- 6비트×5초, 비트마다 다른 카메라 언어 (돌리인→핸드헬드
+  클로즈업→고정 불편한 와이드→급속 몽타주→타이트 클로즈업→
+  파이널 리빌). 트레일러는 비트 단위 — #60의 비트 편집과 동형
+- 네거티브가 곧 컨셉: "no supernatural spectacle, no gore...
+  no visible threat, no attack, no gore, no disturbing body
+  imagery, no readable text". 빼기로 공포를 만듦
+- 작가의 난이도 선언: "I wanted to test something much
+  harder" — 몬스터보다 심리 텐션이 더 어렵다는 창작적 판단
+  (author-described). 사용자의 "어려움으로 달려가기" 전략과
+  정합
+
+**Capability evidence (모델 미공개)**
+- model: undisclosed (CharaspowerAI post, 2026-09-30) /
+  version: n/a / evidence date: 2026-09-30 /
+  task: impossible mirror reflection (reflection looks at
+  camera while real face turned away) /
+  observed: success (cframe_025 — identity stable in mirror,
+  disobedient composition rendered) / confidence: MEDIUM
+  (2fps sampling; exact gaze geometry unverified)
+
+**코퍼스 기여**
+- 1 (신규 — T-38 불가능성 인벤토리: #25와 독립 2건째),
+  2 (scope — T-35에 "불가능의 무대" 용법 추가),
+  3 (strengthen — T-37 v2 비트 경계 리셋, T-01 대사 뒤집기,
+  P-16 거울 아이덴티티)
+
+**규칙 카드 (붙여넣기용)**
+```
+[불가능성은 명세다 — Hard Lock]
+"이상한 일이 일어난다"고 쓰지 말고 "거울 속 그녀는
+카메라를 본다"고 써라. AI는 추상을 못 그리고 명세를
+그린다. 불가능성마다 자기 비트를 주고 담담하게 렌더 —
+강조는 관객의 뇌가 한다.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-35, T-37, T-01]
+  existing_P: [P-16]
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: DIRECTOR_RECIPE
+  action: new_candidate
+  notes: "T-38 불가능성 인벤토리 신규 후보. #25(불가능성의
+    카탈로그)와 독립 수렴 2건째. 기존 T로 설명 불가한 별도
+    제작 문제(무몬스터·무고어 호러) 해결. 담담한 불가능
+    디테일은 고전 호러 문법이라 범용성 높음."
+```
+
+---
+
+## 70. X @CharaspowerAI — 스쿠터 탄 고양이 로드레이지 (파운드푸티지 30초)
+
+**기본 정보**
+- 출처: X @CharaspowerAI (Pierrick Chevallier | IA), 2026-09-30 게시.
+  "Want to make the kind of AI video people would swear was randomly
+  filmed on the street? ... Seedance 2.5 is ridiculously fun for this
+  kind of viral found-footage concept." 183 likes, 12 replies (#69의
+  44 likes의 4배 — 같은 작가의 두 장르, 반응은 코미디가 압승)
+- 생성: Seedance 2.5 (author-described). 프롬프트 전문은 포스트
+  본문에 공개 (vxtwitter API로 전문 확보)
+- 영상 실측: 30.1초, 1280x720, ~24fps, 721프레임.
+  프롬프트는 "20 seconds"라 명시했으나 실제 30.1초 —
+  prompt-derived 20s vs frame-observed 30.1s 불일치
+- 증거 기반: frame-observed (2fps 60장) + prompt-derived
+
+**프로토콜 판정 (기존 T/P 우선)**
+- T-23 (의도적 불완전함): "Raw handheld phone camera, strong natural
+  shake, accidental reframing, bad digital zoom, autofocus hunting,
+  compression artifacts, wind on microphone... Absolutely no cinematic
+  stabilization" — 코퍼스 사상 가장 완전한 T-23 스펙 → strengthen
+- T-25 (카메라=존재): 보이지 않는 행인이 영어로 흥분하며 중계.
+  카메라는 관찰자가 아니라 등장인물 → strengthen
+- T-18 (인과적 카메라 반응): "Camera shakes from laughter and nearly
+  points at the pavement" — 웃음이 흔들림의 원인. T-18의 금기
+  "원인 없는 흔들림"을 정면으로 지킴 → strengthen
+- T-01: 필머의 대사가 펀치라인 버튼 ("BRO HAS ROAD RAGE!",
+  "HE'S GOT PLACES TO BE!") → strengthen
+- P-16: "one cat only" 카운트 락 → strengthen
+- 신규 T 검토: "무표정 피사체 + 흥분한 리액터" 구조는
+  T-25+T-18+T-01의 조합으로 완전 설명됨. 새 제작 문제 없음 →
+  strengthen_existing (신규 발급 없음)
+
+**관찰 — 코미디 엔진**
+- 고양이는 아무것도 안 함: "stares straight ahead like an exhausted
+  commuter", "dead-serious sideways glance". 웃긴 건 전부 필머의
+  리액션. 데드팬 피사체 + 과잉 리액터의 대비가 엔진
+- 5비트×4s 에스컬레이션: 발견→공개→빨간불 정지→클랙슨 � 빵→
+  페이오프. dframe_020에서 빨간불 앞 정지+옆 차 운전자의
+  어이없음 표정 확인 (frame-observed)
+- 엔딩 "Hard cut." — #69의 "Hard cut to black"과 같은 작가의
+  습관 (author-described 스타일 지문)
+
+**관찰 — 스펙 미준수 2건 (장르가 흡수)**
+1. 차량: 프롬프트가 "MOTORIZED CITY SCOOTER... NOT a kick
+   scooter... seat, engine, handlebars and footboard"를 3번
+   강조했으나, 렌더는 킥보드형에 가까움 (dframe_020 — 시트·
+   엔진 미확인). 관객은 스펙을 검사하지 않음 — 코미디가 흡수
+2. 길이: 20초 스펙 → 30.1초 렌더. 비트 타이밍(0-4s...16-20s)이
+   실제와 어긋남. #25의 "beat displacement"와 동형
+
+**Capability evidence**
+- model: Seedance 2.5 (author-described) / version: 2.5 /
+  evidence date: 2026-09-30 / task: vehicle-type compliance
+  (motor scooter vs kick scooter, explicit triple-spec) /
+  observed: partial failure (kick-scooter-like render) /
+  confidence: MEDIUM
+
+**코퍼스 기여**
+- 3 (strengthen — T-23/T-25/T-18/T-01/P-16 전부 기존 항목 강화.
+  신규 T 없음. 프로토콜의 "정제 우선"이 의도대로 작동한 케이스)
+
+**규칙 카드 (붙여넣기용)**
+```
+[못 찍은 척을 명세하라 — Soft Guidance]
+"bad digital zoom, autofocus hunting, wind on mic" —
+아마추어스러움은 우연이 아니라 스펙이다. 불완전함도
+설계여야 티가 안 난다. 흔들림마다 원인을 붙여라
+(발견→낚아챔, 펀치라인→웃음).
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-23, T-25, T-18, T-01]
+  existing_P: [P-16]
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: DIRECTOR_RECIPE
+  action: strengthen_existing
+  notes: "신규 T 없음 — T-25+T-18+T-01 조합으로 완전 설명.
+    T-23은 코퍼스 최완전 스펙으로 강화. 스펙 미준수(킥보드형·
+    30초)는 코미디 장르가 흡수. 파운드푸티지 문법은 고전이라
+    범용성 높음."
 ```
 
 ---
