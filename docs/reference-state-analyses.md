@@ -6,7 +6,7 @@
 
 ## 증거 기반 표기
 
-총 50건. 증거의 출처는 항목별로 밝힌다: 프롬프트에서 읽은 것은
+총 77건. 증거의 출처는 항목별로 밝힌다: 프롬프트에서 읽은 것은
 `prompt-derived`, 영상 설명·작성자 댓글에서 읽은 것은 `author-described`,
 실제 영상 프레임에서 본 것은 `frame-derived`, 내가 추론한 것은 `inference`.
 추론은 프로덕션 스펙에 넣지 않는다 — 각 항목의 "관찰 vs 추론" 섹션에만 둔다.
@@ -15,8 +15,22 @@
   스크린샷)·37·38(임베드 스크린샷)·39(직접 다운로드)·40(직접 다운로드)·
   41(임베드 스크린샷)·42(직접 다운로드)·43(직접 다운로드)·44(직접
   다운로드)·45(직접 다운로드)·46(임베드 스크린샷)·47(직접 다운로드)·
-  48(직접 다운로드, 2버전)·49(직접 다운로드)·50(직접 다운로드).
-  24번은 실패 사례.
+  48(직접 다운로드, 2버전)·49(직접 다운로드)·50(직접 다운로드)·51(직접
+  다운로드)·52(직접 다운로드)·53(직접 다운로드)·55(직접 다운로드).
+  24번은 실패 사례. 52번은 프롬프트가 X 로그인 월 뒤 — 작성자 댓글에
+  공개되었으나 미확보, 사용자가 붙여넣으면 보강. 53번은 프롬프트가
+  포스트 본문에 전문 공개. 54번은 텍스트 가이드 (영상 없음) —
+  본문 말미가 끊겨 있고 이어지는 셀프리플라이 2개는 로그인 월 뒤.
+  55번은 프롬프트 미공개 — frame-derived로만 기록. 56번은 텍스트
+  가이드 (Threads 스레드, 영상 미확인 — 유튜브 페이지가 reCAPTCHA
+  차단). 57번은 사용자 직접 제공 (포스트 전문+프롬프트 전문, 영상은
+  사용자 다운로드 후 보강 예정). 58번은 브라우저 공개 시청
+  (프레임 미추출, 프롬프트 미공개 — LoRA 데모). 59번은 텍스트
+  가이드 (프롬프트 엔지니어링+오케스트레이션 이론, 첨부 영상 1개
+  browser-described). 60번은 실사 상업 영상 (일본 이너웨어 모닝
+  광고, 프레임 추출) + 클로저 편집 콘티 — AI는 모멘트만 생성하고
+  사이는 관객의 뇌에 맡기는 전략. 61번은 중국어 프롬프트 전문
+  (광학 줌 단일 운경 고풍 서사, 한국어 번역 포함).
 - 기사 기반: 20·29. 프롬프트 표본(영상 미확인): 27·28.
 - 39번(@AIwithzayn)은 프롬프트가 X 로그인 월 뒤에 있어 frame-derived로만
   기록. 프롬프트 확보 시 보강 예정.
@@ -4346,6 +4360,2535 @@ Relational Negative: 디지털 완벽성 토큰 조건부 억제), 4 (신규 —
 게이트 흔들림 물리적 독립 선언문), 5 (신규 — 스크래치 프레임 고정 선언),
 6 (동일 작성자 #8·#33–37·#41 — 프롬프트 가이드 시리즈, 피사체측에서
 관찰매체측으로 확장), 7 (제목 "3대" vs 본문 "5대" 표기 불일치)
+
+---
+
+## 51. X @EEJ_OOXO — 손 쓸기+표정 전환 개그 이전 셀카 (10초, 개그 트랜스퍼)
+
+**기본 정보**
+- 출처: X @EEJ_OOXO (OOXO, AI Content Creator — 프로필에 Pollo AI·Newtake·
+  DomoAI·Nemo Video·GenPresso 파트너 표기), 2026-09-27 02:53 KST 게시
+- 포스트 본문 (author-described): "아 시밬ㅋㅋㅋㅋ 내가 만들어 놓고 개처웃기네
+  ㅋㅋㅋㅋㅋ\n\n프롬프트 아래⬇️"
+- 인용: @LioraSolveil의 포스트 "가을이라 감정기복 개심한 니가 생각났다."
+  (9.9초 세로 영상) — 이 영상의 손 쓸기+표정 전환 개그를 재현한 것
+- 프롬프트: 작성자 셀프리플라이에 전문 공개 (영어)
+- 영상: 10.1초 실측 (242프레임, 24fps, 2160x2160 정사각형, 직접 다운로드 —
+  vxtwitter API 경유). "Made with AI" 라벨, 우상단 G 워터마크
+- 모델: 명시 없음
+- 반응: Like 13, Repost 7, Reply 5, 조회 1,466
+- 증거 기반: prompt-derived (셀프리플라이 전문) + frame-derived (초단위
+  프레임) + author-described (포스트 본문·인용 관계)
+
+**관찰 — 레퍼런스 역할 분리** (prompt-driven)
+- <<<image_1>>>: 전경 캐릭터 정체성+의상 (주황 별 캡, 트윈 브레이드, 화이트
+  키홀 크롭탑, 어깨에 걸친 크림 재킷, 액세서리)
+- <<<image_2>>>: 후경 캐릭터 정체성+의상 (앞머리 긴 흑발, 그레이 수트, 화이트
+  블라우스, 주황 비즈 블랙 초커)
+- <<<image_3>>>: 방의 구조·가구·색·조명 (셀카 앵글에 맞게 조정)
+- <<<video_1>>>: 첫 9초의 손 안무·표정 타이밍·두부 움직임·상대 배치만 담당.
+  "Its performers' appearances and clothing do not transfer" — 출연자
+  외형·의상은 이전되지 않음을 명시
+- "The gray circles on the full-body views are reference masks and must not
+  appear" — 레퍼런스 시트의 마스크 원이 렌더에 스며드는 실패 모드를 직접
+  차단
+- "The selfie image fills the output frame without the reference video's
+  black side padding" — 원본의 레터박스를 출력에 끌고 오지 않음
+
+**관찰 — 개그 타이밍 3구간** (prompt-derived)
+- 0.0–0.7s: 무표정 오프닝+손 준비
+- 0.7–9.0s: 후경이 손을 위아래로 빠르게 교대 쓸기 (전경 얼굴을 스치듯 가림),
+  전경은 환한 이빨 미소↔무표정 전환. "Use the reference's precise motion
+  timing rather than inventing additional gestures" — 타이밍은 창작 금지,
+  원본 그대로
+- 9.0–10.0s: 개그 붕괴 — 둘 다 터져 웃음. "End while both are still laughing,
+  without a freeze or posed finish" (#48/#49의 종료 장치와 동형)
+- 코미디 장치: 후경은 전 구간 "deliberately deadpan" — 표정 전환은 전경만,
+  후경은 무표정 유지로 대비
+
+**관찰 — 렌더 매칭** (frame-derived)
+- f_0: 둘 다 정면 무표정 ✓ (FIRST FRAME)
+- f_4: 손이 얼굴 앞을 스치는 블러+전경 눈 찡긋 — 개그 진행 중 ✓
+- f_8: 전경 환한 미소, 후경 무표정 ✓ (deadpan 대비)
+- f_9 (9.3s): 둘 다 입 크게 벌리고 폭소 — 눈 찡그림, 어깨 들썩 ✓
+  (9.0–10.0s)
+- 3구간 전부 순서대로 렌더. 실측 10.1s vs 명시 10s — 거의 일치
+
+**관찰 — 연속성 장치** (prompt-derived)
+- "Maintain each character's face, hairstyle, clothing, and accessories
+  through all hand occlusions" — 손에 가려져도 정체성 유지
+- "<<<image_2>>>'s hands remain anatomically connected to her arms" —
+  손목 잘림 방지
+- LOCAL CONSTRAINTS: "Exactly two characters... No mirror shot, extra hands,
+  face masks, captions, wardrobe changes"
+
+**관찰 vs 추론**
+- 관찰: 프롬프트 전문(셀프리플라이), 10.1초 실측, 레퍼런스 4종 역할 분리
+  전부 프롬프트 명시, 3구간 타이밍의 프레임 렌더 확인, 인용 관계
+  (vxtwitter qrt)
+- 미확인: 오디오(웃음소리), 사용 모델, <<<video_1>>>이 인용 원본과 동일한지
+  (포스트 맥락상 동일으로 보이나 명시 없음)
+- 추론: 없음. "G 워터마크=GenPresso"는 작성자 프로필의 파트너 표기와의
+  연결이나 확정 표기는 아님 (inference로 분리)
+
+**Production description → Control Levels**
+- Hard Lock: 레퍼런스 역할 분리 (video_1은 안무·타이밍만, 외형·의상 이전
+  금지), 정확히 2명, 거울 샷·여분 손 금지, 손 가림 중 정체성 유지, 종료는
+  웃음 중 (프리즈·포즈 금지)
+- Soft Guidance: 3구간 타이밍, 후경 deadpan 대비, 레퍼런스 마스크 원 배제,
+  레터박스 미이전
+- Creative Freedom: 방 장식 디테일, 웃음의 강도
+
+**기여 패턴**: 1 (신규 — 개그 트랜스퍼: 안무 레퍼런스와 정체성 레퍼런스의
+완전 분리 + "외형 이전 금지" 명시문), 2 (신규 — deadpan 대비: 한 캐릭터만
+표정 전환, 다른 한 명은 무표정 고정), 3 (신규 — 레퍼런스 마스크 오염 차단:
+"gray circles must not appear"), 4 (신규 — 레터박스 미이전 선언), 5 (종료
+장치 — #48/#49와 동형: 끝나지 않은 상태로 종료), 6 (인용 개그: 원본 포스트의
+"감정기복" 텍스트가 표정 전환 개그의 의미 앵커)
+
+---
+
+## 52. X @ShamiWeb3 — 존재하지 않는 한국 여자아이의 하루 (30초, 캐릭터 시트 선행)
+
+**기본 정보**
+- 출처: X @ShamiWeb3 ("Shami", verified individual, ~19.2K 팔로워),
+  2026-09-26 14:11 KST 게시
+- 포스트 본문 (author-described): "A Korean girl who never agreed to be in
+  the video.\n\nMade with GPT Image 2 and Seedance 2.5 on @FishCreativeHQ
+  \n\nThe prompt is in the comments 👇" — "출연에 동의한 적 없는 한국
+  여자아이" = 그녀는 존재하지 않음 (AI 생성 캐릭터)
+- 프롬프트: 작성자 댓글에 공개되었으나 X 로그인 월 뒤 — 미확보
+  (vxtwitter/xcancel 등 우회 실패, Cloudflare 월). 사용자가 댓글
+  프롬프트를 붙여넣으면 보강 예정
+- 영상: 30.1초 실측 (722프레임, 24fps, 1280x720, 직접 다운로드 —
+  vxtwitter API 경유)
+- 모델: GPT Image 2 (캐릭터 시트) → Seedance 2.5 (영상) —
+  author-described. 캐릭터 시트는 사용자가 "상세하게 만들었다"고
+  주목한 포인트
+- 반응: Like 274, Repost 12, Reply 69, 조회 16,901
+- 증거 기반: frame-derived (초단위 프레임) + author-described (포스트
+  본문). 프롬프트 미확보이므로 전부 프레임 기반 관찰
+
+**관찰 — 멀티샷 정체성 일관성** (frame-derived)
+- 6개 프레임(f_0/5/10/15/20/25) 전체에서 동일 인물의 얼굴·헤어(긴 흑발,
+  하프업/로우 포니테일)·의상(브라운 리브드 긴팔 미니 드레스)·액세서리
+  (브라운 숄더백, 손목 브레이슬릿) 고정 확인
+- 로케이션이 4곳으로 바뀌는데도 의상·소품이 전혀 바뀌지 않음:
+  주택 대문 앞(주소판 25) → 골목길 (후면 보행) → 편의점 입구 → 음료
+  마시기 (노점) → 골목 (물병+종이봉투 들고 보행)
+- 소품 연속성: f_15의 생수 2병+종이봉투가 손에 쥐어진 채로 자연스럽게
+  이어짐 (쇼핑→귀가 서사의 인과)
+- 종료: f_25에서 화면이 어두운 블러 — 카메라가 가려지거나 내려진 듯한
+  "촬영 종료" 장치 (연출된 마무리 포즈 없음, #51의 "웃음 중 종료"와 동형)
+
+**관찰 — 한국 동네 렌더** (frame-derived)
+- 벽돌담, 기와 지붕, 주소판 "25", 전봇대·전선, 편의점 유리문과 한글
+  간판이 전부 실사급으로 렌더
+- 한글 텍스트는 일부 가짜 렌더: "미즈드시" 표기는 실제 상호가 아닌
+  문자 흉내 (#21의 text seep와 동형). 주소판 "25" 같은 단순 문자는
+  정확, 복잡한 상호는 흉내 — 텍스트 렌더의 난이도 기울기
+- 황혼 시간대+흐린 하늘로 전 샷의 조명 무드가 통일 (일관된 시간대)
+
+**관찰 — 셀프리플라이 전 캐릭터 시트 파이프라인** (author-described)
+- 이미지 모델(GPT Image 2)로 캐릭터 시트를 먼저 만든 뒤 비디오
+  모델(Seedance 2.5)로 영상화 — 정체성 생성과 모션 생성을 분리한
+  2단계 파이프라인
+- 캐릭터 시트 이미지는 포스트에 첨부되지 않음 (영상 단일 첨부)
+
+**관찰 vs 추론**
+- 관찰: 30.1초 실측, 6프레임 전 구간 정체성 고정 확인, 4개 로케이션,
+  캐릭터 시트 선행 파이프라인 (작성자 표기), 텍스트 렌더의 정확/흉내
+  기울기, f_25 종료 장치
+- 미확인: 캐릭터 시트 구성 (전면/측면/의상 상세 — 작성자 댓글에 있으나
+  미확보), 샷 분할 방식 (Seedance 2.5 단일 30초 생성인지 멀티 클립
+  편집인지)
+- 추론: 없음. "시트에 액세서리까지 고정됐다"는 프레임에서 확인된 사실만
+  기록 (의상·가방·브레이슬릿이 전 샷 동일)
+
+**Production description → Control Levels**
+- Hard Lock: 캐릭터의 얼굴·헤어·의상·액세서리를 모든 샷·모든
+  로케이션에서 고정 — 로케이션이 바뀌어도 의상·소품 변경 금지
+  (소품은 서사적 인과가 있을 때만 추가: 쇼핑 후 물병+봉투)
+- Soft Guidance: 전 샷 동일한 시간대·조명 무드 (황혼), 한국 동네
+  요소 (벽돌담·기와·주소판·한글 간판), 종료는 촬영 중단형 (포즈 금지)
+- Creative Freedom: 샷 순서, 카메라 무브, 컷 구성
+
+**기여 패턴**: 1 (신규 — 캐릭터 시트 선행 2단계 파이프라인: 이미지
+모델로 정체성 고정 → 비디오 모델로 모션, #51의 레퍼런스 역할 분리와
+동형의 "역할 분리"), 2 (신규 — 로케이션 변화에도 불변하는
+의상·액세서리 고정: #47의 LOGIC RULE을 정체성에 적용), 3 (신규 —
+텍스트 렌더 난이도 기울기: 단순 문자 정확 vs 복잡 상호 흉내), 4
+(종료 장치 — #48/#49/#51과 동형: 끝나지 않은 상태로 종료)
+
+---
+
+## 53. X @ayzalnooor24521 — 시골 장터 채소 파는 소녀 브이로그 (33초, Seedance 2.0, 프롬프트 본문 전문)
+
+**기본 정보**
+- 출처: X @ayzalnooor24521, 2026-09-26 13:23 KST 게시
+- 포스트 본문 (author-described): "A simple day at a Korean village
+  market\nSelling fresh veggies, meeting customers, and enjoying the
+  little moments of daily life.\nCreated with AI, inspired by real
+  countryside vibes.\n\nCreated on seedance 2.0\n\nPrompt:" 이하
+  프롬프트 전문 공개 (영어)
+- 모델: Seedance 2.0 (작성자 명시 — 2.5가 아님)
+- 영상: 33.2초 실측 (796프레임, 24fps, 1280x720, 직접 다운로드 —
+  vxtwitter API 경유). 프롬프트는 "30-second"라고 명시 — 실측과 불일치
+  (코퍼스 내 타임스탬프 불일치 6번째 사례)
+- 반응: Like 195, Repost 4, Reply 72, 조회수 미표기 (fxTwitter 미반환)
+- 증거 기반: prompt-derived (본문 전문) + frame-derived (5초 간격
+  6프레임)
+
+**관찰 — 타임스탬프 스토리보드** (prompt-derived, 일부 frame-derived
+대조)
+- 3s: medium close-up로 카메라를 보고 웃으며 인사 → f_5에서 정확히
+  렌더 ✓ (미소 정면 클로즈업)
+- 6s: 손님이 채소를 요청, 손으로 골라 재사용 봉투에 담기 → f_10에서
+  손님 응대 중 ✓
+- 10–14s: 옛날식 시장 저울로 무게 재기, 정성껏 포장 ("Keep realistic
+  hand movements")
+- 14–17s: 손님이 돈을 내고, 그녀는 미소로 받으며 감사
+- 17–20s: 시장 와이드 — 손님들이 오가는 동안 계속 일하기
+- 20–23s: 상추 한 단을 카메라 쪽으로 들어 보이며 "These are fresh
+  today!" 같은 자연스러운 멘트 → f_15에서 상추를 손님 쪽으로 내밀며
+  말하는 장면 ✓
+- 23–26s: 손님이 하나 더 와서 시장이 약간 바빠짐
+- 26–28s: 미소 클로즈업, 카메라를 똑바로 보고 작은 웨이브
+- End: 평화로운 와이드 — 시골·산 배경으로 계속 일하기, "subtle natural
+  ending feeling" → f_25에서 한옥 지붕·산 배경 와이드로 종료 ✓
+  (#48/#49/#51/#52의 "끝나지 않은 상태로 종료" 장치와 동형)
+- f_0은 완전한 블랙 — 페이드인 오프닝 (명시 없음, frame-derived)
+
+**관찰 — 정체성 마스터 스위치** (prompt-derived + frame-derived)
+- 프롬프트 말미의 한 단락: "Important: Keep the same Korean girl, same
+  face, hairstyle, outfit and apron throughout the entire video.
+  Maintain strong character consistency between every shot." —
+  #47의 LOGIC RULE와 동형의 한 줄 마스터 스위치
+- 캐릭터 스펙: 크림 니트 스웨터, 다크브라운 앞치마, 갈색 머리 루즈한
+  메지 번+소프트 뱅
+- 프레임 확인: f_5/10/15/20 전부 크림 스웨터+다크 앞치마+메지 번
+  동일 ✓. 손 클로즈업(f_15, f_20)에서도 손가락 왜곡·여분 손가락 없음 ✓
+  (네거티브 리스트에 "distorted hands, extra fingers" 명시)
+
+**관찰 — 의도적 불완전 스펙** (prompt-derived)
+- "handheld smartphone/vlog camera, gentle camera shake, occasional
+  close-ups... slight imperfect framing, realistic movement, no excessive
+  camera effects" — #19의 failure-based negative, #45의
+  deliberate-imperfection과 동형
+- 네거티브: "not like a commercial or polished AI advertisement",
+  "excessive beauty filters, or an overly cinematic commercial
+  appearance" — 미적 방향을 "광고 같지 않음"으로 정의하는 네거티브
+  미학
+- 배경 인물: "Make the customers and background people look natural
+  and realistic" — f_10/f_20의 손님 (중년 여성, 자연스러운 얼굴) ✓
+
+**관찰 vs 추론**
+- 관찰: 프롬프트 전문(본문), 33.2초 실측 vs "30-second" 명시 불일치,
+  타임스탬프 4구간의 프레임 매칭(3s/6s/20–23s/End), 정체성 4프레임
+  고정, 손 렌더 정상, f_0 페이드인
+- 미확인: 10–17s 구간의 저울·결제 장면 (5초 간격 샘플이라 프레임
+  미포착), 오디오 (멘트·시장 소리), 클립이 단일 생성인지 편집인지
+- 추론: 없음
+
+**Production description → Control Levels**
+- Hard Lock: "Keep the same Korean girl, same face, hairstyle, outfit
+  and apron throughout the entire video" — 정체성 마스터 스위치 한 줄.
+  손 렌더 네거티브 (distorted hands, extra fingers)
+- Soft Guidance: 타임스탬프 스토리보드, 핸드헬드+약한 흔들림+약간
+  불완전한 프레이밍, "광고 같지 않음" 네거티브 미학
+- Creative Freedom: 손님 얼굴, 채소 종류, 시장 배경 디테일
+
+**기여 패턴**: 1 (신규 — 정체성 마스터 스위치 한 줄 선언: #47의
+LOGIC RULE을 캐릭터에 적용, "throughout the entire video"), 2 (신규 —
+"광고 같지 않음"을 미적 목표로 명시하는 네거티브 미학:
+"not like a commercial or polished AI advertisement"), 3 (신규 —
+타임스탬프 스토리보드의 실측 불일치: 30s 명시 vs 33.2s 실측 —
+타임스탬프는 순서 앵커라는 MeiGen 종합 결론과 일치), 4 (종료 장치 —
+#48/#49/#51/#52와 동형: 계속 일하는 와이드로 자연스럽게 끝남)
+
+---
+
+## 54. X @paperwiz0 — AI 영상 제작 8역할론 (텍스트 가이드, 영상 없음)
+
+**기본 정보**
+- 출처: X @paperwiz0 ("paperwiz"), 2026-09-26 21:07 KST 게시
+- 형식: 텍스트 설명 포스트 (영상·이미지 첨부 없음) — 사용자가 "그냥
+  설명"이라고 지목한 케이스
+- 본문 (author-described): AI 영상 제작이 어려운 이유는 툴이 어려워서가
+  아니라, 드라마·영화 현장의 세분화된 역할(시나리오 작가·감독·촬영감독·
+  미술팀·배우·편집·음향)이 혼자 만드는 AI 영상에서는 한 사람에게
+  몰리기 때문이라는 문제 제기. 이어서 8단계 제작론을 제시
+- 본문 말미가 "다시 보면 이런 문제가 자주 보입니다."에서 끊김 —
+  QC 체크리스트로 이어지는 셀프리플라이 2개는 X 로그인 월 뒤라 미확보
+- 반응: Like 2, Repost 0, Reply 2
+- 증거 기반: text-guide (본문 전문). 영상·프롬프트 없음 — 전부
+  작성자의 제작론 서술
+
+**관찰 — 8역할 제작론** (text-guide)
+1. **작가처럼 이야기부터**: 목표→장애물→행동→결과→마지막 이미지.
+   30초라면 복잡한 세계관보다 이 5비트만 명확해도 강한 영상
+2. **감독처럼 장면 분해**: "시장 질주→다리 진입→도심 이동→목적지 도착".
+   핵심 — 앞 장면의 마지막 행동이 다음 장면의 시작 원인이 되어야 함
+   ("왜 다음 장면으로 넘어가는가")
+3. **미술감독처럼 고정**: 캐릭터 얼굴·헤어·의상·소품·장소 구조·시간대·
+   색감을 기준 이미지로 미리 고정. "AI에게 매번 새로운 세계를 만들게
+   하지 않고, 이미 정해진 제작물을 계속 사용하게"
+4. **촬영감독처럼 카메라 설계**: 장면 목적별 카메라 (달리기→뒤 추적,
+   규모 공개→와이드, 타격→측면, 감정→클로즈업, 소품→손 인서트).
+   핵심 — 한 장면에 여러 카메라 무브를 넣지 말고 한 액션 비트에
+   하나의 핵심 무브만
+5. **배우 연출처럼 행동-감정 분리**: "슬픈 표정"이 아니라
+   눈 피하기→멈춤→다시 보기→작게 웃기로 감정을 행동으로 변환.
+   큰 표정보다 시선·호흡·손 위치·짧은 정지
+6. **편집자처럼 앞뒤 연결**: 각 블록 마지막에 다음 장면이 이어받기
+   좋은 상태를 남김 — 오른쪽으로 달리며 끝→다음도 같은 방향 시작,
+   소품 왼손→왼손에서 시작, 카메라 뒤→갑자기 정면 금지
+7. **음향감독처럼 소리**: 화면의 원인→소리 순서. 발소리·충격음·호흡·
+   빗소리를 행동의 일부로
+8. **QC**: 예쁘다고 통과시키지 말고 다시 보기 (체크리스트는 미확보)
+
+**관찰 — 코퍼스와의 정합** (text-guide vs corpus)
+- 2번(감독)의 "앞 장면 마지막 행동 = 다음 장면 시작 원인"은
+  #48/#49/#51/#52/#53의 "끝나지 않은 상태로 종료" 장치를 이론으로
+  뒷받침 — 종료 장치는 곧 다음 클립의 handoff 상태
+- 3번(미술감독)의 "기준 이미지로 고정"은 #52의 캐릭터 시트 선행
+  파이프라인, #51의 레퍼런스 역할 분리, #53의 정체성 마스터 스위치와
+  정확히 일치
+- 4번(DP)의 "한 액션 비트에 하나의 핵심 카메라 무브"는 MeiGen
+  종합의 카메라 문법 (단일 샷=단일 무브)과 일치
+- 5번(배우)의 "감정을 행동으로 변환"은 #14의 EMOTION=BODY,
+  #11의 5단계 연기 조명과 동형
+- 6번(편집)의 연결 규칙은 #46의 shooting axis lock, #28의
+  master-axis, #47의 LOGIC RULE과 동형
+- 7번(음향)의 "화면의 원인→소리"는 #47의 per-shot SFX와 동형
+- 이 글은 코퍼스가 프레임·프롬프트에서 귀납한 패턴들을 제작론
+  언어로 연역한 셈 — 양방향 정합 확인
+
+**관찰 vs 추론**
+- 관찰: 8역할 제작론 전문(본문), 코퍼스 패턴과의 정합 7건,
+  8번 QC 체크리스트 미확보
+- 미확인: 8번 체크리스트 내용, 작성자의 실제 작업물 (포스트에 없음)
+- 추론: 없음. "이론과 코퍼스의 정합"은 관찰된 문장들의 대조이지
+  검증된 인과가 아님 (text-guide이므로 production rule로 직접 승격
+  불가 — 기존 원칙 유지)
+
+**Production description → Control Levels**
+- Hard Lock: 3번의 고정 목록 (얼굴·헤어·의상·소품·장소 구조·시간대·
+  색감) — 기준 이미지로 선행 고정
+- Soft Guidance: 1번의 5비트 스토리, 4번의 장면 목적별 카메라,
+  6번의 handoff 연결 규칙 (방향·소품 손·카메라 위치 유지)
+- Creative Freedom: 5번의 감정-행동 변환 디테일, 7번의 사운드 디자인
+
+**기여 패턴**: 1 (신규 — 8역할 제작론 자체: 혼자 만드는 AI 영상의
+역할 분담 프레임워크), 2 (신규 — "앞 장면 마지막 행동 = 다음 장면
+시작 원인"의 handoff 문법 명문화), 3 (신규 — "한 액션 비트에 하나의
+핵심 카메라 무브" 안정성 원칙), 4 (신규 — 음향을 행동의 일부로 보는
+"화면의 원인→소리" 순서), 5 (메타 — 코퍼스의 귀납 패턴과 제작론의
+연역이 7개 항목에서 정합: 양방향 검증)
+
+---
+
+## 55. X @bmx_ai13 — MJ 영감 댄스: 스토리보드 검증 레이어 분할 화면 (30초, 프롬프트 미공개)
+
+**기본 정보**
+- 출처: X @bmx_ai13 (BMX), 2026-09-26 05:48 KST 게시. #17 (Troy
+  브이로그)의 작성자와 동일
+- 포스트 본문 (author-described): "A Super Simple Workflow: Michael
+  Jackson→ Inspired Dance Concept → My created custom GPT Plugins→
+  Seedance 2.5" — 워크플로우만 공개, 프롬프트 미공개
+- 영상: 30.1초 실측 (901프레임, 30fps, 1440x1440 정사각형, 직접
+  다운로드 — vxtwitter API 경유). 흑백
+- 반응: Like 56, Repost 4, Reply 15
+- 증거 기반: frame-derived (5초 간격 6프레임) + author-described
+  (포스트 본문). 프롬프트 미확보
+
+**관찰 — 분할 화면 구조** (frame-derived)
+- 화면 상단: 젖은 무대 위 MJ 룩 댄서 (페도라·블랙 수트·화이트 셔츠·
+  로퍼+흰 양말)의 안무 수행 — 6프레임 전부 동일 인물·동일 의상
+- 화면 하단: 12패널 스토리보드 (P01–P12, 0–30s)가 전 구간 정적
+  오버레이로 고정. 스토리보드는 영상 안에서 "계획"을, 상단은
+  "수행"을 보여주는 검증 레이어
+- 즉 이 영상은 최종 결과물이 아니라 custom GPT 플러그인의 산출물
+  데모: 스토리보드(계획)와 퍼포먼스(수행)의 정합을 한 화면에서 증명
+
+**관찰 — 스토리보드 패널 스펙** (frame-derived, 패널 텍스트 판독)
+- P01 0–2s Cinematic entrance: "Camera: Wide, centered, static |
+  Action: Dancer walks in confidently."
+- P02 2–4s Hat gesture and attitude beat: "Medium-wide, slight
+  push-in | Hat gesture, body isolation, strong pose."
+- P03 4–7s Clean full-body dance hit: "Wide, static | readable space."
+- P04 7–10s Smooth heel-toe glide: "Wide, side view, static |
+  side travel."
+- P05 10–13s Rhythmic footwork combo / P06 13–16s Sharp isolations
+  (chest hit, hand accent) / P07 16–19s Traveling dance combo
+  ("tracking feel (or static)") / P08 19–22s Spin and stop
+  ("One controlled spin and stop") / P09 22–25s Signature pop-dance
+  sequence / P10 25–27s Energy build ("faster combo, rhythmic hits") /
+  P11 27–29s Final movement phrase ("slight low angle, strong
+  extension") / P12 29–30s Hero ending pose ("clean hold")
+- 패널 내 모션 화살표 (P04/P05/P07/P08/P09/P10): 이동 방향·스핀을
+  화살표로 표기 — #28의 master-axis를 스토리보드 문법으로 구현
+- PRODUCTION NOTES: "0–7s Edit-friendly clean footage (stable framing,
+  clear negative space for later effects) | 7–29s Continuous dance
+  performance (main choreography section) | 29–30s Final hold for
+  smooth transition" — 후반 작업을 전제로 한 촬영 설계
+
+**관찰 — 카메라 규율** (frame-derived)
+- 12패널 중 9개가 "Wide, static". 움직이는 카메라는 P02/P06의
+  "slight push-in", P11의 "slight low angle"뿐 — #54의 "한 액션 비트에
+  하나의 핵심 카메라 무브"를 스토리보드 스펙으로 구현
+- 상단 퍼포먼스도 전 구간 와이드 고정 — 카메라는 움직이지 않고
+  댄서가 움직임 (움직임의 주체를 댄서에게 양보)
+
+**관찰 vs 추론**
+- 관찰: 30.1초 실측, 분할 화면 구조, 12패널 텍스트 전문 판독,
+  카메라 스펙 12개, production notes, 의상 고정 6프레임
+- 미확인: custom GPT 플러그인의 실제 동작, 스토리보드 패널이
+  플러그인 출력인지 후반 합성인지, 오디오
+- 추론: 없음. "하단 패널이 검증 레이어"라는 해석은 구조 관찰에서
+  직접 도출되나, 작성자의 의도 표기는 없음 (author-described 없음)
+
+**Production description → Control Levels**
+- Hard Lock: 댄서 의상 전 구간 고정 (페도라·수트·셔츠), 흑백 톤 통일
+- Soft Guidance: 12패널 타임스탬프 안무 비트, 패널별 카메라 스펙
+  (기본 Wide static, 강조 비트에만 push-in/low angle), 모션 화살표로
+  이동 방향 표기
+- Creative Freedom: 안무 디테일, 무대 조명
+
+**기여 패턴**: 1 (신규 — 스토리보드 검증 레이어: 계획을 영상 안에
+  정적 오버레이로 렌더해 수행과 정합을 화면에서 증명), 2 (신규 —
+  "Edit-friendly clean footage": 후반 작업용 네거티브 스페이스 확보를
+  촬영 스펙에 명시), 3 (신규 — "Final hold for smooth transition":
+  29–30s를 다음 클립 연결용으로 비워두는 handoff 설계 — #54의 6번과
+  동형), 4 (카메라 규율 — #54의 "한 비트에 하나의 무브"를 패널 스펙으로
+  구현, 12패널 중 9개 Wide static)
+
+---
+
+## 56. Threads @tuberithm — "How to Make Viral AI Movies" 제작 파이프라인 정리 (텍스트 가이드)
+
+**기본 정보**
+- 출처: Threads @tuberithm, 2026-09-27 게시 (본문 1개 + 작성자
+  셀프리플라이 6개). 조회수 1K, Like 6, Comment 6, Repost 1
+- 형식: 유튜브 영상 "How to Make Viral AI Movies Like @mythrafilms"
+  (youtu.be/IY430T84h3U)의 내용을 6개 리플라이로 풀어쓴 정리 스레드.
+  영상 자체는 미확인 — 유튜브 페이지가 reCAPTCHA 차단으로 읽기 실패
+- 본문 (author-described): "AI 영화, 요즘 유튜브 완전 장악하고 있는 거
+  아나 🎬 어떤 영상은 8일 만에 조회수 백만, 구독자 십만 명을 훌쩍
+  넘겼다고 한다. AI 툴만으로도 이런 고퀄리티 영화를 만들 수 있다는
+  사실. 이 영상이 그 완벽한 가이드를 풀어놨다"
+- 증거 기반: text-guide (스레드 전문). 영상 본편·설명란 미확인 —
+  전부 스레드 작성자의 요약 서술
+
+**관찰 — 마스터 프롬프트 체인** (text-guide)
+1. 아이디어: ChatGPT "영상 아이디어 마스터 프롬프트"에 장르+대략
+   스토리를 던지면 10개 아이디어 제안 → 선택. 없으면 ChatGPT가 직접
+   제안. 이어서 "영화 스토리 마스터 프롬프트"로 감정선 있는 스토리
+2. 장면 분석: "AI 영화 장면 분석 프롬프트"로 캐릭터·장소·스토리 흐름
+   상세 분석 → "캐릭터 생성 프롬프트"로 전 캐릭터의 이미지 프롬프트
+   생성 → 구글 플로우 "Nanobana 2" 모델로 이미지 생성. 완성된 이미지
+   파일명은 캐릭터 이름으로 변경
+3. 핵심 이미지: ChatGPT "이미지 프롬프트"는 4부분으로 나뉜 상세
+   프롬프트 (등장 캐릭터 이름 강조) → 구글 플로우에서 캐릭터 이미지를
+   끌어와 함께 생성하면 영화의 한 장면 완성. 모든 이미지 반복
+4. 영상화: SeaArt 2.5로 최대 30초 영상 (Flow AI 활용). ChatGPT
+   "비디오 프롬프트" 4부분 → 구글 플로우 "Omni 1.1 Flash" 모델로
+   12 크레딧 → 해당 이미지를 끌어다 놓으면 클립 완성. 모든 이미지
+   반복 후 전부 다운로드
+5. 편집: 클립 합치기, 지루한 부분 과감히 절단, CapCut·오디오
+   라이브러리·픽사베이 BGM (볼륨 살짝 낮게), 클립 사이 자연스러운
+   전환 효과+필터, 고화질 내보내기
+6. 썸네일+SEO: "썸네일 마스터 프롬프트"로 경쟁 채널 스타일 참고
+   썸네일 프롬프트 → 구글 플로우+캐릭터 이미지로 썸네일. PDF의 SEO
+   프롬프트로 노출 작업. "AI Movie Masterclass Needed" 댓글 200개면
+   2편
+
+**관찰 — 코퍼스와의 정합** (text-guide vs corpus)
+- 마스터 프롬프트 체인 (아이디어→스토리→장면→캐릭터→이미지→비디오→
+  썸네일→SEO)은 사용자의 XAI-Studio-Video 구조 (Master Spec → 모델별
+  어댑터)와 독립적으로 수렴한 동일 아키텍처 — 기획을 한 번에 끝내고
+  실행만 단계별로 위임
+- "이미지 파일명은 캐릭터 이름으로 변경"은 #52의 캐릭터 시트 선행,
+  #51의 레퍼런스 역할 분리와 동형의 정체성 관리 (파일명=앵커)
+- "4부분으로 나뉜 프롬프트" (이미지·비디오 공통)는 구조화된 프롬프트
+  포맷의 반복 — #49의 분鏡表 7필드, #48의 10비트 구조와 동형
+- 캐릭터 이미지를 매 장면 생성에 끌어오기 = #51의 image_1 역할
+  (정체성 레퍼런스), #52의 시트 선행 파이프라인
+- 30초 클립 × N → 편집 조립 = MeiGen 종합의 Trailer Montage 패턴
+  (9/20), #47의 15샷 조립과 동형
+- "지루한 부분은 과감히 잘라내서 몰입도" = 편집 단계의 Necessity Test
+  (사용자 원칙과 정합)
+- 모델명 (Nanobana 2, Omni 1.1 Flash, SeaArt 2.5)은 스레드 작성자의
+  표기 — 미검증 (author-described, inference 금지)
+
+**관찰 vs 추론**
+- 관찰: 스레드 7개 포스트 전문, 6단계 파이프라인, 프롬프트 체인
+  명칭 8종, 코퍼스와의 정합 6건
+- 미확인: 유튜브 본편 (reCAPTCHA 차단), 본편 설명란, 모델명의 실제
+  존재 여부, "8일 만에 조회수 백만" 주장의 사실 여부
+- 추론: 없음. "이 파이프라인이 실제로 동작한다"는 검증되지 않음 —
+  text-guide이므로 production rule로 직접 승격 불가
+
+**Production description → Control Levels**
+- Hard Lock: 캐릭터 이미지 파일명을 캐릭터 이름으로 고정 (전 단계
+  공통 앵커), 캐릭터 이미지를 매 장면·매 클립 생성에 레퍼런스로
+  끌어오기
+- Soft Guidance: 마스터 프롬프트 체인 (아이디어→스토리→장면 분석→
+  캐릭터→이미지→비디오→썸네일→SEO), 4부분 구조화 프롬프트,
+  30초 클립 단위 생성 후 편집 조립
+- Creative Freedom: BGM 선정, 전환 효과·필터, 썸네일 스타일
+
+**기여 패턴**: 1 (신규 — 마스터 프롬프트 체인: 기획을 프롬프트
+체인으로 전문화하는 파이프라인 아키텍처, 사용자의 Master Spec 구조와
+독립 수렴), 2 (신규 — 파일명=캐릭터 이름: 정체성 앵커를 파일명으로
+고정), 3 (신규 — 4부분 구조화 프롬프트의 반복: 이미지·비디오 공통
+포맷), 4 (조립 편집 — MeiGen Trailer Montage와 동형: 30초 클립×N →
+  절단→조립), 5 (메타 — #54의 8역할론과 정합: 이 파이프라인은 8역할을
+  프롬프트 체인으로 외주화한 구현)
+
+## 57. Threads @omonge222 — 주짓수 실영상 모션 레퍼런스 전이 (프롬프트 전문 확보)
+
+**기본 정보**
+- 출처: Threads @omonge222, 2026-09-28 게시. "이제 @zcre.co.kr
+  주짓수 래퍼런스에 감을 잡은거 같아요. 일단 성별은 동일하면 좋을거
+  같아요. 원본과 비교영상 올립니다" — 실 주짓수 영상을 모션
+  레퍼런스로 삼아 캐릭터 둘이 싸우는 장면 재현
+- 출연: @bihyeonsil_station의 비연(가칭) (author-described)
+- 증거 기반: 사용자가 포스트 전문+댓글+프롬프트 전문을 직접 제공.
+  영상 자체는 미확인 — 사용자가 다운로드 후 프레임 보강 예정.
+  prompt-derived + user-provided-post. frame-observed는 보강 시 추가
+
+**관찰 — 프롬프트 구조** (prompt-derived, 전문)
+- 첫 줄 전제 선언: "원본 영상을 모션 레퍼런스로만 사용한다."
+- [캐릭터]: "영상의 인물은 오직 @Image1을 유일한 캐릭터
+  레퍼런스로 사용한다." 얼굴·헤어·체형·신체 비율·외모·의상 유지,
+  프레임·카메라 변화에도 안정. "@Image1에 없는 새로운 인물이나
+  캐릭터는 추가하지 않는다." — 원본에 두 인물이 싸우는데도
+  캐릭터 레퍼런스는 @Image1 하나만 허용 (두 파이터 모두 동일
+  외형으로 렌더되는 구조 — prompt-derived, 프레임 미확인이라
+  실제 렌더는 미검증)
+- [의상]: 디자인·색상·소재·레이스·장식·액세서리·스타킹·신발의 주요
+  특징 강하게 유지, 영상 중 임의 변경 금지
+- [모션]: "원본 영상에서는 오직 두 인물의 움직임, 자세, 대치,
+  상호작용, 액션 순서, 타이밍과 카메라 움직임만 가져온다. 원본의
+  인물이나 외형은 복사하지 않고 @Image1의 캐릭터가 동일한 모션을
+  수행한다." 손·팔 움직임, 중심 이동, 다리 움직임, 공격·방어 동작의
+  액션 흐름 유지
+- [배경]: 원본 배경 완전 무시 → "깊고 음침한 자연 동굴 내부"로
+  교체 (거대 암벽, 불규칙한 바위, 습기·물방울, 울퉁불퉁한 암반+흙
+  바닥, 젖은 돌·작은 물웅덩이, 차갑고 어두우며 긴장감). "인물은
+  얼굴과 의상이 명확하게 보이도록 적절한 보조광을 유지한다."
+  (조명 고정). 네거티브 리스트: 체육관·경기장·관중석·운동장·무대 등
+  원본 배경 요소 절대 등장 금지
+- [카메라]: 원본의 카메라 이동·줌·팬·촬영 거리·타이밍 유지. 단
+  "원본의 자막, 텍스트, 로고, 워터마크, 그래픽은 절대 복사하지
+  않는다."
+- [오디오]: "원본 오디오는 완전히 무시한다." 음악·대사·목소리·
+  효과음 미사용 → "새로운 오리지널 오디오를 생성한다."
+  동굴 울림·물방울·발걸음·흙과 돌 밟는 소리·의상 마찰음·액션 효과음
+- 말미 핵심 요약 5줄: 원본=모션과 카메라 레퍼런스만 / @Image1=
+  캐릭터와 의상 레퍼런스 / 배경=음침한 자연 동굴 / 자막·로고·
+  워터마크=완전 무시 / 오디오=완전히 새롭게 생성
+
+**관찰 — 작성자 코멘트** (user-provided-post, author-described)
+- "일단 성별은 동일하면 좋을거 같아요" — 모션 전이 시 원본 출연자와
+  생성 캐릭터의 성별 일치가 유리하다는 작성자의 체감
+- "원본 오디오를 아예 죽이고도 한번 테스트 해봐야 할거 같아요.
+  프롬에 오디오 지시 넣어도 잘 안먹네요😅" — [오디오] 섹션의 "완전히
+  무시" 지시가 프롬프트만으로는 잘 안 먹는다는 실패 관측.
+  원본 오디오가 새 오디오 생성에 새는(leak) 현상. #19의 실패 기반
+  네거티브, #47의 per-shot SFX와 연결되는 실패 데이터
+- 댓글 반응: zcre.co.kr "이건 너무 디테일하게 잘 만들었잖아요",
+  pyona_ai "이...이게 된다고???", watchmegom "액션 시퀀스 영상만
+  많이 확보한다면 액션씬으로도 활용도가 높겠다" — 모션 레퍼런스
+  풀(pool) 확보가 액션씬 생산성으로 직결된다는 커뮤니티 반응
+
+**관찰 vs 추론**
+- 관찰: 프롬프트 전문 7섹션, 작성자 코멘트 2건 (성별 일치·오디오
+  실패), 커뮤니티 반응 3건
+- 미확인: 영상 프레임 (사용자 다운로드 후 보강), 실제 모션 전이
+  품질, 두 파이터의 실제 외형 (프롬프트상 동일 외형), 오디오
+  실패의 재현성
+- 추론: 없음
+
+**코퍼스 정합**
+- Reference Role Separation (MeiGen 종합 패턴 #5): #51의
+  "video_1=안무·타이밍만, 출연자 외형은 전이 금지"와 동형 — 이 케이스는
+  "원본=모션+카메라만, @Image1=캐릭터+의상만"으로 역할 분리가 더
+  명시적
+- #53의 정체성 마스터 스위치와 동형의 단일 레퍼런스 고정
+  ("오직 @Image1을 유일한 캐릭터 레퍼런스")
+- #50의 Relational Negative와 동형의 배경 네거티브 리스트
+  (체육관·경기장·관중석 절대 금지)
+- #54 8역할론의 음향 역할 (화면의 원인→소리)과 정합되는 [오디오]
+  섹션 — 단, 작성자 관측상 지시 이행이 안 되는 실패 케이스
+
+**Production description → Control Levels**
+- Hard Lock: "원본=모션+카메라 레퍼런스만, @Image1=캐릭터+의상
+  레퍼런스" 역할 분리 선언. 자막·텍스트·로고·워터마크·그래픽 절대
+  복사 금지. 원본 배경 요소(체육관·경기장·관중석 등) 절대 등장 금지.
+  @Image1 외 신규 인물 추가 금지
+- Soft Guidance: 배경을 음침한 자연 동굴로 교체 (보조광 유지),
+  원본 카메라 이동·줌·팬·타이밍 유지, 오리지널 오디오 신규 생성
+  (동굴 울림·물방울·발걸음·의상 마찰음)
+- Creative Freedom: 없음 (프롬프트가 전 구간을 잠금)
+
+**기여 패턴**: 1 (신규 — 모션 전용 레퍼런스 선언: 실영상을 모션+
+  카메라로만 쓰고 외형 전이를 원천 차단. #51의 안무 전용 전이보다
+  명시적), 2 (신규 — 오디오 무시 지시의 프롬프트 이행 실패:
+  author-described 실패 데이터. "원본 오디오를 아예 죽이는" 전처리가
+  필요하다는 가설), 3 (신규 — 성별 일치: 모션 전이 시 원본 출연자와
+  생성 캐릭터의 성별 일치가 유리하다는 작성자 체감), 4 (배경 완전
+  교체 + 네거티브 리스트 — #50 Relational Negative와 동형),
+  5 (단일 캐릭터 레퍼런스 고정 — #53 정체성 마스터 스위치와 동형)
+
+## 58. Facebook @류내원 — MiniMax H3 Character Swap LoRA 데모 (2×2 비교)
+
+**기본 정보**
+- 출처: Facebook reel (facebook.com/reel/2654859714968536),
+  작성자 류내원, Public. 사용자가 "이거 비슷한 거야"라며 #57과
+  함께 보라고 전달 (Kyoungryoul이 공유한 링크)
+- 캡션 전문 (author-described): "MiniMax H3 Character Swap LoRA
+  example / X toyxyz3님의 MiniMax H3 Character Swap LoRA 테스트
+  사례입니다. / MiniMax H3 Character Swap LoRA에 대한 설명은 이전 글
+  참고: https://www.facebook.com/share/p/1KGs7ZkT4E/ / LoRA:
+  https://huggingface.co/akatz-ai/MiniMax-H3-Character-Swap-LoRA /
+  #CharacterSwap #MiniMaxH3 #LoRA #AiVideoCreation #AiVideoGeneraion
+  #영상제작 #wonwizard"
+- Like 35, Shares 14. 영상 길이는 페이지에 표시 없음
+- 증거 기반: browser-described (브라우저 읽기 전용 태스크로 릴
+  공개 시청 — 로그인 월은 X 버튼으로 닫힘). 프레임 미추출,
+  프롬프트 미공개 — LoRA 데모라 프롬프트 자체가 산출물이 아님
+
+**관찰 — 영상 구성** (browser-described)
+- 2×2 비교 그리드: 왼쪽 열=원본 실사 영상, 오른쪽 열=애니메이션
+  스타일로 캐릭터 스왑된 버전. 동일 포즈·동일 장면
+- 상단: 검은 가죽 의상의 여성이 목조 벽/창문의 매트릭스식 도장에서
+  선 자세 (원본) → 분홍 머리 애니메이션 소녀로 스왑 (동일 장면)
+- 하단: 주차장에서 역동적인 무술/댄스 포즈의 실사 2인 (원본) →
+  분홍 머리·빨강 머리 애니메이션 소녀 2인으로 스왑 (동일 포즈)
+- 영상 내 텍스트 오버레이 없음
+
+**관찰 vs 추론**
+- 관찰: 캡션 전문, 2×2 그리드 구성, 상·하단 두 쌍의 스왑 내용,
+  LoRA 링크 (HuggingFace akatz-ai/MiniMax-H3-Character-Swap-LoRA)
+- 미확인: 영상 프레임 (미추출), LoRA 학습 방식·품질, 원본 X
+  @toyxyz3의 테스트 원문
+- 추론: 없음
+
+**코퍼스 정합 — #57의 거울상**
+- #57 (omonge222): 원본=모션+카메라만 가져오고 캐릭터·배경을
+  교체. 이 케이스는 정반대 배분 — 원본=장면+모션+포즈를 유지하고
+  캐릭터만 교체. 모션 레퍼런스 전이의 두 가지 역할 배분:
+  ① #57식 (모션 추출, 나머지는 재생성) vs ② LoRA 스왑식
+  (장면·모션 유지, 캐릭터만 교체)
+- #51의 레퍼런스 역할 분리, #52의 캐릭터 시트 선행과 동형 —
+  이쪽은 "학습된 캐릭터" (LoRA)가 정체성 레퍼런스 역할을 수행
+- #57의 "원본과 비교영상 올립니다"와 동형의 비교 그리드 포맷
+  (원본 vs 결과를 나란히) — 모션 전이 주장의 증거 제시 방식
+- #54 8역할론의 미술감독 역할 (기준 이미지 선행 고정)이
+  LoRA라는 형태로 구현된 사례
+
+**배경 조사 — 공식 vs 커뮤니티** (browser.search, 2026-09-28)
+- MiniMax H3 (2026-07-31 출시, omni-modal 비디오 모델)의 공식
+  패러다임 자체가 레퍼런스 역할 분리: "Reference images lock what a
+  subject looks like. Reference videos lock what it does." 프롬프트에서
+  "Video 1"은 모션, "Image 1"은 캐릭터로 인덱스 지명 — #57의
+  프롬프트 구조와 정확히 일치 (공식 문서: runware.ai MiniMax H3
+  가이드)
+- Character Swap LoRA (akatz-ai, HuggingFace)는 커뮤니티 제작 —
+  MiniMax 공식 제공이 아님. #58 캡션의 "X toyxyz3님의 테스트
+  사례"도 커뮤니티 테스트
+- 유사 커뮤니티 산출물: Alissonerdx의 head-swap LoRA
+  (`minimax_h3_head_swap_v1.0_r32`, 트리거 `head_swap:` —
+  얼굴 이미지는 native ref 경로, 원본 영상은 Add Guide로),
+  FaceSwap_MiniMaxH3_REF2VA (트리거 `Faceswap`), mark9009의
+  ComfyUI-H3-LongTake (얼굴 클로즈업을 ref_image_2로 연결하는
+  캐릭터 스왑 워크플로우), Playtime-AI의 캐릭터 LoRA 시리즈,
+  Turbo/StyleTransfer LoRA 등 — H3 ref2va용 LoRA 생태계가 형성 중
+
+**Production description → Control Levels**
+- Hard Lock: (LoRA 사용 시) 원본의 포즈·장면·카메라 구도는 유지,
+  캐릭터만 교체 — 프롬프트가 아닌 학습된 가중치로 잠금
+- Soft Guidance: 비교 그리드 (원본 vs 스왑)로 전이 품질을
+  검증하는 제시 포맷
+- Creative Freedom: 스왑 대상 캐릭터의 스타일 (이 케이스는
+  애니메이션 스타일)
+
+**기여 패턴**: 1 (신규 — 모션 전이의 거울상 배분: #57이
+  모션만 취하고 장면을 버린다면, 이쪽은 장면·모션을 유지하고
+  캐릭터만 교체. 목적에 따라 선택하는 두 가지 전이 전략),
+  2 (신규 — LoRA=학습된 정체성 레퍼런스: #51/#52의 프롬프트 기반
+  정체성 고정을 가중치로 구현), 3 (비교 그리드 — 모션 전이의
+  증거 제시 포맷, #57과 동형)
+
+## 59. Threads @jeong_do_ryeong — 프롬프트 엔지니어링+오케스트레이션 가이드 (텍스트 가이드)
+
+**기본 정보**
+- 출처: Threads @jeong_do_ryeong (AI Threads), 2026-09-29 게시.
+  "[프롬프트 엔지니어링 가이드] AI 비디오 프롬프트 엔지니어링에서
+  오케스트레이션(Orchestration) 가이드" — 본문 1개+작성자
+  셀프리플라이 1개 (PART 1~3 전문). Like 5, Reply 1, Share 1
+- 첨부 영상 1개 (browser-described): AI 생성 영상, 하단 중앙 흰색
+  "Newtak" 워터마크 (inference: Newtake로 생성된 것으로 보임).
+  빗물 젖은 밤거리 부츠 클로즈업과 네온 복싱짐 장면이 교차.
+  영상 길이는 페이지에 표시 없음 (프레임 미추출)
+- 증거 기반: text-guide (가이드 전문) + browser-described (첨부
+  영상). 채굴할 프롬프트 없음 — 이론 가이드이므로 #50·#54와
+  동급
+
+**관찰 — PART 1: 프롬프트 엔지니어링 4대 법칙** (text-guide)
+1. 관찰 가능한 시각 증거 서술 (Write the Visible): "멋진",
+   "긴장감 넘치는" 같은 추상·감정 형용사 금지 → 카메라에 포착되는
+   물리적 상태 변화와 관찰 가능한 동작으로 치환. ❌"영웅이 엄청나게
+   멋지고 강력하게 땅에 착지한다" → ✅"수퍼히어로가 20m 높이에서
+   수직 하강하여 무릎을 굽히며 지면을 강타한다. 타격 순간 먼지가
+   방사형으로 폭발하고 충격파가 번진다"
+2. Phase 기반 시공간 분할 (Phase Grammar): 접근→충돌 정점→
+   반발력 및 에너지 전달→감쇠 및 잔여 상태의 4단계 인과 사슬.
+   젤리화(Morphing)·무중력·시간순서 엉킴 예방
+3. 인과적 카메라 동기화 (Camera Causality): 카메라는 물리적 사건에
+   반응해서만 움직임. 충돌 전 이유 없는 흔들림=Shake Leakage
+   금지, 충돌의 정확한 마이크로초에만 Directional Camera Jolt 발동
+4. 정체성 및 물리적 경계 고정 (Boundary & Identity Lock):
+   신체 융합(Cronenberg Effect)·메쉬 관통 방지. "5개의
+   해부학적으로 정확한 손가락", "피사체 간 명확한 물리적 경계 유지"
+
+**관찰 — PART 2: 오케스트레이션 5단계 파이프라인** (text-guide)
+- 정의: 단일 텍스트 문장에 운을 맡기지 않고 피사체·카메라·물리학·
+  시간축·조명·엔진 특성을 통합 파이프라인으로 연결·제어·검증·
+  변환하는 메타 연출 시스템. 연출 의도를 중간 표현(IR)으로 격상 →
+  엔진별 입력 특성에 맞춰 하향 컴파일(Lowering)
+- Stage 1 의도 파싱: 5대 시각 속성 (Subject & Identity /
+  Action & Phase / Camera & Optics / Environment & Space /
+  Physics & Dynamics)
+- Stage 2 도메인 매핑: Performance (감정 명칭이 아닌 근육 반응·
+  시선·땀·호흡) / Camera Causality / Spatial Integrity (배경
+  토폴로지 고정)
+- Stage 3 검증·수술: 5대 시공간 파탄 오류+자동 교정 공식 —
+  ① Effect Dumping (사건→정점→강조→반응 순차 배치)
+  ② Shake Leakage (충돌 전 스무스 트래킹, 충돌 프레임에만 Jolt)
+  ③ Weightless Impact (충격량 비례 Displacement·Recoil 명시)
+  ④ Anatomical Merging (물리적 경계 선언·손가락 고정)
+  ⑤ Morphing (기하학적 형상 유지·배경 토폴로지 고정)
+- Stage 4 엔진 Lowering: 서사형(Sora/Veo)→시네마틱 문장,
+  모션·파라미터형(Runway/Kling)→압축+Negative 분리,
+  노드 파이프라인(ComfyUI)→모션 브러시·뎁스맵·포즈프레임 조건값
+- Stage 5 멀티숏 확장: 샷-그래프 확장, 인물/장소 일관성 유지.
+  예시: EWS→Ground Level→OTS→Close-Up→Wide Pull-Out
+
+**관찰 — PART 3: Universal Master Block 템플릿** (text-guide)
+- 10대 마스터 블록: [SCENE CONTEXT] / [FIRST FRAME & BLOCKING] /
+  [SUBJECT & IDENTITY LOCK] / [MOTION & PHASE SEQUENCE]
+  (Phase 1 Approach→2 Impact Peak→3 Force Transfer→4 Settling) /
+  [CAMERA TRAJECTORY & OPTICS] / [LIGHTING & COLOR PALETTE] /
+  [PHYSICS & DYNAMICS] / [SURFACE & PERFORMANCE] /
+  [OUTPUT SETTINGS & STYLE]
+
+**관찰 vs 추론**
+- 관찰: 가이드 전문 (PART 1~3), 첨부 영상 설명, 워터마크 "Newtak"
+- 미확인: 첨부 영상 프레임 (미추출), 가이드 주장의 실증 여부
+- 추론: Newtake 생성 (워터마크 기반) — inference로 분리
+
+**코퍼스 정합 — 이 가이드는 코퍼스의 이론화**
+- Write the Visible = #50의 Visual Evidence 병기, 코퍼스의
+  증거-tier 기율과 동형 (추상어 금지→관찰 가능한 서술)
+- Phase Grammar = #48의 10비트, #49의 철칙 구조의 일반화
+- Shake Leakage / Cronenberg Effect = 명명된 실패 모드.
+  #19의 실패 기반 네거티브, #24의 명명된 실패 케이스와 동형 —
+  "Shake Leakage"는 코퍼스 신규 용어
+- Engine Lowering (IR→엔진별 컴파일) = 사용자의 XAI-Studio-Video
+  (Master Spec→모델별 어댑터)와 정확히 일치. #56의 마스터
+  프롬프트 체인과도 정합
+- 5대 오류+교정 공식 = #54의 QC 역할, #57의 오디오 누출 실패
+  데이터와 같은 "실패→교정 공식" 문법
+- 멀티숏 샷-그래프 = MeiGen Trailer Montage 패턴, #47의
+  15샷 조립의 이론화
+
+**Production description → Control Levels**
+- Hard Lock: 추상·감정 형용사 금지 → 관찰 가능한 물리적 상태
+  변화로 치환 (Write the Visible). 액션은 Phase 1~4 인과 사슬로
+  서술. 카메라는 물리적 사건의 정확한 순간에만 반응 (Shake
+  Leakage 금지). 피사체 간 물리적 경계 선언
+- Soft Guidance: 5단계 오케스트레이션 파이프라인 (파싱→매핑→
+  검증→엔진 Lowering→멀티숏 확장), 10대 마스터 블록 템플릿
+- Creative Freedom: 없음 (가이드가 전 구간을 규격화)
+
+**기여 패턴**: 1 (신규 — Phase Grammar 4단계: Approach→Impact
+  Peak→Force Transfer→Settling. 코퍼스 액션 프롬프트들의 공통
+  구조를 명명한 일반화), 2 (신규 — Shake Leakage: 충돌 전 카메라
+  흔들림을 명명한 실패 모드+교정 공식), 3 (신규 — Cronenberg
+  Effect: 신체 융합 실패의 명명), 4 (신규 — Engine Lowering:
+  IR→엔진별 컴파일. 사용자 시스템과 독립 수렴한 아키텍처),
+  5 (신규 — 5대 시공간 파탄 오류+자동 교정 공식: 실패→교정
+  공식의 문법화), 6 (메타 — 이 가이드 전체가 코퍼스 귀납 패턴의
+  이론화: #48/#49/#50/#53/#54/#56/#57의 발견이 각 섹션에 대응)
+
+---
+
+## 60. X @DavidCliff42190 — 일본 이너웨어 모닝 광고 (실사 레퍼런스 + 클로저 편집 콘티)
+
+**기본 정보**
+- 출처: X @DavidCliff42190 (2026-09-30 게시, 리포스트된 상업 영상).
+  유니클로 LifeWear 스타일의 일본 이너웨어 광고 (마지막 샷에
+  UNIQLO 로고 + "シンプルなのに" 카피)
+- 영상 실측: 30.08초, 1280x720, 24fps, 722프레임. vxtwitter
+  API 경유 mp4 직접 다운로드 성공 (yt-dlp 조각 다운로드는
+  불안정했음). 키 프레임 8장 추출·관찰
+- 사용자 요청: "AI 영상이 아니라 실제 영상 같은데" 확인 +
+  이런 영상을 만들기 위한 콘티·기획·프롬프트 아이디어.
+  이어진 논의에서 사용자가 클로저(관객의 뇌가 컷 사이를 메우는
+  현상)를 이용한 편집 전략을 제안 → 아래 콘티는 그 원칙을
+  반영한 개정판
+- 증거 기반: frame-observed (추출 프레임) + user-described
+  (기획 의도). AI 생성물이 아니므로 프롬프트 채굴 없음 —
+  실사 레퍼런스를 AI로 재현하기 위한 역설계 콘티
+
+**관찰 — 원본 영상의 4샷 구조** (frame-observed)
+1. 침대 위 여성의 뒷모습 미디엄샷. 팔을 올린 기지개, 흩날리는
+   긴 머리. 따뜻한 아침 침실광, 얕은 심도. 노출은 등으로만 암시
+2. 옆모습 익스트림 클로즈업. 얼굴에 흩날리는 머리카락, 희미한
+   미소. 자막 "おはよう"(좋은 아침)
+3. 거울 샷. 베이지 심리스 브라를 입고 스트랩을 정리하며 거울
+   속 자신과 눈을 맞춤. 커튼 사이 데이라이트. 자막 "シンプル
+   なのに ぷるんと美胸"
+4. 포니테일로 묶은 옆모습 클로즈업, 밝은 미소. UNIQLO
+   LifeWear 로고 + "シンプルなのに" 태그라인 오버레이
+
+**핵심 원칙 — AI는 모멘트를, 편집은 모션을** (user-described +
+  assistant-synthesized)
+- 사용자 통찰: 사람은 내용이 잘 이어지면 컷 사이 빠진 부분을
+  알아서 상상해서 채움 (클로저/쿨레쇼프 효과). AI에게 "이어지게"
+  시키면 사이 구간을 어거지로 채우려다 모핑이 터져서 오히려
+  실감이 떨어짐
+- 전략 반전: AI에게는 완결된 "비트"(정점 모멘트)만 생성시키고,
+  사이 구간은 만들지 않음. 연결은 하드컷+관객의 뇌가 담당
+- #59 Phase Grammar의 선별 적용: Phase 1(Approach)과
+  Phase 3(Force Transfer)은 통째로 생략, Phase 2(Peak)와
+  Phase 4(Settling)만 생성. 정점끼리는 인과가 자명해서 뇌가
+  메우기 쉬움
+- 함정: 틈은 "상상 가능한" 크기여야 함. 인과 사슬이 끊기면
+  클로저가 아니라 혼란이 됨 (침대→거울은 상상 가능,
+  침대→갑자기 바다는 불가)
+
+**개정 콘티 — 샷별 상세** (클로저 편집 반영)
+
+■ 전체 편집 문법
+- 4샷 전부 하드컷. 트랜지션 이펙트·디졸브 금지 (AI 모핑 구간을
+  감추려다 오히려 가짜 느낌이 남)
+- 각 클립은 필요한 길이보다 길게 생성 → 앞뒤 1초가량의 모핑
+  구간을 잘라내고 중간만 사용. 인점=모션이 시작된 후,
+  아웃점=정점 또는 정돈 상태
+- 오디오 베드: 룸톤+침구 바스락거림을 0–30초 전 구간에 연속
+  배치. 화면은 끊겨도 소리가 이어지면 뇌는 "같은 장면"으로
+  믿음. 샷 경계에 J-컷/L-컷 (소리를 먼저 넘김)
+- 자막·로고·카피는 전부 후반 작업에서 오버레이. AI에게 텍스트
+  렌더링을 시키지 않음 (깨질 확률 높음)
+
+■ Shot 1 (0–8s): 기지개 — 침대 뒷모습
+- 카메라: 미디엄샷, 고정+매우 느린 푸시인
+- 생성할 것: 팔을 올린 기지개의 정점 전후 6초. 뒷모습,
+  머리카락이 흩날리다 정돈되는 흐름. 따뜻한 좌측 윈도우 키,
+  얕은 심도, 린넨 침구 전경
+- 인점: 팔이 이미 올라가기 시작한 후 (첫 1초 모핑 구간 버림)
+- 아웃점: 팔이 내려오며 머리카락이 가라앉는 순간
+- 관객이 채우는 것: "잠에서 깼다"는 전사 — 보여주지 않음
+- 오디오: 이불 바스락거림 시작 → Shot 2로 L-컷 (소리가 먼저 넘어감)
+- 프롬프트:
+```
+IDENTITY LOCK: East Asian woman, late 20s, long dark-brown wavy hair,
+natural no-makeup look, soft facial features, calm gentle demeanor.
+Same person in every shot. Photorealistic, premium commercial aesthetic.
+Medium shot from behind: the woman sits on a bed in a warm bedroom,
+arms raised in a slow morning stretch, long hair falling and swaying
+softly then settling. Bare back to camera, tasteful and non-explicit,
+artistic. Warm morning window light from the left, shallow depth of
+field, soft linen bedding foreground. Camera: static with very slow
+push-in. End on arms lowering, hair at rest. No text, no watermark.
+```
+
+■ Shot 2 (8–13s): 속삭임 — 옆모습 클로즈업
+- 카메라: 프로필 익스트림 클로즈업, 미세한 슬로우 드리프트
+- 생성할 것: 머리카락 사이로 번지는 미소의 정점 5초.
+  밝은 소프트 키, 깨끗한 배경
+- 매치컷 노트: Shot 1에서 머리카락이 흩날린 방향과 동일한
+  방향으로 머리카락이 얼굴을 스치게. 방향만 맞으면 뇌가 연결함
+- 관객이 채우는 것: 침대에서 일어나 세면대/거울 앞으로 이동한
+  과정 — 통째로 생략
+- 자막 "좋은 아침"은 후반 작업 (AI 텍스트 렌더링 금지)
+- 프롬프트:
+```
+[IDENTITY LOCK]
+Extreme close-up profile of her face, soft genuine smile blooming
+through strands of hair drifting slowly across her cheek in the same
+direction as the previous shot. Bright soft key light, shallow depth
+of field, clean light background. Intimate, whisper-quiet mood.
+Subtle slow camera drift. Hold the smile at its peak. No text, no watermark.
+```
+
+■ Bridge Beat (13–16s): 브라를 집는 손 — 인과의 경첩
+- 사용자 제안의 구체화: 누드처럼 보이는 상태(A) → 브라를 집는
+  제스처 → 입은 모습(B). 가운데 제스처가 인과를 이어주는 경첩
+  역할을 해서, 뇌가 "입는 과정"을 통째로 상상함
+- 왜 이 제스처가 정답인가: "입는 과정"은 끈 흔들림+팔 끼우기+
+  위치 잡기의 연속 물리라 AI가 못 만듦. 반면 "집어 드는 동작"은
+  단일 제스처의 정점 — 필요한 물리는 중력에 의한 원단 드레이프
+  뿐이라 2–3초 인서트에서는 AI가 감당 가능. 과정 전체를 가장
+  상징적인 한 동작으로 대체하는 것
+- 카메라: 클로즈업 인서트샷, 얕은 심도. 침대 협탁(또는 침대 위)에
+  놓인 베이지 심리스 브라를 손가락이 집어 드는 순간
+- 생성할 것: 손이 브라를 집어 올리고, 끈이 살짝 흔들리다
+  가라앉는 3초. 원단의 자연스러운 드레이프
+- 매치컷 노트: Shot 4(거울)의 브라와 동일한 베이지 심리스
+  디자인, 동일한 손/피부톤. 집어 든 브라가 화면 오른쪽으로
+  나가면, 다음 샷 거울상은 오른쪽에서 등장하는 느낌으로
+- 관객이 채우는 것: 입는 과정 전체
+- 프롬프트:
+```
+[IDENTITY LOCK]
+Close-up insert shot, shallow depth of field: a woman's hand reaches
+for a beige seamless bra resting on a bedside table and lifts it,
+fingers grasping the fabric gently. The bra drapes naturally with
+gravity, one strap swaying softly then settling. Warm morning light,
+intimate quiet mood. Single decisive gesture, hold the lifted peak
+moment. No text, no watermark.
+```
+
+■ Shot 3 (16–24s): 거울 — 스트랩 정리
+- 카메라: 거울 앞 미디엄샷 (본인+거울상 동시 프레임)
+- 생성할 것: 스트랩 정리를 마치고 거울 속 자신과 눈을 맞춘
+  정점 8초. 베이지 심리스 브라, 커튼 사이 데이라이트
+- 관객이 채우는 것: 브라를 입는 과정 — 보여주지 않음.
+  (옷 입는 과정은 AI가 가장 깨지기 쉬운 구간이므로 생략 자체가
+  품질 전략. Necessity Test: 보여주지 않아도 되는 건 보여주지
+  않는다)
+- 주의: 미러 리플렉션 물리가 AI 약점. 리플렉션이 어긋나면
+  여러 번 재생성하거나, 대체안으로 거울 없이 창가 샷으로 변경
+- 프롬프트:
+```
+[IDENTITY LOCK]
+The woman stands before a full-length mirror wearing a beige seamless
+bra, having just finished adjusting one strap, making soft eye contact
+with her reflection. Bright daylight through sheer curtains behind her.
+Clean, minimal premium lingerie-commercial look. Real mirror reflection
+must match her pose exactly. Slow subtle camera movement. Hold the
+composed final pose. No text, no watermark.
+```
+
+■ Shot 4 (24–30s): 포니테일 미소
+- 카메라: 프로필 클로즈업, 젠틀한 슬로우 드리프트
+- 생성할 것: 로우 포니테일로 묶은 머리의 밝은 미소 정점 5초.
+  밝고 균일한 소프트광, 상쾌한 아침 에너지
+- 관객이 채우는 것: 머리를 묶는 과정 — 생략
+- 브랜드 로고·태그라인은 후반 작업에서 오버레이 (가상 브랜드명
+  사용, 실존 상표 금지)
+- 프롬프트:
+```
+[IDENTITY LOCK]
+Close-up profile, hair tied in a low ponytail, bright genuine smile,
+looking slightly upward. Clean bright soft-lit background, fresh
+morning energy. Gentle slow camera drift. Hold the smile at its peak.
+No text, no watermark.
+```
+
+■ 편집 타임라인 (30초)
+```
+영상: [Shot1 0–8s] hard cut [Shot2 8–13s] hard cut [Bridge 13–16s] hard cut [Shot3 16–24s] hard cut [Shot4 24–30s]
+오디오: |=== 룸톤+바스락거림 연속 베드 (0–30s) ===| + "좋은 아침" 속삭임 (8s 지점)
+자막:                    [좋은 아침]      [심플한데도, 탄력 있는 아름다움]   [브랜드 로고]
+```
+- 속삭임 오디오는 영상 생성과 분리: TTS 또는 직접 녹음 후
+  믹싱 (#57 교훈 — 오디오 지시는 프롬프트에서 잘 안 먹음)
+
+**관찰 vs 추론**
+- 관찰: 추출 프레임 8장의 샷 구성·조명·자막·브랜드,
+  영상 실측치 (30.08초/720p/24fps)
+- 미확인: 원본 광고의 실제 브랜드 캠페인명, 촬영 스펙
+- 추론: 유니클로 LifeWear 캠페인 계열 (로고·카피 기반) —
+  inference로 분리. 사용자의 재현물은 오리지널 기획으로
+  진행 (실존 상표 사용 금지)
+
+**코퍼스 정합**
+- 클로저/쿨레쇼프 = 코퍼스 신규 명명. #59 Phase Grammar의
+  실전 운용법 (Peak/Settling 선별 생성)
+- "보여주지 않아도 되는 건 보여주지 않는다" = Necessity Test의
+  편집 적용 (브라 착용 과정 생략)
+- 오디오 분리 믹싱 = #57의 오디오 누출 실패 데이터의 역이용
+- 매치컷 방향 일치 = #14의 매치컷 체인
+- 앞뒤 1초 버리고 중간만 사용 = #19/#24의 실패-회피 편집
+  (모핑이 터지는 구간을 생성하지 않고 잘라냄)
+
+**Production description → Control Levels**
+- Hard Lock: 전부 하드컷, 트랜지션 금지. 각 클립 앞뒤 모핑
+  구간 제거 후 중간만 사용. 자막·로고·카피의 AI 렌더링 금지
+  (후반 오버레이). 실존 브랜드명 사용 금지
+- Soft Guidance: Peak/Settling 선별 생성, 오디오 브리지+J/L컷,
+  매치컷 방향 일치, Identity Lock 4샷 고정, 미러샷 리플렉션 검증
+- Creative Freedom: 비트 순서, 자막 카피, 속삭임 대사, 브랜드명
+
+**기여 패턴**: 1 (신규 — 클로저 편집: AI는 모멘트만 생성하고
+  사이는 관객의 뇌에 맡기는 전략. "AI는 모션을 만들게 하지
+  말고 모멘트를 만들게 하라"), 2 (신규 — 생략 자체를 품질
+  전략으로: 깨지기 쉬운 구간은 생성하지 않고 잘라냄),
+  3 (정합 — #59 Phase Grammar, #14 매치컷, #57 오디오
+  분리, Necessity Test의 실전 조합), 4 (신규 — 상태 A →
+  제스처 → 상태 B: AI가 못 만드는 연속 과정(끈 흔들림·팔
+  끼우기·위치 잡기)을 가장 상징적인 단일 제스처(브라를 집어
+  드는 손)로 대체. 제스처가 인과의 경첩이 되어 뇌가 과정
+  전체를 상상함)
+
+---
+
+## 62. X @ALauchaire9dap — 태국 드라마 탱크톱 벗기기 (실사 모션 분석)
+
+**기본 정보**
+- 출처: X @ALauchaire9dap, 2026-09-30 게시. 포스트 본문은
+  미러 링크 2개뿐 (cdnw.twiwg.ink). 379 likes. 영상은 태국
+  Channel 3 드라마 클립으로 보임 (우상단 "3 HD" 로고)
+- 영상 실측: 16.07초, 1280x720, 30fps, 482프레임.
+  vxtwitter API 경유 mp4 직접 다운로드 성공 (yt-dlp 조각
+  다운로드는 실패). 오디오 스트림 존재 (미청취)
+- 증거 기반: frame-observed (2fps 32장 + 벗기기 구간 6fps).
+  사용자 질문: "옷을 벗기는 움직임을 AI로 재현할 수 있을까?"
+
+**관찰 — 타임라인**
+- 0–5s: 두 여성이 포옹. 한 명은 줄무늬 탱크톱, 다른 한 명은
+  흰 톱 착용
+- 5.5–7.5s: **탱크톱 벗기기** (상대방 보조). 밑단을 잡고 위로
+  끌어올림 → 옷이 머리 위에서 뭉치며 얼굴 완전 가림 →
+  긴 머리카락이 옷에 걸려 함께 흔들림 → 팔이 빠지면서 옷이
+  자유 물체가 됨 → 우상방으로 날아감
+- 7.5–16s: 키스 지속. 흰 톱은 끝까지 착용 상태 유지
+
+**관찰 — 벗기기 모션의 5단계 분해**
+1. Grip: 밑단을 잡는 손. 몸 뒤쪽이라 손이 가려진 채 시작
+2. Pull-up: 옷이 몸통을 따라 위로 미끄러지며 늘어남
+3. Head-pass: 옷이 머리를 덮음. 얼굴 완전 오클루전, 머리카락
+   간섭 발생
+4. Release: 팔이 빠지면서 옷이 신체에서 분리, 위상 변화
+   (입은 옷 → 뭉친 천 → 자유 물체)
+5. Toss: 2차 모션. 옷이 관성으로 날아감
+
+**판정 — AI 재현 가능성**
+- 원테이크 직접 재현: **불가에 가까움**. 5대 파탄 지점:
+  ① 가려진 채 밑단을 잡는 손가락 (오클루전 하의 손 몰핑)
+  ② 얼굴이 옷에 가려졌다 드러나는 순간 (가림-드러남 경계의
+  identity drift — 얼굴이 바뀌어 나옴)
+  ③ 옷의 위상 변화 (입은 상태→뒤집힌 뭉침→날아가는 물체 —
+  연속 모션으로 표현 불가한 불연속 상태 전이)
+  ④ 머리카락-옷 간섭 (두 개의 서로 다른 물리계가 얽힘)
+  ⑤ 2인 협동 타이밍 (보조하는 손과 벗는 몸의 동기화)
+- 브릿지 비트 + 컷 전략: **가능**. #60의 "상태 A → 제스처 →
+  상태 B"를 그대로 적용:
+  샷1 상태A (입은 채 포옹) → 브릿지 (밑단을 잡고 끌어올리는
+  손 클로즈업 인서트 — 얼굴은 프레임 밖) → 컷 → 샷2 상태B
+  (날아가는 옷 단독 샷 + 맨어깨, 가라앉는 머리카락).
+  머리 통과(Head-pass) 순간은 절대 직접 렌더하지 않고
+  브릿지/컷 안에 숨김
+- #60 대비: 사용자가 #60에서 "입는 동작(끈 흔들림·팔 끼우기)은
+  AI가 못 만든다"고 했는데, 벗기기는 다른 축으로 어려움.
+  입기가 미세 손-원단 정밀도에서 깨진다면, 벗기기는
+  가림-드러남 경계의 얼굴 드리프트 + 옷의 위상 변화에서
+  깨짐. 단, 벗기기가 컷 친화적이라 브릿지 전략은 더 잘 먹음
+- 정책 레이어 (별개 장벽): 상용 비디오 모델의 undressing
+  필터는 기술적 가능성과 무관하게 작동. 우회 방법은 다루지
+  않음
+
+**규칙 카드 (붙여넣기용)**
+```
+[가림-드러남 경계 비렌더 원칙 — Hard Lock]
+얼굴·신체가 옷/물체에 완전히 가려졌다가 드러나는 순간
+(head-pass, occlusion-reveal boundary)은 연속 생성으로
+절대 렌더하지 않는다. 그 순간은 브릿지 비트(손 클로즈업
+인서트 등) 또는 컷 안에 숨기고, 상태 A(가려지기 전)와
+상태 B(드러난 후)만 보여준다. 경계를 렌더하면 identity
+drift가 확정적으로 발생한다.
+```
+
+**관찰 vs 추론**
+- 관찰: 위 전부와 5단계 분해, 5대 파탄 지점의 위치
+  (프레임 기반)
+- 추론: "원테이크 불가" 판정은 현행 모델들의 오클루전-리빌
+  실패 패턴에 대한 일반적 지식에서 온 추론. 특정 모델로
+  테스트한 것은 아님 — inference로 분리
+- 미확인: 드라마 제목, 오디오 내용
+
+**코퍼스 기여**
+- 6 (신규 — 가림-드러남 경계 비렌더 원칙. #60의 브릿지
+  비트를 오클루전-리빌 문제에 특화한 것. 옷의 위상 변화를
+  불연속 상태 전이로 명시한 것도 신규), 5 (정합 — #60의
+  "상태 A → 제스처 → 상태 B" 직접 적용 사례)
+
+---
+
+## 61. X @GrayNoteLab(灰度笔记) — 점진적 광학 줌 고풍 서사 (프롬프트 전문)
+
+**기본 정보**
+- 출처: X @GrayNoteLab (灰度笔记), 2026-09-30 게시.
+  "变焦切换景别是AI视频创作常用的方法" — 줌 경별 전환
+  가이드. 프롬프트 전문이 포스트 본문에 공개 (중국어)
+- 영상 실측: 15.09초, 3840x2160(다운로드본), 24fps 추정.
+  vxtwitter API 경유 mp4 직접 다운로드 성공. 오디오 스트림
+  존재 (대사 "好久不见"의 실제 발화 여부는 미확인).
+  키 프레임 7장 추출·관찰 (f01/f04/f06)
+- 증거 기반: prompt-derived (전문) + frame-observed.
+  포스트 상단 번역: "好久不见 🥳 / 줌으로 경별(샷 사이즈)을
+  바꾸는 건 AI 영상 창작에서 자주 쓰는 방법~ / 주인공을
+  교묘하게 보여줄 수 있어 🙌🙌 / 프롬프트는 아래와 같아:"
+
+**프롬프트 전문 (중국어 원문)**
+```
+【全局设定】
+古风写实电影镜头，东方古典生活叙事，雨后江南古镇：青石台阶、
+青砖黛瓦、木质廊檐、雕花木门、竹帘、湿润石板巷道。阴天柔和漫射光，
+低对比度，冷灰青与温暖木色融合，轻微35mm胶片颗粒，真实皮肤、
+木石与织物纹理，电影级浅景深，8K，16:9。
+
+女主A：图1
+女主B：图2
+
+全片严格保持角色身份、空间位置、左右关系、行进方向、天气、
+光线、色调连续。
+
+【核心摄影技法】
+全片以"渐进式光学变焦"为唯一核心运镜。摄影机尽量固定机位，
+不依赖实体移动，通过缓慢连续的光学推近、拉远改变人物画面占比
+与空间关系。保持真实镜头压缩、景深变化和光学特征，禁止数字裁切。
+前景遮挡、浅景深、焦点转移辅助叙事，形成"远处发现→隔巷对视→
+空间压缩→情绪确认"。
+
+【0-4s】
+中景起幅，35mm，固定机位，视线高度。女主A沿青石台阶缓慢下行至
+巷口，停步转身抬头，看见远处廊檐下的女主B。镜头从较宽环境关系构图
+开始，仅缓慢光学推近，逐渐收紧至女主A中景，摄影机不移动。
+
+古镇行人先后从左右前景横向经过，近距离形成自然虚化遮挡，女主A
+始终保持清晰；遮挡期间曝光、色温、光影稳定。变焦持续平滑克制，
+最终形成女主A与远处女主B隔巷对视。
+
+【4-9s】
+承接上一段，机位完全不变。女主B从画面右侧前景缓慢进入，靠近
+木质廊柱，与廊柱形成天然前景框；女主A位于左中部巷道深处。
+
+缓慢连续光学变焦，女主A先保持清晰，随后画面逐渐收紧，女主B前景
+占比增大，女主A退入背景并柔和虚化。逐渐进入长焦端，通过真实空间
+压缩使古巷纵深被压缩，两人实际距离不变，但视觉距离明显拉近。
+焦点平滑由女主A转向女主B，最终女主B侧脸清晰、女主A虚化。
+摄影机不横移、不摇摄、不绕拍，曝光与色调连续。
+
+【9-13s】
+保持固定机位与长焦关系。女主B站在木质廊柱旁缓慢转身，看向女主A。
+仅进行一次极缓慢光学推近，从双人关系构图收紧至女主B中近景。
+画面左侧保留女主A局部虚化轮廓，形成窥视式前景框架。
+
+女主B成为主要焦点，看向女主A，短暂停顿后轻声说："好久不见。"
+露出极轻微笑意。竹帘被雨后微风吹动，屋檐水滴自然落下，湿润青石
+反射柔和天光。镜头稳定推进，在近距离情绪确认中结束。
+
+【镜头控制】
+核心必须是"光学变焦制造叙事距离变化"，而非摄影机移动。镜头语言
+依次完成：环境建立→发现女主A→缓慢收紧→女主B进入前景→长焦空间
+压缩→焦点转移→情绪确认。变焦速度缓慢连续，具有真实镜头惯性；
+保持自然人物比例、真实景深与稳定曝光，明确呈现光学变焦感，
+但无廉价数码放大感。
+
+【连续性与负面约束】
+严格遵循角色卡，禁止外貌、发型、服装漂移；保持空间地理关系、
+左右位置、运动方向、光线方向一致。禁止现代建筑、交通工具、
+路牌、现代物件、字幕、水印；禁止新增主要人物、人物重复、
+肢体异常、身份交换。禁止横移、环绕、快速推轨、突然摇镜、
+无人机运动、强手持抖动、数字变焦、数码裁切、透视异常、焦距跳变、
+景深瞬切、曝光闪烁、色温漂移、过度雾化、过度磨皮、AI塑料皮肤。
+```
+
+**프롬프트 한국어 번역**
+- [전역 설정] 고풍 실사 영화 스타일, 동양 고전 생활 서사,
+  비 온 뒤 강남 고진(江南古镇): 청석 계단, 청전대와(푸른 기와),
+  목조 처마, 조각 목문, 죽렴, 젖은 석판 골목. 흐린 날 부드러운
+  확산광, 낮은 대비, 냉회청(차가운 회청색)과 따뜻한 목재 색의
+  융합, 미세한 35mm 필름 그레인, 리얼한 피부·목석·직물 질감,
+  영화급 얕은 심도, 8K, 16:9
+- 여주인공A: 그림1 / 여주인공B: 그림2 (캐릭터 카드 이미지
+  레퍼런스)
+- 전편에 걸쳐 캐릭터 정체성, 공간 위치, 좌우 관계, 진행 방향,
+  날씨, 조명, 색조 연속성 엄격 유지
+- [핵심 촬영 기법] 전편의 유일한 핵심 운경은 "점진적 광학 줌".
+  카메라는 최대한 고정하고 물리적 이동에 의존하지 않으며,
+  느리고 연속적인 광학적 푸시인/풀아웃으로 인물의 화면 비중과
+  공간 관계를 바꿈. 실제 렌즈 압축·심도 변화·광학 특성 유지,
+  디지털 크롭 금지. 전경 가림·얕은 심도·포커스 이동이 서사를
+  보조하며 "먼 곳에서 발견→골목 사이 마주봄→공간 압축→감정
+  확인"의 흐름 형성
+- [0–4s] 미디엄샷 시작, 35mm, 고정, 시선 높이. 여주인공A가
+  청석 계단을 천천히 내려와 골목 어귀에서 멈춰 돌아서서
+  올려다보며 멀리 처마 아래 여주인공B를 발견. 넓은 환경 관계
+  구도로 시작해 느린 광학 푸시인만으로 여주인공A 미디엄샷까지
+  조임. 카메라 이동 없음. 고진 행인들이 좌우 전경을 차례로
+  가로지르며 근거리에 자연스러운 아웃포커스 가림 형성,
+  여주인공A는 계속 선명 유지. 가림 구간에도 노출·색온도·명암
+  안정. 최종적으로 두 사람이 골목을 사이에 두고 마주보는 구도
+- [4–9s] 카메라 위치 완전 고정. 여주인공B가 화면 오른쪽
+  전경에서 천천히 들어와 목조 기둥에 다가가 천연 전경 프레임
+  형성. 여주인공A는 왼쪽 중앙 골목 깊숙한 곳. 느리고 연속적인
+  광학 줌으로 여주인공B의 전경 비중이 커지고 여주인공A는
+  배경으로 물러나 부드럽게 아웃포커싱. 망원단으로 들어가 실제
+  공간 압축으로 골목 깊이가 압축됨 — 두 사람의 실제 거리는
+  그대로지만 시각적 거리는 확연히 가까워짐. 포커스가 부드럽게
+  A에서 B로 이동, 최종적으로 B 옆모습 선명·A 흐릿. 패닝·틸트·
+  회전 없음
+- [9–13s] 고정 위치와 망원 관계 유지. 여주인공B가 기둥 옆에서
+  천천히 돌아서며 여주인공A를 바라봄. 극도로 느린 광학 푸시인을
+  한 번만 실시해 2인 관계 구도에서 여주인공B 미디엄
+  클로즈업까지 조임. 화면 왼쪽에 여주인공A의 부분적 아웃포커스
+  실루엣을 남겨 엿보는 듯한 전경 프레임 형성. 여주인공B가 주
+  포커스가 되어 바라보다 잠시 멈춘 뒤 나직이 "好久不見
+  (오랜만이야)". 극히 미세한 미소. 비 온 뒤 미풍에 죽렴이
+  흔들리고 처마 물방울이 떨어지며 젖은 청석이 하늘빛을 반사.
+  근거리 감정 확인으로 마무리
+- [렌즈 컨트롤] 핵심은 "광학 줌으로 서사적 거리의 변화를
+  만든다"는 것이지 카메라 이동이 아님. 순서: 환경 구축→A
+  발견→느린 조임→B의 전경 진입→망원 공간 압축→포커스
+  이동→감정 확인. 줌 속도는 느리고 연속적이며 실제 렌즈의
+  관성을 가짐. 광학 줌 느낌을 명확히 살리되 값싼 디지털 확대
+  느낌 금지
+- [연속성 및 네거티브] 캐릭터 카드 엄격 준수, 외모·헤어·의상
+  드리프트 금지. 현대 건축물·교통수단·간판·현대 오브제·자막·
+  워터마크 금지. 인물 추가·인물 중복·사지 기형·정체성 뒤바뀜
+  금지. 횡이동·주회·급속 푸시 트랙·급틸트·드론·강한 핸드헬드·
+  디지털 줌·디지털 크롭·투시 이상·초점거리 점프·심도 급변·노출
+  플리커·색온도 드리프트·과도한 안개·과도한 피부 보정·AI
+  플라스틱 피부 금지
+
+**관찰 — 프레임 정합** (frame-observed)
+- f01: 여주인공A(연청 드레스, 땋은 머리)가 청석 계단을 내려옴.
+  좌상단 아웃포커스 우산 전경, 우측 목문 — 0–4s 구도와 일치
+- f04: 여주인공B(전통 머리장식) 오른쪽 전경 프로필 선명,
+  여주인공A 왼쪽 배경 흐릿 — 4–9s 포커스 랙 결과와 일치
+- f06: 9초 이후 샷. **프롬프트와 달리 하드컷이 존재함.**
+  d018(9.0s)→d019(9.5s)에서 카메라 앵글이 바뀜: d018까지는
+  B의 옆모습(오른쪽 전경, A를 바라봄)+A가 왼쪽 배경에 흐릿하게
+  있었는데, d019부터는 B가 카메라를 정면으로 보다시피 바라보고
+  A의 뒷모습이 왼쪽 전경에 크게 아웃포커스로 잡힘. 0.5초 만에
+  일어날 수 없는 구도 변화이므로 연속 무브가 아닌 하드컷.
+  프롬프트의 "机位完全不变/保持固定机位" 주장과 실제 출력이
+  어긋난 지점
+- 같은 공간으로 느껴지는 장치 (컷을 봉합하는 고전 문법):
+  ① 180도 법칙 — 컷 전후 B는 오른쪽, A는 왼쪽으로 좌우 관계
+  유지. 축을 넘지 않아 뇌가 같은 공간으로 인식
+  ② 시선 매치 — d018에서 B가 왼쪽(A 방향)을 바라보다가,
+  d019에서는 A 쪽에서 본 B가 됨. 시선의 방향이 이어짐
+  ③ 기둥 앵커 (축 오브젝트) — 목조 기둥이 컷 전후 모두 화면
+  중앙에 있어 공간의 축 역할. 프롬프트는 기둥을 두 번 언급
+  ("B가 기둥에 다가가 천연 전경 프레임을 형성", "B가 기둥 옆에
+  서서 돌아섬")하지만 어디까지나 B의 위치 설명일 뿐, 컷을
+  넘어서는 앵커로 쓰라는 지시는 없음 (프롬프트는 컷이 없다고
+  주장하므로). 사용자 통찰: 기둥이 두 사람 *사이*에 있어서
+  앵글이 바뀌어도 무의식이 기대하는 위치(중앙, 둘 사이)에
+  그대로 있음. 액션의 축선 위에 있는 오브젝트는 리버스숏에서도
+  좌우가 뒤집히지 않으므로 뇌가 "같은 장소"로 인식. 이를
+  축 오브젝트(Axis Object)라 명명: 인물들 사이의 축선 위에
+  두드러진 오브젝트를 배치하면 앵글 변경을 꿰매는 랜드마크가 됨
+  ④ 포커스 상태 연속 — 컷 직전(B 선명/A 흐릿)과 직후 동일
+  ⑤ 색조·조명·날씨·의상·헤어 완전 연속
+  → 교과서적인 숏/리버스숏(shot/reverse-shot). 프롬프트가
+  주장한 "고정 카메라"가 아니라 고전 연속성 편집이 실제로
+  공간을 봉합한 것. #60의 클로저 테제와 정확히 일치:
+  뇌가 두 앵글 사이를 같은 공간으로 꿰맴
+- 미세한 불일치 2: 프롬프트 구간 합이 13초(0–4/4–9/9–13)인데
+  실제 영상은 15.09초. 프롬프트 타임라인보다 여유 있게 생성된
+  것으로 보임
+
+**관찰 vs 추론**
+- 관찰: 프롬프트 전문, 추출 프레임 3장의 구도·포커스 상태,
+  오디오 스트림 존재, 영상 길이 실측치
+- 미확인: "好久不见" 대사의 실제 발화 여부 (오디오 미청취),
+  캐릭터 카드 이미지(图1/图2)의 내용
+- 프롬프트 vs 출력의 어긋남: 프롬프트는 전 구간 카메라 고정을
+  주장하지만, 실제 영상 9초 지점에 리버스 앵글로의 하드컷이
+  있음. 자세히 보면 프롬프트 자체가 모순임: 9–13s 구간이
+  "B가 기둥 옆에 서서 돌아서고, A의 뒷모습이 왼쪽 전경에
+  흐릿하게 잡힘"이라는 리버스 구도를 묘사하면서 동시에
+  "机位完全不变"을 선언. 고정 카메라로는 찍을 수 없는 구도.
+  엔진(또는 편집자)은 이 모순을 하드컷으로 해소했고, 컷의
+  연속성 장치(180도 법칙·시선 매치)는 자동 적용됨.
+  기둥-두 사람 배치도 엔진의 독창이 아니라 프롬프트 제약
+  (기둥 옆 B + 왼쪽 전경 A + 좌우 관계 락)이 기하학적으로
+  강제하는 해. 엔진 언급은 포스트에 없음 (댓글 1개는 로그인
+  월 뒤라 미확인) — 엔진 미상
+- 추론: 없음
+
+**코퍼스 정합**
+- 광학 줌을 유일한 운경으로 고정 = 움직임의 최소화 역설.
+  카메라를 안 움직일수록 서사가 선명해짐. #59의 Camera
+  Causality와 정합 (줌은 서사적 거리 변화에만 반응)
+- 망원 공간 압축의 감정적 사용 = 코퍼스 신규. 실제 거리는
+  그대로인데 시각적 거리만 좁혀 "가까워진 마음"을 광학 현상
+  그대로로 표현. 물리 장치를 서사 장치로 전환한 사례
+- 전경 행인 가림막 = 자연스러운 와이프. #14의 매치컷 체인과
+  정합. 가림 중 노출·색온도 안정까지 명시한 점이 정밀함
+- 포커스 랙 서사 (A 선명→B 선명) = 시선의 주도권 이동을
+  포커스로 표현. #42의 카메라 존재감과 같은 계열
+- 캐릭터 카드(图1/图2) = #52의 시트-퍼스트, #57의 역할 분리
+- 광학 특화 네거티브 (투시 이상·초점거리 점프·심도 급변·AI
+  플라스틱 피부) = #19의 실패 기반 네거티브 어휘 확장
+
+**Production description → Control Levels**
+- Hard Lock: 카메라 위치 완전 고정, 광학 줌만 허용 (디지털 줌·
+  크롭·패닝·틸트·주회·드론 전면 금지). 캐릭터 카드 준수,
+  좌우 관계·진행 방향·조명 방향 일관. 현대 오브제·자막·
+  워터마크 금지
+- Soft Guidance: 점진적 광학 줌의 속도 (느리고 연속적, 렌즈
+  관성). 전경 가림막의 배치, 포커스 랙의 타이밍, 망원 압축의
+  정도. "발견→마주봄→압축→확인" 4단계 서사 아크
+- Creative Freedom: 행인의 수·타이밍, 죽렴·물방울 등 환경
+  디테일, 대사의 어조
+
+**기여 패턴**: 1 (신규 — 광학 줌 단일 운경: 카메라 고정+줌만으로
+  서사적 거리를 조종), 2 (신규 — 망원 공간 압축의 감정적 사용:
+  실제 거리는 그대로, 시각적 거리만 좁혀 마음을 표현),
+  3 (신규 — 전경 행인 가림막: 자연스러운 와이프+가림 중
+  노출 안정 명시), 4 (확장 — 광학 특화 네거티브 어휘:
+  초점거리 점프·심도 급변·AI 플라스틱 피부),
+  5 (정합 — #59 카메라 인과성, #52 시트-퍼스트, #14
+  매치컷 체인), 6 (신규 — 프롬프트 선언 vs 출력 실제의 어긋남:
+  "카메라 고정"을 선언했지만 실제 출력은 9초에 리버스 앵글로
+  하드컷. 숏/리버스숏의 고전 연속성 장치(180도 법칙·시선 매치·
+  공간 앵커·포커스 상태 연속)가 공간을 봉합. #60 클로저
+  테제의 실증 사례 — 프롬프트만 읽고 프레임 검증을 빼면
+  놓치는 지점)
+
+---
+
+## 63. X @AI__TSUBAKI — 처음 구워본 꽁치 (Seedance 2.5 on Higgsfield, 30초)
+
+**기본 정보**
+- 출처: X @AI__TSUBAKI, 2026-09-30 게시. "Tried grilling sanma
+  for the first time. Cast: Emma. Seedance 2.5 on @higgsfield".
+  36 likes. 포스트에 프롬프트 없음
+- 영상 실측: 30.04초, 2880x2160, 24fps, 721프레임.
+  vxtwitter API 경유 mp4 직접 다운로드 성공
+- 증거 기반: frame-observed (2fps 60장)
+
+**관찰 — 타임라인**
+- 0–7s: 일본식 부엌. 토끼귀 머리띠+세일러복 차림의 Emma가
+  도마 위에서 종이에 싼 꽁치를 풂 (준비)
+- ~14s: **인서트** — 잘린 유자(스다치) 매크로 클로즈업.
+  얕은 심도, 그녀는 배경에 흐릿하게
+- ~10s: **석쇠 POV** — 석쇠 너머로 그녀의 얼굴. 연기가 피어오르고
+  아래에서 불빛. 카메라가 석쇠 자리에 있음
+- ~20s: 합장 클로즈업 + 자막 "Itadakimasu."
+- ~25s: 먹는 클로즈업 — 젓가락, 눈을 감고 음미하는 표정
+- ~29s: 와이드 — 일본 가옥 exterior, 낮은 상에서 식사 중,
+  마당의 화로 불빛. Higgsfield 로고 번인
+
+**관찰 — 보여주지 않은 것**
+- 정작 **구이 과정 자체는 한 번도 직접 안 나옴**: 석쇠에 생선을
+  올리기, 뒤집기, 집게질, 접시에 담기 — 전부 생략. 불+연기+석쇠
+  POV 한 컷으로 "굽고 있다"를 암시하고, "Itadakimasu" 한마디로
+  구이→식사로 점프
+- 맛은 음식이 아니라 **얼굴로** 보여줌 (눈 감고 음미). 음식
+  클로즈업은 유자 인서트 1컷뿐
+
+**기법 판독**
+- T-24 다이제틱 카메라 시트의 변형: 카메라가 석쇠의 네이티브
+  자리. 석쇠살이 전경 프레임이 됨
+- T-04 가림막 와이프의 자연형: 연기가 전이를 덮음. 어려운 손
+  동작(생선 뒤집기)은 연기와 컷 안에 숨김
+- T-01 생략 컷의 교과서: "준비 → (한마디) → 식사". 사용자의
+  테제 — "상태 A → 대사(의도) → 컷 → 상태 B" — 의 실전 사례.
+  자막 "Itadakimasu."가 브릿지 대사 역할
+- T-02 결과만 보여주기: 구이 과정 대신 먹는 얼굴(결과)만
+- T-30 인서트 이코노미: 유자 매크로 1컷이 페이스와 "맛"의
+  증거를 만듦
+- 난이도 캐스팅 관점: "처음 구워본다"는 서사가 서툼을 정당화.
+  불·연기·생선은 몸이 아는 난이도인데, 정작 어려운 동작은
+  전부 생략하고 분위기(연기·불빛·표정)로 실감을 만듦
+
+**관찰 vs 추론**
+- 관찰: 타임라인, 보여주지 않은 것의 목록, 자막 문구, 로고 번인
+  (프레임 기반)
+- 추론: "구이 과정을 의도적으로 생략했다"는 연출 의도 판단 —
+  결과물에서 읽은 것이므로 inference. 프롬프트가 없어서
+  확인할 수 없음
+- 미확인: 프롬프트 전문, Emma 캐릭터의 정체(시리즈물로 보임)
+
+**코퍼스 기여**
+- 1 (신규 — 석쇠 POV: T-24의 조리 장면 적용. "카메라를 도구가
+  있던 자리에"의 확장), 2 (정합 — T-01 "대사 한마디 브릿지"의
+  자막형 실전 사례. 사용자의 샷뱅크 테제와 직접 연결),
+  3 (정합 — T-04 연기 가림막의 자연 발생 사례), 4 (재확인 —
+  툴 워터마크 번인 #43번 규칙. Higgsfield 로고가 최종 샷에)
+
+**규칙 카드 (붙여넣기용)**
+```
+[대사 한마디 브릿지 — Soft Guidance]
+렌더할 수 없는 과정(조리·수리·이동)은 보여주지 말고
+한마디로 건너뛴다. "준비 상태 → 'Itadakimasu' → 식사 중".
+대사(또는 자막)가 의도를 선언하면 관객은 중간 과정을
+스스로 메운다. 과정의 디테일을 묘사할수록 깨질 확률이
+올라간다 — 말은 짧을수록 강하다.
+```
+
+---
+
+## 64. X @AIwithWania — CHASE 짐 브이로그 (Seedance 2.5, 30초, 프롬프트 본문 공개)
+
+**기본 정보**
+- 출처: X @AIwithWania, 2026-09-30 게시. "No soft reps, no safe
+  limits how much burn can you really handle? 🔥 Crafted with
+  Seedance 2.5". 43 likes. **프롬프트 본문 전문 공개**
+- 영상 실측: 30.1초, 848x478, 24fps, 721프레임.
+  vxtwitter API 경유 mp4 직접 다운로드 성공
+- 증거 기반: prompt-derived (전문) + frame-observed (2fps 60장).
+  프롬프트의 8컷 스토리보드가 프레임에 실제로 반영됐는지 대조
+- CHASE 현상 4번째 (#22·#40·#45에 이은 동일 캐릭터 짐 브이로그)
+
+**관찰 — 프롬프트 구조**
+- 섹션: CAMERA / LOOK / STYLE / REFERENCE IMAGE / OUTFIT /
+  SETTING / STORYBOARD (8 cuts, 컷별 ~3–6s) / IMPORTANT
+- CAMERA: "DV 16mm tape camcorder handheld feel. POV of CHASE
+  holding the camera herself, occasionally propping it on the
+  gym floor or mat for hands-free workout shots... Camcorder
+  never appears on screen."
+- LOOK: tape noise, bloomed highlights, flickering auto-exposure
+  등 **불완전함을 스펙으로 명시**
+- STORYBOARD: 컷마다 (시간·카메라 모드·샷 사이즈·동작·대사).
+  컷7에 "Close-up insert of her hands gripping the mat" 명시
+- IMPORTANT: "Keep every movement realistic... No repetitive
+  shaking, hip thrusting... or sexualized posing." — 모션
+  네거티브를 신체 부위 동사로 구체화
+
+**관찰 — 프레임 대조**
+- 컷1 (propped, 미디엄): 거울 벽 앞 워밍업. 물병 좌측 — 프롬프트대로
+- 컷3 (low propped): 앉아서 스트레칭, 양말 신은 발이 렌즈 쪽으로
+  — 전경 POV 증명 (T-24)
+- 컷6 (handheld): 덤벨 컬, 카메라 보며 대화 — 벽시계 포착
+- 컷8 (arm's-length selfie): 매트에 누워 셀카 피니시. 높은
+  포니테일, 땀 — 프롬프트의 "tired but confident smile"대로
+- 아이덴티티 8컷 전편 유지 (얼굴·포니테일·버건디 탑·차콜 레깅스)
+- 거울 벽이 **가상 세컨드 카메라**로 작동: 고정 카메라 1대로
+  정면+거울 속 측면/후면을 동시에 확보
+
+**기법 판독**
+- **신규 — 거울 커버리지**: 카메라를 안 움직이고도 거울로
+  멀티앵글 확보. 고정 카메라의 한계를 공간 장치로 우회
+- Propped camera grammar (#45) 재확인: 손이 필요하면 카메라를
+  내려놓는다. 바닥/매트 거치가 hands-free의 물리적 해법
+- Self-POV paradox lock (#40) 재확인: "Camcorder never appears
+  on screen" 한 줄
+- 컷별 대사 = 브이로그 장르 문법: 대사가 각 컷의 이유가 됨
+- 연속성 토큰 (T-27): 벽시계, 물병이 8컷을 관통
+- T-30 인서트: 컷7의 손 클로즈업이 페이스를 만듦
+- 명시적 콘텐츠 가드: "never sexualized" + 금지 동작 리스트 —
+  모션 네거티브로 작동 (정책 레이어가 아니라 연출 제어)
+
+**관찰 vs 추론**
+- 관찰: 프롬프트 전문, 8컷-프레임 대조, 거울·시계·물병의 반복
+  등장 (프레임+텍스트 기반)
+- 추론: "거울을 의도적으로 세컨드 카메라로 썼다"는 판단 —
+  프롬프트에 거울의 용도가 명시돼 있지 않아 inference.
+  단 결과물에서 기능하고 있음은 frame-observed
+- 미확인: 레퍼런스 이미지의 원본, 립싱크 품질 (오디오 미청취)
+
+**코퍼스 기여**
+- 1 (신규 — 거울 커버리지. T-35로 DB 등록), 2 (정합 — propped
+  camera grammar 3번째 확인 #45·#40), 3 (정합 — paradox lock
+  3번째 확인), 4 (신규 — 프롬프트 섹션 아키텍처의 완성형 표본.
+  P-01로 프롬프트 DB 등록), 5 (정합 — T-23 의도적 불완전함의
+  프롬프트 명시 사례), 6 (정합 — T-27 연속성 토큰)
+
+**규칙 카드 (붙여넣기용)**
+```
+[거울 커버리지 — Soft Guidance]
+카메라를 움직일 수 없을 때(고정·거치 샷) 거울·유리·반사면을
+화면에 넣어라. 고정 카메라 1대로 정면+반사 속 다른 각도를
+동시에 확보할 수 있다. 거울은 "가상 세컨드 카메라"다.
+단, 거울 속 모습도 아이덴티티가 유지돼야 하므로 캐릭터
+락이 전제된다.
+```
+
+---
+
+## 65. X @xazinga_com — 영춘권 vs 시스테마 (바 싸움, 30초, 프롬프트는 댓글)
+
+**기본 정보**
+- 출처: X @xazinga_com (verified, Korean), 2026-09-30 게시.
+  "영춘권 vs 시스테마. 막판이 좀 이상하지만 그냥..
+  20-24초 구간만 좀 다듬어서 사용하시길!" 10 likes, 2 replies.
+  프롬프트는 댓글에 있음 (로그인 월 뒤 — 미확보)
+- 영상 실측: 30.1초, 854x480, 24fps, 722프레임.
+  vxtwitter API 경유 mp4 직접 다운로드 성공
+- 증거 기반: frame-observed (2fps 60장) + prompt-derived.
+  프롬프트 전문을 사용자가 직접 붙여넣음 (2026-09-30). 단,
+  "@image2는 시스테마 고수를 정의한다" 문장의 주어(@image2
+  토큰)가 붙여넣기 과정에서 소실된 것으로 보임 — "은 시스테마
+  고수를 정의한다 — 얼굴"로만 남아 있음
+- #48(마왕 vs 성기사 검투)의 동일 작가. 사용자 관찰: "요즘은
+  이런 싸움 장면이 많이 올라와" — 액션 클러스터(#7·#10·#33·#38·
+  #44·#46·#48·#49·#65)는 코퍼스 최대 장르군
+
+**관찰 — 타임라인**
+- 0–7s: 바. 흰 무복 여성(영춘권) vs 전술 조끼 남성(시스테마).
+  남성의 주먹이 여성 얼굴 앞에 — 맞기 직전/막기 직전
+- ~7s: 쟁반이 공중에서 회전 (던져진 소품). 모션 블러
+- ~15s: 와이드 — 두 사람의 격투 스탠스. 적색 네온 바
+- ~20s: 여성이 당구 큐를 장봉처럼 잡음 (영춘권 육점반자곤의
+  즉흥 무기화)
+- 20–24s: **문제 구간** — 큐를 쥔 손 클로즈업에서 손가락이
+  뭉개짐 (hand–cue 접촉부 모핑). 여성 얼굴에 붉은 자국
+  (혈흔인지 아티팩트인지 불명)
+- 26–30s: 여성이 서 있고 남성이 쓰러짐. 부서진 바 의자 잔해.
+  당구대 위에 칼이 꽂혀 있음 (출처 불명 — 던진 것인지
+  아티팩트인지 프레임만으로 판단 불가)
+
+**관찰 — 왜 나머지는 통하는가**
+- 접촉 순간이 짧다: 주먹-얼굴, 손-큐의 접촉은 찰나. 길게
+  붙어 있으면 깨지는데 (#62의 5대 파탄과 같은 축), 여기서는
+  스침
+- "전투는 원경으로" (#17 규칙): 대부분 미디엄–와이드.
+  클로즈업은 대치(비접촉) 순간에만
+- 소품이 강체: 쟁반·당구 큐는 단순한 막대/원반. 휘어지지
+  않으니 모핑이 티가 덜 남. 날아가는 쟁반의 모션 블러는
+  모핑의 카모플라주
+- 반응 중심: 맞는 순간보다 스탠스·표정·잔해(결과)에 무게.
+  T-02(결과만 보여주기)의 액션 버전
+
+**관찰 — 작가의 셀프 진단이 곧 데이터**
+- "막판이 좀 이상하지만 그냥.. 20-24초 구간만 좀 다듬어서
+  사용하시길!" — 깨진 4초를 잘라내고 26초를 쓰는 **publish-
+  and-trim** 실전. AI 영상은 원테이크가 아니라 편집용 소재라는
+  작가의 작업관 (author-described)
+- 문제 구간(20–24s)과 프레임 관찰(손-큐 모핑)이 일치 — 작가의
+  진단이 정확했음. 즉 "어디가 깨졌는지 아는 눈"이 워크플로우의
+  일부
+
+**프롬프트 대조 (prompt-derived)**
+- 아키텍처: [한 줄 요약] → [글로벌 설정] → [타임스탬프
+  스토리보드 10비트×3초] → [글로벌 마무리]. #48(동일 작가)과
+  동일한 10비트×3초 정형 — 작가의 시리즈 문법. #64의 섹션
+  아키텍처(P-01)와 독립 수렴
+- 캐릭터 락: @image1=하린(얼굴·헤어·흰 쿵푸 수련복·허리끈),
+  @image2=시스테마 고수(얼굴). "캐릭터 시트의 흰 배경은
+  사용하지 않는다" — 배경 분리 지시
+- 상처 규칙 (상태 락): 칼끝이 하린 얼굴에 정확히 세 개의 얕은
+  상처 — 뺨(0-3초), 턱선(9-12초), 이마 옆(18-21초). 핏줄기·
+  핏방울, 위치·개수 고정, 증식·소멸·이동 금지. frame_048(24초)의
+  관자놀이 핏줄기는 18-21초 세 번째 상처와 정합. #48의
+  damage persistence 계승
+- 양방향 논스톱: 어느 쪽도 일방적으로 몰리지 않음. "한 합이
+  끝나기 전에 다음 합이 물린다" — 시차를 두고 겹치는 연쇄
+- 아슬아슬함의 원칙: 단검의 모든 궤적은 몇 밀리 차이로 스치거나
+  마지막 순간에 흘려짐 — 여유 있는 회피 금지. 접촉을 짧게
+  만드는 물리 문법 (T-36 신규)
+- **칼의 정체 해결**: 24-27초 비트에 "단검이 손에서 튕겨 날아가
+  당구대 펠트에 꽂힌다" — frame_058의 당구대 위 칼은 아티팩트가
+  아니라 스크립트. "미확인" 플래그 해소 (prompt-derived)
+- 소품 규칙: 장면에 존재하는 것만 사용, 허공 생성 금지. 단검은
+  한 자루뿐. 부서진 것은 복원·소멸 없이 남는다
+- 전신 발력: "팔만 뻗기 금지" (P-24 계열 모션 네거티브).
+  하린의 이동은 "헛점프 금지, 바 카운터·당구대 위 슬라이드
+  허용" — 허용/금지의 경계 명시
+- 카메라: 정면 응시 샷 금지(측면·3/4·오버숄더·후면만), 인물
+  단독 프레임 회피, 구간마다 카메라 위치 변경, 삼분할
+  오프센터+리드룸+좌/우 교차. 크래시 줌은 임팩트·칼날 궤적에만
+- 오디오: 음악 없음, 현장음만. 비트마다 <사운드 리스트> 지정
+- 깨진 21-24초 = 프롬프트의 "최고조" 비트: "단검 최고속 연격이
+  전부 몇 밀리로 스치고... 칼날이 단봉을 쳐 날리고 하린은
+  맨손이 된다". 최고속+손-단봉 접촉의 타이트 측면 — 가장
+  밀도 높은 비트에서 깨짐. 반면 15-18초 "손목과 팔꿈치가
+  얽히고 풀리는" 트래핑 공방(난이도 최고점)은 오버숄더(덜
+  타이트)로 상대적 통과 — 난이도와 카메라 거리의 트레이드오프
+  (inference)
+
+**관찰 vs 추론 (수정)**
+- 관찰: 타임라인, 문제 구간의 손 모핑, 작가의 코멘트 원문
+- 프롬프트로 해소: 당구대 위 칼 = 스크립트 (24-27초 비트)
+- 추론: "모션 블러가 모핑을 가린다", "난이도×카메라 거리
+  트레이드오프" — 그럴듯하나 대조 실험 없음. inference로 분리
+- 미확인: 오디오 실제 출력 (현장음 리스트가 렌더됐는지)
+
+**코퍼스 기여**
+- 1 (신규 — publish-and-trim: 깨진 비트는 잘라내고 올린다.
+  AI 영상을 편집 소재로 취급하는 작업관), 2 (정합 — P-09
+  boundary lock 실패의 실전 표본. 손-큐 접촉부가 정확히 그
+  지점), 3 (정합 — #17 "전투는 원경으로" 규칙), 4 (신규 —
+  모션 블러=모핑 카모플라주 가설. ★ 1개, 검증 필요),
+  5 (정합 — T-02 결과 중심의 액션 버전), 6 (신규 — P-29
+  상태 락: 상처를 타임스탬프·위치 고정으로 지정하는
+  damage persistence), 7 (신규 — T-36 아슬아슬함의 원칙:
+  칼날은 몇 밀리 차이로 스친다), 8 (정합 — P-01 섹션
+  아키텍처와 #64의 독립 수렴, 동일 작가의 시리즈 문법
+  #48→#65)
+
+**규칙 카드 (붙여넣기용)**
+```
+[깨진 비트는 잘라낸다 — Soft Guidance]
+AI 영상은 원테이크가 아니라 편집용 소재다. 30초 중 4초가
+깨졌으면 그 4초를 잘라내고 26초를 올린다. 통째로 버리지
+말고 쓸 수 있는 구간만 쓴다. "어디가 깨졌는지 아는 눈"이
+프롬프트 실력만큼 중요하다 — 작가의 셀프 트림이 곧 QC다.
+```
+
+---
+
+---
+
+## 66. X @john_my07 — 서울 골목 홈비디오 (30초, 롱테이크형 연속성 파탄)
+
+**기본 정보**
+- 출처: X @john_my07 (Johnn), 2026-09-30 게시.
+  "Seedance 2.5 on @wavespeed_ai" + 프롬프트 전문 공개 (본문).
+  44 likes, 32 replies, 3 retweets
+- 영상 실측: 30.0초, 1280x720, 24fps, 721프레임.
+  vxtwitter API 경유 mp4 직접 다운로드 성공
+- 증거 기반: frame-observed (2fps 60장) + prompt-derived
+  (프롬프트 전문 확보)
+- 사용자 가설: "처음 볼 때는 그럴듯하지만 보다보면 안맞는게
+  보여. 돈을 줄 때 왜 돈이 손에 있느냐, 비닐봉지는 어디서
+  났느냐. 전부 롱테이크처럼 보이느라 헛점이 생긴거잖아"
+
+**관찰 — 프롬프트의 구조**
+- 6개 씬: 집 나서기(장바구니) → 빵집(동전 결제) → 친구와
+  포옹 → 과일가게(복숭아 구매→가방에) → 나무 아래서
+  페이스트리 먹기 → 엔딩 "Bye bye!" 웨이브
+- CAMERA STYLE: "early-2000s consumer MiniDV home-video...
+  made by a friend or family member" — 연속 촬영 홈비디오
+- 오디오: 현장음만, 음악·자막·내레이션 금지
+
+**관찰 — 연속성 파탄 인벤토리 (전부 frame-observed)**
+1. **가방 순간이동**: 시작(frame_003, 왼손에 흰 비닐봉지) →
+   빵집·친구·과일가게·나무 아래 전 구간 소실 →
+   엔딩(frame_058)에서 왼손에 **복귀**. 프롬프트의 엔딩
+   문장("carrying her bag and peach")이 가방을 다시 소환함
+2. **돈의 물질화**: 빵집 결제(frame_020)에서 손이 이미 동전을
+   든 채로 뻗음. 지갑·가방에서 꺼내는 장면 없음. 프롬프트는
+   "pays with coins"만 쓰고 동전의 출처를 안 적음
+3. **페이스트리 소실**: 빵집에서 고르는 장면까지만 있고 이후
+   영원히 등장 안 함
+4. **복숭아 순간이동**: 과일가게에서 고름(frame_034, 결제·
+   봉투에 넣기 없음) → 나무 아래에서 갑자기 먹고 있음
+   (frame_040). 프롬프트의 "pays the vendor, places it inside
+   her shopping bag"는 렌더 안 됨
+5. **씬-5 위반**: 프롬프트 "eating her pastry" → 실제 렌더는
+   복숭아를 먹음. 빵집 씬의 산출물(페이스트리)과 과일가게 씬의
+   산출물(복숭아)이 뒤바뀜
+6. **가방 타입 불일치**: 프롬프트 "small reusable shopping
+   bag" → 렌더는 흰 비닐봉지
+
+**관찰 — 가설 검증 (사용자 가설 지지)**
+- 렌더는 6개 씬을 컷 없이 하나의 연속 팔로우로 이어붙임 —
+  가짜 롱테이크. 모션 연속성(걷기·카메라 팔로우)은 유지되지만
+  **소품 상태 연속성은 스티치 지점에서 carryover 안 됨**
+- 각 비트는 텍스트에서 새로 생성되므로, 그 비트에 언급된
+  소품만 존재함. 엔딩 비트에 "bag"이 언급되자 가방이 부활
+- 프롬프트 자체의 내적 모순: 씬 구조(상태 전이 서사) +
+  카메라 스타일(롱테이크 홈비디오)을 동시 요구. 모델은
+  모순을 "모션은 연속, 상태는 드롭"으로 해소
+- 처음엔 통하는 이유: MiniDV 미학(T-23 의도적 불완전함 —
+  흔들림·AF 헌팅·소프트 디테일)이 "실제 촬영"을 팔고,
+  첫 시청은 모션·얼굴을 좇지 소품을 추적하지 않음. 다시
+  보면 시선이 소품으로 이동하며 구멍이 보임 — 사용자의
+  "처음 볼 때는 그럴듯하지만 보다보면"과 정확히 일치
+
+**관찰 vs 추론**
+- 관찰: 파탄 인벤토리 6건, 가짜 롱테이크 구조, 프롬프트 원문
+- 추론: "비트별 새로 생성이라 언급된 소품만 존재"는 렌더
+  메커니즘에 대한 추론 — 프레임 패턴과는 정합하나 모델
+  내부는 미확인. inference로 분리
+- 미확인: 오디오("Bye bye!" 발화 여부), 32개 리플라이의 내용
+  (구멍 논쟁인지 — 로그인 월 뒤)
+
+**코퍼스 기여**
+- 1 (신규 — T-37: 상태 전이는 컷에 숨긴다. 상태가 바뀌는
+  이야기에 롱테이크는 틀린 형식), 2 (신규 — P-30 소품 상태
+  원장: 씬별 소품의 위치·소지자·내용물을 표로 고정),
+  3 (정합 — T-23 의도적 불완전함이 역설적으로 구멍을
+  나중에 더 도드라지게 함), 4 (정합 — T-27 연속성 토큰의
+  실패 사례: 가방이 토큰이었으나 모델이 드롭), 5 (신규 —
+  프롬프트의 내적 모순(씬 구조×롱테이크 카메라)이 렌더
+  파탄의 원인. P-21 실패 출처 명시 계열)
+
+**규칙 카드 (붙여넣기용)**
+```
+[상태 전이는 컷에 숨긴다 — Hard Lock]
+상태가 바뀌는 이야기에 롱테이크는 틀린 형식이다. 산다→
+봉지에 넣는다→먹는다, 이 전이들은 컷이 있어야 숨을 구멍이
+생긴다. 가짜 롱테이크에서는 모션만 이어지고 소품 상태는
+스티치 지점에서 드롭된다 — 돈은 손에 물질화되고 가방은
+순간이동한다. 롱테이크를 고집하면 모든 소품에 상태 락을
+걸어라: "흰 비닐봉지는 전 구간 왼손. 포옹할 땐 왼 손목에.
+동전은 숄더백 앞주머니에서 꺼낸다."
+```
+
+---
+
+---
+
+## 67. X @Just_sharon7 — 식당 MiniDV 15초 (컷 문법의 정석)
+
+**기본 정보**
+- 출처: X @Just_sharon7 (Sharon Riley), 2026-09-30 게시.
+  "This AI video made me question what 'AI-looking' even means
+  anymore." Seedance 2.5 on @TapNow_AI + 프롬프트 전문 공개.
+  357 likes, 92 replies
+- 영상 실측: 15.1초, 1280x720, 24fps, 362프레임.
+  vxtwitter API 경유 mp4 직접 다운로드 성공
+- 증거 기반: frame-observed (3fps 45장) + prompt-derived
+
+**관찰 — 컷 문법**
+- 15초를 5비트×3초로 분할. 하드컷은 단 1개:
+  "00:06–00:09 — INSIDE: Natural handheld cut as she pushes
+  open the glass restaurant door." 문이 컷의 핑계 (동기 있는
+  가림막). 프레임 대조: sframe_016(메뉴판 앞) → sframe_022
+  (실내) — 외→내 전이가 문 뒤에 숨음
+- 음식 등장(12-15초)은 컷 없이 처리 — "steaming bowl of
+  kimchi-jjigae is placed in front of her". 상태 전이를
+  인과 제시(누가 놓는다)로 해결. 컷이 필요 없는 경우의
+  정석
+- 대사 브릿지 매 비트 (T-01/P-28): "아… 배고프다" →
+  "뭐 먹을래?"/"잠깐만…" → "어서 오세요"/"안녕하세요" →
+  "야…"/"안 떨어졌잖아" → "와… 맛있겠다"
+
+**관찰 — #66의 포지티브 컨트롤**
+- 같은 모델(Seedance 2.5)+같은 장르(서울 MiniDV 홈비디오)+
+  같은 플랫폼. 차이는 컷+원장. 여기의 가방은 "어깨에서
+  미끄러지자 보지도 않고 추켜올린다" — 소품을 손으로
+  능동 관리 (#66의 순간이동과 정반대)
+- 09-12초 "작은 사고" 비트: 젓가락 통이 기울자 양손으로
+  낚아챔. sframe_034에서 눈 커진 표정 그대로 렌더.
+  "extremely ordinary human moment" — 스펙터클이 아니라
+  극도로 평범한 순간의 유머. 표정 아크 지정
+  (sleepy→hunger→concentration→surprise→embarrassment→
+  laughter→excitement)
+- 메뉴판 한글은 AI 난독증 (frame-observed) — 배경 텍스트는
+  여전히 깨지지만 세트 소품이라 서사에 영향 없음
+- 인기도는 분해된 신호로만: 357 likes / 92 replies (#66의
+  44/32 대비). 인과 증거 아님
+
+**관찰 vs 추론**
+- 관찰: 컷 1개의 위치와 동기, 가방 관리 묘사, 사고 비트 렌더,
+  메뉴판 난독증
+- 미확인: 오디오(대사 렌더 여부)
+
+**코퍼스 기여**
+- 1 (정합 — T-37 v2의 하드컷 표본: 문 핑계 컷), 2 (정합 —
+  P-30의 포지티브 케이스: 가방을 마이크로 액션으로 관리),
+  3 (정합 — T-01/P-28 대사 브릿지의 5비트 연속 사용),
+  4 (신규 — 상태 전이의 3종 처리법 중 "인과 제시"형:
+  음식은 누가 놓는다. T-37 v2에 편입)
+
+**규칙 카드 (붙여넣기용)**
+```
+[컷에는 핑계가 필요하다 — Soft Guidance]
+컷을 자를 땐 문·가림막·몸이 핑계를 댄다. "유리문을 밀며
+자연스럽게 컷" — 외→내 전이는 문 뒤에 숨는다. 핑계 없는
+컷은 어색하고, 컷 없는 상태 전이는 파탄난다.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-37, T-01, T-04]
+  existing_P: [P-30, P-28]
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: DIRECTOR_RECIPE
+  action: scope_existing
+  notes: "#66 파탄 사례의 포지티브 컨트롤. T-37을 하드컷+
+    인과 제시로 확장. 동기 있는 컷은 고전 영화문법이라
+    사례 1건으로도 범용성 높음."
+```
+
+---
+
+## 68. X @Soranlan — 데스크탑 녹화풍 3단 전환 (중국어 프롬프트)
+
+**기본 정보**
+- 출처: X @Soranlan (Soran), 2026-09-30 게시. "还有更狠的"
+  (더 매운 거 왔다) + 중국어 프롬프트 전문 공개 (번역済).
+  37 likes, 8 replies
+- 영상 실측: 20.1초, 1056x608, 24fps, 482프레임.
+  vxtwitter API 경유 mp4 직접 다운로드 성공
+- 증거 기반: frame-observed (3fps 60장) + prompt-derived
+  (중국어→한국어 번역)
+
+**관찰 — 샷 문법 (T-37의 일반화)**
+- 20초에 단 3개 샷 세그먼트. **하드컷 금지**
+  ("禁止生硬硬切") — 모든 전환은 인물이 카메라 앞을
+  스치며 몸으로 화면을 가리는 와이프 ("无痕转场",
+  흔적 없는 전환)
+- 갈아입기는 가림막 뒤에서: "任何换装必须在转场遮挡完成后、
+  人物不可见的阶段完成" (의상 교체는 가림막 전환 완료 후
+  인물이 안 보이는 단계에서만). T-10(위상 분리)+T-04
+  (가림막 와이프)의 융합 표본 — 와이프는 변장한 컷
+- 프레임 대조: rframe_015/017(샷1, 소파+데스크탑 UI) →
+  rframe_037(샷3, 의상 교체됨). UI 프레임(작업표시줄·
+  아이콘·자막 영역·파형)은 전 구간 유지 — 연속성 앵커
+
+**관찰 — 프롬프트 기법**
+- S1/S2 표기: 화면 여성=S1 고정, 화면 밖 남성 목소리=S2
+  (절대 등장 금지). "S2说话时S1必须闭嘴" — 립싱크 규율
+  (P-16의 음성 확장)
+- 자막 UI 스펙: 발음에 맞춰逐字 타이핑, 선행 표시 금지,
+  문장 끝 0.3초 유지 후 페이드. 자막이 픽션의 일부
+  (화면 녹화 컨셉)
+- 연속성 하드 제약 11항: 같은 얼굴·헤어·목소리·소파·
+  쿠션·방·UI. 네거티브도 구체적 ("丝袜、鞋子、裙摆在行走中
+  随机变化" 금지 — P-24 계열)
+- 컨셉: "컴퓨터 전체화면 동적 데스크탑 녹화 시뮬레이션" —
+  영상 자체가 살아있는 벽지. 기록 장치가 픽션 안에 있음
+  (T-24 다이제틱 카메라의 UI 버전)
+
+**관찰 vs 추론**
+- 관찰: 3세그먼트 구조, UI 앵커 유지, 의상 교체 렌더,
+  자막逐字 렌더 (rframe_037에서 타이핑 중 포착)
+- 추론: 전환 순간의 정확한 가림막 메커니즘은 프레임
+  사이(3fps 샘플링)에 있어 직접 미포착. inference로 분리
+- 미확인: 오디오(S1/S2 음성 분리·덕킹 여부)
+
+**코퍼스 기여**
+- 1 (신규 — T-37 v2의 근거: 하드컷 금지 선언 하에서도
+  상태 전이는 화면 밖에서 일어난다. 와이프=변장한 컷),
+  2 (정합 — T-10+T-04 융합), 3 (정합 — P-16 음성 확장),
+  4 (관찰 — 다이제틱 UI 컨테이너: 자막·파형·작업표시줄이
+  픽션의 일부. T-24 계열 변형으로 기록, 신규 T 아님)
+
+**규칙 카드 (붙여넣기용)**
+```
+[갈아입기는 화면 밖에서 — Hard Lock]
+의상 교체는 몸이 화면을 가린 동안, 인물이 안 보이는
+단계에서만 일어난다. "无痕转场" — 가림막 와이프는
+변장한 컷이다. 하드컷을 금지해도 법칙은 안 바뀐다:
+상태 전이는 화면 밖에서.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-37, T-10, T-04]
+  existing_P: [P-16]
+  evidence_strength: MEDIUM
+  cross_model_generality: HIGH
+  promotion_target: DIRECTOR_RECIPE
+  action: scope_existing
+  notes: "하드컷 금지 선언 하에서도 상태 전이는 화면 밖에서.
+    와이프=변장한 컷으로 T-37 일반화. S1/S2 음성 규율은
+    P-16 확장. 전환 메커니즘은 3fps 샘플링 사이 구간이라
+    직접 미포착 (inference로 분리)."
+```
+
+---
+
+## 69. X @CharaspowerAI — 심리 호러 트레일러 30초 (불가능성 인벤토리)
+
+**기본 정보**
+- 출처: X @CharaspowerAI (Pierrick Chevallier | IA), 2026-09-30 게시.
+  "AI horror doesn't need monsters to be terrifying. I wanted to test
+  something much harder: 30 seconds of pure psychological tension built
+  with acting, dialogue, reflections and tiny details that feel… wrong."
+  44 likes, 8 replies. 프롬프트 전문은 사용자가 직접 붙여넣음
+- 생성 모델: 미공개 (포스트에 모델명 없음)
+- 영상 실측: 30.2초, 1280x720, ~24fps, 723프레임.
+  vxtwitter API 경유 mp4 직접 다운로드 성공
+- 증거 기반: frame-observed (2fps 60장) + prompt-derived
+
+**프로토콜 판정 (기존 T/P 우선)**
+- T-35 (거울 커버리지): 거울이 나오지만 용법이 다름. #64는
+  커버리지용 "가상 세컨드 카메라", 여기는 불가능의 무대
+  (반사상이 기하학을 어김). → scope_existing (용법 2 추가)
+- T-37 v2: 각 비트가 불가능성을 품고 비트 경계에서 리셋
+  ("The elevator opens. Everything is normal again").
+  불가능한 상태가 비트 밖으로 새지 않음 → strengthen
+- T-01: 대사가 비트를 뒤집는다 ("You already asked me that
+  yesterday") → strengthen
+- P-16 (캐릭터 락): "stable character continuity, realistic
+  reflections" 명시. 거울 프레임에서 아이덴티티 유지
+  (cframe_025) → strengthen
+- 신규 T 조건 검토: "몬스터·고어·VFX 없이 공포"는 기존 T로
+  설명 불가. #25의 "불가능성의 카탈로그"(패턴 8, T 미발급)와
+  독립 수렴 2건째. 별도 제작 문제 해결 + 관찰 근거 +
+  재사용 형태("impossibility inventory") 충족 → new_candidate
+
+**관찰 — 불가능성 6종 (프롬프트 명세)**
+1. 엘리베이터 거울: 반사상이 카메라를 직접 보는데 실제 얼굴은
+   외면. cframe_025에서 거울 디프티크 렌더 확인 (frame-observed).
+   정확한 시선 기하학은 2fps 샘플링상 미확정 — inference로 분리
+2. 유리 표면에 비치는 낯선 사람 형상의 반사 (prompt-derived)
+3. 가족사진에 모르는 사람이 한 명 추가 (prompt-derived)
+4. 잠긴 서랍 안에서 울리는 전화 — 열어보면 안에 없음
+   (prompt-derived)
+5. 대치: "Tell me I'm imagining this." / "You already asked me
+   that yesterday." cframe_045에서 클로즈업 렌더 확인
+6. 파이널: 복도에서 그녀 자신의 목소리 "Don't go back to sleep."
+   욕실 거울에 비친 그녀는 아직 침대에서 자고 있음.
+   cframe_056에서 침실 스테이징 확인. "Hard cut to black"
+
+**관찰 — 연출 문법**
+- 6비트×5초, 비트마다 다른 카메라 언어 (돌리인→핸드헬드
+  클로즈업→고정 불편한 와이드→급속 몽타주→타이트 클로즈업→
+  파이널 리빌). 트레일러는 비트 단위 — #60의 비트 편집과 동형
+- 네거티브가 곧 컨셉: "no supernatural spectacle, no gore...
+  no visible threat, no attack, no gore, no disturbing body
+  imagery, no readable text". 빼기로 공포를 만듦
+- 작가의 난이도 선언: "I wanted to test something much
+  harder" — 몬스터보다 심리 텐션이 더 어렵다는 창작적 판단
+  (author-described). 사용자의 "어려움으로 달려가기" 전략과
+  정합
+
+**Capability evidence (모델 미공개)**
+- model: undisclosed (CharaspowerAI post, 2026-09-30) /
+  version: n/a / evidence date: 2026-09-30 /
+  task: impossible mirror reflection (reflection looks at
+  camera while real face turned away) /
+  observed: success (cframe_025 — identity stable in mirror,
+  disobedient composition rendered) / confidence: MEDIUM
+  (2fps sampling; exact gaze geometry unverified)
+
+**코퍼스 기여**
+- 1 (신규 — T-38 불가능성 인벤토리: #25와 독립 2건째),
+  2 (scope — T-35에 "불가능의 무대" 용법 추가),
+  3 (strengthen — T-37 v2 비트 경계 리셋, T-01 대사 뒤집기,
+  P-16 거울 아이덴티티)
+
+**규칙 카드 (붙여넣기용)**
+```
+[불가능성은 명세다 — Hard Lock]
+"이상한 일이 일어난다"고 쓰지 말고 "거울 속 그녀는
+카메라를 본다"고 써라. AI는 추상을 못 그리고 명세를
+그린다. 불가능성마다 자기 비트를 주고 담담하게 렌더 —
+강조는 관객의 뇌가 한다.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-35, T-37, T-01]
+  existing_P: [P-16]
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: DIRECTOR_RECIPE
+  action: new_candidate
+  notes: "T-38 불가능성 인벤토리 신규 후보. #25(불가능성의
+    카탈로그)와 독립 수렴 2건째. 기존 T로 설명 불가한 별도
+    제작 문제(무몬스터·무고어 호러) 해결. 담담한 불가능
+    디테일은 고전 호러 문법이라 범용성 높음."
+```
+
+---
+
+## 70. X @CharaspowerAI — 스쿠터 탄 고양이 로드레이지 (파운드푸티지 30초)
+
+**기본 정보**
+- 출처: X @CharaspowerAI (Pierrick Chevallier | IA), 2026-09-30 게시.
+  "Want to make the kind of AI video people would swear was randomly
+  filmed on the street? ... Seedance 2.5 is ridiculously fun for this
+  kind of viral found-footage concept." 183 likes, 12 replies (#69의
+  44 likes의 4배 — 같은 작가의 두 장르, 반응은 코미디가 압승)
+- 생성: Seedance 2.5 (author-described). 프롬프트 전문은 포스트
+  본문에 공개 (vxtwitter API로 전문 확보)
+- 영상 실측: 30.1초, 1280x720, ~24fps, 721프레임.
+  프롬프트는 "20 seconds"라 명시했으나 실제 30.1초 —
+  prompt-derived 20s vs frame-observed 30.1s 불일치
+- 증거 기반: frame-observed (2fps 60장) + prompt-derived
+
+**프로토콜 판정 (기존 T/P 우선)**
+- T-23 (의도적 불완전함): "Raw handheld phone camera, strong natural
+  shake, accidental reframing, bad digital zoom, autofocus hunting,
+  compression artifacts, wind on microphone... Absolutely no cinematic
+  stabilization" — 코퍼스 사상 가장 완전한 T-23 스펙 → strengthen
+- T-25 (카메라=존재): 보이지 않는 행인이 영어로 흥분하며 중계.
+  카메라는 관찰자가 아니라 등장인물 → strengthen
+- T-18 (인과적 카메라 반응): "Camera shakes from laughter and nearly
+  points at the pavement" — 웃음이 흔들림의 원인. T-18의 금기
+  "원인 없는 흔들림"을 정면으로 지킴 → strengthen
+- T-01: 필머의 대사가 펀치라인 버튼 ("BRO HAS ROAD RAGE!",
+  "HE'S GOT PLACES TO BE!") → strengthen
+- P-16: "one cat only" 카운트 락 → strengthen
+- 신규 T 검토: "무표정 피사체 + 흥분한 리액터" 구조는
+  T-25+T-18+T-01의 조합으로 완전 설명됨. 새 제작 문제 없음 →
+  strengthen_existing (신규 발급 없음)
+
+**관찰 — 코미디 엔진**
+- 고양이는 아무것도 안 함: "stares straight ahead like an exhausted
+  commuter", "dead-serious sideways glance". 웃긴 건 전부 필머의
+  리액션. 데드팬 피사체 + 과잉 리액터의 대비가 엔진
+- 5비트×4s 에스컬레이션: 발견→공개→빨간불 정지→클랙슨 � 빵→
+  페이오프. dframe_020에서 빨간불 앞 정지+옆 차 운전자의
+  어이없음 표정 확인 (frame-observed)
+- 엔딩 "Hard cut." — #69의 "Hard cut to black"과 같은 작가의
+  습관 (author-described 스타일 지문)
+
+**관찰 — 스펙 미준수 2건 (장르가 흡수)**
+1. 차량: 프롬프트가 "MOTORIZED CITY SCOOTER... NOT a kick
+   scooter... seat, engine, handlebars and footboard"를 3번
+   강조했으나, 렌더는 킥보드형에 가까움 (dframe_020 — 시트·
+   엔진 미확인). 관객은 스펙을 검사하지 않음 — 코미디가 흡수
+2. 길이: 20초 스펙 → 30.1초 렌더. 비트 타이밍(0-4s...16-20s)이
+   실제와 어긋남. #25의 "beat displacement"와 동형
+
+**Capability evidence**
+- model: Seedance 2.5 (author-described) / version: 2.5 /
+  evidence date: 2026-09-30 / task: vehicle-type compliance
+  (motor scooter vs kick scooter, explicit triple-spec) /
+  observed: partial failure (kick-scooter-like render) /
+  confidence: MEDIUM
+
+**코퍼스 기여**
+- 3 (strengthen — T-23/T-25/T-18/T-01/P-16 전부 기존 항목 강화.
+  신규 T 없음. 프로토콜의 "정제 우선"이 의도대로 작동한 케이스)
+
+**규칙 카드 (붙여넣기용)**
+```
+[못 찍은 척을 명세하라 — Soft Guidance]
+"bad digital zoom, autofocus hunting, wind on mic" —
+아마추어스러움은 우연이 아니라 스펙이다. 불완전함도
+설계여야 티가 안 난다. 흔들림마다 원인을 붙여라
+(발견→낚아챔, 펀치라인→웃음).
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-23, T-25, T-18, T-01]
+  existing_P: [P-16]
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: DIRECTOR_RECIPE
+  action: strengthen_existing
+  notes: "신규 T 없음 — T-25+T-18+T-01 조합으로 완전 설명.
+    T-23은 코퍼스 최완전 스펙으로 강화. 스펙 미준수(킥보드형·
+    30초)는 코미디 장르가 흡수. 파운드푸티지 문법은 고전이라
+    범용성 높음."
+```
+
+---
+
+## 71. X @Promptwhat — 괴수 액션 제작 과정 공유 (246만뷰, 텍스트 가이드)
+
+**기본 정보**
+- 출처: X @Promptwhat (Prompt_what), 2026-10-01 게시. 한국어
+  제작 과정 공유글. "246만뷰 영상 제작과정을 전부 공유합니다."
+  133 likes, 10 replies. 프롬프트 전문은 댓글(로그인 월)에 있어
+  미확보 — 포스트 본문만 prompt-derived
+- 영상 실측: 59.1초, 1920x822, 59프레임(1fps 추출).
+  vxtwitter API 경유 mp4 직접 다운로드 성공
+- 증거 기반: frame-observed (영상) + author-described (제작법)
+- 참고: 조회수 246만은 인기도 신호일 뿐 품질 증거 아님 (standing rule)
+
+**프로토콜 판정 (기존 T/P 우선)**
+- 스케일 명세 ("방파제 네 개 길이", "등대가 허벅지에 닿는
+  몸집"): 기존 P에 스케일 서술 항목 없음. 추상 형용사→모델이
+  몸집을 줄이는 구체적 실패 모드 관찰됨 → new_candidate (P-31)
+- 2클립 이어붙이기 ("뒤편 프롬프트에 앞편이 끝난 상태를 그대로
+  적어두면"): P-30 금기 "상태는 씬마다 다시 선언해야
+  carryover됨"의 클립 단위 확장. 같은 방파제·젖은 머리·의상·
+  적은 화면 오른쪽 → strengthen (P-30)
+- 스케일 후킹 (첫 프레임부터 스케일로 때리기, 2초 만에 설명
+  없이): T-22(셋업 없이 한가운데서 열기)의 메커니즘 변형 →
+  scope_existing (T-22)
+- 1~2초 인과 교대 (손짓 컷 ↔ 물 반응 컷): 고전 액션 문법.
+  T-33(전이 어휘)과 층위가 다르고 신규 번호가 필요할 정도의
+  별도 문제는 아님 → evidence_only
+- Higgsfield Soul Cinema 추천: 도구 추천은 영구 규칙 불가 →
+  model_capability_only
+
+**관찰 — 스케일 문법 (frame-observed + author-described)**
+- kframe_002: 괴수가 창문 달린 건물만 한 바위를 들고 있음.
+  건물=기준물 — 첫 프레임에서 스케일 확정, 설명 없음
+- kframe_045: 방파제 위 작은 인물(지팡이 든 로브) vs 양옆으로
+  갈라진 바닷물 vs 먼 곳의 괴수. 인물·방파제·괴수의 3단
+  대비가 스케일을 말함
+- 작가의 실패 모드 관찰: "멀리", "크게"라고만 적으면 "거리는
+  좁히고 몸집은 작아지는 사고가 발생" — 추상 형용사에 대한
+  모델의 체계적 반응. 프롬프트의 1/3을 스케일 설명에 할당
+
+**관찰 — 도구 불일치 (기록용)**
+- 영상에 "spellcraft.ai" 워터마크 번인 (frame-observed)
+- 작가는 "실사감은 배경에서 먼저 결정... 가장 애용하는 툴은
+  힉스필드 소울 시네마" (author-described)
+- 둘은 다른 단계/도구일 수 있음. 단정 불가 → inference로 분리.
+  워터마크는 네거티브로 못 막은 툴 레이어 유출 (#25와 동형)
+
+**Capability evidence**
+- tool: Higgsfield Soul Cinema (author-described, 2026-10-01) /
+  task: photorealistic backgrounds / observed: author claims
+  "어느 툴보다 실제로 찍은 사진처럼" / confidence: LOW
+  (author claim, no A/B)
+- tool: Spellcraft AI (frame-observed watermark) /
+  task: kaiju action render / observed: success (59s coherent
+  action) / confidence: MEDIUM
+
+**코퍼스 기여**
+- 1 (신규 — P-31 스케일 기준물 명세),
+  3 (strengthen — P-30 클립 단위 상태 인계),
+  2 (scope — T-22 스케일 후킹 변형),
+  4 (model_capability_only — Higgsfield/Spellcraft)
+
+**규칙 카드 (붙여넣기용)**
+```
+[크기는 눈에 보이는 것으로 — Hard Lock]
+"크게", "멀리"라고 쓰지 말고 "방파제 네 개 길이",
+"등대가 허벅지에 닿는 몸집"이라고 써라. 추상 형용사는
+모델이 거리를 좁히고 몸집을 줄이는 사고를 낸다.
+스케일 설명에 프롬프트의 3분의 1을 써라.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-22]
+  existing_P: [P-30]
+  evidence_strength: MEDIUM
+  cross_model_generality: HIGH
+  promotion_target: PROMPT_RECIPE
+  action: new_candidate
+  notes: "P-31 스케일 기준물 명세 신규 후보. 추상 형용사→축소
+    실패 모드가 관찰된 별도 제작 문제. 기준물 대비는 고전
+    영화 문법(인물·건물 대비)이라 범용성 높음. 2클립 인계는
+    P-30 강화로 처리."
+```
+
+---
+
+## 72. X @baike888 — 《你过来》 남친 시점 원테이크 (Doubao)
+
+**기본 정보**
+- 출처: X @baike888 (马化晨), 2026-10-01 게시. 53 likes, 12 replies
+- 포스트 전문 (중국어, 번역): "白嫖豆包第五发 (공짜 豆包로 뽑기
+  다섯 번째). 쓸데없는 말 말고 프롬프트: 제목 《你过来》(이리 와).
+  15초, 9:16 세로, 형식: 남친 시점(男友视角), 원테이크(一镜到底).
+  장면: 참조 이미지."
+- 영상 실측: 15.1초, 720x1280 세로. vxtwitter API 경유 다운로드
+- 모델: Doubao (author-described, "白嫖豆包" = 무료 티어)
+- 증거 기반: prompt-derived (포스트 본문) + frame-observed (영상)
+
+**프로토콜 판정 (기존 T/P 우선)**
+- 남친 시점 = 카메라가 등장인물: T-25(카메라=존재)의 신체형 변형.
+  #42는 보이지 않는 존재였고, 여기는 촬영자의 손이 프레임에
+  들어오고 상대가 그 손을 잡는다. 같은 장치, 새 증거·새 형태 →
+  strengthen (T-25)
+- 렌즈 직시: T-14 시선 설계의 "인물 → 렌즈" 할당 케이스 →
+  cross-ref, 별도 액션 없음
+- 원테이크(一镜到底): 컷을 쓰지 않는 선택. T-37의 역 — 컷의
+  핑계가 필요 없는 구조. 친밀 장르의 문법으로 관찰만 기록
+- 신규 T/P 없음
+
+**관찰 — 친밀감의 엔진 (frame-observed)**
+- kframe_002: 남자의 손이 프레임 오른쪽으로 들어오고, 여자가
+  그 손을 잡음. 카메라는 더 이상 시점이 아니라 "잡히는 몸"
+- kframe_008: 여자가 두 손으로 남자의 손을 감싸고 렌즈를
+  똑바로 봄. 렌즈 응시 + 신체 접촉의 결합
+- kframe_013: 얼굴이 닿을 듯한 거리. 남자 얼굴 일부가 프레임
+  왼쪽에 들어옴 — 촬영자도 화면의 일부가 됨
+- 구조: 접촉(손) → 응시(렌즈) → 접근(얼굴). 15초 원테이크라
+  감정이 끊기지 않음
+
+**Capability evidence**
+- Doubao (author-described, free tier, 2026-10-01) / two-person
+  hand contact + sustained lens-directed eye contact, 15s one-take /
+  observed success / MEDIUM
+
+**코퍼스 기여**
+- 1 (strengthen — T-25 신체형 변형: 손이 프레임에 들어오고
+  상대가 잡는다), T-14 cross-ref
+
+**규칙 카드 (붙여넣기용)**
+```
+[카메라는 몸이다 — Soft Guidance]
+남친 시점에선 카메라가 사람이 된다. 손을 프레임에 넣고,
+상대가 그 손을 잡게 하라. 렌즈를 보는 눈 + 잡히는 손이
+친밀감을 만든다. 원테이크로 끊지 마라.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-25, T-14]
+  existing_P: []
+  evidence_strength: MEDIUM
+  cross_model_generality: HIGH
+  promotion_target: DIRECTING_TECHNIQUE
+  action: strengthen_existing
+  notes: "T-25 강화. #42(보이지 않는 존재) → #72(손이 보이는
+    몸). 남친 시점 장르에서 카메라=등장인물이 신체 접촉까지
+    확장됨. 고전 POV 문법이라 범용성 높음. 신규 번호 없음."
+```
+
+---
+
+## 73. X @saniaspeaks_ — 2000년대 도쿄 가족 저녁 브이로그 (Seedance 2.5)
+
+**기본 정보**
+- 출처: X @saniaspeaks_ (Sania), 2026-10-01 게시. 61 likes,
+  33 replies. 포스트 본문에 영어 프롬프트 전문 공개
+- 모델: Seedance 2.5 (author-described)
+- 영상 실측: 30.1초, 1280x720, 24fps, 721프레임. 스펙 30초와
+  일치. vxtwitter API 경유 다운로드
+- 증거 기반: prompt-derived (전문) + frame-observed (영상)
+
+**프로토콜 판정 (기존 T/P 우선)**
+- CONTINUITY 섹션: "The purchased ingredients must be the same
+  ones used for cooking and served at dinner" — P-30 원리의
+  작가 독립 서술. 장보기→씻기→조리→상차림의 사물 생애주기 →
+  strengthen (P-30)
+- DV 스펙: "No 4K sharpness, stabilization, beauty filters,
+  VHS effects or cinematic lighting" — 불완전함 스펙의 완성형.
+  "VHS effects 금지"가 포인트 (필터로 시대를 흉내내지 말고
+  시대를 렌더하라는 지시) → strengthen (T-23)
+- 섹션 구조: EXACT ORDER + ERA LOCK + CAMERA STYLE +
+  CONTINUITY + FINAL FEEL — P-01의 LOCK 명명법 변형 →
+  strengthen (P-01)
+- "Use the SAME young Japanese woman from the reference image
+  throughout" — 이미지 레퍼런스 정체성 고정 → strengthen (P-16)
+- 신규 T/P 없음
+
+**관찰 — 사물의 생애주기 (frame-observed)**
+- kframe_006: 슈퍼에서 팽이버섯 팩을 집어 듦 (가격표·바코드
+  클로즈업 — "고르고 있다"는 행위의 증거)
+- kframe_019: 주방에서 표고버섯을 씻는 손. 산 재료가
+  조리 단계로 이어짐
+- kframe_028: 식탁 — 가운데 냄비에 버섯·채소. 산 것 = 씻은 것
+  = 먹는 것. 3인 가족(부부+딸 추정) 자연스러운 젓가락질
+- 가격표 일본어는 작고 흐릿함 — AI 난독증의 리스크 관리
+  패턴 (작게·흐리게)
+
+**관찰 — 시대 고증 (frame-observed)**
+- 쇼지, 백열등 색온도, 브라운관 시대의 주방. 스마트폰·LED
+  화면 없음. ERA LOCK의 포지티브+네거티브 병기가 렌더에 반영됨
+
+**Capability evidence**
+- Seedance 2.5 (author-described, 2026-10-01) / 30s 7-beat
+  continuity, ingredient identity across beats, family dinner
+  scene, DV look / observed success / MEDIUM
+
+**코퍼스 기여**
+- 3 (strengthen — P-30 사물 생애주기, T-23 DV 스펙 완성형,
+  P-01 LOCK 명명법 변형), 1 (strengthen — P-16 이미지
+  레퍼런스 정체성)
+
+**규칙 카드 (붙여넣기용)**
+```
+[사물은 이력을 가진다 — Hard Lock]
+장 본 재료는 씻겨서 냄비에 들어가야 한다. 산 장면, 쓰는
+장면, 먹는 장면의 사물이 같은 것이어야 한다. 소품에도
+생애주기가 있다.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-23]
+  existing_P: [P-01, P-16, P-30]
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: PROMPT_RECIPE
+  action: strengthen_existing
+  notes: "P-30의 독립 수렴 — 작가가 원리를 그대로 서술.
+    T-23은 'VHS effects 금지' 추가로 완성형. P-01은 LOCK
+    명명법 변형으로 강화. ERA LOCK은 P-01의 섹션 타입으로
+    처리 (신규 번호 없음). 텍스트는 작게·흐리게 둘 것."
+```
+
+---
+
+## 74. X @xhuozhong — 바이낸스 댄스 영상 샷별 재현 스펙 (중국어 8천자 프롬프트)
+
+**기본 정보**
+- 출처: X @xhuozhong (KEYVAN🔥小火種), 2026-10-01 게시.
+  46 likes, 27 replies. 포스트 본문에 중국어 프롬프트 전문
+  (~22KB) 공개
+- 작업: 레퍼런스 틱톡 댄스 영상을 샷별로 복제하되, 남녀
+  주인공 2명을 이미지 2장의 인물로 교체 + 분홍 스튜디오를
+  바이낸스 노랑 + 바이낸스 로고(이미지 3)로 교체
+- 스펙: 26.67초, 16:9, 1920×1080, 30fps. 실측 26.67초로
+  스펙과 정확히 일치 (스펙 준수 사례)
+- 모델/도구: 본문에 명시 없음. {{Mixed N}} 멀티모달 입력
+  문법 사용 (inference: 비디오+이미지 혼합 입력 지원 도구)
+- 완성본 영상: 별도 포스트(2104949243681394704)에 공개.
+  "CZ作为鼓手好像也不错🤣" (CZ가 드러머 해도 괜찮네).
+  526 likes, 63 replies — 프롬프트 공유글(46 likes)의 10배.
+  남주는 바이낸스 창업자 CZ (author-described)
+- 완성본 실측: 27.1초, 1922x1080, 컬러 정상. vxtwitter API
+  경유 다운로드
+- 레퍼런스: 로제(Rosé)의 "APT." 뮤직비디오 (사용자 관찰).
+  분홍 스튜디오→바이낸스 노랑 교체의 원본
+- **데이터 주의**: 프롬프트 글의 첨부 mp4는 무채색(CDN본 자체).
+  색상·브랜드 검증은 완성본 영상으로 수행. 아래 관찰은 완성본
+  기준
+- 증거 기반: prompt-derived (전문) + frame-observed (완성본)
+
+**프로토콜 판정 (기존 T/P 우선)**
+- 멀티 레퍼런스 + 비디오 역할 + 충돌 우선순위: P-15의
+  비디오 확장. @视频1=동작·카메라·편집 전용 ("얼굴·헤어·
+  의상은 상속 금지"), @图片1/2=외모·의상, @图片3=로고.
+  "发生冲突时: 外貌→图片, 动作→视频, 标志→图片3" →
+  strengthen (P-15)
+- 점·문신 미세 식별자 락: "痣不要移动到嘴角，不要左右镜像，
+  不要在特写中消失" / "禁止纹身转移到左臂，禁止左右手臂
+  同时出现纹身" → strengthen (P-16)
+- 실패 카탈로그형 네거티브 (섹션 八): "禁止纹身换边",
+  "禁止把背景标志做成跟随镜头的水印", "禁止全画面黄色滤镜
+  污染肤色和红裙" — 각각 목격된 실패 모드 → strengthen (P-21)
+- 하드컷의 소품 허가: "不同拍摄段可以通过原片硬切更换眼镜
+  道具，但同一个连续镜头内不能凭空出现、消失或变形" —
+  T-37의 정밀 서술 → strengthen (T-37)
+- 임시 소품 레이어 규칙 (선글라스를 기존 안경 위에 씌우고,
+  바깥 레이어만 벗김) → P-30에 노트
+- 신규 T/P 없음
+
+**관찰 — 프롬프트 구조 (prompt-derived)**
+- 17개 샷의 타임스탬프 분해 (镜头1~17, 0–26.67s)
+- 섹션 七 (소리): 원곡 트랙 위치·박자·가창 순서 유지, 립싱크는
+  음절 변화 추종, 브랜드 내레이션 삽입 금지
+- "不是重新编排剧情" — 작업 유형의 네거티브 선언 (재현이지
+  재해석이 아님)
+- 헤어 물리 스펙: "发根稳定，发束有自然惯性，不变短、不变金色、
+  不穿过脸部" — 정체성(길이·색 유지) + 물리(관성, 얼굴 관통 금지)
+
+**관찰 — 완성본 (frame-observed)**
+- kframe_005: CZ풍 남자(백발 섞인 짧은 머리, 선글라스) 검정
+  티셔츠 "EXCHANGE THE WORLD" 문구 판독 가능. 여자 빨간
+  드레스, 어깨에 기대는 포즈. 노랑 스튜디오 + 양옆 스피커/
+  앰프. 필름 프레임 테두리 2D 그래픽 효과 ("少量二维图形特效")
+- kframe_014: 입 극클로즈업 (镜头 리스트의 "嘴部极近特写").
+  빨간 입술, 가창 중
+- kframe_024: 둘이 바닥에 앉아 건배. 여자 빨간 드레스 유지
+  (바지 변형 없음). 벽에 바이낸스 로고 (검정 둥근 사각형+노랑
+  마크, 부분 노출). 노랑 배경이 피부·빨간 드레스를 오염시키지
+  않음 — P-21 네거티브 "禁止全画面黄色滤镜污染肤色和红裙" 성립
+- 2명만 등장. 분홍 잔재 없음
+
+**Capability evidence**
+- model: undisclosed ({{Mixed}} syntax tool, 2026-10-01) /
+  27s APT.-style recreation: yellow studio without skin
+  pollution, legible shirt text, logo on wall, 2-person lock /
+  observed success / MEDIUM-HIGH
+
+**코퍼스 기여**
+- 4 (strengthen — P-15 비디오 역할+충돌 우선순위, P-16 미세
+  식별자 락, P-21 실패 카탈로그 네거티브, T-37 하드컷 소품 허가),
+  1 (note — P-30 임시 소품 레이어)
+
+**규칙 카드 (붙여넣기용)**
+```
+[역할을 나누고, 충돌엔 순위를 — Hard Lock]
+레퍼런스가 여러 개면 각각 1역할만: 비디오는 동작·카메라·
+편집 전용, 얼굴과 옷은 상속 금지. 충돌 시 우선순위를
+명시하라 — 외모는 이미지, 동작은 비디오, 로고는 이미지3.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-37]
+  existing_P: [P-15, P-16, P-21, P-30]
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: PROMPT_RECIPE
+  action: strengthen_existing
+  notes: "P-15의 비디오 확장 + 충돌 우선순위 명시가 최대 수확.
+    P-21은 섹션 八 전체가 실패 카탈로그 — 완성본에서 노랑
+    피부오염 방지가 실제로 성립함. T-37은 하드컷의 소품 허가로
+    정밀화. 완성본 526 likes는 프롬프트글 10배 — 결과물이
+    과정을 압도 (인기도 분해 신호). 신규 번호 없음."
+```
+
+---
+
+## 75. X @HAL2400_AI — 비 속 소녀 25초 (컷온액션 교과서)
+
+**기본 정보**
+- 출처: X @HAL2400_AI (일본 크리에이터), 2026-10-01 게시.
+  48 likes, 1 reply. "AIでエモい動画作ってみたら、想像以上に
+  エモかった"
+- 실측: 25.1초, 1920x1080. 모델 미공개
+- 증거 기반: frame-observed
+
+**프로토콜 판정 (기존 T/P 우선)**
+- 전 컷이 진행 중인 동작에 실려 넘어감 (cut on action) →
+  strengthen (T-33)
+- 신규 T/P 없음
+
+**관찰 — 시퀀스 (frame-observed)**
+- k_002: 클로즈업 — 처마 밑에서 손을 비에 내밈
+- k_007: 미디엄 — 처마 밑에서 거리로 걸어 나옴 (후면)
+- k_012: 와이드 — 비 오는 주택가를 뜀 (후면)
+- k_016: 공원 — 정자를 향해 걸어감 (후면)
+- k_020: 정자 밑 — 젖은 포니테일을 짬, 뒤를 돌아봄
+- k_024: 클로즈업 — 젖은 앞머리로 카메라를 보고 웃음
+
+**관찰 — 연결이 매끄러운 이유 4종**
+1. **운반되는 동작**: 손 내밀기 → 걸어 나가기 → 뛰기. 컷이
+   동작의 한가운데서 잘림. 동작이 끝나고 자르면 다음 컷이
+   새로 시작하는 느낌이 됨
+2. **방향 불변**: 전 컷에서 카메라에서 멀어지며 앞으로.
+   방향이 뒤집히지 않음
+3. **인과 사슬**: 비 → 나가기 → 뛰기 → 젖음 → 대피 →
+   머리 짜기 → 웃음. 각 컷이 "그래서?"에 답함
+4. **상태 누적**: 젖음이 논리적으로 쌓임. 마지막 웃음은 젖은
+   앞머리가 증명 (소품=증거)
+
+**코퍼스 기여**
+- 1 (strengthen — T-33 cut on action의 교과서 사례)
+
+**규칙 카드 (붙여넣기용)**
+```
+[컷은 동작에 실어 보내라 — Soft Guidance]
+컷을 동작의 한가운데서 자르고, 다음 샷은 그 동작의
+계속으로 시작하라. 동작이 끝난 지점에서 자르면 다음 컷은
+새 우주가 된다. 방향·인과·상태는 전 컷에 걸쳐 고정.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-33]
+  existing_P: []
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: PROMPT_RECIPE
+  action: strengthen_existing
+  notes: "T-33 어휘 중 cut on action의 완성형 사례. 사용자의
+    '내 컷은 왜 어색한가' 질문에 대한 진단 재료로 직접 사용.
+    신규 번호 없음."
+```
+
+---
+
+## 76. X @LioraSolveil — 임금 수묵 액션 33초 (한국어 프롬프트 전문)
+
+**기본 정보**
+- 출처: X @LioraSolveil, 2026-10-01 게시. 33 likes, 19 replies.
+  "이 AI 영상은 걸작입니다. 한국형 캐릭터에 어울리게 프롬프트
+  수정함. 임금과 수묵으로 표현해봄. @lansenai 원본 프롬프트"
+- 프롬프트 계보: @lansenai 원본 → LioraSolveil 한국어 수정
+  (임금+수묵). 사용자가 프롬프트 전문을 채팅에 붙여넣음
+- 제작: Newtake 지원 (author-described, #newtakecrew)
+- 실측: 33.5초, 3840x2160 (4K). 30초 스펙 대비 3.5초 초과
+- 증거 기반: prompt-derived (전문) + frame-observed +
+  author-described (Newtake, lansenai 원본)
+
+**프로토콜 판정**
+- **T-39 신규** (new_candidate): "정적 주인공 × 동적 공간".
+  기존 T로 설명 불가 (T-18은 카메라 반응, T-21은 임팩트
+  타이밍 — 주인공/공간의 대비를 스펙터클 엔진으로 쓰는
+  기법은 없음). 별도 제작 문제 해결: AI는 복잡한 무술
+  동작을 못 그리고 유체·파티클·잉크는 잘 그림 → 스펙터클을
+  몸에서 떼어 공간으로 옮김. 관찰 근거: 프롬프트 명시 +
+  프레임 3종 수렴
+- T-34 strengthen (원형 구성): 시작=낮은 후측면에서 천천히
+  걷기 → 종료=같은 구도로 걷기. 발뒤꿈치 뒤 가느다란 먹자국
+  하나만 남음
+- T-09 strengthen (공간 방향): "카메라가 움직여도 공간의
+  앞뒤와 좌우 관계가 뒤집히지 않는다" + 석주 위치 전편 고정
+- T-33 note (관성 연결): "기술과 기술 사이에 멈춰서 포즈를
+  잡지 않는다. 모든 액션은 이전 동작의 관성에서 다음 동작으로
+  연결된다" — #75의 컷온액션과 수렴
+- P-06 strengthen (충격 프레임 시간 명세): 0.05/0.1/0.15초
+  등급 + 레이어 스택 순서 ("흑백 수묵 충격 프레임 → 부분 반전
+  → 카메라 축 흔들림 → 먹점 튐")
+
+**관찰 — 핵심 장치 (prompt-derived + frame-observed)**
+- "미친 듯이 움직이는 것은 주인공의 몸이 아니라, 주인공의
+  동작에 의해 발생하는 공간과 에너지의 변화다"
+- k_003: 임금이 차분히 걸어가는데 뒤에서 거대한 검은 붓질이
+  공간을 가로지름. k_015: 한 팔만 뻗고 공중에 뜸, 아래는
+  잉크 산맥+부유석. k_030: 파괴된 수묵 세계 중심에 조용히
+  서 있음. 몸은 정적, 공간은 격동 — 3프레임 모두 수렴
+- 수묵은 화면 필터가 아니라 실제 3D 공간의 물질
+  ("수묵화가 현실 세계를 침범하는 듯")
+- 카메라: "정면에서 세워놓고 스킬을 보여주듯 촬영하지 않는다".
+  초저각·후측면·3/4 위주. 얼굴은 필요할 때만
+- 7개 기술(먹보→오행묵류)+최종기(먹계·천지전도). Time Ramp
+  100%→250%→30%→300%
+- 타임스펙 초과: 30초 스펙 → 33.5초 렌더 (#70의 20→30초와
+  같은 스펙 드리프트 계열)
+
+**Capability evidence**
+- model: Newtake (author-described, 2026-10-01) / 33s ink-wash
+  action, static protagonist + kinetic environment, 4K /
+  observed success / MEDIUM
+
+**코퍼스 기여**
+- 1 (new_candidate — T-39 정적 주인공 × 동적 공간),
+  4 (strengthen — T-34, T-09, T-33 note, P-06)
+
+**규칙 카드 (붙여넣기용)**
+```
+[움직이지 않는 몸, 폭발하는 공간 — Hard Lock]
+스펙터클을 몸에서 떼어 공간으로 옮겨라. 주인공은 차분히
+걷고, 세상이 미친 듯이 반응한다. AI는 복잡한 무술보다
+유체·파티클·잉크를 잘 렌더한다. 수묵은 필터가 아니라
+공간에서 발생하는 물질이다.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-34, T-09, T-33]
+  existing_P: [P-06]
+  new_T: [T-39]
+  evidence_strength: HIGH
+  cross_model_generality: MEDIUM-HIGH
+  promotion_target: PROMPT_RECIPE
+  action: new_candidate
+  notes: "프롬프트 명시 + 3프레임 수렴으로 evidence HIGH.
+    대비 엔진 자체는 모델 비의존이나 잉크 렌더 품질은 모델
+    의존 → generality 분리 표기. 30초→33.5초 스펙 드리프트는
+    capability evidence로 별도 기록."
+```
+
+---
+
+## 77. X @saniaspeaks_ — 2000년대 도쿄 버스 여행 30초 (동행자 방향 동기화)
+
+**기본 정보**
+- 출처: X @saniaspeaks_ (Sania, #73과 동일 작가), 2026-10-01
+  게시. 17 likes, 8 replies. "Bus rides are better with your
+  bestie. Seedance 2.5 on higgsfield"
+- 포스트 본문에 영어 프롬프트 전문 공개 (6비트 타임스탬프
+  스토리보드)
+- 실측: 30.1초, 1280x720. 모델: Seedance 2.5 (author-described)
+- 증거 기반: prompt-derived + frame-observed
+
+**프로토콜 판정 (기존 T/P 우선)**
+- FRIEND LOCK: "The SAME Japanese female friend stays with
+  her throughout" — 주인공 외 동행 인물의 별도 락 →
+  strengthen (P-16)
+- 동행자 방향 동기화: 두 소녀가 항상 같은 방향을 보고 같은
+  방향으로 걸음. 카메라는 전편 뒤에 고정 (친구가 찍는 POV) →
+  strengthen (T-09)
+- 종이 버스 티켓의 6비트 추적 ("Same girls, outfits, bags
+  and tickets throughout") → note (P-30)
+- ERA LOCK·DV 스펙은 #73과 동일 레시피 — 추가 강화 없음
+- 신규 T/P 없음
+
+**관찰 — 사용자의 지적과 수렴 (frame-observed)**
+- k_003: 둘이 함께 버스 시간표를 봄 (시선 목표 일치)
+- k_011: 둘이 함께 버스에 탑승 (이동 방향 일치, 티켓 손에)
+- k_027: 둘이 함께 목적지로 걸어감 (후면, 의상·가방 유지)
+- 사용자가 말한 "시선이나 걷는 방향 모두"가 정확함. 카메라가
+  축을 넘지 않으니 방향이 깨질 일이 없음 — #75의 "방향 불변"과
+  동일 원리
+
+**Capability evidence**
+- model: Seedance 2.5 via Higgsfield (author-described,
+  2026-10-01) / 30s 2-person vlog, gaze/direction sync,
+  6-beat continuity / observed success / MEDIUM
+
+**코퍼스 기여**
+- 3 (strengthen — P-16 FRIEND LOCK, T-09 동행자 방향 동기화 /
+  note — P-30 티켓 추적)
+
+**규칙 카드 (붙여넣기용)**
+```
+[동행자는 같은 방향을 본다 — Soft Guidance]
+함께 걷는 인물들의 시선·이동 방향을 일치시켜라. 카메라는
+뒤에 고정. 축을 안 넘으면 방향이 안 깨진다.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-09]
+  existing_P: [P-16, P-30]
+  evidence_strength: HIGH
+  cross_model_generality: HIGH
+  promotion_target: PROMPT_RECIPE
+  action: strengthen_existing
+  notes: "사용자가 직접 포착한 사례 ('시선이나 걷는 방향 모두').
+    #75 방향 불변과의 수렴. FRIEND LOCK은 2인 락의 명시형.
+    신규 번호 없음."
+```
 
 ---
 
