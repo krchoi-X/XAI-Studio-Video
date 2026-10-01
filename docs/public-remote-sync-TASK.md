@@ -1,7 +1,7 @@
 # Public remote synchronization
 
 Active editor: Codex
-Status: ready to publish
+Status: complete
 Date: 2026-10-01
 
 ## Goal
@@ -33,8 +33,8 @@ Documentation examples and test fixtures retain their public interfaces while us
 
 ## Progress
 
-The remote was merged locally without conflicts as commit `d181d89`. Baseline comparison found 17 new publication-policy findings across eight files. Machine-specific paths now use portable root variables; private character, asset, repository and identity-field examples use public-safe placeholders. Direct matching against every configured publication pattern finds no scoped matches. The full staged tree has 3,158 findings, equal to the existing `origin/main` baseline, with one additional scanned task file. `tests/test_hermes_night_batch.py` passes: 15 tests.
+The remote was merged locally without conflicts as commit `d181d89`. Baseline comparison found 17 new publication-policy findings across eight files. Machine-specific paths now use portable root variables; private character, asset, repository and identity-field examples use public-safe placeholders. Direct matching against every configured publication pattern finds no scoped matches. The full staged tree has 3,158 findings, equal to the pre-merge `origin/main` baseline, with one additional scanned task file. `tests/test_hermes_night_batch.py` passes: 15 tests. Sanitization commit `101e2eb` was pushed to `origin/main` without force.
 
 ## Next
 
-Commit the nine scoped files, push `main`, fetch, and verify convergence.
+None. Preserve the unrelated tracked and untracked working-tree changes for their active owners.
