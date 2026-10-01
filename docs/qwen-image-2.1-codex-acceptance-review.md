@@ -3,7 +3,7 @@
 - Date: 2026-09-28
 - Reviewer: Codex
 - Reviewed handoff: `docs/qwen-image-2.1-claude-to-codex-handoff.md` at `f0334fa`
-- Contract checkpoints: XAI-studio `4ee2b78..f0334fa`; personal-prompt-studio `3d3194e..d3122c5`; XAI-Studio-Private `9608ade..1803e32`
+- Contract checkpoints: XAI-studio `4ee2b78..f0334fa`; personal-prompt-studio `3d3194e..d3122c5`; shared-authority repository `9608ade..1803e32`
 - Decision: accept phases 1–5. Do not repeat the identity gate or reimplement the completed phases. Human review of the generated candidates remains the production gate.
 
 ## What was accepted

@@ -11,15 +11,15 @@ Use `qwen-image-2.1-UC-Q4_K_M.gguf` for the first test. It is the publisher's re
 
 ## Update the existing WanGP installation
 
-Use the existing `D:/AI/WanGP` checkout. Its `ckpts/`, `finetunes/`, `settings/`, `profiles/`, `outputs/`, and `wgp_config.json` are runtime data excluded from Git, so updating the tracked application code does not remove the models, settings, sessions, or outputs already used for Krea2 and video work. Keeping this checkout also makes the Qwen/Krea comparison use the same operating context.
+Use the existing `${WANGP_ROOT}` checkout. Its `ckpts/`, `finetunes/`, `settings/`, `profiles/`, `outputs/`, and `wgp_config.json` are runtime data excluded from Git, so updating the tracked application code does not remove the models, settings, sessions, or outputs already used for Krea2 and video work. Keeping this checkout also makes the Qwen/Krea comparison use the same operating context.
 
 One tracked source file, `shared/qtypes/int8_convrot.py`, contains a local scalar-scale compatibility fix. Preserve that patch before updating. Do not start with `scripts/update.bat` while this file is dirty: this WanGP version attempts a hard reset if its internal `git pull` fails.
 
 Close WanGP, then run in PowerShell:
 
 ```powershell
-Set-Location D:\AI\WanGP
-git diff --output=D:/AI/WanGP-int8-convrot-local-20260928.patch -- shared/qtypes/int8_convrot.py
+Set-Location ${WANGP_ROOT}
+git diff --output=${WANGP_ROOT}-int8-convrot-local-20260928.patch -- shared/qtypes/int8_convrot.py
 git stash push -m "before-qwen21-update-20260928" -- shared/qtypes/int8_convrot.py
 ```
 
@@ -53,7 +53,7 @@ Download only this transformer for the first attempt:
 Save it as:
 
 ```text
-D:\AI\Models\image-generation\qwen\qwen-image-2.1-UC-Q4_K_M.gguf
+${MODEL_ROOT}\image-generation\qwen\qwen-image-2.1-UC-Q4_K_M.gguf
 ```
 
 Do not download BF16, Q5/Q6/Q8, ComfyUI's separate VAE, or its text encoder for the first WanGP test. WanGP supplies its own compatible Qwen 2.1 VAE, processor, Qwen3-VL encoder, and vision files when the custom model is first loaded. Those companion downloads are additional to the 4.60 GB transformer and can require substantial disk/system RAM.
@@ -72,7 +72,7 @@ Do not download BF16, Q5/Q6/Q8, ComfyUI's separate VAE, or its text encoder for 
 5. In **URLs**, use the folder picker and select:
 
 ```text
-D:\AI\Models\image-generation\qwen\qwen-image-2.1-UC-Q4_K_M.gguf
+${MODEL_ROOT}\image-generation\qwen\qwen-image-2.1-UC-Q4_K_M.gguf
 ```
 
 6. Save, select the newly created finetune, and use these first-run settings:

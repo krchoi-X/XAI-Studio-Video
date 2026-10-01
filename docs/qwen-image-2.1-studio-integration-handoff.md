@@ -4,9 +4,9 @@
 - Assigned implementation editor: Claude Code, by direct user decision
 - Handoff author: Codex
 - Status: READY FOR IMPLEMENTATION — no adapter or Studio code has been changed yet
-- Primary checkout: `D:/codex/XAI-studio`
-- Studio checkout: `D:/codex/personal-prompt-studio/personal-prompt-studio`
-- Shared authority: `D:/codex/XAI-Studio-Private`
+- Primary checkout: `${PROJECT_ROOT}`
+- Studio checkout: `${STUDIO_ROOT}`
+- Shared authority: `${SHARED_AUTHORITY_ROOT}`
 
 ## User objective
 
@@ -16,10 +16,10 @@ Qwen must not silently become the default engine, replace Krea2, change canonica
 
 ## Read before changing files
 
-From `D:/codex/XAI-studio`, read in this order:
+From `${PROJECT_ROOT}`, read in this order:
 
 1. `AGENTS.md`, `TASK.md`, this handoff and `docs/qwen-image-2.1-character-pilot-TASK.md`.
-2. `D:/codex/XAI-Studio-Private/control/generated/claude.md` and `D:/codex/XAI-Studio-Private/control/agents/production-roles.md`.
+2. `${SHARED_AUTHORITY_ROOT}/control/generated/claude.md` and `${SHARED_AUTHORITY_ROOT}/control/agents/production-roles.md`.
 3. Resolve and read the current Character Manager source, not the project adapter:
 
    ```powershell
@@ -27,7 +27,7 @@ From `D:/codex/XAI-studio`, read in this order:
    ```
 
 4. Read `docs/artifact-and-review-contract.md`, `docs/shared-agent-workflow.md`, `docs/verification.md`, `docs/wangp-recorder.md` and `docs/wangp-models.md`.
-5. Before changing the web app, read `D:/codex/personal-prompt-studio/personal-prompt-studio/AGENTS.md`, the Studio `TASK.md`, `DESIGN.md`, `docs/shared-agent-contract.md` and the private/public boundary document required by its AGENTS instructions.
+5. Before changing the web app, read `${STUDIO_ROOT}/AGENTS.md`, the Studio `TASK.md`, `DESIGN.md`, `docs/shared-agent-contract.md` and the private/public boundary document required by its AGENTS instructions.
 6. Inspect Git status and diffs in all three repositories. The XAI Studio worktree already contains unrelated user/agent work. Do not clean, reset, move or rewrite it.
 
 The user assigned the Qwen implementation to Claude Code. Update the applicable task record to name Claude Code as Active editor before implementation. Keep the contract checkpoint reviewable; do not push unless the user separately asks.
@@ -38,18 +38,18 @@ The WanGP setup itself is complete and working.
 
 | Item | Verified value |
 |---|---|
-| WanGP root | `D:/AI/WanGP` |
+| WanGP root | `${WANGP_ROOT}` |
 | Updated WanGP revision | `91301f0e` (v13.14 UI) |
-| Active environment | `D:/AI/WanGP/env_uv` |
+| Active environment | `${WANGP_ROOT}/env_uv` |
 | Finetune ID / `model_type` | `qwen_image_21_uncensored_q4_k_m` |
 | Display name | `Qwen Image 2.1 Uncensored Q4_K_M` |
 | Architecture | `qwen_image_21_7B` |
-| Transformer | `D:/AI/Models/image-generation/qwen/qwen-image-2.1-UC-Q4_K_M.gguf` |
+| Transformer | `${MODEL_ROOT}/image-generation/qwen/qwen-image-2.1-UC-Q4_K_M.gguf` |
 | Transformer size | 4,604,558,112 bytes |
 | Transformer SHA-256 | `E79C8A009F2ECBDB6C70FD663D9AEA9EE304A0D91F347E4169A756B8AD141B41` |
-| Finetune definition | `D:/AI/WanGP/finetunes/qwen_image_21_uncensored_q4_k_m.json` |
-| Qwen VAE | `D:/AI/WanGP/ckpts/qwen_image_21/qwen_image_21_vae.safetensors` |
-| Text/vision encoder | `D:/AI/WanGP/ckpts/Qwen3-VL-8B-Instruct/Qwen3-VL-8B-Instruct_int8_convrot.safetensors` |
+| Finetune definition | `${WANGP_ROOT}/finetunes/qwen_image_21_uncensored_q4_k_m.json` |
+| Qwen VAE | `${WANGP_ROOT}/ckpts/qwen_image_21/qwen_image_21_vae.safetensors` |
+| Text/vision encoder | `${WANGP_ROOT}/ckpts/Qwen3-VL-8B-Instruct/Qwen3-VL-8B-Instruct_int8_convrot.safetensors` |
 | Conservative settings | 832x608, 40 steps, CFG 4, batch 1, FlowMatch Euler, KV cache disabled, RGBA disabled |
 | Global config fixes | `clear_file_list: 5`, `deepy_enabled: 0`, selected model set to the finetune |
 
@@ -64,20 +64,20 @@ It reports `status: usable`, the GGUF path, 40 steps and guidance 4. Do not vend
 The text-to-image smoke test passed end to end: custom GGUF load, Qwen3-VL prompt encoding, 40 denoising steps, tiled VAE decoding, JPEG persistence and gallery display. The output is:
 
 ```text
-D:/AI/WanGP/outputs/images/2026-09-28-10h59m54s_seed198617917_A red ceramic teapot on a wooden table, soft windo.jpg
+${WANGP_ROOT}/outputs/images/2026-09-28-10h59m54s_seed198617917_A red ceramic teapot on a wooden table, soft windo.jpg
 ```
 
 The first run's total UI time was 17m14s because it included companion downloads and initial loading. The 40 denoising steps took 1m49s. This proves the model can render; it does **not** yet prove reference-image identity preservation.
 
-WanGP also retains a local scalar-scale compatibility change in `shared/qtypes/int8_convrot.py`. Its patch backup is `D:/AI/WanGP-int8-convrot-local-20260928.patch`, and a related stash was recorded as `stash@{0}` at setup time. Preserve it. Do not run a destructive update/reset or blindly pop the stash.
+WanGP also retains a local scalar-scale compatibility change in `shared/qtypes/int8_convrot.py`. Its patch backup is `${WANGP_ROOT}-int8-convrot-local-20260928.patch`, and a related stash was recorded as `stash@{0}` at setup time. Preserve it. Do not run a destructive update/reset or blindly pop the stash.
 
 ## Current repository bases and dirty-state warning
 
 Observed when this handoff was written:
 
-- `D:/codex/XAI-studio`: `4ee2b7802180150de855882e0c9939de682395b8`, branch `main`.
-- `D:/codex/personal-prompt-studio`: `3d3194e9db2641aa520e2926b981edd15e9cb1b3`, branch `master`.
-- `D:/codex/XAI-Studio-Private`: `9608ade07096fa561ced581f73b8d68fe15f7935`.
+- `${PROJECT_ROOT}`: `4ee2b7802180150de855882e0c9939de682395b8`, branch `main`.
+- `${STUDIO_REPOSITORY_ROOT}`: `3d3194e9db2641aa520e2926b981edd15e9cb1b3`, branch `master`.
+- `${SHARED_AUTHORITY_ROOT}`: `9608ade07096fa561ced581f73b8d68fe15f7935`.
 
 The XAI Studio checkout contains many modified and untracked files unrelated to Qwen, including character sessions and another active drive-export scope. Preserve all of them. Restrict the implementation to the files named below plus task/docs/tests that are necessary for this contract.
 
@@ -96,7 +96,7 @@ Qwen is usable in WanGP but Studio rejects it before submission:
 3. `tools/hermes_night_batch.py`
    - `ENGINES` contains only `z-image` and `krea2`.
    - a reference-bound item requires `engines == ["krea2"]`.
-4. `D:/codex/personal-prompt-studio/personal-prompt-studio/backend/app/schemas.py`
+4. `${STUDIO_ROOT}/backend/app/schemas.py`
    - normal and night-batch engine literals contain only `z-image` and `krea2`.
 5. Studio backend `app/main.py`
    - identity-reference submission explicitly requires Krea2 alone.
@@ -218,21 +218,21 @@ This is needed for full Krea2-equivalent Studio behavior but can be a separate c
 Primary implementation and tests are expected in:
 
 ```text
-D:/codex/XAI-studio/tools/character_scene.py
-D:/codex/XAI-studio/tools/local_wangp.py
-D:/codex/XAI-studio/tools/hermes_night_batch.py
-D:/codex/XAI-studio/tools/reference_variation_worker.py        # Phase 5
-D:/codex/XAI-studio/tests/test_character_scene.py
-D:/codex/XAI-studio/tools/test_local_wangp.py
-D:/codex/XAI-studio/tests/test_hermes_night_batch.py
-D:/codex/XAI-studio/tools/test_reference_variation_worker.py   # Phase 5
-D:/codex/XAI-studio/examples/character-lab/...                 # one Qwen settings template
-D:/codex/personal-prompt-studio/personal-prompt-studio/backend/app/schemas.py
-D:/codex/personal-prompt-studio/personal-prompt-studio/backend/app/main.py
-D:/codex/personal-prompt-studio/personal-prompt-studio/backend/tests/test_api.py
-D:/codex/personal-prompt-studio/personal-prompt-studio/frontend/src/apps/production/model.ts
-D:/codex/personal-prompt-studio/personal-prompt-studio/frontend/src/apps/production/model.test.tsx
-D:/codex/XAI-Studio-Private/shared-skills/character-manager/SKILL.md
+${PROJECT_ROOT}/tools/character_scene.py
+${PROJECT_ROOT}/tools/local_wangp.py
+${PROJECT_ROOT}/tools/hermes_night_batch.py
+${PROJECT_ROOT}/tools/reference_variation_worker.py        # Phase 5
+${PROJECT_ROOT}/tests/test_character_scene.py
+${PROJECT_ROOT}/tools/test_local_wangp.py
+${PROJECT_ROOT}/tests/test_hermes_night_batch.py
+${PROJECT_ROOT}/tools/test_reference_variation_worker.py   # Phase 5
+${PROJECT_ROOT}/examples/character-lab/...                 # one Qwen settings template
+${STUDIO_ROOT}/backend/app/schemas.py
+${STUDIO_ROOT}/backend/app/main.py
+${STUDIO_ROOT}/backend/tests/test_api.py
+${STUDIO_ROOT}/frontend/src/apps/production/model.ts
+${STUDIO_ROOT}/frontend/src/apps/production/model.test.tsx
+${SHARED_AUTHORITY_ROOT}/shared-skills/character-manager/SKILL.md
 ```
 
 `web_generation_worker.py`, shared TypeScript request types and UI interaction tests may also require bounded changes after inspecting the actual contract. If the scope expands materially beyond these files, pause and update the task before continuing.
@@ -270,7 +270,7 @@ Use deterministic tests before any live generation. Do not call an LLM to review
 Suggested focused commands, adjusted to the actual environment:
 
 ```powershell
-Set-Location D:/codex/XAI-studio
+Set-Location ${PROJECT_ROOT}
 python -m pytest tests/test_character_scene.py tools/test_local_wangp.py tests/test_hermes_night_batch.py tools/test_reference_variation_worker.py -q
 python tools/wangp_models.py --check qwen_image_21_uncensored_q4_k_m
 python tools/character_manager.py validate
@@ -328,5 +328,5 @@ Claude should leave durable state, not only a chat response:
 ## Short prompt the user can give Claude Code
 
 ```text
-Continue the Qwen Image 2.1 Studio integration assigned to Claude Code. Start in D:\codex\XAI-studio and read AGENTS.md, TASK.md, docs/qwen-image-2.1-studio-integration-handoff.md and the catalog-resolved Character Manager skill. Inspect the actual dirty worktrees before editing and preserve unrelated changes. Implement the handoff in phases, beginning with the common Character Manager/local WanGP Qwen reference adapter and deterministic tests. Use the existing finetune qwen_image_21_uncensored_q4_k_m; do not download or update models. Keep Krea2/Z-Image backward compatible, use the existing Library/Gallery/recorder contracts, and do not promote any generated identity asset without my review.
+Continue the Qwen Image 2.1 Studio integration assigned to Claude Code. Start in ${PROJECT_ROOT} and read AGENTS.md, TASK.md, docs/qwen-image-2.1-studio-integration-handoff.md and the catalog-resolved Character Manager skill. Inspect the actual dirty worktrees before editing and preserve unrelated changes. Implement the handoff in phases, beginning with the common Character Manager/local WanGP Qwen reference adapter and deterministic tests. Use the existing finetune qwen_image_21_uncensored_q4_k_m; do not download or update models. Keep Krea2/Z-Image backward compatible, use the existing Library/Gallery/recorder contracts, and do not promote any generated identity asset without my review.
 ```

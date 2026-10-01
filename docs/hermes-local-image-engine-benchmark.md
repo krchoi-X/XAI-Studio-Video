@@ -220,9 +220,9 @@ Qwen item은 `engines`만 `["qwen21"]`로 바꾼다. 의상 사진 자체의 재
 ### 9.2 GPU 사전 점검
 
 ```powershell
-cd D:\codex\XAI-studio
-D:\AI\WanGP\env_uv\Scripts\python.exe -m control_tower --check
-D:\AI\WanGP\env_uv\Scripts\python.exe tools\local_wangp.py doctor --wangp-root D:\AI\WanGP
+cd ${PROJECT_ROOT}
+${WANGP_ROOT}\env_uv\Scripts\python.exe -m control_tower --check
+${WANGP_ROOT}\env_uv\Scripts\python.exe tools\local_wangp.py doctor --wangp-root ${WANGP_ROOT}
 ```
 
 필수 조건:
@@ -236,11 +236,11 @@ Hermes 런타임을 안전하게 내릴 수 없거나 다른 프로세스가 GPU
 ### 9.3 큐 등록
 
 ```powershell
-D:\AI\WanGP\env_uv\Scripts\python.exe tools\hermes_night_batch.py create `
+${WANGP_ROOT}\env_uv\Scripts\python.exe tools\hermes_night_batch.py create `
   --plan-file "<ABSOLUTE_PHASE_1_PLAN_JSON>"
 ```
 
-반환된 batch ID와 `D:\AI_Studio\workspace\hermes-night-batches\<BATCH_ID>\status.json`을 기록한다. 등록됐다는 사실을 완료로 보고하지 않는다.
+반환된 batch ID와 `${XAI_WORKSPACE_ROOT}\workspace\hermes-night-batches\<BATCH_ID>\status.json`을 기록한다. 등록됐다는 사실을 완료로 보고하지 않는다.
 
 ### 9.4 완료 확인
 
@@ -317,7 +317,7 @@ ArcFace/SFace 같은 자동 유사도는 보조 증거다. 정면용 수치를 �
 {
   "benchmark_id": "BENCH-<date>-<character>",
   "character_id": "<CHARACTER_ID>",
-  "stable_dna_sha256": "<HASH>",
+  "identity_snapshot_sha256": "<HASH>",
   "identity_reference": {
     "path": "<PATH_OR_NULL>",
     "sha256": "<HASH_OR_NULL>"
@@ -358,8 +358,8 @@ ArcFace/SFace 같은 자동 유사도는 보조 증거다. 정면용 수치를 �
 - Batch: `NIGHT-20260929-031004-8c0d6e`
 - 범위: Lee Suan과 Mizuki Reika, 각각 T01–T06 × 3 engines
 - 결과: 36/36 completed, 모든 run은 `needs_review`, identity reference 없음
-- 보고서: `D:\AI_Studio\reports\benchmark-20260929-phase1\README.md`
-- 비교 시트: 같은 폴더의 `ch-mizuki-reika-full.jpg`, `ch-mizuki-reika-faces.jpg`, `ch-lee-suan-full.jpg`, `ch-lee-suan-faces.jpg`
+- 보고서: `${XAI_WORKSPACE_ROOT}\reports\benchmark-20260929-phase1\README.md`
+- 비교 시트: 같은 폴더의 `ch-example-alpha-full.jpg`, `ch-example-alpha-faces.jpg`, `ch-example-beta-full.jpg`, `ch-example-beta-faces.jpg`
 
 관찰:
 
@@ -386,4 +386,4 @@ ArcFace/SFace 같은 자동 유사도는 보조 증거다. 정면용 수치를 �
 - `docs/wardrobe-library-patterns/`
 - `docs/qwen-image-2.1-codex-acceptance-review.md`
 - `docs/artifact-and-review-contract.md`
-- `D:\codex\XAI-Studio-Private\shared-skills\character-manager\SKILL.md`
+- `${SHARED_AUTHORITY_ROOT}\shared-skills\character-manager\SKILL.md`

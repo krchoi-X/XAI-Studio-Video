@@ -12,7 +12,7 @@ Evaluate whether a local Qwen Image 2.1 uncensored GGUF can reduce the identity 
 ## Constraints / Must Preserve
 
 - The user supplied the uncensored GGUF and later explicitly authorized WanGP configuration, required companion downloads, and a local smoke generation. Do not use hosted generation credits.
-- Preserve the current `D:/AI/WanGP` models, settings, profiles, sessions, outputs, environment selection, and local Int8 ConvRot patch. Update that checkout's tracked application code and its active `env_uv` through the normal updater after stashing the tracked patch. A separate dependency environment is optional, not required.
+- Preserve the current `${WANGP_ROOT}` models, settings, profiles, sessions, outputs, environment selection, and local Int8 ConvRot patch. Update that checkout's tracked application code and its active `env_uv` through the normal updater after stashing the tracked patch. A separate dependency environment is optional, not required.
 - Keep the approved face master immutable. Generated angles and sheets are candidates or derivatives until the user reviews them.
 - Keep the identity master separate from continuity frames and human-facing contact sheets. Feed individual source images to the model.
 - Preserve the current Krea2 evidence and use it as the comparison baseline rather than overwriting it.
@@ -37,10 +37,10 @@ Evaluate whether a local Qwen Image 2.1 uncensored GGUF can reduce the identity 
 
 - Synchronized the local knowledge repository with `origin/main`; its September backlog identifies this model as the intended local A/B candidate.
 - Confirmed the current machine has an RTX 4070 Laptop GPU with 8 GB VRAM.
-- Updated the existing `D:/AI/WanGP` checkout from `01a67f0a` to upstream `91301f0e` with the official updater. The active `env_uv` requirements completed successfully; existing models, settings, profiles, outputs, and configuration remain in place.
-- Preserved the local Int8 ConvRot scalar-scale fix as `D:/AI/WanGP-int8-convrot-local-20260928.patch` and `stash@{0}`, then reapplied it cleanly to the updated source.
+- Updated the existing `${WANGP_ROOT}` checkout from `01a67f0a` to upstream `91301f0e` with the official updater. The active `env_uv` requirements completed successfully; existing models, settings, profiles, outputs, and configuration remain in place.
+- Preserved the local Int8 ConvRot scalar-scale fix as `${WANGP_ROOT}-int8-convrot-local-20260928.patch` and `stash@{0}`, then reapplied it cleanly to the updated source.
 - Verified the new Qwen 2.1 default definition and handler are present and syntax-parse successfully. The existing WanGP catalog still reports the default Qwen model as missing weights until the external uncensored GGUF is registered as a finetune.
-- Verified `D:/AI/Models/image-generation/qwen/qwen-image-2.1-UC-Q4_K_M.gguf`: 4,604,558,112 bytes, SHA-256 `E79C8A009F2ECBDB6C70FD663D9AEA9EE304A0D91F347E4169A756B8AD141B41`.
+- Verified `${MODEL_ROOT}/image-generation/qwen/qwen-image-2.1-UC-Q4_K_M.gguf`: 4,604,558,112 bytes, SHA-256 `E79C8A009F2ECBDB6C70FD663D9AEA9EE304A0D91F347E4169A756B8AD141B41`.
 - Inspected current upstream WanGP source without downloading weights. Qwen Image 2.1 support exists, its handler accepts GGUF checkpoints, and custom checkpoints can be registered through the Finetune Creator.
 - Confirmed the selected community checkpoint is `qwen-image-2.1-UC-Q4_K_M.gguf` (4.60 GB). It still requires Qwen3-VL encoder/vision and VAE support files.
 - Added the operator runbook and fixed experiment matrix in [Qwen Image 2.1 WanGP pilot](qwen-image-2.1-wangp-pilot.md).
@@ -48,7 +48,7 @@ Evaluate whether a local Qwen Image 2.1 uncensored GGUF can reduce the identity 
 - Downloaded the required Qwen 2.1 VAE and Qwen3-VL 8B Int8 ConvRot encoder/vision support files through WanGP. The supplied GGUF remains the image transformer.
 - Migrated the updated WanGP configuration by persisting `clear_file_list: 5` and disabling the incompatible legacy Deepy/Florence setup (`deepy_enabled: 0`). This removed the gallery refresh failure after restart while preserving the existing output path and model selection.
 - Saved a conservative per-model default: 832x608 (4:3), one image, 40 steps, CFG 4, FlowMatch Euler, KV cache disabled, RGBA disabled, no control/reference image, and no LoRA. Prompt enhancement remains manual-only and was not invoked for the test.
-- Completed an end-to-end local smoke generation using the exact prompt `A red ceramic teapot on a wooden table, soft window light, detailed product photograph.` The 40 denoising steps completed in 1m49s, VAE decoding completed, and the output was saved at `D:/AI/WanGP/outputs/images/2026-09-28-10h59m54s_seed198617917_A red ceramic teapot on a wooden table, soft windo.jpg`.
+- Completed an end-to-end local smoke generation using the exact prompt `A red ceramic teapot on a wooden table, soft window light, detailed product photograph.` The 40 denoising steps completed in 1m49s, VAE decoding completed, and the output was saved at `${WANGP_ROOT}/outputs/images/2026-09-28-10h59m54s_seed198617917_A red ceramic teapot on a wooden table, soft windo.jpg`.
 - Restarted WanGP after configuration migration and verified the custom finetune is selected, the service reports `Ready`, and the generated image appears as the single item in the default gallery.
 - The user assigned subsequent Studio integration to Claude Code. Added the self-contained [Claude Code integration handoff](qwen-image-2.1-studio-integration-handoff.md) with runtime state, contract impact, file scope, phases, tests, live acceptance checks and a copyable startup prompt. No production adapter or Studio code was changed in this handoff step.
 

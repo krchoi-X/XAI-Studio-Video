@@ -42,7 +42,7 @@ personal-prompt-studio (base `3d3194e`):
 - `7758cd3` Transformation Lab engine choice (Phase 5)
 - `d3122c5` Studio TASK update
 
-XAI-Studio-Private (base `9608ade`):
+shared-authority repository (base `9608ade`):
 
 - `1803e32` Character Manager skill: reference route for Krea2 and Qwen, including Codex's 2026-09-16 edit and both task records
 
@@ -94,7 +94,7 @@ Other live results (all `needs_review`):
 | Transformation Lab, wardrobe edit | web | 0.913/0.935, same; edit only partly followed (jacket kept) |
 | Night batch requested by Hermes | hermes | 0.828/0.872, recognisers disagree |
 
-Evidence: `D:/AI_Studio/reports/ch-mizuki-reika/qwen21-gate-20260928/` (`gate-manifest.json`, `gate-results.json`, `crossseed-*.json`, `gate-contact-sheet.jpg`, `studio-paths-sheet.jpg`, `score-*.json`).
+Evidence: `${XAI_WORKSPACE_ROOT}/reports/ch-example-alpha/qwen21-gate-20260928/` (`gate-manifest.json`, `gate-results.json`, `crossseed-*.json`, `gate-contact-sheet.jpg`, `studio-paths-sheet.jpg`, `score-*.json`).
 
 Limits: one character, two seeds per cell, recognisers trained on real photographs; profile and deep three-quarter buckets have no calibrated threshold.
 
@@ -111,9 +111,9 @@ Limits: one character, two seeds per cell, recognisers trained on real photograp
 XAI-studio (Studio venv has pytest; add Hermes site-packages for jsonschema):
 
 ```powershell
-Set-Location D:/codex/XAI-studio
+Set-Location ${PROJECT_ROOT}
 $env:PYTHONPATH = "tools;tests;<hermes-site-packages>"
-D:/codex/personal-prompt-studio/personal-prompt-studio/backend/.venv/Scripts/python.exe -X utf8 -m pytest tests external_media_import/tests tools/test_wangp_recorder.py tools/test_local_wangp.py tools/test_requester_provenance.py tools/test_reference_variation_worker.py infra/gpu-worker/test_provision.py -q
+${STUDIO_ROOT}/backend/.venv/Scripts/python.exe -X utf8 -m pytest tests external_media_import/tests tools/test_wangp_recorder.py tools/test_local_wangp.py tools/test_requester_provenance.py tools/test_reference_variation_worker.py infra/gpu-worker/test_provision.py -q
 python tools/wangp_models.py --check qwen_image_21_uncensored_q4_k_m
 python tools/character_manager.py validate
 ```

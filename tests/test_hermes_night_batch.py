@@ -218,10 +218,10 @@ class HermesNightBatchMultiReferenceTests(unittest.TestCase):
         plan = night.validate_plan({"items": [{
             "character_id": "ch-test", "prompt": "outfit swap", "engines": ["qwen21"], "count": 1, "seed": 99,
             "identity_reference": "character-default",
-            "additional_references": ["wardrobe=D:/refs/outfit.jpg", {"role": "object", "path": "D:/refs/bag.png"}],
+            "additional_references": ["wardrobe=fixtures/refs/outfit.jpg", {"role": "object", "path": "fixtures/refs/bag.png"}],
         }]})
         item = plan["items"][0]
-        self.assertEqual(["wardrobe=D:/refs/outfit.jpg", "object=D:/refs/bag.png"], item["additional_references"])
+        self.assertEqual(["wardrobe=fixtures/refs/outfit.jpg", "object=fixtures/refs/bag.png"], item["additional_references"])
         root = Path(self.temp.name) / "batch"; root.mkdir()
         calls = []
 
