@@ -33,15 +33,19 @@
 대신 도시가 미친 듯이 반응한다. 지훈은 그걸 핸드폰으로 찍는다.
 
 **인물** (2인: 데드팬 + 리액터 — #70의 엔진)
-- 민서 (A): 정적 주인공. 차분, 작은 동작만. 긴 흑발, 흰 셔츠, 청바지
-- 지훈 (B): 친구. 핸드폰으로 촬영 (다이제틱 카메라). 리액터
+- 민서 (A): 숨겨진 마법사. 바람을 부르는 자는 자기가 부른 바람에
+  놀라지 않는다 — 이것이 이 작품의 캐릭터 논리. 동작은 느리고
+  의식적이며 엄숙. 표정은 전편 평온. 절대 카메라를 보지 않음.
+  긴 흑발, 흰 셔츠, 청바지
+- 지훈 (B): 친구. 핸드폰으로 촬영 (다이제틱 카메라). 리액터.
+  놀라는 것은 지훈의 몫
 
 **6비트 × 5초 = 30초**
 
 | 비트 | 시간 | INTENT | 한 줄 |
 |------|------|--------|-------|
-| 1 | 0–5s | 장소+정적 확립 | 새벽 옥상, 민서는 가만히. "바람 한 점 없는데?" |
-| 2 | 5–10s | 첫 반응 | 손가락 하나에 빨랫줄 셔츠가 수평으로 펄럭, 비둘기 폭등 |
+| 1 | 0–5s | 장소+의식 확립 | 새벽 옥상, 민서는 바람을 부를 준비를 한다 |
+| 2 | 5–10s | 소환 | 손바닥을 펼치는 순간 셔츠가 수평으로 펄럭, 비둘기 폭등. 민서는 눈 하나 깜빡 안 함 |
 | 3 | 10–15s | 증폭 | 고개 돌리기에 어닝이 돛처럼 부풀고 비닐봉지 소용돌이 |
 | 4 | 15–20s | 도시가 답함 | 숨 내쉬기에 구름이 갈라지고 햇살이 꽂힘 |
 | 5 | 20–25s | 코미디 정점 | 손 내리자 정적 → 깃털 하나가 지훈 폰 렌즈에 착지 |
@@ -165,21 +169,23 @@ expression, minimal movement. Her male friend films on a phone
 no frontal hero pose, no slow motion, no lens flare abuse,
 no neon effects, no subtitles, no cinematic stabilization"
 
-### Prompt S1
-"Handheld phone footage, dawn rooftop in Seoul, wide shot. The
-woman stands still with her back to camera, facing the city.
-No wind, everything motionless. A male voice off-camera (Korean):
-'야, 바람 한 점 없는데?' She slowly begins raising her right
-index finger — the motion is incomplete by the end of the shot.
-Subtle handheld shake. Cold blue dawn light."
+### Prompt S1 (리테이크 — 마법사 디렉션)
+"Handheld phone footage, dawn rooftop in Seoul, wide shot from
+behind her. She slowly extends her right arm forward with grave
+deliberation, fingers spreading open one by one into a conjuring
+gesture, as if gathering the wind itself. Ritualistic, solemn,
+unhurried. A male voice off-camera (Korean): '야, 바람 한 점
+없는데?' Everything else frozen: no wind yet, hair and clothes
+motionless. Subtle handheld shake. Cold blue dawn light."
 
-### Prompt S2
-"Start on extreme close-up of her raised index finger completing
-its motion. The instant the finger straightens: three shirts on
-a laundry line snap horizontal simultaneously, dozens of pigeons
-burst upward from a water tank. The camera jolts hard (the
-filmer gasps '어어?!' in Korean) then reframes to the laundry
-line. Her face stays calm, unchanged."
+### Prompt S2 (리테이크 — 마법사 디렉션)
+"Keep the identical camera framing. The instant her palm opens
+fully: a sudden gust — three shirts on the laundry line snap
+horizontal simultaneously, dozens of pigeons burst upward from
+the water tank. She does not react at all: eyes calm, expression
+serene and commanding, arm holding the conjuring pose perfectly
+still. She summoned this wind and finds it entirely expected.
+The camera jolts once (the filmer gasps) then steadies."
 
 ### Prompt S3
 "She slowly turns her head to 3/4 profile. As her head turns,
