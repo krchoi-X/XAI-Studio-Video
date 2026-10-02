@@ -6,7 +6,7 @@
 
 ## 증거 기반 표기
 
-총 77건. 증거의 출처는 항목별로 밝힌다: 프롬프트에서 읽은 것은
+총 79건. 증거의 출처는 항목별로 밝힌다: 프롬프트에서 읽은 것은
 `prompt-derived`, 영상 설명·작성자 댓글에서 읽은 것은 `author-described`,
 실제 영상 프레임에서 본 것은 `frame-derived`, 내가 추론한 것은 `inference`.
 추론은 프로덕션 스펙에 넣지 않는다 — 각 항목의 "관찰 vs 추론" 섹션에만 둔다.
@@ -6887,6 +6887,161 @@ knowledge_update:
   action: strengthen_existing
   notes: "사용자가 직접 포착한 사례 ('시선이나 걷는 방향 모두').
     #75 방향 불변과의 수렴. FRIEND LOCK은 2인 락의 명시형.
+    신규 번호 없음."
+```
+
+---
+
+## 78. X @beginnersblog1 — 9단계 프롬프트 프레임워크 (텍스트 가이드)
+
+**기본 정보**
+- 출처: X @beginnersblog1 (Beginnersblog), 2026-10-02 게시.
+  98 likes, 7 replies. "Most AI video prompts fail before
+  generation even starts"
+- 영상 없음. 텍스트 가이드 + 예시 이미지 1장. #54와 같은
+  텍스트 가이드 카테고리
+- 사용자가 "네가 말하던거 많이 정리되어 있어"라며 직접 공유
+- 프레임워크: INTENT → SUBJECT + ACTION → FRAME → OPTICS →
+  CAMERA → PERFORMANCE + PHYSICS → LIGHT + SPACE → CONTINUITY
+- 증거 기반: text-guide (author-described)
+
+**프로토콜 판정**
+- 외부 이론의 독립 수렴 케이스 (#54·#56과 동형). 코퍼스가
+  유도한 패턴들과의 매핑이 핵심
+- P-06 strengthen: "Prompt visible behavior" ("Man is scared"
+  → "freezes at the doorway, eyes tracking toward the sound").
+  Trace-first의 영어권 독립 서술. 마이크로 퍼포먼스 추가
+  (breathing, hesitation, weight shifts, foot contact)
+- P-30 strengthen: "Every shot exists between two states" —
+  start position → screen direction → costume → props →
+  end position. 샷의 양끝 상태 명세
+- T-18 note: "one motivated camera behavior. The camera should
+  move because the story gains something"
+- T2V vs I2V 구분 ("stop describing the reference image again.
+  Prompt the motion") — 기존 P 없음. P-32 후보로 보류
+  (단일 출처, 두 번째 독립 사례 대기)
+- 신규 T/P 번호 없음
+
+**수렴 매핑**
+- INTENT ("shot has no purpose → camera language will not
+  save it") ↔ 사용자의 Necessity Test + #75 "관통하는 의도"
+- "One shot. One camera setup. One clear beat." ↔ 비트
+  디시플린 (8초 생성에 5개 액션을 쑤셔 넣지 말 것)
+- OPTICS ("Do not add 35mm because it sounds cinematic. Know
+  why it is there.") ↔ 렌즈 의도성
+- PERFORMANCE + PHYSICS ("This is where many AI shots
+  collapse") ↔ 사용자의 embodied difficulty 전략
+
+**코퍼스 기여**
+- 3 (strengthen — P-06, P-30 / note — T-18), 1 (candidate —
+  P-32 T2V/I2V 구분 보류)
+
+**규칙 카드 (붙여넣기용)**
+```
+[샷에게 일을 시켜라 — Hard Lock]
+샷마다 목적을 먼저 정해라. 목적 없는 샷은 카메라 언어로
+못 살린다. 그리고 한 샷에 한 비트만. 8초 생성에 다섯 개
+액션을 쑤셔 넣지 마라.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-18]
+  existing_P: [P-06, P-30]
+  evidence_strength: MEDIUM
+  cross_model_generality: HIGH
+  promotion_target: PROMPT_RECIPE
+  action: strengthen_existing
+  notes: "텍스트 가이드 단일 출처 → evidence MEDIUM. 가치는
+    수렴 자체 (#54·#56과 동형). T2V/I2V는 P-32 후보로 보류,
+    두 번째 독립 사례 나오면 번호 발급. 신규 번호 없음."
+```
+
+---
+
+## 79. X @7998l201 — 남친 시점 가재 먹이기 10초 원테이크 (중국어)
+
+**기본 정보**
+- 출처: X @7998l201 (Ryan), 2026-10-02 게시. 64 likes, 12 replies.
+  "Muse 视频直出，男友视角视频提示词（续集）" (Muse 직접 출력,
+  남친 시점 프롬프트 속편)
+- 포스트 본문에 중국어 프롬프트 전문 공개 (10초 타임스탬프
+  스토리보드 + 环境动态 + 声音 + 限制 섹션)
+- 실측: 10.1초, 720x1280 세로 9:16. 모델: Muse (author-described)
+- 증거 기반: prompt-derived + frame-observed
+
+**한국어 번역 (요지)**
+- 설정: "전편에 이어. 밤 아파트 거실, 진짜 아이폰 생활 스냅.
+  심야 커플의 방탕한 행복 — '드디어 집이다, 오늘 밤은 우리 둘의 것'"
+- 인물: 전편과 동일한 젊은 동양 여성. 그의 오버사이즈 다크
+  티셔츠 + 맨발 + 대충 틀어 올린 머리
+- 0-2s: 그녀가 당신의 손을 잡아끌고 현관에서 거실로. 소파에
+  앉힘. 외卖袋(배달 봉투)가 식탁에
+- 2-5s: 소파에 다리를 꼬고 앉아 배달 개봉 — 샤오룽샤(가재).
+  일회용 장갑 끼고 가재살을 발라 당신의 입에 가져다 댐
+- 5-8s: 당신이 그녀 뺨을 꼬집자 볼을 부풀리고 삐진 척하다
+  웃음 터짐. 까놓은 새우가 상자에 떨어짐. 품에 안기며
+  "벌로" 가재 하나 더 까달라고 손가락으로 콕콕
+- 8-10s: 올려다보며 "以后不许这么晚回来，听见没？" (앞으로
+  이렇게 늦게 들어오면 안 돼, 알았지?). 이마로 당신의 턱을
+  쿵 — 도장 찍듯. 웃음+흔들림 속 종료
+- 촬영: "10초 하나의 연속镜头, 不切镜" (원테이크 무컷).
+  아이폰 기본 카메라, 앉은 남친 시점 눈높이. 스태빌라이저·
+  큰 푸시풀·오빗·슬로모 금지
+
+**프로토콜 판정 (기존 T/P 우선)**
+- 남친 시점 원테이크 속편: 카메라=몸 (앉은 눈높이) + 원테이크로
+  감정을 끊지 않음 + "接上一集" (전편 이어짐) →
+  strengthen (T-25, T-27)
+- 环境动态 (환경 동태) 독립 섹션: 김 오름·비닐 바스락·새우껍질
+  쌓임·소파 꺼짐/복원·옷감 마찰 → note (P-06)
+- 반(反)글래머 네거티브: "不要电影级浅景深、不要商业广告
+  写真感" (영화급 얕은 심도 금지, 광고 사진 느낌 금지) —
+  미적 방향을 네거티브로 지정 → strengthen (P-21)
+- 사운드 설계 (폴리 리스트 + 마지막 대사의 "带笑意的嗔怪语气")는
+  관찰로 기록. 오디오 프롬프트는 DB 범위 밖 (P-31 분리 방침)
+- 신규 T/P 없음
+
+**관찰 (frame-observed)**
+- k_004: 오버사이즈 다크 티셔츠 + 파란 일회용 장갑 끼고 가재
+  까는 중. 따뜻한 거실광
+- k_008: 까놓은 가재살을 카메라(남친) 입에 넣어주는 순간.
+  그녀가 기대며 손가락으로 가리킴 — 친밀감의 육체적 난이도가
+  그대로 렌더됨
+- 사용자의 embodied difficulty 전략과 정면 수렴: 장갑 끼고
+  가재를 까서 남의 입에 넣어주는 것은 "몸이 아는 번거로움" 그
+  자체. 쉬운 장면(쳐다보기·웃기)이 아니라 어려운 접촉이 리얼함을
+  만듦
+
+**Capability evidence**
+- model: Muse direct output (author-described, 2026-10-02) /
+  10s one-take boyfriend POV, crayfish peeling+feeding with
+  gloves, seamless emotion shifts (得意/耍赖/撒娇) /
+  observed success / MEDIUM
+
+**코퍼스 기여**
+- 3 (strengthen — T-25 남친 시점 원테이크 속편, T-27 속편
+  연속성, P-21 반글래머 네거티브 / note — P-06 환경 동태 섹션)
+
+**규칙 카드 (붙여넣기용)**
+```
+[카메라는 몸이다 — Soft Guidance]
+남친 시점에서는 카메라가 몸을 가진다. 앉은 눈높이, 손이
+프레임에 들어오고 상대가 그 손을 잡는다. 원테이크로 감정을
+끊지 마라.
+```
+
+```yaml
+knowledge_update:
+  existing_T: [T-25, T-27]
+  existing_P: [P-06, P-21]
+  evidence_strength: HIGH
+  cross_model_generality: MEDIUM
+  promotion_target: PROMPT_RECIPE
+  action: strengthen_existing
+  notes: "중국어 프롬프트 전문 공개 + 프레임 검증. T-25의
+    #72 신체형 변형을 10초 원테이크 속편으로 확장. 사용자의
+    embodied difficulty 전략과 정면 수렴 (장갑 낀 가재 까기).
     신규 번호 없음."
 ```
 
