@@ -564,25 +564,26 @@ When creating a new video prompt:
 1. Write Director Intent.
 2. Determine identity requirements.
 3. Identify reference evidence and assign reference roles.
-4. Separate Hard Locks, Soft Guidance, and Creative Freedom.
-5. Assign Motion Budget.
-6. Build the Action Skeleton.
-7. For dense action, add Action Grammar, multi-agent interaction rules, and Physics Lock where needed.
-8. Build the Shot Graph from entry states, events, consequences, and exit states.
-9. Define camera behavior, including any deliberately motivated lag/overshoot.
-10. Define subject macro motion.
-11. Define Micro Motion.
-12. Define Ambient Motion Field and Reaction Evidence.
-13. Define visual/light/color behavior.
-14. Define Audio DNA if applicable.
-15. Add hard constraints and known failures.
-16. Compile to the target model through an adapter.
-17. Run the prompt-collision check on subject count, body state, framing, pose, wardrobe, and temporal ordering.
-18. For visible faces, verify one shared gaze target and coherent iris, pupil, eyelid, and catchlight behavior; add environment-derived reflection detail only when the shot scale supports it.
-19. Keep the Master Creative Spec separately from the Runtime Prompt.
-20. Before returning a renderer-ready prompt, persist its lineage as described in **Prompt handoff persistence** below. Do not make the user copy the prompt into a separate record.
-21. After generation, preserve accepted work and revise only the failed responsibility layer when possible.
-22. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
+4. For storyboard-derived video, resolve the shared `video-intent-contract` skill and bind the approved Storyboard Spec revision/hash to an approved Intent Contract revision/hash. Free prompt experiments must not be labeled faithful storyboard execution.
+5. Separate Hard Locks, Soft Guidance, and Creative Freedom. After storyboard approval, narrative action, gaze, direction, blocking, camera movement, omissions and final state are closed unless the contract explicitly allows a change.
+6. Assign Motion Budget.
+7. Build the Action Skeleton.
+8. For dense action, add Action Grammar, multi-agent interaction rules, and Physics Lock where needed.
+9. Build the Shot Graph from entry states, events, consequences, and exit states.
+10. Define camera behavior, including any deliberately motivated lag/overshoot.
+11. Define subject macro motion.
+12. Define Micro Motion.
+13. Define Ambient Motion Field and Reaction Evidence.
+14. Define visual/light/color behavior.
+15. Define Audio DNA if applicable.
+16. Add hard constraints and known failures.
+17. Compile to the target model through an adapter. For contracted work, preserve locked meaning in a structured compiler intermediate and fill only allow-listed creative fields.
+18. Run the Intent Contract structural semantic check, then the prompt-collision check on subject count, body state, framing, pose, wardrobe, and temporal ordering. A storyboard-derived render handoff requires matching contract/intermediate/prompt hashes and a passing check.
+19. For visible faces, verify one shared gaze target and coherent iris, pupil, eyelid, and catchlight behavior; add environment-derived reflection detail only when the shot scale supports it.
+20. Keep the Master Creative Spec, Intent Contract, compiler intermediate and Runtime Prompt as separate artifacts.
+21. Before returning a renderer-ready prompt, persist its lineage as described in **Prompt handoff persistence** below. Do not make the user copy the prompt into a separate record.
+22. After generation, preserve accepted work and revise only the failed responsibility layer when possible. Attribute the failure to storyboard, compiler, renderer or edit.
+23. If the result is unusually strong, evaluate it as a Series Master for controlled variants.
 
 ## Prompt handoff persistence
 
