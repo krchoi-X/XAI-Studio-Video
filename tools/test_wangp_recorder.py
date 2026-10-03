@@ -11,6 +11,23 @@ import wangp_recorder
 
 
 class RecorderTests(unittest.TestCase):
+    def test_session_can_register_an_approved_v2_production_plan(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            session = root / "session"
+            session.mkdir()
+            source = Path(__file__).resolve().parents[1] / "tests" / "fixtures" / "shot-production-plan" / "lia-pack-contract-v2.json"
+            plan = root / "plan.json"
+            plan.write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
+            result = wangp_recorder.write_session(argparse.Namespace(
+                session_dir=str(session), requested_by="codex", executor="local_wangp",
+                engine="WanGP", model="minimax_h3_ref2va_pruned", character_id="ch-lia",
+                title="contract test", user_request=None, source_idea=None, status="planned",
+                session_id="VIDEO-contract-test", production_plan=str(plan),
+            ))
+            self.assertEqual(result["production_plan"]["schema_version"], 2)
+            self.assertEqual(result["production_plan"]["sha256"], wangp_recorder.sha256_file(plan))
+
     def test_prepare_writes_run_before_submission(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

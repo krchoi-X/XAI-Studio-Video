@@ -5,10 +5,13 @@ import json
 import os
 import subprocess
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
+import gpu_runtime
 import wangp_recorder
+import shot_production_plan
 
 
 DEFAULT_WANGP_ROOT = Path(r"D:\AI\WanGP")
@@ -25,6 +28,8 @@ REFERENCE_MODELS: dict[str, dict[str, Any]] = {
 }
 KREA2_EDIT_MODELS = {name for name, spec in REFERENCE_MODELS.items() if spec["engine"] == "krea2"}
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
+TERMINAL_STATES = {"succeeded", "needs_review", "failed", "cancelled", "interrupted", "timed_out"}
+SUCCESS_STATES = {"succeeded", "needs_review"}
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -145,6 +150,49 @@ def _session_character_id(session_dir: Path) -> str | None:
     return None
 
 
+def _registered_production_plan(session_dir: Path, explicit: str | None) -> tuple[Path, str | None] | None:
+    registered: dict[str, Any] | None = None
+    provenance_path = session_dir / "session-provenance.json"
+    if provenance_path.is_file():
+        try:
+            provenance = wangp_recorder.read_json_file(provenance_path)
+        except (OSError, ValueError):
+            provenance = None
+        candidate = provenance.get("production_plan") if isinstance(provenance, dict) else None
+        if isinstance(candidate, dict) and str(candidate.get("path") or "").strip():
+            registered = candidate
+    if explicit:
+        path = Path(explicit).resolve()
+        if registered and path != Path(str(registered["path"])).resolve():
+            raise ValueError("--production-plan does not match the plan registered for this session")
+    elif registered:
+        path = Path(str(registered["path"])).resolve()
+    else:
+        return None
+    if not path.is_file():
+        raise ValueError(f"registered production plan not found: {path}")
+    actual_hash = wangp_recorder.sha256_file(path)
+    expected_hash = str(registered.get("sha256") or "") if registered else ""
+    if expected_hash and actual_hash != expected_hash:
+        raise ValueError(f"registered production plan changed after session registration: {path}")
+    return path, actual_hash
+
+
+def _current_character_contracts(plan: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    import character_manager as cm
+    current = {}
+    for contract in plan.get("character_contracts", []):
+        character_id = contract["character_id"]
+        path = cm.character_record_path(character_id).resolve()
+        record = cm.load(path)
+        current[character_id] = {
+            "record_path": str(path),
+            "character_version": record["version"],
+            "stable_dna_sha256": cm.stable_hash(record),
+        }
+    return current
+
+
 def resolve_character_default_reference(settings: dict[str, Any], session_dir: Path) -> list[dict[str, Any]]:
     """Inject the explicitly selected identity reference for a Ref2VA character session.
 
@@ -228,6 +276,25 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
         # <session>/runs/<run-id> is the layout every producer uses, so the session is the runs-root's parent.
         requested_by = wangp_recorder.normalize_actor(wangp_recorder.session_requester(session_dir))
     executor = args.executor or DEFAULT_EXECUTOR
+    plan_registration = _registered_production_plan(session_dir, getattr(args, "production_plan", None))
+    production_contract = None
+    production_plan_path = None
+    production_plan_sha256 = None
+    if plan_registration:
+        production_plan_path, production_plan_sha256 = plan_registration
+        production_plan = shot_production_plan.load_json(production_plan_path)
+        raw_settings = json.loads(settings_path.read_text(encoding="utf-8"))
+        if not isinstance(raw_settings, dict):
+            raise ValueError("settings file must contain one JSON object")
+        production_contract = shot_production_plan.validate_submission_contract(
+            production_plan,
+            args.prompt_id,
+            prompt,
+            raw_settings,
+            _current_character_contracts(production_plan),
+        )
+        production_contract["plan_path"] = str(production_plan_path)
+        production_contract["plan_sha256"] = production_plan_sha256
     run = wangp_recorder.prepare_run(
         argparse.Namespace(
             runs_root=args.runs_root,
@@ -253,6 +320,10 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
         if effective_settings.get("_xai"):
             record["variation"] = effective_settings["_xai"]
         wangp_recorder.save_run(run_dir, record)
+    if production_contract:
+        record = wangp_recorder.load_run(run_dir)
+        record["production_contract"] = production_contract
+        wangp_recorder.save_run(run_dir, record)
     stdout_path = run_dir / "worker.stdout.log"
     stderr_path = run_dir / "worker.stderr.log"
     command = [
@@ -267,6 +338,10 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     if requested_by:
         # visible on the detached worker's command line for process observers; the record is the source of truth
         command += ["--requested-by", requested_by]
+    if requested_by == "hermes":
+        # The tool call is between Hermes inference turns: its current model can now
+        # leave VRAM and may not return until this worker reaches a terminal state.
+        command += ["--gpu-handoff"]
     creationflags = 0
     popen_kwargs: dict[str, Any] = {}
     if os.name == "nt":
@@ -282,8 +357,26 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     record["local_worker"] = {"pid": process.pid, "command": command, "stdout": str(stdout_path), "stderr": str(stderr_path)}
     wangp_recorder.save_run(run_dir, record)
     wangp_recorder.append_event(run_dir, "starting", local_worker_pid=process.pid)
-    return {"run_id": run["run_id"], "run_dir": str(run_dir), "worker_pid": process.pid, "status": "starting",
-            "requested_by": requested_by, "executor": executor}
+    result = {"run_id": run["run_id"], "run_dir": str(run_dir), "worker_pid": process.pid, "status": "starting",
+              "requested_by": requested_by, "executor": executor}
+    if getattr(args, "wait", False):
+        final = wait_for_terminal(run_dir, timeout_seconds=getattr(args, "wait_timeout", None))
+        result.update({"status": final.get("status"), "run": final,
+                       "ok": final.get("status") in SUCCESS_STATES})
+    return result
+
+
+def wait_for_terminal(run_dir: Path, *, timeout_seconds: float | None = None,
+                      poll_seconds: float = 2, sleep: Any = time.sleep) -> dict[str, Any]:
+    """Keep the caller (notably Hermes) blocked until the renderer has released the GPU."""
+    deadline = time.monotonic() + timeout_seconds if timeout_seconds else None
+    while True:
+        record = wangp_recorder.load_run(run_dir)
+        if record.get("status") in TERMINAL_STATES:
+            return record
+        if deadline is not None and time.monotonic() >= deadline:
+            raise RuntimeError(f"timed out waiting for WanGP run without stopping it: {run_dir}")
+        sleep(poll_seconds)
 
 
 def acquire_lock(path: Path):
@@ -323,8 +416,13 @@ def worker(args: argparse.Namespace) -> dict[str, Any]:
     run_dir = Path(args.run_dir).resolve()
     wangp_root = Path(args.wangp_root).resolve()
     lock = None
+    sleep_guard = gpu_runtime.WindowsSleepGuard()
     try:
         lock = acquire_lock(wangp_root / "outputs" / ".xai-local-worker.lock")
+        sleep_guard.__enter__()
+        handoff = None
+        if args.gpu_handoff:
+            handoff = gpu_runtime.prepare_renderer_gpu()
         sys.path.insert(0, str(wangp_root))
         from shared.api import init
 
@@ -333,6 +431,9 @@ def worker(args: argparse.Namespace) -> dict[str, Any]:
         record = wangp_recorder.load_run(run_dir)
         record["status"] = "running"
         record["provider_job_id"] = f"local-pid-{os.getpid()}"
+        record["power_guard"] = sleep_guard.status
+        if handoff is not None:
+            record["gpu_handoff"] = handoff
         wangp_recorder.save_run(run_dir, record)
         wangp_recorder.append_event(run_dir, "running", provider_job_id=record["provider_job_id"])
         session = init(
@@ -375,6 +476,7 @@ def worker(args: argparse.Namespace) -> dict[str, Any]:
         except Exception:
             raise
     finally:
+        sleep_guard.__exit__(None, None, None)
         if lock is not None:
             lock.close()
 
@@ -413,6 +515,11 @@ def build_parser() -> argparse.ArgumentParser:
     start.add_argument("--requested-by", default=None,
                        help="who asked for this run (grok, claude, codex, hermes, web, user, ...); defaults to $XAI_REQUESTED_BY, else recorded as null")
     start.add_argument("--executor", default=None, help=f"what executes the run (default {DEFAULT_EXECUTOR})")
+    start.add_argument("--production-plan", help="approved schema-2 shot plan; defaults to the session-registered plan")
+    start.add_argument("--wait", action="store_true",
+                       help="block until the run is terminal; Hermes must use this for direct submissions")
+    start.add_argument("--wait-timeout", type=float, default=None, metavar="SECONDS",
+                       help="optional wait limit; omitted means wait until terminal")
     start.set_defaults(handler=submit)
 
     work = sub.add_parser("worker", help=argparse.SUPPRESS)
@@ -423,6 +530,7 @@ def build_parser() -> argparse.ArgumentParser:
     work.add_argument("--profile", required=True)
     work.add_argument("--vram-safety", required=True, type=float)
     work.add_argument("--requested-by", default=None, help=argparse.SUPPRESS)  # informational; run.json is authoritative
+    work.add_argument("--gpu-handoff", action="store_true", help=argparse.SUPPRESS)
     work.set_defaults(handler=worker)
 
     show = sub.add_parser("status")

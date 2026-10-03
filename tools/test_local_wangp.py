@@ -4,6 +4,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import local_wangp
 import character_manager as cm
@@ -134,6 +135,65 @@ class LocalWanGPTests(unittest.TestCase):
             finally:
                 cm.CHARACTERS = original
                 cm.shared_authority_root = original_shared_authority_root
+
+    def test_registered_production_plan_is_immutable_after_session_registration(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            session = root / "session"
+            session.mkdir()
+            plan = root / "plan.json"
+            plan.write_text('{"schema_version": 2}', encoding="utf-8")
+            expected_hash = local_wangp.wangp_recorder.sha256_file(plan)
+            (session / "session-provenance.json").write_text(json.dumps({
+                "production_plan": {"path": str(plan), "sha256": expected_hash}
+            }), encoding="utf-8")
+            resolved = local_wangp._registered_production_plan(session, None)
+            self.assertEqual(resolved, (plan.resolve(), expected_hash))
+            plan.write_text('{"schema_version": 2, "changed": true}', encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "changed after session registration"):
+                local_wangp._registered_production_plan(session, None)
+
+    def test_invalid_v2_contract_stops_before_a_run_is_created(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            session = root / "session"
+            session.mkdir()
+            prompt = session / "pack-A.txt"
+            prompt.write_text("Lia walks on the beach.", encoding="utf-8")
+            settings = session / "pack-A.settings.json"
+            settings.write_text(json.dumps({
+                "model_type": "minimax_h3_ref2va_pruned",
+                "image_refs": ["missing-identity.png", "missing-body.png"],
+            }), encoding="utf-8")
+            source = Path(__file__).resolve().parents[1] / "tests" / "fixtures" / "shot-production-plan" / "lia-pack-contract-v2.json"
+            plan_path = session / "shot-production-plan-v2.json"
+            plan_path.write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
+            (session / "session-provenance.json").write_text(json.dumps({
+                "requested_by": "hermes",
+                "production_plan": {
+                    "path": str(plan_path),
+                    "sha256": local_wangp.wangp_recorder.sha256_file(plan_path),
+                },
+            }), encoding="utf-8")
+            fake_python = root / "python.exe"
+            fake_python.write_bytes(b"")
+            plan = local_wangp.shot_production_plan.load_json(plan_path)
+            contract = plan["character_contracts"][0]
+            current = {"ch-lia": {
+                "record_path": contract["record_path"],
+                "character_version": contract["character_version"],
+                "stable_dna_sha256": contract["stable_dna_sha256"],
+            }}
+            args = type("Args", (), {
+                "wangp_root": str(root), "wangp_python": str(fake_python),
+                "prompt_file": str(prompt), "settings_file": str(settings),
+                "runs_root": str(session / "runs"), "requested_by": None,
+                "executor": None, "production_plan": None, "prompt_id": "pack-A",
+            })()
+            with patch.object(local_wangp, "_current_character_contracts", return_value=current):
+                with self.assertRaisesRegex(ValueError, "mandatory prompt anchors are missing"):
+                    local_wangp.submit(args)
+            self.assertFalse((session / "runs").exists())
 
 
 if __name__ == "__main__":

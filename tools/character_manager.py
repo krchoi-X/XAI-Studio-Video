@@ -293,25 +293,19 @@ def free_local_model_vram() -> str:
     minutes and a render usually starts seconds after the prompt was compiled, while the
     model that compiled it is still warm.
 
-    Only Ollama is asked. Hermes runs its llama.cpp models as workers under a router that
-    unloads them itself, and the router exposes no unload route to call; what is left
-    resident there is the supervisor, which holds nothing.
+    Both Ollama and Hermes's llama.cpp router are asked.  The latter exposes its loaded
+    workers through ``GET /models`` and releases one through ``POST /models/unload``.
+    The ephemeral router key is read from Hermes's runtime descriptor and is never logged.
     """
-    try:
-        with urllib.request.urlopen(OLLAMA_PS, timeout=10) as response:
-            loaded = json.loads(response.read()).get("models", [])
-    except (urllib.error.URLError, OSError, ValueError):
-        return "ollama not reachable"
-    if not loaded:
-        return "nothing loaded"
-    for model in loaded:
-        payload = json.dumps({"model": model["name"], "keep_alive": 0}).encode()
-        request = urllib.request.Request(OLLAMA_GENERATE, data=payload, headers={"Content-Type": "application/json"})
-        try:
-            urllib.request.urlopen(request, timeout=60).read()
-        except (urllib.error.URLError, OSError):
-            pass
-    return "unloaded " + ", ".join(str(model["name"]) for model in loaded)
+    import gpu_runtime
+
+    report = gpu_runtime.release_local_llms()
+    unloaded = [*report["hermes_unloaded"], *report["ollama_unloaded"]]
+    if unloaded:
+        return "unloaded " + ", ".join(unloaded)
+    if report["errors"]:
+        return "no loaded model found; " + "; ".join(report["errors"])
+    return "nothing loaded"
 
 
 def _gateway_chat(config: tuple[str, str, str | None], prompt: str, model: str,

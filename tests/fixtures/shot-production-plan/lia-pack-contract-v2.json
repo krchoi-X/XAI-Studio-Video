@@ -1,0 +1,164 @@
+{
+  "schema_version": 2,
+  "plan_id": "plan_lia_pack_contract_v2",
+  "storyboard_id": "sb_lia_pack_contract_v2",
+  "status": "approved",
+  "character_contracts": [
+    {
+      "character_id": "ch-lia",
+      "record_path": "D:/authority/characters/ch-lia/character.json",
+      "character_version": 3,
+      "stable_dna_sha256": "420c615ac2852edf5a354768c81d541be911ff36c801db6d80a57df78e5f0d76",
+      "mandatory_prompt_terms": ["soft full bangs", "RIGHT wrist", "three thin red-and-blue"]
+    }
+  ],
+  "reference_policy": {
+    "native_landscape_roles": ["body_state", "pose_reference", "blocking_reference", "start_keyframe", "end_keyframe", "previous_chunk_last_frame", "previous_shot_last_frame"],
+    "require_verified_laterality": true,
+    "continuity_boundary_required": true
+  },
+  "shots": [
+    {
+      "shot_id": "shot_lia_walk",
+      "purpose": "Move from a stable beach stand into one continuous walk without a sit reset.",
+      "reason_for_existence": "Preserve the accepted identity and state while testing a causal movement handoff.",
+      "take_mode": "virtual_oner",
+      "duration_intent": {"kind": "extended_hold", "estimated_seconds": 12.0},
+      "camera": {
+        "framing": "native landscape medium-wide",
+        "support": "placed beach camera",
+        "movement": "restrained parallel tracking",
+        "axis": "ocean remains screen-right"
+      },
+      "entry_state": {
+        "body_pose": "standing at the waterline",
+        "left_hand": "left hand relaxed and bare",
+        "right_hand": "right hand relaxed with three thin bracelets",
+        "gaze": "toward the sea",
+        "screen_position": "center-left medium-wide",
+        "props": {},
+        "wardrobe": "deep teal two-piece swimsuit",
+        "environment": "same bright beach with ocean screen-right",
+        "camera_relation": "full body readable in a native landscape frame"
+      },
+      "beats": [
+        {
+          "beat_id": "beat_stand",
+          "action": "Hold the standing beach state for one beat.",
+          "state_change": "No pose reset.",
+          "attention": "Identity and right-wrist bracelet.",
+          "keyframe_ids": ["kf_stand"]
+        },
+        {
+          "beat_id": "beat_walk",
+          "action": "Begin one gentle walk along the shore.",
+          "state_change": "Standing becomes a continuous walk without sitting.",
+          "attention": "Causal body movement and ocean axis.",
+          "keyframe_ids": ["kf_walk"]
+        }
+      ],
+      "exit_state": {
+        "body_pose": "mid-walk at the waterline",
+        "left_hand": "left hand relaxed and bare",
+        "right_hand": "right hand swinging naturally with three thin bracelets",
+        "gaze": "forward along the shore",
+        "screen_position": "center medium-wide",
+        "props": {},
+        "wardrobe": "deep teal two-piece swimsuit",
+        "environment": "same bright beach with ocean screen-right",
+        "camera_relation": "full body readable in a native landscape frame"
+      },
+      "keyframes": [
+        {
+          "keyframe_id": "kf_stand",
+          "beat_id": "beat_stand",
+          "role": "start",
+          "description": "Lia stands full-body with the right wrist readable."
+        },
+        {
+          "keyframe_id": "kf_walk",
+          "beat_id": "beat_walk",
+          "role": "end",
+          "description": "Lia ends mid-walk without returning to sitting."
+        }
+      ],
+      "render_chunks": [
+        {
+          "chunk_id": "chunk_lia_stand",
+          "prompt_id": "pack-A",
+          "character_ids": ["ch-lia"],
+          "beat_ids": ["beat_stand"],
+          "route": "h3_ref2va",
+          "references": [
+            {
+              "role": "identity_master",
+              "asset": "D:/refs/lia-face.png",
+              "character_id": "ch-lia",
+              "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "anatomical_laterality": "not_applicable",
+              "laterality_sensitive": false,
+              "composition": "native_portrait",
+              "state_tags": ["identity"],
+              "verified_by": "user"
+            },
+            {
+              "role": "body_state",
+              "asset": "D:/refs/lia-stand-landscape.png",
+              "character_id": "ch-lia",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+              "anatomical_laterality": "subject_right",
+              "laterality_sensitive": true,
+              "composition": "native_landscape",
+              "state_tags": ["standing", "right-wrist-bracelets"],
+              "verified_by": "user"
+            }
+          ],
+          "forbidden_state_tags": ["sitting"],
+          "creates_edit_cut": false
+        },
+        {
+          "chunk_id": "chunk_lia_walk",
+          "prompt_id": "pack-B",
+          "character_ids": ["ch-lia"],
+          "beat_ids": ["beat_walk"],
+          "route": "h3_ref2va",
+          "references": [
+            {
+              "role": "identity_master",
+              "asset": "D:/refs/lia-face.png",
+              "character_id": "ch-lia",
+              "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "anatomical_laterality": "not_applicable",
+              "laterality_sensitive": false,
+              "composition": "native_portrait",
+              "state_tags": ["identity"],
+              "verified_by": "user"
+            },
+            {
+              "role": "previous_chunk_last_frame",
+              "asset": "D:/refs/pack-A-last.png",
+              "character_id": "ch-lia",
+              "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "anatomical_laterality": "subject_right",
+              "laterality_sensitive": true,
+              "composition": "native_landscape",
+              "state_tags": ["standing", "right-wrist-bracelets"],
+              "verified_by": "user"
+            }
+          ],
+          "forbidden_state_tags": ["sitting"],
+          "creates_edit_cut": false
+        }
+      ],
+      "transition_to_next": {
+        "next_shot_id": null,
+        "relationship": "final",
+        "mode": "none",
+        "carry_fields": [],
+        "allowed_changes": []
+      },
+      "video_feasibility": "medium"
+    }
+  ],
+  "warnings": []
+}

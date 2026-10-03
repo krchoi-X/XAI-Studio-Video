@@ -213,6 +213,28 @@ def write_session(args: argparse.Namespace) -> dict[str, Any]:
     for key, value in supplied.items():
         if value is not None:
             record[key] = value
+    production_plan = getattr(args, "production_plan", None)
+    if production_plan is not None:
+        plan_path = Path(production_plan).resolve()
+        if not plan_path.is_file():
+            raise ValueError(f"production plan not found: {plan_path}")
+        import shot_production_plan
+        plan = shot_production_plan.load_json(plan_path)
+        if plan.get("schema_version") != 2:
+            raise ValueError("registered production plan must use schema_version 2")
+        schema = shot_production_plan.load_json(shot_production_plan.schema_path_for(plan))
+        validation = shot_production_plan.validate_plan(plan, schema)
+        if not validation["ok"]:
+            first = validation["errors"][0]
+            raise ValueError(f"invalid production plan: {first['code']} at {first['path']}: {first['message']}")
+        if plan.get("status") != "approved":
+            raise ValueError("registered production plan must have status=approved")
+        record["production_plan"] = {
+            "path": str(plan_path),
+            "sha256": sha256_file(plan_path),
+            "schema_version": plan["schema_version"],
+            "plan_id": plan["plan_id"],
+        }
     record.setdefault("created_at", now())
     record["updated_at"] = now()
     write_json(path, record)
@@ -346,6 +368,7 @@ def build_parser() -> argparse.ArgumentParser:
     session.add_argument("--source-idea")
     session.add_argument("--status", help="prepared | running | needs_review | completed | failed")
     session.add_argument("--session-id")
+    session.add_argument("--production-plan", help="approved schema-2 shot production plan enforced before each local submission")
     session.set_defaults(handler=write_session)
 
     state = sub.add_parser("state")

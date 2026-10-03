@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 import character_manager as cm
+import gpu_runtime
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_QUEUE = Path(r"D:\AI_Studio\workspace\hermes-night-batches")
@@ -362,12 +363,22 @@ def run(root: Path, sync_url: str, *, run_command: Any = subprocess.run, sleep: 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__); sub = parser.add_subparsers(dest="command", required=True)
-    make = sub.add_parser("create"); make.add_argument("--plan-file", type=Path, required=True); make.add_argument("--queue-root", type=Path, default=DEFAULT_QUEUE); make.add_argument("--no-start", action="store_true")
+    make = sub.add_parser("create"); make.add_argument("--plan-file", type=Path, required=True); make.add_argument("--queue-root", type=Path, default=DEFAULT_QUEUE)
+    start_mode = make.add_mutually_exclusive_group(); start_mode.add_argument("--no-start", action="store_true"); start_mode.add_argument("--wait", action="store_true", help="run the durable batch in this process so Hermes stays off the GPU until completion")
+    make.add_argument("--sync-url", default="http://127.0.0.1:8787/api/sync")
     work = sub.add_parser("run"); work.add_argument("--batch-dir", type=Path, required=True); work.add_argument("--sync-url", default="http://127.0.0.1:8787/api/sync")
     args = parser.parse_args()
     try:
-        if args.command == "create": print(json.dumps({"batch_dir": str(create(args.plan_file.resolve(), args.queue_root.resolve(), not args.no_start)), "status": "queued"}, ensure_ascii=False, indent=2)); return 0
-        return run(args.batch_dir.resolve(), args.sync_url)
+        if args.command == "create":
+            root = create(args.plan_file.resolve(), args.queue_root.resolve(), not args.no_start and not args.wait)
+            if args.wait:
+                with gpu_runtime.WindowsSleepGuard():
+                    result = run(root, args.sync_url)
+                print(json.dumps({"batch_dir": str(root), "status": load(root / "status.json")["status"]}, ensure_ascii=False, indent=2))
+                return result
+            print(json.dumps({"batch_dir": str(root), "status": "queued"}, ensure_ascii=False, indent=2)); return 0
+        with gpu_runtime.WindowsSleepGuard():
+            return run(args.batch_dir.resolve(), args.sync_url)
     except (cm.CharacterError, OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr); return 2
 

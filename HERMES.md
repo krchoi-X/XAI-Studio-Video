@@ -11,6 +11,8 @@ For production, read [artifact and review contract](docs/artifact-and-review-con
 - Local night batches: Character Manager skill and `tools/hermes_night_batch.py`.
 - Explicit external engine: preserve it and use the shared external import route; do not substitute the local default.
 
+For routine credit-sensitive character image/video work, follow the [Grok/Hermes production playbook](docs/grok-hermes-production-playbook.md), including its still-image DNA rule. “Transform this image” requires both the exact hash-bound source and canonical Stable DNA; wardrobe/pose text is a Scene Delta, never the identity definition. When a run exposes an identity, reference, continuity or recording problem that may need Codex/Claude review, create a durable report using the [production incident guide](docs/production-incident-and-agent-consultation.md) and its template before spending more credits.
+
 ## Where WanGP run records must be written
 
 A run is only visible by name in the Control Tower when it sits inside a session directory. Do **not** pass the
@@ -23,14 +25,29 @@ Put the session under the character it belongs to, register it once, then submit
 $session = "D:\codex\XAI-studio\characters\ch-jun\02_generations\VIDEO-20260909-154245-jun-cafe-call"
 python tools/wangp_recorder.py session --session-dir $session --requested-by hermes `
   --engine WanGP --model minimax_h3_ref2va_pruned --character-id ch-jun `
-  --title "Jun cafe call" --user-request "<operator request, verbatim>" --status running
+  --title "Jun cafe call" --user-request "<operator request, verbatim>" --status running `
+  --production-plan "$session\shot-production-plan-v2.json"
 
 python tools/local_wangp.py submit --runs-root "$session\runs" `
   --prompt-file "$session\shot-01.txt" --settings-file "$session\shot-01.settings.json" `
   --project-id jun-cafe-call --prompt-id shot-01 `
   --output-dir "D:\AI_Studio\library\characters\ch-jun\videos\VIDEO-20260909-154245-jun-cafe-call" `
-  --requested-by hermes
+  --requested-by hermes --wait
 ```
+
+`--wait` is mandatory when Hermes submits directly. The worker unloads every loaded Hermes llama.cpp model and
+Ollama model, verifies at least 6144 MiB of free VRAM with low GPU utilization, suppresses Windows sleep for the
+renderer lifetime, and records that handoff in `run.json`. The command does not return to Hermes until the run is
+terminal, so Hermes cannot reload Huihui/Meromero in the middle of a WanGP render. If unload or telemetry
+verification fails, rendering stops before WanGP initialization. For a night batch use
+`python tools/hermes_night_batch.py create --plan-file PLAN.json --wait`; the foreground call covers every queued
+item. Do not use the default detached start for a Hermes-hosted run, because Hermes would be free to reload its LLM.
+
+For new character-video and multi-pack sessions, validate and register an approved schema-v2 production plan. Its
+chunk `prompt_id` must match the submit command, and its ordered reference paths must exactly match the settings.
+This freezes Stable DNA and mandatory prompt anchors and blocks unverified laterality, portrait-padded body/keyframe
+roles, stale earlier-state references and missing boundary frames before a GPU worker starts. Existing unregistered
+sessions continue to use the legacy character-default behavior described below.
 
 `--requested-by hermes` is already being recorded correctly; keep it. Close the session with the same `session`
 command and `--status completed` (or `failed`). Full rules: [WanGP recorder](docs/wangp-recorder.md#recording-a-production-session).

@@ -62,8 +62,14 @@ python tools/wangp_recorder.py session `
   --engine WanGP --model minimax_h3_ref2va_pruned `
   --character-id ch-lia --title "Lia micro-vlog: sundress to shift to cat" `
   --user-request "<the operator's request, verbatim>" `
+  --production-plan <session>/shot-production-plan-v2.json `
   --status running
 ```
+
+`--production-plan` is the opt-in safety contract for new character-video and multi-pack work. It accepts only an
+approved schema-v2 plan. The session stores the plan path and SHA-256, and a later submission fails before a run
+directory or GPU worker is created if the plan file changed. Sessions without this option retain the legacy v1
+behavior.
 
 That writes `<session>/session-provenance.json`:
 
@@ -119,6 +125,14 @@ Rules:
   durable `character.json.reference_defaults.identity` record. It records the path, hash, byte count and
   `character-default` basis in `run.json`. A non-empty settings value remains authoritative; the tool never selects a
   newest file or treats an unreviewed image as approved.
+- When a schema-v2 production plan is registered, its stricter rules take precedence: every `image_refs` value must
+  exactly match the ordered references for that `prompt_id`. The final prompt must contain every frozen mandatory
+  identity term; the current character record path/version/Stable-DNA hash must still match; file hashes, declared
+  laterality, native-landscape roles, forbidden state tags and required pack/shot boundary frames must pass. This
+  check runs before the recorder creates the run. The accepted contract is copied to `run.json.production_contract`.
+- The laterality declaration is a review record, not computer vision. `verified_by` must name the reviewer who
+  inspected the pixels. Width/height is checked from the file, but semantic left/right and visual padding still need
+  human review.
 
 ## Commands
 
@@ -185,7 +199,17 @@ python tools/local_wangp.py submit `
   --project-id my-film --prompt-id shot-01 --requested-by hermes
 ```
 
-The command returns immediately with a run directory and worker PID. The worker
+When Hermes is the caller, add `--wait`. A Hermes-attributed worker automatically unloads models resident in both
+the Hermes llama.cpp router and Ollama, verifies free VRAM before WanGP initialization, and keeps Windows awake while
+the renderer is alive. Blocking is part of the safety contract: it prevents Hermes from beginning another inference
+turn and reloading the planning model while the renderer owns the GPU.
+
+For an enrolled schema-v2 session, `--prompt-id` must equal exactly one chunk's `prompt_id`; the plan is inherited
+from `session-provenance.json`. `--production-plan <same-plan-path>` may be supplied explicitly as an additional
+match check. Because the approved reference packet is exact, do not leave `image_refs` empty and rely on the legacy
+character-default injection for these sessions.
+
+Without `--wait`, the command returns immediately with a run directory and worker PID. The worker
 continues independently of a browser. Check it later with:
 
 ```powershell
