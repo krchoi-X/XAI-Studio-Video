@@ -1,0 +1,292 @@
+[2026-09-16 15:25:33 KST] SETUP session=VLOG-20260916-152533-noa-reika-poolvilla-actor
+[2026-09-16 15:25:33 KST] studio=D:\codex\XAI-studio\characters\ch-shindo-noa\02_generations\VLOG-20260916-152533-noa-reika-poolvilla-actor
+[2026-09-16 15:25:33 KST] library=D:\AI_Studio\library\characters\ch-shindo-noa\generations\VLOG-20260916-152533-noa-reika-poolvilla-actor
+[2026-09-16 15:25:33 KST] edit_target=D:\AI_Studio\library\characters\ch-shindo-noa\generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\edit\noa-reika-poolvilla-actor.mp4
+[2026-09-16 15:25:33 KST] wangp_recorder start rc=0 out={
+  "session_provenance": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\session-provenance.json",
+  "schema_version": 1,
+  "session_id": "VLOG-20260916-152533-noa-reika-poolvilla-actor",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor",
+  "requeste
+[2026-09-16 15:25:53 KST] SUBMIT a1-meet length=241 sw=481 refs=3
+[2026-09-16 15:25:53 KST] submit a1-meet rc=0 {
+  "run_id": "run-20260916-152553-4549d8b1",
+  "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\runs\\run-20260916-152553-4549d8b1",
+  "worker_pid": 57528,
+  "status": "starting",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker"
+}
+[2026-09-16 15:25:53 KST] SHOT1_SUBMITTED run_id=run-20260916-152553-4549d8b1
+[2026-09-16 15:25:53 KST] wait run-20260916-152553-4549d8b1 status=queued
+[2026-09-16 15:26:38 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:27:23 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:28:08 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:28:53 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:29:38 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:30:23 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:31:08 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:31:53 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:32:38 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:33:23 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:34:08 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:34:53 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:35:38 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:36:23 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:37:08 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:37:53 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:38:38 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:39:23 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:40:08 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:40:53 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:41:38 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:42:23 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:43:08 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:43:53 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:44:38 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:45:23 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:46:08 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:46:53 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:47:38 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:48:23 KST] wait run-20260916-152553-4549d8b1 status=running
+[2026-09-16 15:49:08 KST] wait run-20260916-152553-4549d8b1 status=needs_review
+[2026-09-16 15:49:08 KST] DONE a1-meet artifact=D:\AI_Studio\library\characters\ch-shindo-noa\generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\outputs\minimax-h3\run-20260916-152553-4549d8b1.mp4
+[2026-09-16 15:49:09 KST] CONTI extracted D:\codex\XAI-studio\characters\ch-shindo-noa\02_generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\continuity\a1-meet-last.png
+[2026-09-16 15:49:20 KST] SUBMIT a2-cabin length=241 sw=481 refs=4
+[2026-09-16 15:49:20 KST] submit a2-cabin rc=0 {
+  "run_id": "run-20260916-154920-bb0253ae",
+  "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\runs\\run-20260916-154920-bb0253ae",
+  "worker_pid": 41436,
+  "status": "starting",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker"
+}
+[2026-09-16 15:49:20 KST] SUBMITTED a2-cabin run-20260916-154920-bb0253ae
+[2026-09-16 15:49:20 KST] wait run-20260916-154920-bb0253ae status=queued
+[2026-09-16 15:50:05 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:50:50 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:51:35 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:52:20 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:53:05 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:53:50 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:54:35 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:55:20 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:56:05 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:56:50 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:57:35 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:58:20 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:59:05 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 15:59:50 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:00:35 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:01:20 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:02:05 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:02:50 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:03:35 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:04:20 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:05:05 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:05:50 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:06:35 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:07:20 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:08:05 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:08:50 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:09:35 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:10:20 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:11:05 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:11:50 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:12:35 KST] wait run-20260916-154920-bb0253ae status=running
+[2026-09-16 16:13:20 KST] wait run-20260916-154920-bb0253ae status=needs_review
+[2026-09-16 16:13:20 KST] DONE a2-cabin artifact=D:\AI_Studio\library\characters\ch-shindo-noa\generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\outputs\minimax-h3\run-20260916-154920-bb0253ae.mp4
+[2026-09-16 16:13:21 KST] CONTI extracted D:\codex\XAI-studio\characters\ch-shindo-noa\02_generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\continuity\a2-cabin-last.png
+[2026-09-16 16:13:32 KST] SUBMIT a3-arrive length=193 sw=386 refs=4
+[2026-09-16 16:13:32 KST] submit a3-arrive rc=0 {
+  "run_id": "run-20260916-161332-70fd7056",
+  "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\runs\\run-20260916-161332-70fd7056",
+  "worker_pid": 55380,
+  "status": "starting",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker"
+}
+[2026-09-16 16:13:32 KST] SUBMITTED a3-arrive run-20260916-161332-70fd7056
+[2026-09-16 16:13:32 KST] wait run-20260916-161332-70fd7056 status=queued
+[2026-09-16 16:14:17 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:15:02 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:15:47 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:16:32 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:17:17 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:18:02 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:18:47 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:19:32 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:20:17 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:21:02 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:21:47 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:22:32 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:23:17 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:24:02 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:24:47 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:25:32 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:26:17 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:27:02 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:27:47 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:28:32 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:29:17 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:30:02 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:30:47 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:31:32 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:32:17 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:33:02 KST] wait run-20260916-161332-70fd7056 status=running
+[2026-09-16 16:33:47 KST] wait run-20260916-161332-70fd7056 status=needs_review
+[2026-09-16 16:33:47 KST] DONE a3-arrive artifact=D:\AI_Studio\library\characters\ch-shindo-noa\generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\outputs\minimax-h3\run-20260916-161332-70fd7056.mp4
+[2026-09-16 16:33:47 KST] CONTI extracted D:\codex\XAI-studio\characters\ch-shindo-noa\02_generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\continuity\a3-arrive-last.png
+[2026-09-16 16:33:58 KST] SUBMIT a4-pool length=481 sw=481 refs=4
+[2026-09-16 16:33:58 KST] submit a4-pool rc=0 {
+  "run_id": "run-20260916-163358-9b78b253",
+  "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\runs\\run-20260916-163358-9b78b253",
+  "worker_pid": 53816,
+  "status": "starting",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker"
+}
+[2026-09-16 16:33:58 KST] SUBMITTED a4-pool run-20260916-163358-9b78b253
+[2026-09-16 16:33:58 KST] wait run-20260916-163358-9b78b253 status=queued
+[2026-09-16 16:34:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:35:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:36:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:36:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:37:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:38:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:39:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:39:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:40:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:41:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:42:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:42:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:43:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:44:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:45:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:45:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:46:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:47:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:48:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:48:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:49:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:50:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:51:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:51:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:52:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:53:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:54:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:54:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:55:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:56:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:57:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:57:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:58:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 16:59:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:00:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:00:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:01:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:02:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:03:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:03:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:04:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:05:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:06:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:06:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:07:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:08:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:09:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:09:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:10:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:11:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:12:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:12:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:13:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:14:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:15:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:15:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:16:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:17:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:18:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:18:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:19:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:20:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:21:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:21:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:22:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:23:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:24:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:24:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:25:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:26:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:27:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:27:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:28:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:29:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:30:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:30:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:31:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:32:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:33:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:33:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:34:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:35:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:36:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:36:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:37:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:38:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:39:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:39:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:40:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:41:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:42:13 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:42:58 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:43:43 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:44:28 KST] wait run-20260916-163358-9b78b253 status=running
+[2026-09-16 17:45:13 KST] wait run-20260916-163358-9b78b253 status=needs_review
+[2026-09-16 17:45:13 KST] DONE a4-pool artifact=D:\AI_Studio\library\characters\ch-shindo-noa\generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\outputs\minimax-h3\run-20260916-163358-9b78b253.mp4
+[2026-09-16 17:45:13 KST] CONTI extracted D:\codex\XAI-studio\characters\ch-shindo-noa\02_generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\continuity\a4-pool-last.png
+[2026-09-16 17:45:28 KST] SUBMIT a5-bags length=193 sw=386 refs=4
+[2026-09-16 17:45:28 KST] submit a5-bags rc=0 {
+  "run_id": "run-20260916-174528-50e93b2b",
+  "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\runs\\run-20260916-174528-50e93b2b",
+  "worker_pid": 45400,
+  "status": "starting",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker"
+}
+[2026-09-16 17:45:28 KST] SUBMITTED a5-bags run-20260916-174528-50e93b2b
+[2026-09-16 17:45:28 KST] wait run-20260916-174528-50e93b2b status=queued
+[2026-09-16 17:46:13 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:46:58 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:47:43 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:48:28 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:49:13 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:49:58 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:50:43 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:51:28 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:52:13 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:52:58 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:53:43 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:54:28 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:55:13 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:55:58 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:56:43 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:57:29 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:58:14 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:58:59 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 17:59:44 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 18:00:29 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 18:01:14 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 18:01:59 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 18:02:44 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 18:03:29 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 18:04:14 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 18:04:59 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 18:05:44 KST] wait run-20260916-174528-50e93b2b status=running
+[2026-09-16 18:06:29 KST] wait run-20260916-174528-50e93b2b status=needs_review
+[2026-09-16 18:06:29 KST] DONE a5-bags artifact=D:\AI_Studio\library\characters\ch-shindo-noa\generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\outputs\minimax-h3\run-20260916-174528-50e93b2b.mp4
+[2026-09-16 18:06:29 KST] STITCH ok path=D:\AI_Studio\library\characters\ch-shindo-noa\generations\VLOG-20260916-152533-noa-reika-poolvilla-actor\edit\noa-reika-poolvilla-actor.mp4 size=71083252 duration_sec=54.907000
+[2026-09-16 18:06:29 KST] RUN_IDS run-20260916-152553-4549d8b1 run-20260916-154920-bb0253ae run-20260916-161332-70fd7056 run-20260916-163358-9b78b253 run-20260916-174528-50e93b2b
+[2026-09-16 18:06:29 KST] PUBLISH=no
+[2026-09-16 18:06:29 KST] wangp_recorder completed rc=0
+[2026-09-16 18:06:29 KST] PIPELINE_COMPLETE

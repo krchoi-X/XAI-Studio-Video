@@ -1,0 +1,17 @@
+{
+  "session": "MART-20260914-noa21-chained-vlog",
+  "updated_at": "2026-09-15T08:57:29+09:00",
+  "results": [
+    {
+      "shot": "v3-r5-cooking",
+      "status": "needs_review",
+      "run_id": "run-20260915-083949-10820aca",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\MART-20260914-noa21-chained-vlog\\runs\\run-20260915-083949-10820aca",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\MART-20260914-noa21-chained-vlog\\outputs\\minimax-h3\\run-20260915-083949-10820aca.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "run_id": "run-20260916-110839-b2b7514d",
+  "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-101900-noa-reika-poolvilla\\runs\\run-20260916-110839-b2b7514d",
+  "worker_pid": 14444,
+  "status": "starting",
+  "requested_by": "grok",
+  "executor": "local-wangp-worker"
+}

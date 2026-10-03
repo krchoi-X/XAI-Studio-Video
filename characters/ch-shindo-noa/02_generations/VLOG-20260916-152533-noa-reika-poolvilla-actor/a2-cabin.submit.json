@@ -1,0 +1,8 @@
+{
+  "shot": "a2-cabin",
+  "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\runs\\run-20260916-154920-bb0253ae",
+  "run_id": "run-20260916-154920-bb0253ae",
+  "submitted_at": "2026-09-16 15:49:20 KST",
+  "rc": 0,
+  "stdout_tail": "{\n  \"run_id\": \"run-20260916-154920-bb0253ae\",\n  \"run_dir\": \"D:\\\\codex\\\\XAI-studio\\\\characters\\\\ch-shindo-noa\\\\02_generations\\\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\\\runs\\\\run-20260916-154920-bb0253ae\",\n  \"worker_pid\": 41436,\n  \"status\": \"starting\",\n  \"requested_by\": \"grok\",\n  \"executor\": \"local-wangp-worker\"\n}\n\n"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "session_id": "VLOG-20260916-152533-noa-reika-poolvilla-actor",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor",
+  "requested_by": "grok",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa+Reika poolvilla Actor from storyboard",
+  "user_request_verbatim": "스토리보드→영상 고고",
+  "status": "completed",
+  "created_at": "2026-09-16T15:25:33+09:00",
+  "updated_at": "2026-09-16T18:06:29+09:00"
+}

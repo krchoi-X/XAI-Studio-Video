@@ -1,0 +1,6 @@
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-work-client-boss/outputs/minimax-h3/run-20260916-021034-4be0d89f.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-work-client-boss/outputs/minimax-h3/run-20260916-022249-67a207be.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-work-client-boss/outputs/minimax-h3/run-20260916-023935-f70179b1.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-work-client-boss/outputs/minimax-h3/run-20260916-025151-60970cbe.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-work-client-boss/outputs/minimax-h3/run-20260916-030408-b465a1e7.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-work-client-boss/outputs/minimax-h3/run-20260916-032054-27a047c7.mp4'

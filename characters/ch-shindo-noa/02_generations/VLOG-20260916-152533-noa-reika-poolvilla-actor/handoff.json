@@ -1,0 +1,98 @@
+{
+  "project_id": "VLOG-20260916-152533-noa-reika-poolvilla-actor",
+  "status": "needs_review",
+  "target_renderer": "local-wangp",
+  "model": "minimax_h3_ref2va_pruned",
+  "created_at": "2026-09-16T15:25:33.686127+09:00",
+  "source_idea": "스토리보드→영상 고고 / Actor from storyboard A1–A5v3",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor",
+  "library_dir": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor",
+  "runs_root": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\runs",
+  "output_dir": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\outputs\\minimax-h3",
+  "edit_path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\edit\\noa-reika-poolvilla-actor.mp4",
+  "publish": false,
+  "requested_by": "grok",
+  "prompts": [
+    {
+      "prompt_id": "a1-meet",
+      "role": "LS",
+      "seconds": 10,
+      "video_length": 241,
+      "panel": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-140158-shindo-noa-storyboard-still-panel-a1-multi\\outputs\\krea2\\run-20260916-140158-a904e796.jpg",
+      "wardrobe": "dressed",
+      "continuity_from": null,
+      "handoff_to": "a2-cabin"
+    },
+    {
+      "prompt_id": "a2-cabin",
+      "role": "MCU",
+      "seconds": 10,
+      "video_length": 241,
+      "panel": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-141154-shindo-noa-storyboard-still-panel-a2-multi\\outputs\\krea2\\run-20260916-141154-f56b89b3.jpg",
+      "wardrobe": "dressed",
+      "continuity_from": "a1-meet",
+      "handoff_to": "a3-arrive"
+    },
+    {
+      "prompt_id": "a3-arrive",
+      "role": "MS",
+      "seconds": 8,
+      "video_length": 193,
+      "panel": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-141710-shindo-noa-storyboard-still-panel-a3-multi\\outputs\\krea2\\run-20260916-142112-580e551b.jpg",
+      "wardrobe": "dressed",
+      "continuity_from": "a2-cabin",
+      "handoff_to": "a4-pool"
+    },
+    {
+      "prompt_id": "a4-pool",
+      "role": "LT",
+      "seconds": 20,
+      "video_length": 481,
+      "panel": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-142342-shindo-noa-storyboard-still-panel-a4-long\\outputs\\krea2\\run-20260916-142342-6a12ecea.jpg",
+      "wardrobe": "nude",
+      "continuity_from": "a3-arrive",
+      "handoff_to": "a5-bags"
+    },
+    {
+      "prompt_id": "a5-bags",
+      "role": "MS",
+      "seconds": 8,
+      "video_length": 193,
+      "panel": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-151105-shindo-noa-storyboard-still-panel-a5-v3\\outputs\\krea2\\run-20260916-151105-95bb4ca4.jpg",
+      "wardrobe": "nude",
+      "continuity_from": "a4-pool",
+      "handoff_to": null
+    }
+  ],
+  "panels": {
+    "a1-meet": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-140158-shindo-noa-storyboard-still-panel-a1-multi\\outputs\\krea2\\run-20260916-140158-a904e796.jpg",
+    "a2-cabin": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-141154-shindo-noa-storyboard-still-panel-a2-multi\\outputs\\krea2\\run-20260916-141154-f56b89b3.jpg",
+    "a3-arrive": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-141710-shindo-noa-storyboard-still-panel-a3-multi\\outputs\\krea2\\run-20260916-142112-580e551b.jpg",
+    "a4-pool": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-142342-shindo-noa-storyboard-still-panel-a4-long\\outputs\\krea2\\run-20260916-142342-6a12ecea.jpg",
+    "a5-bags": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\SCENE-20260916-151105-shindo-noa-storyboard-still-panel-a5-v3\\outputs\\krea2\\run-20260916-151105-95bb4ca4.jpg"
+  },
+  "dna": {
+    "noa": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg",
+    "reika": "D:\\AI_Studio\\library\\characters\\ch-mizuki-reika\\generations\\GPT-20260906-reika-face-09-editorial\\outputs\\gpt\\face-09-editorial-1.png"
+  },
+  "run_ids": [
+    "run-20260916-152553-4549d8b1",
+    "run-20260916-154920-bb0253ae",
+    "run-20260916-161332-70fd7056",
+    "run-20260916-163358-9b78b253",
+    "run-20260916-174528-50e93b2b"
+  ],
+  "clips": [
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\outputs\\minimax-h3\\run-20260916-152553-4549d8b1.mp4",
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\outputs\\minimax-h3\\run-20260916-154920-bb0253ae.mp4",
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\outputs\\minimax-h3\\run-20260916-161332-70fd7056.mp4",
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\outputs\\minimax-h3\\run-20260916-163358-9b78b253.mp4",
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\outputs\\minimax-h3\\run-20260916-174528-50e93b2b.mp4"
+  ],
+  "stitch": {
+    "path": "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260916-152533-noa-reika-poolvilla-actor\\edit\\noa-reika-poolvilla-actor.mp4",
+    "size": 71083252,
+    "duration_sec": "54.907000"
+  },
+  "finished_at": "2026-09-16 18:06:29 KST"
+}

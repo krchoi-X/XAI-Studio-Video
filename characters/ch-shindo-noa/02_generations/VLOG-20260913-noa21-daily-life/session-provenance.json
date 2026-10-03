@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "VLOG-20260913-noa21-daily-life",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa daily-life vlogs: after work, a Saturday walk, the sea, the end of the day",
+  "user_request_verbatim": "이제 난 잘거야. 7시간 정도 소요되는 작업을 해. ... Noa의 일상 브이로그를 몇개 만들어봐. 퇴근 후 마트에 가서 저녁 찬거리를 사가지고 오는거나, 주말에 집근처 산책하는 거, 여름 해변에서 물놀이를 하는 모습, 자기 위해 잠옷을 갈아입고 침대에 눕는 장면 정도",
+  "source_idea": "Four vlogs of five shots each, twenty clips at about eighteen minutes apiece. Built on what the self-introduction established: H3 generates speech and lip sync so no TTS is involved; framing must be described by where the crop falls, because 'a medium shot with the street behind her' produced a figure a tenth of the frame while 'holds her head and shoulders' produced a close-up; and face size in frame, not the change of location, is what moved the identity score, so these stay at medium-close or closer. The delivery sentence is the first attempt at the operator's note that the voice sounded American and like a first take and that later work should sound practised. Wardrobe, locations and content all come from scene_defaults. The bedtime vlog is a getting-ready-for-bed routine with her already in nightwear.",
+  "status": "prepared",
+  "created_at": "2026-09-13T22:48:02+09:00",
+  "updated_at": "2026-09-13T22:48:02+09:00"
+}

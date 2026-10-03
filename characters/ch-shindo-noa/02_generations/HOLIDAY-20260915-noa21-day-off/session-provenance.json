@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "session_id": "HOLIDAY-20260915-noa21-day-off",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\HOLIDAY-20260915-noa21-day-off",
+  "requested_by": "claude",
+  "executor": "local-wangp-worker",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa's day off: waking, a shower, the sea",
+  "user_request_verbatim": "노아의 다른 브이로그를 만들어보자. 휴일이야. 아침에 일어나는 장면부터 시작해. 잠옷이 배까지 끌어올려져 있는 모습으로 시작하면서 일어나. 옷을 벗고 샤워를 해. 검열이 문제가 된다면 옷을 벗어놓고 샤워하는 장면은 불투명한 유리 뒤에서 보는 모습으로 만들어. 가벼운 미니드레스를 입고 작은 가방을 들고 나가. 해변에 가서 비키니를 입고 즐거운 시간을 보내는거야. 배꼽옆의 점도 보여야 해. 대사는 3인칭 시점으로 설명하는건 영어로 하고, 영상 안에서 노아가 말하는건 일본어로 해. 2시간 정도 걸리는 작업으로 구성해봐",
+  "source_idea": "Six renders of three shots, about two hours. Carries the mart findings: every render is Ref2VA with the portrait always as Picture 1 so identity never chains, and the previous render's final frame as Picture 2, which held over five steps where FL2VA chaining became a different person at two. R1's Picture 2 is a real frame from d5-good-night at 1.2 s, measured 0.764 at 290 px and already in bed in nightwear - the one mart render that produced no cuts was the only one whose references were both stills. New and untested: two speakers, with Noa on (S1) in Japanese and an unseen narrator on (S2) in English, placed so a failure costs narration rather than dialogue. The shower is a locked-off frame of a closed frosted glass door with her clothes already folded on the shelf; no undressing is described. The navel mole appears twice, per character.json v3 where it is explicitly small.",
+  "status": "prepared",
+  "created_at": "2026-09-15T09:13:41+09:00",
+  "updated_at": "2026-09-15T09:13:41+09:00"
+}

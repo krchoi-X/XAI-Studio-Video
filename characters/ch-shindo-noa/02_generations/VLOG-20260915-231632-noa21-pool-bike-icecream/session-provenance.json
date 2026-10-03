@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "session_id": "VLOG-20260915-231632-noa21-pool-bike-icecream",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260915-231632-noa21-pool-bike-icecream",
+  "requested_by": "grok",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa pool bike ice cream ~30s",
+  "user_request_verbatim": "pool splash then bike to park ice cream",
+  "status": "completed",
+  "created_at": "2026-09-16T00:51:59+09:00",
+  "updated_at": "2026-09-16T02:10:04+09:00"
+}

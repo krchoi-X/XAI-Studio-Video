@@ -1,0 +1,20 @@
+a1-after-work: Finished at seven. I need something for dinner.
+a2-vegetables: The tomatoes are good today. That decides it.
+a3-too-much-tofu: I always buy too much tofu. Every single time.
+a4-walking-home: (no speech)
+a5-kitchen: That is dinner. Thank you for coming along.
+b1-saturday: It is Saturday. I am only going for a walk today.
+b2-riverside: (no speech)
+b3-stops-to-look: The water is high this week. It rained for three days.
+b4-same-can: The same can every time. I have stopped pretending I will try another.
+b5-heading-back: That is the whole plan. It was enough.
+c1-arrived: Two hours on the train. Worth it, I think.
+c2-ankle-deep: (no speech)
+c3-in-the-water: (no speech)
+c4-sitting: I had forgotten how loud the sea is.
+c5-going-home: The last train is at eight. I will sleep the whole way.
+d1-washed: That is the day. Nothing went wrong, which is rare.
+d2-hair-down: (no speech)
+d3-alarm: Six forty. I will regret this at six forty.
+d4-lamp: (no speech)
+d5-good-night: Good night. See you tomorrow.

@@ -1,0 +1,10 @@
+subject_definitions:
+<Subject 1> is the person in <Picture 1>, shown again in close-up in <Picture 2>, preserving their exact identity, facial features, skin tone and hairstyle. <Picture 2> is the authority for the shape of their face and eyes.
+summary:
+[reference generation] <Subject 1> is filming a quiet everyday vlog. It is a clear summer afternoon and she has taken the train to the sea.
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - their identity, face shape, eye shape, nose, mouth, skin texture and hair remain recognizable and unchanged; the location, the lighting, their clothing and their action are new.
+detailed_description:
+The target video is a single continuous handheld take, the picture steady but alive the way a small camera held by its subject is. The location is the shallow water at the edge of a wide quiet beach on a clear summer afternoon, with bright sunlight on the water. [Shot 1] A handheld camera holds her from the top of her head to her waist, her upper body filling most of the frame, with the background soft behind her. She wears a plain black one-piece swimsuit, her hair and skin wet. She pushes a spray of water forward with one hand and laughs, an open unguarded laugh she does not usually let out, then wipes her face. She carries herself upright with her weight even on both feet and never stands with a cocked hip. She does not speak; her expression stays calm and quietly observant and her gaze stays where her attention is. Her large horizontally elongated almond eyes with visible sclera around the irises, her short brow-to-eye distance, her dark fairly straight brows, her lean youthful midface, her straight narrow nose with no dorsal hump and her softly rounded chin that does not jut forward all remain exactly as they are in <Picture 1> and <Picture 2>, stable from the first frame to the last.
+overall_soundscape: The edge of the sea: splashing water, waves, wind, distant gulls and one short clear laugh.
+non_diegetic_music: A light, airy plucked figure at low level, unhurried.

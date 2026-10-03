@@ -1,0 +1,4 @@
+Picture 1 is Noa (noa-21): lean youthful mid-20s face, large horizontally elongated almond dark-brown eyes with visible sclera, low brow-to-eye distance, straight refined nose, clean lean jaw, upright posture, restrained presence. Adult woman. Picture 1 face and body proportions only; ignore its background.
+FRAME LS: A steady long shot holds her full figure approaching a wooden bathhouse noren at evening; steam and eave readable; she wears a simple yukata and is small-to-medium in frame for place.
+ACTION: She walks forward once toward the noren.
+SOUND: evening insects, soft wood, distant water. No dialogue. Prompt enhancer off.

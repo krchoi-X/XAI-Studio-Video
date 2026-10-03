@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "session_id": "VLOG-20260915-231632-noa21-work-client-boss",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260915-231632-noa21-work-client-boss",
+  "requested_by": "grok",
+  "engine": "WanGP",
+  "model": "minimax_h3_ref2va_pruned",
+  "character_id": "ch-shindo-noa",
+  "title": "Noa work client boss ~30s",
+  "user_request_verbatim": "client talk then report to boss",
+  "status": "completed",
+  "created_at": "2026-09-16T02:10:19+09:00",
+  "updated_at": "2026-09-16T03:33:39+09:00"
+}

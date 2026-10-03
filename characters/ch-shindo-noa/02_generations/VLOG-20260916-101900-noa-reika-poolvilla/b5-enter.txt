@@ -1,0 +1,13 @@
+Picture 1 is Noa (noa-21): lean youthful mid-20s face, large horizontally elongated almond dark-brown eyes with visible sclera, low brow-to-eye distance, straight refined nose, clean lean jaw, upright posture, restrained presence. Adult woman. Picture 1 face and body proportions only; ignore its background. Picture 2 is Reika (face-09): adult Japanese woman about 23, long jet-black hair, individual eye spacing, nose, lips and jaw locked from the master face; soft cool editorial features. Use face identity only; ignore jacket, clothing and studio background. Picture 3 is the previous shot final frame for continuity of place, light, wardrobe and body pose - do not replace either woman's face.
+
+continuity_from: both women are fully nude and wet in/at the outdoor mountain-villa pool from Picture 3; same timber villa, same outdoor pool deck, same classic car parked at the arrival side; morning mountain light; no swimsuit, no black one-piece, no bikini invented.
+handoff_to: both remain fully nude and wet; each holds one travel bag from the classic car; they walk once through the villa glass doors into the building.
+
+SPATIAL ANCHORS (must match Picture 3): outdoor pool and deck in the near field; classic car body shape and color locked from Picture 3 at the arrival drive; villa timber facade with glass doors mid/background; camera MS side-angle keeping car, pool edge, and doors readable in one space. Do not teleport the car or flip left/right layout.
+
+WARDROBE LOCK: fully nude adult bodies only for the entire shot. Forbidden: any swimsuit, black swimwear, underwear, dress, or fabric wrap that reads as clothing. A towel may appear only as a held prop in one hand, never worn.
+PROP HANDOFF: each woman picks up exactly one bag from the classic car (trunk or rear seat), grips it securely, no dropping, no floating bags; walk together to the glass doors and enter once.
+
+FRAME MS: One continuous medium shot of the same place — nude wet exit from pool onto deck, fetch bags at the classic car, enter villa through glass doors. Architecture and car readable.
+ACTION: Exit pool once, take bags once, enter building once. No dialogue. No extra cuts.
+SOUND: water drip, footsteps on wood/stone, bag fabric, glass door. Prompt enhancer off.

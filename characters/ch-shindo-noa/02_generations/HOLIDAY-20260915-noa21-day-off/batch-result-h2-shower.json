@@ -1,0 +1,17 @@
+{
+  "session": "HOLIDAY-20260915-noa21-day-off",
+  "updated_at": "2026-09-15T09:50:36+09:00",
+  "results": [
+    {
+      "shot": "h2-shower",
+      "status": "needs_review",
+      "run_id": "run-20260915-093236-38f35ba1",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\HOLIDAY-20260915-noa21-day-off\\runs\\run-20260915-093236-38f35ba1",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\HOLIDAY-20260915-noa21-day-off\\outputs\\minimax-h3\\run-20260915-093236-38f35ba1.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

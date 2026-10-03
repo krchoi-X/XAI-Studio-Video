@@ -1,0 +1,24 @@
+{
+  "video_length": 181,
+  "guidance_scale": 1,
+  "denoising_strength": 1,
+  "num_inference_steps": 20,
+  "resolution": "576x768",
+  "seed": -1,
+  "image_mode": 0,
+  "model_type": "minimax_h3_ref2va_pruned",
+  "image_refs": [
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-portrait.jpg",
+    "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\imports\\derived\\noa-21-facecrop.png"
+  ],
+  "audio_prompt_type": "",
+  "skip_steps_start_step_perc": 25,
+  "flow_shift": 12,
+  "video_prompt_type": "KI",
+  "image_refs_relative_size": 125,
+  "sample_solver": "euler",
+  "sliding_window_overlap": 18,
+  "remove_background_images_ref": 0,
+  "sliding_window_size": 362,
+  "skip_steps_multiplier": 0.08
+}

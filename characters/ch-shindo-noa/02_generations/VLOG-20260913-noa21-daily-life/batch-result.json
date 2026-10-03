@@ -1,0 +1,222 @@
+{
+  "session": "VLOG-20260913-noa21-daily-life",
+  "updated_at": "2026-09-14T12:02:17+09:00",
+  "results": [
+    {
+      "shot": "a1-after-work",
+      "status": "needs_review",
+      "run_id": "run-20260913-225826-7b679966",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260913-225826-7b679966",
+      "minutes": 18.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260913-225826-7b679966.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "a2-vegetables",
+      "status": "needs_review",
+      "run_id": "run-20260913-231546-ceb0a715",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260913-231546-ceb0a715",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260913-231546-ceb0a715.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "a3-too-much-tofu",
+      "status": "needs_review",
+      "run_id": "run-20260913-233327-2d73f1af",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260913-233327-2d73f1af",
+      "minutes": 18.0,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260913-233327-2d73f1af.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "a4-walking-home",
+      "status": "timed_out",
+      "run_id": "run-20260913-235127-2c1b4610",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260913-235127-2c1b4610",
+      "minutes": 61.9,
+      "artifacts": [],
+      "error": null
+    },
+    {
+      "shot": "a5-kitchen",
+      "status": "needs_review",
+      "run_id": "run-20260914-005319-ba4b0c61",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-005319-ba4b0c61",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-005319-ba4b0c61.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "b1-saturday",
+      "status": "timed_out",
+      "run_id": "run-20260914-011100-96c7ff33",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-011100-96c7ff33",
+      "minutes": 405.9,
+      "artifacts": [],
+      "error": null
+    },
+    {
+      "shot": "b2-riverside",
+      "status": "needs_review",
+      "run_id": "run-20260914-075651-a4ce2e91",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-075651-a4ce2e91",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-075651-a4ce2e91.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "b3-stops-to-look",
+      "status": "needs_review",
+      "run_id": "run-20260914-081432-dca8c8dc",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-081432-dca8c8dc",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-081432-dca8c8dc.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "b4-same-can",
+      "status": "needs_review",
+      "run_id": "run-20260914-083212-2b9ac1fc",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-083212-2b9ac1fc",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-083212-2b9ac1fc.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "b5-heading-back",
+      "status": "needs_review",
+      "run_id": "run-20260914-084952-cc474287",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-084952-cc474287",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-084952-cc474287.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "c1-arrived",
+      "status": "needs_review",
+      "run_id": "run-20260914-090733-a869b40a",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-090733-a869b40a",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-090733-a869b40a.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "c2-ankle-deep",
+      "status": "needs_review",
+      "run_id": "run-20260914-092513-aa58b21c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-092513-aa58b21c",
+      "minutes": 17.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-092513-aa58b21c.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "c3-in-the-water",
+      "status": "needs_review",
+      "run_id": "run-20260914-094234-95933669",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-094234-95933669",
+      "minutes": 17.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-094234-95933669.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "c4-sitting",
+      "status": "needs_review",
+      "run_id": "run-20260914-095954-6777d320",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-095954-6777d320",
+      "minutes": 17.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-095954-6777d320.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "c5-going-home",
+      "status": "needs_review",
+      "run_id": "run-20260914-101714-93a88151",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-101714-93a88151",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-101714-93a88151.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "d1-washed",
+      "status": "needs_review",
+      "run_id": "run-20260914-103455-ff117edd",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-103455-ff117edd",
+      "minutes": 17.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-103455-ff117edd.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "d2-hair-down",
+      "status": "needs_review",
+      "run_id": "run-20260914-105215-d4f0b664",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-105215-d4f0b664",
+      "minutes": 17.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-105215-d4f0b664.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "d3-alarm",
+      "status": "needs_review",
+      "run_id": "run-20260914-110936-2697673c",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-110936-2697673c",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-110936-2697673c.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "d4-lamp",
+      "status": "needs_review",
+      "run_id": "run-20260914-112716-f1bc2fd7",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-112716-f1bc2fd7",
+      "minutes": 17.3,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-112716-f1bc2fd7.mp4"
+      ],
+      "error": null
+    },
+    {
+      "shot": "d5-good-night",
+      "status": "needs_review",
+      "run_id": "run-20260914-114437-459c2fea",
+      "run_dir": "D:\\codex\\XAI-studio\\characters\\ch-shindo-noa\\02_generations\\VLOG-20260913-noa21-daily-life\\runs\\run-20260914-114437-459c2fea",
+      "minutes": 17.7,
+      "artifacts": [
+        "D:\\AI_Studio\\library\\characters\\ch-shindo-noa\\generations\\VLOG-20260913-noa21-daily-life\\outputs\\minimax-h3\\run-20260914-114437-459c2fea.mp4"
+      ],
+      "error": null
+    }
+  ]
+}

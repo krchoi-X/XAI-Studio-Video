@@ -1,0 +1,6 @@
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-175817-noa21-home-after-sea-shower/outputs/minimax-h3/run-20260915-180851-dfb883bd.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-175817-noa21-home-after-sea-shower/outputs/minimax-h3/run-20260915-182705-7dc1418f.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-175817-noa21-home-after-sea-shower/outputs/minimax-h3/run-20260915-184434-3bdd952a.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-175817-noa21-home-after-sea-shower/outputs/minimax-h3/run-20260915-190202-0cedcae0.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-175817-noa21-home-after-sea-shower/outputs/minimax-h3/run-20260915-191931-147a6979.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-175817-noa21-home-after-sea-shower/outputs/minimax-h3/run-20260915-193659-9c22ce3c.mp4'

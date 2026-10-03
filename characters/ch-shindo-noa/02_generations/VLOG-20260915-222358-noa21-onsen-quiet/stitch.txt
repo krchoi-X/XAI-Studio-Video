@@ -1,0 +1,6 @@
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-222358-noa21-onsen-quiet/outputs/minimax-h3/run-20260915-232753-c2fae79e.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-222358-noa21-onsen-quiet/outputs/minimax-h3/run-20260915-234010-91952c63.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-222358-noa21-onsen-quiet/outputs/minimax-h3/run-20260915-235226-bd5ff276.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-222358-noa21-onsen-quiet/outputs/minimax-h3/run-20260916-001212-2a1179b6.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-222358-noa21-onsen-quiet/outputs/minimax-h3/run-20260916-002728-6821e9d8.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-222358-noa21-onsen-quiet/outputs/minimax-h3/run-20260916-003944-32db76dc.mp4'

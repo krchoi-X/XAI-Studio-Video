@@ -1,0 +1,6 @@
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-pool-bike-icecream/outputs/minimax-h3/run-20260916-005214-25a4f750.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-pool-bike-icecream/outputs/minimax-h3/run-20260916-010430-8dc44502.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-pool-bike-icecream/outputs/minimax-h3/run-20260916-011645-77348199.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-pool-bike-icecream/outputs/minimax-h3/run-20260916-013330-3affd7da.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-pool-bike-icecream/outputs/minimax-h3/run-20260916-014547-3a144abf.mp4'
+file 'D:/AI_Studio/library/characters/ch-shindo-noa/generations/VLOG-20260915-231632-noa21-pool-bike-icecream/outputs/minimax-h3/run-20260916-015803-da9a7a99.mp4'
