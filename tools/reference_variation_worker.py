@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 import sys
 import time
@@ -18,23 +19,88 @@ from reference_transformation_contract import normalize_request
 
 TERMINAL_RUN_STATES = {"succeeded", "needs_review", "failed", "cancelled", "interrupted", "timed_out"}
 
+OPERATION_TARGETS = {
+    "face_geometry": "face geometry", "facial_feature": "named facial features",
+    "expression": "facial expression", "pose": "body pose and contacts",
+    "hand_gesture": "hand gesture and contacts", "hair": "hairstyle",
+    "wardrobe": "body coverage, garments, footwear, and accessories",
+    "background": "background and scene props", "lighting": "lighting and optical treatment",
+    "camera": "camera viewpoint and lens behavior", "framing": "frame composition and crop",
+}
+STRENGTH_GUIDANCE = {
+    "subtle": "Render the target clearly while limiting collateral change to preserved fields.",
+    "moderate": "Render the complete target state clearly and consistently.",
+    "exploratory": "Render a bold, coherent target state while preserving identity and every locked field.",
+}
+UNCLOTHED_WARDROBE = re.compile(
+    r"(?i)(?:\[?coverage\]?\s*[:=]\s*(?:none|unclothed|nude)\b|coverage\s+is\s+none\b|"
+    r"\b(?:unclothed|nude)\b|옷을\s*(?:입지\s*않|안\s*입)|나체|알몸)"
+)
+
+
+def _positive_target_interpretation(operation: dict[str, Any]) -> str | None:
+    if operation["kind"] == "wardrobe" and UNCLOTHED_WARDROBE.search(operation["instruction"]):
+        return "Positive target interpretation: The adult subject's final wardrobe state is unclothed."
+    return None
+
 
 def compile_edit_instruction(request: dict[str, Any], plan: dict[str, Any]) -> str:
     """Build WanGP-safe prose; its prompt templater treats JSON braces as variables."""
     lines = [
         "Edit the provided reference image.",
-        f"Requested change: {request['operator_request'].strip()}",
-        "Explicit operations:",
+        "Reference authority: use the exact source for identity and starting visual context.",
+        "Target authority: every typed operation below replaces its named mutable field, regardless of the source field's current visual state.",
     ]
+    contract = plan.get("character_contract")
+    if isinstance(contract, dict) and str(contract.get("stable_dna_prompt") or "").strip():
+        lines.extend([
+            "Canonical Stable DNA is mandatory identity authority:",
+            str(contract["stable_dna_prompt"]).strip(),
+        ])
+    lines.extend([f"Requested change: {request['operator_request'].strip()}", "Authoritative target operations:"])
     for operation in plan["operations"]:
-        lines.append(
-            f"- {operation['kind']} [{operation['strength']}]: {operation['instruction'].strip()}"
-        )
+        lines.extend([
+            f"- {operation['kind']} [{operation['strength']}]",
+            f"  Released source field: {OPERATION_TARGETS[operation['kind']]}",
+            f"  Application: {STRENGTH_GUIDANCE[operation['strength']]}",
+            f"  Target state: {operation['instruction'].strip()}",
+        ])
+        interpretation = _positive_target_interpretation(operation)
+        if interpretation:
+            lines.append(f"  {interpretation}")
     lines.extend([
         "Preserve exactly: " + ", ".join(plan["effective_preserve"]) + ".",
-        "Do not invent, add, remove, or alter any unrequested visual detail.",
+        "Final image authority order: Canonical Stable DNA for identity; authoritative target operations for released mutable fields; the source image for preserved fields.",
     ])
     return "\n".join(lines)
+
+
+def validate_character_contract(request: dict[str, Any], character_manager: Any) -> dict[str, Any] | None:
+    """Fail before GPU if a new request's frozen DNA no longer matches current authority."""
+    contract = request.get("character_contract")
+    if contract is None:
+        return None
+    if not isinstance(contract, dict) or not isinstance(contract.get("stable_dna"), dict):
+        raise ValueError("character contract is incomplete")
+    digest = hashlib.sha256(json.dumps(
+        contract["stable_dna"], ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode("utf-8")).hexdigest()
+    if digest != contract.get("stable_dna_sha256"):
+        raise ValueError("frozen Stable DNA content does not match its SHA-256")
+    current_path = character_manager.character_record_path(request["character_id"]).resolve()
+    current = character_manager.load(current_path)
+    expected_path = Path(str(contract.get("record_path") or "")).resolve()
+    if expected_path != current_path:
+        raise ValueError("canonical character record path changed after queueing")
+    if current.get("id") != request["character_id"] or contract.get("character_id") != request["character_id"]:
+        raise ValueError("character contract ID does not match the request")
+    if current.get("version") != contract.get("character_version"):
+        raise ValueError("canonical character version changed after queueing")
+    if character_manager.stable_hash(current) != digest:
+        raise ValueError("canonical Stable DNA changed after queueing")
+    if not str(contract.get("stable_dna_prompt") or "").strip():
+        raise ValueError("character contract has no rendered Stable DNA prompt")
+    return contract
 
 
 def now() -> str:
@@ -72,6 +138,26 @@ def wait_for_run(run_dir: Path, timeout_seconds: int = 1800) -> dict[str, Any]:
 
 
 QWEN21_MODEL = "qwen_image_21_uncensored_q4_k_m"
+QWEN21_POSE_PROFILE = "qwen21-source-independent-recompose-20261001-v2"
+
+
+def supports_plan(engine: str, plan: dict[str, Any]) -> bool:
+    """Mirror Studio's bounded gate; never broaden from a free-form prompt."""
+    if plan["resolved_strategy"] == "identity_edit":
+        return True
+    operation_kinds = {str(item["kind"]) for item in plan["operations"]}
+    return (
+        engine == "qwen21"
+        and plan["resolved_strategy"] == "recompose_with_reference"
+        and "pose" in operation_kinds
+        and operation_kinds.isdisjoint({"hand_gesture", "camera", "framing"})
+    )
+
+
+def effective_strength(engine: str, plan: dict[str, Any]) -> dict[str, Any]:
+    if supports_plan(engine, plan) and plan["resolved_strategy"] == "recompose_with_reference":
+        return {"mode": "prompt_only_limited_validation", "profile_version": QWEN21_POSE_PROFILE}
+    return {"mode": "prompt_only_unvalidated", "profile_version": None}
 
 
 def engine_of(request: dict[str, Any]) -> str:
@@ -128,6 +214,7 @@ def krea2_settings(request: dict[str, Any], seed: int, wangp_root: Path) -> dict
             "effective_preserve": plan["effective_preserve"],
             "resolved_strategy": plan["resolved_strategy"],
             "effective_strength": plan["effective_strength"],
+            "character_contract": _contract_summary(plan.get("character_contract")),
         },
     }
 
@@ -171,6 +258,7 @@ def qwen21_settings(request: dict[str, Any], seed: int, wangp_root: Path) -> dic
             "effective_preserve": plan["effective_preserve"],
             "resolved_strategy": plan["resolved_strategy"],
             "effective_strength": plan["effective_strength"],
+            "character_contract": _contract_summary(plan.get("character_contract")),
             "allow_text_fallback": False,
         },
     }
@@ -184,6 +272,18 @@ def _qwen21_checkpoint(wangp_root: Path) -> Path:
         return Path(str(urls[0]))
     except (OSError, ValueError, KeyError, IndexError, TypeError):
         return definition
+
+
+def _contract_summary(contract: Any) -> dict[str, Any] | None:
+    if not isinstance(contract, dict):
+        return None
+    return {
+        "character_id": contract.get("character_id"),
+        "record_path": contract.get("record_path"),
+        "character_version": contract.get("character_version"),
+        "stable_dna_sha256": contract.get("stable_dna_sha256"),
+        "prompt_included": bool(str(contract.get("stable_dna_prompt") or "").strip()),
+    }
 
 
 # One adapter per engine: settings, local dependencies, output directory and the names the operator sees.
@@ -222,9 +322,10 @@ def run(args: argparse.Namespace) -> int:
     adapter = ENGINES[engine]
     label = adapter["label"]
     plan = normalize_request(request)
+    plan["effective_strength"] = effective_strength(engine, plan)
     request["_normalized_plan"] = plan
     compiled_prompt = compile_edit_instruction(request, plan)
-    if plan["resolved_strategy"] != "identity_edit":
+    if not supports_plan(engine, plan):
         update_status(
             job_dir, "blocked_capability", progress="검증된 레퍼런스 재구성 경로가 필요함",
             error=f"Strategy {plan['resolved_strategy']} is not locally verified; no text-to-image fallback was used",
@@ -235,13 +336,15 @@ def run(args: argparse.Namespace) -> int:
     if not source.is_file() or sha256_file(source) != request["reference_sha256"]:
         raise ValueError("reference image is missing or no longer matches its queued SHA-256")
 
+    import character_manager as cm
+    character_contract = validate_character_contract(request, cm)
+
     wangp_root = Path(args.wangp_root).resolve()
     missing = [str(path) for path in adapter["required"](wangp_root) if not path.is_file()]
     if missing:
         update_status(job_dir, "blocked_dependency", progress=f"{label} 편집 모델 구성요소가 필요함", error="Missing: " + ", ".join(missing))
         return 2
 
-    import character_manager as cm
     session_dir = cm.reserve_generation_session(request["character_id"], request["session_slug"], Path(args.library_root), repo_root / "characters")
     output_dir = Path(args.library_root).resolve() / "characters" / request["character_id"] / "generations" / request["session_slug"] / "outputs" / engine
     runs_root = session_dir / "runs"
@@ -261,10 +364,11 @@ def run(args: argparse.Namespace) -> int:
         "resolved_conflicts": plan["resolved_conflicts"],
         "effective_preserve": plan["effective_preserve"],
         "strategy": {"requested": plan["requested_strategy"], "resolved": plan["resolved_strategy"], "reason": plan["strategy_reason"]},
-        "stages": [{"id": "stage-1", "strategy": "identity_edit", "reference_asset_id": request["reference_asset_id"]}],
+        "stages": [{"id": "stage-1", "strategy": plan["resolved_strategy"], "reference_asset_id": request["reference_asset_id"]}],
         "effective_strength": plan["effective_strength"],
         "compiled_edit_instruction": compiled_prompt,
         "reference": {"asset_id": request["reference_asset_id"], "path": str(source), "sha256": request["reference_sha256"], "byte_count": request["reference_byte_count"]},
+        "character_contract": character_contract,
         "source_prompt": request.get("source_prompt"),
         "renderer": adapter["renderer"],
         "created_at": request["created_at"],

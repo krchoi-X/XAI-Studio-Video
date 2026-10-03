@@ -151,6 +151,7 @@ def normalize_request(raw: dict[str, Any]) -> dict[str, Any]:
         "source_schema_version": version,
         "variation_id": source.get("variation_id"),
         "character_id": source.get("character_id"),
+        "character_contract": deepcopy(source.get("character_contract")),
         "reference": reference,
         "operator_request": str(source.get("operator_request", "")).strip(),
         "operations": operations,

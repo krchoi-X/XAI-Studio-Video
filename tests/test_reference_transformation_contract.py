@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 
 import pytest
+from jsonschema import Draft202012Validator
 
 from tools.reference_transformation_contract import ContractError, normalize_request, resolve_strategy
 
@@ -16,6 +17,12 @@ def test_v2_schema_and_example_share_the_contract_vocabulary():
     request = {
         "schema_version": 2, "kind": "reference_transformation", "character_id": "ch-lia",
         "reference": {"asset_id": "ast-source"},
+        "character_contract": {
+            "character_id": "ch-lia", "record_path": "D:/records/ch-lia/character.json",
+            "character_version": 3, "stable_dna_sha256": "a" * 64,
+            "stable_dna": {"recognition_anchors": ["amber eyes"]},
+            "stable_dna_prompt": "- recognition anchors: amber eyes",
+        },
         "operator_request": "얼굴을 조금 갸름하게 하고 손을 볼에",
         "operations": [
             {"id": "face", "kind": "face_geometry", "instruction": "얼굴을 조금 갸름하게", "strength": "subtle"},
@@ -30,7 +37,25 @@ def test_v2_schema_and_example_share_the_contract_vocabulary():
     assert set(schema["required"]).issubset(request)
     allowed = set(schema["properties"]["operations"]["items"]["properties"]["kind"]["enum"])
     assert {operation["kind"] for operation in request["operations"]}.issubset(allowed)
-    assert normalize_request(request)["resolved_strategy"] == "staged"
+    Draft202012Validator(schema).validate(request)
+    plan = normalize_request(request)
+    assert plan["resolved_strategy"] == "staged"
+    assert plan["character_contract"] == request["character_contract"]
+
+
+def test_schema_accepts_long_collected_wardrobe_and_pose_modules():
+    schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
+    long_text = "wardrobe and pose module " * 200
+    request = {
+        "schema_version": 2, "kind": "reference_transformation", "character_id": "ch-lia",
+        "reference": {"asset_id": "ast-source", "role": "face_master"},
+        "operator_request": long_text,
+        "operations": [{"id": "wardrobe", "kind": "wardrobe", "instruction": long_text, "strength": "subtle"}],
+        "requested_preserve": ["identity"], "requested_strategy": "auto",
+        "engine_policy": {"required_capability": "reference_image_edit", "preferred_engine": "krea2_identity_edit", "allow_text_fallback": False},
+        "count": 1,
+    }
+    Draft202012Validator(schema).validate(request)
 
 
 def test_v1_fixture_normalizes_without_mutation():
