@@ -1,4 +1,4 @@
-# 옥상, 새벽 5시 — 바람을 깨우는 여자
+# 옥상, 새벽 5시 — 초보 마법사 브이로그
 
 > **기획**: Somni (Muse) — 2026-10-02. 레퍼런스 코퍼스 #1–#78의
 > 분석을 바탕으로 기획한 오리지널 시나리오.
@@ -12,6 +12,34 @@
 > 되도록 설계했고, 카메라를 뒤에 고정해 축을 넘지 않게 했다
 > (#77). 스펙터클 엔진은 #76의 T-39(정적 주인공 × 동적 공간),
 > 2인 구조는 #70의 데드팬+리액터 엔진을 가져왔다.
+>
+> **연출 해석 (감독 노트, 2026-10-02)**: 제목이 테제다.
+> "바람을 깨우는 여자"라는 제목은 곧 "그녀는 의도적으로 바람을
+> 깨운다"는 해석이다. 그래서 민서는 숨겨진 마법사처럼 엄숙하게
+> 팔을 뻗고, 자기가 부른 바람에 놀라지 않는다. 놀라는 것은
+> 리액터 지훈의 몫. 이것은 이 시나리오의 해석이지 일반 원칙이
+> 아니다 — 시나리오에 따라 캐릭터가 몰라서 놀라는 것도 맞다.
+
+> **파이프라인 계약 (제작자 노트, 2026-10-02)**: 각본가(콘티를 쓰는 AI)
+> → 감독(영상을 생성하는 AI) → 제작자(사용자, 최종 승인). 콘티를
+> 쓰는 AI는 자기가 생각한 의도·감정을 콘티에 명시해야 한다. 그래야
+> 생성하는 AI가 제멋대로 재해석하지 않고 같은 의미로 만든다. 매번
+> 제작자가 일일이 의견을 줄 수 없으므로, 의미는 콘티에 내재되어야
+> 한다. 그래서 이 콘티의 모든 샷에는 감정(EMOTION) 칸이 있다 —
+> "이 캐릭터는 이 감정을 표현해야만 한다"는 각본가의 지시다.
+>
+> **피벗 (제작자 노트, 2026-10-02)**: S3 생성에서 그녀가 카메라를
+> 보고 웃어버렸다. 진지함이 깨진 것이다. 리테이크 대신 스토리를
+> 고쳤다 — 그녀는 애초에 초보 마법사였다. 진지하게 바람을
+> 불어일으키려 하지만 실수하고 들뜨는 브이로그. 푸티지를 이기려
+> 하지 마라. 생성물이 준 것을 스토리가 받아먹게 하라. 이것이
+> 진짜 감독의 일이다.
+>
+> **코미디 타이밍 (제작자 노트, 2026-10-02)**: 웃음은 아껴라.
+> S4까지 진지하게 버티다가 S5에서 한 번에 터뜨려야 크다.
+> S3는 작은 실수(새어 나온 웃음을 손으로 가림), S4는 진짜 수습,
+> S5에서 완전 무너짐, S6는 조용한 체념. 기승전결이지
+> 기승전전전전결이 아니다.
 
 ## 0. 선정된 문법 6개 (왜 이것들인가)
 
@@ -29,23 +57,28 @@
 
 ## 1. 시나리오
 
-**로그라인**: 새벽 5시 옥상. 민서는 가만히 서서 작은 동작만 한다.
-대신 도시가 미친 듯이 반응한다. 지훈은 그걸 핸드폰으로 찍는다.
+**로그라인**: 새벽 5시 옥상. 민서는 진지하게 바람을 깨우려 한다.
+문제는 그녀가 초보다. 비장한 의식과 터져버리는 웃음 사이의
+줄타기. 지훈은 그걸 핸드폰으로 찍는다.
 
 **인물** (2인: 데드팬 + 리액터 — #70의 엔진)
-- 민서 (A): 정적 주인공. 차분, 작은 동작만. 긴 흑발, 흰 셔츠, 청바지
-- 지훈 (B): 친구. 핸드폰으로 촬영 (다이제틱 카메라). 리액터
+- 민서 (A): 자칭 마법사, 실은 초보. 비장하게 의식을 치르려 하지만
+  바람이 일어나면 신나서 카메라를 보고 웃어버림. "진지한 척"과
+  "들뜸" 사이의 줄타기가 이 작품의 코미디 엔진.
+  긴 흑발, 흰 셔츠, 청바지
+- 지훈 (B): 친구. 핸드폰으로 촬영 (다이제틱 카메라). 리액터.
+  놀라는 것은 지훈의 몫
 
 **6비트 × 5초 = 30초**
 
 | 비트 | 시간 | INTENT | 한 줄 |
 |------|------|--------|-------|
-| 1 | 0–5s | 장소+정적 확립 | 새벽 옥상, 민서는 가만히. "바람 한 점 없는데?" |
-| 2 | 5–10s | 첫 반응 | 손가락 하나에 빨랫줄 셔츠가 수평으로 펄럭, 비둘기 폭등 |
-| 3 | 10–15s | 증폭 | 고개 돌리기에 어닝이 돛처럼 부풀고 비닐봉지 소용돌이 |
-| 4 | 15–20s | 도시가 답함 | 숨 내쉬기에 구름이 갈라지고 햇살이 꽂힘 |
-| 5 | 20–25s | 코미디 정점 | 손 내리자 정적 → 깃털 하나가 지훈 폰 렌즈에 착지 |
-| 6 | 25–30s | 북엔드 | 비트 1과 같은 구도. 민서는 걸어감. 깃털만 남음 |
+| 1 | 0–5s | 비장한 시작 | 새벽 옥상, 민서는 진짜 마법사인 척 의식을 시작 |
+| 2 | 5–10s | 소환 (애써 태연) | 손바닥을 펼치는 순간 셔츠 수평+비둘기 폭등. 민서는 태연한 척하지만 입꼬리가 올라감 |
+| 3 | 10–15s | 작은 실수 | 바람이 세지자 웃음이 새어 나와 손으로 입을 가림 |
+| 4 | 15–20s | 진지한 척 재시도 | 숨 의식으로 분위기 수습 시도. 웃음이 샐 듯 말 듯 |
+| 5 | 20–25s | 완전히 무너짐 | 깃털이 렌즈에 붙자 빵 터짐. 마법사 코스프레 종료 |
+| 6 | 25–30s | 체념 퇴장 | "난 아직 초보인가봐" — 옥상 문 쪽으로 몸을 돌려 내려감 |
 
 ## 2. 콘티 (컷 구성)
 
@@ -54,6 +87,8 @@ CONTINUITY(시작→종료 상태, 다음 샷으로 넘기는 것) → NEGATIVES
 
 ### Shot 1 (0–5s) — 확립
 
+- **감정 (EMOTION)**: 민서 — 비장한 결의. "나는 진짜 마법사"라는
+  얼굴로 의식을 시작. 아직은 진지함이 유지됨.
 - **INTENT**: 장소와 정적을 확립. "아무 일도 없는 새벽"을 보여줘야
   뒤의 반응이 폭발한다
 - **ACTION**: 민서가 옥상 난간 앞에 등을 보이고 서 있다. 바람 없음.
@@ -68,6 +103,9 @@ CONTINUITY(시작→종료 상태, 다음 샷으로 넘기는 것) → NEGATIVES
 
 ### Shot 2 (5–10s) — 첫 반응
 
+- **감정 (EMOTION)**: 민서 — 애써 태연한 척. 속으로는 "됐다!"라고
+  외치지만 겉으로는 평온을 유지하려 애씀. 입꼬리가 살짝 올라감.
+  지훈 — 당혹과 흥분 (카메라 흔들림으로 표현).
 - **INTENT**: 작은 동작 → 초대형 결과의 첫 증명
 - **ACTION**: 검지 클로즈업에서 시작 → 손가락이 완전히 펴지는 순간,
   빨랫줄의 셔츠 3장이 동시에 수평으로 펄럭임. 물탱크에서 비둘기
@@ -83,6 +121,9 @@ CONTINUITY(시작→종료 상태, 다음 샷으로 넘기는 것) → NEGATIVES
 
 ### Shot 3 (10–15s) — 증폭
 
+- **감정 (EMOTION)**: 민서 — 작은 실수. 웃음이 새어 나와 손으로
+  입을 가리고 당황. 곧바로 수습하려 애씀. 완전히 무너지지는 않음.
+  지훈 — 킥킥거림.
 - **INTENT**: 반응의 스케일 업. 도시는 이제 민서에게 반응하는 중
 - **ACTION**: 민서가 천천히 고개를 돌림 (3/4 측면). 아래층 어닝이
   돛처럼 부풀어 오름. 비닐봉지 2개가 소용돌이치며 상승. 지훈이
@@ -95,23 +136,29 @@ CONTINUITY(시작→종료 상태, 다음 샷으로 넘기는 것) → NEGATIVES
 - **NEGATIVES**: 어닝이 찢어지지 않음. 민서가 포즈를 취하지 않음.
   정면을 보고 스킬 쓰듯 찍지 않음 (T-39 금기)
 
-### Shot 4 (15–20s) — 도시가 답함
+### Shot 4 (15–20s) — 리셋 (콘티 변경, 2026-10-02)
 
-- **INTENT**: 가장 서정적인 비트. 숨 하나로 하늘이 반응
-- **ACTION**: 민서 클로즈업. 천천히 숨을 내쉼 (차가운 새벽 공기에
-  입김이 보임). 구름이 갈라지고 새벽 햇살 한 줄기가 옥상을
-  관통. 민서의 머리카락이 살짝 들림. 지훈 (작게): "너 뭐야..."
-- **FRAME**: 얼굴 클로즈업 → 하늘 와이드 → 민서 미디엄
-- **CAMERA**: 푸시인 (숨에 맞춰 천천히). 햇살이 꽂히는 순간
-  미세한 노출 변화
-- **CONTINUITY**: 시작=어닝 팽창 (S3의 바람이 여기에 닿음) →
-  종료=햇살 지속, 입김 소멸 중
-- **HANDOFF → S5**: 갈라진 구름 사이 햇살
-- **NEGATIVES**: 렌즈 플레어 남발 금지. 민서가 웃지 않음 (차분).
-  갑자기 낮이 되지 않음 (새벽 유지)
+- **감정 (EMOTION)**: 민서 — 진지한 척 재시도. 눈을 감고 심호흡으로
+  분위기를 되찾으려 함. 거의 평온을 되찾지만 입꼬리가 살짝 샐 듯.
+  지훈 — "또 시작이네"라는 표정.
+- **INTENT**: S3의 폭소와 S5의 무너짐을 잇는 다리. 바람이 잦아들고
+  햇살이 비치며 잠시 평온이 돌아오는 비트
+- **ACTION**: 민서 미디엄. 눈을 감고 팔을 내린 명상 자세로 깊게
+  숨을 들이쉼. 바람이 잦아들며 머리카락이 가라앉고, 구름이 갈라지며
+  따뜻한 햇살이 얼굴에 비침
+- **FRAME**: 미디엄 고정
+- **CAMERA**: 고정. 햇살이 강해지는 순간 미세한 노출 변화
+- **CONTINUITY**: 시작=S3의 폭소·거센 바람 → 종료=바람 잦아듦,
+  햇살 지속, 평온 (불안정한)
+- **HANDOFF → S5**: 잦아든 바람, 햇살 — 고요해진 세계에 떨어지는 깃털
+- **NEGATIVES**: 민서가 완전히 웃지 않음 (샐 듯 말 듯). 갑자기
+  낮이 되지 않음. 렌즈 플레어 남발 금지
 
 ### Shot 5 (20–25s) — 코미디 정점
 
+- **감정 (EMOTION)**: 민서 — 완전히 무너짐. 깃털이 렌즈에
+  붙자 빵 터져서 더 이상 마법사 코스프레 불가. 지훈 — "야 이거
+  내 폰에..."라며 같이 폭소.
 - **INTENT**: 긴장 해제. 거대함 → 사소함으로의 반전
 - **ACTION**: 민서가 손을 천천히 내림. 모든 바람이 멎음 (정적).
   1초 정적 후, 깃털 하나가 화면 위에서 떨어져 지훈의 폰 렌즈에
@@ -127,6 +174,9 @@ CONTINUITY(시작→종료 상태, 다음 샷으로 넘기는 것) → NEGATIVES
 
 ### Shot 6 (25–30s) — 북엔드
 
+- **감정 (EMOTION)**: 민서 — "난 아직 초보인가봐". 옥상 문 쪽으로
+  몸을 돌려 내려감. 작고 씁쓸한 미소. 쿨한 척이 아니라 체념.
+  지훈 — "...내일도 와?" (따뜻한 목소리)
 - **INTENT**: 원 닫기. 스펙터클 후의 정적이 완결감 (T-34)
 - **ACTION**: Shot 1과 같은 구도. 민서가 천천히 걸어감 (뒷모습).
   화면 구석에 렌즈의 깃털이 살짝 보임. 지훈: "...내일도 와?"
@@ -165,21 +215,23 @@ expression, minimal movement. Her male friend films on a phone
 no frontal hero pose, no slow motion, no lens flare abuse,
 no neon effects, no subtitles, no cinematic stabilization"
 
-### Prompt S1
-"Handheld phone footage, dawn rooftop in Seoul, wide shot. The
-woman stands still with her back to camera, facing the city.
-No wind, everything motionless. A male voice off-camera (Korean):
-'야, 바람 한 점 없는데?' She slowly begins raising her right
-index finger — the motion is incomplete by the end of the shot.
-Subtle handheld shake. Cold blue dawn light."
+### Prompt S1 (리테이크 — 마법사 디렉션)
+"Handheld phone footage, dawn rooftop in Seoul, wide shot from
+behind her. She slowly extends her right arm forward with grave
+deliberation, fingers spreading open one by one into a conjuring
+gesture, as if gathering the wind itself. Ritualistic, solemn,
+unhurried. A male voice off-camera (Korean): '야, 바람 한 점
+없는데?' Everything else frozen: no wind yet, hair and clothes
+motionless. Subtle handheld shake. Cold blue dawn light."
 
-### Prompt S2
-"Start on extreme close-up of her raised index finger completing
-its motion. The instant the finger straightens: three shirts on
-a laundry line snap horizontal simultaneously, dozens of pigeons
-burst upward from a water tank. The camera jolts hard (the
-filmer gasps '어어?!' in Korean) then reframes to the laundry
-line. Her face stays calm, unchanged."
+### Prompt S2 (리테이크 — 마법사 디렉션)
+"Keep the identical camera framing. The instant her palm opens
+fully: a sudden gust — three shirts on the laundry line snap
+horizontal simultaneously, dozens of pigeons burst upward from
+the water tank. She does not react at all: eyes calm, expression
+serene and commanding, arm holding the conjuring pose perfectly
+still. She summoned this wind and finds it entirely expected.
+The camera jolts once (the filmer gasps) then steadies."
 
 ### Prompt S3
 "She slowly turns her head to 3/4 profile. As her head turns,
