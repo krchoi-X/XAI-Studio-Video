@@ -229,6 +229,14 @@ ight_chain.py`. Awaiting the user's GO for stills and the night run.
   logic review before prompts, simpler single-location stories, visual object specs, fewer and longer clips with a
   location plate image; first experiment: remake one story both ways and compare. Awaiting the user's decisions.
 
+- 2026-10-03: at the user's request Claude wrote its own failure records in the Director Memory format:
+  `docs/director-memory/failures.md` FAIL-009 to FAIL-015 (append-only, evidence labelled user/prompt/frames/inference):
+  beat has no WHERE and no screen direction; carried-object and body state not restated per clip; cause of the
+  turning point not written; time and distance not designed; objects named but not described; over-split independent
+  clips; the author's own frame review too shallow. Muse's earlier records (#24, #66, FAIL-003/004/008) already
+  contained most lessons; the new ones add cause, time, object appearance, vehicle direction and wearables-as-props.
+  No existing entry was edited.
+
 ## Contract impact
 
 None yet; this task is documentation. Steps 2, 4 and 6 will each add their own `Contract impact` section

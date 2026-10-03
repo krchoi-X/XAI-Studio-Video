@@ -54,6 +54,8 @@ Do not move temporary events, one-off gags, camera choices, shot orders, or edit
 - `principles.md` — stable directing rules and decision process.
 - `opening-patterns.md` — reusable opening families and when they fit.
 - `failures.md` — failure lessons and anti-patterns. These are warnings, not universal bans.
+- `autonomous-video-quality-guide.md` — compact Muse/Claude failure synthesis and bounded execution procedure for
+  Claude, Muse, and Hermes/Meromero.
 - `capabilities.md` — current production capabilities and constraints. Keep factual and date-sensitive.
 - `approved-storyboards.md` — selected storyboard examples and why the user approved them.
 - `candidate-template.md` — required output structure for storyboard proposals.
@@ -71,13 +73,14 @@ Before proposing a character-driven vlog or short:
 2. Read the current episode brief.
 3. Read `principles.md`, relevant entries in `failures.md`, and relevant patterns in `opening-patterns.md`.
 4. Read `capabilities.md`; do not invent unavailable production features.
-5. If approved examples exist for the same character or episode type, read only the most relevant examples. Learn the principle, not the literal shot order.
-6. When the user's intent is visually ambiguous, present the smallest useful set of meaningfully different visual hypotheses, usually one or two. Do not manufacture cosmetic alternatives.
-7. Use a production-safe and a more exploratory interpretation when that contrast helps the user discover what they mean.
-8. State whether each proposal is primarily `long_take`, `multi_cut`, or `hybrid`.
-9. Include a production route for each candidate: still generation needs, reference needs, motion/control needs, and likely renderer path.
-10. Use rough boards for visual alignment; approval belongs to the recorded Storyboard Spec revision, not to an unversioned image.
-11. Do not render or execute until the selection/approval contract for the active workflow allows it.
+5. For autonomous planning or review, apply `autonomous-video-quality-guide.md` as the compact operating procedure.
+6. If approved examples exist for the same character or episode type, read only the most relevant examples. Learn the principle, not the literal shot order.
+7. When the user's intent is visually ambiguous, present the smallest useful set of meaningfully different visual hypotheses, usually one or two. Do not manufacture cosmetic alternatives.
+8. Use a production-safe and a more exploratory interpretation when that contrast helps the user discover what they mean.
+9. State whether each proposal is primarily `long_take`, `multi_cut`, or `hybrid`.
+10. Include a production route for each candidate: still generation needs, reference needs, motion/control needs, and likely renderer path.
+11. Use rough boards for visual alignment; approval belongs to the recorded Storyboard Spec revision, not to an unversioned image.
+12. Do not render or execute until the selection/approval contract for the active workflow allows it.
 
 For pipeline-level work, also read `visual-language-pipeline.md`. A future Codex implementation session should begin with `codex-pipeline-handoff.md` and the repository's normal task/authority documents rather than reconstructing the design from chat history.
 

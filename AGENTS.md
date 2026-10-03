@@ -24,6 +24,7 @@ Read additional documents only for the work involved:
 | Producing, importing, presenting or locating results | [Artifact and review contract](docs/artifact-and-review-contract.md) |
 | Code changes and verification | [Verification](docs/verification.md) and relevant subsystem architecture |
 | Video prompt design | `docs/architecture.md`, `SKILL.md` |
+| Autonomous video planning or quality review | `docs/director-memory/autonomous-video-quality-guide.md` |
 | Character identity or local still generation | `skills/character-manager/SKILL.md` |
 | Visual intent alignment or storyboard design | `skills/storyboard-director/SKILL.md` |
 | Idea/storyboard/sample/final workflow | `skills/idea-to-production/SKILL.md` |

@@ -361,3 +361,267 @@ Alternatives:
 Do not overgeneralize:
 - Not every plan field belongs in every prompt. Signal density still matters. This applies to the
   small set of constraints that carry the premise.
+
+
+---
+
+# Added 2026-10-03 — Rooftop 5AM test and the 2026-10-02 night batch (Claude, acting executor)
+
+Evidence labels used below: **[user]** what the user reported after watching; **[prompt]** what the submitted prompt
+files say (they are in the session folders); **[frames]** what Claude saw in sampled frames; **[inference]** a
+reading of cause that was not tested. Sessions are under `D:\AI_Studio\library\videos\`:
+`VIDEO-20261002-112000-rooftop-5am` and `VIDEO-20261002-230503-01-farm-milking` ... `-230841-06-alley-cat`.
+All were generated with `minimax_h3_ref2va_pruned`, one identity reference, six (or three) independent clips of about 5 s,
+joined afterwards. The user's verdict: Rooftop 5AM and the night batch were better than earlier productions, and
+still had many logic defects. Most of the lessons below repeat records that already exist (#24, #66, FAIL-003,
+FAIL-004, FAIL-008). They are recorded again because the repetition happened in this project, with a plan written
+by Claude, and because a few causes are new.
+
+## FAIL-009 — A beat has no WHERE, and screen direction is not declared
+
+Context:
+- Episode type: multi-clip daily-life vlogs (farm, bus trip, rainy morning, alley cat) and the Rooftop 5AM test.
+- Intended effect: a place and a layout the viewer can follow from clip to clip.
+
+Observed result:
+- [user] Farm: the cow and the people are not positioned consistently; milking happens "under the cow's neck".
+- [user] Bus: there are two bus stops; the bus moves backward partway through.
+- [user] Rainy morning: the starting location is odd.
+- [user] Alley cat: she goes to see the cat, then sits at the first place again and the cat comes to her.
+- [prompt] Farm shot 2-3 say "sits on a small stool beside the flank of a calm cow" but never say where the cow's head,
+  rear and udder are relative to her. Bus shot 1 says "the bus stop" and shot 5 says "a seaside stop" with no anchor tying
+  them to one place; no clip says which way the bus travels. Alley shot 3 does not say where she and the cat are.
+
+Why rejected:
+- The viewer reads separate places and contradictory geometry, so the story stops being one event.
+
+Likely cause:
+- [inference] Same mechanism as corpus #24: each beat lists actions but not the place; a generic prior fills the
+  place, and a different place is invented per clip. Direction of travel is a separate unstated decision.
+
+Reusable lesson:
+- Before writing shot prompts, write a stage plan: fixed landmarks, where each character and animal stands relative
+  to them, and which way things move on screen. Repeat the anchor phrase in every clip of that place
+  ("the same stop with the same bench, bus arriving from screen left").
+- A bus, car or walker needs one declared screen direction for the whole piece.
+- When a story really does go to a second place, say so as a cut with a visible reason, not as a continuation.
+
+Alternatives:
+- A set plate still of the location with positions fixed, supplied as a location reference (reference roles stay
+  separate from identity).
+- A rough still board validated before video (FAIL-004).
+- Fewer, longer clips in one place (FAIL-014).
+
+Do not overgeneralize:
+- Not every beat needs a map. A single static location with one actor (rooftop radio) mostly held.
+
+---
+
+## FAIL-010 — Carried objects and body state are not restated in each clip
+
+Context:
+- Episode type: rainy morning, Rooftop 5AM, rooftop radio.
+
+Observed result:
+- [user] Rainy morning: where are the shoes (the prompt has her slip into sneakers in clip 1 and never mentions them again), an umbrella stands next to the jacket but is not taken
+  though it is raining heavily, and the shoulder bag is put down and forgotten.
+- [user] Rooftop radio: she starts by holding shoes in her hand.
+- [user] Rooftop 5AM (2026-10-02): in shot 1 the arm is raised high; in all of shot 2's variants the hand is at face
+  or chest height, which reads as showing the number one instead of calling the wind.
+- [prompt] Rainy shot 1-2 say the bag stays on her shoulder; shot 3 never mentions the bag. The umbrella appears only in
+  the still's description. Rooftop 5AM shot 1 and shot 2 say "finger" and never say how high the arm is. The radio's
+  subject definition lists "white canvas sneakers" together with the garments.
+
+Why rejected:
+- Objects and poses reset between cuts, or appear without a reason. The viewer notices the missing bag and umbrella.
+
+Likely cause:
+- [inference] Same as corpus #66: an object exists only in clips whose text mentions it; it vanishes when a clip
+  omits it and can return when mentioned again. For the radio shoes, listing footwear next to garments probably made
+  it a carried object (untested).
+- The plan had no per-clip ledger covering worn, carried and body-pose state.
+
+Reusable lesson:
+- Keep a state ledger per clip (start and end): what is worn, what is held in which hand, where bags and umbrellas are,
+  arm and hand height, door state. Restate every carried item in every clip where it must still exist.
+- Handle transitions that need hands (putting on a jacket while carrying a bag) with an explicit step or a cut:
+  "she lifts the bag off her shoulder, puts the jacket on, puts the bag back".
+- Write footwear as worn ("on her feet"), not as a list item beside props.
+- A story premise (heavy rain) implies props (umbrella): decide them, do not leave them to the set dressing.
+
+Alternatives:
+- A shared end/start anchor still between clips (FAIL-003), or a longer clip that contains the transition.
+
+Do not overgeneralize:
+- Props that are irrelevant to the story may stay unmentioned; the risk is for objects the viewer tracks.
+
+---
+
+## FAIL-011 — The cause of the story's turning point is never written
+
+Context:
+- Episode type: rooftop radio (30 s, one place).
+
+Observed result:
+- [user] The batteries look odd, and the reason the radio gets fixed is unclear. She also sits apart from the radio.
+- [prompt] Clip 2 says she "checks two batteries and presses them back into place", then switches on and still hears
+  static; clip 3 extends the antenna and rotates the radio; clip 4 the melody breaks through. No clip states what was wrong or why
+  that action fixes it. Clip 5-6 say she sits in the chair "beside the table" with no distance.
+
+Why rejected:
+- The turning point reads as luck, so the emotional payoff has nothing under it.
+
+Likely cause:
+- [prompt] The plan listed repair actions, not a cause: problem, cause, fix, and the visible proof.
+- [inference] The model renders actions, not the logic between them.
+
+Reusable lesson:
+- For any problem-then-solution beat, write one line: what is wrong, what makes it wrong, what action fixes it, and
+  what the viewer sees as proof (the radio's dial light turns on when the battery is turned the right way).
+- Prefer one clear cause over a sequence of plausible actions.
+
+Alternatives:
+- Pick a story whose fix needs no small mechanism (a sunset arriving, someone arriving).
+- Show only the result and let the viewer assume the repair (ellipsis, T-01), when the repair itself is not the point.
+
+Do not overgeneralize:
+- A quiet atmosphere piece does not need a puzzle. The lesson applies once the story promises a fix.
+
+---
+
+## FAIL-012 — Time and distance are not designed
+
+Context:
+- Episode type: bus trip to the sea, alley cat.
+
+Observed result:
+- [user] Bus: the sea is visible right after boarding; the last spoken line is unclear.
+- [user] Alley cat: unclear whether it is the same day or a sequence in time.
+- [prompt] Bus clip 2 says nothing about the outside and clip 3 only "the passing town"; the sea first appears in my
+  clip 4 text, yet the rendered clip 2 interior already shows it [frames]. Alley clip 1-3 give no marker that the morning is continuous.
+
+Why rejected:
+- A journey that takes no time and a day with no order read as editing mistakes.
+
+Likely cause:
+- [inference] The renderer fills unspecified surroundings with its most likely image, and a bus window next to a sea
+  scene gets the sea. Time passing is not visible unless something changes visibly (scenery, light).
+
+Reusable lesson:
+- Specify a progression of what is seen outside (town, then fields, then a strip of sea) and where it first appears.
+- Say whether clips are continuous in real time or separated by an ellipsis, and show the proof (same light, a
+  clock, scenery that has changed).
+- Keep a spoken line short and plain; if its sound matters, check it before relying on it.
+
+Alternatives:
+- Cut to the destination with a clear change in light or place.
+
+Do not overgeneralize:
+- Why the final bus line was unclear is not known; the audio was never checked by Claude.
+
+---
+
+## FAIL-013 — Objects named but not described; small mechanisms at the model's limit
+
+Context:
+- Episode type: village market, rooftop radio.
+
+Observed result:
+- [user] The market keeps calling napa cabbage lettuce; the scale looks odd; it is unclear whether the wrapping is
+  newspaper or a plastic bag. The radio's batteries look odd.
+- [prompt] The market dialogue says lettuce (상추) while the visual text says "lettuce" without a description of leaf
+  shape. The same prompt set also gives a reusable cloth bag in clip 2 and newspaper wrapping in clip 3, so the
+  plan itself left two materials unresolved.
+
+Why rejected:
+- A spoken noun that disagrees with the picture, and objects whose material changes, break believability.
+
+Likely cause:
+- [inference] A name alone selects the model's average object; leafy vegetables and market scales are ambiguous
+  without shape and material. Battery compartments and scale needles are small mechanisms that are rendered
+  unreliably (see also T-08 for contact moments).
+
+Reusable lesson:
+- Describe each key object by shape, color and material, and make the spoken noun match what the picture shows
+  ("loose-leaf lettuce with ruffled green leaves, not round heads").
+- Decide one material per purpose (wrapping in one paper kind, one bag type) across all clips.
+- Avoid small mechanisms as the story's turning point; show their result instead.
+
+Alternatives:
+- Choose a simpler prop (a basket instead of a scale).
+- Cut away before the mechanism is operated and show the outcome.
+
+Do not overgeneralize:
+- Background props need no description. The lesson is for props that are handled or named on screen.
+
+---
+
+## FAIL-014 — Splitting a short story into many independent clips multiplies the seams
+
+Context:
+- Episode type: all night-batch productions (six clips of about 5 s per 30 s) and the Rooftop 5AM test.
+
+Observed result:
+- [user] Most items in FAIL-009 to FAIL-013 are position, state and time breaks that occur at cuts between clips.
+- [prompt] Every clip received only the same identity reference and its own text. No clip received the previous
+  clip's last frame, a location plate, or the state of the previous clip beyond what the text repeated.
+
+Why rejected:
+- Each seam is a place where the model can re-invent the place and the objects.
+
+Likely cause:
+- A choice made by Claude: 5 s clips were what worked for the first test, and the night batch copied it. FAIL-003
+  already says to split only where a cut creates value or reduces generation risk; this split did neither for scenes in one place.
+- [frames] In the shot-2 experiment the 8 s clips (with in-clip cuts) looked fuller than the 4.5 s ones; [inference] fewer, longer
+  clips would remove seams, but this has not been tested on these stories.
+
+Reusable lesson:
+- Decide the clip boundaries from the story: cut where a place or time really changes, not at a fixed duration.
+- Where a cut is needed, hand off by a shared end/start still or a location plate, not by text alone (untested here).
+
+Alternatives:
+- Three clips of about 10 s with `[Shot N] At 00:0x` cuts inside each clip.
+- Use the first-and-last-frame model (`minimax_h3_fl2va_pruned`) to chain clips (not tested).
+
+Do not overgeneralize:
+- The bus trip held two separate identities across six clips and its failures were about place and time, not identity. Splitting
+  is not the only cause of any single defect.
+
+---
+
+## FAIL-015 — The author's own frame review checked identity and props but not logic
+
+Context:
+- Process: Claude wrote the prompts, rendered, then reviewed sampled frames before reporting to the user.
+
+Observed result:
+- [frames] Claude reported the night-batch videos as rendered "as designed", and Rooftop 5AM shots 1-3 as matching the storyboard,
+  after checking identity consistency, key props and a few frames per clip.
+- [user] The same videos contain the defects in FAIL-009 to FAIL-013, which a viewer sees on first watching.
+
+Why rejected:
+- The report overstated quality, so the user's first look was a surprise instead of a confirmation.
+
+Likely cause:
+- The review looked at what the plan listed (identity, a few props) and not at the logic across clips (where is the
+  cow, which way is the bus going, where did the bag go). The author reviewed their own plan.
+
+Reusable lesson:
+- Review against a fixed checklist: layout and direction, per-clip state, cause of turning points, time order, object
+  appearance, spoken line audibility. Report which items were checked and which were not (for example, motion and sound are not judged from stills).
+- Have a different pass than the author do the logic review (video-candidate-review, or a frontier consultation for the
+  disputed items) before rendering, and again after on the finished video.
+
+Alternatives:
+- Check the plan before rendering by finding, for each hard constraint, the words that enforce it (FAIL-008).
+
+Do not overgeneralize:
+- Frames still cannot judge motion, timing or sound; those stay with the viewer.
+
+---
+
+## Not yet explained
+
+- The farmer's explaining scene is odd [user]; the cause is unknown. The prompt describes only an open-hand gesture and a bucket placement.
+- The market scale looks odd [user]; shape and mechanics were not specified, so FAIL-013 is a suspected cause only.
+- The last bus line is unclear [user]; whether the cause is wording, audio generation or mixing was not checked.

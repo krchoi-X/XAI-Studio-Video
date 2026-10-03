@@ -13,6 +13,8 @@ Current authorities:
 - `reference-state-analyses.md` — evidence corpus
 - `directing-technique-db.md` — T-techniques
 - `prompt-craft-db.md` — P-techniques
+- `director-memory/autonomous-video-quality-guide.md` — compact production-facing synthesis; use it to understand
+  what Hermes/Meromero needs, while keeping new Muse observations evidence-scoped until promoted.
 
 The current corpus is large enough that uncontrolled taxonomy growth is now a bigger
 risk than missing one speculative technique.

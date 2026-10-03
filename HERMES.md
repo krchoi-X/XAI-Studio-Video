@@ -8,6 +8,8 @@ For production, read [artifact and review contract](docs/artifact-and-review-con
 - Visual intent alignment and storyboard revision: `skills/storyboard-director/SKILL.md`.
 - Approved storyboard through sample/final production: `skills/idea-to-production/SKILL.md` and its director decisions.
 - Video: root `SKILL.md`.
+- Autonomous video planning and review: `docs/director-memory/autonomous-video-quality-guide.md`; use its compact
+  passes instead of loading the complete failure corpus into Meromero.
 - Local night batches: Character Manager skill and `tools/hermes_night_batch.py`.
 - Explicit external engine: preserve it and use the shared external import route; do not substitute the local default.
 
