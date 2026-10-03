@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE_LINGERIE_STUDIO",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE_LINGERIE_STUDIO",
+  "requested_by": "hermes",
+  "engine": "WanGP",
+  "model": "krea2_turbo_moody_krea",
+  "character_id": "ch-mizuki-reika",
+  "title": "Reika Lingerie Studio",
+  "user_request_verbatim": "Batch lingerie studio",
+  "status": "running",
+  "created_at": "2026-09-16T14:06:15+09:00",
+  "updated_at": "2026-09-16T18:34:08+09:00"
+}

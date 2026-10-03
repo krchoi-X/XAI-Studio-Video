@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "session_id": "SCENE_NUDE_STUDIO",
+  "session_dir": "D:\\codex\\XAI-studio\\characters\\ch-mizuki-reika\\02_generations\\SCENE_NUDE_STUDIO",
+  "requested_by": "hermes",
+  "engine": "WanGP",
+  "model": "krea2_turbo_moody_krea",
+  "character_id": "ch-mizuki-reika",
+  "title": "Reika Nude Studio",
+  "user_request_verbatim": "Batch nude studio",
+  "status": "running",
+  "created_at": "2026-09-16T14:06:16+09:00",
+  "updated_at": "2026-09-16T18:34:10+09:00"
+}

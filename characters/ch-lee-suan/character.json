@@ -45,6 +45,13 @@
     "makeup": "thin natural base with subtle eye definition and pale pink vitality",
     "gaze": "calm clear coordinated gaze"
   },
+  "reference_defaults": {
+    "identity": {
+      "path": "D:\\AI_Studio\\library\\characters\\ch-lee-suan\\generations\\BATCH-004-lee-suan-upper-body-audition\\outputs\\gpt-image\\gpt-image-09.png",
+      "state": "user-selected",
+      "source": "Gallery face_master ref_515c36e5640e4c5885c41a46df7bae00 (ast_352eaf17a6fed6c8790dd759, SHA-256 b07caffe…). Operator confirmed designation; USER GO 2026-09-29 to record as reference_defaults.identity. Does not by itself change Gallery approval state or approved_references."
+    }
+  },
   "approved_references": [],
   "prompt_sources": [
     "personal-ai-knowledge/creative-studio/projects/character-library/characters/ch-lee-suan/appearance-profiles.md"
