@@ -37,12 +37,34 @@ try {
         Pop-Location
     }
 
+    # Character-independent productions: a separate exporter with its own ledger and log. It must never change
+    # the media export's result above, so a failure here is only reported.
+    $productionsExporter = Join-Path $PSScriptRoot 'productions_drive_export.py'
+    $productionsLog = Join-Path $logDirectory ("productions-{0:yyyyMMdd-HHmmss}.log" -f $startedAt)
+    try {
+        Push-Location $repositoryRoot
+        try {
+            & $pythonPath $productionsExporter sync --all --limit $MaxItems 2>&1 | Tee-Object -FilePath $productionsLog | Out-Null
+            $productionsExitCode = $LASTEXITCODE
+        } finally {
+            Pop-Location
+        }
+        if ($productionsExitCode -ne 0) {
+            Write-Warning "Productions export reported a problem (exit $productionsExitCode). See $productionsLog"
+        }
+    } catch {
+        Write-Warning "Productions export failed: $($_.Exception.Message)"
+    }
+
     if ($exitCode -ne 0) {
         throw "Media export failed with exit code $exitCode. See $logPath"
     }
 
     # Keep roughly three months of small execution logs.
     Get-ChildItem -LiteralPath $logDirectory -Filter 'sync-*.log' -File |
+        Where-Object LastWriteTime -lt (Get-Date).AddDays(-90) |
+        Remove-Item -Force
+    Get-ChildItem -LiteralPath $logDirectory -Filter 'productions-*.log' -File |
         Where-Object LastWriteTime -lt (Get-Date).AddDays(-90) |
         Remove-Item -Force
 

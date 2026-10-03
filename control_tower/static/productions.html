@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>작품 · XAI Control Tower</title>
+<style>
+  :root {
+    --bg: #0f1216; --panel: #171b21; --panel2: #1d222a; --line: #2a313b; --text: #e6e9ee; --muted: #8b95a5;
+    --ok: #3ddc84; --warn: #ffb02e; --bad: #ff5c5c; --accent: #5aa9ff; --radius: 14px; --gap: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.45 -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif; }
+  body { padding: 14px; padding-bottom: 48px; max-width: 1100px; margin: 0 auto; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  header h1 { font-size: 20px; margin: 0; font-weight: 700; letter-spacing: .04em; }
+  a { color: var(--accent); text-decoration: none; }
+  .muted { color: var(--muted); } .small { font-size: 13px; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--line); color: var(--muted); }
+  .tag.ok { color: var(--ok); border-color: var(--ok); } .tag.warn { color: var(--warn); border-color: var(--warn); } .tag.bad { color: var(--bad); border-color: var(--bad); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--gap); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; cursor: pointer; }
+  .card video { width: 100%; aspect-ratio: 16 / 9; background: #000; display: block; object-fit: cover; }
+  .card .noclip { aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; background: #000; color: var(--muted); }
+  .card .body { padding: 12px 14px; }
+  .card .t { font-weight: 600; font-size: 16px; margin-bottom: 6px; }
+  .card .m { color: var(--muted); font-size: 13px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .back { margin-bottom: 12px; display: inline-block; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-bottom: var(--gap); }
+  .panel h2 { margin: 0 0 10px; font-size: 12px; letter-spacing: .14em; color: var(--muted); text-transform: uppercase; }
+  .hero video { width: 100%; max-height: 70vh; background: #000; border-radius: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .grid figure { margin: 0; background: var(--panel2); border-radius: 10px; padding: 8px; }
+  .grid video, .grid img { width: 100%; border-radius: 8px; background: #000; display: block; }
+  .grid figcaption { font-size: 12px; color: var(--muted); margin-top: 6px; word-break: break-all; }
+  .kv { display: grid; grid-template-columns: 130px 1fr; gap: 4px 12px; font-size: 14px; }
+  .kv div:nth-child(odd) { color: var(--muted); }
+  .kv .wrap { word-break: break-word; }
+  .records a { display: inline-block; margin: 2px 12px 2px 0; font-size: 13px; }
+  pre { background: #0b0e12; padding: 10px; border-radius: 8px; overflow: auto; max-height: 50vh; font-size: 12px; white-space: pre-wrap; }
+  .empty { color: var(--muted); padding: 14px 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>작품 <span class="muted small">캐릭터와 무관한 제작물 · 읽기 전용</span></h1>
+  <a href="/">← 대시보드</a>
+</header>
+<main id="app"><div class="empty">불러오는 중…</div></main>
+<script>
+const app = document.getElementById('app');
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fileUrl = (id, path) => `/api/productions/${encodeURIComponent(id)}/file?path=${encodeURIComponent(path)}`;
+const mb = n => (n / 1048576).toFixed(1) + ' MB';
+const when = iso => iso ? new Date(iso).toLocaleString('ko-KR') : '—';
+const statusClass = s => s === 'completed' ? 'ok' : (s === 'failed' || s === 'unreadable') ? 'bad' : 'warn';
+
+async function getJson(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(url + ' → ' + r.status);
+  return r.json();
+}
+
+async function showList() {
+  const data = await getJson('/api/productions');
+  const rows = data.productions;
+  if (!rows.length) { app.innerHTML = `<div class="empty">작품이 없습니다. <span class="mono small">${esc(data.root)}</span> 아래에 session-provenance.json이 있는 폴더가 작품으로 보입니다.</div>`; return; }
+  app.innerHTML = `<div class="cards">${rows.map(p => `
+    <div class="card" onclick="location.hash='#/${encodeURIComponent(p.id)}'">
+      ${p.final_video ? `<video src="${fileUrl(p.id, p.final_video)}#t=0.1" preload="metadata" muted playsinline></video>` : `<div class="noclip">영상 없음</div>`}
+      <div class="body">
+        <div class="t">${esc(p.title)}</div>
+        <div class="m"><span class="tag ${statusClass(p.status)}">${esc(p.status)}</span>
+          <span>${esc(when(p.created_at))}</span>
+          <span>클립 ${p.clip_count}</span>${p.experiment_count ? `<span>실험 ${p.experiment_count}</span>` : ''}
+          ${p.character_id ? `<span>${esc(p.character_id)}</span>` : '<span>캐릭터 없음</span>'}</div>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+function videoFigure(id, f) {
+  return `<figure><video src="${fileUrl(id, f.path)}#t=0.1" controls preload="metadata" playsinline></video>
+    <figcaption>${esc(f.name)} · ${mb(f.bytes)}</figcaption></figure>`;
+}
+
+async function showDetail(id) {
+  const p = await getJson('/api/productions/' + encodeURIComponent(id));
+  const f = p.files, v = p.provenance || {};
+  const kv = [['상태', p.status], ['요청자', v.requested_by], ['실행', v.executor], ['엔진', v.engine], ['모델', v.model],
+    ['만든 시각', when(v.created_at)], ['콘티 출처', v.source_idea], ['원 요청', v.user_request_verbatim]]
+    .filter(([, x]) => x).map(([k, x]) => `<div>${esc(k)}</div><div class="wrap">${esc(x)}</div>`).join('');
+  const experiments = f.experiments.length ? `<div class="panel"><h2>실험 영상 (${f.experiments.length})</h2><div class="grid">${f.experiments.map(x => videoFigure(id, x)).join('')}</div></div>` : '';
+  app.innerHTML = `<a class="back" href="#/">← 목록</a>
+    <div class="panel"><h2>${esc(p.title)}</h2>
+      ${p.problem ? `<div class="small" style="color:var(--bad)">${esc(p.problem)}</div>` : ''}
+      ${f.final.length ? `<div class="hero">${f.final.map(x => `<video src="${fileUrl(id, x.path)}" controls playsinline preload="metadata"></video><div class="small muted">${esc(x.name)} · ${mb(x.bytes)}</div>`).join('')}</div>` : '<div class="empty">최종 영상이 아직 없습니다.</div>'}
+    </div>
+    ${f.clips.length ? `<div class="panel"><h2>클립 (${f.clips.length})</h2><div class="grid">${f.clips.map(x => videoFigure(id, x)).join('')}</div></div>` : ''}
+    ${experiments}
+    ${f.images.length ? `<div class="panel"><h2>기준 이미지</h2><div class="grid">${f.images.map(x => `<figure><img src="${fileUrl(id, x.path)}" loading="lazy"><figcaption>${esc(x.name)}</figcaption></figure>`).join('')}</div></div>` : ''}
+    <div class="panel"><h2>기록</h2><div class="kv">${kv}</div></div>
+    <div class="panel"><h2>프롬프트와 설정 파일</h2><div class="records">${f.records.map(x => `<a href="#" data-path="${esc(x.path)}">${esc(x.path)}</a>`).join('')}</div><pre id="viewer" hidden></pre></div>`;
+  app.querySelectorAll('.records a').forEach(a => a.addEventListener('click', async e => {
+    e.preventDefault();
+    const box = document.getElementById('viewer');
+    box.hidden = false; box.textContent = '불러오는 중…';
+    box.textContent = await (await fetch(fileUrl(id, a.dataset.path))).text();
+  }));
+}
+
+async function route() {
+  const id = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+  try { await (id ? showDetail(id) : showList()); }
+  catch (e) { app.innerHTML = `<div class="empty">불러오지 못했습니다: ${esc(e.message)}</div>`; }
+}
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>

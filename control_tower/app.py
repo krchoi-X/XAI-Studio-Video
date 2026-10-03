@@ -12,7 +12,7 @@ from typing import Any
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response, StreamingResponse
 
-from . import __version__
+from . import __version__, productions
 from .config import Config
 from .monitor import MonitorService
 
@@ -146,6 +146,31 @@ def create_app(config: Config | None = None, monitor: MonitorService | None = No
 
         return StreamingResponse(stream(), media_type="text/event-stream",
                                  headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no", "Connection": "keep-alive"})
+
+    # ------------------------------------------------- productions (read-only, character-independent)
+    @app.get("/productions", include_in_schema=False)
+    async def productions_page() -> HTMLResponse:
+        page = STATIC_DIR / "productions.html"
+        return HTMLResponse(page.read_text(encoding="utf-8"))
+
+    @app.get("/api/productions")
+    async def productions_list() -> dict[str, Any]:
+        return {"root": str(config.productions_root), "productions": productions.list_productions(config.productions_root)}
+
+    @app.get("/api/productions/{session_id}")
+    async def productions_detail(session_id: str) -> dict[str, Any]:
+        detail = productions.get_production(config.productions_root, session_id)
+        if detail is None:
+            raise HTTPException(404, "production not found")
+        return detail
+
+    @app.get("/api/productions/{session_id}/file")
+    async def productions_file(session_id: str, path: str = Query(..., min_length=1, max_length=400)) -> Response:
+        target = productions.resolve_media(config.productions_root, session_id, path)
+        if target is None:
+            raise HTTPException(404, "file not found in this production")
+        return FileResponse(str(target), media_type=productions.media_type(target), filename=target.name,
+                            content_disposition_type="inline")
 
     @app.exception_handler(Exception)
     async def unhandled(_: Request, exc: Exception) -> JSONResponse:

@@ -19,6 +19,8 @@ DEFAULT_WEB_JOB_ROOTS = [
     Path(r"D:\codex\personal-prompt-studio\personal-prompt-studio\data\workspace\generation-jobs"),
 ]
 DEFAULT_WANGP_ROOT = Path(r"D:\AI\WanGP")
+# Character-independent productions (library session folders with a session-provenance.json); read-only.
+DEFAULT_PRODUCTIONS_ROOT = Path(r"D:\AI_Studio\library\videos")
 
 
 @dataclass
@@ -30,6 +32,7 @@ class Config:
     night_batch_root: Path = DEFAULT_NIGHT_BATCH_ROOT
     web_job_roots: list[Path] = field(default_factory=lambda: list(DEFAULT_WEB_JOB_ROOTS))
     wangp_root: Path = DEFAULT_WANGP_ROOT
+    productions_root: Path = DEFAULT_PRODUCTIONS_ROOT
     gallery_url: str = "http://127.0.0.1:8787/"  # used when the dashboard is opened on this PC
     gallery_port: int = 8787
     # Used when the dashboard is opened from the tailnet. Detected from `tailscale serve status` at startup
@@ -55,6 +58,8 @@ class Config:
             cfg.gallery_url = os.environ["XAI_CT_GALLERY_URL"]
         if os.environ.get("XAI_CT_GALLERY_TAILNET_URL"):
             cfg.gallery_tailnet_url = os.environ["XAI_CT_GALLERY_TAILNET_URL"]
+        if os.environ.get("XAI_CT_PRODUCTIONS_ROOT"):
+            cfg.productions_root = Path(os.environ["XAI_CT_PRODUCTIONS_ROOT"])
         if os.environ.get("XAI_CT_SCAN_ROOTS"):
             cfg.scan_roots = [Path(p) for p in os.environ["XAI_CT_SCAN_ROOTS"].split(os.pathsep) if p]
         return cfg
