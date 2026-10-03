@@ -60,3 +60,31 @@ Producer: the director/storyboard stage creates the Intent Contract beside the a
 ## Next
 
 Request an independent Claude review after the Codex commits are preserved. Other renderer backends may later implement the same native boundary; local WanGP now enforces it directly while the maintained pre-submit checker remains the portable fallback.
+
+## Handoff note — Claude review of 7d9f353 + 72a91c9 (2026-10-04)
+
+Author: Claude Code (claude-opus-5-5), review-only; no code changed. Reviewed runtime commits `7d9f353`, `72a91c9` and Private shared-skill commits `8275a30`..`f3051f4`. Codex remains Active editor and decides what to accept.
+
+Done well: shared-skill routing stays at handoff boundaries; hash binding, stale-record rejection and pre-GPU recheck in `tools/local_wangp.py` are sound; prior review items (allow-list default, joint approval, relative timing, failure attribution, segment inheritance, audited override) are reflected in guidance.
+
+Main finding: the checker protects contract-file integrity, not prompt meaning. Status `COMPLETE` overstates semantic enforcement until items 1–3 are addressed.
+
+Reproduced with the `artifacts()` fixture from `tests/test_video_intent_contract.py` (scratch copy, repo untouched):
+
+| Runtime prompt / IR change | Expected | Actual |
+|---|---|---|
+| "She elegantly walks to the door, occasionally glancing at the camera, picks up her bag, then walks down the corridor as the camera slowly pushes in." | fail (early gaze, added action, restored omission, camera move) | **pass** |
+| "Static camera, no push-in, no orbit. She reaches the door, pauses, looks at the lens only at the very end, and exits." | pass | **fail** `forbidden_phrase_in_prompt` |
+| IR `creative_choices.lens_family = "85mm with a slow dolly toward her face"` + same text in prompt | fail | **pass** |
+
+1. **IR equality is self-reported.** `compare()` checks `compiler_ir.locked == contract.locked`, but the compiler writes the IR by copying the contract; the prompt prose is not derived from it. Current gaze/order/omission/direction tests mutate the IR directly, so they never exercise prose drift. Fix: render locked prompt segments deterministically from the IR (versioned per-model template), and have the checker re-render and compare those segments to the submitted prompt. The LLM writes only the allow-listed creative slots.
+2. **Forbidden-phrase lint is substring-based.** False positive on negated constraints ("no push-in"), false negative on inflections/synonyms ("pushes in", "dolly toward"). Negative wording should come only from template-generated or negative-prompt segments, which are excluded from the lint; maintain a per-model synonym list for camera ops and forbidden additions.
+3. **Creative slot values are unchecked.** Allow-list validates keys only. Constrain values (controlled vocabulary per key) or at least run the camera/action lint over values.
+4. **Gate is opt-in.** Enforcement applies only when a session registers `--methodology intent-preserving-v1`; an agent that omits it submits as before. Consider requiring it whenever the session has an approved storyboard/production plan, or at least recording `methodology: null` runs as non-faithful in review. External renderer paths (`renderer-job-request`) are still ungated (already noted in Next).
+5. Minor:
+   - `approval.approved_by` is free text, so an agent can self-approve as `"user"`; bind it to a recorded approval or restrict actors.
+   - Schema allows `creative_envelope.level: L3` on an approved contract; methodology forbids re-direct after lock.
+   - Feasibility enum adds `HIDE_TRANSITION`, re-expanding the vocabulary that was meant to merge.
+   - `locked.gaze` is a free key/value map, so gaze timing relative to `ordered_events` is not structurally checkable; v1-acceptable, but the delayed-gaze case is not yet a structural check.
+
+Suggested next regression fixtures: the three table rows above (expected fail / pass / fail).
