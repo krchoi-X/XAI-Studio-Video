@@ -2,7 +2,7 @@
 
 - Date: 2026-10-03
 - Active editor: Codex / GPT-6 Astra
-- Status: COMPLETE — canonical guide, shared skill routing and deterministic pre-submit checker ready
+- Status: COMPLETE — enforcement revision v1.1 and artifact schema v2 verified; renderer-output review remains human
 
 ## Goal
 
@@ -21,7 +21,7 @@ Preserve the current video methodology as an immutable Git-backed baseline, publ
 
 - Preserve all existing user, character, production, review, storage and publication approvals.
 - Preserve the useful camera, motion, continuity, model-adapter and failure-memory knowledge already present.
-- Keep existing v1/v2 persisted records readable; do not silently widen a frozen schema.
+- Keep existing persisted records readable; do not silently widen a frozen schema. The stronger deterministic format is schema v2, while v1 remains a legacy reader path.
 - Do not modify or absorb Claude's active productions/Drive/Catch Me work or unrelated character changes.
 - The contract must be usable without the originating conversation and must include bounded background and rationale.
 - Narrative meaning is deny-by-default after approval; only an explicit creative-envelope allow-list may change.
@@ -43,7 +43,7 @@ Preserve the current video methodology as an immutable Git-backed baseline, publ
 
 ## Contract impact
 
-Producer: the director/storyboard stage creates the Intent Contract beside the approved Storyboard Spec. Consumers: cinematographer pass, model compiler, semantic checker, shot planner, renderer submission boundary, human review and Clypra segment selection. This change first establishes the canonical source, portable artifact requirements and mandatory gates in skills/guidance. Existing schemas and jobs remain valid. A later implementation of a persisted schema or hard runtime submission gate must use a new version or compatible sidecar, name every producer/consumer, include old-version fixtures and define rollback. Rollback of this documentation/skill migration restores the recorded baseline tag and removes the new catalog entry without touching production assets.
+Producer: the director/storyboard stage creates the Intent Contract beside the approved Storyboard Spec. Consumers: cinematographer pass, model compiler, semantic checker, shot planner, renderer submission boundary, human review and Clypra segment selection. Schema v2 adds locked prompt segments, enumerated creative values and a template version. The checker dispatches by schema version; v1 remains readable with its original weaker checks, while new work must use v2. Rollback selects the v1 reader and removes v2 artifacts without touching production assets.
 
 ## Progress
 
@@ -54,12 +54,20 @@ Producer: the director/storyboard stage creates the Intent Contract beside the a
 - Added and registered the canonical shared `video-intent-contract` skill; connected director, cutboard, continuity and adaptive-production stages without replacing their responsibilities.
 - Updated common agent routing and the root video workflow. New storyboard-derived video work must produce the contract, acknowledgement, compiler IR and passing hash-bound check before submission.
 - Added a native local WanGP gate for sessions registered with `--methodology intent-preserving-v1`. Submission now requires the exact storyboard, contract, compiler IR and prior semantic-check record, recomputes the check before run creation/GPU start, and stores verified evidence in `run.json`.
-- Verification: 40 focused tests passed; five affected shared skills passed `quick_validate.py`; the catalog contains 13 unique definitions and resolves the new skill; Python compile and scoped diff checks passed.
+- Verification: 69 focused tests passed with 1 skipped after the v1.1 review fixes; the affected shared skill passed `quick_validate.py`; Python compile and diff checks passed. The original broader migration validation (five shared skills and catalog resolution) also remains valid.
 - No render, GPU work, service restart, media/database change, publication or push occurred.
 
 ## Next
 
-Request an independent Claude review after the Codex commits are preserved. Other renderer backends may later implement the same native boundary; local WanGP now enforces it directly while the maintained pre-submit checker remains the portable fallback.
+Claude's review was received and the reproducible semantic-enforcement findings were accepted. v1.1 work makes locked prompt prose deterministic, constrains creative values, removes substring lint as an authority, and closes the approved-production-plan opt-out. Other renderer backends still need the same native boundary; user-approval evidence binding and segment-level enforcement remain follow-ups.
+
+## Codex disposition of Claude review — 2026-10-04
+
+- Accepted and implemented in artifact schema v2: deterministic full-prompt rendering from director-approved contract segments; exact prompt comparison; enumerated creative values; regression fixtures for all three reproduced cases. Frozen schema v1 remains readable and is not silently widened.
+- Accepted and implemented: approved contracts no longer allow L3; `HIDE_TRANSITION` was removed from the feasibility enum; new approved production-plan registration automatically enables the intent gate. Pre-existing legacy records remain readable and are not silently reclassified.
+- Accepted as a remaining limitation: `approved_by` still describes rather than cryptographically proves human approval. Binding it to a durable review event requires a separate approval-record contract and migration plan.
+- Accepted as future expansion: renderer-job-request and Clypra segment boundaries need native enforcement equivalent to local WanGP.
+- v1.1 completion means compiler fidelity is mechanically enforced for the supported deterministic template. It does not mean rendered-video fidelity is automated; Stage C remains human review.
 
 ## Handoff note — Claude review of 7d9f353 + 72a91c9 (2026-10-04)
 

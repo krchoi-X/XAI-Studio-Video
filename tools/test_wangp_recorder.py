@@ -27,6 +27,7 @@ class RecorderTests(unittest.TestCase):
             ))
             self.assertEqual(result["production_plan"]["schema_version"], 2)
             self.assertEqual(result["production_plan"]["sha256"], wangp_recorder.sha256_file(plan))
+            self.assertEqual(result["methodology"], "intent-preserving-v1")
 
     def test_session_records_intent_preserving_methodology(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

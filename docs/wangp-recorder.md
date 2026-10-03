@@ -73,7 +73,7 @@ directory or GPU worker is created if the plan file changed. Sessions without th
 behavior.
 
 `--methodology intent-preserving-v1` makes the Intent Contract gate native to local WanGP submission for that
-session. Every `local_wangp.py submit` must then provide `--storyboard`, `--intent-contract`, `--compiler-ir` and
+session. Registering an approved `--production-plan` also enables the methodology automatically, so omitting the flag cannot bypass the gate. Every `local_wangp.py submit` must then provide `--storyboard`, `--intent-contract`, `--compiler-ir` and
 `--semantic-check`. The tool recomputes the contract check against the exact prompt before it creates a run or starts
 the GPU worker. Missing artifacts, stale hashes, changed locks, non-allow-listed creative fields, or a failed check
 stop submission. The verified evidence is copied to `run.json.intent_contract`.

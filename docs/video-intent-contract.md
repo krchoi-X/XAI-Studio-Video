@@ -21,7 +21,7 @@ The director authors the storyboard and contract together. Do not extract a supp
 ## Minimum packet
 
 ```yaml
-schema_version: 1
+schema_version: 2
 contract_id: intent_S07_v1
 status: approved
 
@@ -56,10 +56,30 @@ locked:
   final_state: exited_room
   omitted_events: [corridor_walk]
   forbidden_additions: [full_body_turn, object_pickup, return_to_room]
+  prompt_segments:
+    subject_definition: One woman at the door, carrying nothing.
+    scene_definition: A quiet room with the exit visible.
+    event_lines:
+      reach_door: She reaches the door.
+      pause: She pauses.
+      head_turn_only: She turns only her head.
+      brief_final_gaze: Only at the final moment, she briefly looks into the lens.
+      face_forward: She faces forward again.
+      exit: She exits the room.
+    gaze_line: Before the final moment she looks away; lens contact occurs only at the end.
+    direction_line: She moves toward the exit throughout.
+    camera_line: Static camera; no push-in and no orbit.
+    final_state_line: She has exited the room.
+    omission_line: Do not show a corridor walk, object pickup, full-body turn, or return.
 
 creative_envelope:
   level: L1
   allowed: [lens_family, light_softness, depth_of_field, foreground_layering]
+  allowed_values:
+    lens_family: [normal_portrait, short_telephoto]
+    light_softness: [soft, diffused]
+    depth_of_field: [moderate, shallow]
+    foreground_layering: [none, subtle_doorframe]
   forbidden: [push_in, orbit, added_actor_action]
 
 feasibility:
@@ -72,7 +92,7 @@ approval:
   approved_at: <timestamp>
 ```
 
-The final machine schema may normalize IDs and timing anchors, but it must preserve context, locked meaning, allowed creativity, unresolved decisions and approval evidence as separate responsibilities.
+Schema v2 is the required format for new work because it adds deterministic prompt segments and enumerated creative values. Schema v1 remains readable for historical records but does not prove prompt meaning and must not be used for a new faithful-execution claim.
 
 The contract file does not contain its own SHA-256 because that would be self-referential. Consumers compute the exact file hash and store it in acknowledgements, compiler intermediates and semantic-check records.
 
@@ -102,6 +122,7 @@ source_contract_id: intent_S07_v1
 source_contract_sha256: <verified-contract-hash>
 compiler: h3-contract-compiler
 compiler_version: <version-or-commit>
+prompt_template_version: intent-prompt-v1
 target_model: minimax_h3_ref2va_pruned
 ordered_events: [reach_door, pause, head_turn_only, brief_final_gaze, face_forward, exit]
 gaze_phases: [away_from_lens, brief_final_lens_contact]
@@ -114,7 +135,7 @@ creative_choices:
   light_softness: soft
 ```
 
-Locked entries are copied or deterministically serialized. An LLM may propose values only for keys present in `creative_envelope.allowed`.
+Locked entries, including director-approved prompt prose, are copied exactly. An LLM may select only values listed under the matching `creative_envelope.allowed_values` key. The versioned template renders the complete prompt; there is no free-text post-processing stage.
 
 ## Semantic-check record
 
@@ -136,7 +157,9 @@ Required deterministic checks:
 - required events are present once and in order;
 - no forbidden or unapproved narrative event is added;
 - gaze phases, direction, camera locks, omissions and final state match;
-- creative choices use only allow-listed keys;
+- creative choices use only allow-listed keys and enumerated values;
+- every ordered event has exactly one approved prompt line;
+- the runtime prompt exactly equals the versioned deterministic rendering;
 - target compiler/model/version is recorded;
 - prompt/check hashes match the submitted files;
 - a check is invalidated whenever the contract, intermediate or prompt changes.
@@ -148,11 +171,11 @@ python tools/video_intent_contract.py `
   --contract <intent-contract.json> `
   --compiler-ir <compiler-ir.json> `
   --storyboard <approved-storyboard-file> `
-  --prompt <runtime-prompt.txt> `
+  --render-prompt <runtime-prompt.txt> `
   --out <semantic-check.json>
 ```
 
-Text lint may catch model vocabulary that contradicts a lock, such as `orbit` under a static camera contract or `occasionally glances` under a delayed-gaze contract. Lint is a backstop, not the primary semantic representation.
+Use `--prompt` instead of `--render-prompt` only to verify an already generated file. Substring lint is not an enforcement mechanism: it produces false positives for phrases such as “no push-in” and misses synonyms such as “dolly toward.” Exact template equality and enumerated creative values replace that ambiguity.
 
 ## Submission and override
 

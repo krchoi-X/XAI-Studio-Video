@@ -236,6 +236,9 @@ def write_session(args: argparse.Namespace) -> dict[str, Any]:
             "schema_version": plan["schema_version"],
             "plan_id": plan["plan_id"],
         }
+        # An approved production plan is storyboard-derived by definition. Do
+        # not let callers bypass the intent gate by omitting --methodology.
+        record.setdefault("methodology", "intent-preserving-v1")
     record.setdefault("created_at", now())
     record["updated_at"] = now()
     write_json(path, record)

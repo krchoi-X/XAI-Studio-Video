@@ -1,6 +1,6 @@
 # Intent-Preserving Storyboard-to-Video Methodology
 
-Status: canonical runtime methodology for new storyboard-derived video work.
+Status: canonical runtime methodology for new storyboard-derived video work. Enforcement revision: v1.1; new artifact schema: v2 (v1 remains readable only).
 
 ## Why this exists
 
@@ -79,7 +79,8 @@ Creative levels are named allow-list presets, not permission to improvise everyt
 | L0 Literal | no additions | all camera, action, gaze and visual changes |
 | L1 Cinematography Enhancement | lens family, light quality, depth of field, texture, foreground/background separation, small framing refinement | camera movement, actor action, gaze, blocking, event order |
 | L2 Interpretive Cinematography | L1 plus explicitly named parallax, rack focus, camera lag or visual motif | narrative action, gaze meaning, direction, omissions, final state |
-| L3 Re-direct | nothing automatically | requires returning to the director and approving a new storyboard/contract revision |
+
+Re-direction is not a creative level. It requires returning to the director and approving a new storyboard/contract revision.
 
 Silence is not permission. Per-shot `allowed` and `forbidden` lists override the preset only when explicitly recorded.
 
@@ -92,8 +93,9 @@ Choose feasibility before prompt compilation:
 - `IMPLY`: show cause or consequence so the audience infers the event.
 - `OMIT`: deliberately remove a nonessential event from the screen.
 - `INSERT`: use a detail, reaction, establishing, or bridge shot.
-- `HIDE_TRANSITION`: let the event occur behind a real cut, occlusion, frame exit, or other approved concealment.
 - `CONTROL`: use an approved first/last frame, pose, trajectory, reference or other control modality.
+
+An event hidden behind a cut or occlusion is represented as `IMPLY`, `OMIT`, or `SPLIT` according to what the audience receives; it is not a separate feasibility decision.
 
 `REGENERATE` is a retry policy, not a directing strategy. Do not solve feasibility by making the prompt longer.
 
@@ -115,13 +117,14 @@ For storyboard-derived work, apply all of these layers:
 
 1. Closed structured packet with required fields, stable IDs, controlled vocabulary and source hashes.
 2. Deny-by-default changes to narrative action, gaze, direction, blocking, camera motion, omission and final state.
-3. Locked structured compiler intermediate; generative wording is confined to declared creative slots.
-4. Deterministic structural checks for event presence/order, direction, gaze phase, camera locks, omissions and final state.
-5. Advisory semantic review only for nuance that cannot be settled mechanically.
-6. Submission gate requiring a matching approved contract and passing check before a storyboard-derived renderer job.
-7. Explicit human-approved, versioned and audited override when meaning must change.
-8. Human post-render review and failure attribution.
-9. Parent-contract inheritance and recheck for selected editing segments.
+3. Locked structured compiler intermediate. The contract carries director-approved prompt segments, and a versioned template renders them without LLM paraphrase.
+4. Creative slots accept only values explicitly enumerated in `allowed_values`; the final runtime prompt must exactly equal the deterministic rendering of the contract and those values.
+5. Deterministic structural checks for event coverage/order, direction, gaze phase, camera locks, omissions and final state.
+6. Advisory semantic review only for nuance that cannot be settled mechanically.
+7. Submission gate requiring a matching approved contract and passing check before a storyboard-derived renderer job. Registering a new approved production plan through the maintained recorder enables this gate even if an agent omits the methodology flag; pre-existing legacy records are not silently reclassified.
+8. Explicit human-approved, versioned and audited override when meaning must change.
+9. Human post-render review and failure attribution.
+10. Parent-contract inheritance and recheck for selected editing segments.
 
 Hard failures include a stale or mismatched hash, missing or reordered required action, changed gaze/direction, restored omitted event, forbidden camera/action, wrong final state, or missing/failed semantic check. Ambiguous performance nuance and cinematography gain remain warnings or human-review decisions.
 

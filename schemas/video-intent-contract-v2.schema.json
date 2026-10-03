@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/video-intent-contract-v2.schema.json",
+  "title": "XAI Studio Video Intent Contract v2",
+  "type": "object",
+  "required": ["schema_version", "contract_id", "status", "source", "context", "locked", "creative_envelope", "feasibility", "unresolved", "approval"],
+  "properties": {
+    "schema_version": {"const": 2},
+    "contract_id": {"type": "string", "pattern": "^intent_[A-Za-z0-9_-]+$"},
+    "status": {"enum": ["draft", "approved", "superseded"]},
+    "source": {
+      "type": "object",
+      "required": ["storyboard_id", "revision", "sha256"],
+      "properties": {
+        "storyboard_id": {"type": "string", "minLength": 1},
+        "revision": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "required": ["user_goal", "viewer_should_understand", "viewer_should_feel", "shot_purpose", "rationale"],
+      "properties": {
+        "user_goal": {"type": "string", "minLength": 1},
+        "viewer_should_understand": {"type": "string", "minLength": 1},
+        "viewer_should_feel": {"type": "string", "minLength": 1},
+        "shot_purpose": {"type": "string", "minLength": 1},
+        "rationale": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 1}}
+      },
+      "additionalProperties": false
+    },
+    "locked": {"$ref": "#/$defs/locked"},
+    "creative_envelope": {
+      "type": "object",
+      "required": ["level", "allowed", "allowed_values", "forbidden"],
+      "properties": {
+        "level": {"enum": ["L0", "L1", "L2"]},
+        "allowed": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}},
+        "allowed_values": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          }
+        },
+        "forbidden": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}}
+      },
+      "additionalProperties": false
+    },
+    "feasibility": {
+      "type": "object",
+      "required": ["decision", "rationale"],
+      "properties": {
+        "decision": {"enum": ["SHOW", "SPLIT", "IMPLY", "OMIT", "INSERT", "CONTROL"]},
+        "rationale": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "unresolved": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "approval": {
+      "type": "object",
+      "required": ["approved_by", "approved_at"],
+      "properties": {
+        "approved_by": {"type": "string", "minLength": 1},
+        "approved_at": {"type": "string", "format": "date-time"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "locked": {
+      "type": "object",
+      "required": ["ordered_events", "gaze", "screen_direction", "camera", "final_state", "omitted_events", "forbidden_additions", "prompt_segments"],
+      "properties": {
+        "ordered_events": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}},
+        "gaze": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 1}},
+        "screen_direction": {"type": "string", "minLength": 1},
+        "camera": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 1}},
+        "final_state": {"type": "string", "minLength": 1},
+        "omitted_events": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}},
+        "forbidden_additions": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}},
+        "prompt_segments": {
+          "type": "object",
+          "required": ["subject_definition", "scene_definition", "event_lines", "gaze_line", "direction_line", "camera_line", "final_state_line", "omission_line"],
+          "properties": {
+            "subject_definition": {"type": "string", "minLength": 1},
+            "scene_definition": {"type": "string", "minLength": 1},
+            "event_lines": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 1}},
+            "gaze_line": {"type": "string", "minLength": 1},
+            "direction_line": {"type": "string", "minLength": 1},
+            "camera_line": {"type": "string", "minLength": 1},
+            "final_state_line": {"type": "string", "minLength": 1},
+            "omission_line": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

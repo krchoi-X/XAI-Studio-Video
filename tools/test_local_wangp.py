@@ -17,7 +17,7 @@ def intent_artifacts(root: Path) -> tuple[Path, Path, Path, Path, Path]:
     storyboard = root / "storyboard.md"
     storyboard.write_text("Approved storyboard\n", encoding="utf-8")
     contract = {
-        "schema_version": 1, "contract_id": "intent_submit_v1", "status": "approved",
+        "schema_version": 2, "contract_id": "intent_submit_v1", "status": "approved",
         "source": {"storyboard_id": "sb_submit", "revision": 1, "sha256": hashlib.sha256(storyboard.read_bytes()).hexdigest()},
         "context": {
             "user_goal": "Preserve the exit.", "viewer_should_understand": "She leaves.",
@@ -28,23 +28,33 @@ def intent_artifacts(root: Path) -> tuple[Path, Path, Path, Path, Path]:
             "ordered_events": ["pause", "exit"], "gaze": {"final": "away_from_lens"},
             "screen_direction": "toward_exit", "camera": {"movement": "static"},
             "final_state": "exited", "omitted_events": [], "forbidden_additions": ["object_pickup"],
+            "prompt_segments": {
+                "subject_definition": "One woman carrying nothing.",
+                "scene_definition": "A quiet room with one exit.",
+                "event_lines": {"pause": "She pauses.", "exit": "She exits."},
+                "gaze_line": "She looks away from the lens.",
+                "direction_line": "She moves toward the exit.",
+                "camera_line": "Static camera; no orbit.",
+                "final_state_line": "She has exited.",
+                "omission_line": "Do not add an object pickup.",
+            },
         },
-        "creative_envelope": {"level": "L1", "allowed": ["light_softness"], "forbidden": ["orbit"]},
+        "creative_envelope": {"level": "L1", "allowed": ["light_softness"], "allowed_values": {"light_softness": ["soft"]}, "forbidden": ["orbit"]},
         "feasibility": {"decision": "SHOW", "rationale": "Simple action."},
         "unresolved": [], "approval": {"approved_by": "user", "approved_at": "2026-10-03T22:00:00+09:00"},
     }
     contract_path = root / "intent-contract.json"
     contract_path.write_text(json.dumps(contract), encoding="utf-8")
     ir = {
-        "schema_version": 1, "source_contract_id": contract["contract_id"],
+        "schema_version": 2, "source_contract_id": contract["contract_id"],
         "source_contract_sha256": hashlib.sha256(contract_path.read_bytes()).hexdigest(),
-        "compiler": "test", "compiler_version": "1", "target_model": "h3",
+        "compiler": "test", "compiler_version": "1", "prompt_template_version": "intent-prompt-v1", "target_model": "h3",
         "locked": copy.deepcopy(contract["locked"]), "creative_choices": {"light_softness": "soft"},
     }
     ir_path = root / "compiler-ir.json"
     ir_path.write_text(json.dumps(ir), encoding="utf-8")
     prompt = root / "prompt.txt"
-    prompt.write_text("Static camera. She pauses and exits.", encoding="utf-8")
+    prompt.write_text(local_wangp.video_intent_contract.render_runtime_prompt(contract, ir), encoding="utf-8")
     check_path = root / "semantic-check.json"
     result = local_wangp.video_intent_contract.check(contract_path, ir_path, storyboard, prompt)
     check_path.write_text(json.dumps(result), encoding="utf-8")
@@ -68,8 +78,8 @@ class LocalWanGPTests(unittest.TestCase):
             evidence = local_wangp._validate_intent_submission(session, args, prompt)
             self.assertEqual(evidence["methodology"], "intent-preserving-v1")
             self.assertEqual(evidence["semantic_check"]["status"], "pass")
-            prompt.write_text("Static camera. She pauses longer and exits.", encoding="utf-8")
-            with self.assertRaisesRegex(ValueError, "stale or mismatched"):
+            prompt.write_text("Static camera. She pauses longer and exits.\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "prompt_template_mismatch"):
                 local_wangp._validate_intent_submission(session, args, prompt)
 
     def test_intent_methodology_rejects_missing_gate_artifacts(self) -> None:
