@@ -2,7 +2,7 @@
 
 - Date: 2026-10-03
 - Active editor: Codex
-- Status: ACTIVE
+- Status: COMPLETE — verified public changes pushed; governed production artifacts retained locally
 
 ## Goal
 
@@ -45,11 +45,17 @@ This coordination task introduces no contract by itself. Contract impacts remain
 
 - Governance initialized; repository classified public and dirty.
 - Fetched `origin/main`: seven upstream documentation commits found, including `docs/failure-db.md` with 20 production failure cases and six revisions to the Rooftop 5AM scenario.
-- Local `main` is one commit ahead and seven commits behind before reconciliation.
+- Merged upstream with the local quiet-evening vlog commit without discarding dirty work.
+- Reconstructed the documented local scopes and committed them as bounded packages: Drive path repair (`5c92b63`), reference-transformation contracts (`b7e2824`), production preflight/GPU handoff (`94d4b19`), Productions viewer/backup (`c2567ef`), face-master lineage (`0b1c58d`), production guidance (`0f89f45`), and regression-test alignment (`ff4c25d`).
+- Added precise ignore rules for local test/review staging and root runtime queues. Existing character production sessions, character-reference records and a one-off Reika batch script remain preserved and uncommitted because they are governed/local production state, not automatically publishable public source.
+- Pushed the reconciled history through `ff4c25d` to `origin/main`.
 
 ## Verification
 
-Pending per package. Final gates: relevant tests, `git diff --check`, public staged-content validation, push, fetch, and zero ahead/behind.
+- Focused changed-scope selection: 130 passed, 1 skipped; one Windows temporary-directory cleanup race passed when rerun alone.
+- Broad repository selection from `docs/verification.md`: 410 passed, 3 skipped after correcting two stale test contracts.
+- Every local package passed `git diff --cached --check` and the governance `check-public --staged` gate before commit.
+- Final remote fetch and zero ahead/behind check are the only remaining mechanical confirmation.
 
 ## Rollback
 
@@ -57,4 +63,4 @@ Each new local package will be a separate commit. Revert the affected commit; do
 
 ## Next
 
-Merge upstream, then classify and verify local packages.
+Fetch `origin` and confirm local `HEAD`, `origin/main` and their ahead/behind counts match. Do not publish or delete the retained character production artifacts without a separate governed decision.
