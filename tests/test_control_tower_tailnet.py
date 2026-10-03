@@ -33,7 +33,7 @@ def _service(tmp_path, answers: list[str | None]) -> tuple[MonitorService, list[
 
     monitor_module.detect_served_url = fake_detect
     config = Config()
-    config.database_path = tmp_path / "ct.db"
+    config.db_path = tmp_path / "ct.db"
     return MonitorService(config), calls
 
 
@@ -71,7 +71,7 @@ def test_an_explicit_setting_pins_the_url_and_stops_the_probing(tmp_path) -> Non
 
     monitor_module.detect_served_url = fake_detect
     config = Config()
-    config.database_path = tmp_path / "ct.db"
+    config.db_path = tmp_path / "ct.db"
     config.gallery_tailnet_url = "https://pinned.example/"
     service = MonitorService(config)
     try:

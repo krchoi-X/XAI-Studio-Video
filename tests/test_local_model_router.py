@@ -11,6 +11,7 @@ SPEC = importlib.util.spec_from_file_location("character_manager", TOOLS / "char
 cm = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader
 SPEC.loader.exec_module(cm)
+import gpu_runtime
 
 
 class _Response:
@@ -168,41 +169,37 @@ class FreeVramTests(unittest.TestCase):
     """A render starts seconds after the compile, while the model that compiled is warm."""
 
     def setUp(self):
-        self._urlopen = cm.urllib.request.urlopen
+        self._release_local_llms = gpu_runtime.release_local_llms
 
     def tearDown(self):
-        cm.urllib.request.urlopen = self._urlopen
+        gpu_runtime.release_local_llms = self._release_local_llms
 
     def test_every_resident_model_is_asked_to_leave(self):
-        asked = []
-
-        def fake(request, timeout=0):
-            # The listing is fetched by URL; the unloads are posted as Request objects.
-            if isinstance(request, str):
-                return _Response({"models": [{"name": "meromero26b"}, {"name": "other"}]})
-            asked.append(json.loads(request.data.decode()))
-            return _Response({})
-
-        cm.urllib.request.urlopen = fake
+        gpu_runtime.release_local_llms = lambda: {
+            "hermes_unloaded": ["huihui27b"],
+            "ollama_unloaded": ["meromero26b", "other"],
+            "errors": [],
+        }
         message = cm.free_local_model_vram()
-        self.assertEqual([item["model"] for item in asked], ["meromero26b", "other"])
-        self.assertTrue(all(item["keep_alive"] == 0 for item in asked))
+        self.assertIn("huihui27b", message)
         self.assertIn("meromero26b", message)
+        self.assertIn("other", message)
 
     def test_an_empty_card_is_reported_rather_than_poked(self):
-        def fake(request, timeout=0):
-            self.assertEqual(request, cm.OLLAMA_PS)
-            return _Response({"models": []})
-
-        cm.urllib.request.urlopen = fake
+        gpu_runtime.release_local_llms = lambda: {
+            "hermes_unloaded": [], "ollama_unloaded": [], "errors": []
+        }
         self.assertEqual(cm.free_local_model_vram(), "nothing loaded")
 
-    def test_no_ollama_is_not_an_error(self):
-        def fake(request, timeout=0):
-            raise OSError("connection refused")
-
-        cm.urllib.request.urlopen = fake
-        self.assertEqual(cm.free_local_model_vram(), "ollama not reachable")
+    def test_unreachable_local_runtimes_are_reported_without_raising(self):
+        gpu_runtime.release_local_llms = lambda: {
+            "hermes_unloaded": [],
+            "ollama_unloaded": [],
+            "errors": ["ollama_unloaded: OSError: connection refused"],
+        }
+        message = cm.free_local_model_vram()
+        self.assertIn("no loaded model found", message)
+        self.assertIn("connection refused", message)
 
     def test_the_render_path_frees_vram_before_it_submits(self):
         source = (TOOLS / "character_scene.py").read_text(encoding="utf-8")
