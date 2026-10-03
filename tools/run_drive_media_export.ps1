@@ -11,12 +11,33 @@ $repositoryRoot = Split-Path -Parent $PSScriptRoot
 $exporter = Join-Path $PSScriptRoot 'drive_media_export.py'
 $stateDirectory = 'D:\AI_Studio\workspace\drive-media-export'
 $logDirectory = Join-Path $stateDirectory 'logs'
+$productionsStateDirectory = 'D:\AI_Studio\workspace\productions-drive-export'
+$productionsStatusPath = Join-Path $productionsStateDirectory 'last-run.json'
 $driveRoot = 'G:\'
 $knownPython = 'D:\codex\personal-prompt-studio\personal-prompt-studio\backend\.venv\Scripts\python.exe'
 
 New-Item -ItemType Directory -Path $logDirectory -Force | Out-Null
 $startedAt = Get-Date
 $logPath = Join-Path $logDirectory ("sync-{0:yyyyMMdd-HHmmss}.log" -f $startedAt)
+$productionsFailed = $false
+$productionsProblem = $null
+
+function Write-ProductionsStatus {
+    param(
+        [bool]$Ok,
+        [string]$Problem,
+        [string]$LogPath
+    )
+    New-Item -ItemType Directory -Path $productionsStateDirectory -Force | Out-Null
+    $temporary = "$productionsStatusPath.tmp.$PID"
+    [ordered]@{
+        ok = $Ok
+        checked_at = (Get-Date).ToString('o')
+        problem = $Problem
+        log = $LogPath
+    } | ConvertTo-Json | Set-Content -LiteralPath $temporary -Encoding UTF8
+    Move-Item -LiteralPath $temporary -Destination $productionsStatusPath -Force
+}
 
 try {
     if (-not (Test-Path -LiteralPath $driveRoot -PathType Container)) {
@@ -50,10 +71,22 @@ try {
             Pop-Location
         }
         if ($productionsExitCode -ne 0) {
-            Write-Warning "Productions export reported a problem (exit $productionsExitCode). See $productionsLog"
+            $productionsFailed = $true
+            $productionsProblem = "exit $productionsExitCode; see $productionsLog"
+            Write-Warning "Productions export reported a problem ($productionsProblem)"
+            Write-ProductionsStatus -Ok $false -Problem $productionsProblem -LogPath $productionsLog
+        } else {
+            Write-ProductionsStatus -Ok $true -Problem $null -LogPath $productionsLog
         }
     } catch {
+        $productionsFailed = $true
+        $productionsProblem = $_.Exception.Message
         Write-Warning "Productions export failed: $($_.Exception.Message)"
+        try {
+            Write-ProductionsStatus -Ok $false -Problem $productionsProblem -LogPath $productionsLog
+        } catch {
+            Write-Warning "Could not persist Productions backup status: $($_.Exception.Message)"
+        }
     }
 
     if ($exitCode -ne 0) {
@@ -67,6 +100,11 @@ try {
     Get-ChildItem -LiteralPath $logDirectory -Filter 'productions-*.log' -File |
         Where-Object LastWriteTime -lt (Get-Date).AddDays(-90) |
         Remove-Item -Force
+
+    if ($productionsFailed) {
+        [Console]::Error.WriteLine("Media export completed, but Productions export failed: $productionsProblem")
+        exit 2
+    }
 
     Write-Output "Media export completed. Log: $logPath"
 } catch {

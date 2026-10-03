@@ -1,8 +1,8 @@
 # Productions view and Drive backup (character-independent content)
 
 - Date opened: 2026-10-02
-- Active editor: Claude Code (acting executor; Codex is credit-limited for about three days)
-- Status: COMPLETE — implemented and live-verified 2026-10-02 (viewer, backup, runner hook); not committed
+- Active editor: Codex for the 2026-10-03 hardening follow-up; Claude Code authored the completed implementation
+- Status: COMPLETE — implementation and 2026-10-03 hardening are live and verified
 - Relates to: [hermes-autonomous-pipeline-TASK.md](hermes-autonomous-pipeline-TASK.md) (the Rooftop 5AM test is the first content)
 
 ## Why
@@ -116,3 +116,37 @@ ledger-managed files and are never deleted by tooling.
 
 Open follow-ups for the user/Codex: fold productions into Studio (character-less sessions), and a decision whether
 the `Productions` Drive folder should later move under the Gallery-driven exporter's tree.
+
+## 2026-10-03 Codex hardening follow-up
+
+User-authorized scope:
+
+- reject symlinked files and any resolved path outside a production before listing or backup;
+- freeze one Drive destination folder per session, including backward-compatible inference from the existing v1
+  file ledger so a later title edit cannot split one production across folders;
+- keep the original media export operationally independent, but return a non-zero scheduled-task result when the
+  additional Productions export fails instead of leaving only a warning in a log; persist the last outcome and show
+  it on the Productions page;
+- add focused regression tests and re-run the live read-only checks. No media movement, deletion, upload, render,
+  Gallery/Studio change, or scheduled-task reinstallation.
+
+Contract impact: the Productions ledger gains an optional `sessions` map while remaining able to read the existing
+`schema_version: 1` file-only ledger. Existing Drive files and file ledger keys are preserved. The runner continues
+the old media export before the Productions step; a Productions failure changes only the wrapper exit status after
+the old export has finished. `last-run.json` is a new replaceable status snapshot consumed read-only by Control Tower;
+it contains no media or credentials. Rollback restores the implementation files and their tests; existing backup
+copies remain untouched.
+
+Hardening result:
+
+- linked files and resolved paths outside the session are excluded before UI classification and backup manifest
+  creation; the existing request-time containment check remains in place;
+- the v2 ledger freezes one destination folder for each of the seven existing sessions. The live v1 ledger was
+  inferred without copies or moves and now records 7 sessions / 176 files; all 176 destinations remain present;
+- a Productions failure no longer leaves the scheduled task green: the old media export completes first, then the
+  wrapper exits 2. Every Productions run atomically records `last-run.json`, and the read-only page/API displays its
+  latest success or failure;
+- focused tests: 23 passed, 1 skipped because this Windows host does not permit creating the symlink fixture;
+  PowerShell parse and `git diff --check` passed (line-ending notices only);
+- live after supervised restart: health and `/productions` 200, 7 productions, video range request 206. The
+  2026-10-03 11:40 scheduled run returned 0 and the page reported backup `ok: true` at 11:40:58.

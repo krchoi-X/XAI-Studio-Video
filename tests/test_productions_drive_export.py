@@ -108,6 +108,45 @@ class ExportTests(unittest.TestCase):
         self.assertIn("completed", revisions[0].read_text(encoding="utf-8"))
         self.assertEqual(self.cli("sync", "--session-id", FULL)["results"], {})
 
+    def test_title_change_keeps_the_original_session_folder(self):
+        self.cli("sync", "--session-id", FULL)
+        original_folder = self.folder()
+        prov = self.root / FULL / "session-provenance.json"
+        data = json.loads(prov.read_text(encoding="utf-8"))
+        data["title"] = "Renamed production"
+        data["status"] = "completed"
+        prov.write_text(json.dumps(data), encoding="utf-8")
+        age(self.root)
+
+        result = self.cli("sync", "--session-id", FULL)
+        self.assertEqual(result["results"], {"copied": 1})
+        self.assertEqual(self.folder(), original_folder)
+        self.assertFalse(any("Renamed production" in p.name for p in self.dest.iterdir()))
+        ledger = pde.read_ledger(self.state)
+        self.assertEqual(Path(ledger["sessions"][FULL]["destination_folder"]), original_folder)
+
+    def test_v1_ledger_infers_and_freezes_the_existing_folder(self):
+        self.cli("sync", "--session-id", FULL)
+        original_folder = self.folder()
+        ledger_path = self.state / pde.LEDGER
+        ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+        ledger.pop("sessions")
+        ledger["schema_version"] = 1
+        ledger_path.write_text(json.dumps(ledger), encoding="utf-8")
+
+        prov = self.root / FULL / "session-provenance.json"
+        data = json.loads(prov.read_text(encoding="utf-8"))
+        data["title"] = "Renamed legacy production"
+        prov.write_text(json.dumps(data), encoding="utf-8")
+        age(self.root)
+
+        result = self.cli("sync", "--session-id", FULL)
+        self.assertEqual(result["results"], {"copied": 1})
+        self.assertEqual(self.folder(), original_folder)
+        migrated = pde.read_ledger(self.state)
+        self.assertEqual(migrated["schema_version"], 2)
+        self.assertEqual(Path(migrated["sessions"][FULL]["destination_folder"]), original_folder)
+
     def test_nothing_on_drive_is_ever_deleted(self):
         self.cli("sync", "--session-id", FULL)
         (self.root / FULL / "outputs" / "shot-01.mp4").unlink()

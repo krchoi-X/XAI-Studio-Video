@@ -25,6 +25,7 @@ PROVENANCE_FIELDS = (
     "session_id", "title", "requested_by", "executor", "engine", "model", "status", "character_id",
     "source_idea", "user_request_verbatim", "created_at", "updated_at",
 )
+BACKUP_STATUS_FIELDS = ("ok", "checked_at", "problem", "log")
 
 
 def _read_provenance(session_dir: Path) -> tuple[dict[str, Any], str | None]:
@@ -37,12 +38,32 @@ def _read_provenance(session_dir: Path) -> tuple[dict[str, Any], str | None]:
     return data, None
 
 
+def read_backup_status(path: Path) -> dict[str, Any] | None:
+    """Read the runner's last Productions-backup outcome without trusting arbitrary extra fields."""
+    if not path.is_file():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError) as exc:
+        return {"ok": False, "problem": f"unreadable backup status: {exc}"}
+    if not isinstance(data, dict) or not isinstance(data.get("ok"), bool):
+        return {"ok": False, "problem": "invalid backup status record"}
+    return {key: data.get(key) for key in BACKUP_STATUS_FIELDS if key in data}
+
+
 def _walk(base: Path):
-    """Yield files under `base`, skipping excluded folders and anything that is not a regular file."""
+    """Yield ordinary files contained by `base`; never follow or expose links."""
     if not base.is_dir():
         return
+    resolved_base = base.resolve()
     for path in sorted(base.rglob("*")):
         if any(part in EXCLUDED_DIRS for part in path.relative_to(base).parts[:-1]):
+            continue
+        if path.is_symlink():
+            continue
+        try:
+            path.resolve().relative_to(resolved_base)
+        except (OSError, ValueError):
             continue
         if path.is_file():
             yield path

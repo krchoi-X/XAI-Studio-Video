@@ -155,7 +155,11 @@ def create_app(config: Config | None = None, monitor: MonitorService | None = No
 
     @app.get("/api/productions")
     async def productions_list() -> dict[str, Any]:
-        return {"root": str(config.productions_root), "productions": productions.list_productions(config.productions_root)}
+        return {
+            "root": str(config.productions_root),
+            "backup": productions.read_backup_status(config.productions_backup_status),
+            "productions": productions.list_productions(config.productions_root),
+        }
 
     @app.get("/api/productions/{session_id}")
     async def productions_detail(session_id: str) -> dict[str, Any]:

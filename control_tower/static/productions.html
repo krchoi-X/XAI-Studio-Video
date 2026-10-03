@@ -37,6 +37,8 @@
   .kv div:nth-child(odd) { color: var(--muted); }
   .kv .wrap { word-break: break-word; }
   .records a { display: inline-block; margin: 2px 12px 2px 0; font-size: 13px; }
+  .notice { border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
+  .notice.bad { border-color: var(--bad); color: var(--bad); }
   pre { background: #0b0e12; padding: 10px; border-radius: 8px; overflow: auto; max-height: 50vh; font-size: 12px; white-space: pre-wrap; }
   .empty { color: var(--muted); padding: 14px 0; }
 </style>
@@ -64,8 +66,12 @@ async function getJson(url) {
 async function showList() {
   const data = await getJson('/api/productions');
   const rows = data.productions;
-  if (!rows.length) { app.innerHTML = `<div class="empty">작품이 없습니다. <span class="mono small">${esc(data.root)}</span> 아래에 session-provenance.json이 있는 폴더가 작품으로 보입니다.</div>`; return; }
-  app.innerHTML = `<div class="cards">${rows.map(p => `
+  const backup = data.backup;
+  const backupNotice = !backup ? '' : backup.ok
+    ? `<div class="notice">Drive 백업 정상 · ${esc(when(backup.checked_at))}</div>`
+    : `<div class="notice bad">Drive 백업 확인 필요 · ${esc(backup.problem || '마지막 실행 실패')} · ${esc(when(backup.checked_at))}</div>`;
+  if (!rows.length) { app.innerHTML = backupNotice + `<div class="empty">작품이 없습니다. <span class="mono small">${esc(data.root)}</span> 아래에 session-provenance.json이 있는 폴더가 작품으로 보입니다.</div>`; return; }
+  app.innerHTML = backupNotice + `<div class="cards">${rows.map(p => `
     <div class="card" onclick="location.hash='#/${encodeURIComponent(p.id)}'">
       ${p.final_video ? `<video src="${fileUrl(p.id, p.final_video)}#t=0.1" preload="metadata" muted playsinline></video>` : `<div class="noclip">영상 없음</div>`}
       <div class="body">

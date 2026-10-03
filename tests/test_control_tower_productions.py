@@ -117,6 +117,9 @@ class ProductionsModelTests(unittest.TestCase):
         except (OSError, NotImplementedError):
             self.skipTest("symlinks not permitted on this host")
         self.assertIsNone(productions.resolve_media(self.root, self.full, "outputs/link.mp4"))
+        classified = productions.classify(self.root / self.full)
+        self.assertNotIn("outputs/link.mp4", [item["path"] for item in classified["clips"]])
+        self.assertNotIn(("Videos", "outputs/link.mp4"), productions.backup_manifest(self.root / self.full))
 
 
 class ProductionsConfigTests(unittest.TestCase):
@@ -124,6 +127,16 @@ class ProductionsConfigTests(unittest.TestCase):
         # A "" typo once turned this into a vertical tab; only a live check noticed.
         self.assertEqual(str(Config().productions_root), "D:\\AI_Studio\\library\\videos")
         self.assertEqual(Config().productions_root.parts[-2:], ("library", "videos"))
+        self.assertEqual(Config().productions_backup_status.name, "last-run.json")
+
+    def test_backup_status_reader_is_bounded_and_reports_invalid_records(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "last-run.json"
+            self.assertIsNone(productions.read_backup_status(path))
+            path.write_text(json.dumps({"ok": True, "checked_at": "now", "secret": "not exposed"}), encoding="utf-8")
+            self.assertEqual(productions.read_backup_status(path), {"ok": True, "checked_at": "now"})
+            path.write_text("[]", encoding="utf-8")
+            self.assertFalse(productions.read_backup_status(path)["ok"])
 
 
 class ProductionsApiTests(unittest.TestCase):
@@ -132,8 +145,10 @@ class ProductionsApiTests(unittest.TestCase):
         base = Path(self.tmp.name)
         self.root = base / "videos"
         make_library(self.root)
+        self.backup_status = base / "last-run.json"
+        self.backup_status.write_text(json.dumps({"ok": True, "checked_at": "2026-10-03T10:00:00+09:00"}), encoding="utf-8")
         cfg = Config(db_path=base / "ct.sqlite3", scan_roots=[base / "none"], night_batch_root=base / "none",
-                     web_job_roots=[], productions_root=self.root)
+                     web_job_roots=[], productions_root=self.root, productions_backup_status=self.backup_status)
         service = MonitorService(cfg, db=Database(cfg.db_path), gpu_collector=FakeGpu(),
                                  process_observer=FakeProcesses([wangp_worker_row(28141)]), adapters=[FakeAdapter([])])
         self.client = TestClient(create_app(cfg, monitor=service))
@@ -149,6 +164,7 @@ class ProductionsApiTests(unittest.TestCase):
             self.assertIn("작품", page.text)
             listing = client.get("/api/productions").json()
             self.assertEqual(listing["productions"][0]["id"], self.full)
+            self.assertTrue(listing["backup"]["ok"])
             detail = client.get(f"/api/productions/{self.full}").json()
             self.assertEqual(detail["files"]["final"][0]["path"], "outputs/rooftop-final.mp4")
             self.assertEqual(detail["provenance"]["requested_by"], "claude")

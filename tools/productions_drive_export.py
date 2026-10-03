@@ -102,11 +102,21 @@ def fit_filename(name: str, content_hash: str, limit: int = FILENAME_BYTES) -> s
 def read_ledger(state_dir: Path) -> dict[str, Any]:
     path = state_dir / LEDGER
     if not path.is_file():
-        return {"schema_version": 1, "files": {}}
-    return json.loads(path.read_text(encoding="utf-8"))
+        return {"schema_version": 2, "files": {}, "sessions": {}}
+    ledger = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(ledger, dict) or not isinstance(ledger.get("files"), dict):
+        raise ExportError(f"invalid ledger structure: {path}")
+    sessions = ledger.get("sessions")
+    if sessions is None:
+        ledger["sessions"] = {}
+    elif not isinstance(sessions, dict):
+        raise ExportError(f"invalid ledger sessions map: {path}")
+    return ledger
 
 
 def write_ledger(state_dir: Path, ledger: dict[str, Any]) -> None:
+    ledger["schema_version"] = 2
+    ledger.setdefault("sessions", {})
     state_dir.mkdir(parents=True, exist_ok=True)
     temporary = state_dir / f"{LEDGER}.tmp.{os.getpid()}"
     temporary.write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -126,10 +136,54 @@ def append_event(state_dir: Path, event: dict[str, Any]) -> None:
         handle.write(json.dumps({"at": stamp(), **event}, ensure_ascii=False) + "\n")
 
 
-def production_folder(session_dir: Path, destination_root: Path) -> Path:
+def _contained_production_folder(path: Path, destination_root: Path) -> Path | None:
+    """Return a direct child of the configured destination root, otherwise None."""
+    try:
+        folder = path.resolve()
+        root = destination_root.resolve()
+    except OSError:
+        return None
+    return folder if folder.parent == root else None
+
+
+def _infer_legacy_production_folder(session_id: str, destination_root: Path,
+                                    ledger: dict[str, Any]) -> Path | None:
+    """Recover the original folder from a v1 file ledger without moving or duplicating anything."""
+    prefix = f"{session_id}/"
+    for key, prior in ledger["files"].items():
+        if not key.startswith(prefix) or not isinstance(prior, dict):
+            continue
+        destination = prior.get("destination")
+        category = prior.get("category")
+        if not destination or category not in {"Videos", "Images", "Record"}:
+            continue
+        for parent in Path(destination).parents:
+            if parent.name == category:
+                folder = _contained_production_folder(parent.parent, destination_root)
+                if folder is not None:
+                    return folder
+                break
+    return None
+
+
+def production_folder(session_dir: Path, destination_root: Path, ledger: dict[str, Any]) -> Path:
+    sessions = ledger.setdefault("sessions", {})
+    stored = sessions.get(session_dir.name)
+    if isinstance(stored, dict) and stored.get("destination_folder"):
+        folder = _contained_production_folder(Path(stored["destination_folder"]), destination_root)
+        if folder is None:
+            raise ExportError(f"stored destination is outside the configured root: {session_dir.name}")
+        return folder
+
+    folder = _infer_legacy_production_folder(session_dir.name, destination_root, ledger)
     prov, _ = productions._read_provenance(session_dir)
-    title = safe_component(prov.get("title") or session_dir.name, fallback=session_dir.name, limit=40)
-    return destination_root / safe_component(f"{title} [{session_dir.name}]", fallback=session_dir.name, limit=COMPONENT_LIMIT + 40)
+    title = str(prov.get("title") or session_dir.name)
+    if folder is None:
+        safe_title = safe_component(title, fallback=session_dir.name, limit=40)
+        folder = destination_root / safe_component(f"{safe_title} [{session_dir.name}]", fallback=session_dir.name,
+                                                   limit=COMPONENT_LIMIT + 40)
+    sessions[session_dir.name] = {"destination_folder": str(folder), "title_at_creation": title}
+    return folder
 
 
 def destination_path(folder: Path, category: str, relative: str, content_hash: str) -> Path:
@@ -162,7 +216,7 @@ def plan_items(root: Path, destination_root: Path, ledger: dict[str, Any], sessi
     for session_dir in productions.discover(root):
         if session_ids is not None and session_dir.name not in session_ids:
             continue
-        folder = production_folder(session_dir, destination_root)
+        folder = production_folder(session_dir, destination_root, ledger)
         for category, relative in productions.backup_manifest(session_dir):
             source = session_dir / relative
             key = f"{session_dir.name}/{relative}"
@@ -272,6 +326,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     for item in pending:
         outcome = copy_item(item, state_dir, ledger)
         results[outcome] = results.get(outcome, 0) + 1
+    # Persist newly frozen session folders even when every existing file was already a skip.
+    write_ledger(state_dir, ledger)
     bad = any(i.action in {"missing", "blocked", "conflict"} for i in pending) or "unstable" in results
     return {"ok": not bad, "mode": "sync", "destination_root": str(destination_root), "summary": summarize(pending),
             "results": results, "note": "filesystem copy verified; Google Drive cloud upload completion is not asserted"}
