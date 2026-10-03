@@ -2,7 +2,7 @@
 
 - Date: 2026-10-04
 - Active editor: Claude Code (claude-opus-5-5), real actor `claude`
-- Status: ACTIVE — Draft 0 delivered for user review; no approval yet
+- Status: RENDERED — four finals + reel in needs_review (2026-10-04 04:55 KST); human review pending
 - Deliverable: [storyboard-draft-lee-suan-reference-set.md](storyboard-draft-lee-suan-reference-set.md)
 
 ## Goal
@@ -45,6 +45,27 @@ natural, dialogue as H3 audio plus subtitles, ~1 s title at start. Treated as ap
   snapshot of committed HEAD `2ebbb7e` tools+schemas (`git archive`) in the Claude scratchpad, checker
   `video-intent-contract-v1`. Codex's working tree untouched.
 - Known risks: `<d>[Korean]` speech untested on H3; tears/light sequence (D) untested.
+
+## Results (2026-10-04 04:55 KST)
+
+Finals (1280x720, 24 fps, 48 kHz, loudnorm -18 LUFS, ~1 s title card, burned Korean subtitles):
+- B 「잡혔다」 22.9 s — `VIDEO-20261004-002600-suan-b-rooftop-radio/outputs/B-rooftop-radio-final.mp4`
+- A 「비 오는 저녁」 19.9 s — `VIDEO-20261004-002601-suan-a-rain-evening/outputs/A-rain-evening-final.mp4`
+- C 「처음 끓여본 된장찌개」 22.9 s — `VIDEO-20261004-002602-suan-c-first-jjigae/outputs/C-first-jjigae-final.mp4`
+- D 「말없이, 빛만」 8.4 s — `VIDEO-20261004-002603-suan-d-silent-light/outputs/D-silent-light-final.mp4`
+- Reel B→A→C→D 74.0 s — `BATCH-20261004-suan-reference-set/suan-reference-set-reel.mp4`
+
+Per-clip Intent Fidelity review and failure attribution: `BATCH-20261004-suan-reference-set/review.md`. Summary:
+B pass (warnings: wide framing, mid-turn updo). A re-staged to rev 4 after A1 order swap and A3 back-to-camera;
+A3 retake drifted 0.5-2.5 s, so the editor uses A3 3.0 s→end behind a cut (needs_human_review). C3 rev 4 retake fixed
+lens-addressed line. D rev 4 retake fixed the missing tears and visible card text. Attempt-1 clips kept in
+`outputs/attempt1/`. Rejected portrait B1 kept. 14 renders total, 1 lost (C2, worker killed at the 2 h background-task
+limit; recorded failed).
+
+Findings filed via `shared_skill_feedback.py` (adaptive-video-production): Ref2VA output aspect follows the first
+reference (repeated); third chained FL2VA clip with a follow move drifted (candidate).
+Unverified: Korean speech content (no Whisper weights; not downloaded), audio heard by a human, Gallery sync/import
+(not run).
 
 ## Next
 
