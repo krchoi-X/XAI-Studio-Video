@@ -1,5 +1,9 @@
 # Current task — Automatic character reference resolution for WanGP video
 
+2026-10-02 active scope: [Productions view and Drive backup](docs/productions-view-TASK.md), Claude Code as acting executor. Adds a read-only `/productions` page to Control Tower for character-independent productions and a failure-isolated Drive backup step; no Studio, Gallery database or existing exporter change.
+
+2026-10-02 active scope: [Hermes autonomous idea-to-night-batch pipeline](docs/hermes-autonomous-pipeline-TASK.md), Claude Code as acting executor (Codex credit-limited for about three days; Codex keeps schema/validator integration ownership). Design and guidance only; Hermes executes, Claude/Codex are consulted by escalation. No render, schema or Studio change.
+
 2026-09-28 current user objective: integrate the verified local Qwen Image 2.1 uncensored GGUF as an explicitly selectable Character Manager/Studio engine for face-master-bound profile and wardrobe tests. WanGP registration and a text-to-image smoke passed. The user assigned subsequent implementation to Claude Code; see the [integration handoff](docs/qwen-image-2.1-studio-integration-handoff.md), [pilot record](docs/qwen-image-2.1-character-pilot-TASK.md) and [operator runbook](docs/qwen-image-2.1-wangp-pilot.md). Do not make Qwen the default or promote generated identity assets without human review. Active scope: [Qwen integration task](docs/qwen-image-2.1-studio-integration-TASK.md), Claude Code.
 
 2026-09-26 reference review, Claude Code: cross-review of Grok's ref-video cards and Muse's reference-state analyses, with evidence kept separate from opinion. See [review task](docs/reference-review/2026-09-26-grok-muse/TASK.md). Docs and Grok card cleanup only; no pipeline change.

@@ -6,6 +6,18 @@ tmp/
 __pycache__/
 *.py[cod]
 *.log
+.pytest-*/
+.tmp*/
+
+# Local review/import staging and root-level runtime queues
+_audience-scout-staging/
+_grok_share/
+_production_staging/
+_review_tmp/
+_tmp_refs/
+batch-plan.json
+batch-plans/
+runs/
 
 # Generated media belongs in D:\AI_Studio\library, not Git
 characters/**/*.png
