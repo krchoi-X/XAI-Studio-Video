@@ -59,7 +59,7 @@ Per-clip Intent Fidelity review and failure attribution: `BATCH-20261004-suan-re
 B pass (warnings: wide framing, mid-turn updo). A re-staged to rev 4 after A1 order swap and A3 back-to-camera;
 A3 retake drifted 0.5-2.5 s, so the editor uses A3 3.0 s→end behind a cut (needs_human_review). C3 rev 4 retake fixed
 lens-addressed line. D rev 4 retake fixed the missing tears and visible card text. Attempt-1 clips kept in
-`outputs/attempt1/`. Rejected portrait B1 kept. 14 renders total, 1 lost (C2, worker killed at the 2 h background-task
+`outputs/attempt1/`. Rejected portrait B1 kept. 17 GPU submissions (16 videos), 1 lost (C2, worker killed at the 2 h background-task
 limit; recorded failed).
 
 Findings filed via `shared_skill_feedback.py` (adaptive-video-production): Ref2VA output aspect follows the first
@@ -69,7 +69,6 @@ Unverified: Korean speech content (no Whisper weights; not downloaded), audio he
 
 ## Next
 
-1. User picks pieces and revises beats (Draft 1).
-2. On approval: freeze storyboard revision, write contract JSON per clip (to the schema current at that time —
-   Codex's WIP adds `locked.prompt_segments` and `creative_envelope.allowed_values`), compute hashes, acknowledge.
-3. Optional rough boards / one sample clip per piece through the gated WanGP path (`--methodology intent-preserving-v1`).
+1. Human review of the four finals (watch with sound): Intent Fidelity per review.md, Korean line audibility.
+2. If accepted: Gallery import/sync through the existing Studio path (not done; sessions are `needs_review`).
+3. Optional fixes: A3 approach (re-render with a smaller move or a 2-clip chain), B1 tighter framing.
