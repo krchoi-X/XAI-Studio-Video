@@ -1,8 +1,16 @@
 # Google Drive media-only export
 
 Active editor: Codex
-Status: IN PROGRESS — Gallery video backfill
-Date: 2026-09-16
+Status: COMPLETE — scheduled export path-length failure repaired and live-verified
+Date: 2026-09-27
+
+## Current repair
+
+The hourly task has failed since 2026-09-19 on a long Mira image name. Existing ledger entries and 1,122 destinations remain present. Bound new destination filenames by both component and full-path budgets, and use a short deterministic temporary filename so Google Drive for desktop can create it. Preserve every existing destination and ledger record; do not rename, overwrite, delete, or re-export completed files.
+
+Contract impact: destination generation changes only for not-yet-exported assets whose old generated path exceeds the safe budget. Existing ledger paths remain authoritative and must still plan as `skip`, even if the current naming function would choose a shorter path. The copy remains content-hash and size verified. Rollback restores the prior name generator; files exported with shortened names remain valid ledger-managed copies. Verify with deterministic long Unicode path, legacy-ledger compatibility, collision/hash, incremental, and live bounded scheduled-run checks.
+
+Completed 2026-09-27: destination filenames now have a 180-byte UTF-8 budget and copies use a short deterministic temporary name. The ledger remains authoritative for previously exported paths. Focused tests passed 14/14. The original failing Mira asset copied with matching hash, the runner copied the remaining 47 pending assets, a second run selected zero, and a real Task Scheduler launch returned result code 0. Status reports 1,170 recorded/present destinations and zero missing. Google Drive cloud-upload completion is still not asserted by the filesystem exporter.
 
 ## Goal
 

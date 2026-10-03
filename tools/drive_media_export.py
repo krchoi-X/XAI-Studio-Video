@@ -24,6 +24,7 @@ DEFAULT_STATE_DIR = Path(r"D:\AI_Studio\workspace\drive-media-export")
 STATE_FILE = "export-state.json"
 EVENT_FILE = "export-events.jsonl"
 WINDOWS_RESERVED = {"CON", "PRN", "AUX", "NUL", *(f"COM{i}" for i in range(1, 10)), *(f"LPT{i}" for i in range(1, 10))}
+MAX_FILENAME_UTF8_BYTES = 180
 
 
 class ExportError(ValueError):
@@ -118,6 +119,16 @@ def safe_component(value: str, *, fallback: str, limit: int = 72) -> str:
     return value[:limit].rstrip(" .") or fallback
 
 
+def truncate_utf8(value: str, byte_limit: int) -> str:
+    """Return a prefix that fits virtual filesystems with UTF-8 byte limits."""
+    if byte_limit < 1:
+        return ""
+    encoded = value.encode("utf-8")
+    if len(encoded) <= byte_limit:
+        return value
+    return encoded[:byte_limit].decode("utf-8", errors="ignore").rstrip(" .")
+
+
 def short_title(value: str | None) -> str:
     if not value:
         return "untitled"
@@ -162,12 +173,22 @@ def destination_for(asset: Asset, destination_root: Path) -> Path:
     engine = safe_component(engine, fallback="unknown", limit=32)
     suffix = asset.source.suffix.lower()
     short_id = re.sub(r"[^A-Za-z0-9]", "", asset.asset_id)[-10:] or (asset.content_hash or "unknown")[:10]
-    filename = safe_component(
-        f"{moment:%Y-%m-%d_%H%M%S}__{short_title(asset.session_title)}__{engine}__{short_id}",
-        fallback=asset.asset_id,
-        limit=150,
-    ) + suffix
+    prefix = f"{moment:%Y-%m-%d_%H%M%S}__"
+    tail = f"__{engine}__{short_id}{suffix}"
+    title_budget = MAX_FILENAME_UTF8_BYTES - len(prefix.encode("utf-8")) - len(tail.encode("utf-8"))
+    title = truncate_utf8(short_title(asset.session_title), title_budget) or "untitled"
+    filename = f"{prefix}{title}{tail}"
     return destination_root.joinpath(*character_bucket(asset), kind, f"{moment:%Y-%m}", filename)
+
+
+def ledger_destination(prior: Any, destination_root: Path) -> Path | None:
+    """Keep completed paths authoritative when naming rules evolve."""
+    if not isinstance(prior, dict) or not prior.get("destination"):
+        return None
+    destination = Path(str(prior["destination"]))
+    if not destination.is_absolute() or not destination.is_relative_to(destination_root):
+        return None
+    return destination
 
 
 def _safe_source(root_text: str, relative_text: str) -> Path:
@@ -311,14 +332,15 @@ def plan_items(assets: Iterable[Asset], destination_root: Path, state: dict[str,
     items = []
     records = state["assets"]
     for asset in assets:
-        destination = destination_for(asset, destination_root)
         prior = records.get(asset.asset_id)
+        recorded_destination = ledger_destination(prior, destination_root)
+        destination = recorded_destination or destination_for(asset, destination_root)
         if not asset.source.is_file():
             items.append(ExportItem(asset, destination, "missing", "Gallery original is missing"))
         elif asset.source.stat().st_size != asset.byte_size:
             items.append(ExportItem(asset, destination, "blocked", "source size differs from Gallery record"))
         elif (prior and prior.get("content_hash") == asset.content_hash
-              and Path(prior.get("destination", "")) == destination and destination.is_file()):
+              and recorded_destination is not None and destination.is_file()):
             items.append(ExportItem(asset, destination, "skip", "already exported"))
         elif destination.exists():
             existing_hash = sha256_file(destination) if destination.is_file() else None
@@ -355,7 +377,8 @@ def copy_item(item: ExportItem, state_dir: Path, state: dict[str, Any]) -> str:
     destination = item.destination
     if item.action == "copy":
         destination.parent.mkdir(parents=True, exist_ok=True)
-        temporary = destination.with_name(f".{destination.name}.{asset.asset_id}.tmp")
+        temporary_id = hashlib.sha256(asset.asset_id.encode("utf-8")).hexdigest()[:16]
+        temporary = destination.with_name(f".xai-export-{temporary_id}.tmp")
         if temporary.exists():
             temporary.unlink()
         try:

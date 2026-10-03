@@ -180,6 +180,57 @@ class DriveMediaExportTests(unittest.TestCase):
         destination = exporter.execute(self.args())["items"][0]["destination"]
         self.assertIn(str(Path("Characters") / "Future Person [ch-future]"), destination)
 
+    def test_long_unicode_title_uses_byte_bounded_destination_and_short_temporary_name(self):
+        source, digest = self.add_asset(asset_id="ast_long_unicode_001")
+        connection = sqlite3.connect(self.db)
+        try:
+            connection.execute(
+                "UPDATE generation_sessions SET title=?",
+                ("浜辺に膝立ち、正面からの構図、カメラ目線ではない、両手で斜めに抱えたサーフボード" * 4,),
+            )
+            connection.commit()
+        finally:
+            connection.close()
+
+        asset = exporter.load_assets(self.db)[0]
+        destination = exporter.destination_for(asset, self.destination)
+        self.assertLessEqual(len(destination.name.encode("utf-8")), exporter.MAX_FILENAME_UTF8_BYTES)
+
+        copied_to = None
+        real_copy = exporter.shutil.copy2
+
+        def recording_copy(source_path, destination_path):
+            nonlocal copied_to
+            copied_to = Path(destination_path)
+            return real_copy(source_path, destination_path)
+
+        with mock.patch.object(exporter.shutil, "copy2", side_effect=recording_copy):
+            result = exporter.execute(self.args("sync", asset_id=[asset.asset_id]))
+        self.assertEqual({"copied": 1}, result["results"])
+        self.assertIsNotNone(copied_to)
+        self.assertRegex(copied_to.name, r"^\.xai-export-[0-9a-f]{16}\.tmp$")
+        self.assertEqual(digest, exporter.sha256_file(destination))
+
+    def test_existing_ledger_destination_remains_authoritative_after_naming_change(self):
+        source, digest = self.add_asset()
+        legacy = self.destination / "Characters" / "Test Person [ch-test]" / "Images" / "2026-09" / "legacy-name.jpg"
+        legacy.parent.mkdir(parents=True)
+        legacy.write_bytes(source.read_bytes())
+        self.state.mkdir()
+        (self.state / exporter.STATE_FILE).write_text(json.dumps({
+            "schema_version": 1,
+            "assets": {
+                "ast_image001": {
+                    "content_hash": digest,
+                    "destination": str(legacy),
+                }
+            },
+        }), encoding="utf-8")
+
+        item = exporter.execute(self.args(asset_id=["ast_image001"]))["items"][0]
+        self.assertEqual("skip", item["action"])
+        self.assertEqual(str(legacy), item["destination"])
+
 
 if __name__ == "__main__":
     unittest.main()
