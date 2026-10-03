@@ -1,5 +1,7 @@
 # Current task — Automatic character reference resolution for WanGP video
 
+2026-10-03 completed scope: [Catch Me revision for Reika](docs/catch-me-reika-TASK.md). The original clothed storyboard task is complete; a separate remake was subsequently rendered and remains in human review.
+
 2026-10-02 active scope: [Productions view and Drive backup](docs/productions-view-TASK.md), Claude Code as acting executor. Adds a read-only `/productions` page to Control Tower for character-independent productions and a failure-isolated Drive backup step; no Studio, Gallery database or existing exporter change.
 
 2026-10-02 active scope: [Hermes autonomous idea-to-night-batch pipeline](docs/hermes-autonomous-pipeline-TASK.md), Claude Code as acting executor (Codex credit-limited for about three days; Codex keeps schema/validator integration ownership). Design and guidance only; Hermes executes, Claude/Codex are consulted by escalation. No render, schema or Studio change.
