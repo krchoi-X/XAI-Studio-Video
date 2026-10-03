@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import argparse
+import copy
+import hashlib
 import json
 import tempfile
 import unittest
@@ -10,7 +13,76 @@ import local_wangp
 import character_manager as cm
 
 
+def intent_artifacts(root: Path) -> tuple[Path, Path, Path, Path, Path]:
+    storyboard = root / "storyboard.md"
+    storyboard.write_text("Approved storyboard\n", encoding="utf-8")
+    contract = {
+        "schema_version": 1, "contract_id": "intent_submit_v1", "status": "approved",
+        "source": {"storyboard_id": "sb_submit", "revision": 1, "sha256": hashlib.sha256(storyboard.read_bytes()).hexdigest()},
+        "context": {
+            "user_goal": "Preserve the exit.", "viewer_should_understand": "She leaves.",
+            "viewer_should_feel": "Finality.", "shot_purpose": "Departure.",
+            "rationale": {"direction": "The exit direction carries continuity."},
+        },
+        "locked": {
+            "ordered_events": ["pause", "exit"], "gaze": {"final": "away_from_lens"},
+            "screen_direction": "toward_exit", "camera": {"movement": "static"},
+            "final_state": "exited", "omitted_events": [], "forbidden_additions": ["object_pickup"],
+        },
+        "creative_envelope": {"level": "L1", "allowed": ["light_softness"], "forbidden": ["orbit"]},
+        "feasibility": {"decision": "SHOW", "rationale": "Simple action."},
+        "unresolved": [], "approval": {"approved_by": "user", "approved_at": "2026-10-03T22:00:00+09:00"},
+    }
+    contract_path = root / "intent-contract.json"
+    contract_path.write_text(json.dumps(contract), encoding="utf-8")
+    ir = {
+        "schema_version": 1, "source_contract_id": contract["contract_id"],
+        "source_contract_sha256": hashlib.sha256(contract_path.read_bytes()).hexdigest(),
+        "compiler": "test", "compiler_version": "1", "target_model": "h3",
+        "locked": copy.deepcopy(contract["locked"]), "creative_choices": {"light_softness": "soft"},
+    }
+    ir_path = root / "compiler-ir.json"
+    ir_path.write_text(json.dumps(ir), encoding="utf-8")
+    prompt = root / "prompt.txt"
+    prompt.write_text("Static camera. She pauses and exits.", encoding="utf-8")
+    check_path = root / "semantic-check.json"
+    result = local_wangp.video_intent_contract.check(contract_path, ir_path, storyboard, prompt)
+    check_path.write_text(json.dumps(result), encoding="utf-8")
+    return contract_path, ir_path, storyboard, prompt, check_path
+
+
 class LocalWanGPTests(unittest.TestCase):
+    def test_intent_methodology_requires_and_rechecks_hash_bound_evidence(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            session = root / "session"
+            session.mkdir()
+            (session / "session-provenance.json").write_text(
+                json.dumps({"methodology": "intent-preserving-v1"}), encoding="utf-8",
+            )
+            contract, ir, storyboard, prompt, semantic_check = intent_artifacts(root)
+            args = argparse.Namespace(
+                intent_contract=str(contract), compiler_ir=str(ir), storyboard=str(storyboard),
+                semantic_check=str(semantic_check),
+            )
+            evidence = local_wangp._validate_intent_submission(session, args, prompt)
+            self.assertEqual(evidence["methodology"], "intent-preserving-v1")
+            self.assertEqual(evidence["semantic_check"]["status"], "pass")
+            prompt.write_text("Static camera. She pauses longer and exits.", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "stale or mismatched"):
+                local_wangp._validate_intent_submission(session, args, prompt)
+
+    def test_intent_methodology_rejects_missing_gate_artifacts(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            session = Path(directory) / "session"
+            session.mkdir()
+            (session / "session-provenance.json").write_text(
+                json.dumps({"methodology": "intent-preserving-v1"}), encoding="utf-8",
+            )
+            args = argparse.Namespace(intent_contract=None, compiler_ir=None, storyboard=None, semantic_check=None)
+            with self.assertRaisesRegex(ValueError, "intent-preserving submission requires"):
+                local_wangp._validate_intent_submission(session, args, session / "prompt.txt")
+
     def test_effective_settings_replace_prompt_and_name_output(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "settings.json"

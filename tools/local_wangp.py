@@ -12,6 +12,7 @@ from typing import Any
 import gpu_runtime
 import wangp_recorder
 import shot_production_plan
+import video_intent_contract
 
 
 DEFAULT_WANGP_ROOT = Path(r"D:\AI\WanGP")
@@ -30,6 +31,55 @@ KREA2_EDIT_MODELS = {name for name, spec in REFERENCE_MODELS.items() if spec["en
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
 TERMINAL_STATES = {"succeeded", "needs_review", "failed", "cancelled", "interrupted", "timed_out"}
 SUCCESS_STATES = {"succeeded", "needs_review"}
+
+
+def _session_methodology(session_dir: Path) -> str | None:
+    path = session_dir / wangp_recorder.SESSION_PROVENANCE
+    if not path.is_file():
+        return None
+    try:
+        value = wangp_recorder.read_json_file(path)
+    except (OSError, ValueError):
+        return None
+    return value.get("methodology") if isinstance(value, dict) else None
+
+
+def _validate_intent_submission(session_dir: Path, args: argparse.Namespace, prompt_path: Path) -> dict[str, Any] | None:
+    names = ("intent_contract", "compiler_ir", "storyboard", "semantic_check")
+    supplied = {name: getattr(args, name, None) for name in names}
+    required = _session_methodology(session_dir) == "intent-preserving-v1"
+    if not required and not any(supplied.values()):
+        return None
+    missing = [f"--{name.replace('_', '-')}" for name, value in supplied.items() if not value]
+    if missing:
+        raise ValueError(f"intent-preserving submission requires: {', '.join(missing)}")
+
+    paths = {name: Path(str(value)).resolve() for name, value in supplied.items()}
+    for name, path in paths.items():
+        if not path.is_file():
+            raise ValueError(f"intent contract artifact not found ({name}): {path}")
+    current = video_intent_contract.check(
+        paths["intent_contract"], paths["compiler_ir"], paths["storyboard"], prompt_path,
+    )
+    if current["status"] != "pass":
+        first = current["hard_failures"][0]
+        raise ValueError(f"intent contract check failed: {first['code']} at {first['path']}: {first['message']}")
+    recorded = video_intent_contract.load_json(paths["semantic_check"])
+    evidence_fields = (
+        "status", "contract_id", "contract_sha256", "storyboard_sha256",
+        "compiler_intermediate_sha256", "runtime_prompt_sha256",
+    )
+    mismatched = [field for field in evidence_fields if recorded.get(field) != current.get(field)]
+    if mismatched or recorded.get("hard_failures"):
+        raise ValueError(f"semantic-check record is stale or mismatched: {mismatched or ['hard_failures']}")
+    return {
+        "methodology": "intent-preserving-v1",
+        "contract": {"path": str(paths["intent_contract"]), "sha256": current["contract_sha256"], "id": current["contract_id"]},
+        "storyboard": {"path": str(paths["storyboard"]), "sha256": current["storyboard_sha256"]},
+        "compiler_intermediate": {"path": str(paths["compiler_ir"]), "sha256": current["compiler_intermediate_sha256"]},
+        "runtime_prompt_sha256": current["runtime_prompt_sha256"],
+        "semantic_check": {"path": str(paths["semantic_check"]), "sha256": wangp_recorder.sha256_file(paths["semantic_check"]), "status": "pass"},
+    }
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -271,6 +321,7 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     # Nothing is inferred; when every source is silent the run records null and the Control Tower falls back
     # to observing the worker process.
     session_dir = Path(args.runs_root).resolve().parent
+    intent_evidence = _validate_intent_submission(session_dir, args, prompt_path)
     requested_by = wangp_recorder.normalize_actor(args.requested_by if args.requested_by is not None else os.environ.get("XAI_REQUESTED_BY"))
     if not requested_by:
         # <session>/runs/<run-id> is the layout every producer uses, so the session is the runs-root's parent.
@@ -323,6 +374,10 @@ def submit(args: argparse.Namespace) -> dict[str, Any]:
     if production_contract:
         record = wangp_recorder.load_run(run_dir)
         record["production_contract"] = production_contract
+        wangp_recorder.save_run(run_dir, record)
+    if intent_evidence:
+        record = wangp_recorder.load_run(run_dir)
+        record["intent_contract"] = intent_evidence
         wangp_recorder.save_run(run_dir, record)
     stdout_path = run_dir / "worker.stdout.log"
     stderr_path = run_dir / "worker.stderr.log"
@@ -516,6 +571,10 @@ def build_parser() -> argparse.ArgumentParser:
                        help="who asked for this run (grok, claude, codex, hermes, web, user, ...); defaults to $XAI_REQUESTED_BY, else recorded as null")
     start.add_argument("--executor", default=None, help=f"what executes the run (default {DEFAULT_EXECUTOR})")
     start.add_argument("--production-plan", help="approved schema-2 shot plan; defaults to the session-registered plan")
+    start.add_argument("--intent-contract", help="approved video Intent Contract JSON")
+    start.add_argument("--compiler-ir", help="hash-bound compiler intermediate JSON")
+    start.add_argument("--storyboard", help="exact approved Storyboard Spec file bound by the contract")
+    start.add_argument("--semantic-check", help="passing semantic-check JSON produced for this exact prompt")
     start.add_argument("--wait", action="store_true",
                        help="block until the run is terminal; Hermes must use this for direct submissions")
     start.add_argument("--wait-timeout", type=float, default=None, metavar="SECONDS",

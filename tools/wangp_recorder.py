@@ -206,6 +206,7 @@ def write_session(args: argparse.Namespace) -> dict[str, Any]:
         "user_request_verbatim": args.user_request,
         "source_idea": args.source_idea,
         "status": args.status,
+        "methodology": getattr(args, "methodology", None),
     }
     record.setdefault("schema_version", 1)
     record["session_id"] = args.session_id or record.get("session_id") or session_dir.name
@@ -369,6 +370,7 @@ def build_parser() -> argparse.ArgumentParser:
     session.add_argument("--status", help="prepared | running | needs_review | completed | failed")
     session.add_argument("--session-id")
     session.add_argument("--production-plan", help="approved schema-2 shot production plan enforced before each local submission")
+    session.add_argument("--methodology", choices=("intent-preserving-v1",), help="require the named methodology gate for new submissions in this session")
     session.set_defaults(handler=write_session)
 
     state = sub.add_parser("state")

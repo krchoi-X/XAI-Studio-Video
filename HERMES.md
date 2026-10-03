@@ -29,10 +29,12 @@ $session = "D:\codex\XAI-studio\characters\ch-jun\02_generations\VIDEO-20260909-
 python tools/wangp_recorder.py session --session-dir $session --requested-by hermes `
   --engine WanGP --model minimax_h3_ref2va_pruned --character-id ch-jun `
   --title "Jun cafe call" --user-request "<operator request, verbatim>" --status running `
-  --production-plan "$session\shot-production-plan-v2.json"
+  --production-plan "$session\shot-production-plan-v2.json" --methodology intent-preserving-v1
 
 python tools/local_wangp.py submit --runs-root "$session\runs" `
   --prompt-file "$session\shot-01.txt" --settings-file "$session\shot-01.settings.json" `
+  --storyboard "$session\storyboard.md" --intent-contract "$session\shot-01.intent-contract.json" `
+  --compiler-ir "$session\shot-01.compiler-ir.json" --semantic-check "$session\shot-01.semantic-check.json" `
   --project-id jun-cafe-call --prompt-id shot-01 `
   --output-dir "D:\AI_Studio\library\characters\ch-jun\videos\VIDEO-20260909-154245-jun-cafe-call" `
   --requested-by hermes --wait

@@ -53,9 +53,10 @@ Producer: the director/storyboard stage creates the Intent Contract beside the a
 - Added the canonical runtime methodology and contract guide, closed v1 contract/compiler-IR schemas, and `tools/video_intent_contract.py`.
 - Added and registered the canonical shared `video-intent-contract` skill; connected director, cutboard, continuity and adaptive-production stages without replacing their responsibilities.
 - Updated common agent routing and the root video workflow. New storyboard-derived video work must produce the contract, acknowledgement, compiler IR and passing hash-bound check before submission.
-- Verification: 37 focused tests passed; five affected shared skills passed `quick_validate.py`; the catalog contains 13 unique definitions and resolves the new skill; Python compile and scoped diff checks passed.
+- Added a native local WanGP gate for sessions registered with `--methodology intent-preserving-v1`. Submission now requires the exact storyboard, contract, compiler IR and prior semantic-check record, recomputes the check before run creation/GPU start, and stores verified evidence in `run.json`.
+- Verification: 40 focused tests passed; five affected shared skills passed `quick_validate.py`; the catalog contains 13 unique definitions and resolves the new skill; Python compile and scoped diff checks passed.
 - No render, GPU work, service restart, media/database change, publication or push occurred.
 
 ## Next
 
-Request an independent Claude review after the Codex commits are preserved. Native renderer-boundary verification may later replace the current mandatory pre-submit checker, but the current workflow is usable and stops when matching check evidence cannot be produced.
+Request an independent Claude review after the Codex commits are preserved. Other renderer backends may later implement the same native boundary; local WanGP now enforces it directly while the maintained pre-submit checker remains the portable fallback.

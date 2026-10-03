@@ -63,6 +63,7 @@ python tools/wangp_recorder.py session `
   --character-id ch-lia --title "Lia micro-vlog: sundress to shift to cat" `
   --user-request "<the operator's request, verbatim>" `
   --production-plan <session>/shot-production-plan-v2.json `
+  --methodology intent-preserving-v1 `
   --status running
 ```
 
@@ -70,6 +71,31 @@ python tools/wangp_recorder.py session `
 approved schema-v2 plan. The session stores the plan path and SHA-256, and a later submission fails before a run
 directory or GPU worker is created if the plan file changed. Sessions without this option retain the legacy v1
 behavior.
+
+`--methodology intent-preserving-v1` makes the Intent Contract gate native to local WanGP submission for that
+session. Every `local_wangp.py submit` must then provide `--storyboard`, `--intent-contract`, `--compiler-ir` and
+`--semantic-check`. The tool recomputes the contract check against the exact prompt before it creates a run or starts
+the GPU worker. Missing artifacts, stale hashes, changed locks, non-allow-listed creative fields, or a failed check
+stop submission. The verified evidence is copied to `run.json.intent_contract`.
+
+Generate the check with `tools/video_intent_contract.py` as documented in [Video Intent Contract](video-intent-contract.md),
+then submit the same exact prompt:
+
+```powershell
+python tools/local_wangp.py submit `
+  --runs-root <session>/runs --prompt-file <session>/shot-01.txt `
+  --settings-file <session>/shot-01.settings.json `
+  --storyboard <session>/storyboard.md `
+  --intent-contract <session>/shot-01.intent-contract.json `
+  --compiler-ir <session>/shot-01.compiler-ir.json `
+  --semantic-check <session>/shot-01.semantic-check.json `
+  --project-id <session-id> --prompt-id shot-01 `
+  --output-dir <library>/videos/<session-id> --requested-by hermes --wait
+```
+
+Existing sessions without `methodology` remain readable and runnable under their recorded legacy contract. New
+storyboard-derived sessions use the intent-preserving methodology; free prompt experiments must not set it or claim
+faithful storyboard execution.
 
 That writes `<session>/session-provenance.json`:
 
@@ -84,6 +110,7 @@ That writes `<session>/session-provenance.json`:
   "character_id": "ch-lia",
   "title": "Lia micro-vlog: sundress to shift to cat",
   "user_request_verbatim": "…",
+  "methodology": "intent-preserving-v1",
   "status": "running",
   "created_at": "…",
   "updated_at": "…"

@@ -28,6 +28,18 @@ class RecorderTests(unittest.TestCase):
             self.assertEqual(result["production_plan"]["schema_version"], 2)
             self.assertEqual(result["production_plan"]["sha256"], wangp_recorder.sha256_file(plan))
 
+    def test_session_records_intent_preserving_methodology(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            session = Path(directory) / "session"
+            session.mkdir()
+            result = wangp_recorder.write_session(argparse.Namespace(
+                session_dir=str(session), requested_by="hermes", executor="local_wangp",
+                engine="WanGP", model="minimax_h3_ref2va_pruned", character_id="ch-lia",
+                title="intent gate", user_request=None, source_idea=None, status="prepared",
+                session_id="VIDEO-intent-gate", production_plan=None, methodology="intent-preserving-v1",
+            ))
+            self.assertEqual(result["methodology"], "intent-preserving-v1")
+
     def test_prepare_writes_run_before_submission(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
