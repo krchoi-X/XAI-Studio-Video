@@ -1,6 +1,6 @@
 # Intent-Preserving Storyboard-to-Video Methodology
 
-Status: canonical runtime methodology for new storyboard-derived video work. Enforcement revision: v1.1; new artifact schema: v2 (v1 remains readable only).
+Status: canonical runtime methodology for new storyboard-derived video work. Enforcement revision: v1.2; new artifact schema: v2 (v1 remains readable only).
 
 ## Why this exists
 
@@ -48,7 +48,7 @@ Improves expression only inside the contract's allow-list. Lens family, light, d
 
 Translates the approved contract and allowed cinematography into the target model's syntax and controls. It may choose supported reference/control mechanisms but may not redesign the shot. Locked values remain structured in a compiler intermediate beside the prose prompt.
 
-Hermes authors `prompt_segments` while the production packet is still a draft. Once the user approves the packet, neither Hermes nor a frontier model may paraphrase those locked segments. Subsequent compilation selects only approved values and applies the versioned template.
+Hermes authors model-neutral `prompt_segments` and any required engine prompt profile while the production packet is still a draft. Once the user approves the packet, neither Hermes nor a frontier model may paraphrase those locked segments. Subsequent compilation selects only approved values and applies the versioned engine adapter. The structured contract/IR is not itself renderer prose.
 
 ### Verifier
 
@@ -125,8 +125,8 @@ For storyboard-derived work, apply all of these layers:
 
 1. Closed structured packet with required fields, stable IDs, controlled vocabulary and source hashes.
 2. Deny-by-default changes to narrative action, gaze, direction, blocking, camera motion, omission and final state.
-3. Locked structured compiler intermediate. The contract carries director-approved prompt segments, and a versioned template renders them without LLM paraphrase.
-4. Creative slots accept only values explicitly enumerated in `allowed_values`; the final runtime prompt must exactly equal the deterministic rendering of the contract and those values.
+3. Locked structured compiler intermediate. The contract carries director-approved prompt segments plus an engine-specific prompt profile when the renderer has a required grammar. A versioned adapter renders them without LLM paraphrase.
+4. Creative slots accept only values explicitly enumerated in `allowed_values`; the final runtime prompt must exactly equal the deterministic rendering of the contract and those values. Renderer prompts contain renderer-facing content only, never contract IDs, hashes, target-model labels, template IDs, or creative-choice bookkeeping.
 5. Deterministic structural checks for event coverage/order, direction, gaze phase, camera locks, omissions and final state.
 6. Advisory semantic review only for nuance that cannot be settled mechanically.
 7. Submission gate requiring a matching approved contract and passing check before a storyboard-derived renderer job. Registering a new approved production plan through the maintained recorder enables this gate even if an agent omits the methodology flag; pre-existing legacy records are not silently reclassified.
@@ -137,6 +137,15 @@ For storyboard-derived work, apply all of these layers:
 Hard failures include a stale or mismatched hash, missing or reordered required action, changed gaze/direction, restored omitted event, forbidden camera/action, wrong final state, or missing/failed semantic check. Ambiguous performance nuance and cinematography gain remain warnings or human-review decisions.
 
 Documentation is not proof that a runtime gate exists. A renderer path may enforce the gate natively or through the maintained pre-submit checker. Until native integration exists, the executing agent must run `tools/video_intent_contract.py` immediately before submission, attach its passing record to the run, and submit the exact hash-matched prompt. A prompt-only handoff without that evidence is noncompliant and must stop.
+
+### Engine-specific adapters
+
+`intent-prompt-v1` is the generic adapter and is not a universal model prompt. Exact MiniMax H3 targets reject it:
+
+- Ref2VA requires `h3-ref2va-v1`, which emits only `subject_definitions`, `summary`, `retention_analysis`, `detailed_description`, `overall_soundscape`, and `non_diegetic_music`, in that order.
+- FL2VA requires `h3-fl2va-v1`, which emits only `integrated_multimodal_description`, `overall_soundscape`, and `non_diegetic_music`, in that order.
+
+The H3 narrative section must contain every approved event line exactly once and in order. Audio and music are first-class approved fields. Engine profiles may contain deterministic `{{creative_key}}` slots, but the slot set must exactly match the selected allow-listed values. Unit tests prove structural preservation, not output quality; the first production still needs a controlled same-seed comparison or an explicitly approved pilot before any quality claim.
 
 ## Known-good prompts and reference studies
 

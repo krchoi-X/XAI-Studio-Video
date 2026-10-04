@@ -16,7 +16,7 @@ draft storyboard + draft contract
 → segment sub-contract checks
 ```
 
-The Production Director authors the storyboard, contract, and v2 `prompt_segments` together. In the default local role split this author is Hermes. Do not extract a supposedly authoritative contract later from prose without human review; that only moves reinterpretation to another hidden step. Optional frontier Creative Treatment is upstream context, not a substitute for this joint production approval.
+The Production Director authors the storyboard, contract, v2 `prompt_segments`, and any required engine prompt profile together. In the default local role split this author is Hermes. Do not extract a supposedly authoritative contract later from prose without human review; that only moves reinterpretation to another hidden step. Optional frontier Creative Treatment is upstream context, not a substitute for this joint production approval.
 
 ## Minimum packet
 
@@ -71,6 +71,14 @@ locked:
     camera_line: Static camera; no push-in and no orbit.
     final_state_line: She has exited the room.
     omission_line: Do not show a corridor walk, object pickup, full-body turn, or return.
+  engine_prompt_profiles:
+    h3_ref2va_v1:
+      subject_definitions: <Subject 1> is the woman in <Picture 1>, preserving her exact identity and appearance.
+      summary: Place <Subject 1> in the approved departure scene.
+      retention_analysis: '<Subject 1> (appears in [Shot 1]): fully_preserved - identity and wardrobe remain unchanged.'
+      detailed_description: '[Shot 1] A {{lens_family}} view. She reaches the door. She pauses. ...'
+      overall_soundscape: Quiet room tone, footsteps, and one door sound; no speech.
+      non_diegetic_music: None.
 
 creative_envelope:
   level: L1
@@ -122,7 +130,7 @@ source_contract_id: intent_S07_v1
 source_contract_sha256: <verified-contract-hash>
 compiler: h3-contract-compiler
 compiler_version: <version-or-commit>
-prompt_template_version: intent-prompt-v1
+prompt_template_version: h3-ref2va-v1
 target_model: minimax_h3_ref2va_pruned
 ordered_events: [reach_door, pause, head_turn_only, brief_final_gaze, face_forward, exit]
 gaze_phases: [away_from_lens, brief_final_lens_contact]
@@ -135,7 +143,9 @@ creative_choices:
   light_softness: soft
 ```
 
-Locked entries, including director-approved prompt prose, are copied exactly. An LLM may select only values listed under the matching `creative_envelope.allowed_values` key. The versioned template renders the complete prompt; there is no free-text post-processing stage.
+Locked entries, including director-approved prompt prose and engine profile, are copied exactly. An LLM may select only values listed under the matching `creative_envelope.allowed_values` key. The versioned engine adapter renders the complete prompt; there is no free-text post-processing stage.
+
+`intent-prompt-v1` is a generic adapter, not valid H3 renderer syntax. Exact H3 Ref2VA targets require `h3-ref2va-v1` and its six approved sections; exact H3 FL2VA targets require `h3-fl2va-v1` and its three approved sections. The compiled H3 prompt omits management metadata such as target model, template ID, hashes, and creative-choice field names. Those stay in the compiler intermediate and semantic-check record. Audio and music remain explicit approved fields. Every ordered event line must occur exactly once and in order inside `detailed_description` or `integrated_multimodal_description`.
 
 ## Semantic-check record
 

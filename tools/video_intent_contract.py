@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -24,8 +25,21 @@ IR_SCHEMAS = {
     1: ROOT / "schemas" / "video-compiler-ir-v1.schema.json",
     2: ROOT / "schemas" / "video-compiler-ir-v2.schema.json",
 }
-CHECKER_VERSION = "video-intent-contract-v1.1"
-PROMPT_TEMPLATE_VERSION = "intent-prompt-v1"
+CHECKER_VERSION = "video-intent-contract-v1.2"
+GENERIC_PROMPT_TEMPLATE_VERSION = "intent-prompt-v1"
+H3_REF2VA_TEMPLATE_VERSION = "h3-ref2va-v1"
+H3_FL2VA_TEMPLATE_VERSION = "h3-fl2va-v1"
+PROMPT_TEMPLATE_VERSION = GENERIC_PROMPT_TEMPLATE_VERSION  # backward-compatible import
+SUPPORTED_PROMPT_TEMPLATES = {
+    GENERIC_PROMPT_TEMPLATE_VERSION,
+    H3_REF2VA_TEMPLATE_VERSION,
+    H3_FL2VA_TEMPLATE_VERSION,
+}
+H3_PROFILE_KEYS = {
+    H3_REF2VA_TEMPLATE_VERSION: "h3_ref2va_v1",
+    H3_FL2VA_TEMPLATE_VERSION: "h3_fl2va_v1",
+}
+CREATIVE_PLACEHOLDER = re.compile(r"\{\{([a-z][a-z0-9_]*)\}\}")
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -61,6 +75,35 @@ def normalized_phrase(value: str) -> str:
     return " ".join(value.casefold().replace("_", " ").replace("-", " ").split())
 
 
+def required_template_for_target(target_model: str) -> str | None:
+    target = target_model.casefold()
+    if target.startswith("minimax_h3_ref2va"):
+        return H3_REF2VA_TEMPLATE_VERSION
+    if target.startswith("minimax_h3_fl2va"):
+        return H3_FL2VA_TEMPLATE_VERSION
+    return None
+
+
+def substitute_creative_choices(value: str, choices: dict[str, Any]) -> str:
+    placeholders = CREATIVE_PLACEHOLDER.findall(value)
+    if set(placeholders) != set(choices):
+        raise ValueError("H3 profile placeholders must match compiler creative_choices exactly")
+    rendered = value
+    for key in placeholders:
+        choice = choices[key]
+        if not isinstance(choice, str) or not choice:
+            raise ValueError(f"creative choice must be a non-empty string: {key}")
+        rendered = rendered.replace("{{" + key + "}}", choice)
+    if "{{" in rendered or "}}" in rendered:
+        raise ValueError("unresolved H3 profile placeholder")
+    return rendered
+
+
+def render_h3_profile(profile: dict[str, Any], fields: tuple[str, ...], choices: dict[str, Any]) -> str:
+    body = "\n".join(f"{field}:\n{profile[field]}" for field in fields)
+    return substitute_creative_choices(body, choices) + "\n"
+
+
 def render_runtime_prompt(contract: dict[str, Any], compiler_ir: dict[str, Any]) -> str:
     """Render the complete runtime prompt without generative rewriting.
 
@@ -72,8 +115,39 @@ def render_runtime_prompt(contract: dict[str, Any], compiler_ir: dict[str, Any])
         raise ValueError("deterministic prompt rendering requires contract and compiler IR schema_version 2")
     locked = contract["locked"]
     segments = locked["prompt_segments"]
+    template = compiler_ir["prompt_template_version"]
+    required_template = required_template_for_target(compiler_ir["target_model"])
+    if required_template is not None and template != required_template:
+        raise ValueError(f"{compiler_ir['target_model']} requires {required_template}")
+    if template == H3_REF2VA_TEMPLATE_VERSION:
+        profile = locked.get("engine_prompt_profiles", {}).get(H3_PROFILE_KEYS[template])
+        if not isinstance(profile, dict):
+            raise ValueError("approved H3 Ref2VA prompt profile is missing")
+        return render_h3_profile(
+            profile,
+            (
+                "subject_definitions",
+                "summary",
+                "retention_analysis",
+                "detailed_description",
+                "overall_soundscape",
+                "non_diegetic_music",
+            ),
+            compiler_ir.get("creative_choices", {}),
+        )
+    if template == H3_FL2VA_TEMPLATE_VERSION:
+        profile = locked.get("engine_prompt_profiles", {}).get(H3_PROFILE_KEYS[template])
+        if not isinstance(profile, dict):
+            raise ValueError("approved H3 FL2VA prompt profile is missing")
+        return render_h3_profile(
+            profile,
+            ("integrated_multimodal_description", "overall_soundscape", "non_diegetic_music"),
+            compiler_ir.get("creative_choices", {}),
+        )
+    if template != GENERIC_PROMPT_TEMPLATE_VERSION:
+        raise ValueError(f"unsupported prompt template: {template}")
     lines = [
-        f"intent_template: {PROMPT_TEMPLATE_VERSION}",
+        f"intent_template: {GENERIC_PROMPT_TEMPLATE_VERSION}",
         f"target_model: {compiler_ir['target_model']}",
         "subject_definitions:",
         segments["subject_definition"],
@@ -145,8 +219,41 @@ def compare(
     if not event_prompt_coverage_ok:
         issues.append(issue("event_prompt_coverage_mismatch", "locked/prompt_segments/event_lines", "event prompt lines must match ordered_events exactly"))
 
-    if compiler_ir.get("prompt_template_version") != PROMPT_TEMPLATE_VERSION:
-        issues.append(issue("prompt_template_version_mismatch", "prompt_template_version", f"compiler must use {PROMPT_TEMPLATE_VERSION}"))
+    template = compiler_ir.get("prompt_template_version")
+    if template not in SUPPORTED_PROMPT_TEMPLATES:
+        issues.append(issue("prompt_template_version_mismatch", "prompt_template_version", "compiler names an unsupported prompt template"))
+    required_template = required_template_for_target(str(compiler_ir.get("target_model", "")))
+    if required_template is not None and template != required_template:
+        issues.append(issue(
+            "prompt_template_target_mismatch",
+            "prompt_template_version",
+            f"{compiler_ir.get('target_model')} requires {required_template}",
+        ))
+
+    profile_key = H3_PROFILE_KEYS.get(template)
+    profile = contract.get("locked", {}).get("engine_prompt_profiles", {}).get(profile_key) if profile_key else None
+    if profile_key and not isinstance(profile, dict):
+        issues.append(issue("engine_prompt_profile_missing", f"locked/engine_prompt_profiles/{profile_key}", "approved engine-specific prompt profile is required"))
+    if isinstance(profile, dict):
+        narrative_field = "detailed_description" if template == H3_REF2VA_TEMPLATE_VERSION else "integrated_multimodal_description"
+        narrative = profile.get(narrative_field, "")
+        event_positions = []
+        for event_id in events:
+            event_line = event_lines.get(event_id, "")
+            if not event_line or narrative.count(event_line) != 1:
+                issues.append(issue(
+                    "engine_profile_event_mismatch",
+                    f"locked/engine_prompt_profiles/{profile_key}/{narrative_field}",
+                    f"approved event line for {event_id} must occur exactly once in the H3 narrative section",
+                ))
+                continue
+            event_positions.append(narrative.index(event_line))
+        if len(event_positions) == len(events) and event_positions != sorted(event_positions):
+            issues.append(issue(
+                "engine_profile_event_order_mismatch",
+                f"locked/engine_prompt_profiles/{profile_key}/{narrative_field}",
+                "H3 narrative section must preserve approved event order",
+            ))
 
     allowed_values = contract.get("creative_envelope", {}).get("allowed_values", {})
     if set(allowed_values) != allowed:
@@ -155,11 +262,18 @@ def compare(
         if key in allowed and value not in allowed_values.get(key, []):
             issues.append(issue("creative_choice_value_not_allowed", f"creative_choices/{key}", f"creative value is not approved for {key}"))
 
-    if prompt_text is not None and event_prompt_coverage_ok:
-        expected_prompt = render_runtime_prompt(contract, compiler_ir)
-        normalized_prompt = prompt_text.replace("\r\n", "\n")
-        if normalized_prompt != expected_prompt:
-            issues.append(issue("prompt_template_mismatch", "prompt", "runtime prompt must equal the deterministic rendering of the approved contract and creative choices"))
+    if prompt_text is not None and event_prompt_coverage_ok and not any(
+        item["code"] in {"prompt_template_version_mismatch", "prompt_template_target_mismatch", "engine_prompt_profile_missing"}
+        for item in issues
+    ):
+        try:
+            expected_prompt = render_runtime_prompt(contract, compiler_ir)
+        except (KeyError, TypeError, ValueError) as error:
+            issues.append(issue("prompt_render_failed", "prompt", str(error)))
+        else:
+            normalized_prompt = prompt_text.replace("\r\n", "\n")
+            if normalized_prompt != expected_prompt:
+                issues.append(issue("prompt_template_mismatch", "prompt", "runtime prompt must equal the deterministic rendering of the approved contract and creative choices"))
     return issues
 
 

@@ -10,7 +10,7 @@
     "source_contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "compiler": {"type": "string", "minLength": 1},
     "compiler_version": {"type": "string", "minLength": 1},
-    "prompt_template_version": {"const": "intent-prompt-v1"},
+    "prompt_template_version": {"enum": ["intent-prompt-v1", "h3-ref2va-v1", "h3-fl2va-v1"]},
     "target_model": {"type": "string", "minLength": 1},
     "locked": {
       "type": "object",
@@ -37,11 +37,44 @@
             "omission_line": {"type": "string", "minLength": 1}
           },
           "additionalProperties": false
+        },
+        "engine_prompt_profiles": {
+          "type": "object",
+          "properties": {
+            "h3_ref2va_v1": {"$ref": "#/$defs/h3_ref2va_profile"},
+            "h3_fl2va_v1": {"$ref": "#/$defs/h3_fl2va_profile"}
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
     },
     "creative_choices": {"type": "object"}
+  },
+  "$defs": {
+    "h3_ref2va_profile": {
+      "type": "object",
+      "required": ["subject_definitions", "summary", "retention_analysis", "detailed_description", "overall_soundscape", "non_diegetic_music"],
+      "properties": {
+        "subject_definitions": {"type": "string", "minLength": 1},
+        "summary": {"type": "string", "minLength": 1},
+        "retention_analysis": {"type": "string", "minLength": 1},
+        "detailed_description": {"type": "string", "minLength": 1},
+        "overall_soundscape": {"type": "string", "minLength": 1},
+        "non_diegetic_music": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "h3_fl2va_profile": {
+      "type": "object",
+      "required": ["integrated_multimodal_description", "overall_soundscape", "non_diegetic_music"],
+      "properties": {
+        "integrated_multimodal_description": {"type": "string", "minLength": 1},
+        "overall_soundscape": {"type": "string", "minLength": 1},
+        "non_diegetic_music": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": false
 }

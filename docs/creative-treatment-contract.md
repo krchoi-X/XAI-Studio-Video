@@ -9,7 +9,7 @@ The Creative Treatment frames the story; it is not a production storyboard, rend
 ```text
 User idea
 → optional Frontier Creative Treatment
-→ Hermes Production Storyboard + Intent Contract + prompt_segments drafts
+→ Hermes Production Storyboard + Intent Contract + prompt_segments and required engine-profile drafts
 → user jointly approves the production artifacts and visible production details
 → Hermes selects approved engine values
 → deterministic compile/check
@@ -54,7 +54,7 @@ python tools/wangp_recorder.py session `
   --role-attribution <session>/production-role-attribution.json
 ```
 
-Registration rejects draft or invalid treatments, missing sidecars, non-Hermes production authors in the treatment-backed default path, or an approval record that does not match the exact production-plan path and hash. Existing sessions without these sidecars remain valid.
+Registration rejects draft or invalid treatments, missing sidecars, non-Hermes production authors in the treatment-backed default path, or an approval record that does not match the exact production-plan path and hash. Renderer-specific grammar remains a compiler-adapter responsibility: H3 Ref2VA and FL2VA use their native approved engine profiles, not the generic contract/debug representation. Existing sessions without these sidecars remain valid.
 
 ## Review boundary
 

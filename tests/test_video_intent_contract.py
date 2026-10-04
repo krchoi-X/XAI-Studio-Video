@@ -54,6 +54,22 @@ def artifacts(tmp_path: Path) -> tuple[Path, Path, Path, Path]:
                 "final_state_line": "She has exited the room.",
                 "omission_line": "Do not show a corridor walk or any object pickup.",
             },
+            "engine_prompt_profiles": {
+                "h3_ref2va_v1": {
+                    "subject_definitions": "<Subject 1> is the woman in <Picture 1>, preserving her exact identity and appearance.",
+                    "summary": "Place <Subject 1> in a quiet room for one restrained departure shot.",
+                    "retention_analysis": "<Subject 1> (appears in [Shot 1]): fully_preserved - identity and wardrobe remain unchanged.",
+                    "detailed_description": (
+                        "[Shot 1] A {{lens_family}} lens holds a quiet room with the exit visible. "
+                        "She reaches the door. She pauses. Only at the final moment, she briefly looks into the lens. "
+                        "She exits the room. Before the final moment she looks away from the lens; lens contact occurs "
+                        "only at the end. She moves toward the exit throughout. Static camera; no push-in and no orbit. "
+                        "She has exited the room. Do not show a corridor walk or any object pickup."
+                    ),
+                    "overall_soundscape": "Quiet room tone, soft footsteps, and one door sound; no speech.",
+                    "non_diegetic_music": "None.",
+                }
+            },
         },
         "creative_envelope": {
             "level": "L1",
@@ -73,7 +89,7 @@ def artifacts(tmp_path: Path) -> tuple[Path, Path, Path, Path]:
         "source_contract_sha256": hashlib.sha256(contract_path.read_bytes()).hexdigest(),
         "compiler": "h3-contract-compiler",
         "compiler_version": "test",
-        "prompt_template_version": "intent-prompt-v1",
+        "prompt_template_version": "h3-ref2va-v1",
         "target_model": "minimax_h3_ref2va_pruned",
         "locked": copy.deepcopy(contract["locked"]),
         "creative_choices": {"lens_family": "normal"},
@@ -90,6 +106,57 @@ def test_matching_contract_passes(tmp_path: Path) -> None:
     result = check(contract, ir, storyboard, prompt)
     assert result["status"] == "pass"
     assert result["hard_failures"] == []
+
+
+def test_h3_ref2va_uses_native_sections_audio_and_no_management_metadata(tmp_path: Path) -> None:
+    contract, ir, _, _ = artifacts(tmp_path)
+    rendered = render_runtime_prompt(
+        json.loads(contract.read_text(encoding="utf-8")),
+        json.loads(ir.read_text(encoding="utf-8")),
+    )
+    headings = [line for line in rendered.splitlines() if line.endswith(":")]
+    assert headings == [
+        "subject_definitions:", "summary:", "retention_analysis:", "detailed_description:",
+        "overall_soundscape:", "non_diegetic_music:",
+    ]
+    assert "Quiet room tone" in rendered
+    assert "non_diegetic_music:\nNone." in rendered
+    assert "target_model:" not in rendered
+    assert "intent_template:" not in rendered
+    assert "lens_family:" not in rendered
+
+
+def test_h3_fl2va_uses_native_three_section_format(tmp_path: Path) -> None:
+    contract, ir, storyboard, prompt = artifacts(tmp_path)
+    contract_value = json.loads(contract.read_text(encoding="utf-8"))
+    ref_profile = contract_value["locked"]["engine_prompt_profiles"].pop("h3_ref2va_v1")
+    contract_value["locked"]["engine_prompt_profiles"]["h3_fl2va_v1"] = {
+        "integrated_multimodal_description": ref_profile["detailed_description"],
+        "overall_soundscape": ref_profile["overall_soundscape"],
+        "non_diegetic_music": ref_profile["non_diegetic_music"],
+    }
+    write_json(contract, contract_value)
+    ir_value = json.loads(ir.read_text(encoding="utf-8"))
+    ir_value["source_contract_sha256"] = hashlib.sha256(contract.read_bytes()).hexdigest()
+    ir_value["locked"] = copy.deepcopy(contract_value["locked"])
+    ir_value["prompt_template_version"] = "h3-fl2va-v1"
+    ir_value["target_model"] = "minimax_h3_fl2va_pruned"
+    write_json(ir, ir_value)
+    rendered = render_runtime_prompt(contract_value, ir_value)
+    prompt.write_text(rendered, encoding="utf-8")
+    assert [line for line in rendered.splitlines() if line.endswith(":")] == [
+        "integrated_multimodal_description:", "overall_soundscape:", "non_diegetic_music:",
+    ]
+    assert check(contract, ir, storyboard, prompt)["status"] == "pass"
+
+
+def test_exact_h3_target_rejects_generic_template(tmp_path: Path) -> None:
+    contract, ir, storyboard, prompt = artifacts(tmp_path)
+    value = json.loads(ir.read_text(encoding="utf-8"))
+    value["prompt_template_version"] = "intent-prompt-v1"
+    write_json(ir, value)
+    result = check(contract, ir, storyboard, prompt)
+    assert "prompt_template_target_mismatch" in {item["code"] for item in result["hard_failures"]}
 
 
 def test_changed_locked_order_fails(tmp_path: Path) -> None:
@@ -209,6 +276,7 @@ def test_legacy_v1_contract_remains_readable(tmp_path: Path) -> None:
     contract_value = json.loads(contract.read_text(encoding="utf-8"))
     contract_value["schema_version"] = 1
     contract_value["locked"].pop("prompt_segments")
+    contract_value["locked"].pop("engine_prompt_profiles")
     contract_value["creative_envelope"].pop("allowed_values")
     write_json(contract, contract_value)
     ir_value = json.loads(ir.read_text(encoding="utf-8"))
