@@ -3,7 +3,7 @@
 - Date: 2026-10-04 ~23:40 KST (renders overnight)
 - Active editor: Claude Code (claude-opus-5-5), real actor `claude`; Hermes (`meromero26b-a4b-hermes`) as Production
   Director / prompt author / submitter / first reviewer per `docs/creative-treatment-contract.md`
-- Status: ACTIVE
+- Status: DONE — 16 clips rendered, reviewed, assembled, registered (needs_review); awaiting user viewing
 
 ## Goal
 
@@ -49,3 +49,16 @@ No DNA/approval change, no edits to Codex-owned methodology/tools/schemas, no di
   window and reported "OK" once while files still failed. jjigae2_c authored by Claude.
 - ~1 h lost to a wait loop on hermes.exe (desktop app stays resident).
 - 02:01 Hermes (operator) launched `newflow.py render` for 16 clips; first run passed the v2 local gate.
+- 06:06 all 16 clips rendered (one pass). Claude frame review: `D:/AI_Studio/reports/suan-new-flow-20261004/render-review.md`.
+- Results:
+  - Exp 1 rain2: coat removal and wet look delivered; c2 towel ends covering the face; coat colour drift; window reflection artifact.
+  - Exp 2 A/B (same seeds): Claude arm kept ribbon updo and ttukbaegi across the cut; Hermes arm livelier but lost the
+    ribbon (c2-c3) and the ttukbaegi at the table (its continuation text omitted both). Both arms had spoon issues.
+  - Exp 3 window: L2 allowance broke no locks; rack focus clearly visible in 1 of 2 seeds; an in-clip framing jump
+    before the final reach appeared in 3 of 4 takes regardless of level.
+  - Exp 4 duo (Suan + Jun): identity separation, screen sides and mutual gaze held in 3/3 seeds; two speech bursts at
+    the expected times, speaker assignment probable from mouth crops, not verified by ear.
+  - Exp 5 writer: both scenarios in `writer/`; judgement left to the user.
+- Hermes independent first review restated the packets instead of the images (passed all 16, invented objects and a
+  second person) — the role-split's first-review step is not viable without verified image access. Filed as feedback.
+- Finals, comparisons (`BATCH-20261004-new-flow-experiments/compare-*.mp4`) registered: sync imported 30 assets.
