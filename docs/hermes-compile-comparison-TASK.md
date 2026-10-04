@@ -58,6 +58,12 @@ Codex's methodology/tool files.
   F3 eyes near-lens; mild identity drift on 3rd chained clips). Hermes's own model stayed resident after its
   operator call and was unloaded by Claude ~1 min into E1. Notes: `BATCH-20261004-suan-hermes-originals/notes.md`.
 - Gallery: sync imported 9 more assets (E 4 raw + final, F 3 raw + final); E final playback verified (206).
+- User review (2026-10-04 afternoon): Hermes clearly better on camera movement and on the rain-soaked look; both
+  arms missed coat removal (storyboard omission), used a ramyeon-style pot instead of a ttukbaegi, and showed a
+  duplicated spoon. Filed as 5 feedback records (`D:/AI_Studio/workspace/skill-feedback/open/skillfb-20261004T0653*`):
+  everyday-realism check, prop/culture/count checklist, appearance state in Ref2VA subject definition, compiler
+  freedom vs v1.1 template (hybrid proposal for Codex), explicit compiler-brief rules for Hermes.
+- Gallery check: all 82 session videos registered; no sync run while Grok was rendering.
 
 ## Next
 
