@@ -2,7 +2,7 @@
 
 - Date: 2026-10-04
 - Active editor: Claude Code (claude-opus-5-5), real actor `claude`; compiler under test: Hermes (local `meromero26b-a4b-hermes`)
-- Status: ACTIVE
+- Status: DONE — comparison + two new pieces rendered, registered (needs_review); awaiting user viewing
 
 ## Goal
 
@@ -52,6 +52,15 @@ Codex's methodology/tool files.
   `BATCH-20261004-suan-hermes-originals/` (spec_new.py, new_pipeline.py); compile instructions add explicit
   `<Subject 1>/<Picture 1>` and single-`<d>` rules learned from the comparison.
 
+- E 첫눈 / F 이거요 (Claude-directed; Hermes compiled all 6 prompts and launched the render as operator):
+  E1 failed staging (full-body wide, people inside cafe, snow invisible) -> E2 render cancelled, Hermes recompiled E1
+  once from Claude's review notes -> pass. E2, E3, F1-3 pass with warnings (long lens contact in E3; F in profile;
+  F3 eyes near-lens; mild identity drift on 3rd chained clips). Hermes's own model stayed resident after its
+  operator call and was unloaded by Claude ~1 min into E1. Notes: `BATCH-20261004-suan-hermes-originals/notes.md`.
+- Gallery: sync imported 9 more assets (E 4 raw + final, F 3 raw + final); E final playback verified (206).
+
 ## Next
 
-Build Hermes workspaces → Hermes compile → gate check → render 10 clips → assemble → score → comparison videos → sync.
+1. User watches: Claude finals (overnight), Hermes-arm finals, `compare-*` side-by-sides, E and F finals.
+2. Decide what to keep; reject extra overnight intermediates in Review (no DB edits).
+3. Possible third arm: v1.1 deterministic compile (`c66aaf0`) on the same contracts.
