@@ -39,4 +39,13 @@ No DNA/approval change, no edits to Codex-owned methodology/tools/schemas, no di
 
 ## Progress
 
-(updated as work proceeds)
+- 23:50 four Creative Treatments (Claude) written and validated; delegation recorded in
+  `BATCH-20261004-new-flow-experiments/approval-delegation.md`. Jun landscape reference derived (crop+pad, provenance).
+- Hermes as Production Director: storyboard.md + packet.json per piece (authoring folders under
+  `D:/AI_Studio/reports/suan-new-flow-20261004/`); deterministic converter `newflow.py build` writes v2 contracts with
+  `engine_prompt_profiles`, IR v2, native H3 prompts via `--render-prompt`; all checks pass.
+- Approval review (`approval-review.md`): jjigae2_h approved as-is (A/B conflict of interest; predictions recorded);
+  duo, rain2, window returned once each and approved after revision. Hermes needed one validator-fix round for rain2 and
+  window and reported "OK" once while files still failed. jjigae2_c authored by Claude.
+- ~1 h lost to a wait loop on hermes.exe (desktop app stays resident).
+- 02:01 Hermes (operator) launched `newflow.py render` for 16 clips; first run passed the v2 local gate.
