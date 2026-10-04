@@ -42,6 +42,15 @@ Codex's methodology/tool files.
   pinned gate unchanged. Compile observations (identity tags, C3 bound to Picture 2, D1 ordering) in
   `BATCH-20261004-suan-hermes-comparison/compile-review.md`. Workspaces: `D:/AI_Studio/reports/suan-hermes-compile-20261004/`.
 - Rendering started 09:0x KST (B, A then C, D); Ollama model unloaded first.
+- 11:36 all 10 Hermes-arm clips rendered (one pass); finals assembled; first-pass side-by-sides
+  `BATCH-20261004-suan-hermes-comparison/compare-*-claude-vs-hermes.mp4`; per-clip scoring in `render-review.md`.
+  Sync imported 18 assets (10 raw + 4 finals + 4 comparisons), no intermediates.
+- First-pass intent score (Claude scoring, not blind): Claude arm 6/10 pass, 4 fail (A1, A3, C3, D1);
+  Hermes arm 6/10 pass incl. warnings, 3 fail (A3 partial, C2 restored omission, D1) + B1 object-state error
+  (antenna already up). Different failures: Hermes kept A1 order and C3 gaze; Claude kept C2 omission and object state.
+- New pieces E 첫눈 / F 이거요 (Claude-directed, Hermes compile + operator): see
+  `BATCH-20261004-suan-hermes-originals/` (spec_new.py, new_pipeline.py); compile instructions add explicit
+  `<Subject 1>/<Picture 1>` and single-`<d>` rules learned from the comparison.
 
 ## Next
 
