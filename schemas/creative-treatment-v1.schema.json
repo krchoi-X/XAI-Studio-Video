@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/creative-treatment-v1.schema.json",
+  "title": "XAI Studio Creative Treatment v1",
+  "type": "object",
+  "required": ["schema_version", "treatment_id", "status", "source", "concept", "story_arc", "key_visual_moments", "important_objects", "reference_grammar", "known_failure_risks", "production_risks", "creative_freedom", "production_boundaries", "authorship", "approval"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "treatment_id": {"type": "string", "pattern": "^treatment_[A-Za-z0-9_-]+$"},
+    "status": {"enum": ["draft", "approved", "superseded"]},
+    "source": {
+      "type": "object",
+      "required": ["request_id", "idea_sha256"],
+      "properties": {
+        "request_id": {"type": ["string", "null"], "pattern": "^req_[A-Za-z0-9_-]+$"},
+        "idea_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "concept": {
+      "type": "object",
+      "required": ["premise", "viewer_should_understand", "viewer_should_feel"],
+      "properties": {
+        "premise": {"type": "string", "minLength": 1},
+        "viewer_should_understand": {"type": "string", "minLength": 1},
+        "viewer_should_feel": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "story_arc": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "key_visual_moments": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "important_objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["object_id", "description", "continuity_importance"],
+        "properties": {
+          "object_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+          "description": {"type": "string", "minLength": 1},
+          "continuity_importance": {"enum": ["low", "medium", "high"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "reference_grammar": {
+      "type": "object",
+      "required": ["pacing", "framing_pattern", "camera_language", "motion_language", "transition_language", "environmental_motion", "performance_style", "temporal_density"],
+      "properties": {
+        "pacing": {"type": "string", "minLength": 1},
+        "framing_pattern": {"type": "string", "minLength": 1},
+        "camera_language": {"type": "string", "minLength": 1},
+        "motion_language": {"type": "string", "minLength": 1},
+        "transition_language": {"type": "string", "minLength": 1},
+        "environmental_motion": {"type": "string", "minLength": 1},
+        "performance_style": {"type": "string", "minLength": 1},
+        "temporal_density": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "known_failure_risks": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "production_risks": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "creative_freedom": {
+      "type": "object",
+      "required": ["hermes_may_decide", "requires_user_approval"],
+      "properties": {
+        "hermes_may_decide": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "requires_user_approval": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      },
+      "additionalProperties": false
+    },
+    "production_boundaries": {
+      "type": "object",
+      "required": ["must_preserve", "must_not_add", "mature_details_visibility", "policy_evasion_prohibited"],
+      "properties": {
+        "must_preserve": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "must_not_add": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "mature_details_visibility": {"enum": ["not_applicable", "production_storyboard_and_intent_contract"]},
+        "policy_evasion_prohibited": {"const": true}
+      },
+      "additionalProperties": false
+    },
+    "authorship": {"$ref": "#/$defs/agent"},
+    "approval": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["approved_by", "approved_at", "scope"],
+          "properties": {
+            "approved_by": {"const": "user"},
+            "approved_at": {"type": "string", "format": "date-time"},
+            "scope": {"const": "creative_direction_only_not_render_go"}
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "agent": {
+      "type": "object",
+      "required": ["actor", "model", "created_at"],
+      "properties": {
+        "actor": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,31}$"},
+        "model": {"type": "string", "minLength": 1},
+        "created_at": {"type": "string", "format": "date-time"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "approved"}}}, "then": {"properties": {"approval": {"type": "object"}}}},
+    {"if": {"properties": {"status": {"const": "draft"}}}, "then": {"properties": {"approval": {"type": "null"}}}}
+  ],
+  "additionalProperties": false
+}

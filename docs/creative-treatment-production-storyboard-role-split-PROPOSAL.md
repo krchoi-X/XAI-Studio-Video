@@ -1,7 +1,7 @@
 # Proposal — Creative Treatment / Production Storyboard Role Split
 
 - Date: 2026-10-04
-- Status: PROPOSAL — review for integration; no schema, contract, queue, renderer, or Studio change is authorised by this document.
+- Status: CONDITIONALLY ADOPTED — role-policy overlay approved by the user on 2026-10-04. The optional sidecars and approval gates are implemented for future trials; empirical adoption is not complete until the production acceptance criteria below are exercised.
 - Scope: clarify **who owns each creative and production step** in the Hermes autonomous video pipeline.
 - Intended reviewers: Codex / Claude Code / ChatGPT when maintaining the production methodology.
 - Related documents:
@@ -300,6 +300,10 @@ Creative Treatment
 Production Storyboard
         |
         v
+[USER]
+joint approval of Production Storyboard + Intent Contract + visible production details
+        |
+        v
 [HERMES LLM]
 Image prompts + Video prompts
         |
@@ -481,7 +485,7 @@ For complex, reference-heavy, continuity-sensitive, or story-driven productions,
 
 ---
 
-## Acceptance criteria for adopting this methodology
+## Acceptance criteria for completing empirical adoption
 
 Do not declare the proposal adopted merely because the document exists.
 

@@ -2,6 +2,8 @@
 
 Status: v1 field names and enums are owned by Codex and frozen for Hermes package C3.
 
+For complex video work, keep this frozen v1 flow intact and add the optional sidecars defined in [Creative Treatment and Production Role Sidecars](creative-treatment-contract.md). Do not overload `idea-production-request-v1.idea` with a full treatment or add fields to its closed schema. The treatment frames creative direction; Hermes then authors the Production Storyboard and Intent Contract, and the user approves those production artifacts before rendering.
+
 The normal durable flow is:
 
 ```text

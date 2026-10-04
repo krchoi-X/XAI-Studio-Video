@@ -63,6 +63,8 @@ python tools/wangp_recorder.py session `
   --character-id ch-lia --title "Lia micro-vlog: sundress to shift to cat" `
   --user-request "<the operator's request, verbatim>" `
   --production-plan <session>/shot-production-plan-v2.json `
+  --creative-treatment <session>/creative-treatment.json `
+  --role-attribution <session>/production-role-attribution.json `
   --methodology intent-preserving-v1 `
   --status running
 ```
@@ -96,6 +98,13 @@ python tools/local_wangp.py submit `
 Existing sessions without `methodology` remain readable and runnable under their recorded legacy contract. New
 storyboard-derived sessions use the intent-preserving methodology; free prompt experiments must not set it or claim
 faithful storyboard execution.
+
+`--creative-treatment` is optional and intended for complex work. When supplied, it requires both an approved
+`--production-plan` and `--role-attribution`. Registration validates the sidecars, binds their hashes, requires Hermes
+as storyboard author, prompt author, and submitter for the default treatment-backed flow, and verifies that the user
+approval record names the exact production-plan path and SHA-256. Treatment approval is creative-direction approval,
+not render GO. Existing sessions without the sidecars remain compatible. See
+[Creative Treatment and Production Role Sidecars](creative-treatment-contract.md).
 
 That writes `<session>/session-provenance.json`:
 

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/production-role-attribution-v1.schema.json",
+  "title": "XAI Studio Production Role Attribution v1",
+  "type": "object",
+  "required": ["schema_version", "treatment_author", "storyboard_author", "prompt_author", "submitter", "renderer", "first_reviewer", "production_approval"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "treatment_author": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/agent"}]},
+    "storyboard_author": {"$ref": "#/$defs/agent"},
+    "prompt_author": {"$ref": "#/$defs/agent"},
+    "submitter": {"$ref": "#/$defs/agent"},
+    "renderer": {
+      "type": "object",
+      "required": ["system", "model"],
+      "properties": {"system": {"type": "string", "minLength": 1}, "model": {"type": "string", "minLength": 1}},
+      "additionalProperties": false
+    },
+    "first_reviewer": {"$ref": "#/$defs/reviewer"},
+    "production_approval": {
+      "type": "object",
+      "required": ["approved_by", "approved_at", "approved_artifacts", "mature_details_reviewed"],
+      "properties": {
+        "approved_by": {"const": "user"},
+        "approved_at": {"type": "string", "format": "date-time"},
+        "approved_artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["kind", "path", "sha256"],
+            "properties": {
+              "kind": {"enum": ["production_plan", "intent_contract", "prompt_segments"]},
+              "path": {"type": "string", "minLength": 1},
+              "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+            },
+            "additionalProperties": false
+          }
+        },
+        "mature_details_reviewed": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "agent": {
+      "type": "object",
+      "required": ["actor", "model"],
+      "properties": {
+        "actor": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,31}$"},
+        "model": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "reviewer": {
+      "type": "object",
+      "required": ["actor", "model", "independent_context"],
+      "properties": {
+        "actor": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,31}$"},
+        "model": {"type": "string", "minLength": 1},
+        "independent_context": {"const": true}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -22,6 +22,8 @@ user goal
 
 Before approval, creative exploration is encouraged. After approval, narrative meaning is closed by default.
 
+For complex work, an optional Frontier Creative Treatment may precede the storyboard. It frames story and reference grammar but is not render approval. Hermes is the default local Production Director: it drafts the Production Storyboard, Intent Contract, and engine-ready prompt segments. The user approves those production artifacts together before compilation. See [Creative Treatment and Production Role Sidecars](creative-treatment-contract.md).
+
 ## Authority and scope
 
 The approved Storyboard Spec defines the scene. The Intent Contract carries the subset that downstream work must preserve. A runtime prompt is a disposable model-specific compilation artifact; it is never the directing source of truth.
@@ -36,6 +38,8 @@ Free prompt experiments that are not storyboard-derived remain possible, but the
 
 Creates the storyboard and Intent Contract together. The director decides narrative purpose, action order, what the audience witnesses or infers, gaze and direction semantics, entry/exit state, final beat, and feasibility strategy. Approval covers both artifacts and one exact revision/hash pair.
 
+In the default treatment-backed flow, Hermes is this Production Director. ChatGPT, Claude, Codex, or Grok may author the optional Creative Treatment, but treatment authorship does not grant authority to approve or silently rewrite the Production Storyboard.
+
 ### Cinematographer
 
 Improves expression only inside the contract's allow-list. Lens family, light, depth, texture, foreground layering, and limited framing refinement are typical safe freedoms. Camera movement, actor action, gaze, blocking, and temporal order are locked unless explicitly allowed.
@@ -44,9 +48,13 @@ Improves expression only inside the contract's allow-list. Lens family, light, d
 
 Translates the approved contract and allowed cinematography into the target model's syntax and controls. It may choose supported reference/control mechanisms but may not redesign the shot. Locked values remain structured in a compiler intermediate beside the prose prompt.
 
+Hermes authors `prompt_segments` while the production packet is still a draft. Once the user approves the packet, neither Hermes nor a frontier model may paraphrase those locked segments. Subsequent compilation selects only approved values and applies the versioned template.
+
 ### Verifier
 
 Compares the contract to the compiler intermediate before render and attributes post-render failures to `storyboard`, `compiler`, `renderer`, or `edit`. Aesthetic quality does not excuse low intent fidelity.
+
+The normal first-line render reviewer is a separate Hermes pass with an independent context. Reusing the authoring context and merely asking it to “look again” does not count as independent review.
 
 ### Editor
 

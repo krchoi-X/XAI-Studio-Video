@@ -11,6 +11,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import creative_treatment
+
 
 TERMINAL_STATES = {"succeeded", "failed", "cancelled", "interrupted", "timed_out"}
 # Requester identity recorded at submit time (who asked for the run). Canonical values used across the repo:
@@ -215,6 +217,7 @@ def write_session(args: argparse.Namespace) -> dict[str, Any]:
         if value is not None:
             record[key] = value
     production_plan = getattr(args, "production_plan", None)
+    plan_path: Path | None = None
     if production_plan is not None:
         plan_path = Path(production_plan).resolve()
         if not plan_path.is_file():
@@ -239,6 +242,72 @@ def write_session(args: argparse.Namespace) -> dict[str, Any]:
         # An approved production plan is storyboard-derived by definition. Do
         # not let callers bypass the intent gate by omitting --methodology.
         record.setdefault("methodology", "intent-preserving-v1")
+    treatment_arg = getattr(args, "creative_treatment", None)
+    roles_arg = getattr(args, "role_attribution", None)
+    if treatment_arg and not production_plan:
+        raise ValueError("--creative-treatment requires an approved --production-plan")
+    if treatment_arg and not roles_arg:
+        raise ValueError("--creative-treatment requires --role-attribution")
+    if roles_arg and not production_plan:
+        raise ValueError("--role-attribution requires an approved --production-plan")
+    treatment: dict[str, Any] | None = None
+    treatment_path: Path | None = None
+    if treatment_arg:
+        treatment_path = Path(treatment_arg).resolve()
+        if not treatment_path.is_file():
+            raise ValueError(f"creative treatment not found: {treatment_path}")
+        treatment = creative_treatment.load_json(treatment_path)
+        treatment_issues = creative_treatment.validate_treatment(treatment)
+        if treatment_issues:
+            first = treatment_issues[0]
+            raise ValueError(f"invalid creative treatment at {first['path']}: {first['message']}")
+        if treatment.get("status") != "approved":
+            raise ValueError("creative treatment must have status=approved before production registration")
+    if roles_arg:
+        roles_path = Path(roles_arg).resolve()
+        if not roles_path.is_file():
+            raise ValueError(f"role attribution not found: {roles_path}")
+        roles = creative_treatment.load_json(roles_path)
+        role_issues = creative_treatment.validate_roles(roles)
+        if role_issues:
+            first = role_issues[0]
+            raise ValueError(f"invalid role attribution at {first['path']}: {first['message']}")
+        if treatment is not None:
+            if roles.get("treatment_author") != {
+                "actor": treatment["authorship"]["actor"],
+                "model": treatment["authorship"]["model"],
+            }:
+                raise ValueError("role attribution treatment_author does not match the Creative Treatment")
+            for role in ("storyboard_author", "prompt_author", "submitter", "first_reviewer"):
+                if roles.get(role, {}).get("actor") != "hermes":
+                    raise ValueError(f"treatment-backed production requires Hermes as {role}")
+            mature_details_visible = (
+                treatment.get("production_boundaries", {}).get("mature_details_visibility")
+                == "production_storyboard_and_intent_contract"
+            )
+            if mature_details_visible and not roles["production_approval"]["mature_details_reviewed"]:
+                raise ValueError("mature production details must be visible and user-reviewed")
+        if plan_path is None or not creative_treatment.approved_artifact(
+            roles,
+            "production_plan",
+            plan_path,
+            base_dir=roles_path.parent,
+        ):
+            raise ValueError("role attribution approval must bind the exact production plan path and SHA-256")
+        record["role_attribution"] = {
+            "path": str(roles_path),
+            "sha256": sha256_file(roles_path),
+            "value": roles,
+        }
+    if treatment is not None and treatment_path is not None:
+        record["creative_treatment"] = {
+            "path": str(treatment_path),
+            "sha256": sha256_file(treatment_path),
+            "schema_version": treatment["schema_version"],
+            "treatment_id": treatment["treatment_id"],
+            "author": treatment["authorship"],
+            "approval": treatment["approval"],
+        }
     record.setdefault("created_at", now())
     record["updated_at"] = now()
     write_json(path, record)
@@ -373,6 +442,8 @@ def build_parser() -> argparse.ArgumentParser:
     session.add_argument("--status", help="prepared | running | needs_review | completed | failed")
     session.add_argument("--session-id")
     session.add_argument("--production-plan", help="approved schema-2 shot production plan enforced before each local submission")
+    session.add_argument("--creative-treatment", help="optional approved Creative Treatment v1 for complex or reference-heavy work")
+    session.add_argument("--role-attribution", help="role and production-approval sidecar bound to the approved production plan")
     session.add_argument("--methodology", choices=("intent-preserving-v1",), help="require the named methodology gate for new submissions in this session")
     session.set_defaults(handler=write_session)
 

@@ -16,7 +16,7 @@ draft storyboard + draft contract
 → segment sub-contract checks
 ```
 
-The director authors the storyboard and contract together. Do not extract a supposedly authoritative contract later from prose without human review; that only moves reinterpretation to another hidden step.
+The Production Director authors the storyboard, contract, and v2 `prompt_segments` together. In the default local role split this author is Hermes. Do not extract a supposedly authoritative contract later from prose without human review; that only moves reinterpretation to another hidden step. Optional frontier Creative Treatment is upstream context, not a substitute for this joint production approval.
 
 ## Minimum packet
 
