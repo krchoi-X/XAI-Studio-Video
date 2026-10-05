@@ -62,3 +62,8 @@ No DNA/approval change, no edits to Codex-owned methodology/tools/schemas, no di
 - Hermes independent first review restated the packets instead of the images (passed all 16, invented objects and a
   second person) — the role-split's first-review step is not viable without verified image access. Filed as feedback.
 - Finals, comparisons (`BATCH-20261004-new-flow-experiments/compare-*.mp4`) registered: sync imported 30 assets.
+- User review (2026-10-05): improved overall, camera good; jjigae issues added (Hermes arm: not reading as doenjang-jjigae,
+  two rice bowls, no ttukbaegi, spoonful still rice; Claude arm: tastes from the side plate instead of the stew because
+  the event line named no source). Recorded in render-review.md and filed as feedback.
+- Gallery check: 112/112 session videos registered with working preview and Range playback; all `restricted`
+  (hidden in the default feed). Consolidated record: [video-experiments-20261004-summary.md](video-experiments-20261004-summary.md).
