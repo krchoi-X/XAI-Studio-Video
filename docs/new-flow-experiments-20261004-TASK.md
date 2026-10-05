@@ -77,3 +77,14 @@ identified by visible features); same seeds as jjigae2 for a three-way compariso
 window take (window_l2 seed 1) with two FL2VA clips chained from its final frame: she shoulders the bag, leaves, and
 steps out into the rinsed street. Claude writes the treatments; Hermes directs; approval delegated to Claude as in
 round 1 (no packet review was requested) and recorded as such. Same tools, gates and Gallery rules as round 1.
+
+### Round 2 results (2026-10-05 ~14:10)
+- jjigae3 (Hermes + merged camera rule + checklist, same seeds): dish identity, spoon source (dips into the
+  ttukbaegi), table counts, eating the stew and the ribbon updo all fixed vs v2. New failure: face hidden in c1-c2
+  (Hermes chose over-the-shoulder framing despite anchor "her face"; the validator does not check camera-field
+  consistency); head cropped at the line in c3; a second spoon in the ttukbaegi again.
+- Hermes could not revise its own 11 KB packet (2 failed attempts: unapplied helper scripts, then a broken rewrite);
+  re-scoped to fresh per-clip files c1-c3.json + deterministic merge, which worked.
+- window_ext: seamless continuation of window_l2 seed 1; c2 motivated push-in to a smiling close-up on the clearing
+  sky; c1 walks with her back to the camera despite the ban.
+- Gallery: +8 assets, all playable, all restricted. Three-way comparison: `compare-jjigae-v2h-v2c-v3.mp4`.

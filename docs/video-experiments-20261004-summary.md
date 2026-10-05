@@ -40,6 +40,14 @@ restricted" to see them. 112 videos registered; preview and Range playback verif
 | Treatment-backed plan gate cannot express a runtime chain frame (FL2VA) | design gap | feedback |
 | Deterministic template was not H3-native (fixed by Codex `dbd4637`) | resolved | feedback |
 
+## Round 2 (2026-10-05)
+
+- 된장찌개 v3 (Hermes director, merged camera rule "move for a reason, keep an anchor" + review checklist): content
+  logic fixed (dish, spoon source, table counts, identity); face visibility regressed through framing choice.
+- 창가 연장: two FL2VA clips chained from the best window take; the motivated push-in to her face on the sky is the
+  clearest success of the merged camera rule.
+- Hermes revises large JSON packets unreliably; per-clip files + merge solved it.
+
 ## Open questions for the next round
 
 1. Who reviews first? Needs a vision-verified reviewer (human or confirmed-image model); Hermes for checklist only.
@@ -47,4 +55,5 @@ restricted" to see them. 112 videos registered; preview and Range playback verif
 3. Is Hermes's expressiveness worth its identity/object losses if the checklist closes those gaps? Re-run jjigae with the checklist.
 4. Plan-gate support for runtime chain frames (Codex).
 5. Duo stage 2 (handing an object) and speaker verification by ear.
+7. Validator check for camera consistency (anchor vs framing; ban vs movement) and face visibility at key beats.
 6. Gallery visibility of local renders (`restricted` by default) — user decision.
