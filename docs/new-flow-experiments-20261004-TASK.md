@@ -67,3 +67,13 @@ No DNA/approval change, no edits to Codex-owned methodology/tools/schemas, no di
   the event line named no source). Recorded in render-review.md and filed as feedback.
 - Gallery check: 112/112 session videos registered with working preview and Range playback; all `restricted`
   (hidden in the default feed). Consolidated record: [video-experiments-20261004-summary.md](video-experiments-20261004-summary.md).
+
+## Round 2 (2026-10-05 day) — user request: "된장찌개 3만들고, 다른거 하나 더 해봐. 창가 장면을 조금더 길게 이어봐."
+
+Scope: (a) jjigae3 — Hermes as Production Director with the merged camera rule (motivation / move / anchor /
+start-end framing / ban, chain clips start from the previous end framing) and the checklist from the user's reviews
+(identity anchors restated every clip, objects with counts after cuts, hand actions name source and destination, dish
+identified by visible features); same seeds as jjigae2 for a three-way comparison. (b) window_ext — continue the best
+window take (window_l2 seed 1) with two FL2VA clips chained from its final frame: she shoulders the bag, leaves, and
+steps out into the rinsed street. Claude writes the treatments; Hermes directs; approval delegated to Claude as in
+round 1 (no packet review was requested) and recorded as such. Same tools, gates and Gallery rules as round 1.
