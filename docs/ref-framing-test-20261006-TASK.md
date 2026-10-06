@@ -40,3 +40,7 @@ No DNA or approval changes, no Codex-owned file edits, no direct DB writes, no p
   Added Part A2 (`pad_p2.py`, `partA2.py`): original ref + seed, ONLY Picture 2 replaced by a headroom-padded c2-last
   (shrunk 0.82, top band = edge replication + blur; caveat: the blurred band is not real content). Queued after Part A.
   measure.py now also reports cut2s% (first 2 s, before the lean-in moves the face down).
+- 23:36 noa-loose-s1 (Noa c3, ref 0.41 instead of 0.67, same seed/Picture 2): cut2s 100% / top_med 0.008 vs the
+  tight baseline 0% / 0.108. Frames: same composition, but the loose run sits ~10% of frame height higher and the crown
+  leaves the frame. So the reference face size moves the framing for Noa (but did not for Suan). Note Noa's c3 is a
+  different set-up (seated at the table) than its c2-last (at the stove), so Picture 2 is not the opening frame there.
