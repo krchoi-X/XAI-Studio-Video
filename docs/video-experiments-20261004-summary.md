@@ -58,6 +58,24 @@ forehead crop; v5 fixed the ghost spoon (spoon put down at the end of c2) but lo
 less like doenjang; r1 (plain white top) went to side profile in c1-c2, while c3 shows the face during the line but
 gained an extra spoon. All 30 round-3 session videos are registered in the Gallery.
 
+## Round 4 (2026-10-06/07 night, Claude) — seated head-crop test
+
+Task record: [ref-framing-test-20261006-TASK.md](ref-framing-test-20261006-TASK.md). 18 c3 renders over 5 characters
+(Suan, Noa, Lia re-renders of existing c3s; new Hermes-compiled kitchen routines for Reika and Jun), measured with YuNet
+(`metrics.json`, overview `D:/AI_Studio/reports/ref-framing-test-20261006/overview-c3-head-crop.jpg`).
+
+- Identity-ref face size (0.40 vs 0.65 of the frame): NOT a reliable control. Same seed → near-identical composition
+  for Suan/Lia/Reika; Noa and Jun changed, but in opposite directions to the seed effect (Noa's own baseline condition
+  lost the head on seed 2). Grok's "tight ref keeps the head" was a favourable seed.
+- Picture 2 headroom (ref_cont): no effect (Suan, Lia).
+- Seed changes framing more than any tested input.
+- Every cropped clip has a high camera looking DOWN at the dish; every kept head has a near-eye-level camera.
+  "level camera, not tilted down" fixed Jun (0% cut) but the same contract's shot-scale words ("level medium shot",
+  "head in the upper third") pushed Reika closer (62% cut, from 0%). Shot-scale words pull the camera in.
+- Hermes (2 fix rounds) still: copied the guide placeholder, misdescribed Picture 2 as the table, dropped the
+  experiment's control wording; Claude phrase-level post-edits logged in `*.claude-postedit.json`.
+- Jun's routine shows a spoon in hand plus a spoon still on the rest (duplicate utensil after pick-up).
+
 ## Open questions for the next round
 
 1. Who reviews first? Needs a vision-verified reviewer (human or confirmed-image model); Hermes for checklist only.
@@ -67,3 +85,5 @@ gained an extra spoon. All 30 round-3 session videos are registered in the Galle
 5. Duo stage 2 (handing an object) and speaker verification by ear.
 7. Validator check for camera consistency (anchor vs framing; ban vs movement) and face visibility at key beats.
 6. Gallery visibility of local renders (`restricted` by default) — user decision.
+8. Seated framing: test Noa wording + "camera at eye level, level, not tilted down" with NO shot-scale words, 2 seeds
+   each on Suan and Lia; and/or render 2 seeds per seated dialogue clip and pick with the YuNet head-crop metric.

@@ -74,3 +74,19 @@ No DNA or approval changes, no Codex-owned file edits, no direct DB writes, no p
   shot ... head in the upper third" wording made the shot TIGHTER and dropped the opening pick-up (chopsticks already in
   hand). H2 not supported; shot-scale words ("medium shot") pull the camera in. Reika c1 (standing) also crops the
   crown, so head crop is not specific to seated c3.
+- 05:25 Jun (seed 2026100723): v1 loose (Noa wording) high downward camera, first-2s cut 86%; tight a different
+  (side) angle, 0%; H2 level camera with headroom, 0% (best). Spoon duplicated (in hand + on the rest).
+  Finals: `ch-mizuki-reika/.../VIDEO-20261006-233000-reika-kitchen-reftest/outputs/reika-kitchen-final.mp4`,
+  `ch-jun/.../VIDEO-20261006-233000-jun-kitchen-reftest/outputs/jun-kitchen-final.mp4` (22.9 s). Reika's c1/c2
+  (standing at the stove) crop her face above the eyes.
+
+## Result
+
+Hypothesis (ref face size controls the seated head crop) rejected across 5 characters / 18 renders. Picture 2
+headroom: no effect. Seed dominates. Observed correlate: crop ⇔ high camera tilted down at the dish. "Level, not tilted
+down" helped Jun; shot-scale words ("medium shot", "upper third") tightened Reika. Next: level/not-tilted wording
+without shot-scale words, 2 seeds, Suan + Lia; or seed-pair + YuNet pick (deterministic). See summary Round 4.
+
+## Next
+- Gallery: sync run 05:27 for all new sessions (restricted by default).
+- Feedback filed with the result. No approval/DNA changes made.
