@@ -56,3 +56,16 @@ No DNA or approval changes, no Codex-owned file edits, no direct DB writes, no p
   tight give near-identical compositions (small vertical shifts, at most ~10% of frame height, not always in the
   helpful direction); changing the seed moves the framing more than changing the ref. Grok's observation (Noa kept the
   head) is explained by a favourable seed, not by the tight ref. Part A2 (Picture 2 headroom) launched 01:13.
+- 01:44 Part A2 done: Picture 2 headroom (original ref + seed) did not help: Suan p2pad opens with the face out of
+  frame (face% 55), Lia p2pad first-2s cut 100% (top_cut 84%). Neither ref face size nor Picture 2 framing controls the
+  seated head crop.
+- New hypothesis H2: every cropped c3 asks for "band of wall above the head + whole head + upper body + WHOLE table top"
+  in one 16:9 frame; the model keeps the (detailed) table and gives up the head. Part B redesigned per character:
+  c3 loose ref (Noa wording), c3 tight ref, c3 H2 (spec v2 = c3 only, ONLY camera contract changed: head first in the
+  upper third, level camera not tilted down, near half of the table may leave the bottom; `build_v2.py`). All three
+  same seed and same Picture 2 (v1 c2 last frame). Queue: `partB_run.py` (detached).
+- Part B spec fixes before compile: Noa leftovers (egg/rice/chopsticks/pierce) in the copied specs; setup re-run.
+- Hermes compile: round 0 copied the guide placeholder "then her hair ... written from the brief" verbatim, claimed
+  "<Picture 2> shows her at the table" (it is the stove frame), and omitted kitchen/wardrobe (Claude review caught the
+  last two; lint caught the first). Round 1 dropped the experiment's own framing words ("band of wall") in Reika c3 and
+  wrote "from the chest up" in Jun c3 — the control-condition text needs a Claude read every round.
