@@ -48,3 +48,11 @@ No DNA or approval changes, no Codex-owned file edits, no direct DB writes, no p
   of frame (camera on torso + bowl); tight only shows slightly more forehead later. Tally so far (seed 1): tight ref
   clearly helps Noa, slightly Lia, not Suan. The reference is at most a secondary factor; the per-scene c3 opening
   framing (prompt camera + Picture 2) dominates. Seed-2 runs and Part A2 pending.
+- 01:11 Part A done. Seed 2 (+1000): Suan loose/tight both open with the face out of frame (face% 52 / 38); Noa
+  loose/tight both cut 100% (first 2 s), frames near-identical. Noa tight-s2 = the exact baseline condition (tight ref,
+  same prompt/Picture 2), only the seed changed, and it lost the headroom the baseline had.
+
+  Part A conclusion: identity-ref face size is NOT a reliable control of seated-c3 head crop. For a fixed seed, loose vs
+  tight give near-identical compositions (small vertical shifts, at most ~10% of frame height, not always in the
+  helpful direction); changing the seed moves the framing more than changing the ref. Grok's observation (Noa kept the
+  head) is explained by a favourable seed, not by the tight ref. Part A2 (Picture 2 headroom) launched 01:13.
