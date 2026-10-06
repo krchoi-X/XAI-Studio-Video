@@ -69,3 +69,8 @@ No DNA or approval changes, no Codex-owned file edits, no direct DB writes, no p
   "<Picture 2> shows her at the table" (it is the stove frame), and omitted kitchen/wardrobe (Claude review caught the
   last two; lint caught the first). Round 1 dropped the experiment's own framing words ("band of wall") in Reika c3 and
   wrote "from the chest up" in Jun c3 — the control-condition text needs a Claude read every round.
+- 04:06 Reika (same seed 2026100713, same Picture 2): v1 c3 loose (Noa wording) cut 0% / top_med 0.199 — whole head
+  with headroom; tight cut 0% / 0.121 (slightly closer, still fine); H2 cut 62% / first-2s 100% — the "level medium
+  shot ... head in the upper third" wording made the shot TIGHTER and dropped the opening pick-up (chopsticks already in
+  hand). H2 not supported; shot-scale words ("medium shot") pull the camera in. Reika c1 (standing) also crops the
+  crown, so head crop is not specific to seated c3.
