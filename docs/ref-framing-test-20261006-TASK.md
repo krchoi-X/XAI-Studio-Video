@@ -34,3 +34,9 @@ No DNA or approval changes, no Codex-owned file edits, no direct DB writes, no p
   verbatim from Noa; gender/pronoun adaptation for Jun) and `routine.py setup v1` run for Reika and Jun.
 - Baseline metric (measure.py, YuNet 4 fps, top_cut% = face box within 6% of the frame top): Suan v5 c3 56%, Lia v1 c3
   83%, Noa v1 c3 14% — matches the frame reviews.
+- 23:20 suan-tight-s1 (ref face 0.65, same seed): top_cut 56% / first-2s 100% — identical to the loose baseline. The
+  tight reference alone did not keep Suan's head. Picture 2 check: Suan's and Lia's c2-last frames already have the
+  crown at/over the top edge; Noa's has headroom — matches the baselines (first-2s cut: Suan 100, Lia 100, Noa 0).
+  Added Part A2 (`pad_p2.py`, `partA2.py`): original ref + seed, ONLY Picture 2 replaced by a headroom-padded c2-last
+  (shrunk 0.82, top band = edge replication + blur; caveat: the blurred band is not real content). Queued after Part A.
+  measure.py now also reports cut2s% (first 2 s, before the lean-in moves the face down).
