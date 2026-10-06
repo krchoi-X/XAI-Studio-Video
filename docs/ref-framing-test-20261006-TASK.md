@@ -44,3 +44,7 @@ No DNA or approval changes, no Codex-owned file edits, no direct DB writes, no p
   tight baseline 0% / 0.108. Frames: same composition, but the loose run sits ~10% of frame height higher and the crown
   leaves the frame. So the reference face size moves the framing for Noa (but did not for Suan). Note Noa's c3 is a
   different set-up (seated at the table) than its c2-last (at the stove), so Picture 2 is not the opening frame there.
+- 00:08 Lia: loose (0.45) cut 100% / first-2s 100%; tight (0.72) cut 72% / first-2s 100%. Both open with the face out
+  of frame (camera on torso + bowl); tight only shows slightly more forehead later. Tally so far (seed 1): tight ref
+  clearly helps Noa, slightly Lia, not Suan. The reference is at most a secondary factor; the per-scene c3 opening
+  framing (prompt camera + Picture 2) dominates. Seed-2 runs and Part A2 pending.
