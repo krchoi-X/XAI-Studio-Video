@@ -48,6 +48,16 @@ restricted" to see them. 112 videos registered; preview and Range playback verif
   clearest success of the merged camera rule.
 - Hermes revises large JSON packets unreliably; per-clip files + merge solved it.
 
+## Round 3 (2026-10-06, Grok director + Hermes compiler) — Claude cross-check
+
+Record: [experiments-jjigae-v4v5-and-char2-hermes-20261006.md](experiments-jjigae-v4v5-and-char2-hermes-20261006.md)
+(v4, v5, r1 remake; Lia ramyeon; Noa egg-rice). Claude re-checked the three jjigae finals from contact sheets and
+agrees with Grok's verdicts: v4 is the most balanced jjigae so far (front-on stove camera, face readable through the
+nervous check and the taste, doenjang-jjigae reads correctly, sweatshirt and ribbon kept) with the c3 ghost spoon and
+forehead crop; v5 fixed the ghost spoon (spoon put down at the end of c2) but lost the face in c1-c2 and the stew reads
+less like doenjang; r1 (plain white top) went to side profile in c1-c2, while c3 shows the face during the line but
+gained an extra spoon. All 30 round-3 session videos are registered in the Gallery.
+
 ## Open questions for the next round
 
 1. Who reviews first? Needs a vision-verified reviewer (human or confirmed-image model); Hermes for checklist only.
