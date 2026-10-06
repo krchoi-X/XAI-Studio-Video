@@ -29,3 +29,8 @@ previous clip's last frame).
 No DNA or approval changes, no Codex-owned file edits, no direct DB writes, no push.
 
 ## Progress
+- 23:0x refs built (make_refs.py; YuNet face fraction: every loose 0.40-0.45, every tight 0.65-0.72). Part A launched
+  detached (8 c3 variants; reftest.py). Part B batches built from Grok's Noa routine (build_partB.py; c3 camera wording
+  verbatim from Noa; gender/pronoun adaptation for Jun) and `routine.py setup v1` run for Reika and Jun.
+- Baseline metric (measure.py, YuNet 4 fps, top_cut% = face box within 6% of the frame top): Suan v5 c3 56%, Lia v1 c3
+  83%, Noa v1 c3 14% — matches the frame reviews.
