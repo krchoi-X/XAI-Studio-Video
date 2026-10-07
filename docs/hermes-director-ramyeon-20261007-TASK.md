@@ -57,3 +57,26 @@ rewriting of Hermes's words (return items only; phrase-level fixes only if Herme
 
 ## Next
 Finish (subs), sheets, review + YuNet, Gallery sync, report.
+
+## Result (12:27 renders, 12:30 final)
+
+Final `ch-lia/generations/VIDEO-20261007-110000-lia-ramyeon-hdir/outputs/ramyeon-final.mp4` (30.3 s: title + 4 clips,
+subtitle 맛있겠다. at c4 0.6-1.9 s from silencedetect). Contact sheets in
+`D:/AI_Studio/reports/lia-ramyeon-hermes-director-20261007/work/`.
+
+| clip | what happened | YuNet face% / first-2s crown cut |
+|---|---|---|
+| c1 ref | lifts the noodle block with chopsticks into the pot — works; camera above, face cut above the mouth | 41 / 100 |
+| c2 ref_cont | lid on the pot, waits, side profile; DIFFERENT kitchen layout from c1 | 45 / 67 |
+| c3 ref_cont | lid on the counter, one pair of chopsticks in hand, noodles from the pot into the bowl, push-in — best clip; third kitchen layout; face leaves frame | 31 / 62 |
+| c4 ref | one bowl, one pair, line then slurp; crown cut at the start | 100 / 100 |
+
+Findings:
+- With the cut-planning guidance as input, Hermes-as-director planned the time ellipsis itself (time check table) —
+  the ramyeon is no longer "done in seconds". Cut-level story reads.
+- Object continuity improved: one pair of chopsticks throughout, no duplicate (start-in-hand condition).
+- Hermes is weak at format/structure (numbered-view file, false "written" report, same structural error twice, h3
+  collapsed to a string) and at honouring framing conditions (face in frame) — Claude post-edits needed (16, logged).
+- Place continuity broke: each ref_cont clip re-invented the kitchen (island → sink wall → counter). Picture 2 alone
+  does not hold the set; the scene text per clip was too thin (no island/hob/window anchors restated).
+- Faces: weak in 3 of 4 clips; camera above at the stove and at the table.
