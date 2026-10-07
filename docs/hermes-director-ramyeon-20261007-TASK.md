@@ -50,10 +50,10 @@ rewriting of Hermes's words (return items only; phrase-level fixes only if Herme
 - Per-clip files: round 0 — c3 reported written but missing; c1/c2/c4 structural errors. Rounds 1-2 left c1-c3 with
   the same structural errors (unused lens_family placeholder, duplicated/missing event sentence, no <Picture 2>); c1
   ignored the face-in-frame condition; c3 put the chopsticks on the side plate (pick-up off screen). c4 round 2 fixed
-  the content but collapsed h3 into one string. Claude post-edits (16, logged in ,
-  originals , ): structure + approval conditions only.
+  the content but collapsed h3 into one string. Claude post-edits (16, logged in `ramyeon/claude-postedit.json`,
+  originals `cN.hermes.json`, `c4.hermes-r2-flat.json`): structure + approval conditions only.
 - 11:2x validate OK; build: semantic check pass c1-c4; treatment schema fixed (approved_by user, idea sha).
-  Session . Render detached 11:26 (4 clips, ~64 min).
+  Session `ch-lia/generations/VIDEO-20261007-110000-lia-ramyeon-hdir`. Render detached 11:26 (4 clips, ~64 min).
 
 ## Next
 Finish (subs), sheets, review + YuNet, Gallery sync, report.
