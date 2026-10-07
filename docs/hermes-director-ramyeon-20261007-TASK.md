@@ -124,3 +124,10 @@ pot and starting to pour, then cut. Hermes did not think of it: CUT-PLANNING sai
 the cut" with carrying/pick-up examples only. Added for the next round: CUT-PLANNING section 6 (state changes happen at
 the cut: attempt → CUT → result), CHECKLIST 12, and a `state_change` card field — a clip with a state change must end
 before the change completes.
+
+## Title-card fix (2026-10-07, user report)
+The shared assembly step (`ch-lee-suan/.../BATCH-20261004-suan-reference-set/finish.py`) had the subtitle name
+'이수안' hard-coded on the title card, so the Lia finals showed 이수안. finish.py now takes `piece['char_name']`
+(default 이수안); hdir.py passes 리아. Corrected finals written under new names (`*-final-titlefix.mp4`,
+`compare-round1-vs-round2-titlefix.mp4`); the first finals stay registered (never overwritten) — hide/reject them in
+Review. Grok's routines and the Reika/Jun reftest use `character_name_ko` and were not affected.

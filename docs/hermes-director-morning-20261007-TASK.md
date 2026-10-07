@@ -54,3 +54,10 @@ Findings:
   (no towel), so H3 starts in the old look and performs the change on screen. Rule candidate: after a look/state
   change across a cut, the next clip is `ref` (no previous frame), or the previous frame must already show the new
   state. The converter/validator can enforce it: if `look` differs from the previous clip's look, `mode` must be `ref`.
+
+## Title-card fix (2026-10-07, user report)
+The shared assembly step (`ch-lee-suan/.../BATCH-20261004-suan-reference-set/finish.py`) had the subtitle name
+'이수안' hard-coded on the title card, so the Lia finals showed 이수안. finish.py now takes `piece['char_name']`
+(default 이수안); hdir.py passes 리아. Corrected finals written under new names (`*-final-titlefix.mp4`,
+`compare-round1-vs-round2-titlefix.mp4`); the first finals stay registered (never overwritten) — hide/reject them in
+Review. Grok's routines and the Reika/Jun reftest use `character_name_ko` and were not affected.
