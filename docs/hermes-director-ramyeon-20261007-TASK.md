@@ -91,3 +91,7 @@ Validator failures go back to Hermes only as "which card field is empty/invalid"
 Comparison control: same approved storyboard + approval conditions, same seeds (2026100751..54), same identity ref.
 Measures: place continuity across clips, Claude post-edits needed, Hermes calls/time, faces (YuNet), story.
 Piece key `ramyeon_card`, session `VIDEO-20261007-130000-lia-ramyeon-card-hdir`.
+- Round 2 authoring: Hermes wrote 4 cards in 4 calls / 6 min (143+92+69+63 s), all converted and validated on the
+  first try; 0 Claude post-edits (round 1: 12 Hermes calls for clip files + 16 post-edits). Converter sentence joins
+  fixed once (camera/gaze/exit phrasing; format side). c3 card leaves her face out of the start/end framing (Hermes's
+  choice for the serving insert; kept). Semantic check pass c1-c4. Render detached (same seeds as round 1).
