@@ -45,10 +45,9 @@ rewriting of Hermes's words (return items only; phrase-level fixes only if Herme
   c1 noodles in → c2 cooked; 4 clips (ref, ref_cont, ref_cont, ref). Defects: invented a pot lid without placing it,
   cut plan vs c2 text disagreed (window/clock glance), no face in c1/c2, chopsticks source/exit missing.
 - Revise 1 (128 s) fixed part; revise 2 (82 s) resolved lid/one-action but wrote the file in its read-tool view
-  ('N|' prefixes, literal 
-) and gave c3 three held objects. Retry limit reached: format-only repair (word-identical,
+  ('N|' prefixes, literal backslash-n) and gave c3 three held objects. Retry limit reached: format-only repair (word-identical,
   checked) + remaining items moved into `approval-review.md` conditions for the per-clip files (no Claude rewording).
 - Hermes per-clip files c1..c4 running.
 
 ## Next
-Build batch + authoring inputs; Hermes storyboard call.
+Validate c1..c4 (max 2 fix rounds), build, render detached, finish, review.
