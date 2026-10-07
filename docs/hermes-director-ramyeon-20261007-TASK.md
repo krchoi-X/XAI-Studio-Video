@@ -47,7 +47,13 @@ rewriting of Hermes's words (return items only; phrase-level fixes only if Herme
 - Revise 1 (128 s) fixed part; revise 2 (82 s) resolved lid/one-action but wrote the file in its read-tool view
   ('N|' prefixes, literal backslash-n) and gave c3 three held objects. Retry limit reached: format-only repair (word-identical,
   checked) + remaining items moved into `approval-review.md` conditions for the per-clip files (no Claude rewording).
-- Hermes per-clip files c1..c4 running.
+- Per-clip files: round 0 — c3 reported written but missing; c1/c2/c4 structural errors. Rounds 1-2 left c1-c3 with
+  the same structural errors (unused lens_family placeholder, duplicated/missing event sentence, no <Picture 2>); c1
+  ignored the face-in-frame condition; c3 put the chopsticks on the side plate (pick-up off screen). c4 round 2 fixed
+  the content but collapsed h3 into one string. Claude post-edits (16, logged in ,
+  originals , ): structure + approval conditions only.
+- 11:2x validate OK; build: semantic check pass c1-c4; treatment schema fixed (approved_by user, idea sha).
+  Session . Render detached 11:26 (4 clips, ~64 min).
 
 ## Next
-Validate c1..c4 (max 2 fix rounds), build, render detached, finish, review.
+Finish (subs), sheets, review + YuNet, Gallery sync, report.
