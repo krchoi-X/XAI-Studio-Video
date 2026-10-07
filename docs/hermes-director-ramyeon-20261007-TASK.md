@@ -115,3 +115,12 @@ Authoring cost: round 2 = 4 Hermes calls / 6 min, 0 post-edits, story unchanged 
 Conclusion (candidate, n=1 piece): split by FIELD, not by video — Hermes writes judgement in plain-text cards;
 a deterministic converter owns identity, place anchors, camera-sentence shape, tags, ids and JSON. Next: repeat on
 a different character/place to confirm, then propose for the methodology (Codex-owned).
+
+## User review of round 2 (2026-10-07)
+
+c3 serving FAILED: the bowl already holds ramyeon before she pours (object state change shown on screen; the model
+renders the end state early — same class as duplicated chopsticks and the re-formed yolk). User: show only lifting the
+pot and starting to pour, then cut. Hermes did not think of it: CUT-PLANNING said "a difficult transition happens at
+the cut" with carrying/pick-up examples only. Added for the next round: CUT-PLANNING section 6 (state changes happen at
+the cut: attempt → CUT → result), CHECKLIST 12, and a `state_change` card field — a clip with a state change must end
+before the change completes.
