@@ -143,3 +143,27 @@ Use [the shared routing and artifact contract](docs/artifact-and-review-contract
 When the request is clear, execute within its authorized scope without asking the user to restate it. Preserve the exact request, canonical DNA, and existing review/visibility decisions. A pasted identity prompt is runtime input unless a canonical edit is explicitly requested. Report meaningful DNA differences without silently changing the character.
 
 Record the real requesting actor, executor and model/provider separately where supported. The local scene CLI accepts `codex`, `hermes`, `web`, `grok`, `claude`, `user`; use your real actor and use `web` only through its worker. Register WanGP sessions with `wangp_recorder.py session` and pass `--requested-by` on submit as documented in `docs/wangp-recorder.md`. Never impersonate another agent or invent unsupported CLI values. See the shared workflow for supported-host delegation and production recording rules.
+
+## Cross-repository discovery contract
+
+This repository is part of the user's Personal AI Workspace.
+
+- The canonical cross-project entry point is `krchoi-X/personal-ai-knowledge`.
+- Its `REPOS.md` is the repository registry and discovery map.
+- If the user asks for prior work, earlier notes, existing guidance, or something "we already did" without naming a repository, do not assume this repository is the whole search scope.
+- Start with `personal-ai-knowledge`, then search every relevant registered repository that is accessible.
+- "Not found here" must never be reported as "not found anywhere".
+- If every relevant registered repository could not be searched, explicitly report the search coverage and what was inaccessible.
+- Repository-specific instructions here remain authoritative for local implementation details; shared cross-project knowledge and discovery rules belong in `personal-ai-knowledge`.
+
+## Cross-repository discovery contract
+
+This repository is part of the user's Personal AI Workspace.
+
+- The canonical cross-project entry point is `krchoi-X/personal-ai-knowledge`.
+- Its `REPOS.md` is the repository registry and discovery map.
+- If the user asks for prior work, earlier notes, existing guidance, or something "we already did" without naming a repository, do not assume this repository is the whole search scope.
+- Start with `personal-ai-knowledge`, then search every relevant registered repository that is accessible.
+- "Not found here" must never be reported as "not found anywhere".
+- If every relevant registered repository could not be searched, explicitly report the search coverage and what was inaccessible.
+- Repository-specific instructions here remain authoritative for local implementation details.
