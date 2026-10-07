@@ -273,6 +273,62 @@ Initial implementation is expected to touch only these bounded areas; exact addi
 
 Do not edit unrelated video, publication, importer, continuous-batch or Gallery-pagination work. The Studio worktree currently has overlapping uncommitted changes in backend/API/shared frontend files; implementation must wait for a reviewable checkpoint or an explicitly isolated file assignment. Planning does not take over those changes.
 
+## Work packages and ownership
+
+Overall integration editor: **Codex**. Claude owns only the bounded UI package linked below. The assignments become active in sequence; recording an owner does not authorize starting before its dependency gate.
+
+### Package A — contracts, runtime and backend integration
+
+Owner: **Codex**
+
+Scope:
+
+- legacy fixtures and additive character-pack schemas;
+- maintained Master Face approval writer and shared-authority history/index update;
+- durable pack job/manifest, resume behavior and final immutable identity-set builder;
+- renderer capability adapter and per-slot engine choice;
+- Studio backend endpoints, persistence, worker hookup and API/shared-type integration;
+- cross-repository compatibility tests and final integration.
+
+Engine policy in this package:
+
+- `face` stage defaults to Qwen21 but every face slot records an explicit engine and may be regenerated with Krea2;
+- `body` stage defaults to Krea2 because current Qwen body evidence is poor, while retaining an explicit per-slot engine field for later A/B work;
+- no pack-wide implicit renderer and no fallback after submission;
+- changing the engine appends a new candidate under the same logical slot and never overwrites prior output.
+
+Codex owns integration files such as Studio `backend/app/main.py`, `schemas.py`, `database.py`, shared frontend API/types, router/App wiring and XAI/shared-authority contracts. Claude must not edit these files for this package.
+
+### Package B — Character Pack review UI
+
+Owner: **Claude Code**
+
+Durable handoff: [Claude Character Pack UI package](gallery-character-compiler-claude-ui.md)
+
+Scope is limited to pure Character Workspace presentation components, local state/handlers, styles and focused component tests. It consumes the committed Package A presentation contract through props and callbacks. It does not fetch, write canonical character records, submit renderer jobs, change the database/API, or edit integration-owned shared files.
+
+### Package C — integration and empirical acceptance
+
+Owner: **Codex** for code integration; **Hermes or Codex** may execute the bounded render matrix only after explicit user authorization.
+
+Codex wires Package B into the app, runs backend/frontend/build regressions and verifies restart/resume. The production trial uses Qwen21 for face candidates and Krea2 for body candidates by default, records per-slot alternatives, and returns all results to Gallery as `needs_review`. Claude may review UI defects in its owned components after the first tablet pass; contract or API defects return to Codex.
+
+## Ordered execution and gates
+
+1. **Checkpoint current worktrees — Codex.** Preserve or isolate the existing Studio and XAI dirty changes. Record exact bases/diffs. No compiler implementation starts before this is reviewable.
+2. **Contract checkpoint — Codex.** Land old-record fixtures, state machine, schemas, Master Face writer interface, pack job/manifest examples, renderer input/output contract and presentation props/callbacks. This commit/patch is the only source Claude should build against.
+3. **Parallel implementation after Gate 2.**
+   - Codex implements Package A runtime/backend and fake-renderer tests.
+   - Claude implements Package B in its disjoint component files and tests, without modifying shared integration files.
+4. **Deterministic package checks.** Each owner runs and records its focused tests. Claude hands off an exact commit or patch/base revision; Codex inspects the diff rather than relying on prose.
+5. **Integration — Codex.** Wire the UI package to the committed API contract, reconcile shared types/routes, and run Studio backend tests, frontend tests/build, XAI schema/worker tests and old-fixture compatibility.
+6. **Face MVP runtime trial — user approval required.** Generate the five Reika face slots with Qwen21 defaults and selected Krea2 comparisons. Verify sync, resume and review; do not approve the pack automatically.
+7. **Face MVP review gate — user.** The user accepts/rejects/regenerates views. Contract or identity issues are repaired before body work.
+8. **Body extension — Codex, then user-authorized execution.** Add four body slots with Krea2 default, per-slot engine override and proportion/anatomy observations. Qwen body generation is opt-in comparison only.
+9. **Final pack approval gate — user.** Only after all required slots have one selected candidate does Codex verify the immutable set/sheet and explicit downstream retrieval.
+
+Parallelism is deliberately limited to step 3. Steps 1-2, 5 and 9 are integration-owned and sequential; render trials wait for deterministic verification and explicit user approval.
+
 ## Contract impact
 
 Producers are the Gallery Master Face approval endpoint, maintained Character Manager writer, character-pack orchestrator, renderer adapter, importer and final pack builder. Consumers are shared character/index readers, `character_scene`, night batch and video reference resolution, Studio character/set APIs, Character Workspace, Production Jobs and future body/LoRA builders.
@@ -294,4 +350,5 @@ No GPU generation, canonical Master Face change, approved-reference promotion, s
 
 - Remote task and shared discovery commits were fetched and merged into the local `main` on 2026-10-07 without overwriting existing dirty work.
 - Existing Gallery, Character Manager, shared authority, Qwen21 adapter/pilot, immutable set builder and Studio boundaries were inspected.
-- Next: preserve/checkpoint the overlapping Studio worktree, create the Phase 0 schemas and old-record fixtures, then implement the Master Face writer and UI gate before any renderer job or GPU test.
+- Work is split between Codex Package A/C and Claude Package B with a contract-first handoff and disjoint file ownership.
+- Next: preserve/checkpoint the overlapping Studio worktree, then Codex creates the Package A contract checkpoint. Claude remains blocked until that checkpoint is named in its package task.
