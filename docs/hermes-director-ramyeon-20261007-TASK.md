@@ -95,3 +95,23 @@ Piece key `ramyeon_card`, session `VIDEO-20261007-130000-lia-ramyeon-card-hdir`.
   first try; 0 Claude post-edits (round 1: 12 Hermes calls for clip files + 16 post-edits). Converter sentence joins
   fixed once (camera/gaze/exit phrasing; format side). c3 card leaves her face out of the start/end framing (Hermes's
   choice for the serving insert; kept). Semantic check pass c1-c4. Render detached (same seeds as round 1).
+
+## Round 2 result (14:38 renders)
+
+Final `ch-lia/generations/VIDEO-20261007-130000-lia-ramyeon-card-hdir/outputs/ramyeon_card-final.mp4` (30.3 s);
+side-by-side `.../outputs/compare-round1-vs-round2.mp4` (left round 1, right round 2).
+
+| clip | round 1 face% / first-2s crown cut | round 2 face% / first-2s crown cut | round 2 notes |
+|---|---|---|---|
+| c1 | 41 / 100 | 100 / 0 | frontal, both hands lower the block, same kitchen |
+| c2 | 45 / 67 | 100 / 0 | frontal, covered pot, waits; SAME kitchen as c1 |
+| c3 | 31 / 62 | 38 / 50 | same kitchen; push-in to the bowl (Hermes's choice, face leaves frame) — best food shot |
+| c4 | 100 / 100 | 100 / 0 | whole head with wall above; window on screen left as in the kitchen |
+
+Place continuity: round 1 had three different kitchens; round 2 keeps one kitchen (window left, counter, hob, tiles)
+in c1-c3 — the converter restates the place anchor and the camera relation in every clip.
+Authoring cost: round 2 = 4 Hermes calls / 6 min, 0 post-edits, story unchanged (same storyboard + seeds).
+
+Conclusion (candidate, n=1 piece): split by FIELD, not by video — Hermes writes judgement in plain-text cards;
+a deterministic converter owns identity, place anchors, camera-sentence shape, tags, ids and JSON. Next: repeat on
+a different character/place to confirm, then propose for the methodology (Codex-owned).
