@@ -35,3 +35,22 @@ mirror handling in the bathroom.
 - Cards: 4 calls / ~6 min, first-try valid, 0 Claude edits. Claude fixed its OWN world file: the entrance camera
   relation would have filmed her back (camera now beside the door, she walks toward it).
 - Build pass c1-c4; render detached 16:30.
+
+## Result (17:31 renders)
+
+Final `ch-lia/generations/VIDEO-20261007-160000-lia-morning-hdir/outputs/morning-final.mp4` (title + 4 clips, no line).
+
+| clip | result | face% / first-2s crown cut |
+|---|---|---|
+| c1 bathroom/pajamas | brushes teeth, three-quarter, mirror reflection present but natural | 100 / 0 |
+| c2 bathroom/pajamas_towel (ref_cont) | FAIL: opens WITHOUT the towel, back to camera, then the towel appears on her hair; ends looking toward the lens | 48 / - |
+| c3 bedroom/pajamas_towel | towel kept, touches the cream cardigan, window on screen left | 100 / 0 |
+| c4 entrance/outfit | dressed, walks toward the camera to the door, face readable | 100 / 0 |
+
+Findings:
+- The card flow repeated: first-try valid cards, 0 Claude edits to Hermes text, places/looks held per clip.
+- Hermes put every look change at a cut (rule worked at the plan level).
+- NEW failure mode: a look change INTO a `ref_cont` clip. Picture 2 (previous clip's last frame) shows the old look
+  (no towel), so H3 starts in the old look and performs the change on screen. Rule candidate: after a look/state
+  change across a cut, the next clip is `ref` (no previous frame), or the previous frame must already show the new
+  state. The converter/validator can enforce it: if `look` differs from the previous clip's look, `mode` must be `ref`.
