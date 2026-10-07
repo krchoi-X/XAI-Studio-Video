@@ -90,3 +90,12 @@ without shot-scale words, 2 seeds, Suan + Lia; or seed-pair + YuNet pick (determ
 ## Next
 - Gallery: sync run 05:27 for all new sessions (restricted by default).
 - Feedback filed with the result. No approval/DNA changes made.
+
+## Cross-check of Grok r2 (2026-10-07 07:11-09:33, Grok director, Hermes compiler)
+
+Same YuNet metric on the r2 c3 raws: Noa r2 (seed 2026100633) cut 0% / top_med 0.165 — level eye-level camera, wall
+above the head, table edge in; Suan r2 (new seed 2026100713, island layout, front ref 0.37) cut 0% / 0.116 — level
+camera, ribbon touches the top edge in some frames (Grok: ribbon cropped — metric is face-box based and cannot see the
+ribbon); Lia r2 (same seed 2026100623 as the Part A Lia runs) cut 100% / face_h 0.50 — a downward close-up that opens
+mid-slurp with the crown out of frame. Grok's review calls Lia r2's crown "in frame most of the clip / improved"; the
+frames do not support that. All three agree with the camera-tilt correlate (level → head kept; looking down → cut).
