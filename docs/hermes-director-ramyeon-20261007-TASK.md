@@ -80,3 +80,14 @@ Findings:
 - Place continuity broke: each ref_cont clip re-invented the kitchen (island → sink wall → counter). Picture 2 alone
   does not hold the set; the scene text per clip was too thin (no island/hob/window anchors restated).
 - Faces: weak in 3 of 4 clips; camera above at the stove and at the table.
+
+## Round 2 — clip cards (story/format split), 2026-10-07 afternoon
+
+User: "좋아" to splitting by field, not by video: Hermes writes judgement (cut plan, actions, object places, camera
+intent, line moment, sound) as plain-text clip cards; a deterministic converter (`card2packet.py`, batch folder only)
+adds everything fixed or exact (identity/wardrobe from the character file, place anchors from a place file every
+clip, tags, section names, event ids, exact event-sentence copy, <d> wrapping, empty creative envelope, JSON).
+Validator failures go back to Hermes only as "which card field is empty/invalid".
+Comparison control: same approved storyboard + approval conditions, same seeds (2026100751..54), same identity ref.
+Measures: place continuity across clips, Claude post-edits needed, Hermes calls/time, faces (YuNet), story.
+Piece key `ramyeon_card`, session `VIDEO-20261007-130000-lia-ramyeon-card-hdir`.
