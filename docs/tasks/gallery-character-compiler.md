@@ -1,5 +1,11 @@
 # Task: Gallery-integrated Character Compiler
 
+Status: PLANNED — architecture mapped; implementation has not started
+
+Active editor: Codex (planning and cross-repository contract owner)
+
+Planning checkpoint: 2026-10-07
+
 ## Why this task exists
 The user wants character creation to stop being a long manual preparation loop. Once the user defines a character and explicitly approves one face as the **Master Face**, the Studio should automatically build the reusable identity references needed for later image/video production.
 
@@ -149,3 +155,143 @@ Codex should first inspect the existing Gallery, Character Manager, character sc
 6. update current priorities only according to the repository's one-active-P0 policy.
 
 The key product principle is: **the user creates the character and chooses the face; the Studio compiles that decision into reusable identity evidence.**
+
+## Existing architecture map
+
+The smallest safe implementation is an extension of the current workflow, not a new character store.
+
+- The Studio Character Workspace at `/library/characters/:characterId` already lets the operator assign a Gallery asset the `face_master` role through `character_references`.
+- That role is presently a Gallery-local typed link. Multiple `face_master` links are allowed and shown as a conflict; assigning the role does **not** update canonical Character DNA or the generation default.
+- Reference-bound generation reads only the shared-authority character record's `reference_defaults.identity`. This is resolved by Character Manager and is already consumed by Krea2 and Qwen21 without text fallback.
+- Qwen21 is already a selectable, hash-bound reference engine. The Reika identity gate found it materially stronger than the current Krea2 route for frontal reconstruction, while 30/90-degree identity remains the weak and empirically unresolved area.
+- New generation sessions and media belong in the configured Library. Existing immutable identity-set discovery under `library/characters/<id>/imports/derived` should be extended rather than creating the proposed parallel `dna/master/face/body` tree.
+- Gallery remains the human review surface; Production owns generation and job controls. The Character Workspace may start a pack build and show results/status, but queue, retry and renderer controls stay in Production.
+
+The missing bridge is therefore:
+
+```text
+Gallery asset + explicit Master Face approval
+  -> maintained shared-authority writer records reference_defaults.identity
+  -> durable character-pack job uses that exact path/hash/asset ID
+  -> existing renderer adapter produces independent view candidates
+  -> Gallery reviews candidates by required slot
+  -> final approval snapshots an immutable reviewed identity set
+```
+
+## Product and contract decisions
+
+1. **Role assignment is not approval.** Keep the existing `face_master` reference role for curation, but add a distinct `Approve as Master Face` action. The action must name one image, replace no prior master silently, and display the previous/new asset before confirmation.
+2. **One canonical input.** Gate 1 records the selected asset's stable Gallery ID, absolute resolved path, SHA-256, byte count, approving actor and timestamp through a maintained Character Manager command. Studio must not edit the shared character JSON or live Gallery database directly.
+3. **No duplicate media hierarchy.** Candidate views remain ordinary immutable generation outputs in one Library session. A candidate manifest groups them by slot. Final approval creates a fresh immutable identity-set snapshot under the existing derived-set root; individual files remain the actual references and sheets are derived review aids.
+4. **Generation stays in Production.** The Gallery/Character Workspace CTA hands stable character/master IDs to a durable `character-pack` production job. Gallery shows progress and review links, but renderer selection, retry and cancellation follow Production ownership.
+5. **No recursive drift.** Every slot generation binds the approved Master Face and the same Character DNA snapshot. A generated left/right view may not become the sole parent of another view. Regeneration creates a new candidate and preserves rejected candidates and lineage.
+6. **Two explicit gates.** Generated candidates remain `needs_review`. Per-slot selection is reversible. Only `Approve Character Pack` creates the approved immutable set and updates canonical approved-reference links.
+7. **Renderer-neutral record, empirical first adapter.** Persist logical view intent and adapter provenance independently. Implement Qwen21 first because the adapter and strongest current evidence already exist; retain Krea2 as an A/B baseline, not an architectural default.
+
+## MVP state machine
+
+```text
+draft
+  -> master_face_required
+  -> ready
+  -> generating
+  -> needs_review
+  -> partially_reviewed
+  -> ready_for_pack_approval
+  -> approved
+
+Any generated slot may also be failed or rejected.
+Regenerate appends a candidate; it never overwrites the selected or rejected asset.
+```
+
+Required face slots are stable logical IDs: `front`, `left30`, `right30`, `left90`, `right90`. Each slot can hold several candidates but at most one selected candidate in an approved pack.
+
+## Renderer adapter contract
+
+The pack orchestrator should call the existing reference-bound scene/WanGP route through a small capability adapter rather than duplicate model submission code. The adapter input is:
+
+- character ID plus Character DNA version and stable hash;
+- exact Master Face binding: asset ID, path, SHA-256 and byte count;
+- logical view ID and engine-neutral view instruction;
+- candidate count, seed policy and immutable identity/skin constraints;
+- real requester/executor.
+
+The adapter output is a compiled prompt/settings snapshot plus engine ID, exact `model_type`, adapter version and run/session identifiers. The initial Qwen21 adapter maps the five logical views to its existing `video_prompt_type: I` reference path. Krea2 may implement the same interface for comparison. Unsupported capabilities fail before queue submission; there is no engine or text-only fallback.
+
+Every candidate record must preserve: `pack_job_id`, character/DNA version and hash, view ID, master asset/path/hash/bytes, renderer/model/checkpoint or quantization when available, adapter version, exact prompt and hash, settings and seed, requester/executor, run/session/output asset IDs, output hash, parent lineage, timestamps, automatic QA observations, and human review events.
+
+## Implementation plan
+
+### Phase 0 — contract checkpoint and old-record fixtures
+
+1. Freeze representative legacy fixtures: a character with no master, a path-only `reference_defaults.identity`, a Gallery `face_master` link, and a conflicting multi-master Gallery state.
+2. Define additive `character-pack-job-v1` and candidate-manifest schemas. Readers must continue accepting all current character, reference, generation and identity-set records.
+3. Add the maintained Character Manager master-reference writer and dry-run/validation path. It must resolve the shared authority, verify character ownership/media type/path/hash, preserve history, regenerate the shared index, and require explicit operator approval metadata.
+4. Add a rollback rule: the previous canonical default stays recorded in character history and restoring it requires another explicit approval; rollback never deletes media or review history.
+
+### Phase 1 — Master Face gate in Character Workspace
+
+1. Distinguish Gallery `face_master` role links from the active canonical Master Face in API and UI.
+2. Add one explicit approval/replace action with conflict handling and a before/after confirmation.
+3. On success, re-read shared authority and show the exact active master binding. Do not infer the active master from newest, favorite, cover or role order.
+4. Add `Build Character Pack` only when the canonical master resolves and its current bytes match the recorded hash.
+
+### Phase 2 — durable five-view job
+
+1. Add a `character-pack` production job record and worker/orchestrator that creates the five required slots and calls the existing Qwen21 reference-bound adapter sequentially.
+2. Freeze the Character DNA, skill revision and Master Face binding once per job. Record progress and failures per slot; resume incomplete slots without regenerating completed candidates.
+3. Sync completed outputs through the existing importer so they receive stable Gallery asset IDs. Publish the candidate manifest only after its referenced outputs are durable.
+4. Run Reika as the first bounded case. Use modest candidates per slot and fixed seeds suitable for A/B; do not launch this empirical run until the user authorizes GPU generation.
+
+### Phase 3 — per-slot review and regeneration
+
+1. Add a Character Workspace pack review surface with five slots, candidates, provenance, warnings and current selection.
+2. Reuse Gallery decision semantics where they match, but keep pack-slot selection explicit and separate from Favorite/Keep. Reject and regenerate never delete originals.
+3. Add automatic QA only as observations/ranking. Off-axis recognizer scores are not calibrated approval gates; expose geometry/face-detection failures and disagreements rather than hiding candidates.
+4. Regenerate one slot from the original approved Master Face and frozen DNA snapshot while preserving the prior candidate and job lineage.
+
+### Phase 4 — immutable approved pack and downstream retrieval
+
+1. Require exactly one selected candidate for every required slot and no unresolved binding/hash failure.
+2. Build a deterministic face sheet from selected individual assets. Record it as a derived artifact; downstream generation consumes individual members, not pixels cropped back out of the sheet.
+3. Create a new immutable identity-set snapshot with view roles, Gallery asset IDs, hashes, source job/manifest hash and the human approval event. Add the selected asset IDs to canonical approved references through the maintained writer.
+4. Extend `/api/characters/{id}/sets` and Character Manager retrieval to expose the approved pack without breaking older identity-set manifests. Require downstream callers to select an explicit pack/version; do not elect "latest" automatically.
+
+### Phase 5 — body extension after face MVP acceptance
+
+Add `body_front`, `body_three_quarter`, `body_side` and `body_back` using the same job/review/snapshot contracts. Body work must bind the Master Face plus Character DNA body proportions, add anatomy/proportion QA, and remain a new version rather than mutating the approved face pack.
+
+## Expected file scope
+
+Initial implementation is expected to touch only these bounded areas; exact additions must be recorded before coding:
+
+- XAI runtime: `tools/character_manager.py`, a new pack orchestrator/worker and schemas/tests, plus existing Character Manager/shared-resource readers where required.
+- Shared authority: `schemas/character-v1.schema.json` only for an additive master-binding/provenance shape if the current optional object is insufficient; shared Character Manager wording after code contracts are fixed.
+- Studio backend: character authority adapter, schemas/API, durable job persistence/worker hookup and focused tests.
+- Studio frontend: Character Workspace pack components/actions, the Production job handoff, shared API/types and focused tests.
+- Documentation: this task, Studio `TASK.md` after its current completed scope is checkpointed, and current priorities only when implementation is actually selected as the one active P0.
+
+Do not edit unrelated video, publication, importer, continuous-batch or Gallery-pagination work. The Studio worktree currently has overlapping uncommitted changes in backend/API/shared frontend files; implementation must wait for a reviewable checkpoint or an explicitly isolated file assignment. Planning does not take over those changes.
+
+## Contract impact
+
+Producers are the Gallery Master Face approval endpoint, maintained Character Manager writer, character-pack orchestrator, renderer adapter, importer and final pack builder. Consumers are shared character/index readers, `character_scene`, night batch and video reference resolution, Studio character/set APIs, Character Workspace, Production Jobs and future body/LoRA builders.
+
+Compatibility is additive: old path-only identity defaults, characters with no default, existing Gallery role links, generation sessions and identity-set v1 manifests remain readable. No automatic migration, media move, DB rewrite or newest-file inference is allowed. New writers activate only after old fixtures pass. Rollback disables the new endpoints/worker and leaves all candidate media, manifests, reviews and the prior canonical master recoverable.
+
+## Verification plan
+
+- Schema/CLI: old and new character fixtures; dry-run and apply; wrong character, non-image, missing/changed bytes, conflicting master and authority-unavailable rejection; index regeneration and history preservation.
+- Worker: fake renderer/importer tests for five slots, exact master hash binding, sequential resume, one-slot failure, regeneration lineage, no fallback and idempotent restart.
+- Studio backend: authorization/boundary checks, Master Face replace confirmation, job state transitions, old DB fixtures, per-slot review, final approval preconditions and set retrieval.
+- Studio frontend: phone/tablet Character Workspace states, conflict/replace dialog, job handoff, five-slot review, reject/regenerate, partial progress, approval gating and accessible labels/touch targets.
+- Deterministic artifact checks: selected output hashes, manifest/schema validation, sheet-member mapping, derived lineage and old identity-set reader compatibility.
+- Runtime acceptance: one user-authorized Reika Qwen21 run, Gallery sync, desktop plus 768x1024 tablet review, service restart/resume and downstream explicit pack retrieval. Record latency, VRAM/runtime cost, rejection rate and the limits of off-axis identity scoring.
+
+No GPU generation, canonical Master Face change, approved-reference promotion, service restart, push or deployment is authorized by this planning task.
+
+## Progress / next
+
+- Remote task and shared discovery commits were fetched and merged into the local `main` on 2026-10-07 without overwriting existing dirty work.
+- Existing Gallery, Character Manager, shared authority, Qwen21 adapter/pilot, immutable set builder and Studio boundaries were inspected.
+- Next: preserve/checkpoint the overlapping Studio worktree, create the Phase 0 schemas and old-record fixtures, then implement the Master Face writer and UI gate before any renderer job or GPU test.
