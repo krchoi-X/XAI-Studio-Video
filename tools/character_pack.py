@@ -802,4 +802,3 @@ class CharacterPackJob:
         self.job["status"] = "approved"
         self._persist_job()
         return manifest_path
-

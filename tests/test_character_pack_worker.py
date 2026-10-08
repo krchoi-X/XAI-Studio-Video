@@ -85,4 +85,3 @@ def test_initial_build_uses_slot_defaults_and_keeps_partial_success() -> None:
     assert [item[:2] for item in calls] == [("face_front", "qwen21"), ("body_front", "krea2")]
     assert candidates == [{"candidate_id": "face-1"}]
     assert errors == ["body_front: body failed"]
-

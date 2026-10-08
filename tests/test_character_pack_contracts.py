@@ -143,7 +143,6 @@ def test_master_face_writer_rejects_stale_previous_and_changed_bytes(authority, 
     cm.set_master_face(approval)
     with pytest.raises(cm.CharacterError, match="changed after approval"):
         cm.set_master_face(approval)
-
     current = cm.load(target)["reference_defaults"]["identity"]
     replacement = _approval(tmp_path / "replacement.json", image, expected_previous=current)
     image.write_bytes(b"changed")
@@ -160,4 +159,3 @@ def test_master_face_writer_requires_human_gallery_approval(authority, tmp_path:
     _put(approval, value)
     with pytest.raises(cm.CharacterError, match="explicit user decision"):
         cm.set_master_face(approval)
-

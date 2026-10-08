@@ -77,4 +77,3 @@ Purpose: preserve the exact pre-task repository state and isolate contract work.
 - Studio: `4799184` — pure presentation contract/fixture/test; `f607c91` records completion evidence.
 
 These checkpoints are not merged into the original dirty worktrees and are not pushed. Downstream work must inspect their diffs and use the isolated branches or an explicit later integration operation.
-

@@ -108,8 +108,6 @@ def test_create_job_freezes_bindings_and_uses_stage_defaults(tmp_path: Path, mas
     assert job.job["master_face"] == binding_for(master)
     assert job.manifest["dna"] == dna_binding()
     validate_persisted(job)
-
-
 def test_run_pending_requires_explicit_per_slot_engines_and_records_provenance(tmp_path: Path, master: Path) -> None:
     job = make_job(tmp_path, master, include_body=True)
     renderer = FakeRenderer(tmp_path / "outputs")
@@ -416,4 +414,3 @@ def test_all_selected_slots_make_job_ready_for_pack_approval(tmp_path: Path, mas
     assert job.job["status"] == "ready_for_pack_approval"
     assert all(slot["status"] == "selected" for slot in job.job["slots"])
     validate_persisted(job)
-
