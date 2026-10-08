@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "master_face_approval",
+  "approval_id": "mfa-example-001",
+  "character_id": "ch-example",
+  "asset": {
+    "asset_id": "ast-example",
+    "path": "D:\\AI_Studio\\library\\characters\\ch-example\\master.png",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "byte_count": 12345,
+    "media_type": "image"
+  },
+  "approved_by": "user",
+  "approved_at": "2026-10-07T12:00:00+09:00",
+  "requested_via": "gallery",
+  "reason": "Operator approved this Gallery asset as the character identity.",
+  "expected_previous": null
+}
+

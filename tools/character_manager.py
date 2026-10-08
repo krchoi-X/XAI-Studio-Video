@@ -11,8 +11,10 @@ import re
 import sys
 import tempfile
 import subprocess
+import time
 import urllib.error
 import urllib.request
+from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -357,6 +359,8 @@ def chat_json(prompt: str, model: str, *, temperature: float = 0.25, timeout: fl
     return json.loads(result["message"]["content"])
 
 ID_RE = re.compile(r"^ch-[a-z0-9]+(?:-[a-z0-9]+)*$")
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp"}
 
 FACE_FIELDS = ("shape", "eyes", "eyebrows", "nose", "lips", "jaw")
 # Two body shapes are in use. The anatomical one names each region separately, and its
@@ -453,12 +457,41 @@ def load(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def atomic_write(path: Path, text: str) -> None:
+def atomic_write(path: Path, text: str, *, replace_attempts: int = 6, retry_delay: float = 0.05) -> None:
+    """Atomically replace a text file, tolerating brief Windows sharing locks.
+
+    Antivirus, indexers and readers can transiently deny ``os.replace`` on Windows.
+    Keep one temp file and retry only permission/sharing failures; other errors still
+    surface immediately. The bounded delay prevents a durable worker from dying while
+    leaving its previous state marked running.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent, delete=False, newline="\n") as handle:
         handle.write(text)
         temp = Path(handle.name)
-    os.replace(temp, path)
+    try:
+        for attempt in range(replace_attempts):
+            try:
+                os.replace(temp, path)
+                return
+            except PermissionError:
+                if attempt + 1 >= replace_attempts:
+                    raise
+                time.sleep(retry_delay * (attempt + 1))
+    finally:
+        if temp.exists():
+            try:
+                temp.unlink()
+            except OSError:
+                pass
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 BODY_LABELS = {
@@ -610,6 +643,106 @@ def preserve_prior(target: Path) -> None:
                 raise CharacterError("prior history conflicts with saved bytes")
 
 
+def _identity_binding(record: dict[str, Any]) -> dict[str, Any] | None:
+    identity = (record.get("reference_defaults") or {}).get("identity")
+    return identity if isinstance(identity, dict) and str(identity.get("path") or "").strip() else None
+
+
+def _normalize_binding(binding: dict[str, Any] | None) -> dict[str, Any] | None:
+    if binding is None:
+        return None
+    normalized: dict[str, Any] = {"path": str(Path(str(binding["path"])).resolve())}
+    for key in ("asset_id", "sha256", "byte_count"):
+        if binding.get(key) not in (None, ""):
+            normalized[key] = binding[key]
+    return normalized
+
+
+def _validate_master_face_approval(path: Path) -> tuple[dict[str, Any], Path, str]:
+    raw = path.read_bytes()
+    try:
+        approval = json.loads(raw.decode("utf-8-sig"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise CharacterError(f"invalid Master Face approval JSON: {exc}") from exc
+    if not isinstance(approval, dict) or approval.get("schema_version") != 1 or approval.get("kind") != "master_face_approval":
+        raise CharacterError("approval must be master_face_approval v1")
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", str(approval.get("approval_id") or "")):
+        raise CharacterError("approval_id is invalid")
+    character_id = str(approval.get("character_id") or "")
+    if not ID_RE.fullmatch(character_id):
+        raise CharacterError("approval character_id is invalid")
+    if approval.get("approved_by") != "user":
+        raise CharacterError("Master Face approval must be an explicit user decision")
+    if approval.get("requested_via") != "gallery":
+        raise CharacterError("Master Face approval must originate from Gallery")
+    if not str(approval.get("approved_at") or "").strip() or not str(approval.get("reason") or "").strip():
+        raise CharacterError("approved_at and reason are required")
+    if "expected_previous" not in approval or approval["expected_previous"] is not None and not isinstance(approval["expected_previous"], dict):
+        raise CharacterError("expected_previous must be an object or null")
+    if isinstance(approval["expected_previous"], dict) and not str(approval["expected_previous"].get("path") or "").strip():
+        raise CharacterError("expected_previous.path is required")
+    asset = approval.get("asset")
+    if not isinstance(asset, dict) or asset.get("media_type") != "image":
+        raise CharacterError("approval asset must be an image")
+    if not str(asset.get("asset_id") or "").strip():
+        raise CharacterError("approval asset_id is required")
+    image = Path(str(asset.get("path") or ""))
+    if not image.is_absolute() or image.suffix.lower() not in IMAGE_SUFFIXES or not image.is_file():
+        raise CharacterError("approved Master Face path must be an existing absolute image")
+    expected_hash = str(asset.get("sha256") or "").lower()
+    if not SHA256_RE.fullmatch(expected_hash) or sha256_file(image) != expected_hash:
+        raise CharacterError("approved Master Face SHA-256 does not match current bytes")
+    if asset.get("byte_count") != image.stat().st_size:
+        raise CharacterError("approved Master Face byte_count does not match current bytes")
+    return approval, image.resolve(), hashlib.sha256(raw).hexdigest()
+
+
+def set_master_face(approval_path: Path, *, dry_run: bool = False) -> dict[str, Any]:
+    """Apply one frozen Gallery approval through the maintained shared-authority writer.
+
+    Gallery proves asset ownership before writing the approval record. This writer rechecks
+    the character identifier and immutable file binding, rejects stale replacement state,
+    preserves the prior canonical record, and never copies or edits media.
+    """
+    approval, image, approval_hash = _validate_master_face_approval(approval_path.resolve())
+    target = character_record_path(approval["character_id"])
+    record = load(target)
+    errors = validate(record)
+    if errors:
+        raise CharacterError("character validation failed:\n- " + "\n- ".join(errors))
+    current = _identity_binding(record)
+    expected = approval["expected_previous"]
+    if _normalize_binding(current) != _normalize_binding(expected):
+        raise CharacterError("canonical Master Face changed after approval was prepared")
+    asset = approval["asset"]
+    binding = {
+        "path": str(image), "state": "user-selected", "source": approval["reason"],
+        "asset_id": asset["asset_id"], "sha256": asset["sha256"].lower(),
+        "byte_count": asset["byte_count"], "approved_by": "user",
+        "approved_at": approval["approved_at"], "approval_id": approval["approval_id"],
+        "approval_record_sha256": approval_hash,
+    }
+    unchanged = current == binding
+    result = {
+        "character_id": record["id"], "record_path": str(target), "dry_run": dry_run,
+        "changed": not unchanged, "previous": current, "next": binding,
+        "version_before": record["version"], "version_after": record["version"] + (0 if unchanged else 1),
+        "stable_dna_sha256": stable_hash(record),
+    }
+    if dry_run or unchanged:
+        return result
+    updated = deepcopy(record)
+    updated.setdefault("reference_defaults", {})["identity"] = binding
+    updated["version"] = record["version"] + 1
+    updated.setdefault("provenance", {})["updated_at"] = now()
+    updated["provenance"]["stable_dna_sha256"] = stable_hash(updated)
+    updated["provenance"]["change_reason"] = approval["reason"]
+    preserve_prior(target)
+    atomic_write(target, json.dumps(updated, ensure_ascii=False, indent=2) + "\n")
+    rebuild_index()
+    return result
+
+
 def ollama_draft(request: str, model: str) -> dict[str, Any]:
     prompt = f"""Create one character record from the user's Korean or English request.
 Return JSON only. Do not invent biography. All people must be adults.
@@ -731,6 +864,9 @@ def main() -> int:
     promote_parser.add_argument("--reason", default="")
     refresh_parser = sub.add_parser("refresh")
     refresh_parser.add_argument("--character", required=True)
+    master_parser = sub.add_parser("set-master-face")
+    master_parser.add_argument("--approval-file", required=True, type=Path)
+    master_parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
     try:
@@ -754,6 +890,9 @@ def main() -> int:
             return 0
         if args.command == "refresh":
             print(refresh(args.character))
+            return 0
+        if args.command == "set-master-face":
+            print(json.dumps(set_master_face(args.approval_file, dry_run=args.dry_run), ensure_ascii=False, indent=2))
             return 0
     except (CharacterError, OSError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

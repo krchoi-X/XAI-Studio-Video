@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "kind": "character_pack_candidate_manifest",
+  "manifest_id": "cpm-example-001",
+  "job_id": "cpj-example-001",
+  "character_id": "ch-example",
+  "dna": {
+    "version": 3,
+    "stable_dna_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "master_face": {
+    "asset_id": "ast-example",
+    "path": "D:\\AI_Studio\\library\\characters\\ch-example\\master.png",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "byte_count": 12345,
+    "approval_id": "mfa-example-001"
+  },
+  "published_at": "2026-10-07T12:10:00+09:00",
+  "slots": [
+    {
+      "slot_id": "face_front",
+      "stage": "face",
+      "selected_candidate_id": null,
+      "candidates": [
+        {
+          "candidate_id": "cand-front-qwen-001",
+          "engine": "qwen21",
+          "model_type": "qwen_image_21_uncensored_q4_k_m",
+          "adapter_version": 1,
+          "prompt_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "settings_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "seed": 20261007,
+          "requested_by": "user",
+          "executor": "local-wangp-worker",
+          "run_id": "run-example-001",
+          "session_id": "SCENE-example-001",
+          "output": {
+            "path": "D:\\AI_Studio\\library\\characters\\ch-example\\front.png",
+            "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "byte_count": 54321,
+            "asset_id": "ast-front-001"
+          },
+          "review_state": "needs_review",
+          "automatic_qa": {"face_detected": true, "identity_score_is_advisory": true},
+          "created_at": "2026-10-07T12:09:00+09:00"
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,5 +1,7 @@
 # Current task — Automatic character reference resolution for WanGP video
 
+2026-10-05 active scope: [continuous production batch recovery and controls](docs/continuous-production-batch-TASK.md), Codex as Active editor. This is a user-directed integration scope over the existing image batch and Studio command surface; it does not take over Claude's broader autonomous video-pipeline design task.
+
 2026-10-04 completed scope: [H3 engine-specific Intent Contract compiler adapter](docs/h3-intent-compiler-adapter-TASK.md), Codex as Active editor. Native Ref2VA/FL2VA serializers and target/template gates are implemented and mechanically verified; same-seed output comparison remains pending. No render or media mutation occurred.
 
 2026-10-04 completed scope: [Creative Treatment / Production Storyboard role-split integration](docs/creative-treatment-role-split-integration-TASK.md), Codex as Active editor. The role boundary and deterministic registration gate are implemented; empirical adoption still requires a future user-approved production trial. No render or media mutation occurred.

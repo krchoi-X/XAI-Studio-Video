@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import ctypes
 import json
 import os
 import subprocess
@@ -31,6 +32,9 @@ MULTI_REFERENCE_ENGINES = ("qwen21",)
 GPU_LOCK_BACKOFF_SECONDS = (10, 20, 40)
 SUCCESS_STATES = {"succeeded", "needs_review"}
 GPU_LOCK_MARKERS = ("gpu lock", "already holds the gpu lock")
+ACTIVE_STATES = {"queued", "running", "pausing", "cancelling"}
+TERMINAL_STATES = {"completed", "completed_with_errors", "failed", "cancelled"}
+STALE_AFTER_SECONDS = 120
 
 
 def stamp() -> str:
@@ -43,6 +47,80 @@ def write_json(path: Path, value: object) -> None:
 
 def load(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _parse_stamp(value: object) -> datetime | None:
+    try:
+        return datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return None
+
+
+def process_alive(pid: object) -> bool:
+    try:
+        number = int(pid)
+        if number <= 0:
+            return False
+        if os.name == "nt":
+            handle = ctypes.windll.kernel32.OpenProcess(0x1000, False, number)
+            if handle:
+                ctypes.windll.kernel32.CloseHandle(handle)
+                return True
+            return ctypes.get_last_error() == 5  # access denied still proves the process exists
+        os.kill(number, 0)
+        return True
+    except (TypeError, ValueError, OSError, SystemError):
+        return False
+
+
+def _counts(plan: dict[str, Any]) -> tuple[int, int]:
+    items = plan.get("items") or []
+    return (sum(item.get("status") == "completed" for item in items),
+            sum(item.get("status") == "failed" for item in items))
+
+
+def write_status(root: Path, status: str, *, error: str | None = None, **extra: object) -> dict[str, Any]:
+    path = root / "status.json"
+    previous = load(path) if path.is_file() else {}
+    plan = load(root / "plan.json") if (root / "plan.json").is_file() else {"items": []}
+    completed, failed = _counts(plan)
+    value = {
+        **previous, "status": status, "updated_at": stamp(), "heartbeat_at": stamp(),
+        "total_items": len(plan.get("items") or []), "completed_items": completed,
+        "failed_items": failed, **extra,
+    }
+    if error is not None:
+        value["error"] = error
+    elif status not in {"failed", "completed_with_errors"}:
+        value.pop("error", None)
+    if status in TERMINAL_STATES or status in {"paused", "interrupted"}:
+        value.pop("current_item", None)
+    write_json(path, value)
+    return value
+
+
+def reconcile(root: Path, *, stale_after_seconds: int = STALE_AFTER_SECONDS) -> dict[str, Any]:
+    """Turn an orphaned active record into an explicit resumable state."""
+    state = load(root / "status.json")
+    if state.get("status") not in ACTIVE_STATES:
+        return state
+    updated = _parse_stamp(state.get("heartbeat_at") or state.get("updated_at") or state.get("created_at"))
+    age = (datetime.now(timezone.utc) - updated).total_seconds() if updated else stale_after_seconds + 1
+    pid = state.get("worker_pid")
+    # A freshly queued record gets a short launch grace; running records without a
+    # live recorded owner are immediately recoverable.
+    stale = (state.get("status") == "running" and not process_alive(pid)) or (
+        state.get("status") != "running" and age > stale_after_seconds and not process_alive(pid)
+    )
+    if not stale:
+        return state
+    plan = load(root / "plan.json")
+    for item in plan.get("items") or []:
+        if item.get("status") == "running":
+            item["status"] = "interrupted"
+            item["interrupted_at"] = stamp()
+    write_json(root / "plan.json", plan)
+    return write_status(root, "interrupted", error="Batch worker exited or stopped heartbeating; safe to resume.", worker_pid=None)
 
 
 def validate_plan(plan: dict[str, Any]) -> dict[str, Any]:
@@ -131,8 +209,13 @@ def active_batch(queue_root: Path) -> Path | None:
         return None
     for path in queue_root.iterdir():
         status_path = path / "status.json"
-        if status_path.is_file() and load(status_path).get("status") in {"queued", "running"}:
-            return path
+        if status_path.is_file():
+            try:
+                state = reconcile(path)
+            except (OSError, ValueError, json.JSONDecodeError):
+                continue
+            if state.get("status") in ACTIVE_STATES or state.get("status") == "paused":
+                return path
     return None
 
 
@@ -141,7 +224,7 @@ def create(plan_path: Path, queue_root: Path, start: bool) -> Path:
     if existing:
         raise cm.CharacterError(f"another Hermes batch is active: {existing.name}")
     plan = validate_plan(load(plan_path))
-    batch_id = f"NIGHT-{datetime.now().strftime('%Y%m%d-%H%M%S')}-{uuid.uuid4().hex[:6]}"
+    batch_id = f"BATCH-{datetime.now().strftime('%Y%m%d-%H%M%S')}-{uuid.uuid4().hex[:6]}"
     root = queue_root / batch_id
     plan.update({"batch_id": batch_id, "created_at": stamp(), "created_by": "hermes"})
     write_json(root / "plan.json", plan)
@@ -149,16 +232,82 @@ def create(plan_path: Path, queue_root: Path, start: bool) -> Path:
     write_json(root / "status.json", {"status": "queued", "created_at": stamp(), "updated_at": stamp(),
                                         "completed_items": 0, "failed_items": 0, "total_items": len(plan["items"])})
     if start:
-        stdout = (root / "worker.stdout.log").open("ab")
-        stderr = (root / "worker.stderr.log").open("ab")
-        flags = subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.DETACHED_PROCESS | subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
-        try:
-            subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "run", "--batch-dir", str(root)],
-                             cwd=ROOT, stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr,
-                             creationflags=flags, close_fds=True)
-        finally:
-            stdout.close(); stderr.close()
+        launch_worker(root)
     return root
+
+
+def launch_worker(root: Path) -> int:
+    stdout = (root / "worker.stdout.log").open("ab")
+    stderr = (root / "worker.stderr.log").open("ab")
+    flags = subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.DETACHED_PROCESS | subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
+    try:
+        process = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "run", "--batch-dir", str(root)],
+                                   cwd=ROOT, stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr,
+                                   creationflags=flags, close_fds=True)
+    finally:
+        stdout.close(); stderr.close()
+    state = load(root / "status.json")
+    if state.get("status") == "queued":
+        write_status(root, "queued", worker_pid=process.pid)
+    return process.pid
+
+
+def _control(root: Path) -> str | None:
+    path = root / "control.json"
+    if not path.is_file():
+        return None
+    try:
+        return str(load(path).get("action") or "").strip() or None
+    except (OSError, ValueError, json.JSONDecodeError):
+        return None
+
+
+def _clear_control(root: Path) -> None:
+    path = root / "control.json"
+    if path.exists():
+        path.unlink()
+
+
+def wait_for_permission(root: Path, sleep: Any = time.sleep) -> bool:
+    """Cooperatively pause between durable item operations; false means cancel."""
+    while True:
+        action = _control(root)
+        if action == "cancel":
+            write_status(root, "cancelled", worker_pid=None)
+            return False
+        if action != "pause":
+            return True
+        write_status(root, "paused", worker_pid=os.getpid())
+        sleep(1)
+
+
+def request_control(root: Path, action: str) -> dict[str, Any]:
+    if action not in {"pause", "cancel", "resume", "retry"}:
+        raise cm.CharacterError(f"unsupported batch action: {action}")
+    state = reconcile(root)
+    plan = load(root / "plan.json")
+    if action in {"pause", "cancel"}:
+        write_json(root / "control.json", {"action": action, "requested_at": stamp()})
+        if not process_alive(state.get("worker_pid")):
+            for item in plan.get("items") or []:
+                if item.get("status") in {"queued", "running", "interrupted"}:
+                    item["status"] = "interrupted" if action == "pause" else "cancelled"
+            write_json(root / "plan.json", plan)
+            return write_status(root, "paused" if action == "pause" else "cancelled", worker_pid=None)
+        return write_status(root, "pausing" if action == "pause" else "cancelling")
+    if action == "resume" and state.get("status") == "paused" and process_alive(state.get("worker_pid")):
+        _clear_control(root)
+        return write_status(root, "running", worker_pid=state.get("worker_pid"))
+    if state.get("status") in ACTIVE_STATES and process_alive(state.get("worker_pid")):
+        raise cm.CharacterError("batch already has a live worker")
+    for item in plan.get("items") or []:
+        if item.get("status") in ({"failed", "cancelled"} if action == "retry" else {"interrupted", "running"}):
+            item["status"] = "queued"
+            item.pop("error", None)
+    write_json(root / "plan.json", plan)
+    _clear_control(root)
+    pid = launch_worker(root)
+    return load(root / "status.json") | {"worker_pid": pid}
 
 
 def _command_text(result: subprocess.CompletedProcess[str]) -> str:
@@ -327,14 +476,21 @@ def _render_item(item: dict[str, Any], session_dir: Path, root: Path, run_comman
 def run(root: Path, sync_url: str, *, run_command: Any = subprocess.run, sleep: Any = time.sleep,
         backoff_seconds: tuple[int, ...] = GPU_LOCK_BACKOFF_SECONDS) -> int:
     plan = load(root / "plan.json")
-    completed_count = failed_count = 0
-    write_json(root / "status.json", {"status": "running", "updated_at": stamp(), "total_items": len(plan["items"]),
-                                        "completed_items": 0, "failed_items": 0})
+    _clear_control(root) if _control(root) == "resume" else None
+    write_status(root, "running", worker_pid=os.getpid())
     for item in plan["items"]:
+        if item.get("status") in {"completed", "failed", "cancelled"}:
+            continue
+        if not wait_for_permission(root, sleep):
+            return 3
         item["status"] = "running"; item["started_at"] = stamp(); write_json(root / "plan.json", plan)
+        write_status(root, "running", worker_pid=os.getpid(), current_item=item.get("id"))
         try:
             session_dir = Path(item["session_dir"]).resolve() if item.get("session_dir") else _prepare_item(item, root, run_command)
             write_json(root / "plan.json", plan)
+            if not wait_for_permission(root, sleep):
+                item["status"] = "interrupted"; write_json(root / "plan.json", plan)
+                return 3
             result = _render_item(item, session_dir, root, run_command, sleep, backoff_seconds)
         except (cm.CharacterError, OSError, ValueError, json.JSONDecodeError) as exc:
             result = subprocess.CompletedProcess([], 2, "", f"{type(exc).__name__}: {exc}")
@@ -342,22 +498,20 @@ def run(root: Path, sync_url: str, *, run_command: Any = subprocess.run, sleep: 
             try:
                 verification = verify_session(session_dir, item["engines"], bool(item.get("identity_reference")))
             except (cm.CharacterError, OSError, ValueError, json.JSONDecodeError) as exc:
-                item.update({"status": "failed", "error": f"verification failed: {exc}", "completed_at": stamp()}); failed_count += 1
+                item.update({"status": "failed", "error": f"verification failed: {exc}", "completed_at": stamp()})
                 write_json(root / "plan.json", plan)
-                write_json(root / "status.json", {"status": "running", "updated_at": stamp(), "total_items": len(plan["items"]),
-                                                    "completed_items": completed_count, "failed_items": failed_count})
+                write_status(root, "running", worker_pid=os.getpid())
                 continue
-            item.update({"status": "completed", "verification": verification, "completed_at": stamp()}); completed_count += 1
+            item.update({"status": "completed", "verification": verification, "completed_at": stamp()})
             try: urllib.request.urlopen(urllib.request.Request(sync_url, method="POST"), timeout=120).read()
             except Exception as exc: item["sync_error"] = str(exc)
         else:
-            item.update({"status": "failed", "error": _command_text(result).strip()[-4000:], "completed_at": stamp()}); failed_count += 1
+            item.update({"status": "failed", "error": _command_text(result).strip()[-4000:], "completed_at": stamp()})
         write_json(root / "plan.json", plan)
-        write_json(root / "status.json", {"status": "running", "updated_at": stamp(), "total_items": len(plan["items"]),
-                                            "completed_items": completed_count, "failed_items": failed_count})
+        write_status(root, "running", worker_pid=os.getpid())
+    completed_count, failed_count = _counts(plan)
     final = "completed" if failed_count == 0 else "completed_with_errors"
-    write_json(root / "status.json", {"status": final, "updated_at": stamp(), "total_items": len(plan["items"]),
-                                        "completed_items": completed_count, "failed_items": failed_count})
+    write_status(root, final, worker_pid=None)
     return 0 if failed_count == 0 else 2
 
 
@@ -367,6 +521,9 @@ def main() -> int:
     start_mode = make.add_mutually_exclusive_group(); start_mode.add_argument("--no-start", action="store_true"); start_mode.add_argument("--wait", action="store_true", help="run the durable batch in this process so Hermes stays off the GPU until completion")
     make.add_argument("--sync-url", default="http://127.0.0.1:8787/api/sync")
     work = sub.add_parser("run"); work.add_argument("--batch-dir", type=Path, required=True); work.add_argument("--sync-url", default="http://127.0.0.1:8787/api/sync")
+    inspect = sub.add_parser("reconcile"); inspect.add_argument("--batch-dir", type=Path, required=True)
+    for action in ("pause", "cancel", "resume", "retry"):
+        control = sub.add_parser(action); control.add_argument("--batch-dir", type=Path, required=True)
     args = parser.parse_args()
     try:
         if args.command == "create":
@@ -377,8 +534,18 @@ def main() -> int:
                 print(json.dumps({"batch_dir": str(root), "status": load(root / "status.json")["status"]}, ensure_ascii=False, indent=2))
                 return result
             print(json.dumps({"batch_dir": str(root), "status": "queued"}, ensure_ascii=False, indent=2)); return 0
-        with gpu_runtime.WindowsSleepGuard():
-            return run(args.batch_dir.resolve(), args.sync_url)
+        if args.command == "reconcile":
+            print(json.dumps(reconcile(args.batch_dir.resolve()), ensure_ascii=False, indent=2)); return 0
+        if args.command in {"pause", "cancel", "resume", "retry"}:
+            print(json.dumps(request_control(args.batch_dir.resolve(), args.command), ensure_ascii=False, indent=2)); return 0
+        root = args.batch_dir.resolve()
+        try:
+            with gpu_runtime.WindowsSleepGuard():
+                return run(root, args.sync_url)
+        except Exception as exc:
+            try: write_status(root, "failed", error=f"{type(exc).__name__}: {exc}", worker_pid=None)
+            except Exception: pass
+            raise
     except (cm.CharacterError, OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr); return 2
 

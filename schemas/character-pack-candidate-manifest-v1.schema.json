@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/character-pack-candidate-manifest-v1.schema.json",
+  "title": "Character Pack candidate manifest",
+  "type": "object",
+  "required": ["schema_version", "kind", "manifest_id", "job_id", "character_id", "dna", "master_face", "slots", "published_at"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "character_pack_candidate_manifest"},
+    "manifest_id": {"type": "string", "pattern": "^cpm-[A-Za-z0-9._-]+$"},
+    "job_id": {"type": "string", "pattern": "^cpj-[A-Za-z0-9._-]+$"},
+    "character_id": {"type": "string", "pattern": "^ch-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "dna": {"$ref": "#/$defs/dnaBinding"},
+    "master_face": {"$ref": "#/$defs/masterBinding"},
+    "published_at": {"type": "string", "minLength": 1},
+    "slots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["slot_id", "stage", "selected_candidate_id", "candidates"],
+        "properties": {
+          "slot_id": {"$ref": "#/$defs/slotId"},
+          "stage": {"enum": ["face", "body"]},
+          "selected_candidate_id": {"type": ["string", "null"]},
+          "candidates": {
+            "type": "array",
+            "items": {"$ref": "#/$defs/candidate"}
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "dnaBinding": {
+      "type": "object",
+      "required": ["version", "stable_dna_sha256"],
+      "properties": {
+        "version": {"type": "integer", "minimum": 1},
+        "stable_dna_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "masterBinding": {
+      "type": "object",
+      "required": ["asset_id", "path", "sha256", "byte_count", "approval_id"],
+      "properties": {
+        "asset_id": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "byte_count": {"type": "integer", "minimum": 1},
+        "approval_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "slotId": {
+      "enum": [
+        "face_front", "face_left30", "face_right30", "face_left90", "face_right90",
+        "body_front", "body_three_quarter", "body_side", "body_back"
+      ]
+    },
+    "candidate": {
+      "type": "object",
+      "required": [
+        "candidate_id", "engine", "model_type", "adapter_version", "prompt_sha256",
+        "settings_sha256", "seed", "requested_by", "executor", "run_id", "session_id",
+        "output", "review_state", "created_at"
+      ],
+      "properties": {
+        "candidate_id": {"type": "string", "minLength": 1},
+        "engine": {"enum": ["qwen21", "krea2"]},
+        "model_type": {"type": "string", "minLength": 1},
+        "adapter_version": {"type": "integer", "minimum": 1},
+        "prompt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "settings_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "seed": {"type": ["integer", "null"]},
+        "requested_by": {"enum": ["codex", "hermes", "web", "grok", "claude", "user"]},
+        "executor": {"type": "string", "minLength": 1},
+        "run_id": {"type": "string", "minLength": 1},
+        "session_id": {"type": "string", "minLength": 1},
+        "output": {
+          "type": "object",
+          "required": ["path", "sha256", "byte_count", "asset_id"],
+          "properties": {
+            "path": {"type": "string", "minLength": 1},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "byte_count": {"type": "integer", "minimum": 1},
+            "asset_id": {"type": ["string", "null"]}
+          },
+          "additionalProperties": false
+        },
+        "review_state": {"enum": ["needs_review", "selected", "rejected"]},
+        "automatic_qa": {"type": "object"},
+        "created_at": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+

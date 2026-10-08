@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/master-face-approval-v1.schema.json",
+  "title": "Gallery Master Face approval",
+  "type": "object",
+  "required": [
+    "schema_version", "kind", "approval_id", "character_id", "asset",
+    "approved_by", "approved_at", "requested_via", "reason", "expected_previous"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kind": {"const": "master_face_approval"},
+    "approval_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "character_id": {"type": "string", "pattern": "^ch-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "asset": {"$ref": "#/$defs/assetBinding"},
+    "approved_by": {"const": "user"},
+    "approved_at": {"type": "string", "minLength": 1},
+    "requested_via": {"const": "gallery"},
+    "reason": {"type": "string", "minLength": 1},
+    "expected_previous": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/previousBinding"}
+      ]
+    }
+  },
+  "$defs": {
+    "assetBinding": {
+      "type": "object",
+      "required": ["asset_id", "path", "sha256", "byte_count", "media_type"],
+      "properties": {
+        "asset_id": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+        "byte_count": {"type": "integer", "minimum": 1},
+        "media_type": {"const": "image"}
+      },
+      "additionalProperties": false
+    },
+    "previousBinding": {
+      "type": "object",
+      "required": ["path"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "asset_id": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+        "byte_count": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "kind": "character_pack_job",
+  "job_id": "cpj-example-001",
+  "character_id": "ch-example",
+  "status": "ready",
+  "requested_by": "user",
+  "created_at": "2026-10-07T12:01:00+09:00",
+  "updated_at": "2026-10-07T12:01:00+09:00",
+  "dna": {
+    "version": 3,
+    "stable_dna_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "master_face": {
+    "asset_id": "ast-example",
+    "path": "D:\\AI_Studio\\library\\characters\\ch-example\\master.png",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "byte_count": 12345,
+    "approval_id": "mfa-example-001"
+  },
+  "engine_policy": {
+    "face_default": "qwen21",
+    "body_default": "krea2",
+    "allowed": ["qwen21", "krea2"],
+    "fallback": "none"
+  },
+  "slots": [
+    {"slot_id": "face_front", "stage": "face", "required": true, "status": "pending", "attempts": 0, "last_error": null},
+    {"slot_id": "face_left30", "stage": "face", "required": true, "status": "pending", "attempts": 0, "last_error": null},
+    {"slot_id": "face_right30", "stage": "face", "required": true, "status": "pending", "attempts": 0, "last_error": null},
+    {"slot_id": "face_left90", "stage": "face", "required": true, "status": "pending", "attempts": 0, "last_error": null},
+    {"slot_id": "face_right90", "stage": "face", "required": true, "status": "pending", "attempts": 0, "last_error": null}
+  ]
+}
+

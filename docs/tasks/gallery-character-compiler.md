@@ -1,6 +1,6 @@
 # Task: Gallery-integrated Character Compiler
 
-Status: PLANNED — architecture mapped; implementation has not started
+Status: LIVE WORKTREES INTEGRATED — awaiting explicit approval for service restart and first live render
 
 Active editor: Codex (planning and cross-repository contract owner)
 
@@ -351,4 +351,22 @@ No GPU generation, canonical Master Face change, approved-reference promotion, s
 - Remote task and shared discovery commits were fetched and merged into the local `main` on 2026-10-07 without overwriting existing dirty work.
 - Existing Gallery, Character Manager, shared authority, Qwen21 adapter/pilot, immutable set builder and Studio boundaries were inspected.
 - Work is split between Codex Package A/C and Claude Package B with a contract-first handoff and disjoint file ownership.
-- Next: preserve/checkpoint the overlapping Studio worktree, then Codex creates the Package A contract checkpoint. Claude remains blocked until that checkpoint is named in its package task.
+- Step 1 evidence: [isolated worktree checkpoint](gallery-character-compiler-worktree-checkpoint-20261007.md). Original dirty worktrees were not stashed, reset or modified by this package.
+- Step 2 XAI contract checkpoint: `618df72` on `codex/gallery-character-compiler-contract-xai`. It adds additive job/candidate/approval schemas, old-record fixtures and the dry-run-capable maintained Master Face writer.
+- Step 2 Studio presentation checkpoint: `4799184` on `codex/gallery-character-compiler-contract`; completion/verification note: `f607c91`.
+- Verification: XAI focused regression 58 passed; current 14 shared character records retained the known pre-existing Mira schema exception only; Studio contract test 3 passed and TypeScript/Vite build passed.
+- Step 3 XAI runtime checkpoints: `53b7a9e` adds durable create/generate/resume/regenerate behavior; `04da113` adds recoverable review transitions and immutable approved identity-set publication.
+- Runtime guarantees now covered by fake-renderer tests: frozen DNA/Master Face bytes, explicit per-slot engine, Qwen21 face default, Krea2 body default, no fallback, append-only regeneration, resume, exact selected-candidate requirements and immutable publication.
+- Step 3 Studio checkpoints: `fcfb440` adds the pure backend adapter; `de7b1c2` adds the confined filesystem service; `851fe57` adds read/create/select/reject API routes and declares the XAI runtime's `jsonschema` dependency. XAI/Studio review method naming was reconciled in `bc50905`.
+- Verification on 2026-10-07: XAI focused contract/runtime/Character Manager/set suite 33 passed; Studio focused adapter/service/API suite 12 passed. The broader Studio suite reached 148 passed / 10 failed, with failures tied to isolated-worktree environment assumptions (missing copied launcher/tool paths and writable default DB state), not the focused package.
+- Claude completed Package B at Studio commit `ba8aaf0`, based on `c35c6e5`. Codex inspected the exact diff: only the assigned `frontend/src/apps/characters/character-pack/` subtree changed and the three read-only contract files remained untouched. Independent verification passed 113 character tests and the production frontend build.
+- Added the append-only production worker and durable regeneration requests. Initial builds run candidate-less slots sequentially from the frozen Master Face and DNA; face defaults to Qwen21, body defaults to Krea2, each request has one explicit engine, and partial success survives a later slot failure.
+- Studio now exposes explicit Master Face approve/replace, initial build, per-slot regenerate, select/reject and final pack approval endpoints. Generated outputs are reconciled to stable Gallery asset IDs by exact character/path/hash/byte match before final approval.
+- Final approval publishes an immutable discoverable identity set with copied member hashes, the candidate-manifest snapshot and human-review-only face/body/master sheets. Sheets are derived aids; individual members remain the source references.
+- Claude's review package is mounted at the separate Character Pack library view and wired to the real API. Initial creation includes body slots so Krea2 is the body default; every slot can still be explicitly regenerated with Qwen21 or Krea2 and never falls back silently.
+- Deterministic verification on 2026-10-08: XAI focused runtime/worker/contracts/Character Manager/set suite 42 passed; Studio Character Pack/authority/worker-environment suite 31 passed; full frontend 656 passed; TypeScript/Vite production build passed. ESLint remains unavailable because this checkout has no `eslint.config.*`.
+- Live-worktree verification on 2026-10-08: the complete Studio backend suite passed 172 tests, the complete frontend suite passed 656 tests, and the production build passed. XAI's focused Character Pack/runtime compatibility suite passed 42 tests. Existing continuous-production, pagination and Production UI changes remained present.
+- User authorized the live restart, canonical Master Face approval and the full Qwen/Krea render on 2026-10-08. The maintained approval endpoint recorded Gallery asset `ast_25f17f445b5eafadf15e4645` as Reika's canonical Master Face with approval `mfa-8bc3d2bc901d4a4d8500b8f01255d224` and SHA-256 `ba3411fb8db4ac28aa5ce2807a1ac56e32fb9e47da4c357d4ac13734010a33b7`.
+- Live job `cpj-1c6c6c95cc5c44f39947a92c613df460` completed without retries or failed slots: five Qwen21 face candidates and four Krea2 body candidates, one candidate per required slot. All nine outputs reconciled to stable Gallery asset IDs and their preview GET routes returned `200 image/webp`.
+- The Studio service group is running after restart. Its existing backend virtual environment was missing the already-declared `jsonschema>=4.25,<5` dependency; the environment was synchronized and the services restarted without changing or replacing the existing database.
+- Current gate: all nine candidates are `needs_review`; no candidate has been selected, rejected or regenerated, and the pack cannot be approved until the user reviews and selects one candidate for every required slot. No push or deployment was performed.

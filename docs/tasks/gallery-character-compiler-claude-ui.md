@@ -2,7 +2,7 @@
 
 Parent: [Gallery-integrated Character Compiler](gallery-character-compiler.md)
 
-Status: BLOCKED — wait for the Codex Package A contract checkpoint
+Status: COMPLETE — Claude UI package committed at Studio `ba8aaf0`; Codex diff review and independent checks passed
 
 Active editor: Claude Code (after the checkpoint is recorded below)
 
@@ -21,7 +21,20 @@ Do not start from this planning document alone. Codex must first record here:
 - exact callback/type definitions;
 - any files removed from this package because of overlapping worktree changes.
 
-Checkpoint: **not yet available**.
+Checkpoint:
+
+- XAI base: `2791df509c23aae2de5ddc177ea1f161d7cd0c67`
+- XAI contract: `618df72` on `codex/gallery-character-compiler-contract-xai`
+- Studio base: `500384f0e67d3db5ae9ced9c8c30ec9a792f2654`
+- Studio presentation contract: `4799184` on `codex/gallery-character-compiler-contract`
+- Studio completion note: `f607c91`
+- Read-only input files for this package:
+  - `frontend/src/apps/characters/character-pack/contract.ts`
+  - `frontend/src/apps/characters/character-pack/contract.fixture.ts`
+  - `frontend/src/apps/characters/character-pack/contract.test.ts`
+- Contract verification: XAI focused regression 58 passed; Studio contract test 3 passed; Studio TypeScript/Vite build passed.
+
+Claude must inspect these revisions and the actual diffs before editing. If the contract needs to change, stop and hand the request back to Codex rather than changing the read-only files.
 
 ## Owned files
 
@@ -42,6 +55,8 @@ frontend/src/apps/characters/character-pack/
 ```
 
 Claude may edit an existing Character Workspace component or stylesheet only if Codex adds that exact path to the checkpoint. New pure components should receive view data and callbacks through props.
+
+The three checkpoint files under this same subtree are Codex-owned contract inputs and are excluded from Claude's owned file list.
 
 ## Must not edit
 
@@ -75,3 +90,5 @@ Codex owns those files and performs final wiring.
 ## Handoff back to Codex
 
 Claude stops after the isolated package is verified. Codex reviews the diff, performs shared API/type/router integration, runs the combined regressions and owns runtime/tablet acceptance.
+
+Handoff result (2026-10-08): Claude changed only new files under `frontend/src/apps/characters/character-pack/` and committed `ba8aaf0` on top of `c35c6e5`. Codex independently verified 113 character tests and `npm run build`. Shared mounting remains intentionally deferred until all UI actions have working backend endpoints.

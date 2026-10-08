@@ -52,6 +52,29 @@
       },
       "additionalProperties": false
     },
+    "reference_defaults": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "type": "object",
+          "required": ["path"],
+          "properties": {
+            "path": {"type": "string", "minLength": 1},
+            "state": {"type": "string"},
+            "source": {"type": "string"},
+            "asset_id": {"type": "string", "minLength": 1},
+            "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+            "byte_count": {"type": "integer", "minimum": 1},
+            "approved_by": {"type": "string"},
+            "approved_at": {"type": "string", "minLength": 1},
+            "approval_id": {"type": "string", "minLength": 1},
+            "approval_record_sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
     "approved_references": {"type": "array", "items": {"type": "string"}},
     "prompt_sources": {"type": "array", "items": {"type": "string"}},
     "lora_associations": {"type": "array", "items": {"type": "string"}},

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "ch-legacy",
+  "name": "Legacy",
+  "status": "candidate",
+  "version": 1,
+  "stable_dna": {
+    "adult_age_range": "adult",
+    "visual_background": "fictional adult",
+    "face": {
+      "shape": "oval",
+      "eyes": "brown",
+      "eyebrows": "natural",
+      "nose": "straight",
+      "lips": "natural",
+      "jaw": "soft"
+    },
+    "body": {
+      "height_impression": "average",
+      "limb_proportions": "balanced",
+      "shoulders": "natural",
+      "torso": "balanced",
+      "bust": "natural",
+      "waist": "natural",
+      "pelvis_hips": "natural",
+      "lower_body": "balanced",
+      "body_hair": "unspecified"
+    },
+    "hair": "dark",
+    "skin": "natural texture",
+    "distinctive_marks": []
+  },
+  "scene_defaults": {},
+  "reference_defaults": {
+    "identity": {
+      "path": "D:\\legacy\\master.png",
+      "state": "user-selected",
+      "source": "legacy path-only record"
+    }
+  },
+  "approved_references": [],
+  "provenance": {
+    "created_at": "2026-01-01T00:00:00+00:00",
+    "updated_at": "2026-01-01T00:00:00+00:00",
+    "created_by": "user",
+    "sources": []
+  }
+}
+

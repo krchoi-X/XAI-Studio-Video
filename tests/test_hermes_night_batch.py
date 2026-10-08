@@ -1,8 +1,10 @@
 import importlib.util
 import json
+import os
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 from subprocess import CompletedProcess
 
@@ -90,6 +92,57 @@ class HermesNightBatchTests(unittest.TestCase):
         batch = night.create(plan_path, root / "queue", False)
         self.assertTrue((batch / "plan.json").is_file())
         self.assertEqual("queued", json.loads((batch / "status.json").read_text(encoding="utf-8"))["status"])
+
+    def test_atomic_write_retries_a_transient_windows_sharing_failure(self):
+        target = Path(self.temp.name) / "atomic.json"
+        real_replace = night.cm.os.replace
+        calls = []
+
+        def flaky(source, destination):
+            calls.append((source, destination))
+            if len(calls) < 3:
+                raise PermissionError(5, "sharing violation")
+            return real_replace(source, destination)
+
+        with mock.patch.object(night.cm.os, "replace", side_effect=flaky), mock.patch.object(night.cm.time, "sleep") as sleep:
+            night.cm.atomic_write(target, "ok\n")
+        self.assertEqual("ok\n", target.read_text(encoding="utf-8"))
+        self.assertEqual(3, len(calls))
+        self.assertEqual(2, sleep.call_count)
+
+    def test_reconcile_marks_a_dead_running_worker_interrupted_and_keeps_session(self):
+        root = Path(self.temp.name) / "orphan"; root.mkdir()
+        session = Path(self.temp.name) / "prepared"
+        (root / "plan.json").write_text(json.dumps({"items": [{
+            "id": "item-01", "status": "running", "session_dir": str(session),
+        }]}), encoding="utf-8")
+        (root / "status.json").write_text(json.dumps({
+            "status": "running", "worker_pid": 99999999, "updated_at": "2026-01-01T00:00:00+00:00",
+        }), encoding="utf-8")
+        state = night.reconcile(root)
+        item = json.loads((root / "plan.json").read_text(encoding="utf-8"))["items"][0]
+        self.assertEqual("interrupted", state["status"])
+        self.assertEqual("interrupted", item["status"])
+        self.assertEqual(str(session), item["session_dir"])
+
+    def test_cancel_an_orphan_is_terminal_without_touching_other_processes(self):
+        root = Path(self.temp.name) / "orphan-cancel"; root.mkdir()
+        (root / "plan.json").write_text(json.dumps({"items": [{"id": "item-01", "status": "running"}]}), encoding="utf-8")
+        (root / "status.json").write_text(json.dumps({"status": "running", "worker_pid": 99999999}), encoding="utf-8")
+        state = night.request_control(root, "cancel")
+        self.assertEqual("cancelled", state["status"])
+        self.assertEqual("cancelled", json.loads((root / "plan.json").read_text(encoding="utf-8"))["items"][0]["status"])
+
+    def test_resume_a_live_paused_worker_does_not_launch_a_second_worker(self):
+        root = Path(self.temp.name) / "paused"; root.mkdir()
+        (root / "plan.json").write_text(json.dumps({"items": [{"id": "item-01", "status": "queued"}]}), encoding="utf-8")
+        (root / "status.json").write_text(json.dumps({"status": "paused", "worker_pid": os.getpid()}), encoding="utf-8")
+        (root / "control.json").write_text(json.dumps({"action": "pause"}), encoding="utf-8")
+        with mock.patch.object(night, "launch_worker") as launch:
+            state = night.request_control(root, "resume")
+        self.assertEqual("running", state["status"])
+        self.assertFalse((root / "control.json").exists())
+        launch.assert_not_called()
 
     def test_gpu_lock_failure_retries_same_session_and_preserves_failed_run(self):
         root = Path(self.temp.name) / "batch"
