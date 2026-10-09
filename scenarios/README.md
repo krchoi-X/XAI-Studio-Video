@@ -14,6 +14,7 @@
 |---|---|---|---|
 | LH-001 | [The Last Light of Day / 하루의 마지막 빛](./LH-001-the-last-light-of-day.md) | draft / experiment | 1905년경 등대지기의 일몰 점등 일상. 14클립, 약 90초. Muse 60초 원안에서 일상물로 전환. |
 | VW-001 | [The Weaver's Day / 베 짜는 여인의 하루](./VW-001-the-weavers-day.md) | draft | 중세 마을 젊은 여인의 평범한 하루. 12클립, 약 81초. 물 긷기·빨래·베틀. |
+| GH-001 | [The Greenhouse Ladybug / 온실의 무당벌레](./GH-001-the-greenhouse-ladybug.md) | draft | 22세기 밀폐 온실의 젊은 여성 식물학자와 미등록 무당벌레. 도입부 6클립, 약 55초. Ladybug Productions E05. |
 
 ## 새 작품 추가 규칙
 
