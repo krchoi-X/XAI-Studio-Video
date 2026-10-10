@@ -149,3 +149,5 @@ If a later render review assigns the top-level defect owner `storyboard`, it mus
 - Blocked story-lock decisions:
 - Preflight result:
 - Ready for joint Storyboard + Intent Contract approval: no
+
+The adjacent `<storyboard-name>.preflight.json` is mandatory. Markdown self-assessment is advisory; only `tools/storyboard_preflight.py validate` may report deterministic readiness.

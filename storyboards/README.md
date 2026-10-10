@@ -12,6 +12,7 @@ scenarios/
 storyboards/
   RW-001/
     storyboard-r001.md          # Hermes 콘티 revision 1
+    storyboard-r001.preflight.json # deterministic coverage/preflight sidecar
     storyboard-r002.md          # 같은 콘티 계보의 수정본
 ```
 
@@ -55,3 +56,4 @@ python tools/storyboard_revision.py validate `
 5. 승인된 콘티만 기존 Intent Contract와 cutboard 단계로 넘긴다.
 6. 부분 제작이나 티저는 포함 범위를 명시하고, 범위 밖 비트는 `intentionally_unproduced`로 남긴다.
 7. 카메라 설정별 시작 프레임뿐 아니라 reveal·반응 원인·새 요소 출처가 보이는 핵심 정보 순간도 정지 프리뷰로 확인한다.
+8. Hermes의 성공 문구나 Markdown의 `pass` 표는 완료 증거가 아니다. `storyboard_pipeline.py`가 실제 파일 변경을 확인하고 preflight sidecar가 `ready: true`일 때만 사용자 검토 단계로 이동한다.

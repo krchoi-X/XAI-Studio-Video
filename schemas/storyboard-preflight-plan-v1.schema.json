@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/storyboard-preflight-plan-v1.schema.json",
+  "title": "Deterministic screenplay-to-storyboard preflight plan v1",
+  "type": "object",
+  "required": ["schema_version", "artifact_type", "profile", "source", "storyboard", "scope", "units", "acknowledged_constraints", "unresolved"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "artifact_type": {"const": "storyboard_preflight_plan"},
+    "profile": {"enum": ["renderer-neutral", "minimax-h3"]},
+    "source": {"$ref": "#/$defs/binding"},
+    "storyboard": {"$ref": "#/$defs/binding"},
+    "scope": {
+      "type": "object",
+      "required": ["mode", "included_scenes", "intentionally_unproduced"],
+      "properties": {
+        "mode": {"enum": ["full", "partial", "teaser"]},
+        "included_scenes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "intentionally_unproduced": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "source_events", "duration_seconds", "visible_action_count", "setup_id", "information_mode", "preview_purposes", "continuation_depth", "dialogue_lines"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9_-]+$"},
+          "source_events": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+          "duration_seconds": {"type": "number", "exclusiveMinimum": 0},
+          "visible_action_count": {"type": "integer", "minimum": 1},
+          "setup_id": {"type": "string", "minLength": 1},
+          "information_mode": {"enum": ["direct", "separate_plate", "edit_composite"]},
+          "preview_purposes": {"type": "array", "items": {"enum": ["setup", "reveal", "cause", "source", "continuity"]}, "uniqueItems": true},
+          "start_keyframe_id": {"type": ["string", "null"]},
+          "blocking_anchor": {"type": ["string", "null"]},
+          "continuation_depth": {"type": "integer", "minimum": 0},
+          "dialogue_lines": {"type": "array", "items": {"type": "object", "required": ["source_id", "text"], "properties": {"source_id": {"type": "string"}, "text": {"type": "string"}}, "additionalProperties": false}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "acknowledged_constraints": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "unresolved": {"type": "array", "items": {"type": "object", "required": ["source_locator", "reason"], "properties": {"source_locator": {"type": "string"}, "reason": {"type": "string", "minLength": 1}}, "additionalProperties": false}}
+  },
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -38,7 +38,7 @@ Add a small shared `screenplay-to-storyboard` skill and repository convention th
 
 - Do not render media, spend generation credits, modify character DNA, move legacy scenarios, or push changes.
 - Do not silently change event order, causality, knowledge timing, ending, dialogue or prohibited reveals.
-- Do not build a new orchestration engine or UI.
+- Do not build a UI or a general production orchestrator. A bounded Hermes authoring runner with deterministic file/preflight gates is now in scope by direct user request.
 
 ## Contract impact
 
@@ -46,6 +46,8 @@ Add a small shared `screenplay-to-storyboard` skill and repository convention th
 - **Consumers:** Hermes, human reviewers, `storyboard-director`, `video-intent-contract`, `storyboard-cutboard`, and later renderer adapters.
 - **Compatibility:** existing flat scenario files are treated as revision 1 unless they explicitly declare another revision. No existing reader or persisted artifact is changed.
 - **New binding:** every new storyboard begins with parseable metadata containing its own identity/revision and the exact source scenario path/revision/hash. Parent storyboard metadata is optional for revision 1 and required for later revisions.
+- **Deterministic readiness sidecar:** every newly gated storyboard has a `storyboard-preflight-plan-v1` JSON sidecar. It maps exact source event/dialogue/constraint IDs to render units and is the only machine readiness authority; Markdown self-review is advisory.
+- **Bounded runner:** `tools/storyboard_pipeline.py` invokes Hermes at most twice, verifies that both output files actually changed, returns only field-level validator failures, and stops on unresolved writer/user decisions. It does not invoke Codex or Claude as a routine final reviewer.
 - **Rollback:** remove the new shared skill registration, adapter, `storyboards/` convention, template, validator and focused tests. Existing scenarios and production contracts remain valid.
 - **Verification:** shared skill resolution; skill quick validation; metadata validator fixtures; focused unit tests; JSON/catalog syntax; whitespace diff check.
 
@@ -63,6 +65,7 @@ Add a small shared `screenplay-to-storyboard` skill and repository convention th
 4. Add the runtime adapter, Hermes routing entry and storyboard template.
 5. Add a deterministic metadata validator and fixtures covering valid binding, stale hash, missing parent and invalid path cases.
 6. Run focused validation and update this record with evidence.
+7. Replace frontier final review with a deterministic source catalog, preflight sidecar and bounded Hermes repair loop.
 
 ## Progress
 
@@ -74,14 +77,17 @@ Add a small shared `screenplay-to-storyboard` skill and repository convention th
 - Added sibling `storyboards/` storage, an external-screenplay storyboard template, independent scenario/storyboard revision rules and SHA-256 lineage binding.
 - Added `screenplay-storyboard-v1` metadata schema and `tools/storyboard_revision.py` for source/parent validation and hashing.
 - Added focused tests proving valid revision binding and detecting overwritten source files, overwritten parent storyboards, missing parents and out-of-collection artifacts.
+- Added `storyboard_preflight.py`, a machine-readable plan schema and stable source catalog IDs. The gate checks exact event coverage/order, exact dialogue, constraint acknowledgement, declared scope, duration, action density, nested screen/photo handling, direction keyframes, continuation depth and unresolved decisions.
+- Added `storyboard_pipeline.py`; it rejects Hermes's false “written” reports when files are absent/unchanged, retries only with validator repair items, stops after two attempts and reserves human input for real source/intent decisions.
+- Updated the canonical shared skill and runtime documentation so a prose all-pass table is no longer completion evidence.
 
 ## Next
 
-Use the revised skill and writer template on the next selected scenario. Create its first Hermes artifact under `storyboards/<scenario-id>/storyboard-r001.md`, validate it, and stop for user review before Intent Contract compilation or rendering.
+Forward-test the bounded runner on a new normalized scenario. Do not use Codex/Claude as a routine final pass; stop only for user approval, a source contradiction or a two-attempt machine failure report.
 
 ## Blockers / uncertainties
 
-- None. Existing scenario files remain the compatibility baseline; revision metadata is mandatory only for new storyboard artifacts and recommended for new scenario revisions.
+- Arbitrary prose without stable scene headings and numbered actions cannot be proven complete deterministically. The runner blocks before Hermes and requests the normalized external-writer format instead of asking a frontier reviewer to infer coverage.
 
 ## Verification
 
@@ -103,3 +109,10 @@ Use the revised skill and writer template on the next selected scenario. Create 
 - `36 passed` — revision, shared authority, director routing and video Intent Contract focused tests.
 - Canonical screenplay and video-intent skills plus runtime adapter quick validation: pass.
 - Public and Private `git diff --check`: pass (unrelated tracked files still report existing line-ending conversion warnings).
+
+### Deterministic-gate follow-up verification
+
+- Real RW-001 extraction: 12 scenes, 62 ordered source events, 2 dialogue occurrences and 108 must/forbidden constraint items receive stable IDs.
+- `14 passed` — storyboard preflight, bounded pipeline and revision tests.
+- Skill Creator quick validation of the canonical shared `screenplay-to-storyboard` skill: pass under UTF-8 mode.
+- The runner tests prove that a successful Hermes process which writes no files is rejected twice and then stopped, and that unstructured source prose is blocked before any Hermes call.
