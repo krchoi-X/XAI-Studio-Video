@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xai-studio.local/schemas/screenplay-storyboard-v1.schema.json",
+  "title": "XAI Studio screenplay storyboard metadata v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "storyboard_id",
+    "revision",
+    "status",
+    "source_scenario",
+    "parent_storyboard",
+    "author",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "artifact_type": {"const": "screenplay_storyboard"},
+    "storyboard_id": {"type": "string", "pattern": "^sb_[A-Za-z0-9_-]+$"},
+    "revision": {"type": "integer", "minimum": 1},
+    "status": {"enum": ["draft", "reviewed", "approved", "superseded"]},
+    "source_scenario": {"$ref": "#/$defs/scenarioBinding"},
+    "parent_storyboard": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/storyboardBinding"}
+      ]
+    },
+    "author": {
+      "type": "object",
+      "required": ["actor", "model"],
+      "properties": {
+        "actor": {"const": "hermes"},
+        "model": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "created_at": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"revision": {"const": 1}}},
+      "then": {"properties": {"parent_storyboard": {"type": "null"}}},
+      "else": {"properties": {"parent_storyboard": {"$ref": "#/$defs/storyboardBinding"}}}
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "scenarioBinding": {
+      "type": "object",
+      "required": ["path", "scenario_id", "revision", "sha256"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^scenarios/[A-Za-z0-9._/-]+\\.(md|txt)$"},
+        "scenario_id": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"},
+        "revision": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    },
+    "storyboardBinding": {
+      "type": "object",
+      "required": ["path", "revision", "sha256"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^storyboards/[A-Za-z0-9._/-]+\\.md$"},
+        "revision": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+

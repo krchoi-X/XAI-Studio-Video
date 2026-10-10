@@ -204,6 +204,6 @@ An agent cannot self-approve an override merely because a model is unlikely to f
 
 ## Render review and editing
 
-Render review records both axes—Intent Fidelity and Cinematography Gain—and attributes defects to `storyboard`, `compiler`, `renderer`, or `edit`. Human review remains authoritative for moving-image meaning until verified automation exists.
+Render review records both axes—Intent Fidelity and Cinematography Gain—and attributes defects to `storyboard`, `compiler`, `renderer`, or `edit`. For an external-scenario workflow, a `storyboard` defect also records subtype `source_scenario` or `hermes_staging` and cites the source locator or Hermes staging change-log ID. This preserves the established top-level vocabulary while keeping writer and director evaluation separate. Human review remains authoritative for moving-image meaning until verified automation exists.
 
 Every selected Clypra interval records its source clip and time range, inherits the relevant events/states from the parent contract, and receives `pass`, `fail`, or `needs_human_review`. A segment that violates the shot's meaning is not accepted solely because it is visually strong.

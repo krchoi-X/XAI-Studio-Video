@@ -6,6 +6,7 @@ For production, read [artifact and review contract](docs/artifact-and-review-con
 
 - Character identity and supported local still images: `skills/character-manager/SKILL.md`.
 - Visual intent alignment and storyboard revision: `skills/storyboard-director/SKILL.md`.
+- External screenplay/scenario to a traceable production storyboard: resolve shared `screenplay-to-storyboard`; preserve the writer revision under `scenarios/` and write Hermes revisions under `storyboards/<scenario-id>/`.
 - Approved storyboard to video prompt/render/edit: resolve shared `video-intent-contract` and read `docs/intent-preserving-video-methodology.md`. Create and acknowledge the hash-bound contract before compilation; do not submit when its semantic check is missing or failed.
 - Complex/reference-heavy production: read `docs/creative-treatment-contract.md`. Consume an optional frontier Creative Treatment, then author the Production Storyboard, Intent Contract, and v2 prompt segments as one user-visible packet. Treatment approval alone is not render GO. After approval, select only allowed values; do not paraphrase locked segments.
 - Approved storyboard through sample/final production: `skills/idea-to-production/SKILL.md` and its director decisions.

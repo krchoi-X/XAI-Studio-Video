@@ -52,7 +52,7 @@ Hermes authors model-neutral `prompt_segments` and any required engine prompt pr
 
 ### Verifier
 
-Compares the contract to the compiler intermediate before render and attributes post-render failures to `storyboard`, `compiler`, `renderer`, or `edit`. Aesthetic quality does not excuse low intent fidelity.
+Compares the contract to the compiler intermediate before render and attributes post-render failures to `storyboard`, `compiler`, `renderer`, or `edit`. When an external scenario is the source, a `storyboard` failure is further attributed to `source_scenario` or `hermes_staging`, with a source locator or staging change-log ID. Aesthetic quality does not excuse low intent fidelity.
 
 The normal first-line render reviewer is a separate Hermes pass with an independent context. Reusing the authoring context and merely asking it to “look again” does not count as independent review.
 
